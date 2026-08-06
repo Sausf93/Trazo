@@ -54,6 +54,14 @@ de sesión por nº de ejercicios del plan. Reorienta la app hacia dos caras
       reconocer, etc. Falta: mapear nivel→cantidad en el motor de plantillas y que el
       `nivel` de la cola llegue a la generación de instancia (hoy no se pasa) + tablet.
 - [ ] Desplegar en Docker todo el stack (compose db+api+web+tablet) — requiere instalar Docker Desktop (hoy solo el cliente).
+- [ ] **Grafomotricidad: guía de dirección del trazo** (apunte de Laura). Muchos
+      mayores nunca aprendieron a escribir bien y no saben por dónde EMPEZAR ni en
+      qué SENTIDO trazar cada letra. En los ejercicios `trazo` (seguir líneas,
+      letras, palabras) mostrar: (a) un **punto de inicio** marcado y (b) **flechas
+      de dirección** a lo largo de la línea guía indicando el recorrido (para letras,
+      el orden/sentido de cada trazo). Se implementa en `trazo_widget` usando la
+      dirección/tangente del propio path (y, para letras con varios trazos, que el
+      guide_path lleve el orden correcto).
 - [ ] Decidir detalles menores (rotación de ejercicios, umbral atascado, PIN de recuperación).
 
 ## App tablet (`apps/tablet/`) — base actual (andamiaje)
