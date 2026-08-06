@@ -82,7 +82,7 @@ class IlustracionResolver {
   static const Set<String> _disponibles = {
     // Frutas
     'manzana', 'manzana_verde', 'pera', 'naranja', 'melocoton', 'uvas',
-    'sandia', 'melon', 'limon', 'fresa',
+    'sandia', 'melon', 'limon', 'fresa', 'platano',
     // Verdura
     'tomate', 'zanahoria',
     // Mesa / cubiertos
@@ -108,6 +108,8 @@ class IlustracionResolver {
     // Uva(s)
     'uva': 'uvas',
     'racimo': 'uvas',
+    // Plátano
+    'banana': 'platano',
     // Naranja / cítricos
     'mandarina': 'naranja',
     'lima': 'limon',
