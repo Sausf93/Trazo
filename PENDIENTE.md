@@ -38,10 +38,16 @@ de sesión por nº de ejercicios del plan. Reorienta la app hacia dos caras
 - [x] Backend: entidad `dispositivos` (tablets emparejadas al centro, token revocable). ✅
 - [x] Backend: campo `modo` en sesión (individual/grupo) + ejercicio compartido. ✅
 - [x] Backend: construir la "cola" de ejercicios de cada participante desde su plan. ✅ (`/usuarios/{id}/cola`)
-- [ ] Backend: motor de auto-sugerencia de nivel (propone, el profesional aprueba). ← pendiente
-- [ ] Tablet: modo **kiosco participante** (reposo → "¿quién eres?" → reparto por toque → cola).
-- [ ] Tablet: modo **maestra** (montar sesión + monitor en vivo 3-en-3 + marcar ayuda + seguimiento).
-- [ ] Web: editor de plan por paciente + aprobar sugerencias + gestión de dispositivos.
+- [x] Backend: motor de auto-sugerencia de nivel (propone, el profesional aprueba). ✅
+- [x] Backend: ciclo de sala (nombre, iniciar, cerrar, /sesiones/activa). ✅
+- [x] Tablet: modo **kiosco participante** (reposo → "¿quién eres?" → reparto por toque → cola con las 8 actividades y mediciones). ✅
+- [x] Tablet: modo **maestra** (abrir sala + monitor en vivo + marcar ayuda + iniciar/cerrar). ✅
+- [x] Tablet: logo/favicon unificado. ✅
+- [x] Web: editor de plan por paciente + gestión de dispositivos. ✅
+- [x] Tests E2E del flujo de sesión (28 en verde). ✅
+- [ ] Web: UI para **aprobar sugerencias de nivel** (endpoint listo, falta pantalla).
+- [ ] Tablet: "Ayuda" antes de que exista el intento (hoy marca el último intento; refinar con flag de sesión-participante).
+- [ ] Visual: subir las actividades de la tablet a ilustración/fotos reales (hoy usan formas/emoji simples).
 - [ ] Decidir detalles menores (rotación de ejercicios, umbral atascado, PIN de recuperación).
 
 ## App tablet (`apps/tablet/`) — base actual (andamiaje)

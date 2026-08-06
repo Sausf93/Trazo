@@ -26,12 +26,13 @@ Documentos de concepto: [`trazo-presentacion.html`](trazo-presentacion.html) ·
 ```
 trazo/
 |-- apps/
-|   |-- tablet/     (Flutter)   -- escrita, pendiente de compilar (sin SDK)
+|   |-- tablet/     (Flutter)   -- OK, modelo maestra/kiosco
 |   |-- web/        (React)      -- OK, funcionando
 |   `-- landing/    (HTML)       -- OK, web comercial
 |-- backend/
-|   `-- api/        (FastAPI)    -- OK, Fase 1
-|-- docs/           (API.md, GUIA-LOCAL.md)
+|   `-- api/        (FastAPI)    -- OK, Fase 1 + modelo operativo
+|-- docs/           (API.md, GUIA-LOCAL.md, MODELO-OPERATIVO.md, MEJORAS-EXPERTO.md)
+|-- scripts/        (arrancar-local.ps1)
 |-- docker-compose.yml
 |-- .env.example
 `-- README.md
@@ -41,11 +42,12 @@ trazo/
 
 | Pieza | Estado |
 |---|---|
-| Backend: modelo de datos + auth JWT + motor de plantillas + 8 ejercicios semilla + alertas | OK, funcionando |
-| Tests del motor de alertas | OK, 11 en verde |
-| Panel web (React): login, panel, evolución, alertas, ejercicios, sesión en vivo | OK, verificado en navegador contra la API |
-| Web comercial (landing) | OK |
-| App tablet (Flutter) | Escrita, pendiente de compilar (SDK no instalado) |
+| Backend: modelo de datos + auth JWT + motor de plantillas + alertas + planes/dispositivos/cola + auto-sugerencia de nivel + ciclo de sala | OK, funcionando |
+| Catálogo de actividades (data-driven en `catalogo.json`) | OK, 71 actividades (>=8 por tipo) |
+| Tests (unitarios + E2E de sesión) | OK, 28 en verde |
+| Panel web (React): login, panel, evolución, alertas, ejercicios, sesión en vivo, editor de planes, dispositivos | OK, verificado contra la API |
+| Web comercial (landing): con slider de actividades ilustradas | OK |
+| App tablet (Flutter): modelo maestra/kiosco, reparto por toque, cola con las 8 actividades y mediciones | OK, compila y arranca |
 
 > Guía paso a paso para levantarlo en local: [`docs/GUIA-LOCAL.md`](docs/GUIA-LOCAL.md).
 
