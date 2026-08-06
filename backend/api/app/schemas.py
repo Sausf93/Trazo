@@ -165,6 +165,37 @@ class DispositivoOut(BaseModel):
     emparejado_en: datetime
 
 
+# ---- Auto-sugerencia de nivel ----
+
+class SugerenciaNivelOut(BaseModel):
+    plan_linea_id: str
+    bloque: str
+    nivel_actual: str | None
+    sugerencia: str  # subir | bajar
+    nivel_propuesto: str
+    motivo: str
+    media_reciente: float
+    n_intentos: int
+
+
+class NivelLineaIn(BaseModel):
+    nivel: str  # bajo | medio | alto
+
+
+# ---- Sesión activa (para la tablet participante / kiosco) ----
+
+class ParticipanteSesion(BaseModel):
+    usuario_final_id: str
+    alias_interno: str
+
+
+class SesionActivaOut(BaseModel):
+    sesion_id: str | None = None
+    modo: str | None = None
+    ejercicio_compartido_id: str | None = None
+    participantes: list[ParticipanteSesion] = Field(default_factory=list)
+
+
 # ---- Intentos ----
 
 class IntentoIn(BaseModel):

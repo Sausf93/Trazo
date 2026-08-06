@@ -99,6 +99,7 @@ export function buildQuery(params: Record<string, string | number | boolean | un
 export const http = {
   get: <T>(path: string, signal?: AbortSignal) => request<T>(path, { signal }),
   post: <T>(path: string, json?: unknown) => request<T>(path, { method: "POST", json }),
+  put: <T>(path: string, json?: unknown) => request<T>(path, { method: "PUT", json }),
   patch: <T>(path: string, json?: unknown) => request<T>(path, { method: "PATCH", json }),
   postForm: <T>(path: string, form: Record<string, string>) =>
     request<T>(path, { method: "POST", form }),

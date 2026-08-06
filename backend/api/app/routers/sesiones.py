@@ -17,11 +17,61 @@ from app.models import (
     UsuarioFinal,
     UsuarioStaff,
 )
-from app.schemas import FichaViva, LiveOut, SesionIn, SesionOut
+from app.schemas import (
+    FichaViva,
+    LiveOut,
+    ParticipanteSesion,
+    SesionActivaOut,
+    SesionIn,
+    SesionOut,
+)
 
 router = APIRouter(prefix="/sesiones", tags=["sesiones"])
 
 SEGUNDOS_ATASCADO = 30.0
+
+
+@router.get("/activa", response_model=SesionActivaOut)
+async def sesion_activa(
+    centro_id: str,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Sesión abierta más reciente del centro + sus participantes.
+
+    Es lo que consulta la tablet participante (kiosco) para mostrar la lista de
+    "¿quién eres?" y repartir por toque. Devuelve sesion_id=None si no hay ninguna.
+    """
+    if centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    ses = (
+        await db.execute(
+            select(Sesion)
+            .where(Sesion.centro_id == centro_id, Sesion.cerrada.is_(False))
+            .order_by(Sesion.fecha.desc())
+            .limit(1)
+        )
+    ).scalars().first()
+    if ses is None:
+        return SesionActivaOut()
+
+    parts = (
+        await db.execute(
+            select(SesionParticipante).where(SesionParticipante.sesion_id == ses.id)
+        )
+    ).scalars().all()
+    participantes: list[ParticipanteSesion] = []
+    for p in parts:
+        uf = await db.get(UsuarioFinal, p.usuario_final_id)
+        participantes.append(ParticipanteSesion(
+            usuario_final_id=p.usuario_final_id,
+            alias_interno=uf.alias_interno if uf else "?",
+        ))
+    return SesionActivaOut(
+        sesion_id=ses.id, modo=ses.modo,
+        ejercicio_compartido_id=ses.ejercicio_compartido_id,
+        participantes=participantes,
+    )
 
 
 @router.post("", response_model=SesionOut, status_code=status.HTTP_201_CREATED)

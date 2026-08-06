@@ -18,7 +18,12 @@ Lista viva de cosas por hacer/decidir. Marca con `[x]` lo que se cierre.
       Si se quiere recepción automática, conectar a un servicio (Formspree, un
       endpoint propio, etc.).
 - [ ] **Logo definitivo** — hay un logo SVG propio hecho a mano; si se quiere una
-      versión "de marca" más trabajada, encargar/diseñar y sustituir.
+      versión "de marca" más trabajada, encargar/diseñar y sustituir. (A Saulo no
+      le convence del todo; lo comentará con su pareja. Está centralizado: cambiarlo
+      es rápido — Logo.tsx en web, símbolo SVG en landing, favicon data-URI, y la
+      tablet.)
+- [ ] **Unificar logo/favicon en la app tablet** (aún tiene el de Flutter por defecto).
+      Se hace en la reorientación maestra/kiosco.
 - [ ] **Textos e imágenes** — revisar copy con Laura; añadir capturas reales del
       producto cuando estén pulidas.
 - [ ] (Opcional) **Testimonios reales** — cuando haya centros piloto, añadir prueba

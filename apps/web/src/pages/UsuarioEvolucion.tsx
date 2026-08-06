@@ -47,7 +47,30 @@ export function UsuarioEvolucionPage() {
       </Link>
 
       <div style={{ marginTop: 10 }}>
-        <PageHeader eyebrow="Vista individual" title={alias} subtitle="Evolución en el tiempo comparada con su propio patrón, nunca con otras personas." />
+        <PageHeader
+          eyebrow="Vista individual"
+          title={alias}
+          subtitle="Evolución en el tiempo comparada con su propio patrón, nunca con otras personas."
+          actions={
+            <Link
+              to={`/usuarios/${id}/plan`}
+              style={{
+                display: "inline-block",
+                fontFamily: fonts.sans,
+                fontWeight: 600,
+                fontSize: 15,
+                padding: "11px 20px",
+                borderRadius: radius.sm,
+                border: `1.5px solid ${colors.sage}`,
+                background: colors.sage,
+                color: colors.white,
+                textDecoration: "none",
+              }}
+            >
+              Editar plan de trabajo
+            </Link>
+          }
+        />
       </div>
 
       {/* Selector de bloque */}

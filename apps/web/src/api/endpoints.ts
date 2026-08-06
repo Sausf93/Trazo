@@ -5,10 +5,15 @@
 import { buildQuery, http } from "./client";
 import type {
   Alerta,
+  Cola,
+  Dispositivo,
+  DispositivoCreado,
+  DispositivoIn,
   Ejercicio,
   EjercicioIn,
   Evolucion,
   Live,
+  PlanLinea,
   TokenOut,
   UsuarioFinal,
 } from "./types";
@@ -67,4 +72,51 @@ export function revisarAlerta(alertaId: string, resultado: string): Promise<Aler
 // ---- Sesión en vivo ----
 export function sesionLive(sesionId: string, signal?: AbortSignal): Promise<Live> {
   return http.get<Live>(`/sesiones/${encodeURIComponent(sesionId)}/live`, signal);
+}
+
+// ---- Plan de trabajo por paciente ----
+/**
+ * GET del plan. El contrato dice "líneas ordenadas por orden"; aceptamos tanto
+ * un array como `{ lineas: [...] }` y normalizamos a PlanLinea[].
+ */
+export async function obtenerPlan(usuarioId: string, signal?: AbortSignal): Promise<PlanLinea[]> {
+  const data = await http.get<PlanLinea[] | { lineas: PlanLinea[] }>(
+    `/usuarios/${encodeURIComponent(usuarioId)}/plan`,
+    signal,
+  );
+  const lineas = Array.isArray(data) ? data : (data?.lineas ?? []);
+  return [...lineas].sort((a, b) => a.orden - b.orden);
+}
+
+/** PUT reemplaza TODO el plan. */
+export function guardarPlan(usuarioId: string, lineas: PlanLinea[]): Promise<unknown> {
+  return http.put<unknown>(`/usuarios/${encodeURIComponent(usuarioId)}/plan`, { lineas });
+}
+
+/** Vista previa de la cola resuelta desde el plan. */
+export function obtenerCola(
+  usuarioId: string,
+  params: { sesion_id?: string } = {},
+  signal?: AbortSignal,
+): Promise<Cola> {
+  return http.get<Cola>(
+    `/usuarios/${encodeURIComponent(usuarioId)}/cola${buildQuery(params)}`,
+    signal,
+  );
+}
+
+// ---- Dispositivos (tablets emparejadas) ----
+export function listarDispositivos(
+  params: { centro_id?: string; activo?: boolean } = {},
+  signal?: AbortSignal,
+): Promise<Dispositivo[]> {
+  return http.get<Dispositivo[]>(`/dispositivos${buildQuery(params)}`, signal);
+}
+
+export function emparejarDispositivo(body: DispositivoIn): Promise<DispositivoCreado> {
+  return http.post<DispositivoCreado>("/dispositivos", body);
+}
+
+export function revocarDispositivo(dispositivoId: string): Promise<Dispositivo> {
+  return http.patch<Dispositivo>(`/dispositivos/${encodeURIComponent(dispositivoId)}/revocar`);
 }

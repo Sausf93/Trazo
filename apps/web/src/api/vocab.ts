@@ -52,6 +52,37 @@ export const PLANTILLA_LABEL: Record<string, string> = {
   manejo_cantidad: "Manejo de cantidad",
 };
 
+export const NIVELES = ["bajo", "medio", "alto"] as const;
+export type Nivel = (typeof NIVELES)[number];
+
+export const NIVEL_LABEL: Record<string, string> = {
+  bajo: "Bajo",
+  medio: "Medio",
+  alto: "Alto",
+};
+
+export function labelNivel(n: string | null | undefined): string {
+  if (!n) return "—";
+  return NIVEL_LABEL[n] ?? n;
+}
+
+export const ROLES_DISPOSITIVO = ["maestra", "participante"] as const;
+
+export const ROL_DISPOSITIVO_LABEL: Record<string, string> = {
+  maestra: "Maestra",
+  participante: "Participante",
+};
+
+export function labelRolDispositivo(r: string | null | undefined): string {
+  if (!r) return "—";
+  return ROL_DISPOSITIVO_LABEL[r] ?? r;
+}
+
+export const TIPO_LINEA_LABEL: Record<string, string> = {
+  dominio: "Dominio",
+  ejercicio: "Ejercicio concreto",
+};
+
 export const ESTADO_LABEL: Record<string, string> = {
   solo: "Solo",
   con_ayuda: "Con ayuda",

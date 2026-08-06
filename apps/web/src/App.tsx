@@ -2,8 +2,10 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AlertasPage } from "./pages/Alertas";
 import { DashboardPage } from "./pages/Dashboard";
+import { DispositivosPage } from "./pages/Dispositivos";
 import { EjerciciosPage } from "./pages/Ejercicios";
 import { LoginPage } from "./pages/Login";
+import { PlanEditorPage } from "./pages/PlanEditor";
 import { SesionLivePage } from "./pages/SesionLive";
 import { UsuarioEvolucionPage } from "./pages/UsuarioEvolucion";
 
@@ -25,6 +27,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <UsuarioEvolucionPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/usuarios/:id/plan"
+        element={
+          <ProtectedRoute>
+            <PlanEditorPage />
           </ProtectedRoute>
         }
       />
@@ -57,6 +67,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <SesionLivePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/dispositivos"
+        element={
+          <ProtectedRoute>
+            <DispositivosPage />
           </ProtectedRoute>
         }
       />

@@ -79,6 +79,75 @@ tablet sin que la persona usuaria pueda salir sola.
 
 ---
 
+## 4b. Cómo se conectan las tablets a la sesión (SIN código cada vez)
+
+Esta es la clave de la usabilidad. **No** se hace tablet por tablet metiendo un
+código en cada sesión (eso sería lento y es justo lo que queremos evitar).
+
+**Emparejamiento = UNA sola vez por tablet (en el setup inicial):**
+Cuando se prepara una tablet nueva, la trabajadora la vincula al centro y le dice
+qué es: *maestra* o *participante*. A partir de ahí, ese aparato guarda un
+**token de dispositivo** y "ya sabe" que es una tablet participante del centro X —
+para siempre, hasta que se desvincule. Esto se gestiona desde el panel web
+(sección Dispositivos) y es **revocable** (si se pierde una tablet, se corta su
+acceso — importante para RGPD).
+
+**Día a día = CERO pasos en las tablets participantes:**
+1. La maestra abre la sesión y elige los participantes.
+2. Cada tablet participante, como está emparejada al centro, **pregunta sola** al
+   servidor si hay una sesión activa (endpoint `GET /sesiones/activa`, consultado
+   cada pocos segundos). En cuanto la maestra abre una, **todas se despiertan a la
+   vez** y muestran el "¿quién eres?" con la lista de participantes.
+3. La trabajadora solo hace lo útil: dar la tablet a cada persona y **tocar su
+   nombre**. Nada de códigos, nada de sincronizar una por una.
+4. Al cerrar la sesión, las tablets vuelven solas a reposo.
+
+**¿Y el wifi?** Las tablets necesitan llegar al servidor (misma red o internet),
+pero el vínculo NO es "quien esté en el wifi": es el emparejamiento (token). Así,
+estar en la red no convierte a un aparato en participante — tiene que estar
+vinculado. Más seguro y más limpio.
+
+**Emparejar sin teclear códigos molestos:** el emparejamiento inicial se hace
+logueándose la trabajadora una vez en esa tablet y marcando el rol (o con un
+código de un solo uso desde el panel). Como es **una vez en la vida del aparato**,
+no penaliza el día a día.
+
+**Varias salas a la vez (futuro):** si un centro tuviera dos grupos en paralelo,
+se vincularía cada tablet a una "sala" (o la maestra elegiría a qué sesión unir
+cada aparato). Para el piloto, una sesión activa por centro es suficiente.
+
+---
+
+## 4c. Arranque afinado (decisión con Saulo) — el más simple
+
+Modelo definitivo para el piloto, más usable que el emparejamiento permanente:
+
+1. **Al abrir la app, CUALQUIER tablet elige rol:** *maestra* o *esclava*. No hace
+   falta vincular nada de antemano.
+2. **La maestra "abre sala":** le pone un **nombre a la sesión** (ej. "Grupo
+   tarde") y elige los participantes de hoy. Ese nombre es solo una etiqueta; se
+   guarda en el servidor lo justo para que las esclavas puedan verla (no es dato
+   personal).
+3. **En cada esclava se pulsa "esclava" → aparece la sesión abierta** (por su
+   nombre; el descubrimiento va por el servidor en la misma red, se siente como
+   "aparece sola"). Se toca y se entra.
+4. **Dentro, salen los nombres** de los participantes que registró la maestra →
+   se toca un nombre, se le da la tablet a esa persona. Y así con cada una.
+5. **Cuando está todo repartido, la maestra pulsa "Iniciar actividad"** y arrancan
+   los ejercicios para todos.
+6. Al terminar, la maestra **cierra la sala** y las tablets vuelven a "elegir rol".
+
+**Estado de la sesión:** montando → repartiendo → en curso → cerrada.
+
+**Seguridad (para producción, no bloquea el piloto):** como en este modelo
+cualquier tablet puede elegir "esclava", para producción se añadiría una barrera
+ligera (un PIN de sala que muestra la maestra, o login del centro una vez). En el
+piloto, dentro de la red del centro y con el equipo delante, basta con lo simple.
+La entidad `dispositivos` + token que ya existe en el backend queda como esa capa
+opcional de seguridad para más adelante.
+
+---
+
 ## 5. El monitor de la maestra
 
 Tarjetas pequeñas **de tres en tres, con scroll**. Cada una en tiempo real:

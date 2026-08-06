@@ -229,6 +229,26 @@
   .sk-fill-coral{fill:var(--coral); opacity:.9;}
   .sk-fill-card{fill:var(--card);}
   .sk-txt{font-family:'JetBrains Mono',monospace; font-size:11px; fill:var(--faint);}
+  /* Ilustraciones planas a color (estilo NeuronUP) dentro de los mockups */
+  .ol{stroke:#2B3A32; stroke-opacity:.32; stroke-width:1.5; stroke-linejoin:round; stroke-linecap:round;}
+  .ol-w{stroke:var(--white); stroke-width:2; stroke-linejoin:round; stroke-linecap:round;}
+  .f-white{fill:var(--white);}   .f-card{fill:var(--card);}
+  .f-sage{fill:var(--sage);}     .f-sage-d{fill:var(--sage-dark);}
+  .f-coral{fill:var(--coral);}   .f-coral-d{fill:var(--coral-dark);}
+  .f-sand{fill:var(--sand);}     .f-ink{fill:var(--ink);}
+  .f-steel{fill:#B7BDC4;}        .f-steel-d{fill:#8F97A0;}
+  .f-silver{fill:#CBD1D8;}       .f-silver-d{fill:#A4ACB5;}
+  .f-gold{fill:#E3B84F;}         .f-gold-d{fill:#C69A34;}
+  .f-copper{fill:#CE8A57;}
+  .f-leather{fill:#B0703B;}      .f-leather-d{fill:#8A5628;}
+  .f-water{fill:#B9DAE6;}
+  .f-apple{fill:#C0492F;}        .f-apple-d{fill:#9C3924;}
+  .f-banana{fill:#E3C24F;}       .f-banana-d{fill:#C79E30;}
+  .f-leaf{fill:#7C9885;}         .f-leaf-d{fill:#5C7A66;}
+  .f-soil{fill:#8A5628;}
+  .il-txt{font-family:'JetBrains Mono',monospace; font-size:10.5px; fill:var(--faint);}
+  .il-num{font-family:'Fraunces',serif; font-size:15px; fill:var(--white); font-weight:600;}
+  .il-lbl{font-family:'Inter',sans-serif; font-size:11px; font-weight:600; fill:var(--muted);}
   .act-dom{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.11em; text-transform:uppercase; color:var(--sage-dark); margin-bottom:6px;}
   .act-card h4{font-size:18px; margin-bottom:10px;}
   .act-works{font-size:13px; color:var(--muted); line-height:1.5; margin-top:auto;}
@@ -502,11 +522,18 @@
         <article class="act-card">
           <div class="act-mock">
             <span class="mock-tag">// ejemplo</span>
-            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: seguir una línea con el dedo">
-              <path class="sk-dash" d="M18,96 C60,40 92,116 132,74 C160,44 182,92 214,58"/>
-              <path class="sk-coral" d="M20,94 C58,52 90,108 130,72 C160,50 180,86 210,60"/>
-              <circle cx="210" cy="60" r="4.5" class="sk-fill-coral"/>
-              <circle cx="20" cy="94" r="4" class="sk-fill-sage"/>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: seguir una línea con un lápiz">
+              <path class="sk-dash" d="M20,95 C60,40 96,112 150,72 C178,50 196,64 215,47"/>
+              <path fill="none" stroke="#C97B4A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" d="M20,95 C60,40 96,112 150,72 C178,50 196,64 215,47"/>
+              <circle cx="20" cy="95" r="7" class="f-sage ol"/>
+              <circle cx="20" cy="95" r="3" class="f-white"/>
+              <g transform="translate(252,10) rotate(135)">
+                <rect x="-3" y="-6.5" width="9" height="13" rx="2" class="f-coral-d ol"/>
+                <rect x="6" y="-6.5" width="5" height="13" class="f-steel ol"/>
+                <rect x="11" y="-6.5" width="29" height="13" class="f-gold ol"/>
+                <path d="M40,-6.5 L52,0 L40,6.5 Z" class="f-copper ol"/>
+                <path d="M47.5,-2.6 L52,0 L47.5,2.6 Z" class="f-ink"/>
+              </g>
             </svg>
           </div>
           <div class="act-dom">Praxias · manos y control motor</div>
@@ -518,16 +545,33 @@
         <article class="act-card">
           <div class="act-mock">
             <span class="mock-tag">// ejemplo</span>
-            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: encontrar el intruso">
-              <circle cx="52" cy="45" r="17" class="sk-faint"/>
-              <circle cx="115" cy="45" r="17" class="sk-faint"/>
-              <circle cx="178" cy="45" r="17" class="sk-faint"/>
-              <rect x="185" y="86" width="34" height="34" rx="4" class="sk-coral"/>
-              <path class="sk-dash" d="M204,120 a26,26 0 1 0 -0.1 0" transform="translate(-2,-18) scale(1)"/>
-              <circle cx="202" cy="103" r="26" class="sk-coral" fill="none" stroke-dasharray="5,6"/>
-              <rect x="35" y="86" width="34" height="34" rx="17" class="sk-faint"/>
-              <rect x="98" y="86" width="34" height="34" rx="17" class="sk-faint"/>
-              <text x="8" y="128" class="sk-txt">el que no encaja</text>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: encontrar el intruso, tres manzanas y un plátano">
+              <line x1="14" y1="86" x2="246" y2="86" stroke="#C9BFA4" stroke-width="3" stroke-linecap="round"/>
+              <g>
+                <rect x="44" y="26" width="3.4" height="12" class="f-leather"/>
+                <ellipse cx="55" cy="30" rx="9" ry="5" transform="rotate(-24 55 30)" class="f-leaf ol"/>
+                <path class="f-apple ol" d="M46,40 a17,16 0 1 0 4,0 a10,7 0 0 1 -4,0 z"/>
+                <path class="f-apple-d" d="M56,44 a13,15 0 0 1 0,28 a17,16 0 0 0 0,-28 z"/>
+              </g>
+              <g>
+                <rect x="102" y="26" width="3.4" height="12" class="f-leather"/>
+                <ellipse cx="113" cy="30" rx="9" ry="5" transform="rotate(-24 113 30)" class="f-leaf ol"/>
+                <path class="f-apple ol" d="M104,40 a17,16 0 1 0 4,0 a10,7 0 0 1 -4,0 z"/>
+                <path class="f-apple-d" d="M114,44 a13,15 0 0 1 0,28 a17,16 0 0 0 0,-28 z"/>
+              </g>
+              <g>
+                <rect x="142" y="26" width="3.4" height="12" class="f-leather"/>
+                <ellipse cx="153" cy="30" rx="9" ry="5" transform="rotate(-24 153 30)" class="f-leaf ol"/>
+                <path class="f-apple ol" d="M144,40 a17,16 0 1 0 4,0 a10,7 0 0 1 -4,0 z"/>
+                <path class="f-apple-d" d="M154,44 a13,15 0 0 1 0,28 a17,16 0 0 0 0,-28 z"/>
+              </g>
+              <g>
+                <circle cx="189" cy="54" r="25" fill="none" stroke="#C97B4A" stroke-width="2.4" stroke-dasharray="6,6"/>
+                <path class="f-banana ol" d="M172,40 q10,-4 18,2 q16,10 18,30 q-6,4 -11,1 q-2,-18 -18,-25 q-8,-3 -11,-1 q-2,-5 4,-7 z"/>
+                <path class="f-banana-d" d="M195,48 q10,10 13,24 q-6,4 -11,1 q-1,-14 -9,-22 q4,-2 7,-3 z"/>
+                <path d="M170,41 l-3,-4" class="ol"/>
+              </g>
+              <text x="130" y="122" text-anchor="middle" class="il-txt">señala el que no encaja</text>
             </svg>
           </div>
           <div class="act-dom">Razonamiento · categorizar</div>
@@ -539,18 +583,17 @@
         <article class="act-card">
           <div class="act-mock">
             <span class="mock-tag">// ejemplo</span>
-            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: memoria de figuras">
-              <rect x="22" y="20" width="46" height="40" rx="6" class="sk-faint"/>
-              <circle cx="45" cy="40" r="12" class="sk-fill-sage"/>
-              <rect x="80" y="20" width="46" height="40" rx="6" class="sk-faint"/>
-              <rect x="92" y="30" width="22" height="20" rx="3" class="sk-fill-coral"/>
-              <rect x="138" y="20" width="46" height="40" rx="6" class="sk-faint"/>
-              <path d="M161,28 l11,20 h-22 z" class="sk-fill-sage"/>
-              <rect x="196" y="20" width="46" height="40" rx="6" class="sk-dash"/>
-              <text x="205" y="45" class="sk-txt">?</text>
-              <rect x="52" y="78" width="52" height="38" rx="6" class="sk-dash"/>
-              <rect x="112" y="78" width="52" height="38" rx="6" class="sk-dash"/>
-              <text x="66" y="102" class="sk-txt">¿cuáles?</text>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: memoria de figuras en tarjetas">
+              <rect x="20" y="18" width="50" height="58" rx="8" class="f-white ol"/>
+              <circle cx="45" cy="47" r="15" class="f-sage"/>
+              <rect x="80" y="18" width="50" height="58" rx="8" class="f-white ol"/>
+              <rect x="90" y="32" width="30" height="30" rx="4" class="f-coral"/>
+              <rect x="140" y="18" width="50" height="58" rx="8" class="f-white ol"/>
+              <path d="M165,31 l16,30 h-32 z" class="f-gold"/>
+              <rect x="200" y="18" width="50" height="58" rx="8" class="f-coral-d ol"/>
+              <circle cx="225" cy="47" r="13" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-opacity=".85"/>
+              <text x="225" y="53" text-anchor="middle" style="font-family:'Fraunces',serif;font-size:20px;font-weight:600;fill:#FFFEFB;">?</text>
+              <text x="130" y="106" text-anchor="middle" class="il-txt">¿qué figura faltaba?</text>
             </svg>
           </div>
           <div class="act-dom">Atención y memoria</div>
@@ -562,18 +605,40 @@
         <article class="act-card">
           <div class="act-mock">
             <span class="mock-tag">// ejemplo</span>
-            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: ordenar los pasos">
-              <rect x="16" y="42" width="52" height="48" rx="7" class="sk-faint"/>
-              <text x="38" y="72" class="sk-txt" style="font-size:16px; fill:var(--sage-dark);">1</text>
-              <path class="sk-dash" d="M74,66 h20"/>
-              <path class="sk" d="M92,61 l6,5 -6,5"/>
-              <rect x="104" y="42" width="52" height="48" rx="7" class="sk-faint"/>
-              <text x="126" y="72" class="sk-txt" style="font-size:16px; fill:var(--sage-dark);">2</text>
-              <path class="sk-dash" d="M162,66 h20"/>
-              <path class="sk" d="M180,61 l6,5 -6,5"/>
-              <rect x="192" y="42" width="52" height="48" rx="7" class="sk-coral"/>
-              <text x="214" y="72" class="sk-txt" style="font-size:16px; fill:var(--coral-dark);">3</text>
-              <text x="16" y="112" class="sk-txt">pon los pasos en orden</text>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: ordenar los pasos del crecimiento de una planta">
+              <g>
+                <rect x="12" y="26" width="62" height="70" rx="8" class="f-white ol"/>
+                <path class="f-copper ol" d="M28,74 h30 l-4,14 h-22 z"/>
+                <rect x="26" y="70" width="34" height="7" rx="2" class="f-copper"/>
+                <circle cx="43" cy="63" r="4" class="f-soil"/>
+                <circle cx="21" cy="34" r="10" class="f-sage-d"/><text x="21" y="38" text-anchor="middle" class="il-num">1</text>
+              </g>
+              <path d="M78,62 h12 l-4,-4 m4,4 l-4,4" class="ol" fill="none"/>
+              <g>
+                <rect x="99" y="26" width="62" height="70" rx="8" class="f-white ol"/>
+                <path class="f-copper ol" d="M115,74 h30 l-4,14 h-22 z"/>
+                <rect x="113" y="70" width="34" height="7" rx="2" class="f-copper"/>
+                <path d="M130,70 V52" stroke="#5C7A66" stroke-width="2.4" fill="none"/>
+                <path class="f-leaf" d="M130,58 q-12,-3 -14,-12 q11,-1 14,9 z"/>
+                <path class="f-leaf-d" d="M130,54 q12,-4 15,-13 q-12,0 -15,10 z"/>
+                <circle cx="108" cy="34" r="10" class="f-sage-d"/><text x="108" y="38" text-anchor="middle" class="il-num">2</text>
+              </g>
+              <path d="M165,62 h12 l-4,-4 m4,4 l-4,4" class="ol" fill="none"/>
+              <g>
+                <rect x="186" y="26" width="62" height="70" rx="8" class="f-sage ol" fill-opacity=".14"/>
+                <rect x="186" y="26" width="62" height="70" rx="8" fill="none" stroke="#5C7A66" stroke-width="2"/>
+                <path class="f-copper ol" d="M202,74 h30 l-4,14 h-22 z"/>
+                <rect x="200" y="70" width="34" height="7" rx="2" class="f-copper"/>
+                <path d="M217,70 V48" stroke="#5C7A66" stroke-width="2.4" fill="none"/>
+                <path class="f-leaf" d="M217,60 q-11,-2 -13,-10 q10,-1 13,8 z"/>
+                <g transform="translate(217,40)">
+                  <circle cx="0" cy="-9" r="6" class="f-coral"/><circle cx="9" cy="0" r="6" class="f-coral"/>
+                  <circle cx="-9" cy="0" r="6" class="f-coral"/><circle cx="0" cy="9" r="6" class="f-coral"/>
+                  <circle cx="0" cy="0" r="6" class="f-gold ol"/>
+                </g>
+                <circle cx="195" cy="34" r="10" class="f-coral-d"/><text x="195" y="38" text-anchor="middle" class="il-num">3</text>
+              </g>
+              <text x="130" y="120" text-anchor="middle" class="il-txt">de la semilla a la flor</text>
             </svg>
           </div>
           <div class="act-dom">Función ejecutiva</div>
@@ -585,18 +650,23 @@
         <article class="act-card">
           <div class="act-mock">
             <span class="mock-tag">// ejemplo</span>
-            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: cuál tiene más">
-              <rect x="16" y="16" width="104" height="100" rx="10" class="sk-faint"/>
-              <circle cx="42" cy="44" r="9" class="sk-fill-sage"/>
-              <circle cx="72" cy="40" r="9" class="sk-fill-sage"/>
-              <circle cx="98" cy="52" r="9" class="sk-fill-sage"/>
-              <circle cx="50" cy="76" r="9" class="sk-fill-sage"/>
-              <circle cx="86" cy="82" r="9" class="sk-fill-sage"/>
-              <rect x="140" y="16" width="104" height="100" rx="10" class="sk-coral"/>
-              <circle cx="170" cy="48" r="9" class="sk-fill-coral"/>
-              <circle cx="206" cy="44" r="9" class="sk-fill-coral"/>
-              <circle cx="188" cy="80" r="9" class="sk-fill-coral"/>
-              <text x="124" y="72" class="sk-txt" style="font-size:15px;">?</text>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: comparar cuál tiene más manzanas">
+              <rect x="14" y="20" width="98" height="92" rx="12" class="f-card ol"/>
+              <g>
+                <g transform="translate(40,46)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+                <g transform="translate(72,42)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+                <g transform="translate(90,72)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+                <g transform="translate(52,78)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+                <g transform="translate(30,80)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+              </g>
+              <rect x="148" y="20" width="98" height="92" rx="12" class="f-card ol"/>
+              <g>
+                <g transform="translate(178,50)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+                <g transform="translate(212,48)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+                <g transform="translate(196,80)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+              </g>
+              <circle cx="130" cy="66" r="13" class="f-coral-d"/>
+              <text x="130" y="72" text-anchor="middle" style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;fill:#FFFEFB;">?</text>
             </svg>
           </div>
           <div class="act-dom">Razonamiento · cálculo</div>
@@ -608,21 +678,25 @@
         <article class="act-card">
           <div class="act-mock">
             <span class="mock-tag">// ejemplo</span>
-            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: poner la mesa">
-              <!-- mantel -->
-              <rect x="34" y="32" width="192" height="74" rx="14" class="sk-faint"/>
-              <!-- plato -->
-              <circle cx="130" cy="70" r="25" class="sk"/>
-              <circle cx="130" cy="70" r="15" class="sk-faint"/>
-              <!-- tenedor (púas + mango) -->
-              <path class="sk" d="M74,42 v13 M81,41 v14 M88,42 v13"/>
-              <path class="sk" d="M81,55 v45"/>
-              <!-- cuchillo (hoja + mango) -->
-              <path class="sk" d="M181,42 q9,11 4,30 l-8,0 q-3,-19 4,-30 z"/>
-              <line class="sk" x1="181" y1="72" x2="181" y2="103"/>
-              <!-- vaso -->
-              <path class="sk-faint" d="M204,40 l3,22 h11 l3,-22 z"/>
-              <text x="14" y="124" class="sk-txt">arrastra cada cosa a su sitio</text>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: poner la mesa con plato, cubiertos y vaso">
+              <rect x="26" y="20" width="208" height="80" rx="14" class="f-card ol"/>
+              <circle cx="130" cy="60" r="34" class="f-white ol"/>
+              <circle cx="130" cy="60" r="23" fill="none" stroke="#7C9885" stroke-width="2.4"/>
+              <g>
+                <path class="f-steel ol" d="M69,30 v16 M76,29 v18 M83,30 v16"/>
+                <path class="f-steel ol" d="M72,45 q0,4 4,4 q4,0 4,-4 v-2 h-8 z"/>
+                <rect x="74" y="47" width="4" height="46" rx="2" class="f-steel-d"/>
+              </g>
+              <g>
+                <path class="f-steel ol" d="M182,30 q10,10 5,32 l-9,0 q-4,-22 4,-32 z"/>
+                <rect x="181" y="60" width="4.4" height="33" rx="2" class="f-steel-d"/>
+              </g>
+              <g>
+                <path class="f-water" d="M199,34 l2.4,20 h15 l2.4,-20 z"/>
+                <path class="f-water" style="opacity:.55" d="M199,34 l1,8 h19 l1,-8 z"/>
+                <path fill="none" stroke="#8F97A0" stroke-width="2" stroke-linejoin="round" d="M197,30 l3,28 h16 l3,-28 z"/>
+              </g>
+              <text x="130" y="122" text-anchor="middle" class="il-txt">pon cada cosa en su sitio</text>
             </svg>
           </div>
           <div class="act-dom">Praxias · vida cotidiana</div>
@@ -634,17 +708,31 @@
         <article class="act-card">
           <div class="act-mock">
             <span class="mock-tag">// ejemplo</span>
-            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: objetos por categoría">
-              <rect x="16" y="14" width="150" height="26" rx="13" class="sk-coral"/>
-              <text x="30" y="31" class="sk-txt" style="fill:var(--coral-dark);">🍎 la cocina…</text>
-              <rect x="16" y="52" width="96" height="22" rx="11" class="sk-faint"/>
-              <text x="28" y="67" class="sk-txt">plato</text>
-              <rect x="122" y="52" width="96" height="22" rx="11" class="sk-faint"/>
-              <text x="134" y="67" class="sk-txt">vaso</text>
-              <rect x="16" y="82" width="110" height="22" rx="11" class="sk-faint"/>
-              <text x="28" y="97" class="sk-txt">cuchara</text>
-              <rect x="136" y="82" width="86" height="22" rx="11" class="sk-dash"/>
-              <text x="150" y="97" class="sk-txt">+ …</text>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: nombrar objetos de la categoría cocina">
+              <rect x="16" y="12" width="228" height="28" rx="14" class="f-sage"/>
+              <circle cx="34" cy="26" r="9" class="f-coral-d"/>
+              <path class="f-white" d="M34,20 v12 M30,20 c-1,4 1,5 4,5 M38,20 c1,4 -1,5 -4,5" stroke="#FFFEFB" stroke-width="1.4" fill="none"/>
+              <text x="50" y="30" style="font-family:'Fraunces',serif;font-size:15px;font-weight:600;fill:#FFFEFB;">La cocina</text>
+              <g>
+                <rect x="16" y="50" width="110" height="34" rx="9" class="f-white ol"/>
+                <circle cx="35" cy="67" r="12" class="f-white ol"/><circle cx="35" cy="67" r="7" fill="none" stroke="#7C9885" stroke-width="2"/>
+                <text x="54" y="71" class="il-lbl">plato</text>
+              </g>
+              <g>
+                <rect x="134" y="50" width="110" height="34" rx="9" class="f-white ol"/>
+                <path class="f-coral ol" d="M150,57 h16 l-2,17 q-6,3 -12,0 z"/><path d="M166,60 q7,0 7,6 q0,6 -7,6" fill="none" class="ol"/>
+                <text x="182" y="71" class="il-lbl">taza</text>
+              </g>
+              <g>
+                <rect x="16" y="90" width="110" height="34" rx="9" class="f-white ol"/>
+                <ellipse cx="35" cy="102" rx="6" ry="8" class="f-steel ol"/><rect x="33" y="107" width="4" height="12" rx="2" class="f-steel-d"/>
+                <text x="54" y="112" class="il-lbl">cuchara</text>
+              </g>
+              <g>
+                <rect x="134" y="90" width="110" height="34" rx="9" fill="none" stroke="#C9BFA4" stroke-width="1.6" stroke-dasharray="5,5"/>
+                <path d="M152,107 h14 M159,100 v14" stroke="#C97B4A" stroke-width="2.4" stroke-linecap="round"/>
+                <text x="176" y="112" class="il-lbl" style="fill:var(--coral-dark);">añade</text>
+              </g>
             </svg>
           </div>
           <div class="act-dom">Lenguaje · fluidez verbal</div>
@@ -656,19 +744,26 @@
         <article class="act-card">
           <div class="act-mock">
             <span class="mock-tag">// ejemplo</span>
-            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: llevar monedas al monedero">
-              <!-- monedas (doble aro = canto, para que parezcan monedas) -->
-              <circle cx="42" cy="50" r="19" class="sk-coral"/><circle cx="42" cy="50" r="14" class="sk-coral"/><text x="42" y="55" text-anchor="middle" class="sk-txt" style="fill:var(--coral-dark);">2€</text>
-              <circle cx="82" cy="60" r="15" class="sk-faint"/><circle cx="82" cy="60" r="11" class="sk-faint"/><text x="82" y="64" text-anchor="middle" class="sk-txt">1€</text>
-              <circle cx="114" cy="48" r="12" class="sk-faint"/><circle cx="114" cy="48" r="8" class="sk-faint"/><text x="114" y="52" text-anchor="middle" class="sk-txt" style="font-size:8px;">50c</text>
-              <!-- flecha de arrastre -->
-              <path class="sk-dash" d="M132,64 h30"/>
-              <path class="sk" d="M160,58 l9,6 -9,6"/>
-              <!-- monedero -->
-              <path class="sk" d="M180,66 q0,-17 30,-17 q30,0 30,17 v20 q0,17 -30,17 q-30,0 -30,-17 z"/>
-              <path class="sk-faint" d="M180,70 q30,-15 60,0"/>
-              <circle cx="210" cy="70" r="3.4" class="sk-fill-coral"/>
-              <text x="18" y="124" class="sk-txt">lleva las monedas al monedero →</text>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: guardar monedas de euro en el monedero">
+              <g>
+                <ellipse cx="46" cy="80" rx="20" ry="7" class="f-gold-d" opacity=".5"/>
+                <circle cx="46" cy="48" r="20" class="f-gold ol"/>
+                <circle cx="46" cy="48" r="13.5" class="f-silver ol"/>
+                <text x="46" y="53" text-anchor="middle" style="font-family:'Fraunces',serif;font-size:13px;font-weight:600;fill:#8A5628;">2€</text>
+              </g>
+              <g>
+                <circle cx="92" cy="70" r="16" class="f-gold ol"/>
+                <circle cx="92" cy="70" r="10.5" class="f-silver ol"/>
+                <text x="92" y="74" text-anchor="middle" style="font-family:'Fraunces',serif;font-size:11px;font-weight:600;fill:#8A5628;">1€</text>
+              </g>
+              <path d="M118,60 h26 l-5,-5 m5,5 l-5,5" fill="none" stroke="#5C7A66" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <g>
+                <path class="f-leather ol" d="M158,58 q0,-14 28,-14 q28,0 28,14 v22 q0,16 -28,16 q-28,0 -28,-16 z"/>
+                <path class="f-leather-d" d="M158,58 q0,-14 28,-14 q28,0 28,14 q-28,-9 -56,0 z"/>
+                <path fill="none" stroke="#8A5628" stroke-width="1.6" d="M158,66 q28,-10 56,0"/>
+                <rect x="180" y="62" width="12" height="9" rx="2" class="f-gold ol"/>
+              </g>
+              <text x="130" y="122" text-anchor="middle" class="il-txt">guarda las monedas en el monedero</text>
             </svg>
           </div>
           <div class="act-dom">Vida cotidiana · cálculo</div>

@@ -108,3 +108,67 @@ export interface Live {
 }
 
 export type EstadoIntento = "solo" | "con_ayuda" | "no_completado";
+
+// ---- Plan de trabajo (PlanLinea) ----
+export type TipoLinea = "dominio" | "ejercicio";
+
+export interface PlanLinea {
+  /** Presente en las líneas que devuelve el GET; no se envía al crear. */
+  id?: string;
+  tipo: TipoLinea;
+  /** Requerido si tipo=dominio (uno de los bloques). */
+  bloque?: string | null;
+  /** Requerido si tipo=ejercicio. */
+  ejercicio_id?: string | null;
+  /** "bajo"/"medio"/"alto" o un entero como cadena. */
+  nivel: string;
+  n_por_sesion: number;
+  orden: number;
+  activo: boolean;
+}
+
+/** Cuerpo del PUT: reemplaza TODO el plan. */
+export interface PlanIn {
+  lineas: PlanLinea[];
+}
+
+// ---- Cola resuelta (/usuarios/{id}/cola) ----
+export interface ColaItem {
+  ejercicio_id: string;
+  nombre: string;
+  bloque: string;
+  plantilla: string;
+  nivel: string;
+  origen: string;
+  plan_linea_id: string | null;
+}
+
+export interface Cola {
+  usuario_final_id: string;
+  sesion_id: string | null;
+  modo: string;
+  items: ColaItem[];
+}
+
+// ---- Dispositivos (tablets emparejadas) ----
+export type RolDispositivo = "maestra" | "participante";
+
+export interface Dispositivo {
+  id: string;
+  centro_id: string;
+  nombre: string;
+  rol: string;
+  activo: boolean;
+  fecha_alta?: string | null;
+}
+
+export interface DispositivoIn {
+  nombre: string;
+  rol: RolDispositivo;
+  centro_id?: string;
+}
+
+/** Respuesta del POST: incluye el token de emparejamiento (solo se ve una vez). */
+export interface DispositivoCreado extends Dispositivo {
+  token: string;
+}
