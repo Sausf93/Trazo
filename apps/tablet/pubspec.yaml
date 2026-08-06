@@ -1,0 +1,21 @@
+name: trazo_tablet
+description: "Trazo — app de tablet para ejercicios de estimulación cognitiva."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.2            # llamadas a la API
+  uuid: ^4.5.1            # UUID generado en cliente (sync offline idempotente)
+  path_drawing: ^1.0.1    # parsear el guide_path (SVG) del ejercicio de trazo
+  shared_preferences: ^2.3.3  # token + cola offline simple (MVP)
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

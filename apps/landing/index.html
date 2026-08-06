@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trazo — Estimulación cognitiva para centros de día y residencias</title>
+<meta name="description" content="Trazo digitaliza la estimulación cognitiva en tablet: ejercicios adaptados a cada persona, panel de evolución individual y de grupo, y detección temprana de cambios. Solicita una demo.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='11' fill='%237C9885'/><path d='M7%2026%20C11%2014%2015%2030%2020%2022%20C24%2016%2027%2024%2033%2015' fill='none' stroke='%23FFFEFB' stroke-width='3' stroke-linecap='round'/><circle cx='33' cy='15' r='2.6' fill='%23E8A87C'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF6EF; --card:#F2ECDF; --ink:#2B3A32; --sage:#7C9885;
+    --sage-dark:#5C7A66; --coral:#E8A87C; --coral-dark:#C97B4A;
+    --sand:#C9BFA4; --white:#FFFEFB; --muted:#4A5A50; --faint:#8A8270;
+    --shadow:0 24px 50px -28px rgba(43,58,50,.4);
+    --radius:18px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
+  body{background:var(--ivory); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+  a{color:inherit; text-decoration:none;}
+  img,svg{max-width:100%;}
+  .wrap{width:100%; max-width:1180px; margin:0 auto; padding:0 clamp(20px,4vw,32px);}
+  section{padding:clamp(56px,8vw,96px) 0;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif; font-weight:500; letter-spacing:-.015em; color:var(--ink); line-height:1.08;}
+  .eyebrow{font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--sage-dark); margin-bottom:16px; display:inline-flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--sage-dark);}
+  h2.big{font-size:clamp(28px,4.4vw,44px); max-width:15ch; margin-bottom:16px;}
+  .lede{max-width:60ch; color:var(--muted); font-size:clamp(15px,1.7vw,18px); margin-bottom:44px;}
+  .center{text-align:center;}
+  .center .eyebrow{justify-content:center;}
+  .center h2.big, .center .lede{margin-left:auto; margin-right:auto;}
+
+  /* Botones */
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:600; font-size:15.5px; padding:14px 24px; border-radius:12px; border:1.6px solid transparent; cursor:pointer; transition:transform .12s ease, background .2s ease, box-shadow .2s ease; white-space:nowrap;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--sage); color:#fff; box-shadow:0 10px 22px -12px rgba(92,122,102,.9);}
+  .btn-primary:hover{background:var(--sage-dark);}
+  .btn-ghost{background:transparent; border-color:var(--sand); color:var(--ink);}
+  .btn-ghost:hover{background:var(--card);}
+  .btn-coral{background:var(--coral-dark); color:#fff;}
+  .btn-coral:hover{background:#b06a3d;}
+  .btn-lg{padding:16px 28px; font-size:16.5px;}
+
+  /* Logo */
+  .logo{display:inline-flex; align-items:center; gap:11px; font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:var(--ink);}
+  .logo svg{width:34px; height:34px; flex-shrink:0;}
+
+  /* Header */
+  header{position:sticky; top:0; z-index:100; background:rgba(250,246,239,.82); backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid transparent; transition:border-color .2s ease, box-shadow .2s ease;}
+  header.scrolled{border-color:rgba(201,191,164,.55); box-shadow:0 8px 24px -20px rgba(43,58,50,.5);}
+  .nav{display:flex; align-items:center; justify-content:space-between; height:70px; gap:20px;}
+  .nav-links{display:flex; gap:28px; align-items:center;}
+  .nav-links a{font-size:15px; color:var(--muted); font-weight:500;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-right{display:flex; gap:12px; align-items:center;}
+  .hamb{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px;}
+  .hamb span{width:24px; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  /* Menú móvil */
+  .mobile-menu{display:none; position:fixed; inset:70px 0 auto 0; background:var(--ivory); border-bottom:1px solid var(--sand); padding:16px clamp(20px,4vw,32px) 24px; z-index:99; box-shadow:var(--shadow);}
+  .mobile-menu.open{display:block;}
+  .mobile-menu a{display:block; padding:13px 0; font-size:17px; color:var(--ink); border-bottom:1px solid rgba(201,191,164,.4);}
+  .mobile-menu .btn{margin-top:16px; width:100%;}
+
+  /* Hero */
+  .hero{padding:clamp(48px,7vw,84px) 0 clamp(40px,6vw,72px);}
+  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(32px,5vw,56px); align-items:center;}
+  h1.title{font-size:clamp(36px,6vw,64px); margin-bottom:22px;}
+  .hero p.sub{font-size:clamp(16px,2vw,20px); color:var(--muted); max-width:52ch; margin-bottom:30px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .hero-trust{margin-top:24px; display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--faint);}
+  .hero-trust .badge{display:inline-flex; gap:6px; align-items:center; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--sage-dark);}
+
+  /* Mock tablet hero */
+  .device{position:relative;}
+  .tablet{background:#1F2B24; border-radius:26px; padding:14px; box-shadow:var(--shadow);}
+  .tablet-screen{background:var(--white); border-radius:16px; padding:20px 18px 22px;}
+  .ts-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;}
+  .ts-top .n{font-family:'Fraunces',serif; font-size:18px; color:var(--sage-dark); display:flex; align-items:center; gap:7px;}
+  .ts-top .n svg{width:20px; height:20px;}
+  .ts-top .av{width:30px; height:30px; border-radius:50%; background:var(--coral);}
+  .ts-title{font-size:14px; color:var(--muted); margin-bottom:12px;}
+  .ts-canvas{background:#FCFAF4; border:2px dashed var(--sand); border-radius:14px; padding:16px;}
+  .ts-canvas svg{width:100%; height:auto; display:block;}
+  .guide{fill:none; stroke:#DCD3BE; stroke-width:10; stroke-linecap:round;}
+  .userp{fill:none; stroke:var(--coral-dark); stroke-width:5; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:520; stroke-dashoffset:520; animation:draw 2.8s ease-out .4s forwards;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .ts-bottom{display:flex; justify-content:space-between; align-items:center; margin-top:14px;}
+  .dots{display:flex; gap:6px;} .dots .d{width:8px; height:8px; border-radius:50%; background:var(--sand);} .dots .d.on{background:var(--sage);}
+  .ts-next{background:var(--sage); color:#fff; border-radius:10px; padding:9px 16px; font-size:13px; font-weight:600;}
+  /* Tarjeta flotante de alerta */
+  .float-alert{position:absolute; right:-14px; bottom:-18px; width:min(260px,72%); background:var(--white); border:1px solid var(--coral); border-radius:14px; padding:14px 16px; box-shadow:var(--shadow); display:flex; gap:11px;}
+  .float-alert .pip{width:9px; height:9px; border-radius:50%; background:var(--coral-dark); margin-top:5px; flex-shrink:0;}
+  .float-alert .t{font-weight:600; font-size:13.5px; margin-bottom:2px;}
+  .float-alert .b{font-size:12px; color:#6B5A48; line-height:1.4;}
+
+  /* Banda estadísticas */
+  .stats{background:var(--ink); color:var(--ivory);}
+  .stats .wrap{padding-top:clamp(36px,5vw,52px); padding-bottom:clamp(36px,5vw,52px);}
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .stat .num{font-family:'Fraunces',serif; font-size:clamp(30px,4vw,42px); color:#fff; line-height:1;}
+  .stat .lbl{font-size:13.5px; color:#C7C6B8; margin-top:8px;}
+  .band-for{margin-top:34px; padding-top:26px; border-top:1px solid rgba(216,210,194,.2); display:flex; flex-wrap:wrap; align-items:center; gap:12px 26px;}
+  .band-for .k{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--sand);}
+  .band-for span.item{font-family:'Fraunces',serif; font-size:17px; color:#EDE7D8;}
+
+  /* Feature rows alternas */
+  .feature{display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,56px); align-items:center; margin-top:clamp(40px,6vw,64px);}
+  .feature:first-of-type{margin-top:0;}
+  .feature.rev .fig{order:2;}
+  .feature h3{font-size:clamp(22px,3vw,30px); margin-bottom:12px;}
+  .feature p{color:var(--muted); font-size:16px; margin-bottom:16px;}
+  .feature ul{list-style:none;}
+  .feature li{display:flex; gap:10px; align-items:flex-start; margin-bottom:10px; font-size:15px; color:var(--muted);}
+  .feature li svg{width:19px; height:19px; margin-top:2px; flex-shrink:0;}
+  .fig{background:var(--card); border:1px solid rgba(201,191,164,.5); border-radius:var(--radius); padding:clamp(18px,3vw,28px);}
+  .panel{background:var(--white); border:1px solid var(--sand); border-radius:14px; padding:18px;}
+  .panel-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;}
+  .panel-head .u{font-family:'Fraunces',serif; font-size:18px;}
+  .panel-head .p{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--faint);}
+  .panel-sub{font-size:12.5px; color:var(--faint); margin-bottom:16px;}
+  .chart-lbl{font-size:12.5px; font-weight:600; color:var(--muted); margin-bottom:8px;}
+  .chart{width:100%; height:120px; display:block;}
+  .ln{fill:none; stroke:var(--sage); stroke-width:2.6;} .ln.alert{stroke:var(--coral-dark);}
+  .pt{fill:var(--sage);} .pt.alert{fill:var(--coral-dark);}
+  .base{stroke:var(--sand); stroke-width:1; stroke-dasharray:3,3;}
+  .alert-card{background:#FBEFE4; border:1px solid var(--coral); border-radius:12px; padding:14px 16px; display:flex; gap:11px; margin-top:14px;}
+  .alert-card .pip{width:9px;height:9px;border-radius:50%;background:var(--coral-dark);margin-top:5px;flex-shrink:0;}
+  .alert-card .t{font-weight:600; font-size:13.5px; margin-bottom:2px;} .alert-card .b{font-size:12.5px; color:#6B5A48;}
+  /* fichas vista en vivo */
+  .live{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .live-tile{background:var(--white); border:1px solid var(--sand); border-radius:12px; padding:14px;}
+  .live-tile.stuck{border:2px solid var(--coral);}
+  .live-tile .nm{font-family:'Fraunces',serif; font-size:16px; margin-bottom:2px;}
+  .live-tile .ex{font-size:11.5px; color:var(--faint); margin-bottom:10px;}
+  .live-flag{font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--coral-dark); margin-bottom:8px; display:block;}
+  .live-btn{display:block; text-align:center; border-radius:9px; padding:8px; font-size:12.5px; font-weight:600; background:var(--card); border:1.5px solid var(--sand); color:var(--ink);}
+  .live-btn.on{background:#FBEFE4; border-color:var(--coral); color:var(--coral-dark);}
+
+  /* 8 bloques */
+  .bloques{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .bloque{background:var(--white); border:1px solid var(--sand); border-radius:14px; padding:22px 18px; transition:transform .15s ease, box-shadow .15s ease;}
+  .bloque:hover{transform:translateY(-3px); box-shadow:var(--shadow);}
+  .bloque .ico{font-size:24px; margin-bottom:10px;}
+  .bloque h4{font-size:16.5px; margin-bottom:3px;}
+  .bloque p{font-size:12.5px; color:var(--faint);}
+
+  /* Cómo funciona timeline */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; counter-reset:s;}
+  .step{position:relative;}
+  .step .n{width:38px; height:38px; border-radius:50%; background:var(--sage); color:#fff; font-family:'Fraunces',serif; font-size:18px; display:flex; align-items:center; justify-content:center; margin-bottom:14px;}
+  .step h4{font-size:18px; margin-bottom:6px;}
+  .step p{font-size:14px; color:var(--muted);}
+
+  /* Precios */
+  .planes{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch;}
+  .plan{background:var(--white); border:1px solid var(--sand); border-radius:var(--radius); padding:30px 26px; display:flex; flex-direction:column;}
+  .plan.dest{border:2px solid var(--sage); box-shadow:var(--shadow); position:relative;}
+  .plan.dest::before{content:"Más elegido"; position:absolute; top:-12px; left:26px; background:var(--sage); color:#fff; font-size:11px; font-weight:600; padding:4px 12px; border-radius:20px;}
+  .plan .tag{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--sage-dark); margin-bottom:12px;}
+  .plan h3{font-size:24px; margin-bottom:6px;}
+  .plan .price{font-family:'Fraunces',serif; font-size:32px; margin:10px 0 2px;}
+  .plan .price small{font-size:15px; color:var(--faint); font-family:'Inter',sans-serif;}
+  .plan .pn{font-size:12.5px; color:var(--faint); margin-bottom:20px;}
+  .plan ul{list-style:none; margin-bottom:24px; flex:1;}
+  .plan li{font-size:14px; color:var(--muted); padding:8px 0; border-bottom:1px solid rgba(201,191,164,.4); display:flex; gap:9px; align-items:flex-start;}
+  .plan li svg{width:17px;height:17px;margin-top:2px;flex-shrink:0;}
+  .plan .btn{width:100%;}
+  .rgpd-note{margin-top:24px; font-size:13px; color:var(--faint); max-width:66ch;}
+
+  /* FAQ */
+  .faq{max-width:780px; margin:0 auto;}
+  .qa{border-bottom:1px solid var(--sand);}
+  .qa summary{list-style:none; cursor:pointer; padding:20px 0; font-family:'Fraunces',serif; font-size:19px; color:var(--ink); display:flex; justify-content:space-between; align-items:center; gap:16px;}
+  .qa summary::-webkit-details-marker{display:none;}
+  .qa summary .plus{color:var(--sage-dark); font-size:24px; transition:transform .2s;}
+  .qa[open] summary .plus{transform:rotate(45deg);}
+  .qa .a{padding:0 0 20px; color:var(--muted); font-size:15px; max-width:64ch;}
+
+  /* Contacto */
+  .contact{background:var(--ink); color:var(--ivory); border-radius:24px; padding:clamp(32px,5vw,56px);}
+  .contact h2{color:var(--ivory); max-width:16ch;}
+  .contact .lede{color:#D8D2C2;}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,4vw,44px); align-items:start;}
+  .contact-info .row{display:flex; gap:11px; align-items:center; margin-bottom:15px; font-size:15.5px; color:#EDE7D8;}
+  .contact-info a{color:var(--coral); font-weight:600;}
+  .contact-info .small{font-size:13px; color:#B9B3A4; margin-top:6px;}
+  form .field{margin-bottom:16px;}
+  form label{display:block; font-size:12px; color:#C7C1B2; margin-bottom:6px; font-family:'JetBrains Mono',monospace; letter-spacing:.04em;}
+  form input, form textarea{width:100%; background:rgba(255,255,255,.06); border:1px solid rgba(216,210,194,.28); border-radius:10px; padding:12px 14px; color:var(--ivory); font-family:'Inter',sans-serif; font-size:15px;}
+  form input::placeholder, form textarea::placeholder{color:#8f897c;}
+  form input:focus, form textarea:focus{outline:none; border-color:var(--coral);}
+  form textarea{resize:vertical; min-height:92px;}
+
+  /* Footer */
+  footer{padding:56px 0 64px;}
+  .foot{display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:32px; border-top:1px solid var(--sand); padding-top:36px;}
+  .foot p{font-size:13.5px; color:var(--faint);}
+  .foot h5{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--sage-dark); margin-bottom:14px; font-weight:500;}
+  .foot a{display:block; font-size:14px; color:var(--muted); padding:5px 0;}
+  .foot a:hover{color:var(--ink);}
+  .foot .mono{font-family:'JetBrains Mono',monospace; font-size:12.5px;}
+  .foot-bottom{margin-top:32px; padding-top:20px; border-top:1px solid rgba(201,191,164,.4); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12.5px; color:var(--faint);}
+  .placeholder{background:#FBEFE4; color:var(--coral-dark); padding:1px 6px; border-radius:5px; font-family:'JetBrains Mono',monospace; font-size:.82em;}
+
+  /* ---------- Slider de ejemplos de actividades ---------- */
+  .ejemplos-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:26px;}
+  .slider-nav{display:flex; gap:10px; flex-shrink:0;}
+  .slider-nav button{width:46px; height:46px; border-radius:50%; border:1.6px solid var(--sand); background:var(--white); color:var(--ink); font-size:19px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s ease, border-color .2s ease, transform .12s ease;}
+  .slider-nav button:hover{background:var(--card); transform:translateY(-1px);}
+  .slider-nav button:disabled{opacity:.35; cursor:default; transform:none; background:var(--white);}
+  .slider-nav button svg{width:18px; height:18px;}
+
+  .slider-viewport{overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; margin:0 calc(-1 * clamp(20px,4vw,32px)); padding:6px clamp(20px,4vw,32px) 12px;}
+  .slider-viewport::-webkit-scrollbar{display:none;}
+  .slider-track{display:flex; gap:20px;}
+  .act-card{scroll-snap-align:start; flex:0 0 clamp(260px,34%,340px); background:var(--white); border:1px solid var(--sand); border-radius:var(--radius); padding:18px 18px 20px; display:flex; flex-direction:column;}
+  .act-mock{background:#FCFAF4; border:1.6px dashed var(--sand); border-radius:14px; padding:14px; position:relative; margin-bottom:16px;}
+  .act-mock .mock-tag{position:absolute; top:9px; left:12px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#A79E88; letter-spacing:.03em;}
+  .act-mock svg{width:100%; height:132px; display:block; margin-top:8px;}
+  /* Trazos "a mano / boceto" dentro de los mockups */
+  .sk{fill:none; stroke:var(--sage-dark); stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+  .sk-faint{fill:none; stroke:var(--sand); stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+  .sk-dash{fill:none; stroke:var(--sand); stroke-width:2; stroke-linecap:round; stroke-dasharray:5,6;}
+  .sk-coral{fill:none; stroke:var(--coral-dark); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round;}
+  .sk-fill-sage{fill:var(--sage); opacity:.9;}
+  .sk-fill-coral{fill:var(--coral); opacity:.9;}
+  .sk-fill-card{fill:var(--card);}
+  .sk-txt{font-family:'JetBrains Mono',monospace; font-size:11px; fill:var(--faint);}
+  .act-dom{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.11em; text-transform:uppercase; color:var(--sage-dark); margin-bottom:6px;}
+  .act-card h4{font-size:18px; margin-bottom:10px;}
+  .act-works{font-size:13px; color:var(--muted); line-height:1.5; margin-top:auto;}
+  .act-works b{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--coral-dark); font-weight:500; display:block; margin-bottom:3px;}
+
+  .slider-dots{display:flex; justify-content:center; gap:9px; margin-top:22px;}
+  .slider-dots button{width:9px; height:9px; padding:0; border-radius:50%; border:none; background:var(--sand); cursor:pointer; transition:background .2s ease, transform .2s ease;}
+  .slider-dots button.on{background:var(--sage); transform:scale(1.25);}
+  .slider-hint{text-align:center; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--faint); margin-top:14px;}
+
+  /* Responsive */
+  @media (max-width:1024px){
+    .stat-grid{grid-template-columns:repeat(2,1fr); gap:26px;}
+    .bloques{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:repeat(2,1fr); gap:28px;}
+  }
+  @media (max-width:860px){
+    .act-card{flex-basis:clamp(240px,52%,300px);}
+    .nav-links{display:none;}
+    .nav-right .btn-ghost{display:none;}
+    .hamb{display:flex;}
+    .hero-grid{grid-template-columns:1fr; gap:40px;}
+    .device{max-width:440px; margin:0 auto;}
+    .feature{grid-template-columns:1fr; gap:28px;}
+    .feature.rev .fig{order:0;}
+    .planes{grid-template-columns:1fr; max-width:440px; margin:0 auto;}
+    .contact-grid{grid-template-columns:1fr;}
+    .foot{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    .act-card{flex-basis:86%;}
+    .ejemplos-head{align-items:center;}
+    .bloques{grid-template-columns:1fr 1fr;}
+    .steps{grid-template-columns:1fr;}
+    .stat-grid{grid-template-columns:1fr 1fr;}
+    .foot{grid-template-columns:1fr;}
+    .hero-actions .btn{flex:1;}
+    .float-alert{right:0; bottom:-24px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- SVG reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logoMark" viewBox="0 0 40 40">
+    <rect width="40" height="40" rx="11" fill="#7C9885"/>
+    <path d="M7 26 C11 14 15 30 20 22 C24 16 27 24 33 15" fill="none" stroke="#FFFEFB" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="33" cy="15" r="2.6" fill="#E8A87C"/>
+  </symbol>
+  <symbol id="check" viewBox="0 0 20 20">
+    <circle cx="10" cy="10" r="10" fill="#7C9885"/>
+    <path d="M6 10.5 L9 13.5 L14.5 7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="logo"><svg><use href="#logoMark"/></svg>Trazo</a>
+    <nav class="nav-links">
+      <a href="#producto">Producto</a>
+      <a href="#bloques">Ejercicios</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#precios">Precios</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#contacto" class="btn btn-ghost">Contacto</a>
+      <a href="#contacto" class="btn btn-primary">Solicitar demo</a>
+      <button class="hamb" id="hamb" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#producto">Producto</a>
+  <a href="#bloques">Ejercicios</a>
+  <a href="#como">Cómo funciona</a>
+  <a href="#precios">Precios</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contacto" class="btn btn-primary">Solicitar demo</a>
+</div>
+
+<a id="top"></a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Estimulación cognitiva · para centros</span>
+      <h1 class="title">Trabajo cognitivo diario que se nota, sesión a sesión</h1>
+      <p class="sub">Trazo digitaliza la estimulación cognitiva en tablet: ejercicios que se adaptan a cada persona, un panel que muestra su evolución real, y un aviso temprano cuando algo cambia.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary btn-lg">Solicitar una demo →</a>
+        <a href="#como" class="btn btn-ghost btn-lg">Ver cómo funciona</a>
+      </div>
+      <div class="hero-trust">
+        <span class="badge">✓ sin instalar nada</span>
+        <span class="badge">✓ funciona sin conexión</span>
+        <span class="badge">✓ datos protegidos (RGPD)</span>
+      </div>
+    </div>
+    <div class="device">
+      <div class="tablet">
+        <div class="tablet-screen">
+          <div class="ts-top"><div class="n"><svg><use href="#logoMark"/></svg>Trazo</div><div class="av"></div></div>
+          <div class="ts-title">Sigue la línea con el dedo</div>
+          <div class="ts-canvas">
+            <svg viewBox="0 0 300 130">
+              <path class="guide" d="M20,95 Q90,20 150,80 T280,55"/>
+              <path class="userp" d="M22,93 Q88,28 148,78 T278,57"/>
+            </svg>
+          </div>
+          <div class="ts-bottom">
+            <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div>
+            <div class="ts-next">Siguiente</div>
+          </div>
+        </div>
+      </div>
+      <div class="float-alert">
+        <div class="pip"></div>
+        <div><div class="t">Cambio detectado</div><div class="b">Carmen se sale de su patrón habitual esta semana.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS / PARA QUIÉN -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat-grid">
+      <div class="stat"><div class="num">8</div><div class="lbl">dominios cognitivos cubiertos</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">vistas: persona, grupo y alertas</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">comparado con su propio histórico</div></div>
+      <div class="stat"><div class="num">0€</div><div class="lbl">para empezar el piloto</div></div>
+    </div>
+    <div class="band-for">
+      <span class="k">Pensado para</span>
+      <span class="item">Centros de día</span>
+      <span class="item">Residencias</span>
+      <span class="item">Unidades de memoria</span>
+      <span class="item">Terapia ocupacional</span>
+      <span class="item">Asociaciones de familiares</span>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTO -->
+<section id="producto">
+  <div class="wrap">
+    <span class="eyebrow">El producto</span>
+    <h2 class="big">Una herramienta pensada para quien cuida</h2>
+    <p class="lede">La persona mayor solo ve la actividad; el profesional tiene el control y la información. Tres piezas que trabajan juntas.</p>
+
+    <div class="feature">
+      <div>
+        <h3>App para la persona</h3>
+        <p>Pantalla completa, un ejercicio a la vez, botones grandes y feedback inmediato. Sin menús ni decisiones de navegación, sin mensajes de "has fallado".</p>
+        <ul>
+          <li><svg><use href="#check"/></svg>Ejercicios de los 8 dominios cognitivos</li>
+          <li><svg><use href="#check"/></svg>Dificultad que se ajusta al nivel de cada día</li>
+          <li><svg><use href="#check"/></svg>Funciona sin conexión y en tablets sencillas</li>
+        </ul>
+      </div>
+      <div class="fig">
+        <div class="tablet" style="box-shadow:none;">
+          <div class="tablet-screen">
+            <div class="ts-top"><div class="n"><svg><use href="#logoMark"/></svg>Trazo</div><div class="av"></div></div>
+            <div class="ts-title">Sigue la línea con el dedo</div>
+            <div class="ts-canvas">
+              <svg viewBox="0 0 300 120"><path class="guide" d="M20,90 Q90,15 150,75 T280,50"/><path class="userp" style="animation:none;stroke-dashoffset:0;" d="M22,88 Q88,24 148,74 T278,52"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature rev">
+      <div>
+        <h3>Panel para el centro</h3>
+        <p>Gráficas simples de evolución por persona y por grupo. La tendencia importa más que el dato suelto: se ve cómo cambia con el tiempo, no solo el resultado de hoy.</p>
+        <ul>
+          <li><svg><use href="#check"/></svg>Precisión, tiempo, constancia y ayuda necesitada</li>
+          <li><svg><use href="#check"/></svg>Cada intento con su estado: solo, con ayuda o sin completar</li>
+          <li><svg><use href="#check"/></svg>Pensado para profesionales, no para técnicos</li>
+        </ul>
+      </div>
+      <div class="fig">
+        <div class="panel">
+          <div class="panel-head"><span class="u">Carmen R.</span><span class="p">últimas 8 semanas</span></div>
+          <div class="panel-sub">Panel del centro · vista individual</div>
+          <div class="chart-lbl">Precisión del trazo</div>
+          <svg class="chart" viewBox="0 0 400 110">
+            <line class="base" x1="0" y1="80" x2="400" y2="80"/>
+            <polyline class="ln" points="10,70 60,60 110,58 160,55 210,52 260,50"/>
+            <polyline class="ln alert" points="260,50 310,80 360,95"/>
+            <circle class="pt" cx="10" cy="70" r="3.5"/><circle class="pt" cx="60" cy="60" r="3.5"/><circle class="pt" cx="110" cy="58" r="3.5"/><circle class="pt" cx="160" cy="55" r="3.5"/><circle class="pt" cx="210" cy="52" r="3.5"/><circle class="pt" cx="260" cy="50" r="3.5"/>
+            <circle class="pt alert" cx="310" cy="80" r="4.5"/><circle class="pt alert" cx="360" cy="95" r="4.5"/>
+          </svg>
+          <div class="alert-card"><div class="pip"></div><div><div class="t">Cambio detectado esta semana</div><div class="b">Las últimas 2 sesiones se salen de su rango habitual — puede merecer una revisión.</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div>
+        <h3>Sesiones en grupo y vista en vivo</h3>
+        <p>Como se trabaja en muchas terapias: en grupo, con un facilitador. Cada persona hace su ejercicio, y la integradora ve a todos a la vez desde una sola pantalla.</p>
+        <ul>
+          <li><svg><use href="#check"/></svg>Un toque para marcar "ayuda" por persona</li>
+          <li><svg><use href="#check"/></svg>Aviso suave si alguien lleva un rato atascado</li>
+          <li><svg><use href="#check"/></svg>Evolución individual y de grupo enlazadas</li>
+        </ul>
+      </div>
+      <div class="fig">
+        <div class="live">
+          <div class="live-tile"><div class="nm">Paquito</div><div class="ex">Relación lógica</div><span class="live-btn">Ayuda</span></div>
+          <div class="live-tile"><div class="nm">Marisa</div><div class="ex">Relación lógica</div><span class="live-btn on">Ayuda ✓</span></div>
+          <div class="live-tile stuck"><span class="live-flag">🔊 30s sin tocar</span><div class="nm">Juan</div><div class="ex">Relación lógica</div><span class="live-btn">Ayuda</span></div>
+          <div class="live-tile"><div class="nm">Lola</div><div class="ex">Relación lógica</div><span class="live-btn">Ayuda</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 BLOQUES -->
+<section id="bloques" style="background:var(--card);">
+  <div class="wrap center">
+    <span class="eyebrow">Catálogo de ejercicios</span>
+    <h2 class="big">Ocho dominios cognitivos, muchos ejercicios</h2>
+    <p class="lede">Organizados como las herramientas clínicas de estimulación cognitiva. El catálogo crece sin depender de programación.</p>
+  </div>
+  <div class="wrap">
+    <div class="bloques">
+      <div class="bloque"><div class="ico">🧠</div><h4>Atención y memoria</h4><p>Retener y localizar</p></div>
+      <div class="bloque"><div class="ico">💬</div><h4>Lenguaje</h4><p>Palabras y evocación</p></div>
+      <div class="bloque"><div class="ico">🧩</div><h4>Razonamiento</h4><p>Categorizar y relacionar</p></div>
+      <div class="bloque"><div class="ico">👁️</div><h4>Gnosias</h4><p>Reconocer</p></div>
+      <div class="bloque"><div class="ico">✍️</div><h4>Praxias</h4><p>Manos y control motor</p></div>
+      <div class="bloque"><div class="ico">🔍</div><h4>Percepción</h4><p>Separar lo que se solapa</p></div>
+      <div class="bloque"><div class="ico">🗂️</div><h4>Función ejecutiva</h4><p>Planificar una secuencia</p></div>
+      <div class="bloque"><div class="ico">🏠</div><h4>Vida cotidiana</h4><p>Autonomía funcional</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EJEMPLOS DE ACTIVIDADES (SLIDER) -->
+<section id="ejemplos">
+  <div class="wrap">
+    <div class="ejemplos-head">
+      <div>
+        <span class="eyebrow">Ejemplos de actividades</span>
+        <h2 class="big" style="margin-bottom:0;">Así se ven algunas actividades</h2>
+      </div>
+      <div class="slider-nav">
+        <button id="actPrev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button id="actNext" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <p class="lede" style="margin-bottom:26px;">Bocetos orientativos — un pantallazo de cómo se ve cada tipo de actividad. No son jugables aquí; son para hacerse una idea.</p>
+  </div>
+  <div class="wrap">
+    <div class="slider-viewport" id="actViewport">
+      <div class="slider-track" id="actTrack">
+
+        <!-- 1 · Trazo -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: seguir una línea con el dedo">
+              <path class="sk-dash" d="M18,96 C60,40 92,116 132,74 C160,44 182,92 214,58"/>
+              <path class="sk-coral" d="M20,94 C58,52 90,108 130,72 C160,50 180,86 210,60"/>
+              <circle cx="210" cy="60" r="4.5" class="sk-fill-coral"/>
+              <circle cx="20" cy="94" r="4" class="sk-fill-sage"/>
+            </svg>
+          </div>
+          <div class="act-dom">Praxias · manos y control motor</div>
+          <h4>Sigue la línea</h4>
+          <p class="act-works"><b>Trabaja</b>Coordinación mano-ojo y control motor fino (praxias).</p>
+        </article>
+
+        <!-- 2 · Selección múltiple -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: encontrar el intruso">
+              <circle cx="52" cy="45" r="17" class="sk-faint"/>
+              <circle cx="115" cy="45" r="17" class="sk-faint"/>
+              <circle cx="178" cy="45" r="17" class="sk-faint"/>
+              <rect x="185" y="86" width="34" height="34" rx="4" class="sk-coral"/>
+              <path class="sk-dash" d="M204,120 a26,26 0 1 0 -0.1 0" transform="translate(-2,-18) scale(1)"/>
+              <circle cx="202" cy="103" r="26" class="sk-coral" fill="none" stroke-dasharray="5,6"/>
+              <rect x="35" y="86" width="34" height="34" rx="17" class="sk-faint"/>
+              <rect x="98" y="86" width="34" height="34" rx="17" class="sk-faint"/>
+              <text x="8" y="128" class="sk-txt">el que no encaja</text>
+            </svg>
+          </div>
+          <div class="act-dom">Razonamiento · categorizar</div>
+          <h4>El intruso</h4>
+          <p class="act-works"><b>Trabaja</b>Razonamiento y categorización.</p>
+        </article>
+
+        <!-- 3 · Memoria visual -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: memoria de figuras">
+              <rect x="22" y="20" width="46" height="40" rx="6" class="sk-faint"/>
+              <circle cx="45" cy="40" r="12" class="sk-fill-sage"/>
+              <rect x="80" y="20" width="46" height="40" rx="6" class="sk-faint"/>
+              <rect x="92" y="30" width="22" height="20" rx="3" class="sk-fill-coral"/>
+              <rect x="138" y="20" width="46" height="40" rx="6" class="sk-faint"/>
+              <path d="M161,28 l11,20 h-22 z" class="sk-fill-sage"/>
+              <rect x="196" y="20" width="46" height="40" rx="6" class="sk-dash"/>
+              <text x="205" y="45" class="sk-txt">?</text>
+              <rect x="52" y="78" width="52" height="38" rx="6" class="sk-dash"/>
+              <rect x="112" y="78" width="52" height="38" rx="6" class="sk-dash"/>
+              <text x="66" y="102" class="sk-txt">¿cuáles?</text>
+            </svg>
+          </div>
+          <div class="act-dom">Atención y memoria</div>
+          <h4>Memoria de figuras</h4>
+          <p class="act-works"><b>Trabaja</b>Memoria a corto plazo y atención.</p>
+        </article>
+
+        <!-- 4 · Secuencia / ordenar -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: ordenar los pasos">
+              <rect x="16" y="42" width="52" height="48" rx="7" class="sk-faint"/>
+              <text x="38" y="72" class="sk-txt" style="font-size:16px; fill:var(--sage-dark);">1</text>
+              <path class="sk-dash" d="M74,66 h20"/>
+              <path class="sk" d="M92,61 l6,5 -6,5"/>
+              <rect x="104" y="42" width="52" height="48" rx="7" class="sk-faint"/>
+              <text x="126" y="72" class="sk-txt" style="font-size:16px; fill:var(--sage-dark);">2</text>
+              <path class="sk-dash" d="M162,66 h20"/>
+              <path class="sk" d="M180,61 l6,5 -6,5"/>
+              <rect x="192" y="42" width="52" height="48" rx="7" class="sk-coral"/>
+              <text x="214" y="72" class="sk-txt" style="font-size:16px; fill:var(--coral-dark);">3</text>
+              <text x="16" y="112" class="sk-txt">pon los pasos en orden</text>
+            </svg>
+          </div>
+          <div class="act-dom">Función ejecutiva</div>
+          <h4>Ordenar los pasos</h4>
+          <p class="act-works"><b>Trabaja</b>Función ejecutiva y planificación.</p>
+        </article>
+
+        <!-- 5 · Conteo / comparación -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: cuál tiene más">
+              <rect x="16" y="16" width="104" height="100" rx="10" class="sk-faint"/>
+              <circle cx="42" cy="44" r="9" class="sk-fill-sage"/>
+              <circle cx="72" cy="40" r="9" class="sk-fill-sage"/>
+              <circle cx="98" cy="52" r="9" class="sk-fill-sage"/>
+              <circle cx="50" cy="76" r="9" class="sk-fill-sage"/>
+              <circle cx="86" cy="82" r="9" class="sk-fill-sage"/>
+              <rect x="140" y="16" width="104" height="100" rx="10" class="sk-coral"/>
+              <circle cx="170" cy="48" r="9" class="sk-fill-coral"/>
+              <circle cx="206" cy="44" r="9" class="sk-fill-coral"/>
+              <circle cx="188" cy="80" r="9" class="sk-fill-coral"/>
+              <text x="124" y="72" class="sk-txt" style="font-size:15px;">?</text>
+            </svg>
+          </div>
+          <div class="act-dom">Razonamiento · cálculo</div>
+          <h4>¿Cuál tiene más?</h4>
+          <p class="act-works"><b>Trabaja</b>Percepción numérica y cálculo básico.</p>
+        </article>
+
+        <!-- 6 · Arrastrar / posición -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: poner la mesa">
+              <ellipse cx="128" cy="70" rx="58" ry="40" class="sk-faint"/>
+              <circle cx="128" cy="70" r="26" class="sk"/>
+              <circle cx="128" cy="70" r="17" class="sk-faint"/>
+              <line x1="86" y1="52" x2="86" y2="88" class="sk"/>
+              <path class="sk" d="M170,52 v36 M178,52 v36"/>
+              <circle cx="132" cy="24" r="9" class="sk-dash"/>
+              <path class="sk-dash" d="M148,30 q18,6 20,20"/>
+              <text x="14" y="122" class="sk-txt">arrastra a su sitio</text>
+            </svg>
+          </div>
+          <div class="act-dom">Praxias · vida cotidiana</div>
+          <h4>Poner la mesa</h4>
+          <p class="act-works"><b>Trabaja</b>Praxias y autonomía en tareas cotidianas.</p>
+        </article>
+
+        <!-- 7 · Evocación libre -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: objetos por categoría">
+              <rect x="16" y="14" width="150" height="26" rx="13" class="sk-coral"/>
+              <text x="30" y="31" class="sk-txt" style="fill:var(--coral-dark);">🍎 la cocina…</text>
+              <rect x="16" y="52" width="96" height="22" rx="11" class="sk-faint"/>
+              <text x="28" y="67" class="sk-txt">plato</text>
+              <rect x="122" y="52" width="96" height="22" rx="11" class="sk-faint"/>
+              <text x="134" y="67" class="sk-txt">vaso</text>
+              <rect x="16" y="82" width="110" height="22" rx="11" class="sk-faint"/>
+              <text x="28" y="97" class="sk-txt">cuchara</text>
+              <rect x="136" y="82" width="86" height="22" rx="11" class="sk-dash"/>
+              <text x="150" y="97" class="sk-txt">+ …</text>
+            </svg>
+          </div>
+          <div class="act-dom">Lenguaje · fluidez verbal</div>
+          <h4>Objetos por categoría</h4>
+          <p class="act-works"><b>Trabaja</b>Lenguaje y fluidez verbal.</p>
+        </article>
+
+        <!-- 8 · Manejo de cantidad -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: manejo de dinero">
+              <circle cx="46" cy="42" r="20" class="sk-coral"/><text x="46" y="47" text-anchor="middle" class="sk-txt" style="fill:var(--coral-dark);">2€</text>
+              <circle cx="94" cy="42" r="16" class="sk-faint"/><text x="94" y="47" text-anchor="middle" class="sk-txt">1€</text>
+              <circle cx="138" cy="42" r="20" class="sk-coral"/><text x="138" y="47" text-anchor="middle" class="sk-txt" style="fill:var(--coral-dark);">2€</text>
+              <circle cx="184" cy="42" r="13" class="sk-faint"/><text x="184" y="46" text-anchor="middle" class="sk-txt" style="font-size:9px;">50c</text>
+              <rect x="16" y="80" width="228" height="34" rx="8" class="sk-dash"/>
+              <text x="30" y="101" class="sk-txt">reúne 5,50 € →</text>
+            </svg>
+          </div>
+          <div class="act-dom">Vida cotidiana · cálculo</div>
+          <h4>Manejo de dinero</h4>
+          <p class="act-works"><b>Trabaja</b>Cálculo y autonomía en la vida diaria.</p>
+        </article>
+
+      </div>
+    </div>
+    <div class="slider-dots" id="actDots"></div>
+    <p class="slider-hint">Desliza para ver más · 8 actividades de ejemplo</p>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como">
+  <div class="wrap">
+    <span class="eyebrow">Cómo funciona</span>
+    <h2 class="big">De un toque en la pantalla a una alerta útil</h2>
+    <p class="lede">El recorrido completo de un dato, para que se entienda de un vistazo.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h4>Hace un ejercicio</h4><p>Con cantidades que cambian cada vez, para que no se memorice y la dificultad se ajuste a su día.</p></div>
+      <div class="step"><div class="n">2</div><h4>Se guarda con su estado</h4><p>Solo, con ayuda o sin completar. Todo queda en su historial, con fecha y ejercicio.</p></div>
+      <div class="step"><div class="n">3</div><h4>El panel lo reúne</h4><p>Lo convierte en gráficas simples por persona y por grupo. Se ve la evolución, no solo el hoy.</p></div>
+      <div class="step"><div class="n">4</div><h4>Avisa si se sale</h4><p>Compara con el histórico propio de esa persona. Si cambia su patrón, lo marca para revisar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios" style="background:var(--card);">
+  <div class="wrap center">
+    <span class="eyebrow">Planes</span>
+    <h2 class="big">Un modelo por centro, sin sorpresas</h2>
+    <p class="lede">Empezáis con un piloto sin coste para ver el encaje real. Los importes se ajustan al tamaño del centro — escríbenos y os pasamos una propuesta.</p>
+  </div>
+  <div class="wrap">
+    <div class="planes">
+      <div class="plan">
+        <div class="tag">Para empezar</div>
+        <h3>Piloto</h3>
+        <div class="price">Gratis</div>
+        <div class="pn">durante el periodo de prueba</div>
+        <ul>
+          <li><svg><use href="#check"/></svg>Instalación en vuestras tablets</li>
+          <li><svg><use href="#check"/></svg>Ejercicios de los 8 bloques</li>
+          <li><svg><use href="#check"/></svg>Panel de evolución individual</li>
+          <li><svg><use href="#check"/></svg>Acompañamiento durante la prueba</li>
+        </ul>
+        <a href="#contacto" class="btn btn-ghost">Empezar piloto</a>
+      </div>
+      <div class="plan dest">
+        <div class="tag">Completo</div>
+        <h3>Centro</h3>
+        <div class="price">Consúltanos<small> / mes</small></div>
+        <div class="pn">según nº de plazas del centro</div>
+        <ul>
+          <li><svg><use href="#check"/></svg>Todo lo del piloto, sin límite</li>
+          <li><svg><use href="#check"/></svg>Sesiones individuales y de grupo</li>
+          <li><svg><use href="#check"/></svg>Detección temprana y alertas</li>
+          <li><svg><use href="#check"/></svg>Vista en vivo para la facilitadora</li>
+          <li><svg><use href="#check"/></svg>Soporte prioritario</li>
+        </ul>
+        <a href="#contacto" class="btn btn-primary">Pedir propuesta</a>
+      </div>
+      <div class="plan">
+        <div class="tag">Varios centros</div>
+        <h3>Red</h3>
+        <div class="price">A medida</div>
+        <div class="pn">grupos y redes de centros</div>
+        <ul>
+          <li><svg><use href="#check"/></svg>Gestión de varios centros</li>
+          <li><svg><use href="#check"/></svg>Informes agregados</li>
+          <li><svg><use href="#check"/></svg>Formación del equipo</li>
+          <li><svg><use href="#check"/></svg>Acuerdo de tratamiento de datos</li>
+        </ul>
+        <a href="#contacto" class="btn btn-ghost">Hablar con nosotros</a>
+      </div>
+    </div>
+    <p class="rgpd-note center" style="margin-left:auto;margin-right:auto;">Trazo trata datos de salud (categoría especial del RGPD). El centro es el responsable del tratamiento y nosotros actuamos como encargados; firmamos el acuerdo correspondiente antes de empezar.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap center" style="margin-bottom:8px;">
+    <span class="eyebrow">Preguntas frecuentes</span>
+    <h2 class="big">Lo que suelen preguntarnos</h2>
+  </div>
+  <div class="wrap">
+    <div class="faq">
+      <details class="qa" open><summary>¿Necesitamos tablets nuevas o potentes?<span class="plus">+</span></summary><div class="a">No. Trazo está pensado para funcionar con soltura en tablets sencillas, del tipo que ya suele haber en los centros. Y funciona sin conexión: sincroniza cuando vuelve a haber red.</div></details>
+      <details class="qa"><summary>¿La persona mayor tiene que saber usar la tablet?<span class="plus">+</span></summary><div class="a">No. Solo ve la actividad, a pantalla completa, sin menús ni botones de navegación. Toda la parte de control (avanzar, saltar, marcar ayuda) la lleva la persona que acompaña, desde su propio control.</div></details>
+      <details class="qa"><summary>¿Cómo protegéis los datos?<span class="plus">+</span></summary><div class="a">Los datos de las personas usuarias van pseudonimizados y el nombre real se guarda aparte, con acceso restringido. El centro es el responsable del tratamiento y nosotros el encargado; firmamos el acuerdo que exige el RGPD para datos de salud.</div></details>
+      <details class="qa"><summary>¿Qué es exactamente la "detección temprana"?<span class="plus">+</span></summary><div class="a">El sistema compara cada resultado con el histórico de esa misma persona (nunca con otras). Si empeora de forma sostenida fuera de su patrón habitual, lo marca para que un profesional lo revise. El objetivo no es que mejoren siempre, es que no empeoren sin que nadie se dé cuenta a tiempo.</div></details>
+      <details class="qa"><summary>¿Cuánto cuesta y cómo empezamos?<span class="plus">+</span></summary><div class="a">Se empieza con un piloto sin coste para probar el encaje. Después, el precio se ajusta al tamaño del centro. Escríbenos y organizamos una demo y una propuesta a medida.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="contact">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="eyebrow" style="color:var(--sand);">Hablemos</span>
+          <h2 class="big">Pide una demo o cuéntanos vuestro caso</h2>
+          <p class="lede">Te enseñamos Trazo funcionando y vemos juntos si encaja en vuestro centro. Sin compromiso.</p>
+          <div class="row">✉️ <a href="mailto:saulodlsf@gmail.com">saulodlsf@gmail.com</a></div>
+          <div class="row">📞 <span>+34 600 000 000</span> <span class="placeholder">cambiar</span></div>
+          <div class="row">📍 <span>España</span></div>
+          <p class="small">Respondemos normalmente en 24–48 h laborables.</p>
+        </div>
+        <form id="demoForm" onsubmit="return enviarDemo(event)">
+          <div class="field"><label>Nombre y centro</label><input name="nombre" required placeholder="Ana López · Centro de Día ..."></div>
+          <div class="field"><label>Email</label><input type="email" name="email" required placeholder="ana@centro.es"></div>
+          <div class="field"><label>Teléfono (opcional)</label><input name="telefono" placeholder="+34 ..."></div>
+          <div class="field"><label>¿Qué necesitáis?</label><textarea name="mensaje" placeholder="Nº de plazas, si ya hacéis estimulación cognitiva, qué os gustaría probar..."></textarea></div>
+          <button type="submit" class="btn btn-coral btn-lg" style="width:100%;">Enviar solicitud de demo</button>
+          <p class="small" id="formNote" style="margin-top:10px;">Al enviar se abrirá tu correo con el mensaje preparado.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#top" class="logo" style="font-size:22px; margin-bottom:12px;"><svg><use href="#logoMark"/></svg>Trazo</a>
+        <p>Estimulación cognitiva para centros de día y residencias. Ejercicios diarios, evolución por persona y detección temprana.</p>
+      </div>
+      <div>
+        <h5>Producto</h5>
+        <a href="#producto">Qué es</a>
+        <a href="#bloques">Ejercicios</a>
+        <a href="#como">Cómo funciona</a>
+        <a href="#precios">Precios</a>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <a href="mailto:saulodlsf@gmail.com">saulodlsf@gmail.com</a>
+        <a href="#contacto">Solicitar demo</a>
+        <a href="#faq">Preguntas frecuentes</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="mono">© 2026 Trazo · España</span>
+      <span><a href="#" style="color:var(--sage-dark);">Aviso legal</a> · <a href="#" style="color:var(--sage-dark);">Privacidad</a> <span class="placeholder">pendiente</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header con sombra al hacer scroll
+  var header = document.getElementById('header');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 8);
+  });
+
+  // Menú móvil
+  var hamb = document.getElementById('hamb');
+  var menu = document.getElementById('mobileMenu');
+  hamb.addEventListener('click', function(){ menu.classList.toggle('open'); });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ menu.classList.remove('open'); });
+  });
+
+  // Slider de ejemplos de actividades
+  (function(){
+    var vp = document.getElementById('actViewport');
+    var track = document.getElementById('actTrack');
+    if(!vp || !track) return;
+    var prev = document.getElementById('actPrev');
+    var next = document.getElementById('actNext');
+    var dotsWrap = document.getElementById('actDots');
+    var cards = Array.prototype.slice.call(track.children);
+
+    // Un punto por tarjeta; marca activo el más centrado en el viewport
+    cards.forEach(function(_, i){
+      var b = document.createElement('button');
+      b.setAttribute('aria-label', 'Ir a la actividad ' + (i + 1));
+      b.addEventListener('click', function(){ scrollToCard(i); });
+      dotsWrap.appendChild(b);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function step(){
+      // ancho de una tarjeta + gap
+      if(cards.length < 2) return cards[0].offsetWidth;
+      return cards[1].offsetLeft - cards[0].offsetLeft;
+    }
+    function activeIndex(){
+      var idx = Math.round(vp.scrollLeft / step());
+      return Math.max(0, Math.min(cards.length - 1, idx));
+    }
+    function scrollToCard(i){
+      vp.scrollTo({ left: i * step(), behavior: 'smooth' });
+    }
+    function sync(){
+      var idx = activeIndex();
+      dots.forEach(function(d, i){ d.classList.toggle('on', i === idx); });
+      prev.disabled = vp.scrollLeft <= 2;
+      next.disabled = vp.scrollLeft >= (vp.scrollWidth - vp.clientWidth - 2);
+    }
+    prev.addEventListener('click', function(){ scrollToCard(Math.max(0, activeIndex() - 1)); });
+    next.addEventListener('click', function(){ scrollToCard(Math.min(cards.length - 1, activeIndex() + 1)); });
+
+    var raf;
+    vp.addEventListener('scroll', function(){
+      window.cancelAnimationFrame(raf);
+      raf = window.requestAnimationFrame(sync);
+    });
+    window.addEventListener('resize', sync);
+    sync();
+  })();
+
+  // Formulario -> abre el correo con el mensaje preparado
+  var EMAIL_DESTINO = "saulodlsf@gmail.com"; // CAMBIAR por email comercial cuando exista
+  function enviarDemo(e){
+    e.preventDefault();
+    var f = e.target;
+    var asunto = encodeURIComponent("Solicitud de demo — Trazo");
+    var cuerpo = encodeURIComponent(
+      "Nombre y centro: " + f.nombre.value + "\n" +
+      "Email: " + f.email.value + "\n" +
+      "Teléfono: " + (f.telefono.value||"-") + "\n\n" +
+      f.mensaje.value
+    );
+    window.location.href = "mailto:" + EMAIL_DESTINO + "?subject=" + asunto + "&body=" + cuerpo;
+    document.getElementById('formNote').textContent = "Abriendo tu correo… si no se abre, escríbenos a " + EMAIL_DESTINO;
+    return false;
+  }
+</script>
+</body>
+</html>

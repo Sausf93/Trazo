@@ -1,0 +1,17 @@
+node_modules
+dist
+dist-ssr
+*.local
+
+# Artefactos de compilación de TypeScript (tsc -b sobre proyectos composite)
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+.env
+.env.*.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store

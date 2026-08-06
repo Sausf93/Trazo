@@ -1,0 +1,47 @@
+# ---- Secrets / entorno ----
+.env
+*.env
+!.env.example
+!**/.env.example
+
+# ---- Python / backend ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.log
+
+# ---- Node / web ----
+node_modules/
+dist/
+.vite/
+*.local
+
+# ---- Flutter / tablet ----
+apps/tablet/.dart_tool/
+apps/tablet/build/
+apps/tablet/.flutter-plugins
+apps/tablet/.flutter-plugins-dependencies
+apps/tablet/.packages
+apps/tablet/pubspec.lock
+
+# ---- Docker / datos ----
+pgdata/
+*.pid
+
+# ---- Bases de datos locales (SQLite de desarrollo/demo) ----
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# ---- Editores / SO ----
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,67 @@
+import { Navigate, Route, Routes } from "react-router-dom";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import { AlertasPage } from "./pages/Alertas";
+import { DashboardPage } from "./pages/Dashboard";
+import { EjerciciosPage } from "./pages/Ejercicios";
+import { LoginPage } from "./pages/Login";
+import { SesionLivePage } from "./pages/SesionLive";
+import { UsuarioEvolucionPage } from "./pages/UsuarioEvolucion";
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/usuarios/:id"
+        element={
+          <ProtectedRoute>
+            <UsuarioEvolucionPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/alertas"
+        element={
+          <ProtectedRoute>
+            <AlertasPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/ejercicios"
+        element={
+          <ProtectedRoute>
+            <EjerciciosPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/sesion"
+        element={
+          <ProtectedRoute>
+            <SesionLivePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/sesion/:id"
+        element={
+          <ProtectedRoute>
+            <SesionLivePage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+}

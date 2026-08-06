@@ -1,0 +1,61 @@
+# ============================================================
+#  Trazo — orquestación local con Docker
+#
+#  Levanta todo con:   docker compose up --build
+#
+#  Servicios:
+#    db   -> PostgreSQL 16 (datos persistentes en ./pgdata)
+#    api  -> Backend FastAPI (http://localhost:8000, docs en /docs)
+#    web  -> Panel React (http://localhost:5173)   [se añade en su fase]
+# ============================================================
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-trazo}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cambia_esto_en_local}
+      POSTGRES_DB: ${POSTGRES_DB:-trazo}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-trazo} -d ${POSTGRES_DB:-trazo}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./backend/api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # Dentro de la red de compose el host de la BD es el servicio "db".
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-trazo}:${POSTGRES_PASSWORD:-cambia_esto_en_local}@db:5432/${POSTGRES_DB:-trazo}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      # Montamos el código para recarga en caliente durante el desarrollo.
+      - ./backend/api:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # El panel web se activará en su fase (descomentar cuando exista apps/web).
+  # web:
+  #   build:
+  #     context: ./apps/web
+  #     dockerfile: Dockerfile
+  #   restart: unless-stopped
+  #   ports:
+  #     - "5173:5173"
+  #   depends_on:
+  #     - api
+  #   environment:
+  #     VITE_API_URL: http://localhost:8000

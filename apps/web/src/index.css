@@ -1,0 +1,110 @@
+:root {
+  --ivory: #faf6ef;
+  --card: #f2ecdf;
+  --ink: #2b3a32;
+  --sage: #7c9885;
+  --sage-dark: #5c7a66;
+  --coral: #e8a87c;
+  --coral-dark: #c97b4a;
+  --sand: #c9bfa4;
+  --white: #fffefb;
+  --text-muted: #4a5a50;
+  --text-faint: #8a8270;
+  --alert-bg: #fbefe4;
+  --alert-text: #6b5a48;
+
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  /* Texto base grande y legible: pensado para cuidadores, no técnicos. */
+  font-size: 16.5px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-sans);
+  font-size: 16px;
+}
+
+/* Accesibilidad: foco siempre visible, no dependemos solo del color. */
+:focus-visible {
+  outline: 3px solid var(--sage-dark);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage-dark);
+}
+
+/* Utilidad de scroll horizontal para contenido ancho (tablas, gráficas). */
+.scroll-x {
+  overflow-x: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

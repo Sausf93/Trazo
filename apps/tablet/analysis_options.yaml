@@ -1,0 +1,7 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # Ajustes suaves para la fase de arranque.
+    prefer_const_constructors: true
+    avoid_print: false
