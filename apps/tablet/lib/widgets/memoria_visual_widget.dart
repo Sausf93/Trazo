@@ -148,15 +148,22 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
 
   Widget _rejillaTarjetas(List<Map<String, dynamic>> items,
       {required bool seleccionable}) {
-    return GridView.count(
-      crossAxisCount: 3,
-      mainAxisSpacing: 16,
-      crossAxisSpacing: 16,
-      childAspectRatio: 1.35,
-      children: items.map((it) {
-        final id = _idDe(it);
-        final sel = _seleccionadas.contains(id);
-        final tieneDibujo = IlustracionResolver.tiene(id);
+    // Columnas adaptativas: cuantas más figuras (nivel alto), más columnas, para
+    // que quepan sin una barra de scroll fea. El scroll (si hace falta) es limpio.
+    final n = items.length;
+    final columnas = n <= 6 ? 3 : (n <= 12 ? 4 : 5);
+    final imgSize = columnas >= 5 ? 44.0 : (columnas == 4 ? 54.0 : 62.0);
+    return ScrollConfiguration(
+      behavior: const _SinBarraScroll(),
+      child: GridView.count(
+        crossAxisCount: columnas,
+        mainAxisSpacing: 12,
+        crossAxisSpacing: 12,
+        childAspectRatio: 1.05,
+        children: items.map((it) {
+          final id = _idDe(it);
+          final sel = _seleccionadas.contains(id);
+          final tieneDibujo = IlustracionResolver.tiene(id);
         return InkWell(
           onTap: seleccionable
               ? () {
@@ -188,7 +195,7 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     if (tieneDibujo) ...[
-                      Ilustracion(id, size: 62),
+                      Ilustracion(id, size: imgSize),
                       const SizedBox(height: 4),
                     ],
                     Flexible(
@@ -212,6 +219,17 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
           ),
         );
       }).toList(),
+      ),
     );
   }
+}
+
+/// Comportamiento de scroll SIN barra visible: el scroll (cuando hace falta por
+/// muchas figuras en nivel alto) se hace arrastrando, sin la barra fea de Material.
+class _SinBarraScroll extends ScrollBehavior {
+  const _SinBarraScroll();
+  @override
+  Widget buildScrollbar(
+          BuildContext context, Widget child, ScrollableDetails details) =>
+      child;
 }
