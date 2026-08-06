@@ -89,9 +89,16 @@ copy .env.example .env      # solo la primera vez
 docker compose up --build
 ```
 
+Levanta los **4 servicios** (la primera vez tarda: compila también la app de tablet):
 - API: <http://localhost:8000> (docs en `/docs`)
+- Panel web: <http://localhost:5173>
+- App tablet: <http://localhost:3000>
 - PostgreSQL: `localhost:5432`
-- Panel web: <http://localhost:5173> (si está activado el servicio `web`)
+
+> Nota: el `docker compose` está preparado y el YAML validado, pero **no se ha
+> podido ejecutar aquí** (esta máquina solo tiene el cliente de Docker, sin motor).
+> En cuanto instales Docker Desktop, `docker compose up --build` debería levantar
+> todo. La app de tablet se compila dentro de Docker con la imagen oficial de Flutter.
 
 Para pararlo: `Ctrl+C`, y para limpiar: `docker compose down`.
 

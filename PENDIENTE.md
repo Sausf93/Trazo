@@ -53,7 +53,8 @@ de sesión por nº de ejercicios del plan. Reorienta la app hacia dos caras
       **básico ~3 · intermedio ~6-8 · alto ~10-12**. Aplica a memoria, contar,
       reconocer, etc. Falta: mapear nivel→cantidad en el motor de plantillas y que el
       `nivel` de la cola llegue a la generación de instancia (hoy no se pasa) + tablet.
-- [ ] Desplegar en Docker todo el stack (compose db+api+web+tablet) — requiere instalar Docker Desktop (hoy solo el cliente).
+- [x] Preparar el stack Docker (compose db+api+web+tablet, Dockerfiles, YAML validado). ✅
+- [ ] Ejecutar/probar en Docker — requiere instalar Docker Desktop (hoy solo el cliente).
 - [ ] **Grafomotricidad: guía de dirección del trazo** (apunte de Laura). Muchos
       mayores nunca aprendieron a escribir bien y no saben por dónde EMPEZAR ni en
       qué SENTIDO trazar cada letra. En los ejercicios `trazo` (seguir líneas,

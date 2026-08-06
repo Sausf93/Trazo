@@ -4,9 +4,12 @@
 #  Levanta todo con:   docker compose up --build
 #
 #  Servicios:
-#    db   -> PostgreSQL 16 (datos persistentes en ./pgdata)
-#    api  -> Backend FastAPI (http://localhost:8000, docs en /docs)
-#    web  -> Panel React (http://localhost:5173)   [se añade en su fase]
+#    db      -> PostgreSQL 16 (datos persistentes en ./pgdata)
+#    api     -> Backend FastAPI (http://localhost:8000, docs en /docs)
+#    web     -> Panel React del centro (http://localhost:5173)
+#    tablet  -> App de tablet, Flutter web (http://localhost:3000)
+#
+#  Requiere Docker Desktop en marcha. Login demo: admin@trazo.local / trazo1234
 # ============================================================
 
 services:
@@ -47,15 +50,24 @@ services:
       - ./backend/api:/app
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
-  # El panel web se activará en su fase (descomentar cuando exista apps/web).
-  # web:
-  #   build:
-  #     context: ./apps/web
-  #     dockerfile: Dockerfile
-  #   restart: unless-stopped
-  #   ports:
-  #     - "5173:5173"
-  #   depends_on:
-  #     - api
-  #   environment:
-  #     VITE_API_URL: http://localhost:8000
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:8000
+    depends_on:
+      - api
+
+  tablet:
+    build:
+      context: ./apps/tablet
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
