@@ -148,7 +148,7 @@ class ColaItem {
   final String nombre;
   final String bloque;
   final String plantilla;
-  final int? nivel;
+  final String? nivel; // "bajo" | "medio" | "alto" (banda de cantidad)
   final String? origen;
 
   ColaItem({
@@ -165,7 +165,7 @@ class ColaItem {
         nombre: (j['nombre'] ?? '') as String,
         bloque: (j['bloque'] ?? '') as String,
         plantilla: (j['plantilla'] ?? '') as String,
-        nivel: (j['nivel'] as num?)?.toInt(),
+        nivel: j['nivel']?.toString(),
         origen: j['origen'] as String?,
       );
 }

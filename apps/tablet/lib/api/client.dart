@@ -99,10 +99,12 @@ class ApiClient {
   }
 
   Future<Instancia> generarInstancia(String ejercicioId,
-      {String? usuarioFinalId}) async {
+      {String? usuarioFinalId, String? nivel}) async {
     final resp = await http.get(
-      _u('/ejercicios/$ejercicioId/instancia',
-          {if (usuarioFinalId != null) 'usuario_final_id': usuarioFinalId}),
+      _u('/ejercicios/$ejercicioId/instancia', {
+        if (usuarioFinalId != null) 'usuario_final_id': usuarioFinalId,
+        if (nivel != null) 'nivel': nivel,
+      }),
       headers: _headers,
     );
     _check(resp);

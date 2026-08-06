@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:path_drawing/path_drawing.dart';
 
@@ -27,6 +29,11 @@ class _TrazoWidgetState extends State<TrazoWidget> {
   late final double _vbH;
   late final double _tolerancia;
 
+  // Guía de dirección (grafomotricidad): dónde EMPIEZA el trazo y hacia dónde va.
+  // Imprescindible para mayores que nunca aprendieron a escribir (apunte de Laura).
+  late final Offset _inicioGuia;
+  late final List<(Offset, double)> _flechas; // posición + ángulo del trazo
+
   final List<Offset> _puntosUsuario = []; // en coords del viewBox
   final DateTime _inicio = DateTime.now();
 
@@ -40,6 +47,20 @@ class _TrazoWidgetState extends State<TrazoWidget> {
     _vbW = double.tryParse(vb[2]) ?? 300;
     _vbH = double.tryParse(vb[3]) ?? 140;
     _muestrasGuia = _muestrear(_guia, paso: 3.0);
+    _inicioGuia = _muestrasGuia.isNotEmpty ? _muestrasGuia.first : Offset.zero;
+    _flechas = _calcularFlechas(_guia);
+  }
+
+  /// Flechas de dirección a lo largo de cada sub-trazo de la guía.
+  List<(Offset, double)> _calcularFlechas(Path path) {
+    final flechas = <(Offset, double)>[];
+    for (final metric in path.computeMetrics()) {
+      for (final frac in const [0.22, 0.55, 0.88]) {
+        final t = metric.getTangentForOffset(metric.length * frac);
+        if (t != null) flechas.add((t.position, t.angle));
+      }
+    }
+    return flechas;
   }
 
   List<Offset> _muestrear(Path path, {double paso = 3.0}) {
@@ -125,6 +146,8 @@ class _TrazoWidgetState extends State<TrazoWidget> {
                     painter: _TrazoPainter(
                       guia: _guia,
                       puntosUsuario: _puntosUsuario,
+                      inicioGuia: _inicioGuia,
+                      flechas: _flechas,
                       vbW: _vbW,
                       vbH: _vbH,
                     ),
@@ -143,12 +166,16 @@ class _TrazoWidgetState extends State<TrazoWidget> {
 class _TrazoPainter extends CustomPainter {
   final Path guia;
   final List<Offset> puntosUsuario;
+  final Offset inicioGuia;
+  final List<(Offset, double)> flechas;
   final double vbW;
   final double vbH;
 
   _TrazoPainter({
     required this.guia,
     required this.puntosUsuario,
+    required this.inicioGuia,
+    required this.flechas,
     required this.vbW,
     required this.vbH,
   });
@@ -170,6 +197,38 @@ class _TrazoPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..color = const Color(0xFFDCD3BE);
     canvas.drawPath(guia, guiaPaint);
+
+    // Flechas de dirección a lo largo de la guía (hacia dónde trazar).
+    final flechaPaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.4
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round
+      ..color = TrazoColors.coralDark;
+    for (final (pos, ang) in flechas) {
+      final dir = Offset(math.cos(ang), math.sin(ang));
+      final perp = Offset(-dir.dy, dir.dx);
+      final tip = pos + dir * 5;
+      final a = tip - dir * 8 + perp * 4.5;
+      final b = tip - dir * 8 - perp * 4.5;
+      canvas.drawPath(
+        Path()
+          ..moveTo(a.dx, a.dy)
+          ..lineTo(tip.dx, tip.dy)
+          ..lineTo(b.dx, b.dy),
+        flechaPaint,
+      );
+    }
+    // Punto de inicio: "empieza aquí" (verde). Clave para quien no sabe escribir.
+    canvas.drawCircle(inicioGuia, 6.5, Paint()..color = TrazoColors.sage);
+    canvas.drawCircle(
+      inicioGuia,
+      6.5,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2
+        ..color = TrazoColors.sageDark,
+    );
 
     // Trazo del usuario
     if (puntosUsuario.length > 1) {

@@ -160,6 +160,7 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
       final inst = await ApiClient.instance.generarInstancia(
         _cola[_idx].ejercicioId,
         usuarioFinalId: yo.usuarioFinalId,
+        nivel: _cola[_idx].nivel, // banda de cantidad según el plan del paciente
       );
       // La sala pudo cerrarse mientras se pedía la instancia.
       if (!mounted || _fase == _Fase.esperando) return;
