@@ -1,4 +1,4 @@
-/// Modelos de datos que consume la app (espejo del contrato de la API).
+// Modelos de datos que consume la app (espejo del contrato de la API).
 
 class UsuarioFinal {
   final String id;

@@ -411,6 +411,7 @@ class _MonitorState extends State<_Monitor> {
                               ficha: f,
                               marcando: f.ultimoIntentoId != null &&
                                   _marcando.contains(f.ultimoIntentoId),
+                              puedeAyudar: f.ultimoIntentoId != null,
                               onAyuda: () => _ayuda(f),
                             );
                           },
@@ -430,11 +431,13 @@ class _MonitorState extends State<_Monitor> {
 class _FichaCard extends StatelessWidget {
   final FichaLive ficha;
   final bool marcando;
+  final bool puedeAyudar;
   final VoidCallback onAyuda;
 
   const _FichaCard({
     required this.ficha,
     required this.marcando,
+    required this.puedeAyudar,
     required this.onAyuda,
   });
 
@@ -518,7 +521,7 @@ class _FichaCard extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: OutlinedButton.icon(
-              onPressed: marcando ? null : onAyuda,
+              onPressed: (marcando || !puedeAyudar) ? null : onAyuda,
               icon: marcando
                   ? const SizedBox(
                       height: 16,

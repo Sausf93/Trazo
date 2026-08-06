@@ -15,6 +15,8 @@ dependencies:
   shared_preferences: ^2.3.3  # token + cola offline simple (MVP)
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
   flutter_lints: ^4.0.0
 
 flutter:

@@ -126,6 +126,8 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
     try {
       final cola = await ApiClient.instance
           .colaUsuario(yo.usuarioFinalId, sesion!.sesionId!);
+      // La sala pudo cerrarse mientras se pedía la cola.
+      if (!mounted || _fase == _Fase.esperando || _yo == null) return;
       _cola = cola;
       _idx = 0;
       if (_cola.isEmpty) {
@@ -137,6 +139,7 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
       }
       await _cargarInstancia();
     } catch (err) {
+      if (!mounted) return;
       setState(() {
         _errorInstancia = err.toString();
         _cargandoInstancia = false;
@@ -158,16 +161,29 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
         _cola[_idx].ejercicioId,
         usuarioFinalId: yo.usuarioFinalId,
       );
+      // La sala pudo cerrarse mientras se pedía la instancia.
+      if (!mounted || _fase == _Fase.esperando) return;
       setState(() {
         _instancia = inst;
         _cargandoInstancia = false;
         _inicioEjercicio = DateTime.now();
       });
     } catch (err) {
+      if (!mounted) return;
       setState(() {
         _errorInstancia = err.toString();
         _cargandoInstancia = false;
       });
+    }
+  }
+
+  /// Reintento robusto: si la cola no llegó a cargarse, la reintenta; si ya
+  /// hay cola, reintenta solo la instancia actual.
+  void _reintentar() {
+    if (_cola.isEmpty) {
+      _empezarCola();
+    } else {
+      _cargarInstancia();
     }
   }
 
@@ -323,8 +339,17 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
           cargando: _cargandoInstancia,
           error: _errorInstancia,
           instancia: _instancia,
-          render: _instancia == null ? null : _renderPorPlantilla(_instancia!),
-          onReintentar: _cargarInstancia,
+          // La clave (índice + ejercicio) fuerza a Flutter a crear un State
+          // NUEVO por cada ejercicio; sin ella, dos ejercicios seguidos de la
+          // misma plantilla reutilizarían el estado (trazo/selección) anterior
+          // y contaminarían las métricas.
+          render: _instancia == null
+              ? null
+              : KeyedSubtree(
+                  key: ValueKey('${_idx}_${_instancia!.ejercicioId}'),
+                  child: _renderPorPlantilla(_instancia!),
+                ),
+          onReintentar: _reintentar,
           onListo: _terminarEjercicio,
         );
     }
@@ -483,10 +508,10 @@ class _Terminado extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: const [
+        children: [
           Icon(Icons.emoji_events, size: 120, color: TrazoColors.coral),
           SizedBox(height: 24),
           Text('¡Muy bien, has terminado!',

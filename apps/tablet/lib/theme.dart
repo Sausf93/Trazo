@@ -25,11 +25,12 @@ ThemeData buildTrazoTheme() {
     scaffoldBackgroundColor: TrazoColors.ivory,
   );
   return base.copyWith(
+    // Solo color aquí. El aumento de tamaño para público mayor se hace con un
+    // textScaler global en main.dart (aplicar `fontSizeFactor` sobre el
+    // textTheme base dispara un assert cuando algún estilo tiene fontSize null).
     textTheme: base.textTheme.apply(
       bodyColor: TrazoColors.ink,
       displayColor: TrazoColors.ink,
-      // Botones y texto grandes: público mayor.
-      fontSizeFactor: 1.15,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
