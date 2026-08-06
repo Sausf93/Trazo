@@ -562,26 +562,110 @@
   {
     "bloque": "vida_cotidiana",
     "plantilla_tipo": "manejo_cantidad",
-    "nombre": "Manejo de dinero",
-    "descripcion": "Juntar una cantidad con monedas. Cantidades cambiantes.",
+    "nombre": "Reúne el importe (solo monedas)",
+    "descripcion": "Junta una cantidad pequeña usando solo monedas de euro, sin céntimos. Banda fácil; el importe cambia cada vez.",
     "parametros_json": {
       "modo": "dinero",
-      "total_min": 5,
-      "total_max": 12,
-      "monedas": [1, 2, 5]
+      "con_centimos": false,
+      "denominaciones_c": [50, 100, 200],
+      "importe_min_c": 100,
+      "importe_max_c": 600,
+      "paso_c": 50
+    }
+  },
+  {
+    "bloque": "vida_cotidiana",
+    "plantilla_tipo": "manejo_cantidad",
+    "nombre": "Reúne el importe con céntimos",
+    "descripcion": "Forma un importe con decimales reales (p. ej. 2,45 €) usando todas las monedas de euro. Trabaja en céntimos.",
+    "parametros_json": {
+      "modo": "dinero",
+      "con_centimos": true,
+      "denominaciones_c": [1, 2, 5, 10, 20, 50, 100, 200],
+      "importe_min_c": 45,
+      "importe_max_c": 990
+    }
+  },
+  {
+    "bloque": "vida_cotidiana",
+    "plantilla_tipo": "manejo_cantidad",
+    "nombre": "Reúne el importe con billetes",
+    "descripcion": "Importes grandes (decenas o cientos de euros) con billetes y monedas. Banda difícil.",
+    "parametros_json": {
+      "modo": "dinero",
+      "con_centimos": true,
+      "denominaciones_c": [5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000],
+      "importe_min_c": 1500,
+      "importe_max_c": 24500,
+      "paso_c": 5
+    }
+  },
+  {
+    "bloque": "vida_cotidiana",
+    "plantilla_tipo": "manejo_cantidad",
+    "nombre": "Elige las monedas justas",
+    "descripcion": "Seleccionar las monedas exactas para pagar un importe con céntimos. Refuerza el valor de cada moneda.",
+    "parametros_json": {
+      "modo": "monedas_justas",
+      "con_centimos": true,
+      "denominaciones_c": [1, 2, 5, 10, 20, 50, 100, 200],
+      "importe_min_c": 15,
+      "importe_max_c": 480
     }
   },
   {
     "bloque": "vida_cotidiana",
     "plantilla_tipo": "manejo_cantidad",
     "nombre": "La vuelta del cambio",
-    "descripcion": "Pagas con un billete algo que cuesta X; calcular cuánto te devuelven. Cantidades cambiantes.",
+    "descripcion": "Pagas con un billete algo que cuesta X (con céntimos); calcular cuánto te devuelven. Cantidades cambiantes.",
     "parametros_json": {
       "modo": "vuelta",
-      "total_min": 3,
-      "total_max": 18,
-      "billetes": [5, 10, 20],
-      "monedas": [1, 2, 5]
+      "con_centimos": true,
+      "denominaciones_c": [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000],
+      "paga_con_c": [500, 1000, 2000],
+      "importe_min_c": 120,
+      "importe_max_c": 1850
+    }
+  },
+  {
+    "bloque": "vida_cotidiana",
+    "plantilla_tipo": "manejo_cantidad",
+    "nombre": "La vuelta con billetes grandes",
+    "descripcion": "Compra mayor: pagas con 20, 50 o 100 € y calculas la vuelta. Banda difícil con céntimos.",
+    "parametros_json": {
+      "modo": "vuelta",
+      "con_centimos": true,
+      "denominaciones_c": [5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000],
+      "paga_con_c": [2000, 5000, 10000],
+      "importe_min_c": 1500,
+      "importe_max_c": 8900
+    }
+  },
+  {
+    "bloque": "vida_cotidiana",
+    "plantilla_tipo": "manejo_cantidad",
+    "nombre": "¿Te llega para pagar?",
+    "descripcion": "Se muestra un precio y lo que llevas en el monedero; decidir si alcanza. Varias bandas de dificultad.",
+    "parametros_json": {
+      "modo": "llega_para_pagar",
+      "bandas": [
+        {"id": "monedas", "con_centimos": true, "denominaciones_c": [5, 10, 20, 50, 100, 200], "importe_min_c": 60, "importe_max_c": 700},
+        {"id": "billetes", "con_centimos": true, "denominaciones_c": [10, 20, 50, 100, 200, 500, 1000, 2000, 5000], "importe_min_c": 1200, "importe_max_c": 12000}
+      ]
+    }
+  },
+  {
+    "bloque": "vida_cotidiana",
+    "plantilla_tipo": "manejo_cantidad",
+    "nombre": "El monedero (todo en uno)",
+    "descripcion": "Actividad de dinero completa: cada tirada elige al azar un modo (reunir, monedas justas, la vuelta o si llega) y una banda (monedas, con céntimos o billetes). Muy variada.",
+    "parametros_json": {
+      "modos": ["dinero", "monedas_justas", "vuelta", "llega_para_pagar"],
+      "bandas": [
+        {"id": "facil_monedas", "con_centimos": false, "denominaciones_c": [50, 100, 200], "paga_con_c": [500, 1000], "importe_min_c": 100, "importe_max_c": 500, "paso_c": 50},
+        {"id": "centimos", "con_centimos": true, "denominaciones_c": [1, 2, 5, 10, 20, 50, 100, 200], "paga_con_c": [500, 1000, 2000], "importe_min_c": 55, "importe_max_c": 1850},
+        {"id": "billetes", "con_centimos": true, "denominaciones_c": [5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000], "paga_con_c": [2000, 5000, 10000], "importe_min_c": 1500, "importe_max_c": 18000, "paso_c": 5}
+      ]
     }
   },
   {
@@ -591,7 +675,7 @@
     "descripcion": "Un reloj analógico sencillo; decir o seleccionar qué hora es. Orientación temporal.",
     "parametros_json": {
       "modo": "reloj",
-      "minutos": [0, 15, 30, 45]
+      "minutos": [0, 5, 10, 15, 20, 30, 40, 45, 50]
     }
   },
   {
@@ -665,6 +749,511 @@
       "zonas": [
         {"id": "nevera", "label": "la nevera"},
         {"id": "despensa", "label": "la despensa"}
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Repasar la greca",
+    "descripcion": "Repasar con el dedo una cenefa o greca repetida — control del trazo continuo.",
+    "parametros_json": {
+      "instruccion": "Repasa la cenefa sin levantar el dedo",
+      "tolerancia_px": 24,
+      "viewbox": "0 0 300 140",
+      "figuras": [
+        {"id": "ondas", "path": "M20,80 q20,-40 40,0 t40,0 t40,0 t40,0 t40,0 t40,0"},
+        {"id": "bucles", "path": "M20,90 c10,-40 40,-40 50,0 c10,-40 40,-40 50,0 c10,-40 40,-40 50,0 c10,-40 40,-40 50,0"},
+        {"id": "almenas", "path": "M20,110 L20,60 L60,60 L60,110 L100,110 L100,60 L140,60 L140,110 L180,110 L180,60 L220,60 L220,110 L260,110 L260,60"}
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "La espiral",
+    "descripcion": "Recorrer una espiral con el dedo, de fuera hacia dentro — coordinación fina y control rotatorio.",
+    "parametros_json": {
+      "instruccion": "Sigue la espiral con el dedo",
+      "tolerancia_px": 28,
+      "viewbox": "0 0 300 140",
+      "figuras": [
+        {"id": "espiral_ancha", "path": "M150,70 m0,-52 a52,52 0 1,1 -1,0 a40,40 0 1,0 1,12 a28,28 0 1,1 -1,0 a16,16 0 1,0 1,10"},
+        {"id": "caracol", "path": "M150,70 m-8,0 a8,8 0 1,1 16,0 a24,24 0 1,1 -48,0 a44,44 0 1,1 88,0"}
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Repasar letras y números",
+    "descripcion": "Repasar con el dedo el contorno de letras y números grandes — grafomotricidad de trazos conocidos.",
+    "parametros_json": {
+      "instruccion": "Repasa la letra o el número con el dedo",
+      "tolerancia_px": 26,
+      "viewbox": "0 0 300 140",
+      "figuras": [
+        {"id": "ese", "path": "M200,40 C160,20 100,25 100,55 C100,85 200,85 200,110 C200,130 130,132 90,115"},
+        {"id": "ocho", "path": "M150,70 C110,70 110,25 150,25 C190,25 190,70 150,70 C110,70 110,120 150,120 C190,120 190,70 150,70 Z"},
+        {"id": "dos", "path": "M95,50 C95,20 205,20 205,55 C205,85 95,100 95,120 L205,120"},
+        {"id": "efe", "path": "M170,30 L110,30 L110,120 M110,72 L165,72"}
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Completar la figura",
+    "descripcion": "Repasar la mitad que falta de una figura simétrica para completarla — cierre visomotor.",
+    "parametros_json": {
+      "instruccion": "Dibuja la parte que falta con el dedo",
+      "tolerancia_px": 28,
+      "viewbox": "0 0 300 140",
+      "figuras": [
+        {"id": "medio_corazon", "path": "M150,120 C150,120 90,85 90,50 C90,25 130,25 150,50"},
+        {"id": "media_casa", "path": "M150,120 L150,70 L90,70 L150,30"},
+        {"id": "medio_arbol", "path": "M150,120 L150,80 M150,80 C120,80 105,55 130,50 C120,35 150,30 150,45"}
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "nombre": "Parejas iguales",
+    "descripcion": "Memorizar unos objetos y localizarlos después entre otros parecidos — memoria de reconocimiento.",
+    "parametros_json": {
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 40,
+      "banco": [
+        {"id": "campana", "label": "campana"},
+        {"id": "paraguas", "label": "paraguas"},
+        {"id": "tetera", "label": "tetera"},
+        {"id": "abanico", "label": "abanico"},
+        {"id": "candado", "label": "candado"},
+        {"id": "farol", "label": "farol"},
+        {"id": "cesta", "label": "cesta"},
+        {"id": "vela", "label": "vela"}
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "nombre": "La bandeja",
+    "descripcion": "Se enseña una bandeja con varios objetos; tras taparla, reconocer cuáles estaban. Cantidad cambiante.",
+    "parametros_json": {
+      "recordar_min": 3,
+      "recordar_max": 5,
+      "segundos": 45,
+      "banco": [
+        {"id": "cuchara", "label": "cuchara"},
+        {"id": "dedal", "label": "dedal"},
+        {"id": "boton", "label": "botón"},
+        {"id": "moneda", "label": "moneda"},
+        {"id": "pinza", "label": "pinza"},
+        {"id": "carrete", "label": "carrete de hilo"},
+        {"id": "imperdible", "label": "imperdible"},
+        {"id": "lapiz", "label": "lápiz"},
+        {"id": "goma", "label": "goma"}
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "nombre": "Frutas del mercado",
+    "descripcion": "Recordar qué frutas se mostraron y localizarlas entre otras — memoria con material familiar.",
+    "parametros_json": {
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 40,
+      "banco": [
+        {"id": "manzana", "label": "manzana"},
+        {"id": "pera", "label": "pera"},
+        {"id": "platano", "label": "plátano"},
+        {"id": "naranja", "label": "naranja"},
+        {"id": "uva", "label": "uva"},
+        {"id": "fresa", "label": "fresa"},
+        {"id": "melon", "label": "melón"},
+        {"id": "cereza", "label": "cereza"}
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "nombre": "La cesta de la compra",
+    "descripcion": "Se muestra lo que hay que comprar; después, reconocer los productos de la lista entre otros.",
+    "parametros_json": {
+      "recordar_min": 3,
+      "recordar_max": 5,
+      "segundos": 35,
+      "banco": [
+        {"id": "pan", "label": "pan"},
+        {"id": "leche", "label": "leche"},
+        {"id": "huevos", "label": "huevos"},
+        {"id": "aceite", "label": "aceite"},
+        {"id": "arroz", "label": "arroz"},
+        {"id": "azucar", "label": "azúcar"},
+        {"id": "cafe", "label": "café"},
+        {"id": "sal", "label": "sal"},
+        {"id": "harina", "label": "harina"}
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "nombre": "Flores del jardín",
+    "descripcion": "Memorizar unas flores y reconocerlas después entre varias — atención y memoria visual.",
+    "parametros_json": {
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 45,
+      "banco": [
+        {"id": "rosa", "label": "rosa"},
+        {"id": "clavel", "label": "clavel"},
+        {"id": "margarita", "label": "margarita"},
+        {"id": "amapola", "label": "amapola"},
+        {"id": "girasol", "label": "girasol"},
+        {"id": "tulipan", "label": "tulipán"},
+        {"id": "geranio", "label": "geranio"},
+        {"id": "lirio", "label": "lirio"}
+      ]
+    }
+  },
+  {
+    "bloque": "funcion_ejecutiva",
+    "plantilla_tipo": "secuencia_ordenar",
+    "nombre": "Vestirse en orden",
+    "descripcion": "Ordenar los pasos de vestirse por la mañana — planificación de una rutina cotidiana.",
+    "parametros_json": {
+      "pasos_min": 3,
+      "pasos_max": 4,
+      "tareas": [
+        {"id": "vestir_arriba", "titulo": "Ponerse la camisa",
+         "pasos": ["Ponerse la camiseta interior", "Ponerse la camisa", "Abrochar los botones", "Ponerse la chaqueta"]},
+        {"id": "vestir_abajo", "titulo": "Ponerse el pantalón",
+         "pasos": ["Ponerse la ropa interior", "Ponerse el pantalón", "Ponerse el cinturón", "Ponerse los zapatos"]}
+      ]
+    }
+  },
+  {
+    "bloque": "funcion_ejecutiva",
+    "plantilla_tipo": "secuencia_ordenar",
+    "nombre": "El día en orden",
+    "descripcion": "Ordenar los momentos del día, de la mañana a la noche — orientación temporal y secuenciación.",
+    "parametros_json": {
+      "pasos_min": 4,
+      "pasos_max": 5,
+      "tareas": [
+        {"id": "jornada", "titulo": "Un día de la semana",
+         "pasos": ["Levantarse", "Desayunar", "Comer", "Merendar", "Cenar"]},
+        {"id": "manana", "titulo": "Por la mañana",
+         "pasos": ["Despertarse", "Lavarse la cara", "Vestirse", "Desayunar"]}
+      ]
+    }
+  },
+  {
+    "bloque": "funcion_ejecutiva",
+    "plantilla_tipo": "secuencia_ordenar",
+    "nombre": "Ir a la compra paso a paso",
+    "descripcion": "Ordenar los pasos de hacer la compra — función ejecutiva aplicada a la vida diaria.",
+    "parametros_json": {
+      "pasos_min": 4,
+      "pasos_max": 5,
+      "tareas": [
+        {"id": "compra", "titulo": "Hacer la compra",
+         "pasos": ["Coger el carro", "Elegir los productos", "Pasar por caja", "Pagar", "Guardar la compra"]},
+        {"id": "pan", "titulo": "Comprar el pan",
+         "pasos": ["Coger el monedero", "Ir a la panadería", "Pedir el pan", "Pagar"]}
+      ]
+    }
+  },
+  {
+    "bloque": "funcion_ejecutiva",
+    "plantilla_tipo": "secuencia_ordenar",
+    "nombre": "Preparar una tortilla",
+    "descripcion": "Ordenar los pasos de una receta sencilla — secuenciación de una tarea con varios pasos.",
+    "parametros_json": {
+      "pasos_min": 4,
+      "pasos_max": 5,
+      "tareas": [
+        {"id": "tortilla", "titulo": "Tortilla francesa",
+         "pasos": ["Cascar los huevos", "Batir los huevos", "Calentar la sartén", "Echar el huevo", "Doblar y servir"]},
+        {"id": "cafe_leche", "titulo": "Café con leche",
+         "pasos": ["Calentar la leche", "Hacer el café", "Juntarlos en la taza", "Añadir azúcar"]}
+      ]
+    }
+  },
+  {
+    "bloque": "percepcion",
+    "plantilla_tipo": "secuencia_ordenar",
+    "nombre": "Ordena los números",
+    "descripcion": "Colocar varios números de menor a mayor — razonamiento y orden numérico.",
+    "parametros_json": {
+      "pasos_min": 3,
+      "pasos_max": 5,
+      "tareas": [
+        {"id": "unidades", "titulo": "De menor a mayor", "instruccion": "Ordena de menor a mayor",
+         "pasos": ["1", "2", "3", "4", "5"]},
+        {"id": "decenas", "titulo": "De menor a mayor", "instruccion": "Ordena de menor a mayor",
+         "pasos": ["10", "20", "30", "40", "50"]},
+        {"id": "salteados", "titulo": "De menor a mayor", "instruccion": "Ordena de menor a mayor",
+         "pasos": ["3", "7", "12", "18", "25"]}
+      ]
+    }
+  },
+  {
+    "bloque": "percepcion",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos?",
+    "descripcion": "Dos grupos de objetos; señalar cuál tiene menos. Cantidades cambiantes.",
+    "parametros_json": {
+      "modo": "cual_tiene_menos",
+      "instruccion": "¿Cuál tiene menos?",
+      "cantidad_min": 2,
+      "cantidad_max": 9,
+      "objetos": ["boton_grande", "boton_pequeno"]
+    }
+  },
+  {
+    "bloque": "percepcion",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Hay más o menos?",
+    "descripcion": "Cada tirada pregunta al azar por el grupo con más o con menos — atención sostenida.",
+    "parametros_json": {
+      "modos": ["cual_tiene_mas", "cual_tiene_menos"],
+      "instruccion": "Fíjate bien en los dos grupos",
+      "cantidad_min": 2,
+      "cantidad_max": 10,
+      "objetos": ["ficha_roja", "ficha_azul", "ficha_verde"]
+    }
+  },
+  {
+    "bloque": "razonamiento",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta las monedas",
+    "descripcion": "Contar cuántas monedas (o fichas) hay del tipo que se pide. Cantidad cambiante.",
+    "parametros_json": {
+      "modo": "contar",
+      "instruccion": "Cuenta cuántas hay",
+      "cantidad_min": 3,
+      "cantidad_max": 12,
+      "objetos": ["moneda_dorada", "moneda_plateada"]
+    }
+  },
+  {
+    "bloque": "razonamiento",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta y suma la fruta",
+    "descripcion": "Contar la fruta de cada cesto y decir cuánta hay en total — una suma presentada como conteo.",
+    "parametros_json": {
+      "modo": "sumar",
+      "instruccion": "Cuenta cuántas hay en total",
+      "cantidad_min": 1,
+      "cantidad_max": 7,
+      "objetos": ["manzana", "naranja"]
+    }
+  },
+  {
+    "bloque": "percepcion",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los animales",
+    "descripcion": "Una escena con varios animales; contar cuántos hay del que se pide. Tarea variable cada vez.",
+    "parametros_json": {
+      "modos": ["contar", "cual_tiene_mas"],
+      "instruccion": "Fíjate en los animales",
+      "cantidad_min": 2,
+      "cantidad_max": 9,
+      "objetos": ["gallina", "pato", "oveja"]
+    }
+  },
+  {
+    "bloque": "vida_cotidiana",
+    "plantilla_tipo": "arrastrar_posicion",
+    "nombre": "Clasifica por color",
+    "descripcion": "Llevar cada objeto a la caja de su color — clasificación por un criterio simple.",
+    "parametros_json": {
+      "instruccion": "Pon cada cosa en la caja de su color",
+      "cantidad_min": 3,
+      "cantidad_max": 4,
+      "muestrear": false,
+      "piezas": [
+        {"id": "tomate", "label": "tomate", "zona_correcta": "rojo"},
+        {"id": "fresa", "label": "fresa", "zona_correcta": "rojo"},
+        {"id": "limon", "label": "limón", "zona_correcta": "amarillo"},
+        {"id": "platano", "label": "plátano", "zona_correcta": "amarillo"},
+        {"id": "lechuga", "label": "lechuga", "zona_correcta": "verde"},
+        {"id": "pera", "label": "pera", "zona_correcta": "verde"}
+      ],
+      "zonas": [
+        {"id": "rojo", "label": "caja roja"},
+        {"id": "amarillo", "label": "caja amarilla"},
+        {"id": "verde", "label": "caja verde"}
+      ]
+    }
+  },
+  {
+    "bloque": "vida_cotidiana",
+    "plantilla_tipo": "arrastrar_posicion",
+    "nombre": "Clasifica por tamaño",
+    "descripcion": "Separar los objetos grandes de los pequeños — clasificación por tamaño.",
+    "parametros_json": {
+      "instruccion": "Pon cada cosa según su tamaño",
+      "cantidad_min": 3,
+      "cantidad_max": 4,
+      "muestrear": false,
+      "piezas": [
+        {"id": "melon", "label": "melón", "zona_correcta": "grandes"},
+        {"id": "sandia", "label": "sandía", "zona_correcta": "grandes"},
+        {"id": "calabaza", "label": "calabaza", "zona_correcta": "grandes"},
+        {"id": "cereza", "label": "cereza", "zona_correcta": "pequenas"},
+        {"id": "uva", "label": "uva", "zona_correcta": "pequenas"},
+        {"id": "nuez", "label": "nuez", "zona_correcta": "pequenas"}
+      ],
+      "zonas": [
+        {"id": "grandes", "label": "las cosas grandes"},
+        {"id": "pequenas", "label": "las cosas pequeñas"}
+      ]
+    }
+  },
+  {
+    "bloque": "vida_cotidiana",
+    "plantilla_tipo": "arrastrar_posicion",
+    "nombre": "Vístete según el tiempo",
+    "descripcion": "Llevar cada prenda al tiempo que le corresponde: sol, lluvia o frío — razonamiento aplicado.",
+    "parametros_json": {
+      "instruccion": "Lleva cada prenda al tiempo que le va",
+      "cantidad_min": 3,
+      "cantidad_max": 4,
+      "muestrear": false,
+      "piezas": [
+        {"id": "gafas_sol", "label": "gafas de sol", "zona_correcta": "sol"},
+        {"id": "sombrero", "label": "sombrero de paja", "zona_correcta": "sol"},
+        {"id": "paraguas", "label": "paraguas", "zona_correcta": "lluvia"},
+        {"id": "botas_agua", "label": "botas de agua", "zona_correcta": "lluvia"},
+        {"id": "abrigo", "label": "abrigo", "zona_correcta": "frio"},
+        {"id": "bufanda", "label": "bufanda", "zona_correcta": "frio"}
+      ],
+      "zonas": [
+        {"id": "sol", "label": "hace sol"},
+        {"id": "lluvia", "label": "está lloviendo"},
+        {"id": "frio", "label": "hace frío"}
+      ]
+    }
+  },
+  {
+    "bloque": "vida_cotidiana",
+    "plantilla_tipo": "arrastrar_posicion",
+    "nombre": "Cada cosa a su cuarto",
+    "descripcion": "Llevar cada objeto a la habitación donde se usa: cocina, baño o dormitorio.",
+    "parametros_json": {
+      "instruccion": "Lleva cada cosa a su habitación",
+      "cantidad_min": 3,
+      "cantidad_max": 4,
+      "muestrear": false,
+      "piezas": [
+        {"id": "sarten", "label": "sartén", "zona_correcta": "cocina"},
+        {"id": "olla", "label": "olla", "zona_correcta": "cocina"},
+        {"id": "toalla", "label": "toalla", "zona_correcta": "bano"},
+        {"id": "cepillo", "label": "cepillo de dientes", "zona_correcta": "bano"},
+        {"id": "almohada", "label": "almohada", "zona_correcta": "dormitorio"},
+        {"id": "manta", "label": "manta", "zona_correcta": "dormitorio"}
+      ],
+      "zonas": [
+        {"id": "cocina", "label": "la cocina"},
+        {"id": "bano", "label": "el baño"},
+        {"id": "dormitorio", "label": "el dormitorio"}
+      ]
+    }
+  },
+  {
+    "bloque": "lenguaje",
+    "plantilla_tipo": "evocacion_libre",
+    "nombre": "Completa el refrán en voz alta",
+    "descripcion": "Se dice el principio de un refrán muy conocido y la persona lo termina. Memoria semántica muy conservada.",
+    "parametros_json": {
+      "pedir_min": 1,
+      "pedir_max": 1,
+      "prompts": [
+        {"texto": "termina el refrán: 'A quien madruga...'"},
+        {"texto": "termina el refrán: 'Más vale pájaro en mano...'"},
+        {"texto": "termina el refrán: 'No por mucho madrugar...'"},
+        {"texto": "termina el refrán: 'Perro ladrador...'"},
+        {"texto": "termina el refrán: 'En casa del herrero...'"},
+        {"texto": "termina el refrán: 'A caballo regalado...'"}
+      ]
+    }
+  },
+  {
+    "bloque": "lenguaje",
+    "plantilla_tipo": "evocacion_libre",
+    "nombre": "Nombres propios",
+    "descripcion": "Decir nombres de personas o lugares dentro de una categoría — evocación con clave semántica.",
+    "parametros_json": {
+      "pedir_min": 4,
+      "pedir_max": 8,
+      "prompts": [
+        {"texto": "nombres de mujer"},
+        {"texto": "nombres de hombre"},
+        {"texto": "ciudades o pueblos de España"},
+        {"texto": "nombres de flores"},
+        {"texto": "nombres de ríos"}
+      ]
+    }
+  },
+  {
+    "bloque": "lenguaje",
+    "plantilla_tipo": "evocacion_libre",
+    "nombre": "Cosas que...",
+    "descripcion": "Nombrar cosas que cumplen una condición (que son rojas, que vuelan) — evocación por atributos.",
+    "parametros_json": {
+      "pedir_min": 4,
+      "pedir_max": 8,
+      "prompts": [
+        {"texto": "cosas que sean de color rojo"},
+        {"texto": "cosas que vuelen"},
+        {"texto": "cosas que sean redondas"},
+        {"texto": "cosas que se puedan beber"},
+        {"texto": "cosas que hagan ruido"},
+        {"texto": "cosas que corten"}
+      ]
+    }
+  },
+  {
+    "bloque": "lenguaje",
+    "plantilla_tipo": "evocacion_libre",
+    "nombre": "Más categorías",
+    "descripcion": "Fluidez verbal semántica con más categorías cotidianas. Cantidad y categoría cambian cada vez.",
+    "parametros_json": {
+      "pedir_min": 5,
+      "pedir_max": 10,
+      "prompts": [
+        {"texto": "herramientas de trabajo"},
+        {"texto": "medios de transporte"},
+        {"texto": "instrumentos musicales"},
+        {"texto": "profesiones u oficios"},
+        {"texto": "platos de comida típicos"},
+        {"texto": "cosas que hay en un mercado"}
+      ]
+    }
+  },
+  {
+    "bloque": "lenguaje",
+    "plantilla_tipo": "evocacion_libre",
+    "nombre": "Palabras que riman",
+    "descripcion": "Decir palabras que rimen con una dada — evocación fonológica y juego con el lenguaje.",
+    "parametros_json": {
+      "pedir_min": 3,
+      "pedir_max": 6,
+      "prompts": [
+        {"texto": "palabras que rimen con 'melón'"},
+        {"texto": "palabras que rimen con 'flor'"},
+        {"texto": "palabras que rimen con 'gato'"},
+        {"texto": "palabras que rimen con 'pan'"},
+        {"texto": "palabras que rimen con 'mar'"}
       ]
     }
   }

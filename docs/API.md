@@ -107,3 +107,42 @@ cola es un único item: la misma actividad para todos, **cada uno a su nivel**.
 ```
 
 El `render` cambia según la plantilla; el cliente lo interpreta por el campo `plantilla`.
+
+### Instancia de dinero (`plantilla: "manejo_cantidad"`)
+
+El motor de dinero trabaja **internamente en céntimos enteros** (sin errores de
+coma flotante) y expone además el importe ya **formateado** (`importe_texto`).
+Soporta todas las monedas (1c…2€) y billetes (5…500 €), rangos configurables por
+banda/nivel y varios **modos** que se eligen al azar en cada tirada:
+`dinero` (reúne el importe), `monedas_justas`, `vuelta`, `llega_para_pagar` y
+`reloj`.
+
+Ejemplo de tirada del modo **`vuelta`** (con céntimos y billete):
+
+```json
+{
+  "ejercicio_id": "…",
+  "nombre": "La vuelta del cambio",
+  "bloque": "vida_cotidiana",
+  "plantilla": "manejo_cantidad",
+  "render": {
+    "instruccion": "Pagas 12,45 € con 20,00 €. ¿Cuánto te devuelven?",
+    "modo": "vuelta",
+    "precio_c": 1245, "precio_texto": "12,45 €",
+    "pago_c": 2000, "pago_texto": "20,00 €",
+    "denominaciones": [ { "valor_c": 1, "etiqueta": "1c" }, { "valor_c": 500, "etiqueta": "5€" } ]
+  },
+  "cantidad_objetivo": { "modo": "vuelta", "banda": null, "precio_c": 1245, "pago_c": 2000 },
+  "metricas": ["correcto", "tiempo_ms", "num_ajustes"]
+}
+```
+
+La `solucion` (que el backend conserva, no siempre se envía al cliente) incluye
+`vuelta_c` (`755`), `vuelta_texto` (`"7,55 €"`) y un `desglose_c` de las
+monedas/billetes que la componen (p. ej. `{"500":1,"200":1,"50":1,"5":1}`). En el
+modo `dinero`/`monedas_justas` lleva `importe_c` + `desglose_c`; en
+`llega_para_pagar`, `llega` (bool) con `precio_c` y `disponible_c`.
+
+Todos los importes concretos de la tirada quedan en `cantidad_objetivo` (en
+céntimos) para que la comparación histórica de alertas sea justa aunque cambie la
+dificultad después.

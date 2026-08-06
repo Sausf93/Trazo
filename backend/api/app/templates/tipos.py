@@ -164,17 +164,25 @@ class PlantillaConteoComparacion(PlantillaBase):
     def generar(self, parametros, nivel=None, rng=None):
         rng = self._rng(rng)
         objetos = parametros.get("objetos") or ["pato_amarillo", "pato_verde"]
-        modo = parametros.get("modo", "cual_tiene_mas")  # cual_tiene_mas | contar | sumar
+        # `modos` (lista) permite variar la tarea cada instancia; `modo` (singular)
+        # la fija. Compatibilidad hacia atrás: si no hay `modos`, se usa `modo`.
+        modos = parametros.get("modos")
+        modo = rng.choice(modos) if modos else parametros.get("modo", "cual_tiene_mas")
         lo = self._nivel_val(nivel, "cantidad_min", parametros.get("cantidad_min", 2))
         hi = self._nivel_val(nivel, "cantidad_max", parametros.get("cantidad_max", 8))
 
+        # Nº de grupos también cambiante (mínimo 2 para poder comparar).
+        n_grupos = min(len(objetos), max(2, rng.randint(2, 3)))
         grupos = []
-        for obj in objetos[:3]:
+        for obj in objetos[:n_grupos]:
             grupos.append({"objeto": obj, "cantidad": rng.randint(int(lo), int(hi))})
 
         if modo == "cual_tiene_mas":
             gmax = max(grupos, key=lambda g: g["cantidad"])
             solucion = {"objeto_mayor": gmax["objeto"]}
+        elif modo == "cual_tiene_menos":
+            gmin = min(grupos, key=lambda g: g["cantidad"])
+            solucion = {"objeto_menor": gmin["objeto"]}
         elif modo == "sumar":
             solucion = {"total": sum(g["cantidad"] for g in grupos)}
         else:  # contar (uno concreto)
@@ -253,54 +261,248 @@ class PlantillaEvocacionLibre(PlantillaBase):
         )
 
 
+# --- Denominaciones del euro (trabajo interno SIEMPRE en céntimos enteros) ---
+# Monedas: 1c, 2c, 5c, 10c, 20c, 50c, 1€, 2€.  Billetes: 5, 10, 20, 50, 100, 200, 500 €.
+MONEDAS_C = [1, 2, 5, 10, 20, 50, 100, 200]
+BILLETES_C = [500, 1000, 2000, 5000, 10000, 20000, 50000]
+TODAS_C = MONEDAS_C + BILLETES_C
+
+
+def _fmt_eur(centimos: int) -> str:
+    """Formatea céntimos enteros como importe en euros: 245 -> '2,45 €'."""
+    centimos = int(centimos)
+    signo = "-" if centimos < 0 else ""
+    centimos = abs(centimos)
+    return f"{signo}{centimos // 100},{centimos % 100:02d} €"
+
+
+def _etiqueta_denom(c: int) -> str:
+    """Etiqueta corta de una denominación: 5 -> '5c', 100 -> '1€', 250 -> '2,50€'."""
+    if c < 100:
+        return f"{c}c"
+    if c % 100 == 0:
+        return f"{c // 100}€"
+    return f"{c // 100},{c % 100:02d}€"
+
+
+def _desglose_greedy(importe_c: int, denoms: list[int]) -> dict:
+    """Combinación de denominaciones (voraz, de mayor a menor) que suma `importe_c`.
+
+    Con la denominación más pequeña disponible dividiendo al importe (garantizado
+    por `paso_c`), el sistema del euro es canónico y la voracidad da resultado
+    exacto. Devuelve {valor_c: cantidad} solo con las que se usan.
+    """
+    restante = int(importe_c)
+    piezas: dict[int, int] = {}
+    for d in sorted(denoms, reverse=True):
+        if d <= 0 or restante < d:
+            continue
+        n, restante = divmod(restante, d)
+        if n:
+            piezas[d] = n
+    # `restante` deber­ía ser 0; si no (config exótica) se ignora el sobrante.
+    return {str(k): v for k, v in piezas.items()}
+
+
 class PlantillaManejoCantidad(PlantillaBase):
-    """Dinero, la vuelta, qué hora marca."""
+    """Dinero (reúne el importe / monedas justas), la vuelta, ¿llega para pagar?, reloj.
+
+    Trabaja internamente en CÉNTIMOS enteros para evitar errores de coma flotante;
+    expone importes ya formateados ('2,45 €'). Soporta billetes y monedas de todo
+    el euro, rangos amplios configurables por nivel/parámetros, y varias BANDAS de
+    dificultad (`bandas`) y MODOS (`modos`) entre los que se elige al azar en cada
+    tirada, de modo que cada instancia sale distinta.
+    """
 
     tipo = "manejo_cantidad"
     metricas = ["correcto", "tiempo_ms", "num_ajustes"]
 
+    # Modos que trabajan con importes de dinero (reloj se trata aparte).
+    _MODOS_DINERO = {"dinero", "monedas_justas", "vuelta", "llega_para_pagar"}
+
+    # -- helpers de configuración --
+
+    def _resolver_denoms(self, cfg: dict) -> list[int]:
+        """Denominaciones disponibles (en céntimos), de la config o por defecto."""
+        if cfg.get("denominaciones_c"):
+            denoms = [int(d) for d in cfg["denominaciones_c"]]
+        else:
+            denoms = []
+            # `monedas`/`billetes` vienen expresadas en EUROS (compatibilidad).
+            for m in cfg.get("monedas", []) or []:
+                denoms.append(int(round(float(m) * 100)))
+            for b in cfg.get("billetes", []) or []:
+                denoms.append(int(round(float(b) * 100)))
+            if not denoms:
+                denoms = list(MONEDAS_C)  # por defecto, monedas de euro completas
+        return sorted({d for d in denoms if d > 0})
+
+    def _rango_importe_c(self, cfg: dict, nivel) -> tuple[int, int]:
+        """Rango del importe en céntimos, aceptando claves en céntimos o en euros."""
+        lo = self._nivel_val(nivel, "importe_min_c", cfg.get("importe_min_c"))
+        hi = self._nivel_val(nivel, "importe_max_c", cfg.get("importe_max_c"))
+        if lo is None:
+            lo = int(round(float(self._nivel_val(nivel, "total_min", cfg.get("total_min", 1))) * 100))
+        if hi is None:
+            hi = int(round(float(self._nivel_val(nivel, "total_max", cfg.get("total_max", 20))) * 100))
+        lo, hi = int(lo), int(hi)
+        if hi < lo:
+            hi = lo
+        return lo, hi
+
+    def _genera_importe_c(self, cfg: dict, nivel, denoms: list[int], rng) -> tuple[int, int]:
+        """Elige un importe (céntimos) makeable con `denoms`. Devuelve (importe, paso)."""
+        lo, hi = self._rango_importe_c(cfg, nivel)
+        con_centimos = cfg.get("con_centimos")
+        if con_centimos is None:
+            con_centimos = any(d < 100 for d in denoms)
+        min_denom = min(denoms)
+        paso = cfg.get("paso_c")
+        if paso is None:
+            paso = min_denom if con_centimos else 100
+        paso = int(paso)
+        # El paso debe ser múltiplo de la denominación más pequeña para que el
+        # importe sea siempre exacto con las denominaciones disponibles.
+        if paso % min_denom != 0:
+            paso = max(min_denom, (paso // min_denom) * min_denom or min_denom)
+        # Alinear el rango al paso.
+        lo_al = ((lo + paso - 1) // paso) * paso
+        hi_al = (hi // paso) * paso
+        if hi_al < lo_al:
+            hi_al = lo_al
+        n = (hi_al - lo_al) // paso
+        importe = lo_al + rng.randint(0, n) * paso
+        if importe <= 0:
+            importe = paso
+        return importe, paso
+
+    # -- generación --
+
     def generar(self, parametros, nivel=None, rng=None):
         rng = self._rng(rng)
-        modo = parametros.get("modo", "dinero")  # dinero | vuelta | reloj
+
+        # Una actividad puede ofrecer varias BANDAS (rangos/denominaciones/modos):
+        # se elige una al azar y sus claves pisan a las de la config base.
+        cfg = dict(parametros)
+        bandas = parametros.get("bandas")
+        banda_id = None
+        if bandas:
+            banda = rng.choice(bandas)
+            banda_id = banda.get("id")
+            cfg.update({k: v for k, v in banda.items() if k != "id"})
+
+        modos = cfg.get("modos")
+        modo = rng.choice(modos) if modos else cfg.get("modo", "dinero")
 
         if modo == "reloj":
-            hora = rng.randint(1, 12)
-            minuto = rng.choice(parametros.get("minutos", [0, 15, 30, 45]))
-            return InstanciaEjercicio(
-                plantilla=self.tipo,
-                render={"instruccion": "¿Qué hora marca?", "modo": modo, "hora": hora, "minuto": minuto},
-                cantidad_objetivo={"hora": hora, "minuto": minuto},
-                solucion={"hora": hora, "minuto": minuto},
-                metricas=self.metricas,
-            )
+            return self._gen_reloj(cfg, rng)
 
-        monedas = parametros.get("monedas", [1, 2, 5])
-        total_min = self._nivel_val(nivel, "total_min", parametros.get("total_min", 5))
-        total_max = self._nivel_val(nivel, "total_max", parametros.get("total_max", 12))
-        total = rng.randint(int(total_min), int(total_max))
+        denoms = self._resolver_denoms(cfg)
+        denoms_render = [{"valor_c": d, "etiqueta": _etiqueta_denom(d)} for d in denoms]
 
         if modo == "vuelta":
-            billete = min(b for b in parametros.get("billetes", [10, 20]) if b >= total) \
-                if any(b >= total for b in parametros.get("billetes", [10, 20])) else 20
-            return InstanciaEjercicio(
-                plantilla=self.tipo,
-                render={
-                    "instruccion": f"Pagas con {billete}€ algo que cuesta {total}€. ¿Cuánto te devuelven?",
-                    "modo": modo, "precio": total, "billete": billete, "monedas": monedas,
-                },
-                cantidad_objetivo={"precio": total, "billete": billete},
-                solucion={"vuelta": billete - total},
-                metricas=self.metricas,
-            )
+            return self._gen_vuelta(cfg, nivel, denoms, denoms_render, banda_id, rng)
+        if modo == "llega_para_pagar":
+            return self._gen_llega(cfg, nivel, denoms, denoms_render, banda_id, rng)
+        # "dinero" (reúne el importe) y "monedas_justas" comparten estructura.
+        return self._gen_dinero(cfg, nivel, denoms, denoms_render, modo, banda_id, rng)
 
-        # modo dinero: alcanzar un total con monedas
+    def _gen_reloj(self, cfg, rng):
+        hora = rng.randint(1, 12)
+        minuto = rng.choice(cfg.get("minutos", [0, 15, 30, 45]))
+        return InstanciaEjercicio(
+            plantilla=self.tipo,
+            render={"instruccion": "¿Qué hora marca?", "modo": "reloj", "hora": hora, "minuto": minuto},
+            cantidad_objetivo={"modo": "reloj", "hora": hora, "minuto": minuto},
+            solucion={"hora": hora, "minuto": minuto},
+            metricas=self.metricas,
+        )
+
+    def _gen_dinero(self, cfg, nivel, denoms, denoms_render, modo, banda_id, rng):
+        importe_c, _ = self._genera_importe_c(cfg, nivel, denoms, rng)
+        desglose = _desglose_greedy(importe_c, denoms)
+        if modo == "monedas_justas":
+            instruccion = f"Elige las monedas justas para pagar {_fmt_eur(importe_c)}"
+        else:
+            instruccion = f"Reúne {_fmt_eur(importe_c)} con las monedas y billetes"
         return InstanciaEjercicio(
             plantilla=self.tipo,
             render={
-                "instruccion": f"Junta {total}€ con las monedas",
-                "modo": modo, "total": total, "monedas": monedas,
+                "instruccion": instruccion,
+                "modo": modo,
+                "importe_c": importe_c,
+                "importe_texto": _fmt_eur(importe_c),
+                "denominaciones": denoms_render,
             },
-            cantidad_objetivo={"total": total, "monedas": monedas},
-            solucion={"total": total},
+            cantidad_objetivo={
+                "modo": modo, "banda": banda_id,
+                "importe_c": importe_c, "denominaciones_c": denoms,
+            },
+            solucion={"importe_c": importe_c, "desglose_c": desglose,
+                      "n_piezas": sum(int(v) for v in desglose.values())},
+            metricas=self.metricas,
+        )
+
+    def _gen_vuelta(self, cfg, nivel, denoms, denoms_render, banda_id, rng):
+        precio_c, _ = self._genera_importe_c(cfg, nivel, denoms, rng)
+        # Con qué se paga: `paga_con_c` explícito, o los billetes disponibles, o
+        # el juego estándar de billetes. Se elige el menor que cubra el precio.
+        pagos = cfg.get("paga_con_c") or [d for d in denoms if d >= 500] or BILLETES_C
+        pagos = sorted(int(p) for p in pagos)
+        cubren = [p for p in pagos if p >= precio_c]
+        pago_c = cubren[0] if cubren else pagos[-1]
+        # Si aún así no cubre (precio enorme), subimos al billete estándar mayor.
+        if pago_c < precio_c:
+            pago_c = next((b for b in BILLETES_C if b >= precio_c), precio_c)
+        vuelta_c = pago_c - precio_c
+        desglose = _desglose_greedy(vuelta_c, denoms)
+        return InstanciaEjercicio(
+            plantilla=self.tipo,
+            render={
+                "instruccion": f"Pagas {_fmt_eur(precio_c)} con {_fmt_eur(pago_c)}. "
+                               f"¿Cuánto te devuelven?",
+                "modo": "vuelta",
+                "precio_c": precio_c, "precio_texto": _fmt_eur(precio_c),
+                "pago_c": pago_c, "pago_texto": _fmt_eur(pago_c),
+                "denominaciones": denoms_render,
+            },
+            cantidad_objetivo={
+                "modo": "vuelta", "banda": banda_id,
+                "precio_c": precio_c, "pago_c": pago_c,
+            },
+            solucion={"vuelta_c": vuelta_c, "vuelta_texto": _fmt_eur(vuelta_c),
+                      "desglose_c": desglose},
+            metricas=self.metricas,
+        )
+
+    def _gen_llega(self, cfg, nivel, denoms, denoms_render, banda_id, rng):
+        precio_c, paso = self._genera_importe_c(cfg, nivel, denoms, rng)
+        # Cuánto lleva la persona en el monedero: entre la mitad y ~1,6x el precio,
+        # de modo que unas veces llega y otras no.
+        lo = max(paso, (precio_c // 2 // paso) * paso)
+        hi = max(lo, (int(precio_c * 1.6) // paso) * paso)
+        n = (hi - lo) // paso
+        disponible_c = lo + rng.randint(0, n) * paso
+        monedero = _desglose_greedy(disponible_c, denoms)
+        llega = disponible_c >= precio_c
+        return InstanciaEjercicio(
+            plantilla=self.tipo,
+            render={
+                "instruccion": f"Cuesta {_fmt_eur(precio_c)}. Con lo que llevas, "
+                               f"¿te llega para pagar?",
+                "modo": "llega_para_pagar",
+                "precio_c": precio_c, "precio_texto": _fmt_eur(precio_c),
+                "disponible_c": disponible_c, "disponible_texto": _fmt_eur(disponible_c),
+                "monedero": [
+                    {"valor_c": int(k), "etiqueta": _etiqueta_denom(int(k)), "cantidad": v}
+                    for k, v in sorted(((int(k), v) for k, v in monedero.items()), reverse=True)
+                ],
+                "denominaciones": denoms_render,
+            },
+            cantidad_objetivo={
+                "modo": "llega_para_pagar", "banda": banda_id,
+                "precio_c": precio_c, "disponible_c": disponible_c,
+            },
+            solucion={"llega": llega, "precio_c": precio_c, "disponible_c": disponible_c},
             metricas=self.metricas,
         )
