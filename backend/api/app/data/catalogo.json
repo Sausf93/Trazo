@@ -1175,6 +1175,7 @@
     "nombre": "Completa el refrán en voz alta",
     "descripcion": "Se dice el principio de un refrán muy conocido y la persona lo termina. Memoria semántica muy conservada.",
     "parametros_json": {
+      "modo": "completar",
       "pedir_min": 1,
       "pedir_max": 1,
       "prompts": [

@@ -76,6 +76,23 @@ class InstanciaOut(BaseModel):
 
 # ---- Sesiones ----
 
+class LineaConfig(BaseModel):
+    """Una categoría (bloque) y cuántas actividades de ella en la sesión."""
+    bloque: str
+    n: int = 1
+
+
+class ParticipanteConfigIn(BaseModel):
+    """Config que fija la maestra para un participante en ESTA sesión.
+
+    Si un participante trae config, su cola sale de aquí (nivel + líneas); si no,
+    de su plan permanente.
+    """
+    usuario_final_id: str
+    nivel: str | None = None  # bajo | medio | alto (aplica a toda su sesión)
+    lineas: list[LineaConfig] = Field(default_factory=list)
+
+
 class SesionIn(BaseModel):
     tipo: str = "individual"  # individual | grupo
     # Nombre/etiqueta de la sala (ej. "Grupo tarde"). Opcional; no es dato personal.
@@ -85,6 +102,22 @@ class SesionIn(BaseModel):
     # En modo grupo: ejercicio compartido por todos (cada uno a su nivel).
     ejercicio_compartido_id: str | None = None
     participantes: list[str] = Field(default_factory=list)  # ids usuarios_finales
+    # Config por participante para esta sesión (opcional). Los que no aparezcan
+    # usan su plan permanente.
+    configs: list[ParticipanteConfigIn] = Field(default_factory=list)
+
+
+class ParticipanteMasIn(BaseModel):
+    """Otra tanda para un participante que terminó (opcional, nueva config)."""
+    nivel: str | None = None
+    lineas: list[LineaConfig] = Field(default_factory=list)
+
+
+class ParticipanteEstadoOut(BaseModel):
+    """Estado que consulta la tablet del participante (polling)."""
+    iniciada: bool
+    ronda: int
+    terminado: bool
 
 
 class SesionOut(BaseModel):
@@ -282,6 +315,8 @@ class FichaViva(BaseModel):
     ultimo_intento_id: str | None = None  # para marcar "con ayuda" desde la maestra
     segundos_desde_ultimo_intento: float | None = None
     atascado: bool = False
+    terminado: bool = False  # terminó su tanda; la maestra puede "enviar más"
+    ronda: int = 1
 
 
 class LiveOut(BaseModel):

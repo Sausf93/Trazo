@@ -15,11 +15,14 @@ Enviar `Authorization: Bearer <token>` en el resto.
 | GET | `/ejercicios?bloque=&activo=` | Catálogo de ejercicios. |
 | POST | `/ejercicios` | Crear ejercicio (rol `admin_centro`). Body: `bloque`, `plantilla_tipo`, `nombre`, `parametros_json`. |
 | GET | `/ejercicios/{id}/instancia?usuario_final_id=&nivel=` | Genera una tirada concreta (cantidades cambiantes). `nivel` (bajo/medio/alto) fija la banda de CANTIDAD de imágenes/objetos: básico ~3 · intermedio ~6-8 · alto ~10-12 (lo pasa la tablet según el plan del paciente). |
-| POST | `/sesiones` | Crear/abrir sala. Body: `tipo` (individual/grupo), `nombre?` (etiqueta de la sala, ej. "Grupo tarde"), `modo?`, `ejercicio_compartido_id?` (modo grupo), `participantes` (lista de ids). |
-| GET | `/sesiones/activa?centro_id=` | Sesión abierta más reciente del centro + participantes (lo que consulta la tablet participante para descubrir la sala). Devuelve `nombre`, `iniciada`, `sesion_id=null` si no hay. |
+| POST | `/sesiones` | Crear/abrir sala. Body: `tipo`, `nombre?`, `modo?`, `ejercicio_compartido_id?`, `participantes` (ids), y `configs?` = config por participante para ESTA sesión: `[{usuario_final_id, nivel?, lineas:[{bloque, n}]}]`. Un participante con config saca su cola de ahí (nivel + categorías + nº); si no, de su plan. |
+| GET | `/sesiones/activa?centro_id=` | Sesión abierta más reciente del centro + participantes (la tablet participante la usa para descubrir la sala). Devuelve `nombre`, `iniciada`, `sesion_id=null` si no hay. |
 | PATCH | `/sesiones/{id}/iniciar` | La maestra pulsa "Iniciar actividad" (`iniciada=true`). |
 | PATCH | `/sesiones/{id}/cerrar` | Cerrar la sala (`cerrada=true`); las tablets vuelven a elegir rol. |
-| GET | `/sesiones/{id}/live` | Estado en vivo (polling 3-5s): fichas por participante, `atascado`. |
+| GET | `/sesiones/{id}/participantes/{uid}/estado` | La tablet del participante consulta (polling): `{iniciada, ronda, terminado}`. Si `ronda` sube, pide cola de nuevo. |
+| POST | `/sesiones/{id}/participantes/{uid}/terminado` | La tablet avisa de que el participante terminó su tanda. |
+| PATCH | `/sesiones/{id}/participantes/{uid}/mas` | La maestra manda OTRA tanda a quien terminó (sube `ronda`, reinicia `terminado`). Body opcional `{nivel?, lineas:[{bloque,n}]}`. |
+| GET | `/sesiones/{id}/live` | Estado en vivo (polling 3-5s): fichas por participante con `atascado`, `terminado`, `ronda`, `ultimo_intento_id`. |
 | POST | `/sesiones/{id}/intentos` | Registrar intento (idempotente por `id` UUID de cliente). |
 | PATCH | `/intentos/{id}/estado` | Cambiar estado (solo/con_ayuda/no_completado). |
 | GET | `/usuarios/{id}/evolucion?bloque=&desde=&hasta=` | Serie temporal + resumen. |

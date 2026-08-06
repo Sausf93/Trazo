@@ -21,8 +21,34 @@ from app.models import (
     EjercicioCatalogo,
     PlanPacienteLinea,
     Sesion,
+    SesionParticipante,
     UsuarioFinal,
 )
+
+
+async def _cola_desde_config(db: AsyncSession, config: dict) -> list["ItemColaData"]:
+    """Cola a partir de la config que fija la maestra para la sesión.
+
+    config = {"nivel": "medio", "lineas": [{"bloque": "razonamiento", "n": 4}, ...]}
+    Ese nivel aplica a todas las actividades de la sesión de esa persona.
+    """
+    nivel = config.get("nivel")
+    cola: list[ItemColaData] = []
+    for linea in config.get("lineas", []):
+        bloque = linea.get("bloque")
+        n = max(1, int(linea.get("n", 1)))
+        if not bloque:
+            continue
+        candidatos = await _ejercicios_de_bloque(db, bloque)
+        if not candidatos:
+            continue
+        for i in range(n):
+            ej = candidatos[i % len(candidatos)]
+            cola.append(ItemColaData(
+                ejercicio_id=ej.id, nombre=ej.nombre, bloque=ej.bloque,
+                plantilla=ej.plantilla_tipo, nivel=nivel, origen="sesion",
+            ))
+    return cola
 
 
 @dataclass
@@ -107,6 +133,19 @@ async def construir_cola(
                 origen="grupo",
             )
         ]
+
+    # --- Override de la maestra para esta sesión (config por participante) ---
+    if sesion is not None:
+        sp = (
+            await db.execute(
+                select(SesionParticipante).where(
+                    SesionParticipante.sesion_id == sesion.id,
+                    SesionParticipante.usuario_final_id == usuario_final_id,
+                )
+            )
+        ).scalars().first()
+        if sp is not None and sp.config_json:
+            return await _cola_desde_config(db, sp.config_json)
 
     # --- Modo individual: resolver el plan de la persona ---
     lineas = (

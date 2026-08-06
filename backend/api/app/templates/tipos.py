@@ -253,11 +253,17 @@ class PlantillaEvocacionLibre(PlantillaBase):
         rng = self._rng(rng)
         prompts = parametros.get("prompts") or [{"texto": "objetos de la cocina"}]
         prompt = rng.choice(prompts)
-        banda = self.banda_cantidad(nivel)
-        if banda:
-            n_pedidas = rng.randint(banda[0], banda[1])
+        # `modo`: "listar" (di N palabras/objetos) o "completar" (un refrán/frase).
+        # En "completar" solo se pide UNA respuesta (la banda de cantidad no aplica).
+        modo = parametros.get("modo", "listar")
+        if modo == "completar":
+            n_pedidas = 1
         else:
-            n_pedidas = _rango(nivel, parametros, "pedir_min", "pedir_max", 5, 10, rng)
+            banda = self.banda_cantidad(nivel)
+            if banda:
+                n_pedidas = rng.randint(banda[0], banda[1])
+            else:
+                n_pedidas = _rango(nivel, parametros, "pedir_min", "pedir_max", 5, 10, rng)
 
         return InstanciaEjercicio(
             plantilla=self.tipo,
@@ -265,9 +271,10 @@ class PlantillaEvocacionLibre(PlantillaBase):
                 "instruccion": parametros.get("instruccion", "Di o escribe:"),
                 "prompt": prompt,
                 "n_pedidas": n_pedidas,
+                "modo": modo,
                 "respuesta_abierta": True,
             },
-            cantidad_objetivo={"n_pedidas": n_pedidas, "prompt": prompt},
+            cantidad_objetivo={"n_pedidas": n_pedidas, "prompt": prompt, "modo": modo},
             solucion={"validacion": "manual_integradora"},
             metricas=self.metricas,
         )

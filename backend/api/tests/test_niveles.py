@@ -62,6 +62,16 @@ def test_evocacion_por_nivel():
     assert 10 <= n <= 12
 
 
+def test_evocacion_completar_pide_una_ignora_banda():
+    # Refranes: "completar" siempre pide 1, aunque el nivel sea alto (banda 10-12).
+    p = PlantillaEvocacionLibre()
+    params = {"modo": "completar", "prompts": [{"texto": "Perro ladrador..."}]}
+    for nivel in ["bajo", "medio", "alto"]:
+        inst = p.generar(params, nivel=nivel, rng=RNG())
+        assert inst.cantidad_objetivo["n_pedidas"] == 1
+        assert inst.render["modo"] == "completar"
+
+
 def test_nivel_dict_sigue_funcionando():
     # Un nivel en forma de dict (nivel_base_json) mantiene el comportamiento anterior.
     p = PlantillaMemoriaVisual()

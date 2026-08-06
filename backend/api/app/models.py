@@ -211,6 +211,13 @@ class SesionParticipante(Base):
     usuario_final_id: Mapped[str] = mapped_column(
         ForeignKey("usuarios_finales.id"), nullable=False
     )
+    # Config de ESTA sesión que fija la maestra por participante (nivel + líneas
+    # {bloque, n}). Si es None, se usa el plan permanente del paciente.
+    # Formato: {"nivel": "medio", "lineas": [{"bloque": "razonamiento", "n": 4}, ...]}
+    config_json: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    # Ronda actual (la maestra puede mandar "más" al terminar) y si terminó la ronda.
+    ronda: Mapped[int] = mapped_column(Integer, default=1, nullable=False)
+    terminado: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
 
     sesion: Mapped[Sesion] = relationship(back_populates="participantes")
 

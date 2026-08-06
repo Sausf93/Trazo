@@ -20,6 +20,8 @@ from app.models import (
 from app.schemas import (
     FichaViva,
     LiveOut,
+    ParticipanteEstadoOut,
+    ParticipanteMasIn,
     ParticipanteSesion,
     SesionActivaOut,
     SesionIn,
@@ -100,11 +102,107 @@ async def crear_sesion(
     )
     db.add(ses)
     await db.flush()
+    # Config por participante (la maestra fija nivel/categorías/nº para la sesión).
+    configs = {c.usuario_final_id: c for c in body.configs}
     for uf_id in body.participantes:
-        db.add(SesionParticipante(sesion_id=ses.id, usuario_final_id=uf_id))
+        cfg = configs.get(uf_id)
+        config_json = None
+        if cfg is not None and (cfg.lineas or cfg.nivel):
+            config_json = {
+                "nivel": cfg.nivel,
+                "lineas": [{"bloque": ln.bloque, "n": ln.n} for ln in cfg.lineas],
+            }
+        db.add(SesionParticipante(
+            sesion_id=ses.id, usuario_final_id=uf_id, config_json=config_json,
+        ))
     await db.commit()
     await db.refresh(ses)
     return ses
+
+
+async def _get_participante(
+    db: AsyncSession, sesion_id: str, usuario_id: str, staff: UsuarioStaff
+) -> SesionParticipante:
+    ses = await db.get(Sesion, sesion_id)
+    if ses is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
+    if ses.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    sp = (
+        await db.execute(
+            select(SesionParticipante).where(
+                SesionParticipante.sesion_id == sesion_id,
+                SesionParticipante.usuario_final_id == usuario_id,
+            )
+        )
+    ).scalars().first()
+    if sp is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Participante no está en la sesión")
+    return sp
+
+
+@router.get("/{sesion_id}/participantes/{usuario_id}/estado",
+            response_model=ParticipanteEstadoOut)
+async def estado_participante(
+    sesion_id: str,
+    usuario_id: str,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Lo consulta la tablet del participante (polling): si empezó, su ronda y si
+    ya terminó. Cuando la ronda sube (la maestra envió más), pide cola de nuevo."""
+    ses = await db.get(Sesion, sesion_id)
+    sp = await _get_participante(db, sesion_id, usuario_id, staff)
+    return ParticipanteEstadoOut(
+        iniciada=bool(ses and ses.iniciada), ronda=sp.ronda, terminado=sp.terminado
+    )
+
+
+@router.post("/{sesion_id}/participantes/{usuario_id}/terminado",
+             response_model=ParticipanteEstadoOut)
+async def marcar_terminado(
+    sesion_id: str,
+    usuario_id: str,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """La tablet del participante avisa de que terminó su tanda."""
+    sp = await _get_participante(db, sesion_id, usuario_id, staff)
+    sp.terminado = True
+    await db.commit()
+    ses = await db.get(Sesion, sesion_id)
+    return ParticipanteEstadoOut(
+        iniciada=bool(ses and ses.iniciada), ronda=sp.ronda, terminado=True
+    )
+
+
+@router.patch("/{sesion_id}/participantes/{usuario_id}/mas",
+              response_model=ParticipanteEstadoOut)
+async def enviar_mas(
+    sesion_id: str,
+    usuario_id: str,
+    body: ParticipanteMasIn | None = None,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """La maestra manda OTRA tanda a alguien que terminó (sin que espere a los demás).
+
+    Sube la ronda y reinicia `terminado`. Si viene config nueva, la aplica; si no,
+    repite la que tuviera (o su plan).
+    """
+    sp = await _get_participante(db, sesion_id, usuario_id, staff)
+    if body is not None and (body.lineas or body.nivel):
+        sp.config_json = {
+            "nivel": body.nivel,
+            "lineas": [{"bloque": ln.bloque, "n": ln.n} for ln in body.lineas],
+        }
+    sp.ronda += 1
+    sp.terminado = False
+    await db.commit()
+    ses = await db.get(Sesion, sesion_id)
+    return ParticipanteEstadoOut(
+        iniciada=bool(ses and ses.iniciada), ronda=sp.ronda, terminado=False
+    )
 
 
 @router.patch("/{sesion_id}/iniciar", response_model=SesionOut)
@@ -199,6 +297,8 @@ async def sesion_live(
             ultimo_intento_id=ultimo.id if ultimo is not None else None,
             segundos_desde_ultimo_intento=segundos,
             atascado=atascado,
+            terminado=p.terminado,
+            ronda=p.ronda,
         ))
 
     return LiveOut(sesion_id=sesion_id, tipo=ses.tipo, fichas=fichas)
