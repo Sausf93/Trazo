@@ -17,7 +17,7 @@ class SyncQueue {
   static Future<void> enviarOEncolar(Intento intento) async {
     bool ok = false;
     try {
-      ok = await ApiClient.instance.registrarIntento(intento);
+      ok = await ApiClient.instance.registrarIntento(intento) != null;
     } catch (_) {
       ok = false;
     }
@@ -54,7 +54,7 @@ class SyncQueue {
       );
       bool ok = false;
       try {
-        ok = await ApiClient.instance.registrarIntento(intento);
+        ok = await ApiClient.instance.registrarIntento(intento) != null;
       } catch (_) {
         ok = false;
       }

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../api/client.dart';
 import '../theme.dart';
-import 'setup_screen.dart';
+import '../widgets/trazo_logo.dart';
+import 'rol_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -26,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
       await ApiClient.instance.login(_email.text.trim(), _pass.text);
       if (!mounted) return;
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const SetupScreen()),
+        MaterialPageRoute(builder: (_) => const RolScreen()),
       );
     } catch (e) {
       setState(() => _error = e.toString());
@@ -47,6 +48,8 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                const Center(child: TrazoLogo(size: 88)),
+                const SizedBox(height: 14),
                 const Text('Trazo',
                     textAlign: TextAlign.center,
                     style: TextStyle(

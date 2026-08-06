@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'api/client.dart';
 import 'screens/login_screen.dart';
-import 'screens/setup_screen.dart';
+import 'screens/rol_screen.dart';
 import 'theme.dart';
 
 Future<void> main() async {
@@ -20,8 +20,10 @@ class TrazoApp extends StatelessWidget {
       title: 'Trazo',
       debugShowCheckedModeBanner: false,
       theme: buildTrazoTheme(),
+      // El login se pide UNA sola vez: si ya hay token, se va directo a
+      // elegir el rol de la tablet (maestra o participante).
       home: ApiClient.instance.autenticado
-          ? const SetupScreen()
+          ? const RolScreen()
           : const LoginScreen(),
     );
   }

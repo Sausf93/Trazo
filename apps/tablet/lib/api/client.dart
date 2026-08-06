@@ -14,6 +14,7 @@ class ApiClient {
   String? _token;
   String? centroId;
   String? rol;
+  String? nombre;
 
   Uri _u(String path, [Map<String, dynamic>? query]) {
     final base = Uri.parse(Config.apiUrl);
@@ -22,8 +23,7 @@ class ApiClient {
       host: base.host,
       port: base.hasPort ? base.port : null,
       path: path,
-      queryParameters:
-          query?.map((k, v) => MapEntry(k, v?.toString())),
+      queryParameters: query?.map((k, v) => MapEntry(k, v?.toString())),
     );
   }
 
@@ -37,6 +37,7 @@ class ApiClient {
     _token = prefs.getString('token');
     centroId = prefs.getString('centro_id');
     rol = prefs.getString('rol');
+    nombre = prefs.getString('nombre');
   }
 
   bool get autenticado => _token != null;
@@ -55,27 +56,36 @@ class ApiClient {
     _token = data['access_token'] as String;
     centroId = data['centro_id'] as String?;
     rol = data['rol'] as String?;
+    nombre = data['nombre'] as String?;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('token', _token!);
     if (centroId != null) await prefs.setString('centro_id', centroId!);
     if (rol != null) await prefs.setString('rol', rol!);
+    if (nombre != null) await prefs.setString('nombre', nombre!);
   }
 
   Future<void> logout() async {
     _token = null;
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('token');
+    await prefs.remove('centro_id');
+    await prefs.remove('rol');
+    await prefs.remove('nombre');
   }
 
+  // --- Participantes del centro -------------------------------------------
+
   Future<List<UsuarioFinal>> usuariosDelCentro() async {
-    final resp = await http.get(_u('/centros/$centroId/usuarios'),
-        headers: _headers);
+    final resp =
+        await http.get(_u('/centros/$centroId/usuarios'), headers: _headers);
     _check(resp);
     final list = jsonDecode(resp.body) as List;
     return list
         .map((e) => UsuarioFinal.fromJson(e as Map<String, dynamic>))
         .toList();
   }
+
+  // --- Ejercicios ----------------------------------------------------------
 
   Future<List<Ejercicio>> ejercicios({String? bloque}) async {
     final resp = await http.get(
@@ -99,26 +109,107 @@ class ApiClient {
     return Instancia.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
   }
 
-  /// Crea una sesión y devuelve su id.
-  Future<String> crearSesion(
-      {String tipo = 'individual', List<String> participantes = const []}) async {
+  // --- Sesiones ------------------------------------------------------------
+
+  /// Crea una sesión (sala) y devuelve su id.
+  Future<String> crearSesion({
+    required String tipo, // "grupo" | "individual"
+    required String nombre,
+    String? modo,
+    String? ejercicioCompartidoId,
+    List<String> participantes = const [],
+  }) async {
     final resp = await http.post(
       _u('/sesiones'),
       headers: _headers,
-      body: jsonEncode({'tipo': tipo, 'participantes': participantes}),
+      body: jsonEncode({
+        'tipo': tipo,
+        'nombre': nombre,
+        if (modo != null) 'modo': modo,
+        if (ejercicioCompartidoId != null)
+          'ejercicio_compartido_id': ejercicioCompartidoId,
+        'participantes': participantes,
+      }),
     );
     _check(resp);
     return (jsonDecode(resp.body) as Map<String, dynamic>)['id'] as String;
   }
 
-  /// Registra un intento. Devuelve true si el backend lo aceptó.
-  Future<bool> registrarIntento(Intento intento) async {
+  /// Estado de la sesión activa del centro (para el kiosco del participante).
+  Future<SesionActiva> sesionActiva() async {
+    final resp = await http.get(
+        _u('/sesiones/activa', {'centro_id': centroId}),
+        headers: _headers);
+    _check(resp);
+    return SesionActiva.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
+  }
+
+  Future<void> iniciarSesion(String sesionId) async {
+    final resp =
+        await http.patch(_u('/sesiones/$sesionId/iniciar'), headers: _headers);
+    _check(resp);
+  }
+
+  Future<void> cerrarSesion(String sesionId) async {
+    final resp =
+        await http.patch(_u('/sesiones/$sesionId/cerrar'), headers: _headers);
+    _check(resp);
+  }
+
+  /// Monitor en vivo de la sesión.
+  Future<List<FichaLive>> sesionLive(String sesionId) async {
+    final resp =
+        await http.get(_u('/sesiones/$sesionId/live'), headers: _headers);
+    _check(resp);
+    final data = jsonDecode(resp.body) as Map<String, dynamic>;
+    final fichas = (data['fichas'] ?? []) as List;
+    return fichas
+        .map((e) => FichaLive.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  // --- Cola del participante ----------------------------------------------
+
+  Future<List<ColaItem>> colaUsuario(String usuarioId, String sesionId) async {
+    final resp = await http.get(
+        _u('/usuarios/$usuarioId/cola', {'sesion_id': sesionId}),
+        headers: _headers);
+    _check(resp);
+    final data = jsonDecode(resp.body) as Map<String, dynamic>;
+    final items = (data['items'] ?? []) as List;
+    return items
+        .map((e) => ColaItem.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  // --- Intentos ------------------------------------------------------------
+
+  /// Registra un intento. Devuelve el id del intento creado (o null si falló).
+  Future<String?> registrarIntento(Intento intento) async {
     final resp = await http.post(
       _u('/sesiones/${intento.sesionId}/intentos'),
       headers: _headers,
       body: jsonEncode(intento.toJson()),
     );
-    return resp.statusCode == 200 || resp.statusCode == 201;
+    if (resp.statusCode == 200 || resp.statusCode == 201) {
+      try {
+        final data = jsonDecode(resp.body) as Map<String, dynamic>;
+        return (data['id'] ?? intento.id) as String;
+      } catch (_) {
+        return intento.id;
+      }
+    }
+    return null;
+  }
+
+  /// Marca un intento como "con_ayuda" (control exclusivo de la maestra).
+  Future<void> marcarEstadoIntento(String intentoId, String estado) async {
+    final resp = await http.patch(
+      _u('/intentos/$intentoId/estado'),
+      headers: _headers,
+      body: jsonEncode({'estado': estado}),
+    );
+    _check(resp);
   }
 
   void _check(http.Response resp) {

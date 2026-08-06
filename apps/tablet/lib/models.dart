@@ -66,6 +66,110 @@ class Instancia {
       );
 }
 
+/// Un participante dentro de una sesión (lo que devuelve /sesiones/activa).
+class ParticipanteSesion {
+  final String usuarioFinalId;
+  final String aliasInterno;
+
+  ParticipanteSesion({required this.usuarioFinalId, required this.aliasInterno});
+
+  factory ParticipanteSesion.fromJson(Map<String, dynamic> j) =>
+      ParticipanteSesion(
+        usuarioFinalId: j['usuario_final_id'] as String,
+        aliasInterno: (j['alias_interno'] ?? '') as String,
+      );
+}
+
+/// Estado de una sesión activa en el centro (kiosco del participante).
+class SesionActiva {
+  final String? sesionId;
+  final String nombre;
+  final bool iniciada;
+  final String modo;
+  final List<ParticipanteSesion> participantes;
+
+  SesionActiva({
+    required this.sesionId,
+    required this.nombre,
+    required this.iniciada,
+    required this.modo,
+    required this.participantes,
+  });
+
+  bool get haySesion => sesionId != null;
+
+  factory SesionActiva.fromJson(Map<String, dynamic> j) => SesionActiva(
+        sesionId: j['sesion_id'] as String?,
+        nombre: (j['nombre'] ?? '') as String,
+        iniciada: (j['iniciada'] ?? false) as bool,
+        modo: (j['modo'] ?? 'individual') as String,
+        participantes: ((j['participantes'] ?? []) as List)
+            .map((e) =>
+                ParticipanteSesion.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
+}
+
+/// Ficha de un participante en el monitor en vivo de la maestra.
+class FichaLive {
+  final String usuarioFinalId;
+  final String aliasInterno;
+  final String? ejercicioActual;
+  final String? ultimoEstado;
+  final String? ultimoIntentoId;
+  final int? segundosDesdeUltimoIntento;
+  final bool atascado;
+
+  FichaLive({
+    required this.usuarioFinalId,
+    required this.aliasInterno,
+    required this.ejercicioActual,
+    required this.ultimoEstado,
+    required this.ultimoIntentoId,
+    required this.segundosDesdeUltimoIntento,
+    required this.atascado,
+  });
+
+  factory FichaLive.fromJson(Map<String, dynamic> j) => FichaLive(
+        usuarioFinalId: j['usuario_final_id'] as String,
+        aliasInterno: (j['alias_interno'] ?? '') as String,
+        ejercicioActual: j['ejercicio_actual'] as String?,
+        ultimoEstado: j['ultimo_estado'] as String?,
+        ultimoIntentoId: j['ultimo_intento_id'] as String?,
+        segundosDesdeUltimoIntento:
+            (j['segundos_desde_ultimo_intento'] as num?)?.toInt(),
+        atascado: (j['atascado'] ?? false) as bool,
+      );
+}
+
+/// Un elemento de la cola del participante (desde su plan / ejercicio compartido).
+class ColaItem {
+  final String ejercicioId;
+  final String nombre;
+  final String bloque;
+  final String plantilla;
+  final int? nivel;
+  final String? origen;
+
+  ColaItem({
+    required this.ejercicioId,
+    required this.nombre,
+    required this.bloque,
+    required this.plantilla,
+    required this.nivel,
+    required this.origen,
+  });
+
+  factory ColaItem.fromJson(Map<String, dynamic> j) => ColaItem(
+        ejercicioId: j['ejercicio_id'] as String,
+        nombre: (j['nombre'] ?? '') as String,
+        bloque: (j['bloque'] ?? '') as String,
+        plantilla: (j['plantilla'] ?? '') as String,
+        nivel: (j['nivel'] as num?)?.toInt(),
+        origen: j['origen'] as String?,
+      );
+}
+
 /// Un intento a registrar. El `id` se genera en cliente (sync idempotente).
 class Intento {
   final String id;
