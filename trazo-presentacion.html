@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trazo — Grafomotricidad para mayores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF6EF;
+    --card:#F2ECDF;
+    --ink:#2B3A32;
+    --sage:#7C9885;
+    --sage-dark:#5C7A66;
+    --coral:#E8A87C;
+    --coral-dark:#C97B4A;
+    --sand:#C9BFA4;
+    --white:#FFFEFB;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1100px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:72px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--sage-dark);
+    margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:20px; height:1px; background:var(--sage-dark);
+    display:inline-block;
+  }
+  h1.title{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(48px, 9vw, 92px);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .subtitle{
+    font-size:19px;
+    max-width:560px;
+    margin-top:22px;
+    color:#4A5A50;
+  }
+  .trace-box{
+    margin-top:44px;
+    background:var(--white);
+    border:1px solid var(--sand);
+    border-radius:18px;
+    padding:28px 30px;
+  }
+  .trace-svg-wrap{width:100%; max-width:640px;}
+  .trace-caption{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--sage-dark);
+    margin-top:14px;
+    letter-spacing:0.02em;
+  }
+  path#tracePath{
+    fill:none;
+    stroke:var(--coral-dark);
+    stroke-width:3.5;
+    stroke-linecap:round;
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+    animation:draw 3.6s ease-out forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:64px 0;}
+  .section-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--sage-dark);
+    margin-bottom:10px;
+  }
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(28px, 4vw, 40px);
+    max-width:620px;
+    margin-bottom:14px;
+  }
+  .lede{max-width:600px; color:#4A5A50; font-size:16.5px; margin-bottom:40px;}
+
+  /* ---------- PILARES ---------- */
+  .pilares{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
+  .pilar{
+    background:var(--card);
+    border-radius:16px;
+    padding:26px 24px;
+    border:1px solid rgba(201,191,164,0.5);
+  }
+  .pilar .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--sage-dark);
+    margin-bottom:14px;
+  }
+  .pilar h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:21px;
+    margin-bottom:8px;
+  }
+  .pilar p{font-size:14.5px; color:#4A5A50;}
+
+  /* ---------- MOCKUPS ---------- */
+  .mockups{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:28px;
+    align-items:start;
+  }
+  .tablet-frame{
+    background:#1F2B24;
+    border-radius:22px;
+    padding:14px;
+    box-shadow:0 20px 40px -18px rgba(43,58,50,0.45);
+  }
+  .tablet-screen{
+    background:var(--white);
+    border-radius:12px;
+    padding:22px 20px 26px;
+    min-height:400px;
+    display:flex; flex-direction:column;
+  }
+  .app-top{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:20px;
+  }
+  .app-top .name{
+    font-family:'Fraunces', serif; font-size:20px; color:var(--sage-dark);
+  }
+  .app-top .avatar{
+    width:34px; height:34px; border-radius:50%; background:var(--coral);
+  }
+  .exercise-title{
+    font-size:15px; color:#4A5A50; margin-bottom:16px;
+  }
+  .canvas-box{
+    flex:1;
+    background:#FCFAF4;
+    border:2px dashed var(--sand);
+    border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    padding:20px;
+  }
+  .canvas-box svg{width:100%; height:auto; max-height:180px;}
+  .guide-path{fill:none; stroke:#DCD3BE; stroke-width:10; stroke-linecap:round;}
+  .user-path{fill:none; stroke:var(--coral-dark); stroke-width:5; stroke-linecap:round; stroke-linejoin:round;}
+  .app-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:18px;
+  }
+  .btn-big{
+    background:var(--sage);
+    color:white;
+    border:none;
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    padding:12px 22px;
+    border-radius:12px;
+  }
+  .progress-dots{display:flex; gap:6px;}
+  .dot{width:8px; height:8px; border-radius:50%; background:var(--sand);}
+  .dot.active{background:var(--sage);}
+
+  .dashboard-frame{
+    background:var(--white);
+    border:1px solid var(--sand);
+    border-radius:16px;
+    padding:24px;
+  }
+  .dash-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:6px;
+  }
+  .dash-head .user-name{font-family:'Fraunces', serif; font-size:19px;}
+  .dash-head .period{font-family:'JetBrains Mono', monospace; font-size:11px; color:#8A8270;}
+  .dash-sub{font-size:13px; color:#8A8270; margin-bottom:20px;}
+
+  .chart-box{margin-bottom:22px;}
+  .chart-label{font-size:12.5px; color:#4A5A50; margin-bottom:8px; font-weight:600;}
+  svg.chart{width:100%; height:120px; display:block;}
+  .line-normal{fill:none; stroke:var(--sage); stroke-width:2.5;}
+  .line-alert{fill:none; stroke:var(--coral-dark); stroke-width:2.5;}
+  .chart-dot{fill:var(--sage);}
+  .chart-dot.alert{fill:var(--coral-dark);}
+  .baseline{stroke:var(--sand); stroke-width:1; stroke-dasharray:3,3;}
+
+  .alert-card{
+    background:#FBEFE4;
+    border:1px solid var(--coral);
+    border-radius:12px;
+    padding:16px 18px;
+    display:flex; gap:12px; align-items:flex-start;
+  }
+  .alert-dot-icon{
+    width:9px; height:9px; border-radius:50%; background:var(--coral-dark);
+    margin-top:6px; flex-shrink:0;
+  }
+  .alert-card .alert-title{font-weight:600; font-size:14px; margin-bottom:3px;}
+  .alert-card .alert-body{font-size:13px; color:#6B5A48;}
+
+  /* ---------- ROADMAP ---------- */
+  .roadmap{border-top:1px solid var(--sand);}
+  .fase{
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:24px;
+    padding:26px 0;
+    border-bottom:1px solid rgba(201,191,164,0.4);
+  }
+  .fase:last-child{border-bottom:none;}
+  .fase .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--sage-dark);
+    padding-top:4px;
+  }
+  .fase h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:19px;
+    margin-bottom:6px;
+  }
+  .fase p{font-size:14.5px; color:#4A5A50; max-width:600px;}
+
+  /* ---------- LEGAL NOTE ---------- */
+  .legal{
+    background:var(--ink);
+    color:var(--ivory);
+    border-radius:18px;
+    padding:32px 30px;
+  }
+  .legal .section-label{color:var(--sand);}
+  .legal h2{color:var(--ivory);}
+  .legal p{color:#D8D2C2; font-size:15px; max-width:640px;}
+
+  footer{
+    padding:50px 0 70px;
+    text-align:center;
+  }
+  footer p{color:#8A8270; font-size:13.5px; font-family:'JetBrains Mono', monospace;}
+
+  /* ---------- BLOQUES DE EJERCICIOS ---------- */
+  .bloques{display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:20px;}
+  .bloque{
+    background:var(--white);
+    border:1px solid var(--sand);
+    border-radius:16px;
+    padding:24px 22px;
+  }
+  .bloque .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--sage-dark);
+    margin-bottom:12px;
+  }
+  .bloque h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:20px;
+    margin-bottom:4px;
+  }
+  .bloque .bloque-desc{
+    font-size:13px;
+    color:#8A8270;
+    margin-bottom:16px;
+  }
+  .chip-list{display:flex; flex-direction:column; gap:8px; margin-bottom:14px;}
+  .chip{
+    background:var(--card);
+    border-radius:9px;
+    padding:10px 12px;
+    font-size:13.5px;
+    color:var(--ink);
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+  }
+  .chip::before{ margin-top:6px; }
+  .chip::before{
+    content:"";
+    width:5px; height:5px;
+    border-radius:50%;
+    background:var(--sage);
+    flex-shrink:0;
+  }
+  .chip-empty{
+    border:1.5px dashed var(--sand);
+    border-radius:9px;
+    padding:9px 12px;
+    font-size:13px;
+    color:#A79E88;
+    font-style:italic;
+  }
+  .bloque-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:#A79E88;
+    letter-spacing:0.03em;
+  }
+
+  @media (max-width: 760px){
+    .pilares{grid-template-columns:1fr;}
+    .bloques{grid-template-columns:1fr;}
+    .mockups{grid-template-columns:1fr;}
+    .fase{grid-template-columns:1fr; gap:6px;}
+  }
+
+  /* ---------- CHIPS ESPECIALES ---------- */
+  .chip-flag{
+    background:#FBEFE4;
+    border:1px solid var(--coral);
+  }
+  .chip-flag::before{background:var(--coral-dark);}
+  .chip-desc{
+    font-size:12px;
+    color:#6B6552;
+    margin-top:2px;
+    line-height:1.35;
+  }
+
+  /* ---------- PRINCIPIO ---------- */
+  .principio{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:20px;
+  }
+  .principio-card{
+    background:var(--card);
+    border-radius:16px;
+    padding:24px 22px;
+  }
+  .principio-card h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:18px;
+    margin-bottom:8px;
+  }
+  .principio-card p{font-size:14px; color:#4A5A50;}
+  /* ---------- PANEL EN VIVO ---------- */
+  .live-grid{    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+    gap:16px;
+  }
+  .live-tile{
+    background:var(--white);
+    border:1px solid var(--sand);
+    border-radius:14px;
+    padding:16px;
+  }
+  .live-tile .live-name{
+    font-family:'Fraunces', serif;
+    font-size:17px;
+    margin-bottom:4px;
+  }
+  .live-tile .live-exercise{
+    font-size:12.5px;
+    color:#8A8270;
+    margin-bottom:14px;
+  }
+  .live-btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    background:var(--card);
+    border:1.5px solid var(--sand);
+    border-radius:10px;
+    padding:10px;
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:13.5px;
+    color:var(--ink);
+  }
+  .live-btn.active{
+    background:#FBEFE4;
+    border-color:var(--coral);
+    color:var(--coral-dark);
+  }
+  .live-tile.stuck{
+    border-color:var(--coral);
+    border-width:2px;
+  }
+  .live-flag{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--coral-dark);
+    margin-bottom:10px;
+  }
+  @media (max-width:760px){ .principio{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Concepto de app · para validar</div>
+    <h1 class="title">Trazo</h1>
+    <p class="subtitle">Grafomotricidad diaria para mayores en centros de día, con un panel que muestra cómo evoluciona cada persona — y avisa cuando algo cambia.</p>
+
+    <div class="trace-box">
+      <div class="trace-svg-wrap">
+        <svg viewBox="0 0 640 140" xmlns="http://www.w3.org/2000/svg">
+          <path id="tracePath" d="M20,90 C60,40 90,130 130,80 C160,45 175,95 200,70 Q230,50 260,68 C290,85 300,60 330,65 C370,72 380,60 410,62 C450,64 470,60 500,61 C540,62 570,61 610,61" />
+        </svg>
+      </div>
+      <div class="trace-caption">// el trazo empieza inestable y se vuelve firme — así medimos progreso, sesión a sesión</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Qué hemos planteado</div>
+    <h2>Tres piezas, un mismo objetivo</h2>
+    <p class="lede">Que quien use la app cada día lo note fácil y agradable, y que quien cuida pueda ver — y anticipar — cómo está evolucionando cada persona.</p>
+    <div class="pilares">
+      <div class="pilar">
+        <div class="num">01</div>
+        <h3>App en tablet</h3>
+        <p>Ejercicios de trazado, copiar formas y letras, laberintos. Botones grandes, sin frustración, feedback inmediato. Funciona sin conexión.</p>
+      </div>
+      <div class="pilar">
+        <div class="num">02</div>
+        <h3>Panel para el centro</h3>
+        <p>Gráficas simples de evolución por persona: precisión, tiempo, constancia. Pensado para cuidadores, no para técnicos.</p>
+      </div>
+      <div class="pilar">
+        <div class="num">03</div>
+        <h3>Detección temprana</h3>
+        <p>Si alguien lleva semanas estable y de repente empeora fuera de lo normal, el sistema lo marca para que un profesional lo revise.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Explicado de principio a fin</div>
+    <h2>Cómo funciona todo, en cuatro pasos</h2>
+    <p class="lede">Para que se entienda de un vistazo, sin tener que leer todo el documento en orden: así es el recorrido completo de un dato, desde que alguien toca la pantalla hasta que salta una alerta.</p>
+    <div class="fase">
+      <div class="tag">PASO 1</div>
+      <div>
+        <h4>La persona hace un ejercicio</h4>
+        <p>Elige un ejercicio de uno de los 8 bloques (grafomotricidad, memoria, lenguaje...). Las cantidades y detalles cambian cada vez que lo hace, para que no se pueda memorizar la respuesta y para que la dificultad se ajuste a su nivel del día.</p>
+      </div>
+    </div>
+    <div class="fase">
+      <div class="tag">PASO 2</div>
+      <div>
+        <h4>Cada intento se guarda con su estado</h4>
+        <p>No solo si acertó o falló: también si lo hizo solo, con ayuda de la integradora, o si no llegó a completarlo. Todo queda en el historial de esa persona, con la fecha y el ejercicio concreto.</p>
+      </div>
+    </div>
+    <div class="fase">
+      <div class="tag">PASO 3</div>
+      <div>
+        <h4>El panel junta todos los intentos</h4>
+        <p>Convierte ese historial en gráficas simples por persona (y también por grupo, si hizo la sesión acompañado). Se ve la evolución en el tiempo, no solo el resultado de hoy.</p>
+      </div>
+    </div>
+    <div class="fase">
+      <div class="tag">PASO 4</div>
+      <div>
+        <h4>El sistema avisa si algo se sale de lo normal</h4>
+        <p>Compara cada nuevo resultado con el histórico propio de esa persona (no con el de otros). Si hay un cambio que no encaja con su patrón habitual — más fallos, más ayuda necesaria, o ambas cosas — lo marca para que un profesional lo revise. El objetivo no es que mejoren siempre, es que no empeoren sin que nadie se dé cuenta a tiempo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">En construcción · vivo</div>
+    <h2>Bloques de ejercicios</h2>
+    <p class="lede">Reorganizados según los dominios cognitivos que usan las herramientas clínicas de estimulación cognitiva. Se va ampliando según lo que ella vea que funciona en el día a día.</p>
+    <div class="bloques">
+
+      <div class="bloque">
+        <div class="num">ATENCIÓN Y MEMORIA</div>
+        <h3>Retener y localizar</h3>
+        <div class="bloque-desc">Memoria a corto plazo, atención sostenida</div>
+        <div class="chip-list">
+          <div class="chip"><div>
+            Memoria de figuras
+            <div class="chip-desc">Vuestro ejemplo. Mirar unas figuras 1 minuto, desaparecen, y seleccionarlas entre varias opciones. Cantidad cambiante: el número de figuras a recordar varía (2 a 5) según el nivel de cada usuario.</div>
+          </div></div>
+          <div class="chip"><div>
+            Busca la diferencia
+            <div class="chip-desc">Dos imágenes casi iguales, encontrar 2-3 diferencias — atención visual sostenida, muy usado ya en cuadernillos en papel.</div>
+          </div></div>
+          <div class="chip"><div>
+            Toca cuando aparezca
+            <div class="chip-desc">Un objeto concreto se mezcla entre otros que van apareciendo uno a uno — tocarlo solo cuando salga él. Atención sostenida y control de impulso.</div>
+          </div></div>
+          <div class="chip"><div>
+            La lista corta
+            <div class="chip-desc">Se leen 3-4 palabras en voz alta, tras una pequeña pausa hay que decir cuáles eran entre varias opciones en pantalla.</div>
+          </div></div>
+        </div>
+        <div class="bloque-tag">// pendiente: más ejemplos suyos</div>
+      </div>
+
+      <div class="bloque">
+        <div class="num">LENGUAJE</div>
+        <h3>Palabras y evocación</h3>
+        <div class="bloque-desc">Fluidez verbal, vocabulario</div>
+        <div class="chip-list">
+          <div class="chip"><div>
+            Objetos por categoría
+            <div class="chip-desc">Vuestro ejemplo. Escribir/decir objetos que haya en la cocina. Cantidad cambiante: se pide un número distinto cada vez (5, 8 o 10 objetos) según el nivel de cada usuario.</div>
+          </div></div>
+          <div class="chip"><div>
+            Palabras por sílaba
+            <div class="chip-desc">Vuestro ejemplo. Palabras que empiecen por una sílaba concreta ("PA-", "CA-"...). Cantidad cambiante: la sílaba pedida y el número de palabras a decir varían cada vez.</div>
+          </div></div>
+          <div class="chip"><div>
+            Completar refranes
+            <div class="chip-desc">"Más vale pájaro en mano que..." — la memoria de refranes populares está muy conservada en mayores incluso con deterioro avanzado.</div>
+          </div></div>
+          <div class="chip"><div>
+            Palabra e imagen
+            <div class="chip-desc">Se lee una palabra en voz alta, elegir entre 3-4 imágenes cuál corresponde.</div>
+          </div></div>
+          <div class="chip"><div>
+            ¿Cómo se llama esto?
+            <div class="chip-desc">Se muestra la imagen de un objeto cotidiano y hay que decir/escribir su nombre — denominación simple, muy usada en evaluación real de lenguaje.</div>
+          </div></div>
+        </div>
+        <div class="bloque-tag">// pendiente: más ejemplos suyos</div>
+      </div>
+
+      <div class="bloque">
+        <div class="num">RAZONAMIENTO</div>
+        <h3>Categorizar y relacionar</h3>
+        <div class="bloque-desc">Un solo paso de lógica, sin planificación encadenada</div>
+        <div class="chip-list">
+          <div class="chip"><div>Relación lógica — qué ropa según la estación</div></div>
+          <div class="chip"><div>
+            El intruso
+            <div class="chip-desc">4-5 objetos en pantalla, uno no pertenece al grupo (tres frutas y un zapato).</div>
+          </div></div>
+          <div class="chip"><div>
+            Seguir la serie
+            <div class="chip-desc">Una secuencia simple (rojo-azul-rojo-azul-¿?) y elegir qué sigue.</div>
+          </div></div>
+          <div class="chip"><div>
+            Van juntos
+            <div class="chip-desc">Emparejar por función o uso — llave con puerta, paraguas con lluvia, cepillo con dientes.</div>
+          </div></div>
+          <div class="chip"><div>
+            ¿Cuál tiene más?
+            <div class="chip-desc">Dos grupos de objetos en pantalla, señalar cuál tiene más cantidad — comparación simple, un solo vistazo. Cantidad cambiante: el número de objetos de cada grupo varía cada vez.</div>
+          </div></div>
+          <div class="chip"><div>
+            Cuenta y suma sin decir "suma"
+            <div class="chip-desc">De Laura. "Cuenta los patos amarillos, luego los verdes, y di cuántos hay en total." Es una suma, pero al presentarla como conteo de objetos en vez de como operación matemática, muchos que se bloquean ante un "cuánto es X + Y" sí lo resuelven sin problema. Cantidad cambiante: los grupos y sus tamaños varían cada vez.</div>
+          </div></div>
+          <div class="chip chip-flag"><div>
+            Barco: lobo, cabra y col
+            <div class="chip-desc">Vuestro ejemplo — descartado. Confirmado entre los dos: exige planificar varios pasos y sostenerlos en la cabeza, demasiado difícil para el grueso de usuarios.</div>
+          </div></div>
+          <div class="chip chip-flag"><div>
+            Garrafas de 5L y 2L → 8L
+            <div class="chip-desc">Vuestro ejemplo — descartado por el mismo motivo.</div>
+          </div></div>
+        </div>
+        <div class="bloque-tag">// pendiente: más ejemplos suyos</div>
+      </div>
+
+      <div class="bloque">
+        <div class="num">GNOSIAS</div>
+        <h3>Reconocer</h3>
+        <div class="bloque-desc">Identificar por vía visual, aunque falte información completa</div>
+        <div class="chip-list">
+          <div class="chip"><div>
+            Patrón o textura
+            <div class="chip-desc">Vuestro ejemplo. A qué objeto pertenece un patrón o una textura mostrados de cerca.</div>
+          </div></div>
+          <div class="chip"><div>
+            Adivina por la sombra
+            <div class="chip-desc">Solo se ve la silueta de un objeto cotidiano, hay que decir qué es.</div>
+          </div></div>
+          <div class="chip"><div>
+            Reconocer la emoción
+            <div class="chip-desc">Una cara con una expresión (alegría, tristeza, sorpresa) — gnosia facial, y trabaja también cognición social.</div>
+          </div></div>
+          <div class="chip"><div>
+            ¿Qué sonido es?
+            <div class="chip-desc">Se escucha un sonido cotidiano (timbre, agua corriendo, un perro) y hay que elegir la imagen que corresponde — gnosia auditiva, cambia de canal sensorial y descansa la vista.</div>
+          </div></div>
+          <div class="chip"><div>
+            Solo un trozo
+            <div class="chip-desc">Se ve solo una parte de un objeto conocido (el asa de una taza, las patas de una silla) y hay que reconocer el objeto completo.</div>
+          </div></div>
+        </div>
+        <div class="bloque-tag">// pendiente: más ejemplos suyos</div>
+      </div>
+
+      <div class="bloque">
+        <div class="num">PRAXIAS</div>
+        <h3>Manos y control motor</h3>
+        <div class="bloque-desc">Ejecutar o construir algo con precisión — no solo mirar y elegir</div>
+        <div class="chip-list">
+          <div class="chip"><div>Grafomotricidad — seguir trazos y formas</div></div>
+          <div class="chip"><div>
+            Copiar figuras simples
+            <div class="chip-desc">Reproducir un círculo, una cruz o un cuadrado que se ve al lado.</div>
+          </div></div>
+          <div class="chip"><div>
+            Unir puntos numerados
+            <div class="chip-desc">Del 1 al 10 en orden, para formar un dibujo sencillo. Cantidad cambiante: el número de puntos varía (5 a 15) según el nivel de cada usuario.</div>
+          </div></div>
+          <div class="chip"><div>
+            Copiar el patrón (visoconstructiva)
+            <div class="chip-desc">De Laura. Un conjunto de patrones a la izquierda, hay que reproducirlos igual a la derecha o debajo.</div>
+          </div></div>
+          <div class="chip"><div>
+            Completar el dibujo
+            <div class="chip-desc">De Laura. Se ve la mitad de un dibujo y hay que dibujar la otra mitad — simetría + construcción.</div>
+          </div></div>
+          <div class="chip"><div>
+            Encaja la pieza
+            <div class="chip-desc">Arrastrar una pieza (redonda, cuadrada, triangular) hasta el hueco de su misma forma — coordinación visomotora.</div>
+          </div></div>
+        </div>
+        <div class="bloque-tag">// nota técnica: praxias gestuales (imitar una postura de manos) necesitarían cámara, no solo tablet — pendiente de ver si compensa</div>
+      </div>
+
+      <div class="bloque">
+        <div class="num">PERCEPCIÓN</div>
+        <h3>Separar lo que se solapa</h3>
+        <div class="bloque-desc">Mirar y distinguir, sin construir nada con la mano</div>
+        <div class="chip-list">
+          <div class="chip"><div>
+            Imágenes superpuestas
+            <div class="chip-desc">Vuestro ejemplo. Tres imágenes solapadas, identificar cada una por separado.</div>
+          </div></div>
+          <div class="chip"><div>
+            Figura escondida
+            <div class="chip-desc">Una forma camuflada entre líneas o entre otros objetos parecidos, hay que encontrarla.</div>
+          </div></div>
+          <div class="chip"><div>
+            El rasgo que falta
+            <div class="chip-desc">De Laura. Una cara a la que le falta un rasgo (un ojo, la nariz...) y hay que elegir cuál encaja entre varias opciones.</div>
+          </div></div>
+          <div class="chip"><div>
+            Cuál es igual
+            <div class="chip-desc">De Laura. Se ve un ojo (o cualquier detalle) ya puesto en la cara, y hay que encontrar entre varias opciones cuál es idéntico.</div>
+          </div></div>
+          <div class="chip"><div>
+            Cuenta cuántos hay
+            <div class="chip-desc">Una escena con varios objetos iguales mezclados con otros, contar cuántos hay del que se pide. Cantidad cambiante: el número de objetos varía cada vez.</div>
+          </div></div>
+          <div class="chip"><div>
+            De mayor a menor
+            <div class="chip-desc">3-4 objetos iguales pero de distinto tamaño, ordenarlos con el dedo de más grande a más pequeño.</div>
+          </div></div>
+        </div>
+        <div class="bloque-tag">// pendiente: más ejemplos suyos</div>
+      </div>
+
+      <div class="bloque">
+        <div class="num">FUNCIÓN EJECUTIVA</div>
+        <h3>Planificar una secuencia</h3>
+        <div class="bloque-desc">Ordenar pasos de una tarea conocida — con cuidado de no pasarse de carga</div>
+        <div class="chip-list">
+          <div class="chip"><div>
+            Ordenar los pasos de una tarea
+            <div class="chip-desc">Vuestro ejemplo. Lavar, tender, planchar y guardar una camisa — pasos desordenados que hay que poner en orden.</div>
+          </div></div>
+          <div class="chip"><div>
+            Vestirse en orden
+            <div class="chip-desc">Calcetín → zapato → atar. Mismo tipo de ejercicio con otra rutina, usa memoria de procedimiento, muy conservada.</div>
+          </div></div>
+          <div class="chip"><div>
+            La herramienta correcta
+            <div class="chip-desc">Se muestra una tarea (clavar un cuadro) y hay que elegir la herramienta adecuada entre varias — un solo paso de planificación práctica.</div>
+          </div></div>
+          <div class="chip"><div>
+            ¿Qué paso sobra?
+            <div class="chip-desc">Una secuencia de una tarea conocida con un paso que no pertenece ahí (ej. "echar sal al café") — señalar cuál está fuera de lugar.</div>
+          </div></div>
+        </div>
+        <div class="bloque-tag">// pendiente: más ejemplos suyos</div>
+      </div>
+
+      <div class="bloque">
+        <div class="num">VIDA COTIDIANA</div>
+        <h3>Autonomía funcional (AVD)</h3>
+        <div class="bloque-desc">Tareas prácticas del día a día, no abstractas</div>
+        <div class="chip-list">
+          <div class="chip"><div>
+            Manejo de dinero — mover monedas y sumar
+            <div class="chip-desc">Cantidades cambiantes. El total a alcanzar y las monedas disponibles varían cada vez, alrededor del nivel personal de cada usuario.</div>
+          </div></div>
+          <div class="chip"><div>
+            La vuelta
+            <div class="chip-desc">Cantidades cambiantes. "Pagas con 10€ algo que cuesta 7€, ¿cuánto te devuelven?" — el precio y el billete cambian cada vez, mismo mecanismo que el dinero pero en sentido inverso.</div>
+          </div></div>
+          <div class="chip"><div>
+            Poner la mesa
+            <div class="chip-desc">Arrastrar plato, vaso y cubiertos a su sitio. Cantidad cambiante: el número de comensales varía (2, 3, 4), así que cambia cuántos platos y cubiertos hacen falta.</div>
+          </div></div>
+          <div class="chip"><div>
+            La lista de la compra
+            <div class="chip-desc">Elegir entre varios productos los que pedía la lista. Cantidad cambiante: unas veces la lista tiene 3 productos, otras 5.</div>
+          </div></div>
+          <div class="chip"><div>
+            ¿Qué hora marca?
+            <div class="chip-desc">Un reloj analógico sencillo, hay que decir o seleccionar qué hora es — orientación temporal, muy funcional en el día a día. Cantidad cambiante: la hora mostrada es distinta cada vez.</div>
+          </div></div>
+        </div>
+        <div class="bloque-tag">// pendiente: más ejemplos suyos</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section>
+    <div class="section-label">Cómo se ajusta la dificultad</div>
+    <h2>El objetivo es no empeorar, no siempre mejorar</h2>
+    <p class="lede">A diferencia de un juego normal, aquí "subir de nivel" no es el éxito. El éxito es que Paco siga siendo capaz de lo mismo que la semana pasada.</p>
+    <div class="principio">
+      <div class="principio-card">
+        <h4>Nivel personal, no ranking</h4>
+        <p>Cada usuario tiene su propio punto de partida (p. ej. sumar hasta 8€ con monedas de 1, 2 y 5). Las cantidades cambian cada día alrededor de ese nivel — nunca se compara a un usuario con otro, solo consigo mismo en el tiempo.</p>
+      </div>
+      <div class="principio-card">
+        <h4>Ayuda desde fuera, no un botón para ellos</h4>
+        <p>Como siempre hay una integradora en la sala, el usuario no decide "sigo o lo dejo" — esa carga se la quitamos. Ella tiene un control aparte para saltar el ejercicio o marcarlo como ayudado. El dato se sigue registrando; la decisión ya no depende del usuario.</p>
+      </div>
+      <div class="principio-card">
+        <h4>Por qué las cantidades cambian cada vez</h4>
+        <p>En dinero, no siempre hay que sumar 8€ — un día son 6€, otro 11€, con distintas monedas cada vez. Dos motivos: evita que memorice la respuesta sin haber razonado (falsearía la métrica), y permite subir o bajar la exigencia sin que se note como un "examen" — simplemente el número de hoy es distinto al de ayer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Dos formas de ver la pantalla</div>
+    <h2>Participante y facilitadora no ven lo mismo</h2>
+    <p class="lede">La persona mayor solo ve la actividad — sin menús, sin decisiones de navegación. Quien la acompaña tiene el control aparte.</p>
+    <div class="principio">
+      <div class="principio-card">
+        <h4>Vista participante</h4>
+        <p>Pantalla completa con un único ejercicio. Sin botones de salir, sin menús, sin ajustes visibles. Lo único que se toca es la propia actividad.</p>
+      </div>
+      <div class="principio-card">
+        <h4>Vista facilitadora</h4>
+        <p>Una franja de control discreta (o una segunda tablet) desde donde la integradora avanza, salta un ejercicio, marca ayuda prestada, o cambia de usuario dentro del grupo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Nuevo · qué pasa con lo que no consiguen solos</div>
+    <h2>Nada se archiva aparte — todo queda igual, con una etiqueta</h2>
+    <p class="lede">No hace falta un sitio especial para "lo que no salió". Cada intento se guarda en el mismo historial de siempre, solo que con un estado distinto — y ese estado es un dato en sí mismo.</p>
+    <div class="bloque" style="max-width:640px;">
+      <div class="num">CADA INTENTO SE GUARDA COMO</div>
+      <h3>Solo · Con ayuda · No completado</h3>
+      <div class="bloque-desc">Un mismo registro, tres estados posibles — nada se pierde ni se separa</div>
+      <div class="chip-list">
+        <div class="chip"><div>
+          Solo
+          <div class="chip-desc">Lo completó sin que nadie interviniera.</div>
+        </div></div>
+        <div class="chip"><div>
+          Con ayuda
+          <div class="chip-desc">La integradora intervino desde su control — queda marcado, no penaliza al usuario en pantalla.</div>
+        </div></div>
+        <div class="chip"><div>
+          No completado
+          <div class="chip-desc">Se saltó o no llegó a acabarlo — también es información, no un hueco vacío.</div>
+        </div></div>
+      </div>
+    </div>
+    <p style="margin-top:22px; font-size:14.5px; color:#4A5A50; max-width:600px;">En el panel esto se traduce en una vista extra por bloque: cuánta ayuda ha necesitado, no solo cuánto ha acertado. Con el tiempo, un aumento de ayuda suele notarse <em>antes</em> que una caída de precisión — así que es una señal de alerta temprana adicional, no solo un registro administrativo.</p>
+  </section>
+
+  <section>
+    <div class="section-label">Cómo se marca, en la práctica</div>
+    <h2>Una sola pantalla, un toque por persona</h2>
+    <p class="lede">Nada de entrar y salir de perfiles. La vista facilitadora muestra a todos los participantes activos de la sesión a la vez — se toca la ficha de quien está ayudando en ese momento y sigue a lo suyo.</p>
+    <div class="live-grid">
+      <div class="live-tile">
+        <div class="live-name">Paquito</div>
+        <div class="live-exercise">Relación lógica — ropa por estación</div>
+        <div class="live-btn">Ayuda</div>
+      </div>
+      <div class="live-tile">
+        <div class="live-name">Marisa</div>
+        <div class="live-exercise">Relación lógica — ropa por estación</div>
+        <div class="live-btn active">Ayuda ✓</div>
+      </div>
+      <div class="live-tile stuck">
+        <div class="live-flag">🔊 lleva 30s sin tocar la pantalla</div>
+        <div class="live-name">Juan</div>
+        <div class="live-exercise">Relación lógica — ropa por estación</div>
+        <div class="live-btn">Ayuda</div>
+      </div>
+    </div>
+    <p style="margin-top:18px; font-size:13.5px; color:#8A8270;">// la ficha de Marisa muestra cómo se ve justo después de tocarla · la de Juan muestra cómo avisa cuando alguien lleva un rato atascado</p>
+
+    <div class="principio" style="margin-top:28px;">
+      <div class="principio-card">
+        <h4>No hace falta vigilar constantemente</h4>
+        <p>De Laura: si alguien lleva un rato sin tocar la pantalla, probablemente está atascado. En vez de que ella tenga que mirar las tres tablets todo el rato, la propia tablet emite un sonido suave — así ella sabe que hay que acercarse sin tener que estar pendiente todo el tiempo. Es un aviso, no una alarma agresiva.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Nuevo · sesiones en grupo</div>
+    <h2>Varios usuarios, una misma sesión</h2>
+    <p class="lede">Así se trabaja ya en muchas terapias de estimulación cognitiva — en grupo, con un facilitador. Cada persona hace su propio ejercicio, pero queda todo enlazado a la sesión del grupo.</p>
+    <div class="bloque" style="max-width:640px;">
+      <div class="num">SESIÓN · GRUPO TARDE</div>
+      <h3>Paquito · Marisa · Juan</h3>
+      <div class="bloque-desc">3 participantes — actividad: relación lógica</div>
+      <div class="chip-list">
+        <div class="chip"><div>Vista individual — cada uno, su propio progreso de siempre</div></div>
+        <div class="chip"><div>Vista de grupo — cómo evoluciona el grupo en conjunto, sesión a sesión</div></div>
+        <div class="chip chip-flag"><div>Quien se descuelga del patrón del grupo — señal de alerta adicional, no solo por su propio histórico</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Cómo se vería</div>
+    <h2>Un ejercicio, y lo que ve el centro</h2>
+    <p class="lede">Maqueta orientativa — el trazo de la izquierda es lo que hace el usuario en la tablet; el panel de la derecha es lo que ve el cuidador después.</p>
+
+    <div class="mockups">
+      <div class="tablet-frame">
+        <div class="tablet-screen">
+          <div class="app-top">
+            <div class="name">Trazo</div>
+            <div class="avatar"></div>
+          </div>
+          <div class="exercise-title">Sigue la línea con el dedo</div>
+          <div class="canvas-box">
+            <svg viewBox="0 0 300 140">
+              <path class="guide-path" d="M20,100 Q90,20 150,80 T280,60"/>
+              <path class="user-path" d="M22,98 Q88,28 148,78 T278,62"/>
+            </svg>
+          </div>
+          <div class="app-bottom">
+            <div class="progress-dots">
+              <div class="dot active"></div>
+              <div class="dot active"></div>
+              <div class="dot active"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+            <button class="btn-big">Siguiente</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-frame">
+        <div class="dash-head">
+          <div class="user-name">Carmen R.</div>
+          <div class="period">últimas 8 semanas</div>
+        </div>
+        <div class="dash-sub">Panel del centro · vista individual</div>
+
+        <div class="chart-box">
+          <div class="chart-label">Precisión del trazo</div>
+          <svg class="chart" viewBox="0 0 400 110">
+            <line class="baseline" x1="0" y1="80" x2="400" y2="80"/>
+            <polyline class="line-normal" points="10,70 60,60 110,58 160,55 210,52 260,50 310,80 360,95"/>
+            <circle class="chart-dot" cx="10" cy="70" r="3.5"/>
+            <circle class="chart-dot" cx="60" cy="60" r="3.5"/>
+            <circle class="chart-dot" cx="110" cy="58" r="3.5"/>
+            <circle class="chart-dot" cx="160" cy="55" r="3.5"/>
+            <circle class="chart-dot" cx="210" cy="52" r="3.5"/>
+            <circle class="chart-dot" cx="260" cy="50" r="3.5"/>
+            <circle class="chart-dot alert" cx="310" cy="80" r="4.5"/>
+            <circle class="chart-dot alert" cx="360" cy="95" r="4.5"/>
+          </svg>
+        </div>
+
+        <div class="alert-card">
+          <div class="alert-dot-icon"></div>
+          <div>
+            <div class="alert-title">Cambio detectado esta semana</div>
+            <div class="alert-body">Carmen llevaba 6 semanas mejorando de forma constante. Las últimas 2 sesiones se salen de su rango habitual — puede merecer una revisión.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="roadmap">
+    <div class="section-label">Plan de validación</div>
+    <h2>Antes de programar nada</h2>
+    <p class="lede">El orden importa: primero confirmar que hay necesidad real y encaje con el centro, después construir.</p>
+
+    <div class="fase">
+      <div class="tag">FASE 0</div>
+      <div>
+        <h4>Hablar con el centro</h4>
+        <p>Con tu pareja: ¿ya hacen algo parecido en papel? ¿Quién decidiría qué ejercicios son apropiados? ¿La dirección estaría abierta a un piloto informal, sin datos identificables al principio?</p>
+      </div>
+    </div>
+    <div class="fase">
+      <div class="tag">FASE 1</div>
+      <div>
+        <h4>Piloto con 3-4 ejercicios</h4>
+        <p>App instalada directamente en las tablets del centro (sin pasar por tienda todavía). Se prueba con un grupo pequeño y se ajusta según lo que vea tu pareja en el día a día.</p>
+      </div>
+    </div>
+    <div class="fase">
+      <div class="tag">FASE 2</div>
+      <div>
+        <h4>Panel + alertas</h4>
+        <p>Cuando ya haya varias semanas de datos reales, se activa el panel de evolución y las primeras alertas por desviación.</p>
+      </div>
+    </div>
+    <div class="fase">
+      <div class="tag">FASE 3</div>
+      <div>
+        <h4>Publicar y ofrecer a otros centros</h4>
+        <p>Con el piloto validado, se sube a las tiendas y se plantea el modelo de suscripción por centro.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="legal">
+      <div class="section-label">Un punto a tener claro</div>
+      <h2>Aquí hay datos de salud reales</h2>
+      <p>A diferencia de otros proyectos, esto trata con personas vulnerables y datos sensibles (categoría especial en RGPD). Para el piloto, lo más sano es que el centro sea el responsable del tratamiento y nosotros actuemos como proveedores del software — así el consentimiento con las familias lo gestiona quien ya tiene esa relación de confianza.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>// TRAZO — PROPUESTA PARA VALIDAR, AGOSTO 2026</p>
+  </footer>
+</div>
+
+</body>
+</html>
