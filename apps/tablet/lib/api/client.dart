@@ -11,6 +11,10 @@ class ApiClient {
   ApiClient._();
   static final ApiClient instance = ApiClient._();
 
+  /// Se invoca cuando la API responde 401 (token caducado/ inválido) para que
+  /// la app vuelva al login. Lo configura `main()`.
+  static void Function()? onNoAutorizado;
+
   String? _token;
   String? centroId;
   String? rol;
@@ -215,6 +219,18 @@ class ApiClient {
   }
 
   void _check(http.Response resp) {
+    if (resp.statusCode == 401) {
+      // Token caducado o inválido: cerrar sesión y volver al login.
+      _token = null;
+      SharedPreferences.getInstance().then((p) {
+        p.remove('token');
+        p.remove('centro_id');
+        p.remove('rol');
+        p.remove('nombre');
+      });
+      onNoAutorizado?.call();
+      throw ApiException('Sesión caducada. Vuelve a iniciar sesión.');
+    }
     if (resp.statusCode >= 400) {
       throw ApiException('Error ${resp.statusCode}: ${resp.body}');
     }
