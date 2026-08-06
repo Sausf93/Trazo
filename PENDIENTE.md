@@ -47,7 +47,13 @@ de sesión por nº de ejercicios del plan. Reorienta la app hacia dos caras
 - [x] Tests E2E del flujo de sesión (28 en verde). ✅
 - [ ] Web: UI para **aprobar sugerencias de nivel** (endpoint listo, falta pantalla).
 - [ ] Tablet: "Ayuda" antes de que exista el intento (hoy marca el último intento; refinar con flag de sesión-participante).
-- [ ] Visual: subir las actividades de la tablet a ilustración/fotos reales (hoy usan formas/emoji simples).
+- [ ] Visual: subir las actividades de la tablet a ilustración (librería SVG + flutter_svg) — EN CURSO.
+- [ ] **Niveles de dificultad por CANTIDAD** (decidido con Saulo): el `nivel` del plan
+      (bajo/medio/alto) debe fijar cuántas imágenes/objetos tiene el ejercicio →
+      **básico ~3 · intermedio ~6-8 · alto ~10-12**. Aplica a memoria, contar,
+      reconocer, etc. Falta: mapear nivel→cantidad en el motor de plantillas y que el
+      `nivel` de la cola llegue a la generación de instancia (hoy no se pasa) + tablet.
+- [ ] Desplegar en Docker todo el stack (compose db+api+web+tablet) — requiere instalar Docker Desktop (hoy solo el cliente).
 - [ ] Decidir detalles menores (rotación de ejercicios, umbral atascado, PIN de recuperación).
 
 ## App tablet (`apps/tablet/`) — base actual (andamiaje)
