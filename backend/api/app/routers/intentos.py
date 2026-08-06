@@ -13,6 +13,7 @@ from app.models import (
     EjercicioCatalogo,
     Intento,
     Sesion,
+    UsuarioFinal,
     UsuarioStaff,
 )
 from app.schemas import EstadoIntentoIn, IntentoIn, IntentoOut
@@ -39,6 +40,12 @@ async def registrar_intento(
     ses = await db.get(Sesion, sesion_id)
     if ses is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
+    # RGPD/seguridad: la sesión y la persona deben ser del centro del staff.
+    if ses.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    uf = await db.get(UsuarioFinal, body.usuario_final_id)
+    if uf is None or uf.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "Usuario no pertenece a tu centro")
 
     # Idempotencia: si el cliente reenvía el mismo UUID, no duplicar.
     if body.id:
