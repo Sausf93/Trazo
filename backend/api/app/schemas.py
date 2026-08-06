@@ -279,6 +279,7 @@ class FichaViva(BaseModel):
     alias_interno: str
     ejercicio_actual: str | None = None
     ultimo_estado: str | None = None
+    ultimo_intento_id: str | None = None  # para marcar "con ayuda" desde la maestra
     segundos_desde_ultimo_intento: float | None = None
     atascado: bool = False
 

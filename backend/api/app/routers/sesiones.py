@@ -196,6 +196,7 @@ async def sesion_live(
             alias_interno=uf.alias_interno if uf else "?",
             ejercicio_actual=ejercicio_actual,
             ultimo_estado=ultimo_estado,
+            ultimo_intento_id=ultimo.id if ultimo is not None else None,
             segundos_desde_ultimo_intento=segundos,
             atascado=atascado,
         ))
