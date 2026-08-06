@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../models.dart';
 import '../theme.dart';
+import 'ilustracion.dart';
 
 /// Renderiza `manejo_cantidad` según su `modo`:
 ///  - dinero / vuelta: botones de monedas que se van sumando; muestra el
@@ -60,9 +61,7 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
   // --- Dinero / vuelta ---
   Widget _vistaDinero(Map<String, dynamic> render, String modo) {
     final instruccion = render['instruccion'] as String? ?? 'Junta el dinero';
-    final monedas = (render['monedas'] as List? ?? [1, 2, 5])
-        .map((e) => e as num)
-        .toList();
+    final denoms = _denominacionesC(render);
 
     return Column(
       children: [
@@ -96,7 +95,7 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
               spacing: 16,
               runSpacing: 16,
               alignment: WrapAlignment.center,
-              children: monedas.map((m) => _moneda(m)).toList(),
+              children: denoms.map((c) => _pieza(c)).toList(),
             ),
           ),
         ),
@@ -118,36 +117,83 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
     );
   }
 
-  Widget _moneda(num valor) {
+  /// Denominaciones disponibles en CÉNTIMOS. Prefiere `denominaciones`
+  /// (formato actual del backend: [{valor_c, etiqueta}]); si no, acepta el
+  /// formato antiguo `monedas` (lista de euros). Ordena de menor a mayor.
+  List<int> _denominacionesC(Map<String, dynamic> render) {
+    final set = <int>{};
+    final denom = render['denominaciones'];
+    if (denom is List) {
+      for (final d in denom) {
+        if (d is Map && d['valor_c'] != null) {
+          set.add((d['valor_c'] as num).toInt());
+        } else if (d is num) {
+          set.add((d * 100).round());
+        }
+      }
+    }
+    if (set.isEmpty) {
+      final monedas = render['monedas'];
+      if (monedas is List) {
+        for (final m in monedas) {
+          if (m is num) set.add((m * 100).round());
+        }
+      }
+    }
+    if (set.isEmpty) {
+      set.addAll([1, 2, 5, 10, 20, 50, 100, 200].map((e) => e * 1));
+    }
+    final lista = set.where((c) => c > 0).toList()..sort();
+    return lista;
+  }
+
+  /// Una pieza de dinero (moneda o billete) con su ilustración; al tocarla se
+  /// suma su valor al acumulado.
+  Widget _pieza(int valorC) {
+    final valorEuros = valorC / 100;
+    final esBillete = valorC >= 500;
+    final id = IlustracionResolver.dineroPorCentimos(valorC);
     return InkWell(
       onTap: () {
         setState(() {
-          _acumulado += valor;
-          _monedasUsadas.add(valor);
+          _acumulado += valorEuros;
+          _monedasUsadas.add(valorEuros);
         });
         _emitirDinero();
       },
-      customBorder: const CircleBorder(),
-      child: Container(
-        width: 96,
-        height: 96,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: const LinearGradient(
-            colors: [Color(0xFFF0D98C), Color(0xFFD9B24C)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          border: Border.all(color: const Color(0xFFB8912F), width: 3),
-        ),
-        child: Text('${_formato(valor)} €',
-            style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF5C4A15))),
+      borderRadius: BorderRadius.circular(12),
+      child: Semantics(
+        label: _etiquetaDenom(valorC),
+        button: true,
+        child: id != null
+            ? Ilustracion(id, size: esBillete ? 118 : 82)
+            : _piezaFallback(valorC),
       ),
     );
+  }
+
+  Widget _piezaFallback(int valorC) {
+    return Container(
+      width: 82,
+      height: 82,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: const Color(0xFFE0A94A),
+        border: Border.all(color: const Color(0xFFB8912F), width: 3),
+      ),
+      child: Text(_etiquetaDenom(valorC),
+          style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF5C4A15))),
+    );
+  }
+
+  String _etiquetaDenom(int c) {
+    if (c < 100) return '$c céntimos';
+    if (c % 100 == 0) return '${c ~/ 100} €';
+    return '${c ~/ 100},${(c % 100).toString().padLeft(2, '0')} €';
   }
 
   String _formato(num n) =>
@@ -261,7 +307,7 @@ class _RelojPainter extends CustomPainter {
     final borde = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 6
-      ..color = TrazoColors.sageDark;
+      ..color = TrazoColors.ink;
     canvas.drawCircle(centro, radio, esfera);
     canvas.drawCircle(centro, radio, borde);
 
@@ -314,7 +360,8 @@ class _RelojPainter extends CustomPainter {
           ..strokeCap = StrokeCap.round
           ..color = TrazoColors.coralDark);
 
-    canvas.drawCircle(centro, 8, Paint()..color = TrazoColors.sageDark);
+    canvas.drawCircle(centro, 8, Paint()..color = TrazoColors.ink);
+    canvas.drawCircle(centro, 4, Paint()..color = TrazoColors.coralDark);
   }
 
   @override

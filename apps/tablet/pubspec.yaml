@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.2.2            # llamadas a la API
+  flutter_svg: ^2.0.10+1  # ilustraciones vectoriales (librería de objetos)
   uuid: ^4.5.1            # UUID generado en cliente (sync offline idempotente)
   path_drawing: ^1.0.1    # parsear el guide_path (SVG) del ejercicio de trazo
   shared_preferences: ^2.3.3  # token + cola offline simple (MVP)
@@ -21,3 +22,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/ilustraciones/

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../models.dart';
 import '../theme.dart';
+import 'ilustracion.dart';
 
 /// Renderiza `memoria_visual`: muestra `a_recordar` durante `segundos_memorizar`
 /// (con cuenta atrás), las oculta y presenta `rejilla_seleccion` para que la
@@ -151,10 +152,11 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
       crossAxisCount: 3,
       mainAxisSpacing: 16,
       crossAxisSpacing: 16,
-      childAspectRatio: 1.6,
+      childAspectRatio: 1.35,
       children: items.map((it) {
         final id = _idDe(it);
         final sel = _seleccionadas.contains(id);
+        final tieneDibujo = IlustracionResolver.tiene(id);
         return InkWell(
           onTap: seleccionable
               ? () {
@@ -179,21 +181,32 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
                   width: sel ? 3 : 1.5),
               borderRadius: BorderRadius.circular(14),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Stack(
+              alignment: Alignment.center,
               children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (tieneDibujo) ...[
+                      Ilustracion(id, size: 62),
+                      const SizedBox(height: 4),
+                    ],
+                    Flexible(
+                      child: Text(_labelDe(it),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: tieneDibujo ? 16 : 22,
+                              color: TrazoColors.ink)),
+                    ),
+                  ],
+                ),
                 if (seleccionable && sel)
-                  const Padding(
-                    padding: EdgeInsets.only(right: 8),
+                  const Positioned(
+                    top: 0,
+                    right: 0,
                     child: Icon(Icons.check_circle,
                         color: TrazoColors.coralDark, size: 28),
                   ),
-                Flexible(
-                  child: Text(_labelDe(it),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontSize: 22, color: TrazoColors.ink)),
-                ),
               ],
             ),
           ),

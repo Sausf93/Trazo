@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models.dart';
 import '../theme.dart';
+import 'ilustracion.dart';
 
 /// Renderiza `conteo_comparacion`: pinta los grupos (cada objeto como un emoji
 /// repetido `cantidad` veces). Según `modo`:
@@ -24,25 +25,6 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
   final DateTime _inicio = DateTime.now();
   int? _grupoElegido;
   String _numero = '';
-
-  static const Map<String, String> _emojis = {
-    'pato_amarillo': '🦆',
-    'pato_verde': '🦆',
-    'manzana': '🍎',
-    'pera': '🍐',
-    'naranja': '🍊',
-    'flor': '🌼',
-    'estrella': '⭐',
-    'coche': '🚗',
-    'pelota': '⚽',
-    'gato': '🐱',
-    'perro': '🐶',
-    'pez': '🐟',
-    'corazon': '❤️',
-    'circulo': '🔵',
-  };
-
-  String _emojiDe(String objeto) => _emojis[objeto] ?? '🔶';
 
   void _emitir(dynamic respuesta) {
     widget.onMetricas({
@@ -95,7 +77,6 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
       {required bool seleccionable}) {
     final objeto = (grupo['objeto'] ?? '').toString();
     final cantidad = (grupo['cantidad'] as num?)?.toInt() ?? 0;
-    final emoji = _emojiDe(objeto);
     final sel = _grupoElegido == i;
 
     return InkWell(
@@ -125,8 +106,7 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
                   runSpacing: 4,
                   children: List.generate(
                     cantidad,
-                    (_) => Text(emoji,
-                        style: const TextStyle(fontSize: 34)),
+                    (_) => Ilustracion(objeto, size: 56),
                   ),
                 ),
               ),

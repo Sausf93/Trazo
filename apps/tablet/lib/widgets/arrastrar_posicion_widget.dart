@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models.dart';
 import '../theme.dart';
+import 'ilustracion.dart';
 
 /// Renderiza `arrastrar_posicion`: piezas que se arrastran a zonas
 /// (Draggable / DragTarget). No se autocorrige aquí → registra
@@ -104,10 +105,10 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
                     final id = _idDe(p);
                     return Draggable<String>(
                       data: id,
-                      feedback: _chipPieza(_labelDe(p), arrastrando: true),
+                      feedback: _chipPieza(id, _labelDe(p), arrastrando: true),
                       childWhenDragging: Opacity(
-                          opacity: 0.3, child: _chipPieza(_labelDe(p))),
-                      child: _chipPieza(_labelDe(p)),
+                          opacity: 0.3, child: _chipPieza(id, _labelDe(p))),
+                      child: _chipPieza(id, _labelDe(p)),
                     );
                   }).toList(),
           ),
@@ -127,11 +128,13 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
     );
   }
 
-  Widget _chipPieza(String label, {bool arrastrando = false}) {
+  Widget _chipPieza(String id, String label, {bool arrastrando = false}) {
+    final tieneDibujo = IlustracionResolver.tiene(id);
     return Material(
       color: Colors.transparent,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+        padding: EdgeInsets.symmetric(
+            horizontal: tieneDibujo ? 12 : 20, vertical: tieneDibujo ? 10 : 14),
         decoration: BoxDecoration(
           color: arrastrando ? TrazoColors.coral : TrazoColors.card,
           border: Border.all(
@@ -139,10 +142,19 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
               width: 2),
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Text(label,
-            style: TextStyle(
-                fontSize: 22,
-                color: arrastrando ? Colors.white : TrazoColors.ink)),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (tieneDibujo) ...[
+              Ilustracion(id, size: 56),
+              const SizedBox(height: 4),
+            ],
+            Text(label,
+                style: TextStyle(
+                    fontSize: tieneDibujo ? 16 : 22,
+                    color: arrastrando ? Colors.white : TrazoColors.ink)),
+          ],
+        ),
       ),
     );
   }
@@ -189,7 +201,7 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
                           orElse: () => {'label': piezaId});
                       return InkWell(
                         onTap: () => _quitar(piezaId),
-                        child: _chipPieza(_labelDe(pieza)),
+                        child: _chipPieza(_idDe(pieza), _labelDe(pieza)),
                       );
                     }).toList(),
                   ),

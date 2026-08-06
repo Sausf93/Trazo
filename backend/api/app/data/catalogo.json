@@ -260,7 +260,7 @@
       "modo": "sumar",
       "cantidad_min": 1,
       "cantidad_max": 6,
-      "objetos": ["pato_amarillo", "pato_verde"]
+      "objetos": ["manzana", "pera"]
     }
   },
   {
@@ -448,7 +448,7 @@
       "modo": "contar",
       "cantidad_min": 3,
       "cantidad_max": 10,
-      "objetos": ["flor_roja", "flor_azul", "flor_blanca"]
+      "objetos": ["fresa", "limon", "uvas"]
     }
   },
   {
@@ -1028,7 +1028,7 @@
       "instruccion": "Fíjate bien en los dos grupos",
       "cantidad_min": 2,
       "cantidad_max": 10,
-      "objetos": ["ficha_roja", "ficha_azul", "ficha_verde"]
+      "objetos": ["estrella", "corazon", "circulo"]
     }
   },
   {
@@ -1067,7 +1067,7 @@
       "instruccion": "Fíjate en los animales",
       "cantidad_min": 2,
       "cantidad_max": 9,
-      "objetos": ["gallina", "pato", "oveja"]
+      "objetos": ["naranja", "manzana_verde", "tomate"]
     }
   },
   {
