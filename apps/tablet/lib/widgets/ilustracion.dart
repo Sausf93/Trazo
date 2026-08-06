@@ -21,6 +21,21 @@ class Ilustracion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 1) Foto real, si existe: máxima reconocibilidad para personas mayores.
+    final foto = IlustracionResolver.fotoPara(id);
+    if (foto != null) {
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Image.asset(
+          foto,
+          width: size,
+          height: size,
+          fit: BoxFit.contain,
+          errorBuilder: (_, __, ___) => _FallbackInicial(id: id, size: size),
+        ),
+      );
+    }
+    // 2) Dibujo SVG de la librería.
     final asset = IlustracionResolver.assetPara(id);
     if (asset == null) {
       return _FallbackInicial(id: id, size: size);
@@ -372,6 +387,19 @@ class IlustracionResolver {
   static String? assetPara(String raw) {
     final c = _canonico(raw);
     return c == null ? null : '$_dir$c.svg';
+  }
+
+  /// Fotos reales por id (sustituyen al dibujo). Se van añadiendo aquí a medida
+  /// que haya fotos en `assets/fotos/` — estrategia de sustituir dibujos por
+  /// fotos poco a poco. Vacío = por ahora solo dibujos. Ejemplo:
+  ///   'perro': 'assets/fotos/perro.png',
+  static const Map<String, String> _fotos = {};
+
+  /// Ruta de la FOTO real para un id, o `null` si aún no hay foto (usar dibujo).
+  static String? fotoPara(String raw) {
+    final s = normaliza(raw);
+    final canon = _alias[s] ?? s;
+    return _fotos[canon] ?? _fotos[s];
   }
 
   /// `true` si existe una ilustración concreta para el id.
