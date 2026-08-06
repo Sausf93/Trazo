@@ -609,14 +609,20 @@
           <div class="act-mock">
             <span class="mock-tag">// ejemplo</span>
             <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: poner la mesa">
-              <ellipse cx="128" cy="70" rx="58" ry="40" class="sk-faint"/>
-              <circle cx="128" cy="70" r="26" class="sk"/>
-              <circle cx="128" cy="70" r="17" class="sk-faint"/>
-              <line x1="86" y1="52" x2="86" y2="88" class="sk"/>
-              <path class="sk" d="M170,52 v36 M178,52 v36"/>
-              <circle cx="132" cy="24" r="9" class="sk-dash"/>
-              <path class="sk-dash" d="M148,30 q18,6 20,20"/>
-              <text x="14" y="122" class="sk-txt">arrastra a su sitio</text>
+              <!-- mantel -->
+              <rect x="34" y="32" width="192" height="74" rx="14" class="sk-faint"/>
+              <!-- plato -->
+              <circle cx="130" cy="70" r="25" class="sk"/>
+              <circle cx="130" cy="70" r="15" class="sk-faint"/>
+              <!-- tenedor (púas + mango) -->
+              <path class="sk" d="M74,42 v13 M81,41 v14 M88,42 v13"/>
+              <path class="sk" d="M81,55 v45"/>
+              <!-- cuchillo (hoja + mango) -->
+              <path class="sk" d="M181,42 q9,11 4,30 l-8,0 q-3,-19 4,-30 z"/>
+              <line class="sk" x1="181" y1="72" x2="181" y2="103"/>
+              <!-- vaso -->
+              <path class="sk-faint" d="M204,40 l3,22 h11 l3,-22 z"/>
+              <text x="14" y="124" class="sk-txt">arrastra cada cosa a su sitio</text>
             </svg>
           </div>
           <div class="act-dom">Praxias · vida cotidiana</div>
@@ -650,13 +656,19 @@
         <article class="act-card">
           <div class="act-mock">
             <span class="mock-tag">// ejemplo</span>
-            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: manejo de dinero">
-              <circle cx="46" cy="42" r="20" class="sk-coral"/><text x="46" y="47" text-anchor="middle" class="sk-txt" style="fill:var(--coral-dark);">2€</text>
-              <circle cx="94" cy="42" r="16" class="sk-faint"/><text x="94" y="47" text-anchor="middle" class="sk-txt">1€</text>
-              <circle cx="138" cy="42" r="20" class="sk-coral"/><text x="138" y="47" text-anchor="middle" class="sk-txt" style="fill:var(--coral-dark);">2€</text>
-              <circle cx="184" cy="42" r="13" class="sk-faint"/><text x="184" y="46" text-anchor="middle" class="sk-txt" style="font-size:9px;">50c</text>
-              <rect x="16" y="80" width="228" height="34" rx="8" class="sk-dash"/>
-              <text x="30" y="101" class="sk-txt">reúne 5,50 € →</text>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Boceto: llevar monedas al monedero">
+              <!-- monedas (doble aro = canto, para que parezcan monedas) -->
+              <circle cx="42" cy="50" r="19" class="sk-coral"/><circle cx="42" cy="50" r="14" class="sk-coral"/><text x="42" y="55" text-anchor="middle" class="sk-txt" style="fill:var(--coral-dark);">2€</text>
+              <circle cx="82" cy="60" r="15" class="sk-faint"/><circle cx="82" cy="60" r="11" class="sk-faint"/><text x="82" y="64" text-anchor="middle" class="sk-txt">1€</text>
+              <circle cx="114" cy="48" r="12" class="sk-faint"/><circle cx="114" cy="48" r="8" class="sk-faint"/><text x="114" y="52" text-anchor="middle" class="sk-txt" style="font-size:8px;">50c</text>
+              <!-- flecha de arrastre -->
+              <path class="sk-dash" d="M132,64 h30"/>
+              <path class="sk" d="M160,58 l9,6 -9,6"/>
+              <!-- monedero -->
+              <path class="sk" d="M180,66 q0,-17 30,-17 q30,0 30,17 v20 q0,17 -30,17 q-30,0 -30,-17 z"/>
+              <path class="sk-faint" d="M180,70 q30,-15 60,0"/>
+              <circle cx="210" cy="70" r="3.4" class="sk-fill-coral"/>
+              <text x="18" y="124" class="sk-txt">lleva las monedas al monedero →</text>
             </svg>
           </div>
           <div class="act-dom">Vida cotidiana · cálculo</div>

@@ -11,7 +11,9 @@ Credenciales de demo:
 """
 from __future__ import annotations
 
+import json
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -33,126 +35,20 @@ from app.services.alertas import evaluar_usuario_bloque
 
 PASSWORD_DEMO = "trazo1234"
 
+# El catálogo vive como DATOS (no como código): añadir una actividad nueva es
+# añadir un objeto a este JSON, sin tocar la lógica de siembra ni las plantillas.
+_CATALOGO_PATH = Path(__file__).resolve().parent.parent / "data" / "catalogo.json"
+
 
 def _ejercicios_semilla() -> list[dict]:
-    """Un ejercicio funcional por cada bloque, sobre las 8 plantillas."""
-    return [
-        {
-            "bloque": "atencion_memoria",
-            "plantilla_tipo": "memoria_visual",
-            "nombre": "Memoria de figuras",
-            "descripcion": "Mira unas figuras, desaparecen, y localízalas entre varias.",
-            "parametros_json": {
-                "recordar_min": 2, "recordar_max": 5, "segundos": 60,
-                "banco": [
-                    {"id": "estrella", "label": "estrella"},
-                    {"id": "corazon", "label": "corazón"},
-                    {"id": "luna", "label": "luna"},
-                    {"id": "sol", "label": "sol"},
-                    {"id": "flor", "label": "flor"},
-                    {"id": "arbol", "label": "árbol"},
-                    {"id": "casa", "label": "casa"},
-                    {"id": "coche", "label": "coche"},
-                ],
-            },
-        },
-        {
-            "bloque": "lenguaje",
-            "plantilla_tipo": "evocacion_libre",
-            "nombre": "Objetos por categoría",
-            "descripcion": "Di objetos que haya en un sitio concreto. Validación por la integradora.",
-            "parametros_json": {
-                "pedir_min": 5, "pedir_max": 10,
-                "prompts": [
-                    {"texto": "objetos que haya en la cocina"},
-                    {"texto": "cosas que se puedan comprar en una frutería"},
-                    {"texto": "animales de granja"},
-                ],
-            },
-        },
-        {
-            "bloque": "razonamiento",
-            "plantilla_tipo": "seleccion_multiple",
-            "nombre": "El intruso",
-            "descripcion": "Varios objetos; uno no pertenece al grupo.",
-            "parametros_json": {
-                "opciones_min": 4, "opciones_max": 5,
-                "items": [
-                    {"id": "frutas", "instruccion": "¿Cuál no es una fruta?",
-                     "correcta": "zapato", "distractores": ["manzana", "pera", "plátano", "naranja"]},
-                    {"id": "animales", "instruccion": "¿Cuál no es un animal?",
-                     "correcta": "silla", "distractores": ["perro", "gato", "vaca", "caballo"]},
-                ],
-            },
-        },
-        {
-            "bloque": "gnosias",
-            "plantilla_tipo": "seleccion_multiple",
-            "nombre": "Reconocer la emoción",
-            "descripcion": "Una cara con una expresión; elegir la emoción correcta.",
-            "parametros_json": {
-                "opciones_min": 3, "opciones_max": 4,
-                "items": [
-                    {"id": "alegria", "instruccion": "¿Qué emoción muestra esta cara?",
-                     "imagen": "cara_alegria", "correcta": "alegría",
-                     "distractores": ["tristeza", "sorpresa", "enfado"]},
-                    {"id": "tristeza", "instruccion": "¿Qué emoción muestra esta cara?",
-                     "imagen": "cara_tristeza", "correcta": "tristeza",
-                     "distractores": ["alegría", "sorpresa", "miedo"]},
-                ],
-            },
-        },
-        {
-            "bloque": "praxias",
-            "plantilla_tipo": "trazo",
-            "nombre": "Sigue la línea",
-            "descripcion": "Grafomotricidad: seguir un trazo con el dedo.",
-            "parametros_json": {
-                "instruccion": "Sigue la línea con el dedo",
-                "tolerancia_px": 24, "viewbox": "0 0 300 140",
-                "figuras": [
-                    {"id": "onda", "path": "M20,100 Q90,20 150,80 T280,60"},
-                    {"id": "arco", "path": "M20,110 Q150,10 280,110"},
-                    {"id": "ese", "path": "M40,30 C120,30 60,110 140,110 C220,110 160,30 260,30"},
-                ],
-            },
-        },
-        {
-            "bloque": "percepcion",
-            "plantilla_tipo": "conteo_comparacion",
-            "nombre": "¿Cuál tiene más?",
-            "descripcion": "Dos grupos de objetos; señalar cuál tiene más.",
-            "parametros_json": {
-                "modo": "cual_tiene_mas", "cantidad_min": 2, "cantidad_max": 9,
-                "objetos": ["manzana_roja", "manzana_verde"],
-            },
-        },
-        {
-            "bloque": "funcion_ejecutiva",
-            "plantilla_tipo": "secuencia_ordenar",
-            "nombre": "Ordenar los pasos de una tarea",
-            "descripcion": "Poner en orden los pasos de una rutina conocida.",
-            "parametros_json": {
-                "pasos_min": 3, "pasos_max": 4,
-                "tareas": [
-                    {"id": "camisa", "titulo": "Lavar una camisa",
-                     "pasos": ["Lavar", "Tender", "Planchar", "Guardar"]},
-                    {"id": "vestirse", "titulo": "Ponerse el zapato",
-                     "pasos": ["Poner el calcetín", "Poner el zapato", "Atar el cordón"]},
-                ],
-            },
-        },
-        {
-            "bloque": "vida_cotidiana",
-            "plantilla_tipo": "manejo_cantidad",
-            "nombre": "Manejo de dinero",
-            "descripcion": "Juntar una cantidad con monedas. Cantidades cambiantes.",
-            "parametros_json": {
-                "modo": "dinero", "total_min": 5, "total_max": 12,
-                "monedas": [1, 2, 5],
-            },
-        },
-    ]
+    """Carga TODO el catálogo de ejercicios desde `app/data/catalogo.json`.
+
+    Data-driven: para dar de alta una actividad basta con añadir una fila al
+    JSON con su `bloque`, `plantilla_tipo`, `nombre`, `descripcion` y el
+    `parametros_json` que consuma su plantilla (ver `templates/tipos.py`).
+    """
+    with _CATALOGO_PATH.open(encoding="utf-8") as f:
+        return json.load(f)
 
 
 async def sembrar(db: AsyncSession) -> None:
@@ -200,20 +96,21 @@ async def sembrar(db: AsyncSession) -> None:
         db.add(DatosIdentificativos(usuario_final_id=uf.id, nombre_real=nombre_real))
         participantes.append(uf)
 
-    # Ejercicios (uno por bloque).
-    ejercicios: dict[str, EjercicioCatalogo] = {}
+    # Ejercicios (catálogo completo, cargado del JSON data-driven).
+    por_nombre: dict[str, EjercicioCatalogo] = {}
     for cfg in _ejercicios_semilla():
         ej = EjercicioCatalogo(**cfg)
         db.add(ej)
         await db.flush()
-        ejercicios[cfg["bloque"]] = ej
+        por_nombre[cfg["nombre"]] = ej
 
     await db.flush()
 
     # --- Intentos de demo para dar vida al panel ---
     # Paquito: praxias con tendencia clara a la baja -> debe disparar alerta.
     # Marisa: praxias estable/al alza -> sin alerta.
-    ej_praxias = ejercicios["praxias"]
+    # Se usa el trazo "Sigue la línea" (grafomotricidad) como ejercicio de praxias.
+    ej_praxias = por_nombre["Sigue la línea"]
 
     def _crear_sesion_e_intento(uf, ej, dias_atras, precision, estado="solo"):
         fecha = ahora - timedelta(days=dias_atras)
