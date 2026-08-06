@@ -51,28 +51,33 @@ async def crear_ejercicio(
 async def generar_instancia(
     ejercicio_id: str,
     usuario_final_id: str | None = Query(default=None),
+    nivel: str | None = Query(default=None, description="bajo/medio/alto (banda de cantidad)"),
     db: AsyncSession = Depends(get_db),
     staff: UsuarioStaff = Depends(get_current_staff),
 ):
     """Genera una tirada concreta del ejercicio (cantidades cambiantes).
 
-    Si se pasa `usuario_final_id`, ajusta la dificultad a su nivel base.
+    `nivel` (bajo/medio/alto) fija la banda de CANTIDAD de imágenes/objetos
+    (básico ~3 · intermedio ~6-8 · alto ~10-12) — es lo que manda la cola de la
+    tablet según el plan del paciente. Si no se pasa, se usa el nivel base del
+    usuario si hay `usuario_final_id`.
     """
     ej = await db.get(EjercicioCatalogo, ejercicio_id)
     if ej is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Ejercicio no encontrado")
 
-    nivel = None
-    if usuario_final_id:
+    # Prioridad: nivel de dificultad explícito (texto) > nivel base del usuario.
+    nivel_efectivo: object | None = nivel if nivel else None
+    if nivel_efectivo is None and usuario_final_id:
         uf = await db.get(UsuarioFinal, usuario_final_id)
         if uf is not None:
             # nivel específico del ejercicio, o del bloque, si existe.
-            nivel = (uf.nivel_base_json or {}).get(ejercicio_id) \
+            nivel_efectivo = (uf.nivel_base_json or {}).get(ejercicio_id) \
                 or (uf.nivel_base_json or {}).get(ej.bloque)
 
     plantilla = get_plantilla(ej.plantilla_tipo)
     try:
-        instancia = plantilla.generar(ej.parametros_json or {}, nivel=nivel)
+        instancia = plantilla.generar(ej.parametros_json or {}, nivel=nivel_efectivo)
     except ValueError as e:
         raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, str(e))
 

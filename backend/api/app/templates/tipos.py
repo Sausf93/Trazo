@@ -96,7 +96,11 @@ class PlantillaMemoriaVisual(PlantillaBase):
         banco = parametros.get("banco") or []
         if len(banco) < 4:
             raise ValueError("memoria_visual requiere al menos 4 elementos en 'banco'")
-        n = _rango(nivel, parametros, "recordar_min", "recordar_max", 2, 5, rng)
+        banda = self.banda_cantidad(nivel)
+        if banda:
+            n = rng.randint(banda[0], banda[1])
+        else:
+            n = _rango(nivel, parametros, "recordar_min", "recordar_max", 2, 5, rng)
         n = min(n, len(banco))
 
         a_recordar = rng.sample(banco, n)
@@ -168,8 +172,12 @@ class PlantillaConteoComparacion(PlantillaBase):
         # la fija. Compatibilidad hacia atrás: si no hay `modos`, se usa `modo`.
         modos = parametros.get("modos")
         modo = rng.choice(modos) if modos else parametros.get("modo", "cual_tiene_mas")
-        lo = self._nivel_val(nivel, "cantidad_min", parametros.get("cantidad_min", 2))
-        hi = self._nivel_val(nivel, "cantidad_max", parametros.get("cantidad_max", 8))
+        banda = self.banda_cantidad(nivel)
+        if banda:
+            lo, hi = banda
+        else:
+            lo = self._nivel_val(nivel, "cantidad_min", parametros.get("cantidad_min", 2))
+            hi = self._nivel_val(nivel, "cantidad_max", parametros.get("cantidad_max", 8))
 
         # Nº de grupos también cambiante (mínimo 2 para poder comparar).
         n_grupos = min(len(objetos), max(2, rng.randint(2, 3)))
@@ -245,7 +253,11 @@ class PlantillaEvocacionLibre(PlantillaBase):
         rng = self._rng(rng)
         prompts = parametros.get("prompts") or [{"texto": "objetos de la cocina"}]
         prompt = rng.choice(prompts)
-        n_pedidas = _rango(nivel, parametros, "pedir_min", "pedir_max", 5, 10, rng)
+        banda = self.banda_cantidad(nivel)
+        if banda:
+            n_pedidas = rng.randint(banda[0], banda[1])
+        else:
+            n_pedidas = _rango(nivel, parametros, "pedir_min", "pedir_max", 5, 10, rng)
 
         return InstanciaEjercicio(
             plantilla=self.tipo,

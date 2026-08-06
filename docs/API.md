@@ -14,7 +14,7 @@ Enviar `Authorization: Bearer <token>` en el resto.
 | POST | `/usuarios` | Alta de usuario final. Body: `alias_interno`, `nombre_real?`, `nivel_base_json?`. |
 | GET | `/ejercicios?bloque=&activo=` | Catálogo de ejercicios. |
 | POST | `/ejercicios` | Crear ejercicio (rol `admin_centro`). Body: `bloque`, `plantilla_tipo`, `nombre`, `parametros_json`. |
-| GET | `/ejercicios/{id}/instancia?usuario_final_id=` | Genera una tirada concreta (cantidades cambiantes). |
+| GET | `/ejercicios/{id}/instancia?usuario_final_id=&nivel=` | Genera una tirada concreta (cantidades cambiantes). `nivel` (bajo/medio/alto) fija la banda de CANTIDAD de imágenes/objetos: básico ~3 · intermedio ~6-8 · alto ~10-12 (lo pasa la tablet según el plan del paciente). |
 | POST | `/sesiones` | Crear/abrir sala. Body: `tipo` (individual/grupo), `nombre?` (etiqueta de la sala, ej. "Grupo tarde"), `modo?`, `ejercicio_compartido_id?` (modo grupo), `participantes` (lista de ids). |
 | GET | `/sesiones/activa?centro_id=` | Sesión abierta más reciente del centro + participantes (lo que consulta la tablet participante para descubrir la sala). Devuelve `nombre`, `iniciada`, `sesion_id=null` si no hay. |
 | PATCH | `/sesiones/{id}/iniciar` | La maestra pulsa "Iniciar actividad" (`iniciada=true`). |

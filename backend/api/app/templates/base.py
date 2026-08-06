@@ -45,6 +45,14 @@ class PlantillaBase:
     # Métricas que este tipo produce (para documentación y validación).
     metricas: list[str] = []
 
+    # Niveles de dificultad -> banda de CANTIDAD de imágenes/objetos del ejercicio
+    # (ver MODELO-OPERATIVO): a menor nivel cognitivo, menos elementos.
+    _BANDAS: dict[str, tuple[int, int]] = {
+        "bajo": (3, 3),
+        "medio": (6, 8),
+        "alto": (10, 12),
+    }
+
     def generar(
         self,
         parametros: dict[str, Any],
@@ -60,7 +68,19 @@ class PlantillaBase:
         return rng or random.Random()
 
     @staticmethod
-    def _nivel_val(nivel: dict[str, Any] | None, clave: str, defecto: Any) -> Any:
-        if nivel and clave in nivel:
+    def _nivel_val(nivel: Any, clave: str, defecto: Any) -> Any:
+        # Solo un `nivel` en forma de dict aporta overrides por clave; un nivel
+        # de texto ("bajo/medio/alto") no rompe aquí (usa el defecto).
+        if isinstance(nivel, dict) and clave in nivel:
             return nivel[clave]
         return defecto
+
+    @classmethod
+    def banda_cantidad(cls, nivel: Any) -> tuple[int, int] | None:
+        """Si `nivel` es texto de dificultad, devuelve su banda (min,max); si no, None.
+
+        básico ~3 · intermedio ~6-8 · alto ~10-12.
+        """
+        if isinstance(nivel, str):
+            return cls._BANDAS.get(nivel.strip().lower())
+        return None
