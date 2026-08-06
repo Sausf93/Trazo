@@ -14,6 +14,7 @@ import type {
   Evolucion,
   Live,
   PlanLinea,
+  SugerenciaNivel,
   TokenOut,
   UsuarioFinal,
 } from "./types";
@@ -102,6 +103,26 @@ export function obtenerCola(
   return http.get<Cola>(
     `/usuarios/${encodeURIComponent(usuarioId)}/cola${buildQuery(params)}`,
     signal,
+  );
+}
+
+// ---- Sugerencias de nivel (auto-sugerencia) ----
+/** Sugerencias que el sistema calcula para esta persona; el profesional decide. */
+export function sugerenciasUsuario(
+  usuarioId: string,
+  signal?: AbortSignal,
+): Promise<SugerenciaNivel[]> {
+  return http.get<SugerenciaNivel[]>(
+    `/usuarios/${encodeURIComponent(usuarioId)}/sugerencias`,
+    signal,
+  );
+}
+
+/** Aplica un cambio de nivel a una línea del plan (PATCH). */
+export function aplicarNivelLinea(lineaId: string, nivel: string): Promise<PlanLinea> {
+  return http.patch<PlanLinea>(
+    `/planes/lineas/${encodeURIComponent(lineaId)}/nivel`,
+    { nivel },
   );
 }
 

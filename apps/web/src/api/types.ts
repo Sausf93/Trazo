@@ -150,6 +150,24 @@ export interface Cola {
   items: ColaItem[];
 }
 
+// ---- Sugerencias de nivel (auto-sugerencia del sistema) ----
+export type SentidoSugerencia = "subir" | "bajar";
+
+/**
+ * Sugerencia de cambio de nivel que calcula el backend. NO se aplica sola:
+ * el profesional decide y la aplica con el PATCH de nivel.
+ */
+export interface SugerenciaNivel {
+  plan_linea_id: string;
+  bloque: string;
+  nivel_actual: string;
+  sugerencia: SentidoSugerencia;
+  nivel_propuesto: string;
+  motivo: string;
+  media_reciente: number | null;
+  n_intentos: number;
+}
+
 // ---- Dispositivos (tablets emparejadas) ----
 export type RolDispositivo = "maestra" | "participante";
 

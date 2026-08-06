@@ -13,6 +13,7 @@ import { BLOQUES, labelBloque } from "../api/vocab";
 import { AlertCard } from "../components/AlertCard";
 import { EstadoBadge } from "../components/EstadoBadge";
 import { EvolucionChart, construirSerie } from "../components/EvolucionChart";
+import { SugerenciasNivel } from "../components/SugerenciasNivel";
 import { Card, PageHeader, Spinner, StateMessage } from "../components/ui";
 import { useAuth } from "../auth/AuthContext";
 import { useAsync } from "../hooks/useAsync";
@@ -155,6 +156,9 @@ export function UsuarioEvolucionPage() {
           </div>
         )}
       </Card>
+
+      {/* Sugerencias de nivel (el profesional decide) */}
+      <SugerenciasNivel usuarioId={id} />
 
       {/* Alertas de la persona */}
       <section aria-labelledby="alertas-persona" style={{ marginBottom: 26 }}>
