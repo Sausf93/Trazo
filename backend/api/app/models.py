@@ -187,8 +187,12 @@ class Sesion(Base):
     ejercicio_compartido_id: Mapped[str | None] = mapped_column(
         ForeignKey("ejercicios_catalogo.id"), nullable=True
     )
+    # Nombre/etiqueta de la sala (ej. "Grupo tarde"). Solo etiqueta, no dato personal.
+    nombre: Mapped[str | None] = mapped_column(String(120), nullable=True)
     staff_id: Mapped[str] = mapped_column(ForeignKey("usuarios_staff.id"), nullable=False)
     cerrada: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    # iniciada=False: montando/repartiendo. True: la maestra pulsó "Iniciar actividad".
+    iniciada: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
 
     participantes: Mapped[list[SesionParticipante]] = relationship(
         back_populates="sesion", cascade="all, delete-orphan"

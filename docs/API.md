@@ -15,7 +15,10 @@ Enviar `Authorization: Bearer <token>` en el resto.
 | GET | `/ejercicios?bloque=&activo=` | Catálogo de ejercicios. |
 | POST | `/ejercicios` | Crear ejercicio (rol `admin_centro`). Body: `bloque`, `plantilla_tipo`, `nombre`, `parametros_json`. |
 | GET | `/ejercicios/{id}/instancia?usuario_final_id=` | Genera una tirada concreta (cantidades cambiantes). |
-| POST | `/sesiones` | Crear sesión. Body: `tipo` (individual/grupo), `modo?` (individual/grupo, def. `tipo`), `ejercicio_compartido_id?` (modo grupo), `participantes` (lista de ids). |
+| POST | `/sesiones` | Crear/abrir sala. Body: `tipo` (individual/grupo), `nombre?` (etiqueta de la sala, ej. "Grupo tarde"), `modo?`, `ejercicio_compartido_id?` (modo grupo), `participantes` (lista de ids). |
+| GET | `/sesiones/activa?centro_id=` | Sesión abierta más reciente del centro + participantes (lo que consulta la tablet participante para descubrir la sala). Devuelve `nombre`, `iniciada`, `sesion_id=null` si no hay. |
+| PATCH | `/sesiones/{id}/iniciar` | La maestra pulsa "Iniciar actividad" (`iniciada=true`). |
+| PATCH | `/sesiones/{id}/cerrar` | Cerrar la sala (`cerrada=true`); las tablets vuelven a elegir rol. |
 | GET | `/sesiones/{id}/live` | Estado en vivo (polling 3-5s): fichas por participante, `atascado`. |
 | POST | `/sesiones/{id}/intentos` | Registrar intento (idempotente por `id` UUID de cliente). |
 | PATCH | `/intentos/{id}/estado` | Cambiar estado (solo/con_ayuda/no_completado). |

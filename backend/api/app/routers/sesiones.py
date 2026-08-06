@@ -68,7 +68,8 @@ async def sesion_activa(
             alias_interno=uf.alias_interno if uf else "?",
         ))
     return SesionActivaOut(
-        sesion_id=ses.id, modo=ses.modo,
+        sesion_id=ses.id, nombre=ses.nombre, modo=ses.modo,
+        iniciada=ses.iniciada,
         ejercicio_compartido_id=ses.ejercicio_compartido_id,
         participantes=participantes,
     )
@@ -93,6 +94,7 @@ async def crear_sesion(
         centro_id=staff.centro_id,
         tipo=body.tipo,
         modo=modo,
+        nombre=body.nombre,
         ejercicio_compartido_id=body.ejercicio_compartido_id,
         staff_id=staff.id,
     )
@@ -100,6 +102,42 @@ async def crear_sesion(
     await db.flush()
     for uf_id in body.participantes:
         db.add(SesionParticipante(sesion_id=ses.id, usuario_final_id=uf_id))
+    await db.commit()
+    await db.refresh(ses)
+    return ses
+
+
+@router.patch("/{sesion_id}/iniciar", response_model=SesionOut)
+async def iniciar_sesion(
+    sesion_id: str,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """La maestra pulsa 'Iniciar actividad': arrancan los ejercicios para todos."""
+    ses = await db.get(Sesion, sesion_id)
+    if ses is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
+    if ses.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    ses.iniciada = True
+    await db.commit()
+    await db.refresh(ses)
+    return ses
+
+
+@router.patch("/{sesion_id}/cerrar", response_model=SesionOut)
+async def cerrar_sesion(
+    sesion_id: str,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """La maestra cierra la sala: las tablets vuelven a 'elegir rol'."""
+    ses = await db.get(Sesion, sesion_id)
+    if ses is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
+    if ses.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    ses.cerrada = True
     await db.commit()
     await db.refresh(ses)
     return ses

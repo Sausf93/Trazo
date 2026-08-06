@@ -78,6 +78,8 @@ class InstanciaOut(BaseModel):
 
 class SesionIn(BaseModel):
     tipo: str = "individual"  # individual | grupo
+    # Nombre/etiqueta de la sala (ej. "Grupo tarde"). Opcional; no es dato personal.
+    nombre: str | None = None
     # `modo` es el término del modelo operativo (§3). Si se omite, se toma `tipo`.
     modo: str | None = None  # individual | grupo
     # En modo grupo: ejercicio compartido por todos (cada uno a su nivel).
@@ -92,9 +94,11 @@ class SesionOut(BaseModel):
     fecha: datetime
     tipo: str
     modo: str
+    nombre: str | None
     ejercicio_compartido_id: str | None
     staff_id: str
     cerrada: bool
+    iniciada: bool
 
 
 # ---- Plan de trabajo por paciente ----
@@ -191,7 +195,9 @@ class ParticipanteSesion(BaseModel):
 
 class SesionActivaOut(BaseModel):
     sesion_id: str | None = None
+    nombre: str | None = None
     modo: str | None = None
+    iniciada: bool = False
     ejercicio_compartido_id: str | None = None
     participantes: list[ParticipanteSesion] = Field(default_factory=list)
 
