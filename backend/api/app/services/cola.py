@@ -45,13 +45,14 @@ async def _cola_desde_config(db: AsyncSession, config: dict) -> list["ItemColaDa
     Ese nivel aplica a todas las actividades de la sesión de esa persona.
     """
     nivel = config.get("nivel")
+    dificultad = _NIVEL_DIFICULTAD.get(nivel)
     cola: list[ItemColaData] = []
     for linea in config.get("lineas", []):
         bloque = linea.get("bloque")
         n = _clamp_n(linea.get("n", 1))
         if not bloque:
             continue
-        candidatos = await _ejercicios_de_bloque(db, bloque)
+        candidatos = await _ejercicios_de_bloque(db, bloque, dificultad)
         if not candidatos:
             continue
         for i in range(n):
@@ -74,9 +75,20 @@ class ItemColaData:
     plan_linea_id: str | None = None
 
 
-async def _ejercicios_de_bloque(db: AsyncSession, bloque: str) -> list[EjercicioCatalogo]:
-    """Ejercicios ACTIVOS de un bloque, orden determinista (por nombre, luego id)."""
-    return (
+# El nivel de la sesión elige la DIFICULTAD inherente de la actividad, no solo la
+# cantidad. Así "nivel alto" trae actividades cognitivamente más exigentes (sumas,
+# leer la hora…) y "bajo" las más sencillas (reconocer, tocar la igual).
+_NIVEL_DIFICULTAD = {"bajo": "facil", "medio": "media", "alto": "dificil"}
+
+
+async def _ejercicios_de_bloque(
+    db: AsyncSession, bloque: str, dificultad: str | None = None
+) -> list[EjercicioCatalogo]:
+    """Ejercicios ACTIVOS de un bloque, orden determinista (por nombre, luego id).
+
+    Si se pide una `dificultad`, prioriza las actividades de esa dificultad; si el
+    bloque no tiene ninguna de esa dificultad, cae a todas (no deja hueco)."""
+    todos = (
         await db.execute(
             select(EjercicioCatalogo)
             .where(
@@ -86,6 +98,14 @@ async def _ejercicios_de_bloque(db: AsyncSession, bloque: str) -> list[Ejercicio
             .order_by(EjercicioCatalogo.nombre, EjercicioCatalogo.id)
         )
     ).scalars().all()
+    if dificultad:
+        match = [
+            e for e in todos
+            if (e.parametros_json or {}).get("dificultad") == dificultad
+        ]
+        if match:
+            return match
+    return todos
 
 
 async def _nivel_para_ejercicio(
@@ -191,7 +211,8 @@ async def construir_cola(
         elif ln.tipo == "dominio":
             if not ln.bloque:
                 continue
-            candidatos = await _ejercicios_de_bloque(db, ln.bloque)
+            candidatos = await _ejercicios_de_bloque(
+                db, ln.bloque, _NIVEL_DIFICULTAD.get(ln.nivel))
             if not candidatos:
                 continue
             # Rotación determinista: recorre el catálogo del bloque, ciclando

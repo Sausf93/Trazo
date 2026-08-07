@@ -5,6 +5,7 @@
   "nombre": "Memoria de figuras",
   "descripcion": "Mira unas figuras, desaparecen, y localízalas entre varias.",
   "parametros_json": {
+   "dificultad": "dificil",
    "recordar_min": 2,
    "recordar_max": 5,
    "segundos": 60,
@@ -50,6 +51,7 @@
   "nombre": "La lista corta",
   "descripcion": "Se muestran 3-4 palabras; tras una pausa, hay que localizar cuáles eran entre varias.",
   "parametros_json": {
+   "dificultad": "media",
    "recordar_min": 3,
    "recordar_max": 4,
    "segundos": 30,
@@ -99,6 +101,7 @@
   "nombre": "¿Dónde estaba?",
   "descripcion": "Objetos cotidianos que aparecen un momento y hay que reconocer después.",
   "parametros_json": {
+   "dificultad": "media",
    "recordar_min": 2,
    "recordar_max": 4,
    "segundos": 45,
@@ -144,6 +147,7 @@
   "nombre": "Completar refranes",
   "descripcion": "Refranes populares a los que falta el final; elegir cómo terminan. Memoria muy conservada en mayores.",
   "parametros_json": {
+   "dificultad": "facil",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -211,6 +215,7 @@
   "nombre": "¿Cómo se llama esto?",
   "descripcion": "Se muestra un objeto cotidiano y hay que elegir su nombre — denominación por confrontación visual.",
   "parametros_json": {
+   "dificultad": "facil",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -267,6 +272,7 @@
   "nombre": "Palabra e imagen",
   "descripcion": "Se lee una palabra en voz alta y hay que elegir la imagen que le corresponde.",
   "parametros_json": {
+   "dificultad": "facil",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -312,6 +318,7 @@
   "nombre": "El intruso",
   "descripcion": "Varios objetos; uno no pertenece al grupo.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 4,
    "opciones_max": 5,
    "items": [
@@ -368,6 +375,7 @@
   "nombre": "Van juntos",
   "descripcion": "Emparejar por función o uso: qué va con qué (llave-puerta, paraguas-lluvia).",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -424,6 +432,7 @@
   "nombre": "Seguir la serie",
   "descripcion": "Una secuencia simple (rojo-azul-rojo-azul-¿?) y elegir qué sigue.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -480,6 +489,7 @@
   "nombre": "Relación lógica — ropa por estación",
   "descripcion": "Elegir qué prenda corresponde a la estación o al clima que se muestra.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -522,6 +532,7 @@
   "nombre": "Cuenta y suma sin decir suma",
   "descripcion": "Cuenta los objetos de un grupo, luego los de otro, y di cuántos hay en total. Es una suma presentada como conteo.",
   "parametros_json": {
+   "dificultad": "dificil",
    "modo": "sumar",
    "cantidad_min": 1,
    "cantidad_max": 6,
@@ -537,6 +548,7 @@
   "nombre": "Reconocer la emoción",
   "descripcion": "Una cara con una expresión; elegir la emoción correcta.",
   "parametros_json": {
+   "dificultad": "facil",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -593,6 +605,7 @@
   "nombre": "¿Qué sonido es?",
   "descripcion": "Se escucha un sonido cotidiano y hay que elegir a qué corresponde — gnosia auditiva.",
   "parametros_json": {
+   "dificultad": "facil",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -649,6 +662,7 @@
   "nombre": "Adivina por la sombra",
   "descripcion": "Solo se ve la silueta de un objeto cotidiano; hay que decir qué es.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -694,6 +708,7 @@
   "nombre": "Solo un trozo",
   "descripcion": "Se ve solo una parte de un objeto conocido (el asa de una taza) y hay que reconocer el objeto completo.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -739,6 +754,7 @@
   "nombre": "Sigue la línea",
   "descripcion": "Grafomotricidad: seguir un trazo con el dedo.",
   "parametros_json": {
+   "dificultad": "facil",
    "instruccion": "Sigue la línea con el dedo",
    "tolerancia_px": 24,
    "viewbox": "0 0 300 140",
@@ -764,6 +780,7 @@
   "nombre": "Copiar figuras simples",
   "descripcion": "Reproducir con el dedo un círculo, un cuadrado, una cruz o un triángulo.",
   "parametros_json": {
+   "dificultad": "facil",
    "instruccion": "Copia la figura con el dedo",
    "tolerancia_px": 28,
    "viewbox": "0 0 300 140",
@@ -793,6 +810,7 @@
   "nombre": "Unir los puntos",
   "descripcion": "Recorrer con el dedo un camino de puntos numerados para formar un dibujo sencillo.",
   "parametros_json": {
+   "dificultad": "facil",
    "instruccion": "Une los puntos en orden con el dedo",
    "tolerancia_px": 30,
    "viewbox": "0 0 300 140",
@@ -818,6 +836,7 @@
   "nombre": "Camino del laberinto",
   "descripcion": "Llevar el dedo desde la entrada hasta la salida sin salirse del camino.",
   "parametros_json": {
+   "dificultad": "facil",
    "instruccion": "Lleva el dedo hasta el final del camino",
    "tolerancia_px": 26,
    "viewbox": "0 0 300 140",
@@ -843,6 +862,7 @@
   "nombre": "Encaja la pieza",
   "descripcion": "Arrastrar cada pieza (redonda, cuadrada, triangular) hasta el hueco de su misma forma.",
   "parametros_json": {
+   "dificultad": "facil",
    "cantidad_min": 3,
    "cantidad_max": 4,
    "muestrear": false,
@@ -894,6 +914,7 @@
   "nombre": "¿Cuál tiene más?",
   "descripcion": "Dos grupos de objetos; señalar cuál tiene más.",
   "parametros_json": {
+   "dificultad": "media",
    "modo": "cual_tiene_mas",
    "cantidad_min": 2,
    "cantidad_max": 6,
@@ -909,6 +930,7 @@
   "nombre": "Cuenta cuántos hay",
   "descripcion": "Una escena con varios objetos; contar cuántos hay del que se pide. Cantidad cambiante.",
   "parametros_json": {
+   "dificultad": "facil",
    "modo": "contar",
    "cantidad_min": 3,
    "cantidad_max": 6,
@@ -925,6 +947,7 @@
   "nombre": "Cuál es igual",
   "descripcion": "Se muestra un detalle (un ojo, una forma) y hay que encontrar cuál es idéntico entre varias opciones.",
   "parametros_json": {
+   "dificultad": "facil",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -959,6 +982,7 @@
   "nombre": "De mayor a menor",
   "descripcion": "Ordenar con el dedo varios objetos iguales pero de distinto tamaño, del más grande al más pequeño.",
   "parametros_json": {
+   "dificultad": "media",
    "pasos_min": 3,
    "pasos_max": 4,
    "tareas": [
@@ -1003,6 +1027,7 @@
   "nombre": "Ordenar los pasos de una tarea",
   "descripcion": "Poner en orden los pasos de una rutina conocida.",
   "parametros_json": {
+   "dificultad": "media",
    "pasos_min": 3,
    "pasos_max": 4,
    "tareas": [
@@ -1034,6 +1059,7 @@
   "nombre": "Tareas de la casa en orden",
   "descripcion": "Ordenar los pasos de rutinas domésticas cotidianas.",
   "parametros_json": {
+   "dificultad": "media",
    "pasos_min": 3,
    "pasos_max": 4,
    "tareas": [
@@ -1075,6 +1101,7 @@
   "nombre": "La herramienta correcta",
   "descripcion": "Se muestra una tarea (clavar un cuadro) y hay que elegir la herramienta adecuada.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -1127,6 +1154,7 @@
   "nombre": "¿Qué paso sobra?",
   "descripcion": "Una secuencia de una tarea conocida con un paso que no pertenece; señalar cuál está de más.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -1169,6 +1197,7 @@
   "nombre": "Reúne el importe (solo monedas)",
   "descripcion": "Junta una cantidad pequeña usando solo monedas de euro, sin céntimos. Banda fácil; el importe cambia cada vez.",
   "parametros_json": {
+   "dificultad": "media",
    "modo": "dinero",
    "con_centimos": false,
    "denominaciones_c": [
@@ -1187,6 +1216,7 @@
   "nombre": "Reúne el importe con céntimos",
   "descripcion": "Forma un importe con decimales reales (p. ej. 2,45 €) usando todas las monedas de euro. Trabaja en céntimos.",
   "parametros_json": {
+   "dificultad": "dificil",
    "modo": "dinero",
    "con_centimos": true,
    "denominaciones_c": [
@@ -1209,6 +1239,7 @@
   "nombre": "Reúne el importe con billetes",
   "descripcion": "Importes grandes (decenas o cientos de euros) con billetes y monedas. Banda difícil.",
   "parametros_json": {
+   "dificultad": "dificil",
    "modo": "dinero",
    "con_centimos": true,
    "denominaciones_c": [
@@ -1235,6 +1266,7 @@
   "nombre": "Elige las monedas justas",
   "descripcion": "Seleccionar las monedas exactas para pagar un importe con céntimos. Refuerza el valor de cada moneda.",
   "parametros_json": {
+   "dificultad": "dificil",
    "modo": "monedas_justas",
    "con_centimos": true,
    "denominaciones_c": [
@@ -1257,6 +1289,7 @@
   "nombre": "La vuelta del cambio",
   "descripcion": "Pagas con un billete algo que cuesta X (con céntimos); calcular cuánto te devuelven. Cantidades cambiantes.",
   "parametros_json": {
+   "dificultad": "dificil",
    "modo": "vuelta",
    "con_centimos": true,
    "denominaciones_c": [
@@ -1287,6 +1320,7 @@
   "nombre": "La vuelta con billetes grandes",
   "descripcion": "Compra mayor: pagas con 20, 50 o 100 € y calculas la vuelta. Banda difícil con céntimos.",
   "parametros_json": {
+   "dificultad": "dificil",
    "modo": "vuelta",
    "con_centimos": true,
    "denominaciones_c": [
@@ -1317,6 +1351,7 @@
   "nombre": "¿Te llega para pagar?",
   "descripcion": "Se muestra un precio y lo que llevas en el monedero; decidir si alcanza. Varias bandas de dificultad.",
   "parametros_json": {
+   "dificultad": "media",
    "modo": "llega_para_pagar",
    "bandas": [
     {
@@ -1359,6 +1394,7 @@
   "nombre": "El monedero (todo en uno)",
   "descripcion": "Actividad de dinero completa: cada tirada elige al azar un modo (reunir, monedas justas, la vuelta o si llega) y una banda (monedas, con céntimos o billetes). Muy variada.",
   "parametros_json": {
+   "dificultad": "dificil",
    "modos": [
     "dinero",
     "monedas_justas",
@@ -1437,6 +1473,7 @@
   "nombre": "¿Qué hora marca?",
   "descripcion": "Un reloj analógico sencillo; decir o seleccionar qué hora es. Orientación temporal.",
   "parametros_json": {
+   "dificultad": "dificil",
    "modo": "reloj",
    "minutos": [
     0,
@@ -1452,6 +1489,7 @@
   "nombre": "Poner la mesa",
   "descripcion": "Arrastrar plato, vaso y cubiertos a su sitio. El número de comensales cambia cada vez.",
   "parametros_json": {
+   "dificultad": "media",
    "instruccion": "Coloca cada cosa en su sitio en la mesa",
    "cantidad_min": 2,
    "cantidad_max": 4,
@@ -1513,6 +1551,7 @@
   "nombre": "La lista de la compra",
   "descripcion": "Elegir y llevar al carro los productos que pedía la lista. El número de productos cambia cada vez.",
   "parametros_json": {
+   "dificultad": "media",
    "instruccion": "Lleva al carro lo que pide la lista",
    "cantidad_min": 3,
    "cantidad_max": 5,
@@ -1568,6 +1607,7 @@
   "nombre": "Guardar la compra",
   "descripcion": "Llevar cada alimento a su sitio: lo frío a la nevera, lo seco a la despensa.",
   "parametros_json": {
+   "dificultad": "media",
    "instruccion": "Guarda cada alimento donde corresponde",
    "cantidad_min": 3,
    "cantidad_max": 4,
@@ -1622,6 +1662,7 @@
   "nombre": "Repasar la greca",
   "descripcion": "Repasar con el dedo una cenefa o greca repetida — control del trazo continuo.",
   "parametros_json": {
+   "dificultad": "facil",
    "instruccion": "Repasa la cenefa sin levantar el dedo",
    "tolerancia_px": 24,
    "viewbox": "0 0 300 140",
@@ -1647,6 +1688,7 @@
   "nombre": "La espiral",
   "descripcion": "Recorrer una espiral con el dedo, de fuera hacia dentro — coordinación fina y control rotatorio.",
   "parametros_json": {
+   "dificultad": "facil",
    "instruccion": "Sigue la espiral con el dedo",
    "tolerancia_px": 28,
    "viewbox": "0 0 300 140",
@@ -1668,6 +1710,7 @@
   "nombre": "Repasar letras y números",
   "descripcion": "Repasar con el dedo el contorno de letras y números grandes — grafomotricidad de trazos conocidos.",
   "parametros_json": {
+   "dificultad": "facil",
    "instruccion": "Repasa la letra o el número con el dedo",
    "tolerancia_px": 26,
    "viewbox": "0 0 300 140",
@@ -1697,6 +1740,7 @@
   "nombre": "Completar la figura",
   "descripcion": "Repasar la mitad que falta de una figura simétrica para completarla — cierre visomotor.",
   "parametros_json": {
+   "dificultad": "facil",
    "instruccion": "Dibuja la parte que falta con el dedo",
    "tolerancia_px": 28,
    "viewbox": "0 0 300 140",
@@ -1722,6 +1766,7 @@
   "nombre": "Parejas iguales",
   "descripcion": "Memorizar unos objetos y localizarlos después entre otros parecidos — memoria de reconocimiento.",
   "parametros_json": {
+   "dificultad": "media",
    "recordar_min": 2,
    "recordar_max": 4,
    "segundos": 40,
@@ -1767,6 +1812,7 @@
   "nombre": "La bandeja",
   "descripcion": "Se enseña una bandeja con varios objetos; tras taparla, reconocer cuáles estaban. Cantidad cambiante.",
   "parametros_json": {
+   "dificultad": "dificil",
    "recordar_min": 3,
    "recordar_max": 5,
    "segundos": 45,
@@ -1816,6 +1862,7 @@
   "nombre": "Frutas del mercado",
   "descripcion": "Recordar qué frutas se mostraron y localizarlas entre otras — memoria con material familiar.",
   "parametros_json": {
+   "dificultad": "media",
    "recordar_min": 2,
    "recordar_max": 4,
    "segundos": 40,
@@ -1861,6 +1908,7 @@
   "nombre": "La cesta de la compra",
   "descripcion": "Se muestra lo que hay que comprar; después, reconocer los productos de la lista entre otros.",
   "parametros_json": {
+   "dificultad": "dificil",
    "recordar_min": 3,
    "recordar_max": 5,
    "segundos": 35,
@@ -1910,6 +1958,7 @@
   "nombre": "Flores del jardín",
   "descripcion": "Memorizar unas flores y reconocerlas después entre varias — atención y memoria visual.",
   "parametros_json": {
+   "dificultad": "media",
    "recordar_min": 2,
    "recordar_max": 4,
    "segundos": 45,
@@ -1955,6 +2004,7 @@
   "nombre": "Vestirse en orden",
   "descripcion": "Ordenar los pasos de vestirse por la mañana — planificación de una rutina cotidiana.",
   "parametros_json": {
+   "dificultad": "media",
    "pasos_min": 3,
    "pasos_max": 4,
    "tareas": [
@@ -1987,6 +2037,7 @@
   "nombre": "El día en orden",
   "descripcion": "Ordenar los momentos del día, de la mañana a la noche — orientación temporal y secuenciación.",
   "parametros_json": {
+   "dificultad": "media",
    "pasos_min": 4,
    "pasos_max": 5,
    "tareas": [
@@ -2020,6 +2071,7 @@
   "nombre": "Ir a la compra paso a paso",
   "descripcion": "Ordenar los pasos de hacer la compra — función ejecutiva aplicada a la vida diaria.",
   "parametros_json": {
+   "dificultad": "media",
    "pasos_min": 4,
    "pasos_max": 5,
    "tareas": [
@@ -2053,6 +2105,7 @@
   "nombre": "Preparar una tortilla",
   "descripcion": "Ordenar los pasos de una receta sencilla — secuenciación de una tarea con varios pasos.",
   "parametros_json": {
+   "dificultad": "media",
    "pasos_min": 4,
    "pasos_max": 5,
    "tareas": [
@@ -2086,6 +2139,7 @@
   "nombre": "Ordena los números",
   "descripcion": "Colocar varios números de menor a mayor — razonamiento y orden numérico.",
   "parametros_json": {
+   "dificultad": "media",
    "pasos_min": 3,
    "pasos_max": 5,
    "tareas": [
@@ -2134,6 +2188,7 @@
   "nombre": "¿Cuál tiene menos?",
   "descripcion": "Dos grupos de objetos; señalar cuál tiene menos. Cantidades cambiantes.",
   "parametros_json": {
+   "dificultad": "media",
    "modo": "cual_tiene_menos",
    "instruccion": "¿Cuál tiene menos?",
    "cantidad_min": 2,
@@ -2150,6 +2205,7 @@
   "nombre": "¿Hay más o menos?",
   "descripcion": "Cada tirada pregunta al azar por el grupo con más o con menos — atención sostenida.",
   "parametros_json": {
+   "dificultad": "media",
    "modos": [
     "cual_tiene_mas",
     "cual_tiene_menos"
@@ -2170,6 +2226,7 @@
   "nombre": "Cuenta las monedas",
   "descripcion": "Contar cuántas monedas (o fichas) hay del tipo que se pide. Cantidad cambiante.",
   "parametros_json": {
+   "dificultad": "facil",
    "modo": "contar",
    "instruccion": "Cuenta cuántas hay",
    "cantidad_min": 3,
@@ -2186,6 +2243,7 @@
   "nombre": "Cuenta y suma la fruta",
   "descripcion": "Contar la fruta de cada cesto y decir cuánta hay en total — una suma presentada como conteo.",
   "parametros_json": {
+   "dificultad": "dificil",
    "modo": "sumar",
    "instruccion": "Cuenta cuántas hay en total",
    "cantidad_min": 1,
@@ -2202,6 +2260,7 @@
   "nombre": "Cuenta los animales",
   "descripcion": "Una escena con varios animales; contar cuántos hay del que se pide. Tarea variable cada vez.",
   "parametros_json": {
+   "dificultad": "media",
    "modos": [
     "contar",
     "cual_tiene_mas"
@@ -2222,6 +2281,7 @@
   "nombre": "Clasifica por color",
   "descripcion": "Llevar cada objeto a la caja de su color — clasificación por un criterio simple.",
   "parametros_json": {
+   "dificultad": "facil",
    "instruccion": "Pon cada cosa en la caja de su color",
    "cantidad_min": 3,
    "cantidad_max": 4,
@@ -2280,6 +2340,7 @@
   "nombre": "Clasifica por tamaño",
   "descripcion": "Separar los objetos grandes de los pequeños — clasificación por tamaño.",
   "parametros_json": {
+   "dificultad": "facil",
    "instruccion": "Pon juntas las cosas grandes y juntas las pequeñas",
    "cantidad_min": 3,
    "cantidad_max": 4,
@@ -2334,6 +2395,7 @@
   "nombre": "Vístete según el tiempo",
   "descripcion": "Llevar cada prenda al tiempo que le corresponde: sol, lluvia o frío — razonamiento aplicado.",
   "parametros_json": {
+   "dificultad": "media",
    "instruccion": "Pon cada prenda con el tiempo que le corresponde",
    "cantidad_min": 3,
    "cantidad_max": 4,
@@ -2392,6 +2454,7 @@
   "nombre": "Cada cosa a su cuarto",
   "descripcion": "Llevar cada objeto a la habitación donde se usa: cocina, baño o dormitorio.",
   "parametros_json": {
+   "dificultad": "media",
    "instruccion": "Lleva cada cosa a su habitación",
    "cantidad_min": 3,
    "cantidad_max": 4,
@@ -2450,6 +2513,7 @@
   "nombre": "Animales de la granja",
   "descripcion": "Recordar qué animales se mostraron y localizarlos después entre otros — memoria con material familiar.",
   "parametros_json": {
+   "dificultad": "media",
    "recordar_min": 2,
    "recordar_max": 4,
    "segundos": 45,
@@ -2495,6 +2559,7 @@
   "nombre": "Las cosas de la cocina",
   "descripcion": "Se muestran unos utensilios de cocina y, tras una pausa, hay que reconocer cuáles eran — memoria visual con objetos cotidianos.",
   "parametros_json": {
+   "dificultad": "dificil",
    "recordar_min": 3,
    "recordar_max": 5,
    "segundos": 40,
@@ -2544,6 +2609,7 @@
   "nombre": "¿Qué animal es?",
   "descripcion": "Se muestra un animal y hay que elegir su nombre — denominación por confrontación visual con material muy familiar.",
   "parametros_json": {
+   "dificultad": "facil",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -2600,6 +2666,7 @@
   "nombre": "La higiene en orden",
   "descripcion": "Ordenar los pasos de una rutina de aseo personal — planificación de tareas de la vida diaria.",
   "parametros_json": {
+   "dificultad": "media",
    "pasos_min": 3,
    "pasos_max": 4,
    "tareas": [
@@ -2642,6 +2709,7 @@
   "nombre": "Cuenta los cubiertos",
   "descripcion": "Contar cuántos cubiertos hay del que se pide, o cuál grupo tiene más. Tarea variable cada vez.",
   "parametros_json": {
+   "dificultad": "media",
    "modos": [
     "contar",
     "cual_tiene_mas"
@@ -2662,6 +2730,7 @@
   "nombre": "¿Dónde se compra?",
   "descripcion": "Elegir en qué tienda se compra cada producto — razonamiento sobre situaciones cotidianas.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -2714,6 +2783,7 @@
   "nombre": "¿Fruta o verdura?",
   "descripcion": "Llevar cada alimento a su cesto: las frutas con las frutas y las verduras con las verduras — clasificación por categoría.",
   "parametros_json": {
+   "dificultad": "media",
    "instruccion": "Pon cada alimento en su cesto",
    "cantidad_min": 3,
    "cantidad_max": 4,
@@ -2778,6 +2848,7 @@
   "nombre": "Paga la compra pequeña",
   "descripcion": "Reunir el importe justo de una compra pequeña (el pan, la leche) con monedas de euro y céntimos. Importes bajos y cambiantes.",
   "parametros_json": {
+   "dificultad": "dificil",
    "modo": "monedas_justas",
    "con_centimos": true,
    "denominaciones_c": [
@@ -2799,6 +2870,7 @@
   "nombre": "El mar y las montañas",
   "descripcion": "Repasar con el dedo olas del mar y siluetas de montañas — control del trazo continuo con formas evocadoras.",
   "parametros_json": {
+   "dificultad": "facil",
    "instruccion": "Repasa el dibujo con el dedo",
    "tolerancia_px": 26,
    "viewbox": "0 0 300 140",
@@ -2824,6 +2896,7 @@
   "nombre": "Oficios de antes",
   "descripcion": "Se nombra una herramienta o labor y hay que elegir el oficio que le corresponde — reminiscencia de trabajos de toda la vida.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -2876,6 +2949,7 @@
   "nombre": "Coplas y canciones",
   "descripcion": "Canciones de siempre a las que falta una palabra; elegir cuál es. Reminiscencia muy conservada.",
   "parametros_json": {
+   "dificultad": "facil",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -2943,6 +3017,7 @@
   "nombre": "Refranes del tiempo",
   "descripcion": "Refranes del tiempo y el campo a los que falta el final; elegir cómo terminan.",
   "parametros_json": {
+   "dificultad": "facil",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -3010,6 +3085,7 @@
   "nombre": "Pasapalabra",
   "descripcion": "Como en la tele: una definición y la palabra empieza por una letra; elegir cuál es. Vocabulario, muy conservado en mayores.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 4,
    "items": [
@@ -3132,6 +3208,7 @@
   "nombre": "Los contrarios",
   "descripcion": "Elegir la palabra que significa lo contrario. Lenguaje y razonamiento.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 3,
    "items": [
@@ -3244,6 +3321,7 @@
   "nombre": "Fíjate en las vocales",
   "descripcion": "Atención al detalle: elegir la palabra que tiene DOS veces la misma vocal.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 3,
    "items": [
@@ -3316,6 +3394,7 @@
   "nombre": "Traza los números",
   "descripcion": "Repasar los números con el dedo, con punto de inicio y flechas de dirección.",
   "parametros_json": {
+   "dificultad": "facil",
    "instruccion": "Repasa el número con el dedo",
    "tolerancia_px": 22,
    "viewbox": "0 0 100 145",
@@ -3369,6 +3448,7 @@
   "nombre": "El número que sigue",
   "descripcion": "Elegir qué número viene después. Orientación numérica y secuencia.",
   "parametros_json": {
+   "dificultad": "media",
    "opciones_min": 3,
    "opciones_max": 3,
    "items": [
@@ -3471,6 +3551,7 @@
   "nombre": "Busca la llave",
   "descripcion": "Toca todas las llaves entre otros objetos. Atención sostenida.",
   "parametros_json": {
+   "dificultad": "media",
    "instruccion": "Toca todas las LLAVES",
    "objetivo": {
     "id": "llave",
@@ -3526,6 +3607,7 @@
   "nombre": "Busca el zapato",
   "descripcion": "Toca todos los zapatos entre otras prendas.",
   "parametros_json": {
+   "dificultad": "media",
    "instruccion": "Toca todos los ZAPATOS",
    "objetivo": {
     "id": "zapato",
@@ -3577,6 +3659,7 @@
   "nombre": "Busca la manzana",
   "descripcion": "Toca todas las manzanas entre otras frutas.",
   "parametros_json": {
+   "dificultad": "media",
    "instruccion": "Toca todas las MANZANAS",
    "objetivo": {
     "id": "manzana",
@@ -3614,6 +3697,587 @@
     {
      "id": "melon",
      "label": "melon"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Sumas sencillas",
+  "descripcion": "Una suma corta y elegir el resultado correcto entre varias opciones. Cálculo mental básico.",
+  "parametros_json": {
+   "dificultad": "dificil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "s1",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "2 + 1 = ?",
+     "correcta": "3",
+     "distractores": [
+      "4",
+      "2"
+     ]
+    },
+    {
+     "id": "s2",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "3 + 2 = ?",
+     "correcta": "5",
+     "distractores": [
+      "6",
+      "4"
+     ]
+    },
+    {
+     "id": "s3",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "4 + 1 = ?",
+     "correcta": "5",
+     "distractores": [
+      "3",
+      "6"
+     ]
+    },
+    {
+     "id": "s4",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "5 + 3 = ?",
+     "correcta": "8",
+     "distractores": [
+      "7",
+      "9"
+     ]
+    },
+    {
+     "id": "s5",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "6 + 2 = ?",
+     "correcta": "8",
+     "distractores": [
+      "9",
+      "6"
+     ]
+    },
+    {
+     "id": "s6",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "4 + 4 = ?",
+     "correcta": "8",
+     "distractores": [
+      "6",
+      "9"
+     ]
+    },
+    {
+     "id": "s7",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "7 + 3 = ?",
+     "correcta": "10",
+     "distractores": [
+      "11",
+      "9"
+     ]
+    },
+    {
+     "id": "s8",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "5 + 5 = ?",
+     "correcta": "10",
+     "distractores": [
+      "9",
+      "11"
+     ]
+    },
+    {
+     "id": "s9",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "6 + 4 = ?",
+     "correcta": "10",
+     "distractores": [
+      "12",
+      "8"
+     ]
+    },
+    {
+     "id": "s10",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "7 + 6 = ?",
+     "correcta": "13",
+     "distractores": [
+      "12",
+      "14"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Restas sencillas",
+  "descripcion": "Una resta corta y elegir el resultado correcto entre varias opciones. Cálculo mental básico.",
+  "parametros_json": {
+   "dificultad": "dificil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "r1",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "5 - 2 = ?",
+     "correcta": "3",
+     "distractores": [
+      "2",
+      "4"
+     ]
+    },
+    {
+     "id": "r2",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "4 - 1 = ?",
+     "correcta": "3",
+     "distractores": [
+      "4",
+      "1"
+     ]
+    },
+    {
+     "id": "r3",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "6 - 3 = ?",
+     "correcta": "3",
+     "distractores": [
+      "2",
+      "4"
+     ]
+    },
+    {
+     "id": "r4",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "7 - 2 = ?",
+     "correcta": "5",
+     "distractores": [
+      "6",
+      "4"
+     ]
+    },
+    {
+     "id": "r5",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "8 - 4 = ?",
+     "correcta": "4",
+     "distractores": [
+      "5",
+      "3"
+     ]
+    },
+    {
+     "id": "r6",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "9 - 5 = ?",
+     "correcta": "4",
+     "distractores": [
+      "3",
+      "5"
+     ]
+    },
+    {
+     "id": "r7",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "10 - 3 = ?",
+     "correcta": "7",
+     "distractores": [
+      "8",
+      "6"
+     ]
+    },
+    {
+     "id": "r8",
+     "instruccion": "Elige la respuesta correcta",
+     "enunciado": "6 - 2 = ?",
+     "correcta": "4",
+     "distractores": [
+      "5",
+      "3"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El número mayor",
+  "descripcion": "Se muestran varios números y hay que elegir cuál es el mayor. Noción de cantidad y comparación.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "m1",
+     "instruccion": "¿Cuál es el número mayor?",
+     "enunciado": "¿Cuál es mayor?",
+     "correcta": "7",
+     "distractores": [
+      "3",
+      "5"
+     ]
+    },
+    {
+     "id": "m2",
+     "instruccion": "¿Cuál es el número mayor?",
+     "enunciado": "¿Cuál es mayor?",
+     "correcta": "9",
+     "distractores": [
+      "2",
+      "4"
+     ]
+    },
+    {
+     "id": "m3",
+     "instruccion": "¿Cuál es el número mayor?",
+     "enunciado": "¿Cuál es mayor?",
+     "correcta": "8",
+     "distractores": [
+      "1",
+      "6"
+     ]
+    },
+    {
+     "id": "m4",
+     "instruccion": "¿Cuál es el número mayor?",
+     "enunciado": "¿Cuál es mayor?",
+     "correcta": "10",
+     "distractores": [
+      "5",
+      "7"
+     ]
+    },
+    {
+     "id": "m5",
+     "instruccion": "¿Cuál es el número mayor?",
+     "enunciado": "¿Cuál es mayor?",
+     "correcta": "12",
+     "distractores": [
+      "4",
+      "9"
+     ]
+    },
+    {
+     "id": "m6",
+     "instruccion": "¿Cuál es el número mayor?",
+     "enunciado": "¿Cuál es mayor?",
+     "correcta": "15",
+     "distractores": [
+      "11",
+      "2"
+     ]
+    },
+    {
+     "id": "m7",
+     "instruccion": "¿Cuál es el número mayor?",
+     "enunciado": "¿Cuál es mayor?",
+     "correcta": "14",
+     "distractores": [
+      "7",
+      "10"
+     ]
+    },
+    {
+     "id": "m8",
+     "instruccion": "¿Cuál es el número mayor?",
+     "enunciado": "¿Cuál es mayor?",
+     "correcta": "20",
+     "distractores": [
+      "13",
+      "8"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca los cubiertos",
+  "descripcion": "Toca todas las cucharas entre otros objetos de la cocina. Atención sostenida.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todas las CUCHARAS",
+   "objetivo": {
+    "id": "cuchara",
+    "label": "cuchara"
+   },
+   "distractores": [
+    {
+     "id": "sarten",
+     "label": "sarten"
+    },
+    {
+     "id": "olla",
+     "label": "olla"
+    },
+    {
+     "id": "plato",
+     "label": "plato"
+    },
+    {
+     "id": "vaso",
+     "label": "vaso"
+    },
+    {
+     "id": "bol",
+     "label": "bol"
+    },
+    {
+     "id": "tenedor",
+     "label": "tenedor"
+    },
+    {
+     "id": "cuchillo",
+     "label": "cuchillo"
+    },
+    {
+     "id": "botella",
+     "label": "botella"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca las tazas",
+  "descripcion": "Toca todas las tazas entre otros objetos de la cocina. Atención sostenida.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todas las TAZAS",
+   "objetivo": {
+    "id": "taza",
+    "label": "taza"
+   },
+   "distractores": [
+    {
+     "id": "sarten",
+     "label": "sarten"
+    },
+    {
+     "id": "olla",
+     "label": "olla"
+    },
+    {
+     "id": "plato",
+     "label": "plato"
+    },
+    {
+     "id": "vaso",
+     "label": "vaso"
+    },
+    {
+     "id": "bol",
+     "label": "bol"
+    },
+    {
+     "id": "tenedor",
+     "label": "tenedor"
+    },
+    {
+     "id": "cuchillo",
+     "label": "cuchillo"
+    },
+    {
+     "id": "botella",
+     "label": "botella"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Mas contrarios",
+  "descripcion": "Elegir la palabra que significa lo contrario. Lenguaje y razonamiento.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "alto",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de ALTO es...",
+     "correcta": "bajo",
+     "distractores": [
+      "largo",
+      "gordo"
+     ]
+    },
+    {
+     "id": "frio",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de FRÍO es...",
+     "correcta": "caliente",
+     "distractores": [
+      "fresco",
+      "mojado"
+     ]
+    },
+    {
+     "id": "lleno",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de LLENO es...",
+     "correcta": "vacío",
+     "distractores": [
+      "roto",
+      "grande"
+     ]
+    },
+    {
+     "id": "abierto",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de ABIERTO es...",
+     "correcta": "cerrado",
+     "distractores": [
+      "partido",
+      "ancho"
+     ]
+    },
+    {
+     "id": "limpio",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de LIMPIO es...",
+     "correcta": "sucio",
+     "distractores": [
+      "nuevo",
+      "seco"
+     ]
+    },
+    {
+     "id": "rapido",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de RÁPIDO es...",
+     "correcta": "lento",
+     "distractores": [
+      "corto",
+      "tarde"
+     ]
+    },
+    {
+     "id": "dia",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de DÍA es...",
+     "correcta": "noche",
+     "distractores": [
+      "tarde",
+      "sol"
+     ]
+    },
+    {
+     "id": "grande",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de GRANDE es...",
+     "correcta": "pequeño",
+     "distractores": [
+      "mediano",
+      "ancho"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿A qué grupo pertenece?",
+  "descripcion": "Elegir a qué categoría pertenece cada cosa (fruta, animal, mueble...). Clasificación.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "manzana",
+     "instruccion": "Elige el grupo",
+     "enunciado": "La manzana es una...",
+     "correcta": "fruta",
+     "distractores": [
+      "verdura",
+      "flor"
+     ]
+    },
+    {
+     "id": "perro",
+     "instruccion": "Elige el grupo",
+     "enunciado": "El perro es un...",
+     "correcta": "animal",
+     "distractores": [
+      "mueble",
+      "color"
+     ]
+    },
+    {
+     "id": "silla",
+     "instruccion": "Elige el grupo",
+     "enunciado": "La silla es un...",
+     "correcta": "mueble",
+     "distractores": [
+      "animal",
+      "fruta"
+     ]
+    },
+    {
+     "id": "rosa",
+     "instruccion": "Elige el grupo",
+     "enunciado": "La rosa es una...",
+     "correcta": "flor",
+     "distractores": [
+      "fruta",
+      "herramienta"
+     ]
+    },
+    {
+     "id": "martillo",
+     "instruccion": "Elige el grupo",
+     "enunciado": "El martillo es una...",
+     "correcta": "herramienta",
+     "distractores": [
+      "fruta",
+      "prenda de ropa"
+     ]
+    },
+    {
+     "id": "camisa",
+     "instruccion": "Elige el grupo",
+     "enunciado": "La camisa es una...",
+     "correcta": "prenda de ropa",
+     "distractores": [
+      "comida",
+      "herramienta"
+     ]
+    },
+    {
+     "id": "tomate",
+     "instruccion": "Elige el grupo",
+     "enunciado": "El tomate es una...",
+     "correcta": "verdura",
+     "distractores": [
+      "flor",
+      "herramienta"
+     ]
+    },
+    {
+     "id": "vaca",
+     "instruccion": "Elige el grupo",
+     "enunciado": "La vaca es un...",
+     "correcta": "animal",
+     "distractores": [
+      "mueble",
+      "color"
+     ]
     }
    ]
   }
