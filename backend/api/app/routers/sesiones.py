@@ -19,18 +19,37 @@ from app.models import (
 )
 from app.schemas import (
     FichaViva,
+    LineaConfig,
     LiveOut,
     ParticipanteEstadoOut,
     ParticipanteMasIn,
+    ParticipanteProgramadoOut,
     ParticipanteSesion,
     SesionActivaOut,
+    SesionConfigPut,
     SesionIn,
     SesionOut,
+    SesionProgramadaOut,
 )
 
 router = APIRouter(prefix="/sesiones", tags=["sesiones"])
 
 SEGUNDOS_ATASCADO = 30.0
+
+
+def _config_json(nivel: str | None, lineas: list[LineaConfig]) -> dict | None:
+    """Normaliza la config por participante ({nivel, lineas}) o None.
+
+    Requiere al menos una línea: una config con SOLO nivel dejaría la cola vacía
+    (la rama de config no cae al plan), así que en ese caso devolvemos None para
+    que el participante use su plan permanente.
+    """
+    if not lineas:
+        return None
+    return {
+        "nivel": nivel,
+        "lineas": [{"bloque": ln.bloque, "n": ln.n} for ln in lineas],
+    }
 
 
 @router.get("/activa", response_model=SesionActivaOut)
@@ -49,7 +68,11 @@ async def sesion_activa(
     ses = (
         await db.execute(
             select(Sesion)
-            .where(Sesion.centro_id == centro_id, Sesion.cerrada.is_(False))
+            .where(
+                Sesion.centro_id == centro_id,
+                Sesion.cerrada.is_(False),
+                Sesion.abierta.is_(True),
+            )
             .order_by(Sesion.fecha.desc())
             .limit(1)
         )
@@ -92,6 +115,8 @@ async def crear_sesion(
         ej = await db.get(EjercicioCatalogo, body.ejercicio_compartido_id)
         if ej is None:
             raise HTTPException(status.HTTP_404_NOT_FOUND, "Ejercicio compartido no encontrado")
+    # Verifica que los participantes son del centro (evita colar ids ajenos).
+    await _validar_participantes(db, body.participantes, staff)
     ses = Sesion(
         centro_id=staff.centro_id,
         tipo=body.tipo,
@@ -99,6 +124,9 @@ async def crear_sesion(
         nombre=body.nombre,
         ejercicio_compartido_id=body.ejercicio_compartido_id,
         staff_id=staff.id,
+        # Programada = borrador para otro día: no se abre hasta que la maestra la abra.
+        abierta=not body.programar,
+        programada_para=body.programada_para,
     )
     db.add(ses)
     await db.flush()
@@ -106,18 +134,174 @@ async def crear_sesion(
     configs = {c.usuario_final_id: c for c in body.configs}
     for uf_id in body.participantes:
         cfg = configs.get(uf_id)
-        config_json = None
-        if cfg is not None and (cfg.lineas or cfg.nivel):
-            config_json = {
-                "nivel": cfg.nivel,
-                "lineas": [{"bloque": ln.bloque, "n": ln.n} for ln in cfg.lineas],
-            }
+        config_json = _config_json(cfg.nivel, cfg.lineas) if cfg is not None else None
         db.add(SesionParticipante(
             sesion_id=ses.id, usuario_final_id=uf_id, config_json=config_json,
         ))
     await db.commit()
     await db.refresh(ses)
     return ses
+
+
+async def _validar_participantes(
+    db: AsyncSession, participantes: list[str], staff: UsuarioStaff
+) -> None:
+    """Todos los ids deben ser usuarios finales del centro del staff (anti-IDOR)."""
+    for uf_id in participantes:
+        uf = await db.get(UsuarioFinal, uf_id)
+        if uf is None:
+            raise HTTPException(status.HTTP_404_NOT_FOUND, f"Participante {uf_id} no existe")
+        if uf.centro_id != staff.centro_id:
+            raise HTTPException(status.HTTP_403_FORBIDDEN, "Participante de otro centro")
+
+
+@router.get("/programadas", response_model=list[SesionProgramadaOut])
+async def sesiones_programadas(
+    centro_id: str,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Salas dejadas PREPARADAS (programadas, aún sin abrir) del centro.
+
+    La maestra las repasa y abre la que toque el día señalado. Devuelve cada una
+    con sus participantes y la config fijada, ordenadas por día previsto."""
+    if centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    sesiones = (
+        await db.execute(
+            select(Sesion)
+            .where(
+                Sesion.centro_id == centro_id,
+                Sesion.abierta.is_(False),
+                Sesion.cerrada.is_(False),
+            )
+            .order_by(Sesion.programada_para.asc().nulls_last(), Sesion.fecha.asc())
+        )
+    ).scalars().all()
+
+    salida: list[SesionProgramadaOut] = []
+    for ses in sesiones:
+        parts = (
+            await db.execute(
+                select(SesionParticipante).where(
+                    SesionParticipante.sesion_id == ses.id
+                )
+            )
+        ).scalars().all()
+        participantes: list[ParticipanteProgramadoOut] = []
+        for p in parts:
+            uf = await db.get(UsuarioFinal, p.usuario_final_id)
+            cfg = p.config_json or {}
+            lineas = [
+                LineaConfig(bloque=ln.get("bloque"), n=ln.get("n", 1))
+                for ln in (cfg.get("lineas") or [])
+            ]
+            participantes.append(ParticipanteProgramadoOut(
+                usuario_final_id=p.usuario_final_id,
+                alias_interno=uf.alias_interno if uf else "?",
+                nivel=cfg.get("nivel"),
+                lineas=lineas,
+            ))
+        salida.append(SesionProgramadaOut(
+            id=ses.id, nombre=ses.nombre, modo=ses.modo,
+            programada_para=ses.programada_para, fecha=ses.fecha,
+            participantes=participantes,
+        ))
+    return salida
+
+
+@router.patch("/{sesion_id}/abrir", response_model=SesionOut)
+async def abrir_sesion(
+    sesion_id: str,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Abre una sesión PROGRAMADA: pasa a estar 'en vivo' para los kioscos.
+
+    Reactualiza su `fecha` a ahora para que sea la sesión activa del centro. Tras
+    esto la maestra reparte tablets y luego pulsa 'Iniciar actividad'."""
+    ses = await db.get(Sesion, sesion_id)
+    if ses is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
+    if ses.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    if ses.cerrada:
+        raise HTTPException(status.HTTP_409_CONFLICT, "La sesión está cerrada")
+    ses.abierta = True
+    ses.fecha = datetime.now(timezone.utc)
+    await db.commit()
+    await db.refresh(ses)
+    return ses
+
+
+@router.put("/{sesion_id}/config", response_model=SesionOut)
+async def editar_sesion_programada(
+    sesion_id: str,
+    body: SesionConfigPut,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Reemplaza participantes/config de una sesión PROGRAMADA (edición previa al día).
+
+    Solo permitido mientras la sesión no se haya abierto ni cerrado."""
+    ses = await db.get(Sesion, sesion_id)
+    if ses is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
+    if ses.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    if ses.abierta or ses.cerrada:
+        raise HTTPException(
+            status.HTTP_409_CONFLICT, "Solo se editan sesiones programadas sin abrir"
+        )
+    await _validar_participantes(db, body.participantes, staff)
+    if body.nombre is not None:
+        ses.nombre = body.nombre
+    if body.modo is not None:
+        if body.modo not in ("individual", "grupo"):
+            raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, "modo inválido")
+        ses.modo = body.modo
+        ses.tipo = body.modo
+    ses.programada_para = body.programada_para
+    # Reemplaza el conjunto de participantes por completo.
+    prev = (
+        await db.execute(
+            select(SesionParticipante).where(SesionParticipante.sesion_id == ses.id)
+        )
+    ).scalars().all()
+    for p in prev:
+        await db.delete(p)
+    await db.flush()
+    configs = {c.usuario_final_id: c for c in body.configs}
+    for uf_id in body.participantes:
+        cfg = configs.get(uf_id)
+        config_json = _config_json(cfg.nivel, cfg.lineas) if cfg is not None else None
+        db.add(SesionParticipante(
+            sesion_id=ses.id, usuario_final_id=uf_id, config_json=config_json,
+        ))
+    await db.commit()
+    await db.refresh(ses)
+    return ses
+
+
+@router.delete("/{sesion_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def descartar_sesion_programada(
+    sesion_id: str,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Descarta una sesión PROGRAMADA que aún no se abrió (no borra sesiones en vivo
+    ni con historial). Para limpiar una planificación que ya no se va a usar."""
+    ses = await db.get(Sesion, sesion_id)
+    if ses is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
+    if ses.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    if ses.abierta or ses.iniciada:
+        raise HTTPException(
+            status.HTTP_409_CONFLICT, "Solo se descartan sesiones programadas sin abrir"
+        )
+    await db.delete(ses)
+    await db.commit()
 
 
 async def _get_participante(
@@ -191,11 +375,8 @@ async def enviar_mas(
     repite la que tuviera (o su plan).
     """
     sp = await _get_participante(db, sesion_id, usuario_id, staff)
-    if body is not None and (body.lineas or body.nivel):
-        sp.config_json = {
-            "nivel": body.nivel,
-            "lineas": [{"bloque": ln.bloque, "n": ln.n} for ln in body.lineas],
-        }
+    if body is not None and body.lineas:
+        sp.config_json = _config_json(body.nivel, body.lineas)
     sp.ronda += 1
     sp.terminado = False
     await db.commit()
@@ -251,6 +432,8 @@ async def sesion_live(
     ses = await db.get(Sesion, sesion_id)
     if ses is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
+    if ses.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
 
     parts = (
         await db.execute(

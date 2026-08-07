@@ -8,7 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.deps import get_current_staff
+from app.deps import get_current_staff, usuario_del_centro
 from app.models import Alerta, UsuarioFinal, UsuarioStaff
 from app.schemas import AlertaOut, RevisarAlertaIn
 
@@ -51,6 +51,8 @@ async def revisar_alerta(
     alerta = await db.get(Alerta, alerta_id)
     if alerta is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Alerta no encontrada")
+    # anti-IDOR: la alerta debe ser de una persona del centro del staff.
+    await usuario_del_centro(db, alerta.usuario_final_id, staff)
     alerta.revisada_por = staff.id
     alerta.fecha_revision = datetime.now(timezone.utc)
     alerta.resultado = body.resultado

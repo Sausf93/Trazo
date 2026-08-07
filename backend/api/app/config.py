@@ -1,17 +1,23 @@
 """Configuración de la aplicación, leída del entorno (.env)."""
 from functools import lru_cache
 
+from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+_JWT_SECRET_DEV = "dev-secret-cambiar"
 
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
+    # Entorno: "dev" | "prod". En prod se exige un JWT_SECRET propio (ver validador).
+    entorno: str = "dev"
+
     # Base de datos
     database_url: str = "postgresql+asyncpg://trazo:trazo@localhost:5432/trazo"
 
     # JWT
-    jwt_secret: str = "dev-secret-cambiar"
+    jwt_secret: str = _JWT_SECRET_DEV
     jwt_algorithm: str = "HS256"
     jwt_expire_minutes: int = 480
 
@@ -25,6 +31,20 @@ class Settings(BaseSettings):
     @property
     def cors_origins_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
+
+    @model_validator(mode="after")
+    def _exigir_secreto_en_prod(self) -> "Settings":
+        """Fail-fast: en producción NO se arranca con el secreto JWT por defecto.
+
+        Evita firmar tokens con un secreto público conocido (falsificación de
+        credenciales de cualquier staff/centro). En dev se permite el default.
+        """
+        if self.entorno.lower() != "dev" and self.jwt_secret == _JWT_SECRET_DEV:
+            raise ValueError(
+                "JWT_SECRET no definido: en producción (ENTORNO!=dev) debes fijar "
+                "un secreto propio en el entorno."
+            )
+        return self
 
 
 @lru_cache

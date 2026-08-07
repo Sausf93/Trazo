@@ -1,7 +1,7 @@
 """Esquemas Pydantic (entrada/salida de la API)."""
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Any
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
@@ -79,7 +79,7 @@ class InstanciaOut(BaseModel):
 class LineaConfig(BaseModel):
     """Una categoría (bloque) y cuántas actividades de ella en la sesión."""
     bloque: str
-    n: int = 1
+    n: int = Field(default=1, ge=1, le=50)
 
 
 class ParticipanteConfigIn(BaseModel):
@@ -104,6 +104,21 @@ class SesionIn(BaseModel):
     participantes: list[str] = Field(default_factory=list)  # ids usuarios_finales
     # Config por participante para esta sesión (opcional). Los que no aparezcan
     # usan su plan permanente.
+    configs: list[ParticipanteConfigIn] = Field(default_factory=list)
+    # Si es True, la sesión se guarda PROGRAMADA (borrador para otro día): no se
+    # abre para los kioscos hasta que la maestra la "abra". Por defecto se crea
+    # abierta al momento (comportamiento clásico de "Abrir sala").
+    programar: bool = False
+    # Día para el que se deja preparada (informativo). Opcional.
+    programada_para: date | None = None
+
+
+class SesionConfigPut(BaseModel):
+    """Reemplaza participantes/config/datos de una sesión PROGRAMADA (edición previa)."""
+    nombre: str | None = None
+    modo: str | None = None
+    programada_para: date | None = None
+    participantes: list[str] = Field(default_factory=list)
     configs: list[ParticipanteConfigIn] = Field(default_factory=list)
 
 
@@ -132,6 +147,27 @@ class SesionOut(BaseModel):
     staff_id: str
     cerrada: bool
     iniciada: bool
+    abierta: bool = True
+    programada_para: date | None = None
+
+
+class ParticipanteProgramadoOut(BaseModel):
+    """Un participante de una sesión programada, con su config ya fijada."""
+    usuario_final_id: str
+    alias_interno: str
+    nivel: str | None = None
+    lineas: list[LineaConfig] = Field(default_factory=list)
+
+
+class SesionProgramadaOut(BaseModel):
+    """Sesión programada (borrador) con sus participantes y config, para que la
+    maestra la revise y la abra el día señalado."""
+    id: str
+    nombre: str | None = None
+    modo: str
+    programada_para: date | None = None
+    fecha: datetime
+    participantes: list[ParticipanteProgramadoOut] = Field(default_factory=list)
 
 
 # ---- Plan de trabajo por paciente ----
@@ -141,7 +177,7 @@ class PlanLineaIn(BaseModel):
     bloque: str | None = None  # requerido si tipo == dominio
     ejercicio_id: str | None = None  # requerido si tipo == ejercicio
     nivel: str | None = None  # bajo/medio/alto o entero como str
-    n_por_sesion: int = 1
+    n_por_sesion: int = Field(default=1, ge=1, le=50)
     orden: int = 0
     activo: bool = True
 

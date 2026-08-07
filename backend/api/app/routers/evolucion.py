@@ -8,11 +8,12 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.deps import auditar, get_current_staff
+from app.deps import auditar, get_current_staff, usuario_del_centro
 from app.models import (
     Alerta,
     EjercicioCatalogo,
     Intento,
+    Sesion,
     SesionParticipante,
     UsuarioFinal,
     UsuarioStaff,
@@ -45,6 +46,7 @@ async def evolucion_individual(
     db: AsyncSession = Depends(get_db),
     staff: UsuarioStaff = Depends(get_current_staff),
 ):
+    await usuario_del_centro(db, usuario_id, staff)  # anti-IDOR (datos de salud)
     stmt = (
         select(Intento, EjercicioCatalogo)
         .join(EjercicioCatalogo, Intento.ejercicio_id == EjercicioCatalogo.id)
@@ -95,6 +97,7 @@ async def alertas_usuario(
     db: AsyncSession = Depends(get_db),
     staff: UsuarioStaff = Depends(get_current_staff),
 ):
+    await usuario_del_centro(db, usuario_id, staff)  # anti-IDOR (datos de salud)
     alertas = (
         await db.execute(
             select(Alerta).where(Alerta.usuario_final_id == usuario_id)
@@ -112,6 +115,11 @@ async def evolucion_grupo(
     staff: UsuarioStaff = Depends(get_current_staff),
 ):
     """Evolución de cada participante del grupo (una entrada por persona)."""
+    ses = await db.get(Sesion, sesion_id)
+    if ses is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
+    if ses.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
     parts = (
         await db.execute(
             select(SesionParticipante).where(SesionParticipante.sesion_id == sesion_id)

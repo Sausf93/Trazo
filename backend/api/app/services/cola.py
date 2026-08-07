@@ -25,6 +25,18 @@ from app.models import (
     UsuarioFinal,
 )
 
+# Tope defensivo de actividades por línea: por muy alto que llegue `n` (config de
+# sesión, "más" o plan), la cola no crece sin límite (protege memoria/CPU).
+_MAX_N = 50
+
+
+def _clamp_n(valor) -> int:
+    try:
+        n = int(valor)
+    except (TypeError, ValueError):
+        n = 1
+    return min(_MAX_N, max(1, n))
+
 
 async def _cola_desde_config(db: AsyncSession, config: dict) -> list["ItemColaData"]:
     """Cola a partir de la config que fija la maestra para la sesión.
@@ -36,7 +48,7 @@ async def _cola_desde_config(db: AsyncSession, config: dict) -> list["ItemColaDa
     cola: list[ItemColaData] = []
     for linea in config.get("lineas", []):
         bloque = linea.get("bloque")
-        n = max(1, int(linea.get("n", 1)))
+        n = _clamp_n(linea.get("n", 1))
         if not bloque:
             continue
         candidatos = await _ejercicios_de_bloque(db, bloque)
@@ -161,7 +173,7 @@ async def construir_cola(
 
     cola: list[ItemColaData] = []
     for ln in lineas:
-        n = max(1, int(ln.n_por_sesion or 1))
+        n = _clamp_n(ln.n_por_sesion or 1)
 
         if ln.tipo == "ejercicio":
             if not ln.ejercicio_id:

@@ -193,6 +193,12 @@ class Sesion(Base):
     cerrada: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     # iniciada=False: montando/repartiendo. True: la maestra pulsó "Iniciar actividad".
     iniciada: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    # abierta=True: sala "en vivo" que ven los kioscos. abierta=False: sesión
+    # PROGRAMADA/borrador (dejada lista para otro día); no aparece en /activa hasta
+    # que la maestra la "abre". Las salas creadas al momento nacen abiertas.
+    abierta: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    # Día para el que se dejó preparada (informativo; ordena la lista de programadas).
+    programada_para: Mapped[datetime | None] = mapped_column(Date, nullable=True)
 
     participantes: Mapped[list[SesionParticipante]] = relationship(
         back_populates="sesion", cascade="all, delete-orphan"

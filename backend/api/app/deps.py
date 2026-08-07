@@ -8,7 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.models import RegistroAuditoria, UsuarioStaff
+from app.models import RegistroAuditoria, UsuarioFinal, UsuarioStaff
 from app.security import decode_access_token
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login", auto_error=True)
@@ -51,6 +51,22 @@ def require_roles(*roles: str):
     return _checker
 
 
+async def usuario_del_centro(
+    db: AsyncSession, usuario_id: str, staff: UsuarioStaff
+) -> UsuarioFinal:
+    """Carga un usuario final y EXIGE que sea del centro del staff (anti-IDOR).
+
+    Datos de salud = categoría especial RGPD: ningún staff puede tocar datos de un
+    usuario de otro centro. Se usa en todo endpoint que reciba un usuario_id.
+    """
+    uf = await db.get(UsuarioFinal, usuario_id)
+    if uf is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Usuario no encontrado")
+    if uf.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    return uf
+
+
 async def auditar(
     db: AsyncSession,
     staff: UsuarioStaff,
@@ -70,4 +86,9 @@ async def auditar(
     # El commit lo hace el endpoint que orquesta la operación.
 
 
-__all__ = ["get_current_staff", "require_roles", "auditar"]
+__all__ = [
+    "get_current_staff",
+    "require_roles",
+    "auditar",
+    "usuario_del_centro",
+]

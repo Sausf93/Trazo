@@ -7,7 +7,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.deps import get_current_staff
+from app.deps import get_current_staff, usuario_del_centro
 from app.models import (
     ESTADOS_INTENTO,
     EjercicioCatalogo,
@@ -96,6 +96,8 @@ async def cambiar_estado(
     intento = await db.get(Intento, intento_id)
     if intento is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Intento no encontrado")
+    # anti-IDOR: el intento debe ser de una persona del centro del staff.
+    await usuario_del_centro(db, intento.usuario_final_id, staff)
     intento.estado = body.estado
     await db.commit()
     await db.refresh(intento)

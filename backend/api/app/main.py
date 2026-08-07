@@ -23,6 +23,7 @@ from app.routers import (
     sesiones,
     usuarios,
 )
+from app.services.migraciones import migrar_columnas
 from app.services.seed import sembrar
 
 logger = logging.getLogger("trazo")
@@ -34,6 +35,10 @@ async def lifespan(app: FastAPI):
     # Crear tablas si no existen (MVP; en producción se pasaría a Alembic).
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+        # Añadir columnas nuevas a tablas ya existentes sin borrar la BD.
+        creadas = await conn.run_sync(migrar_columnas)
+        if creadas:
+            logger.info("Migración: columnas añadidas -> %s", ", ".join(creadas))
     logger.info("Tablas verificadas/creadas.")
 
     if settings.seed_on_startup:
