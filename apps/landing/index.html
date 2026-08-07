@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trazo — Estimulación cognitiva para centros de día y residencias</title>
-<meta name="description" content="Trazo digitaliza la estimulación cognitiva en tablet: ejercicios adaptados a cada persona, panel de evolución individual y de grupo, y detección temprana de cambios. Solicita una demo.">
+<meta name="description" content="Trazo digitaliza la estimulación cognitiva en tablet para centros de día y residencias: planificas nivel y número por persona en minutos, todo se mide solo y avisa pronto del deterioro. Tablets sin login. Solicita una demo.">
 <link rel="canonical" href="https://trazo.app/">
 <!-- Open Graph -->
 <meta property="og:title" content="Trazo — Estimulación cognitiva para centros de día y residencias">
@@ -160,6 +160,25 @@
   .bloque h3{font-size:16.5px; margin-bottom:3px;}
   .bloque p{font-size:12.5px; color:var(--faint);}
 
+  /* Diferenciadores */
+  .why{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .why-card{background:var(--white); border:1px solid var(--sand); border-radius:var(--radius); padding:26px 22px; transition:transform .15s ease, box-shadow .15s ease;}
+  .why-card:hover{transform:translateY(-3px); box-shadow:var(--shadow);}
+  .why-card .wi{width:46px; height:46px; border-radius:12px; background:var(--card); display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:16px;}
+  .why-card h3{font-size:19px; margin-bottom:8px;}
+  .why-card p{font-size:14px; color:var(--muted); line-height:1.55;}
+  .why-card .vs{display:block; margin-top:12px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--coral-dark);}
+
+  /* Modelo de precios */
+  .model{background:var(--white); border:1px solid var(--sand); border-radius:var(--radius); padding:clamp(24px,3.5vw,36px); margin-bottom:26px;}
+  .model-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .model-item{display:flex; flex-direction:column; gap:6px;}
+  .model-item .mi-k{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--sage-dark);}
+  .model-item .mi-v{font-family:'Fraunces',serif; font-size:19px; color:var(--ink); line-height:1.15;}
+  .model-item .mi-d{font-size:12.5px; color:var(--faint); line-height:1.45;}
+  @media (max-width:860px){ .model-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .model-grid{grid-template-columns:1fr;} }
+
   /* Cómo funciona timeline */
   .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; counter-reset:s;}
   .step{position:relative;}
@@ -277,6 +296,7 @@
     .stat-grid{grid-template-columns:repeat(2,1fr); gap:26px;}
     .bloques{grid-template-columns:repeat(2,1fr);}
     .steps{grid-template-columns:repeat(2,1fr); gap:28px;}
+    .why{grid-template-columns:repeat(2,1fr);}
   }
   @media (max-width:860px){
     .act-card{flex-basis:clamp(240px,52%,300px);}
@@ -295,6 +315,7 @@
     .act-card{flex-basis:86%;}
     .ejemplos-head{align-items:center;}
     .bloques{grid-template-columns:1fr 1fr;}
+    .why{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr;}
     .stat-grid{grid-template-columns:1fr 1fr;}
     .foot{grid-template-columns:1fr;}
@@ -322,8 +343,8 @@
   <div class="wrap nav">
     <a href="#top" class="logo"><svg aria-hidden="true"><use href="#logoMark"/></svg>Trazo</a>
     <nav class="nav-links">
+      <a href="#porque">Por qué</a>
       <a href="#producto">Producto</a>
-      <a href="#bloques">Ejercicios</a>
       <a href="#como">Cómo funciona</a>
       <a href="#precios">Precios</a>
       <a href="#faq">FAQ</a>
@@ -336,6 +357,7 @@
   </div>
 </header>
 <div class="mobile-menu" id="mobileMenu">
+  <a href="#porque">Por qué</a>
   <a href="#producto">Producto</a>
   <a href="#bloques">Ejercicios</a>
   <a href="#como">Cómo funciona</a>
@@ -350,15 +372,15 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Estimulación cognitiva · para centros</span>
-      <h1 class="title">Trabajo cognitivo diario que se nota, sesión a sesión</h1>
-      <p class="sub">Trazo digitaliza la estimulación cognitiva en tablet: ejercicios que se adaptan a cada persona, un panel que muestra su evolución real, y un aviso temprano cuando algo cambia.</p>
+      <span class="eyebrow">Estimulación cognitiva · para centros y redes</span>
+      <h1 class="title">Se planifica en minutos y se mide sola</h1>
+      <p class="sub">Eliges nivel y número de ejercicios por persona y Trazo arma un plan variado y estándar. Las personas trabajan en tablet y todo queda medido: comparamos a cada una consigo misma para avisar pronto de cualquier cambio.</p>
       <div class="hero-actions">
         <a href="#contacto" class="btn btn-primary btn-lg">Solicitar una demo →</a>
         <a href="#como" class="btn btn-ghost btn-lg">Ver cómo funciona</a>
       </div>
       <div class="hero-trust">
-        <span class="badge">✓ sin instalar nada</span>
+        <span class="badge">✓ tablets sin login</span>
         <span class="badge">✓ funciona sin conexión</span>
         <span class="badge">✓ datos protegidos (RGPD)</span>
       </div>
@@ -407,6 +429,43 @@
     </div>
   </div>
 </div>
+
+<!-- DIFERENCIADORES -->
+<section id="porque" style="background:var(--card);">
+  <div class="wrap center">
+    <span class="eyebrow">Por qué Trazo</span>
+    <h2 class="big">Cuatro cosas que lo cambian todo en el día a día</h2>
+    <p class="lede">Menos tiempo montando sesiones, más información útil y una experiencia digna para la persona mayor.</p>
+  </div>
+  <div class="wrap">
+    <div class="why">
+      <div class="why-card">
+        <div class="wi" aria-hidden="true">⚡</div>
+        <h3>Ágil de planificar</h3>
+        <p>Eliges nivel y número de ejercicios por persona y la app arma un plan variado y estándar. No montas la sesión actividad a actividad.</p>
+        <span class="vs">Minutos, no horas</span>
+      </div>
+      <div class="why-card">
+        <div class="wi" aria-hidden="true">📈</div>
+        <h3>Se mide solo</h3>
+        <p>Cada intento queda registrado. Comparamos a la persona consigo misma para detectar pronto un cambio en su patrón habitual.</p>
+        <span class="vs">Detección temprana</span>
+      </div>
+      <div class="why-card">
+        <div class="wi" aria-hidden="true">🌿</div>
+        <h3>Respetuoso con el mayor</h3>
+        <p>Actividades reconocibles y adultas: la mesa, el mercado, el monedero. Nada infantil ni mensajes de "has fallado".</p>
+        <span class="vs">Digno, no infantil</span>
+      </div>
+      <div class="why-card">
+        <div class="wi" aria-hidden="true">📱</div>
+        <h3>Tablets sin login</h3>
+        <p>Las tablets de participante van emparejadas al centro. La persona solo ve su actividad; nadie tiene que iniciar sesión.</p>
+        <span class="vs">Reparte y listo</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PRODUCTO -->
 <section id="producto">
@@ -794,14 +853,14 @@
 <!-- CÓMO FUNCIONA -->
 <section id="como">
   <div class="wrap">
-    <span class="eyebrow">Cómo funciona</span>
-    <h2 class="big">De un toque en la pantalla a una alerta útil</h2>
-    <p class="lede">El recorrido completo de un dato, para que se entienda de un vistazo.</p>
+    <span class="eyebrow">Cómo funciona en el día a día</span>
+    <h2 class="big">Cuatro pasos, y la sesión está lista</h2>
+    <p class="lede">Sin montar la sesión ejercicio a ejercicio. La integradora decide el nivel y el ritmo; Trazo hace el resto y lo mide todo.</p>
     <div class="steps">
-      <div class="step"><div class="n">1</div><h3>Hace un ejercicio</h3><p>Con cantidades que cambian cada vez, para que no se memorice y la dificultad se ajuste a su día.</p></div>
-      <div class="step"><div class="n">2</div><h3>Se guarda con su estado</h3><p>Solo, con ayuda o sin completar. Todo queda en su historial, con fecha y ejercicio.</p></div>
-      <div class="step"><div class="n">3</div><h3>El panel lo reúne</h3><p>Lo convierte en gráficas simples por persona y por grupo. Se ve la evolución, no solo el hoy.</p></div>
-      <div class="step"><div class="n">4</div><h3>Avisa si se sale</h3><p>Compara con el histórico propio de esa persona. Si cambia su patrón, lo marca para revisar.</p></div>
+      <div class="step"><div class="n">1</div><h3>Planificas por persona</h3><p>Eliges nivel y número de ejercicios para cada usuario. Trazo arma un plan variado y estándar, sin elegir actividades una a una.</p></div>
+      <div class="step"><div class="n">2</div><h3>Repartes las tablets</h3><p>Las tablets van emparejadas al centro, sin login. Le das una a cada persona y ya está en su plan.</p></div>
+      <div class="step"><div class="n">3</div><h3>Cada uno hace su plan</h3><p>Una actividad a la vez, a pantalla completa. Tú acompañas desde tu vista en vivo y marcas ayuda con un toque.</p></div>
+      <div class="step"><div class="n">4</div><h3>Ves resultados y alertas</h3><p>Todo queda medido. El panel muestra la evolución por persona y por grupo, y avisa si alguien se sale de su patrón.</p></div>
     </div>
   </div>
 </section>
@@ -809,16 +868,40 @@
 <!-- PRECIOS -->
 <section id="precios" style="background:var(--card);">
   <div class="wrap center">
-    <span class="eyebrow">Planes</span>
-    <h2 class="big">Un modelo por centro, sin sorpresas</h2>
-    <p class="lede">Empezáis con un piloto sin coste para ver el encaje real. Los importes se ajustan al tamaño del centro — escríbenos y os pasamos una propuesta.</p>
+    <span class="eyebrow">Planes y precios</span>
+    <h2 class="big">Un modelo claro, pensado para cadenas</h2>
+    <p class="lede">Pagas por paciente activo al mes: si un mes no trabaja, no cuenta. Instalación y formación incluidas, sin permanencia y con piloto sin coste para ver el encaje antes de decidir. Más ágil y asequible que las herramientas tradicionales.</p>
   </div>
   <div class="wrap">
+    <div class="model">
+      <div class="model-grid">
+        <div class="model-item">
+          <span class="mi-k">Modelo</span>
+          <span class="mi-v">Por paciente activo / mes</span>
+          <span class="mi-d">Solo pagas por quien de verdad usa Trazo cada mes.</span>
+        </div>
+        <div class="model-item">
+          <span class="mi-k">Incluido</span>
+          <span class="mi-v">Instalación y formación</span>
+          <span class="mi-d">Ponemos las tablets a punto y formamos al equipo, sin coste aparte.</span>
+        </div>
+        <div class="model-item">
+          <span class="mi-k">Compromiso</span>
+          <span class="mi-v">Sin permanencia</span>
+          <span class="mi-d">Mes a mes. Si no encaja, lo dejáis cuando queráis.</span>
+        </div>
+        <div class="model-item">
+          <span class="mi-k">Para empezar</span>
+          <span class="mi-v">Piloto sin coste</span>
+          <span class="mi-d">Probáis con usuarios reales antes de contratar nada.</span>
+        </div>
+      </div>
+    </div>
     <div class="planes">
       <div class="plan">
         <div class="tag">Para empezar</div>
         <h3>Piloto</h3>
-        <div class="price">Gratis</div>
+        <div class="price">0€</div>
         <div class="pn">durante el periodo de prueba</div>
         <ul>
           <li><svg aria-hidden="true"><use href="#check"/></svg>Instalación en vuestras tablets</li>
@@ -831,16 +914,16 @@
       <div class="plan dest">
         <div class="tag">Completo</div>
         <h3>Centro</h3>
-        <div class="price">Consúltanos<small> / mes</small></div>
-        <div class="pn">según nº de plazas del centro</div>
+        <div class="price">Por paciente<small> / activo al mes</small></div>
+        <div class="pn">tarifa según volumen · te pasamos el detalle</div>
         <ul>
           <li><svg aria-hidden="true"><use href="#check"/></svg>Todo lo del piloto, sin límite</li>
           <li><svg aria-hidden="true"><use href="#check"/></svg>Sesiones individuales y de grupo</li>
           <li><svg aria-hidden="true"><use href="#check"/></svg>Detección temprana y alertas</li>
           <li><svg aria-hidden="true"><use href="#check"/></svg>Vista en vivo para la facilitadora</li>
-          <li><svg aria-hidden="true"><use href="#check"/></svg>Soporte prioritario</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Instalación, formación y soporte incluidos</li>
         </ul>
-        <a href="#contacto" class="btn btn-primary">Pedir propuesta</a>
+        <a href="#contacto" class="btn btn-primary">Solicitar presupuesto</a>
       </div>
       <div class="plan">
         <div class="tag">Varios centros</div>
@@ -848,15 +931,15 @@
         <div class="price">A medida</div>
         <div class="pn">grupos y redes de centros</div>
         <ul>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Precio por volumen para toda la red</li>
           <li><svg aria-hidden="true"><use href="#check"/></svg>Gestión de varios centros</li>
           <li><svg aria-hidden="true"><use href="#check"/></svg>Informes agregados</li>
-          <li><svg aria-hidden="true"><use href="#check"/></svg>Formación del equipo</li>
-          <li><svg aria-hidden="true"><use href="#check"/></svg>Acuerdo de tratamiento de datos</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Formación del equipo y acuerdo de datos</li>
         </ul>
-        <a href="#contacto" class="btn btn-ghost">Hablar con nosotros</a>
+        <a href="#contacto" class="btn btn-ghost">Solicitar presupuesto</a>
       </div>
     </div>
-    <p class="rgpd-note center" style="margin-left:auto;margin-right:auto;">Trazo trata datos de salud (categoría especial del RGPD). El centro es el responsable del tratamiento y nosotros actuamos como encargados; firmamos el acuerdo correspondiente antes de empezar.</p>
+    <p class="rgpd-note center" style="margin-left:auto;margin-right:auto;">El importe por paciente activo se ajusta al volumen de la cadena; te enviamos las tarifas detalladas tras una breve toma de contacto. Trazo trata datos de salud (categoría especial del RGPD): el centro es el responsable del tratamiento y nosotros actuamos como encargados; firmamos el acuerdo correspondiente antes de empezar.</p>
   </div>
 </section>
 
@@ -872,7 +955,8 @@
       <details class="qa"><summary>¿La persona mayor tiene que saber usar la tablet?<span class="plus">+</span></summary><div class="a">No. Solo ve la actividad, a pantalla completa, sin menús ni botones de navegación. Toda la parte de control (avanzar, saltar, marcar ayuda) la lleva la persona que acompaña, desde su propio control.</div></details>
       <details class="qa"><summary>¿Cómo protegéis los datos?<span class="plus">+</span></summary><div class="a">Los datos de las personas usuarias van pseudonimizados y el nombre real se guarda aparte, con acceso restringido. El centro es el responsable del tratamiento y nosotros el encargado; firmamos el acuerdo que exige el RGPD para datos de salud.</div></details>
       <details class="qa"><summary>¿Qué es exactamente la "detección temprana"?<span class="plus">+</span></summary><div class="a">El sistema compara cada resultado con el histórico de esa misma persona (nunca con otras). Si empeora de forma sostenida fuera de su patrón habitual, lo marca para que un profesional lo revise. El objetivo no es que mejoren siempre, es que no empeoren sin que nadie se dé cuenta a tiempo.</div></details>
-      <details class="qa"><summary>¿Cuánto cuesta y cómo empezamos?<span class="plus">+</span></summary><div class="a">Se empieza con un piloto sin coste para probar el encaje. Después, el precio se ajusta al tamaño del centro. Escríbenos y organizamos una demo y una propuesta a medida.</div></details>
+      <details class="qa"><summary>¿Cuánto cuesta y cómo empezamos?<span class="plus">+</span></summary><div class="a">Se empieza con un piloto sin coste para probar el encaje. Después se paga por paciente activo al mes, con instalación y formación incluidas y sin permanencia. El importe se ajusta al volumen de la cadena: escríbenos y organizamos una demo y una propuesta con tarifas detalladas.</div></details>
+      <details class="qa"><summary>¿Tenemos que elegir las actividades una a una?<span class="plus">+</span></summary><div class="a">No. Eliges el nivel y el número de ejercicios por persona y Trazo arma un plan variado y estándar automáticamente. Esa es la gran diferencia frente a herramientas más manuales: montar una sesión te lleva minutos, no una tarde.</div></details>
     </div>
   </div>
 </section>
@@ -885,7 +969,7 @@
         <div class="contact-info">
           <span class="eyebrow" style="color:var(--sand);">Hablemos</span>
           <h2 class="big">Pide una demo o cuéntanos vuestro caso</h2>
-          <p class="lede">Te enseñamos Trazo funcionando y vemos juntos si encaja en vuestro centro. Sin compromiso.</p>
+          <p class="lede">Te enseñamos Trazo funcionando, vemos si encaja en vuestro centro y te enviamos las tarifas detalladas según vuestro volumen. Sin compromiso.</p>
           <div class="row">✉️ <a href="mailto:saulodlsf@gmail.com">saulodlsf@gmail.com</a></div>
           <div class="row">📍 <span>España</span></div>
           <p class="small">Respondemos normalmente en 24–48 h laborables.</p>
@@ -896,7 +980,7 @@
           <div class="field"><label for="f-telefono">Teléfono (opcional)</label><input id="f-telefono" name="telefono" placeholder="+34 ..."></div>
           <div class="field"><label for="f-mensaje">¿Qué necesitáis?</label><textarea id="f-mensaje" name="mensaje" placeholder="Nº de plazas, si ya hacéis estimulación cognitiva, qué os gustaría probar..."></textarea></div>
           <button type="submit" class="btn btn-coral btn-lg" style="width:100%;">Enviar solicitud de demo</button>
-          <p class="small" id="formNote" style="margin-top:10px;">Al enviar se abrirá tu correo con el mensaje preparado.</p>
+          <p class="small" id="formNote" style="margin-top:10px;">Al enviar se abrirá tu correo con el mensaje preparado. Te responderemos con una propuesta y las tarifas detalladas para vuestro volumen.</p>
         </form>
       </div>
     </div>
