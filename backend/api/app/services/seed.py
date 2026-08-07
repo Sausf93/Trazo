@@ -58,17 +58,26 @@ async def sincronizar_catalogo(db: AsyncSession) -> int:
     `catalogo.json` sin borrar la BD (los datos y logins se conservan). Devuelve
     cuántas se añadieron.
     """
+    catalogo = _ejercicios_semilla()
+    nombres_json = {cfg["nombre"] for cfg in catalogo}
     existentes = set(
         (await db.execute(select(EjercicioCatalogo.nombre))).scalars().all()
     )
     nuevas = 0
-    for cfg in _ejercicios_semilla():
+    for cfg in catalogo:
         if cfg["nombre"] in existentes:
             continue
         db.add(EjercicioCatalogo(**cfg))
         nuevas += 1
-    if nuevas:
-        await db.commit()
+    # El JSON es la fuente de la verdad de qué está ACTIVO: las actividades que ya
+    # no están en el catálogo se DESACTIVAN (no se borran, para conservar el
+    # histórico y no romper referencias); las que vuelven, se reactivan.
+    todas = (await db.execute(select(EjercicioCatalogo))).scalars().all()
+    for ej in todas:
+        debe_estar = ej.nombre in nombres_json
+        if ej.activo != debe_estar:
+            ej.activo = debe_estar
+    await db.commit()
     return nuevas
 
 
