@@ -104,13 +104,20 @@ class _SecuenciaOrdenarWidgetState extends State<SecuenciaOrdenarWidget> {
                     ),
                     IconButton(
                       iconSize: 40,
+                      constraints: const BoxConstraints(
+                          minWidth: 60, minHeight: 60),
+                      padding: EdgeInsets.zero,
                       onPressed: i == 0 ? null : () => _mover(i, -1),
                       icon: const Icon(Icons.keyboard_arrow_up),
                       color: TrazoColors.sageDark,
                       tooltip: 'Subir',
                     ),
+                    const SizedBox(width: 12),
                     IconButton(
                       iconSize: 40,
+                      constraints: const BoxConstraints(
+                          minWidth: 60, minHeight: 60),
+                      padding: EdgeInsets.zero,
                       onPressed: i == _pasos.length - 1
                           ? null
                           : () => _mover(i, 1),

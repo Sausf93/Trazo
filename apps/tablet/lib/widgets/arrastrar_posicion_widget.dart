@@ -4,9 +4,12 @@ import '../models.dart';
 import '../theme.dart';
 import 'ilustracion.dart';
 
-/// Renderiza `arrastrar_posicion`: piezas que se arrastran a zonas
-/// (Draggable / DragTarget). No se autocorrige aquí → registra
-/// {colocaciones:{piezaId:zonaId}}.
+/// Renderiza `arrastrar_posicion`: piezas que se colocan en zonas.
+/// Interacción por TOQUE (no arrastrar, muy difícil con temblor/Alzheimer):
+/// la persona TOCA una pieza (queda "cogida", resaltada) y luego TOCA la zona
+/// donde colocarla. Tocar otra pieza cambia la selección; tocar la misma la
+/// suelta. Una pieza colocada se quita con su botón (✕) visible.
+/// No se autocorrige aquí → registra {colocaciones:{piezaId:zonaId}}.
 class ArrastrarPosicionWidget extends StatefulWidget {
   final Instancia instancia;
   final ValueChanged<Map<String, dynamic>> onMetricas;
@@ -25,6 +28,8 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
 
   // piezaId -> zonaId
   final Map<String, String> _colocaciones = {};
+  // Pieza "cogida" ahora mismo (pendiente de colocar). null = ninguna.
+  String? _seleccionada;
   final DateTime _inicio = DateTime.now();
 
   @override
@@ -54,8 +59,21 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
     });
   }
 
-  void _colocar(String piezaId, String zonaId) {
-    setState(() => _colocaciones[piezaId] = zonaId);
+  /// Toca una pieza disponible: la coge, o la suelta si ya estaba cogida.
+  void _seleccionar(String piezaId) {
+    setState(() {
+      _seleccionada = _seleccionada == piezaId ? null : piezaId;
+    });
+  }
+
+  /// Toca una zona: si hay una pieza cogida, la coloca ahí.
+  void _colocarEnZona(String zonaId) {
+    final pieza = _seleccionada;
+    if (pieza == null) return;
+    setState(() {
+      _colocaciones[pieza] = zonaId;
+      _seleccionada = null;
+    });
     _emitir();
   }
 
@@ -68,7 +86,7 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
   Widget build(BuildContext context) {
     final render = widget.instancia.render;
     final instruccion =
-        render['instruccion'] as String? ?? 'Arrastra cada cosa a su sitio';
+        render['instruccion'] as String? ?? 'Toca una cosa y luego su sitio';
 
     final sinColocar =
         _piezas.where((p) => !_colocaciones.containsKey(_idDe(p))).toList();
@@ -78,7 +96,14 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
         Text(instruccion,
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 26, color: TrazoColors.ink)),
-        const SizedBox(height: 20),
+        const SizedBox(height: 6),
+        Text(
+            _seleccionada == null
+                ? 'Toca una cosa para cogerla'
+                : 'Ahora toca el sitio donde va',
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 18, color: TrazoColors.sageDark)),
+        const SizedBox(height: 14),
         // Piezas disponibles.
         Container(
           width: double.infinity,
@@ -103,12 +128,11 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
                   ]
                 : sinColocar.map((p) {
                     final id = _idDe(p);
-                    return Draggable<String>(
-                      data: id,
-                      feedback: _chipPieza(id, _labelDe(p), arrastrando: true),
-                      childWhenDragging: Opacity(
-                          opacity: 0.3, child: _chipPieza(id, _labelDe(p))),
-                      child: _chipPieza(id, _labelDe(p)),
+                    return InkWell(
+                      borderRadius: BorderRadius.circular(12),
+                      onTap: () => _seleccionar(id),
+                      child: _chipPieza(id, _labelDe(p),
+                          seleccionada: _seleccionada == id),
                     );
                   }).toList(),
           ),
@@ -121,14 +145,14 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
             mainAxisSpacing: 16,
             crossAxisSpacing: 16,
             childAspectRatio: 1.4,
-            children: _zonas.map(_zonaTarget).toList(),
+            children: _zonas.map(_zona).toList(),
           ),
         ),
       ],
     );
   }
 
-  Widget _chipPieza(String id, String label, {bool arrastrando = false}) {
+  Widget _chipPieza(String id, String label, {bool seleccionada = false}) {
     final tieneDibujo = IlustracionResolver.tiene(id);
     return Material(
       color: Colors.transparent,
@@ -136,10 +160,10 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
         padding: EdgeInsets.symmetric(
             horizontal: tieneDibujo ? 12 : 20, vertical: tieneDibujo ? 10 : 14),
         decoration: BoxDecoration(
-          color: arrastrando ? TrazoColors.coral : TrazoColors.card,
+          color: seleccionada ? TrazoColors.coral : TrazoColors.card,
           border: Border.all(
-              color: arrastrando ? TrazoColors.coralDark : TrazoColors.sand,
-              width: 2),
+              color: seleccionada ? TrazoColors.coralDark : TrazoColors.sand,
+              width: seleccionada ? 4 : 2),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -152,65 +176,97 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
             Text(label,
                 style: TextStyle(
                     fontSize: tieneDibujo ? 16 : 22,
-                    color: arrastrando ? Colors.white : TrazoColors.ink)),
+                    fontWeight:
+                        seleccionada ? FontWeight.bold : FontWeight.normal,
+                    color: seleccionada ? Colors.white : TrazoColors.ink)),
           ],
         ),
       ),
     );
   }
 
-  Widget _zonaTarget(Map<String, dynamic> zona) {
+  Widget _zona(Map<String, dynamic> zona) {
     final zonaId = _idDe(zona);
     final piezasAqui = _colocaciones.entries
         .where((e) => e.value == zonaId)
         .map((e) => e.key)
         .toList();
 
-    return DragTarget<String>(
-      onWillAcceptWithDetails: (_) => true,
-      onAcceptWithDetails: (d) => _colocar(d.data, zonaId),
-      builder: (context, candidatas, __) {
-        final resaltar = candidatas.isNotEmpty;
-        return Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: resaltar ? const Color(0xFFEDF3EE) : TrazoColors.white,
-            border: Border.all(
-                color: resaltar ? TrazoColors.sage : TrazoColors.sand,
-                width: resaltar ? 3 : 2),
-            borderRadius: BorderRadius.circular(14),
-          ),
-          child: Column(
-            children: [
-              Text(_labelDe(zona),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: TrazoColors.sageDark)),
-              const Divider(color: TrazoColors.sand),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    alignment: WrapAlignment.center,
-                    children: piezasAqui.map((piezaId) {
-                      final pieza = _piezas.firstWhere(
-                          (p) => _idDe(p) == piezaId,
-                          orElse: () => {'label': piezaId});
-                      return InkWell(
-                        onTap: () => _quitar(piezaId),
-                        child: _chipPieza(_idDe(pieza), _labelDe(pieza)),
-                      );
-                    }).toList(),
-                  ),
+    // Cuando hay una pieza cogida, la zona invita a soltarla ahí.
+    final resaltar = _seleccionada != null;
+
+    return InkWell(
+      borderRadius: BorderRadius.circular(14),
+      onTap: _seleccionada != null ? () => _colocarEnZona(zonaId) : null,
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: resaltar ? const Color(0xFFEDF3EE) : TrazoColors.white,
+          border: Border.all(
+              color: resaltar ? TrazoColors.sage : TrazoColors.sand,
+              width: resaltar ? 3 : 2),
+          borderRadius: BorderRadius.circular(14),
+        ),
+        child: Column(
+          children: [
+            Text(_labelDe(zona),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: TrazoColors.sageDark)),
+            const Divider(color: TrazoColors.sand),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  alignment: WrapAlignment.center,
+                  children: piezasAqui.map((piezaId) {
+                    final pieza = _piezas.firstWhere(
+                        (p) => _idDe(p) == piezaId,
+                        orElse: () => {'label': piezaId});
+                    return _piezaColocada(pieza);
+                  }).toList(),
                 ),
               ),
-            ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// Pieza ya colocada, con un botón ✕ visible para quitarla. El toque para
+  /// quitar es SOLO sobre la ✕, así un roce en la zona no la borra.
+  Widget _piezaColocada(Map<String, dynamic> pieza) {
+    final piezaId = _idDe(pieza);
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        _chipPieza(piezaId, _labelDe(pieza)),
+        Positioned(
+          top: -8,
+          right: -8,
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              customBorder: const CircleBorder(),
+              onTap: () => _quitar(piezaId),
+              child: Container(
+                width: 32,
+                height: 32,
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: TrazoColors.coralDark,
+                ),
+                child: const Icon(Icons.close, size: 20, color: Colors.white),
+              ),
+            ),
           ),
-        );
-      },
+        ),
+      ],
     );
   }
 }

@@ -34,6 +34,19 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
   int _horaElegida = 12;
   int _minutoElegido = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    // En modo reloj, registrar la hora por DEFECTO aunque la persona no toque
+    // ningún selector (antes solo se emitía al cambiar y quedaba sin registro).
+    final modo = widget.instancia.render['modo'] as String? ?? 'dinero';
+    if (modo == 'reloj') {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _emitirReloj();
+      });
+    }
+  }
+
   void _emitirDinero() {
     widget.onMetricas({
       'total_compuesto': _acumulado,
@@ -62,12 +75,36 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
   Widget _vistaDinero(Map<String, dynamic> render, String modo) {
     final instruccion = render['instruccion'] as String? ?? 'Junta el dinero';
     final denoms = _denominacionesC(render);
+    final objetivoTexto = _objetivoTexto(render);
 
     return Column(
       children: [
         Text(instruccion,
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 26, color: TrazoColors.ink)),
+        if (objetivoTexto != null) ...[
+          const SizedBox(height: 16),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            decoration: BoxDecoration(
+              color: TrazoColors.sage,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              children: [
+                const Text('Tienes que reunir',
+                    style: TextStyle(fontSize: 20, color: Colors.white)),
+                const SizedBox(height: 4),
+                Text(objetivoTexto,
+                    style: const TextStyle(
+                        fontSize: 56,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white)),
+              ],
+            ),
+          ),
+        ],
         const SizedBox(height: 20),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
@@ -199,6 +236,16 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
   String _formato(num n) =>
       n == n.roundToDouble() ? n.toInt().toString() : n.toString();
 
+  /// Objetivo a reunir, bien visible. Usa el texto del backend
+  /// (`importe_texto`) o, si no, formatea `importe_c` (céntimos).
+  String? _objetivoTexto(Map<String, dynamic> render) {
+    final texto = render['importe_texto'];
+    if (texto is String && texto.isNotEmpty) return texto;
+    final c = render['importe_c'];
+    if (c is num) return _etiquetaDenom(c.toInt());
+    return null;
+  }
+
   // --- Reloj ---
   Widget _vistaReloj(Map<String, dynamic> render) {
     final instruccion = render['instruccion'] as String? ?? '¿Qué hora marca?';
@@ -210,6 +257,10 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
         Text(instruccion,
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 26, color: TrazoColors.ink)),
+        const SizedBox(height: 8),
+        const Text('Mira el reloj y pon la misma hora abajo',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 20, color: TrazoColors.sageDark)),
         const SizedBox(height: 16),
         Expanded(
           child: Center(
@@ -275,8 +326,8 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
 
   Widget _btnRedondo(IconData icon, VoidCallback onTap) {
     return SizedBox(
-      width: 56,
-      height: 56,
+      width: 64,
+      height: 64,
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
@@ -284,7 +335,7 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
           backgroundColor: TrazoColors.sage,
           padding: EdgeInsets.zero,
         ),
-        child: Icon(icon, size: 28, color: Colors.white),
+        child: Icon(icon, size: 32, color: Colors.white),
       ),
     );
   }

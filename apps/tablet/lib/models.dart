@@ -157,6 +157,48 @@ class DispositivoYo {
       );
 }
 
+/// Resumen de un participante al finalizar la sesión (`GET .../resumen`).
+class FichaResumen {
+  final String aliasInterno;
+  final int nIntentos;
+  final int solo;
+  final int conAyuda;
+  final int noCompletado;
+
+  FichaResumen({
+    required this.aliasInterno,
+    required this.nIntentos,
+    required this.solo,
+    required this.conAyuda,
+    required this.noCompletado,
+  });
+
+  factory FichaResumen.fromJson(Map<String, dynamic> j) => FichaResumen(
+        aliasInterno: (j['alias_interno'] ?? '') as String,
+        nIntentos: (j['n_intentos'] as num?)?.toInt() ?? 0,
+        solo: (j['solo'] as num?)?.toInt() ?? 0,
+        conAyuda: (j['con_ayuda'] as num?)?.toInt() ?? 0,
+        noCompletado: (j['no_completado'] as num?)?.toInt() ?? 0,
+      );
+}
+
+class ResumenSesion {
+  final String sesionId;
+  final String nombre;
+  final List<FichaResumen> fichas;
+
+  ResumenSesion(
+      {required this.sesionId, required this.nombre, required this.fichas});
+
+  factory ResumenSesion.fromJson(Map<String, dynamic> j) => ResumenSesion(
+        sesionId: (j['sesion_id'] ?? '') as String,
+        nombre: (j['nombre'] ?? 'Sesión') as String,
+        fichas: ((j['fichas'] ?? []) as List)
+            .map((e) => FichaResumen.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
+}
+
 class UsuarioFinal {
   final String id;
   final String aliasInterno;

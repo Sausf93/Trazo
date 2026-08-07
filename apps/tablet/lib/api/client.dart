@@ -263,6 +263,15 @@ class ApiClient {
         .toList();
   }
 
+  /// Resumen de la sesión al finalizar (por participante: solo/ayuda/no).
+  Future<ResumenSesion> resumenSesion(String sesionId) async {
+    final resp = await http
+        .get(_u('/sesiones/$sesionId/resumen'), headers: _headers)
+        .timeout(_kTimeout, onTimeout: _timeoutErr);
+    _check(resp);
+    return ResumenSesion.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
+  }
+
   // --- Cola del participante ----------------------------------------------
 
   Future<List<ColaItem>> colaUsuario(String usuarioId, String sesionId) async {

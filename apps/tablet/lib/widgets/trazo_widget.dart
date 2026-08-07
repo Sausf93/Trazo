@@ -132,7 +132,7 @@ class _TrazoWidgetState extends State<TrazoWidget> {
           child: Text(
             widget.instancia.render['instruccion'] as String? ??
                 'Sigue la línea con el dedo',
-            style: const TextStyle(fontSize: 22, color: TrazoColors.ink),
+            style: const TextStyle(fontSize: 26, color: TrazoColors.ink),
           ),
         ),
         Expanded(

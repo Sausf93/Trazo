@@ -17,6 +17,34 @@ class MaestraScreen extends StatefulWidget {
 class _MaestraScreenState extends State<MaestraScreen> {
   String? _sesionId;
   bool _iniciada = false;
+  bool _comprobando = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _recuperarSala();
+  }
+
+  /// Si al abrir (o al REFRESCAR) ya hay una sala abierta del centro, se recupera
+  /// y se vuelve al monitor: así un refresco accidental no deja a las esclavas
+  /// solas ni obliga a abrir otra sala.
+  Future<void> _recuperarSala() async {
+    try {
+      final activa = await ApiClient.instance.sesionActiva();
+      if (!mounted) return;
+      if (activa.haySesion) {
+        setState(() {
+          _sesionId = activa.sesionId;
+          _iniciada = activa.iniciada;
+          _comprobando = false;
+        });
+        return;
+      }
+    } catch (_) {
+      // sin conexión: seguimos a "Abrir sala"
+    }
+    if (mounted) setState(() => _comprobando = false);
+  }
 
   void _salaAbierta(String sesionId) {
     setState(() => _sesionId = sesionId);
@@ -57,14 +85,16 @@ class _MaestraScreenState extends State<MaestraScreen> {
             ),
         ],
       ),
-      body: _sesionId == null
-          ? _AbrirSala(onAbierta: _salaAbierta)
-          : _Monitor(
-              sesionId: _sesionId!,
-              iniciada: _iniciada,
-              onIniciada: () => setState(() => _iniciada = true),
-              onCerrada: _cerrada,
-            ),
+      body: _comprobando
+          ? const Center(child: CircularProgressIndicator())
+          : _sesionId == null
+              ? _AbrirSala(onAbierta: _salaAbierta)
+              : _Monitor(
+                  sesionId: _sesionId!,
+                  iniciada: _iniciada,
+                  onIniciada: () => setState(() => _iniciada = true),
+                  onCerrada: _cerrada,
+                ),
     );
   }
 }
@@ -920,25 +950,38 @@ class _MonitorState extends State<_Monitor> {
     final ok = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Cerrar sala'),
-        content: const Text('¿Seguro que quieres cerrar la sala?'),
+        title: const Text('Finalizar la sesión'),
+        content: const Text('¿Terminamos la sesión de todos?'),
         actions: [
           TextButton(
               onPressed: () => Navigator.pop(context, false),
               child: const Text('No')),
           ElevatedButton(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text('Sí, cerrar')),
+              child: const Text('Sí, finalizar')),
         ],
       ),
     );
     if (ok != true) return;
+    // Pide el resumen ANTES de cerrar y lo muestra: cómo fue cada uno.
+    ResumenSesion? resumen;
+    try {
+      resumen = await ApiClient.instance.resumenSesion(widget.sesionId);
+    } catch (_) {}
     try {
       await ApiClient.instance.cerrarSesion(widget.sesionId);
-      widget.onCerrada();
     } catch (err) {
-      _snack('No se pudo cerrar: $err');
+      _snack('No se pudo finalizar: $err');
+      return;
     }
+    if (!mounted) return;
+    if (resumen != null && resumen.fichas.isNotEmpty) {
+      await showDialog<void>(
+        context: context,
+        builder: (_) => _ResumenSesionDialog(resumen: resumen!),
+      );
+    }
+    widget.onCerrada();
   }
 
   Future<void> _ayuda(FichaLive f) async {
@@ -1603,8 +1646,8 @@ class _BarraControl extends StatelessWidget {
             const Spacer(),
             OutlinedButton.icon(
               onPressed: onCerrar,
-              icon: const Icon(Icons.logout, size: 18),
-              label: const Text('Cerrar sala'),
+              icon: const Icon(Icons.flag, size: 18),
+              label: const Text('Finalizar sesión'),
               style: OutlinedButton.styleFrom(
                 foregroundColor: TrazoColors.coralDark,
                 side: const BorderSide(color: TrazoColors.coral),
@@ -1612,6 +1655,102 @@ class _BarraControl extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Resumen al finalizar la sesión: por persona, cuántas actividades y cómo fueron
+/// (solo / con ayuda / no pudo), con una barra proporcional. Cierra el bucle.
+class _ResumenSesionDialog extends StatelessWidget {
+  final ResumenSesion resumen;
+  const _ResumenSesionDialog({required this.resumen});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      icon: const Icon(Icons.emoji_events, color: TrazoColors.sageDark, size: 40),
+      title: const Text('Sesión finalizada'),
+      content: SizedBox(
+        width: 460,
+        child: resumen.fichas.every((f) => f.nIntentos == 0)
+            ? const Text('No se registraron actividades en esta sesión.',
+                style: TextStyle(color: TrazoColors.sageDark))
+            : SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: resumen.fichas
+                      .map((f) => _FilaResumen(ficha: f))
+                      .toList(),
+                ),
+              ),
+      ),
+      actions: [
+        ElevatedButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Listo')),
+      ],
+    );
+  }
+}
+
+class _FilaResumen extends StatelessWidget {
+  final FichaResumen ficha;
+  const _FilaResumen({required this.ficha});
+
+  @override
+  Widget build(BuildContext context) {
+    final total = ficha.nIntentos;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Text(ficha.aliasInterno,
+                    style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: TrazoColors.ink)),
+              ),
+              Text('$total actividades',
+                  style: const TextStyle(color: TrazoColors.sageDark)),
+            ],
+          ),
+          const SizedBox(height: 6),
+          // Barra proporcional: verde=solo, coral=con ayuda, arena=no pudo.
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: SizedBox(
+              height: 16,
+              child: total == 0
+                  ? Container(color: TrazoColors.card)
+                  : Row(
+                      children: [
+                        if (ficha.solo > 0)
+                          Expanded(
+                              flex: ficha.solo,
+                              child: Container(color: TrazoColors.sage)),
+                        if (ficha.conAyuda > 0)
+                          Expanded(
+                              flex: ficha.conAyuda,
+                              child: Container(color: TrazoColors.coral)),
+                        if (ficha.noCompletado > 0)
+                          Expanded(
+                              flex: ficha.noCompletado,
+                              child: Container(color: TrazoColors.sand)),
+                      ],
+                    ),
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+              'Solo ${ficha.solo}  ·  Con ayuda ${ficha.conAyuda}  ·  '
+              'No pudo ${ficha.noCompletado}',
+              style: const TextStyle(fontSize: 13, color: TrazoColors.sageDark)),
+        ],
       ),
     );
   }
