@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../api/client.dart';
 import '../models.dart';
+import '../services/actualizacion.dart';
 import '../theme.dart';
 import '../widgets/trazo_logo.dart';
 import 'login_screen.dart';
@@ -91,6 +93,90 @@ class RolScreen extends StatelessWidget {
                 style: TextButton.styleFrom(
                     foregroundColor: TrazoColors.sageDark),
               ),
+            ),
+            // Aviso de nueva versión del APK (distribución sin Play Store).
+            const Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: _AvisoActualizacion(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Comprueba al abrir si hay una versión más nueva del APK y, si la hay, muestra
+/// un banner con las notas y el enlace de descarga (copiable). Best-effort.
+class _AvisoActualizacion extends StatefulWidget {
+  const _AvisoActualizacion();
+
+  @override
+  State<_AvisoActualizacion> createState() => _AvisoActualizacionState();
+}
+
+class _AvisoActualizacionState extends State<_AvisoActualizacion> {
+  ActualizacionDisponible? _upd;
+  bool _oculto = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _comprobar();
+  }
+
+  Future<void> _comprobar() async {
+    final upd = await ServicioActualizacion.comprobar();
+    if (!mounted || upd == null) return;
+    setState(() => _upd = upd);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final upd = _upd;
+    if (upd == null || _oculto) return const SizedBox.shrink();
+    return Material(
+      color: TrazoColors.sage,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        child: Row(
+          children: [
+            const Icon(Icons.system_update, color: Colors.white),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Nueva versión disponible'
+                    '${upd.versionName.isNotEmpty ? " (${upd.versionName})" : ""}'
+                    '${upd.notas.isNotEmpty ? " — ${upd.notas}" : ""}',
+                    style: const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w700),
+                  ),
+                  SelectableText(
+                    upd.apkUrl,
+                    style: const TextStyle(color: Colors.white70, fontSize: 12),
+                  ),
+                ],
+              ),
+            ),
+            TextButton.icon(
+              onPressed: () {
+                Clipboard.setData(ClipboardData(text: upd.apkUrl));
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Enlace copiado')));
+              },
+              icon: const Icon(Icons.copy, size: 16, color: Colors.white),
+              label: const Text('Copiar enlace',
+                  style: TextStyle(color: Colors.white)),
+            ),
+            IconButton(
+              onPressed: () => setState(() => _oculto = true),
+              icon: const Icon(Icons.close, color: Colors.white),
+              tooltip: 'Ocultar',
             ),
           ],
         ),

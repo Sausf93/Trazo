@@ -7,4 +7,10 @@ class Config {
 
   /// Segundos sin interacción tras los que se considera "atascado".
   static const int segundosAtascado = 30;
+
+  /// URL de un `version.json` alojado por nosotros para avisar de nuevas
+  /// versiones del APK (distribución sin Play Store). Vacío = chequeo apagado.
+  ///   flutter build apk --dart-define=UPDATE_URL=https://.../app/version.json
+  static const String updateUrl =
+      String.fromEnvironment('UPDATE_URL', defaultValue: '');
 }

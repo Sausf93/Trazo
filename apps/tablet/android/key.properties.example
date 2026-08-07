@@ -1,0 +1,12 @@
+# Copia este fichero a `key.properties` (mismo directorio) y rellena tus datos.
+# key.properties está en .gitignore: NUNCA se sube al repositorio.
+#
+# Genera la clave una sola vez (ver DISTRIBUCION_TABLET.md):
+#   keytool -genkey -v -keystore trazo-release.jks -keyalg RSA -keysize 2048 \
+#           -validity 10000 -alias trazo
+#
+# storeFile: ruta ABSOLUTA al .jks (evita ambigüedades de directorio).
+storeFile=C:/claves/trazo-release.jks
+storePassword=CAMBIA_ESTO
+keyAlias=trazo
+keyPassword=CAMBIA_ESTO
