@@ -34,7 +34,7 @@ Para el detalle de lo hecho recientemente, ver `docs/MEJORAS-QA.md`.
 - [ ] Piloto inicial **solo con alias** (sin nombre real) hasta firmar el marco legal.
 
 ## Backend / infra
-- [ ] **Autenticación por token de dispositivo** para el kiosco (hoy la tablet participante usa el JWT de la integradora) — es el pendiente técnico más relevante del modelo operativo.
+- [x] **Autenticación por token de dispositivo** para el kiosco (aditivo, no rompe el login). Backend: `deps.acceso_centro` en los endpoints de kiosco + `GET /dispositivos/yo`; tablet: emparejar con código desde la pantalla de rol. 49 tests verde. ✅
 - [ ] Migraciones con **Alembic** (hoy: create_all + micro-migraciones idempotentes al arranque).
 - [ ] **Desplegar en servidor** (Oracle Cloud + Coolify, según el plan) con Docker.
 - [ ] Ejecutar/probar el **stack Docker** (compose listo; falta instalar Docker Desktop).
