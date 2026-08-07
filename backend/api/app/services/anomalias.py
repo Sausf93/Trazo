@@ -13,6 +13,7 @@ Separado de la capa de BD a propósito para poder testearlo con datos sintético
 from __future__ import annotations
 
 import statistics
+from collections import Counter
 from dataclasses import dataclass
 
 
@@ -109,4 +110,174 @@ def detectar_desviacion(
         n_baseline=len(baseline),
         n_reciente=len(reciente),
         caida=round(max(0.0, media_base - media_rec), 4) if hay else 0.0,
+    )
+
+
+# ==========================================================================
+#  Agregación por sesión + segmentación por dificultad + señal de latencia
+# --------------------------------------------------------------------------
+#  Motivación (auditoría de calidad):
+#   1) La serie CRUDA por intento es ruidosa: dos actividades flojas seguidas la
+#      misma tarde no son "empeoramiento sostenido". Agregamos el rendimiento
+#      POR SESIÓN (media de sus intentos) y comparamos sesión-a-sesión.
+#   2) Cuando cambia la dificultad (nivel/cantidad) el rendimiento baja de forma
+#      natural: comparar contra un baseline de otra dificultad da falsas alarmas.
+#      Segmentamos la serie por "firma de dificultad" y solo juzgamos DENTRO del
+#      tramo de dificultad vigente (baseline se reinicia al cambiar de nivel).
+#   3) El TIEMPO de respuesta se captura pero no se usa. "Tarda cada vez más en
+#      lo mismo" precede al fallo: lo añadimos como SEGUNDA señal (tendencia
+#      creciente de tiempo, normalizado por ejercicio, también puede alertar).
+#
+#  Todo esto es lógica PURA (sin BD) para poder testearla con datos sintéticos.
+# ==========================================================================
+
+
+@dataclass
+class IntentoObs:
+    """Observación mínima de un intento para el motor (la arma la capa de BD)."""
+
+    sesion_id: str
+    ejercicio_id: str
+    rendimiento: float
+    dificultad: str
+    tiempo_ms: float | None = None
+
+
+@dataclass
+class SesionObs:
+    """Rendimiento agregado de UNA sesión (un punto de la serie de detección)."""
+
+    sesion_id: str
+    rendimiento: float
+    dificultad: str
+    tiempo_rel: float | None
+    n_intentos: int
+
+
+def firma_dificultad(cantidad_objetivo: dict | None, nivel: str | None = None) -> str:
+    """Firma estable de la dificultad de un intento (nivel + cantidades usadas).
+
+    Dos intentos con la misma firma son comparables; al cambiar la firma se
+    reinicia el baseline (evita la falsa alarma tras subir el nivel).
+    """
+    partes: list[str] = []
+    if nivel not in (None, ""):
+        partes.append(f"nivel={nivel}")
+    if cantidad_objetivo:
+        for clave in sorted(cantidad_objetivo):
+            partes.append(f"{clave}={cantidad_objetivo[clave]}")
+    return "|".join(partes) if partes else "base"
+
+
+def _medianas_tiempo(intentos: list[IntentoObs]) -> dict[str, float]:
+    """Mediana del tiempo por ejercicio (para normalizar 'por tipo/plantilla')."""
+    por_ejercicio: dict[str, list[float]] = {}
+    for it in intentos:
+        if it.tiempo_ms and it.tiempo_ms > 0:
+            por_ejercicio.setdefault(it.ejercicio_id, []).append(float(it.tiempo_ms))
+    return {ej: statistics.median(v) for ej, v in por_ejercicio.items() if v}
+
+
+def agregar_por_sesion(intentos: list[IntentoObs]) -> list[SesionObs]:
+    """Agrega los intentos (ya en orden cronológico) a un punto POR SESIÓN.
+
+    - rendimiento de la sesión = media de sus intentos,
+    - dificultad = la más frecuente de la sesión,
+    - tiempo_rel = tiempo medio de la sesión normalizado por la mediana de cada
+      ejercicio (1.0 = tarda lo normal; >1 = tarda más de lo habitual).
+    """
+    medianas = _medianas_tiempo(intentos)
+
+    orden: list[str] = []
+    grupos: dict[str, list[IntentoObs]] = {}
+    for it in intentos:
+        if it.sesion_id not in grupos:
+            grupos[it.sesion_id] = []
+            orden.append(it.sesion_id)
+        grupos[it.sesion_id].append(it)
+
+    salida: list[SesionObs] = []
+    for sid in orden:
+        items = grupos[sid]
+        rend = statistics.fmean([x.rendimiento for x in items])
+        dificultad = Counter(x.dificultad for x in items).most_common(1)[0][0]
+        rels: list[float] = []
+        for x in items:
+            m = medianas.get(x.ejercicio_id)
+            if x.tiempo_ms and m and m > 0:
+                rels.append(float(x.tiempo_ms) / m)
+        tiempo_rel = statistics.fmean(rels) if rels else None
+        salida.append(
+            SesionObs(sid, round(rend, 6), dificultad, tiempo_rel, len(items))
+        )
+    return salida
+
+
+def segmento_dificultad_actual(items: list) -> list:
+    """Tramo FINAL de `items` que comparte la dificultad del último punto.
+
+    Al cambiar la dificultad se reinicia el baseline: solo comparamos dentro del
+    nivel/cantidad vigente. Sirve para SesionObs y para IntentoObs (ambos tienen
+    atributo `dificultad`).
+    """
+    if not items:
+        return []
+    vigente = items[-1].dificultad
+    seg: list = []
+    for x in reversed(items):
+        if x.dificultad == vigente:
+            seg.append(x)
+        else:
+            break
+    seg.reverse()
+    return seg
+
+
+@dataclass
+class ResultadoTiempo:
+    hay_tendencia: bool
+    baseline_media: float
+    reciente_media: float
+    subida_relativa: float
+    n_baseline: int
+    n_reciente: int
+
+
+def detectar_tendencia_tiempo(
+    serie: list[float],
+    ventana_reciente: int = 2,
+    min_baseline: int = 4,
+    k: float = 1.5,
+    subida_minima: float = 0.25,
+) -> ResultadoTiempo | None:
+    """Detecta que la persona TARDA sistemáticamente más que su propio patrón.
+
+    `serie` es el tiempo (normalizado por ejercicio) de más antiguo a más
+    reciente. Alerta solo si la ventana reciente supera media+k*std del baseline
+    Y sube al menos `subida_minima` en términos relativos (evita ruido con
+    tiempos ~constantes: subida 0 -> nunca dispara).
+    """
+    if len(serie) < min_baseline + ventana_reciente:
+        return None
+
+    baseline = serie[:-ventana_reciente]
+    reciente = serie[-ventana_reciente:]
+
+    media_base = statistics.fmean(baseline)
+    std_base = statistics.pstdev(baseline) if len(baseline) > 1 else 0.0
+    media_rec = statistics.fmean(reciente)
+    if media_base <= 0:
+        return None
+
+    umbral = media_base + k * std_base
+    subida = (media_rec - media_base) / media_base
+    hay = (media_rec > umbral) and (subida >= subida_minima)
+
+    return ResultadoTiempo(
+        hay_tendencia=hay,
+        baseline_media=round(media_base, 4),
+        reciente_media=round(media_rec, 4),
+        subida_relativa=round(subida, 4),
+        n_baseline=len(baseline),
+        n_reciente=len(reciente),
     )
