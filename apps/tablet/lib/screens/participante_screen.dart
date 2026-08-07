@@ -38,6 +38,9 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
 
   List<ColaItem> _cola = [];
   int _idx = 0;
+  // Ronda en curso: la maestra la sube al "Enviar más". Sirve de baseline para
+  // detectar cuándo llega una nueva tanda mientras el participante espera.
+  int _rondaBase = 0;
   Instancia? _instancia;
   bool _cargandoInstancia = false;
   String? _errorInstancia;
@@ -95,8 +98,32 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
           setState(() {});
         }
         break;
+      case _Fase.terminado:
+        await _comprobarNuevaTanda(sesion);
+        break;
       default:
         setState(() {});
+    }
+  }
+
+  /// Mientras el participante espera tras terminar, comprueba si la maestra le
+  /// ha mandado OTRA tanda (`ronda` sube / `terminado` vuelve a false).
+  Future<void> _comprobarNuevaTanda(SesionActiva sesion) async {
+    final yo = _yo;
+    final sid = sesion.sesionId;
+    if (yo == null || sid == null) return;
+    EstadoParticipante est;
+    try {
+      est = await ApiClient.instance.estadoParticipante(sid, yo.usuarioFinalId);
+    } catch (_) {
+      return; // reintenta en el siguiente tick
+    }
+    if (!mounted || _fase != _Fase.terminado) return;
+    // Nueva tanda: la maestra subió la ronda (pulsó "Enviar más"). Volvemos a
+    // pedir la cola y continuamos donde estábamos.
+    if (est.ronda > _rondaBase) {
+      _rondaBase = est.ronda;
+      _empezarCola();
     }
   }
 
@@ -209,19 +236,19 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
     }
     if (!mounted) return;
     if (_idx + 1 >= _cola.length) {
-      setState(() => _fase = _Fase.terminado);
-      // Tras el mensaje de enhorabuena, volver a la espera.
-      Future.delayed(const Duration(seconds: 4), () {
-        if (!mounted) return;
-        if (_fase == _Fase.terminado) {
-          setState(() {
-            _fase = _Fase.quienEres;
-            _yo = null;
-            _cola = [];
-            _instancia = null;
-          });
+      // Terminó su tanda: avisar a la maestra y ESPERAR (no volver solo). El
+      // polling detecta si la maestra manda otra tanda (la `ronda` sube).
+      if (yo != null && sesion?.sesionId != null) {
+        try {
+          final est = await ApiClient.instance
+              .marcarTerminadoParticipante(sesion!.sesionId!, yo.usuarioFinalId);
+          _rondaBase = est.ronda;
+        } catch (_) {
+          // si falla el aviso, se queda en "terminado" igualmente
         }
-      });
+      }
+      if (!mounted) return;
+      setState(() => _fase = _Fase.terminado);
     } else {
       setState(() => _idx += 1);
       _cargarInstancia();
@@ -515,14 +542,15 @@ class _Terminado extends StatelessWidget {
         children: [
           Icon(Icons.emoji_events, size: 120, color: TrazoColors.coral),
           SizedBox(height: 24),
-          Text('¡Muy bien, has terminado!',
+          Text('¡Muy bien!',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 40,
+                  fontSize: 44,
                   fontWeight: FontWeight.w800,
                   color: TrazoColors.ink)),
           SizedBox(height: 12),
-          Text('Gracias por participar.',
+          Text('Has terminado. Espera un momento…',
+              textAlign: TextAlign.center,
               style: TextStyle(fontSize: 24, color: TrazoColors.sageDark)),
         ],
       ),

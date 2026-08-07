@@ -1,5 +1,71 @@
 // Modelos de datos que consume la app (espejo del contrato de la API).
 
+/// Los 8 bloques (categorías) con su etiqueta bonita para la UI.
+const Map<String, String> kBloques = {
+  'atencion_memoria': 'Atención y memoria',
+  'lenguaje': 'Lenguaje',
+  'razonamiento': 'Razonamiento',
+  'gnosias': 'Gnosias',
+  'praxias': 'Praxias',
+  'percepcion': 'Percepción',
+  'funcion_ejecutiva': 'Función ejecutiva',
+  'vida_cotidiana': 'Vida cotidiana',
+};
+
+/// Etiqueta bonita de un bloque (o el propio id si no está en el mapa).
+String etiquetaBloque(String bloque) => kBloques[bloque] ?? bloque;
+
+/// Una línea del plan de trabajo de la persona (`GET /usuarios/{id}/plan`).
+class PlanLinea {
+  final String tipo; // "dominio" | "ejercicio"
+  final String? bloque; // requerido si tipo=dominio
+  final String? ejercicioId; // requerido si tipo=ejercicio
+  final String? nivel; // bajo/medio/alto (o entero como str)
+  final int nPorSesion;
+  final int orden;
+  final bool activo;
+
+  PlanLinea({
+    required this.tipo,
+    required this.bloque,
+    required this.ejercicioId,
+    required this.nivel,
+    required this.nPorSesion,
+    required this.orden,
+    required this.activo,
+  });
+
+  factory PlanLinea.fromJson(Map<String, dynamic> j) => PlanLinea(
+        tipo: (j['tipo'] ?? 'dominio') as String,
+        bloque: j['bloque'] as String?,
+        ejercicioId: j['ejercicio_id'] as String?,
+        nivel: j['nivel']?.toString(),
+        nPorSesion: (j['n_por_sesion'] as num?)?.toInt() ?? 1,
+        orden: (j['orden'] as num?)?.toInt() ?? 0,
+        activo: (j['activo'] ?? true) as bool,
+      );
+}
+
+/// Estado de un participante dentro de una sesión (`GET .../estado`).
+class EstadoParticipante {
+  final bool iniciada;
+  final int ronda;
+  final bool terminado;
+
+  EstadoParticipante({
+    required this.iniciada,
+    required this.ronda,
+    required this.terminado,
+  });
+
+  factory EstadoParticipante.fromJson(Map<String, dynamic> j) =>
+      EstadoParticipante(
+        iniciada: (j['iniciada'] ?? false) as bool,
+        ronda: (j['ronda'] as num?)?.toInt() ?? 0,
+        terminado: (j['terminado'] ?? false) as bool,
+      );
+}
+
 class UsuarioFinal {
   final String id;
   final String aliasInterno;
@@ -119,6 +185,8 @@ class FichaLive {
   final String? ultimoIntentoId;
   final int? segundosDesdeUltimoIntento;
   final bool atascado;
+  final bool terminado;
+  final int ronda;
 
   FichaLive({
     required this.usuarioFinalId,
@@ -128,6 +196,8 @@ class FichaLive {
     required this.ultimoIntentoId,
     required this.segundosDesdeUltimoIntento,
     required this.atascado,
+    required this.terminado,
+    required this.ronda,
   });
 
   factory FichaLive.fromJson(Map<String, dynamic> j) => FichaLive(
@@ -139,6 +209,8 @@ class FichaLive {
         segundosDesdeUltimoIntento:
             (j['segundos_desde_ultimo_intento'] as num?)?.toInt(),
         atascado: (j['atascado'] ?? false) as bool,
+        terminado: (j['terminado'] ?? false) as bool,
+        ronda: (j['ronda'] as num?)?.toInt() ?? 0,
       );
 }
 

@@ -118,12 +118,17 @@ class ApiClient {
   // --- Sesiones ------------------------------------------------------------
 
   /// Crea una sesión (sala) y devuelve su id.
+  ///
+  /// [configs] = config por participante para ESTA sesión:
+  /// `[{usuario_final_id, nivel?, lineas:[{bloque, n}]}]`. Un participante con
+  /// config saca su cola de ahí; si no, de su plan.
   Future<String> crearSesion({
     required String tipo, // "grupo" | "individual"
     required String nombre,
     String? modo,
     String? ejercicioCompartidoId,
     List<String> participantes = const [],
+    List<Map<String, dynamic>> configs = const [],
   }) async {
     final resp = await http.post(
       _u('/sesiones'),
@@ -135,10 +140,24 @@ class ApiClient {
         if (ejercicioCompartidoId != null)
           'ejercicio_compartido_id': ejercicioCompartidoId,
         'participantes': participantes,
+        if (configs.isNotEmpty) 'configs': configs,
       }),
     );
     _check(resp);
     return (jsonDecode(resp.body) as Map<String, dynamic>)['id'] as String;
+  }
+
+  /// Plan de trabajo de la persona (`GET /usuarios/{id}/plan`).
+  Future<List<PlanLinea>> planUsuario(String usuarioId) async {
+    final resp =
+        await http.get(_u('/usuarios/$usuarioId/plan'), headers: _headers);
+    _check(resp);
+    final data = jsonDecode(resp.body);
+    // El endpoint puede devolver una lista o `{lineas: [...]}`.
+    final list = data is List ? data : ((data['lineas'] ?? []) as List);
+    return list
+        .map((e) => PlanLinea.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 
   /// Estado de la sesión activa del centro (para el kiosco del participante).
@@ -186,6 +205,52 @@ class ApiClient {
     return items
         .map((e) => ColaItem.fromJson(e as Map<String, dynamic>))
         .toList();
+  }
+
+  // --- Estado / rondas del participante -----------------------------------
+
+  /// Estado del participante dentro de la sesión: `{iniciada, ronda, terminado}`.
+  Future<EstadoParticipante> estadoParticipante(
+      String sesionId, String usuarioId) async {
+    final resp = await http.get(
+        _u('/sesiones/$sesionId/participantes/$usuarioId/estado'),
+        headers: _headers);
+    _check(resp);
+    return EstadoParticipante.fromJson(
+        jsonDecode(resp.body) as Map<String, dynamic>);
+  }
+
+  /// La tablet avisa de que el participante terminó su tanda. Devuelve el estado
+  /// (con la `ronda` actual, para detectar luego una nueva tanda de la maestra).
+  Future<EstadoParticipante> marcarTerminadoParticipante(
+      String sesionId, String usuarioId) async {
+    final resp = await http.post(
+        _u('/sesiones/$sesionId/participantes/$usuarioId/terminado'),
+        headers: _headers);
+    _check(resp);
+    return EstadoParticipante.fromJson(
+        jsonDecode(resp.body) as Map<String, dynamic>);
+  }
+
+  /// La maestra manda OTRA tanda a quien terminó (sube `ronda`, reinicia
+  /// `terminado`). Body opcional `{nivel?, lineas:[{bloque,n}]}`; sin body
+  /// repite la config/plan del participante.
+  Future<void> enviarMas(
+    String sesionId,
+    String usuarioId, {
+    String? nivel,
+    List<Map<String, dynamic>>? lineas,
+  }) async {
+    final body = <String, dynamic>{
+      if (nivel != null) 'nivel': nivel,
+      if (lineas != null) 'lineas': lineas,
+    };
+    final resp = await http.patch(
+      _u('/sesiones/$sesionId/participantes/$usuarioId/mas'),
+      headers: _headers,
+      body: jsonEncode(body),
+    );
+    _check(resp);
   }
 
   // --- Intentos ------------------------------------------------------------

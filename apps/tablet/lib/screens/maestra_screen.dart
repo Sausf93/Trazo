@@ -53,6 +53,41 @@ class _MaestraScreenState extends State<MaestraScreen> {
 // Paso 1: abrir sala
 // ---------------------------------------------------------------------------
 
+/// Config editable de UN bloque para la sesión (incluido + nº de actividades).
+class _ConfigBloque {
+  bool incluido;
+  int n;
+  _ConfigBloque({required this.incluido, required this.n});
+}
+
+/// Config por participante para ESTA sesión (nivel + categorías + nº).
+/// Se pre-rellena desde su PLAN la primera vez que la maestra la despliega.
+class _ConfigParticipante {
+  String nivel; // bajo | medio | alto
+  final Map<String, _ConfigBloque> bloques;
+  bool cargado; // ya se pre-rellenó desde el plan
+  bool cargando;
+  String? error;
+
+  _ConfigParticipante()
+      : nivel = 'medio',
+        bloques = {
+          for (final k in kBloques.keys)
+            k: _ConfigBloque(incluido: false, n: 2),
+        },
+        cargado = false,
+        cargando = false,
+        error = null;
+
+  /// Líneas listas para el contrato: `[{bloque, n}]` de los bloques incluidos.
+  List<Map<String, dynamic>> get lineas => bloques.entries
+      .where((e) => e.value.incluido && e.value.n > 0)
+      .map((e) => {'bloque': e.key, 'n': e.value.n})
+      .toList();
+
+  bool get tieneConfig => lineas.isNotEmpty;
+}
+
 class _AbrirSala extends StatefulWidget {
   final ValueChanged<String> onAbierta;
   const _AbrirSala({required this.onAbierta});
@@ -66,6 +101,8 @@ class _AbrirSalaState extends State<_AbrirSala> {
   List<UsuarioFinal> _usuarios = [];
   List<Ejercicio> _ejercicios = [];
   final Set<String> _seleccionados = {};
+  // Config por participante (solo se crea al seleccionarlo).
+  final Map<String, _ConfigParticipante> _configs = {};
   String _tipo = 'individual'; // individual | grupo
   Ejercicio? _ejercicioCompartido;
   bool _cargando = true;
@@ -78,19 +115,88 @@ class _AbrirSalaState extends State<_AbrirSala> {
     _cargar();
   }
 
+  @override
+  void dispose() {
+    _nombre.dispose();
+    super.dispose();
+  }
+
   Future<void> _cargar() async {
     try {
       final u = await ApiClient.instance.usuariosDelCentro();
       final e = await ApiClient.instance.ejercicios();
+      if (!mounted) return;
       setState(() {
         _usuarios = u;
         _ejercicios = e;
         _cargando = false;
       });
     } catch (err) {
+      if (!mounted) return;
       setState(() {
         _error = err.toString();
         _cargando = false;
+      });
+    }
+  }
+
+  /// Normaliza el nivel del plan a bajo/medio/alto (por si viene numérico).
+  String _normNivel(String? nivel) {
+    switch (nivel) {
+      case 'bajo':
+      case 'medio':
+      case 'alto':
+        return nivel!;
+      default:
+        return 'medio';
+    }
+  }
+
+  /// Pre-rellena la config del participante desde su PLAN (una sola vez).
+  Future<void> _prefillDesdePlan(String usuarioId) async {
+    final cfg = _configs[usuarioId];
+    if (cfg == null || cfg.cargado || cfg.cargando) return;
+    setState(() {
+      cfg.cargando = true;
+      cfg.error = null;
+    });
+    try {
+      final plan = await ApiClient.instance.planUsuario(usuarioId);
+      if (!mounted) return;
+      setState(() {
+        // Nivel: del primer dominio activo del plan.
+        final conNivel = plan.firstWhere(
+          (l) => l.activo && l.nivel != null,
+          orElse: () => plan.isNotEmpty
+              ? plan.first
+              : PlanLinea(
+                  tipo: 'dominio',
+                  bloque: null,
+                  ejercicioId: null,
+                  nivel: 'medio',
+                  nPorSesion: 2,
+                  orden: 0,
+                  activo: true),
+        );
+        cfg.nivel = _normNivel(conNivel.nivel);
+        // Categorías: cada línea de dominio -> {bloque, n_por_sesion}. Si el
+        // plan repite un bloque, se suman las cantidades.
+        for (final l in plan) {
+          if (!l.activo || l.tipo != 'dominio') continue;
+          final b = l.bloque;
+          if (b == null || !cfg.bloques.containsKey(b)) continue;
+          final cb = cfg.bloques[b]!;
+          cb.n = cb.incluido ? cb.n + l.nPorSesion : l.nPorSesion;
+          cb.incluido = true;
+        }
+        cfg.cargado = true;
+        cfg.cargando = false;
+      });
+    } catch (err) {
+      if (!mounted) return;
+      setState(() {
+        cfg.error = err.toString();
+        cfg.cargando = false;
       });
     }
   }
@@ -102,6 +208,19 @@ class _AbrirSalaState extends State<_AbrirSala> {
       _error = null;
     });
     try {
+      // Config por participante: solo los que la maestra ajustó (cargado) y
+      // tienen al menos una categoría. El resto va sin config (usa su plan).
+      final configs = <Map<String, dynamic>>[];
+      for (final uid in _seleccionados) {
+        final cfg = _configs[uid];
+        if (cfg != null && cfg.cargado && cfg.tieneConfig) {
+          configs.add({
+            'usuario_final_id': uid,
+            'nivel': cfg.nivel,
+            'lineas': cfg.lineas,
+          });
+        }
+      }
       final sesionId = await ApiClient.instance.crearSesion(
         tipo: _tipo,
         nombre: _nombre.text.trim(),
@@ -109,14 +228,29 @@ class _AbrirSalaState extends State<_AbrirSala> {
         ejercicioCompartidoId:
             _tipo == 'grupo' ? _ejercicioCompartido?.id : null,
         participantes: _seleccionados.toList(),
+        configs: configs,
       );
+      if (!mounted) return;
       widget.onAbierta(sesionId);
     } catch (err) {
+      if (!mounted) return;
       setState(() {
         _error = err.toString();
         _creando = false;
       });
     }
+  }
+
+  void _toggleParticipante(String uid, bool sel) {
+    setState(() {
+      if (sel) {
+        _seleccionados.add(uid);
+        _configs.putIfAbsent(uid, () => _ConfigParticipante());
+      } else {
+        _seleccionados.remove(uid);
+        _configs.remove(uid);
+      }
+    });
   }
 
   @override
@@ -136,7 +270,7 @@ class _AbrirSalaState extends State<_AbrirSala> {
     }
     return Center(
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 640),
+        constraints: const BoxConstraints(maxWidth: 680),
         child: ListView(
           padding: const EdgeInsets.all(24),
           children: [
@@ -216,16 +350,35 @@ class _AbrirSalaState extends State<_AbrirSala> {
                   selectedColor: TrazoColors.sage.withValues(alpha: 0.30),
                   padding: const EdgeInsets.symmetric(
                       horizontal: 12, vertical: 10),
-                  onSelected: (v) => setState(() {
-                    if (v) {
-                      _seleccionados.add(u.id);
-                    } else {
-                      _seleccionados.remove(u.id);
-                    }
-                  }),
+                  onSelected: (v) => _toggleParticipante(u.id, v),
                 );
               }).toList(),
             ),
+            // Config por participante (colapsada por defecto). En modo grupo
+            // todos hacen el mismo ejercicio compartido, así que se oculta.
+            if (_tipo == 'individual' && _seleccionados.isNotEmpty) ...[
+              const SizedBox(height: 22),
+              const Text('Ajustar actividad de cada persona (opcional)',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: TrazoColors.sageDark)),
+              const SizedBox(height: 4),
+              const Text(
+                  'Por defecto usa su plan. Despliega para cambiar nivel y '
+                  'categorías solo para hoy.',
+                  style:
+                      TextStyle(fontSize: 14, color: TrazoColors.sageDark)),
+              const SizedBox(height: 10),
+              ..._usuarios.where((u) => _seleccionados.contains(u.id)).map(
+                    (u) => _ConfigParticipantePanel(
+                      nombre: u.aliasInterno,
+                      config: _configs[u.id]!,
+                      onExpandir: () => _prefillDesdePlan(u.id),
+                      onCambio: () => setState(() {}),
+                    ),
+                  ),
+            ],
             const SizedBox(height: 28),
             if (_error != null)
               Padding(
@@ -250,6 +403,186 @@ class _AbrirSalaState extends State<_AbrirSala> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Panel expandible con la config de UN participante para la sesión.
+class _ConfigParticipantePanel extends StatelessWidget {
+  final String nombre;
+  final _ConfigParticipante config;
+  final VoidCallback onExpandir;
+  final VoidCallback onCambio;
+
+  const _ConfigParticipantePanel({
+    required this.nombre,
+    required this.config,
+    required this.onExpandir,
+    required this.onCambio,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final resumen = config.cargado
+        ? '${config.nivel} · ${config.lineas.length} categorías'
+        : 'Usa su plan';
+    return Card(
+      margin: const EdgeInsets.only(bottom: 12),
+      color: TrazoColors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(14),
+        side: const BorderSide(color: TrazoColors.sand),
+      ),
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          tilePadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+          childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          title: Text(nombre,
+              style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  color: TrazoColors.ink)),
+          subtitle: Text(resumen,
+              style: const TextStyle(color: TrazoColors.sageDark)),
+          onExpansionChanged: (abierto) {
+            if (abierto) onExpandir();
+          },
+          children: [
+            if (config.cargando)
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 24),
+                child: Center(child: CircularProgressIndicator()),
+              )
+            else if (config.error != null)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Text('No se pudo cargar su plan: ${config.error}',
+                    style: const TextStyle(color: TrazoColors.coralDark)),
+              )
+            else ...[
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text('Nivel',
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: TrazoColors.sageDark)),
+              ),
+              const SizedBox(height: 8),
+              SegmentedButton<String>(
+                segments: const [
+                  ButtonSegment(value: 'bajo', label: Text('Bajo')),
+                  ButtonSegment(value: 'medio', label: Text('Medio')),
+                  ButtonSegment(value: 'alto', label: Text('Alto')),
+                ],
+                selected: {config.nivel},
+                showSelectedIcon: false,
+                onSelectionChanged: (s) {
+                  config.nivel = s.first;
+                  onCambio();
+                },
+                style: const ButtonStyle(
+                  textStyle: WidgetStatePropertyAll(
+                      TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+                ),
+              ),
+              const SizedBox(height: 16),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text('Categorías y nº de actividades',
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: TrazoColors.sageDark)),
+              ),
+              const SizedBox(height: 8),
+              ...kBloques.entries.map((entry) {
+                final cb = config.bloques[entry.key]!;
+                return _FilaBloque(
+                  etiqueta: entry.value,
+                  cfg: cb,
+                  onCambio: onCambio,
+                );
+              }),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Fila de un bloque: incluir/excluir + stepper de nº de actividades.
+class _FilaBloque extends StatelessWidget {
+  final String etiqueta;
+  final _ConfigBloque cfg;
+  final VoidCallback onCambio;
+
+  const _FilaBloque({
+    required this.etiqueta,
+    required this.cfg,
+    required this.onCambio,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        children: [
+          Checkbox(
+            value: cfg.incluido,
+            activeColor: TrazoColors.sage,
+            onChanged: (v) {
+              cfg.incluido = v ?? false;
+              onCambio();
+            },
+          ),
+          Expanded(
+            child: Text(etiqueta,
+                style: TextStyle(
+                    fontSize: 18,
+                    color: cfg.incluido
+                        ? TrazoColors.ink
+                        : TrazoColors.sageDark)),
+          ),
+          if (cfg.incluido) ...[
+            IconButton(
+              iconSize: 28,
+              color: TrazoColors.coralDark,
+              onPressed: cfg.n > 1
+                  ? () {
+                      cfg.n -= 1;
+                      onCambio();
+                    }
+                  : null,
+              icon: const Icon(Icons.remove_circle_outline),
+            ),
+            SizedBox(
+              width: 32,
+              child: Text('${cfg.n}',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      color: TrazoColors.ink)),
+            ),
+            IconButton(
+              iconSize: 28,
+              color: TrazoColors.sageDark,
+              onPressed: cfg.n < 20
+                  ? () {
+                      cfg.n += 1;
+                      onCambio();
+                    }
+                  : null,
+              icon: const Icon(Icons.add_circle_outline),
+            ),
+          ],
+        ],
       ),
     );
   }
@@ -283,6 +616,7 @@ class _MonitorState extends State<_Monitor> {
   String? _error;
   bool _iniciando = false;
   final Set<String> _marcando = {};
+  final Set<String> _enviandoMas = {};
 
   @override
   void initState() {
@@ -369,6 +703,21 @@ class _MonitorState extends State<_Monitor> {
     }
   }
 
+  Future<void> _enviarMas(FichaLive f) async {
+    final uid = f.usuarioFinalId;
+    setState(() => _enviandoMas.add(uid));
+    try {
+      // Body vacío: repite su config/plan (nueva tanda para quien terminó).
+      await ApiClient.instance.enviarMas(widget.sesionId, uid);
+      _snack('Nueva tanda enviada a ${f.aliasInterno}.');
+      await _poll(silencioso: true);
+    } catch (err) {
+      _snack('No se pudo enviar más: $err');
+    } finally {
+      if (mounted) setState(() => _enviandoMas.remove(uid));
+    }
+  }
+
   void _snack(String msg) {
     if (!mounted) return;
     ScaffoldMessenger.of(context)
@@ -400,7 +749,7 @@ class _MonitorState extends State<_Monitor> {
                           gridDelegate:
                               const SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 320,
-                            mainAxisExtent: 190,
+                            mainAxisExtent: 240,
                             crossAxisSpacing: 14,
                             mainAxisSpacing: 14,
                           ),
@@ -412,7 +761,10 @@ class _MonitorState extends State<_Monitor> {
                               marcando: f.ultimoIntentoId != null &&
                                   _marcando.contains(f.ultimoIntentoId),
                               puedeAyudar: f.ultimoIntentoId != null,
+                              enviandoMas:
+                                  _enviandoMas.contains(f.usuarioFinalId),
                               onAyuda: () => _ayuda(f),
+                              onEnviarMas: () => _enviarMas(f),
                             );
                           },
                         ),
@@ -432,16 +784,27 @@ class _FichaCard extends StatelessWidget {
   final FichaLive ficha;
   final bool marcando;
   final bool puedeAyudar;
+  final bool enviandoMas;
   final VoidCallback onAyuda;
+  final VoidCallback onEnviarMas;
 
   const _FichaCard({
     required this.ficha,
     required this.marcando,
     required this.puedeAyudar,
+    required this.enviandoMas,
     required this.onAyuda,
+    required this.onEnviarMas,
   });
 
   ({String texto, Color color, IconData icono}) get _estado {
+    if (ficha.terminado) {
+      return (
+        texto: 'Terminó ✓',
+        color: TrazoColors.sageDark,
+        icono: Icons.check_circle
+      );
+    }
     if (ficha.atascado) {
       return (
         texto: 'Atascado',
@@ -480,26 +843,53 @@ class _FichaCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final e = _estado;
+    final terminado = ficha.terminado;
+    // Resaltado en verde/sage cuando la persona ha terminado su tanda.
+    final bordeColor = terminado
+        ? TrazoColors.sage
+        : (ficha.atascado ? TrazoColors.coral : TrazoColors.sand);
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: TrazoColors.white,
+        color: terminado
+            ? TrazoColors.sage.withValues(alpha: 0.14)
+            : TrazoColors.white,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: ficha.atascado ? TrazoColors.coral : TrazoColors.sand,
-          width: ficha.atascado ? 3 : 1,
+          color: bordeColor,
+          width: (terminado || ficha.atascado) ? 3 : 1,
         ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(ficha.aliasInterno,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                  color: TrazoColors.ink)),
+          Row(
+            children: [
+              Expanded(
+                child: Text(ficha.aliasInterno,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
+                        color: TrazoColors.ink)),
+              ),
+              if (ficha.ronda > 0)
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 8, vertical: 2),
+                  decoration: BoxDecoration(
+                    color: TrazoColors.card,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text('Ronda ${ficha.ronda + 1}',
+                      style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: TrazoColors.sageDark)),
+                ),
+            ],
+          ),
           const SizedBox(height: 6),
           Row(
             children: [
@@ -507,34 +897,56 @@ class _FichaCard extends StatelessWidget {
               const SizedBox(width: 6),
               Text(e.texto,
                   style: TextStyle(
-                      color: e.color, fontWeight: FontWeight.w600)),
+                      color: e.color, fontWeight: FontWeight.w700)),
             ],
           ),
           const SizedBox(height: 4),
           Text(
-            ficha.ejercicioActual ?? 'Sin ejercicio',
+            terminado
+                ? 'Esperando a los demás'
+                : (ficha.ejercicioActual ?? 'Sin ejercicio'),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(color: TrazoColors.sageDark),
           ),
           const Spacer(),
-          Align(
-            alignment: Alignment.centerRight,
-            child: OutlinedButton.icon(
-              onPressed: (marcando || !puedeAyudar) ? null : onAyuda,
-              icon: marcando
-                  ? const SizedBox(
-                      height: 16,
-                      width: 16,
-                      child: CircularProgressIndicator(strokeWidth: 2))
-                  : const Icon(Icons.back_hand, size: 18),
-              label: const Text('Ayuda'),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: TrazoColors.coralDark,
-                side: const BorderSide(color: TrazoColors.coral),
+          if (terminado)
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: enviandoMas ? null : onEnviarMas,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: TrazoColors.sage,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                ),
+                icon: enviandoMas
+                    ? const SizedBox(
+                        height: 16,
+                        width: 16,
+                        child: CircularProgressIndicator(
+                            strokeWidth: 2, color: Colors.white))
+                    : const Icon(Icons.add, size: 20),
+                label: const Text('Enviar más'),
+              ),
+            )
+          else
+            Align(
+              alignment: Alignment.centerRight,
+              child: OutlinedButton.icon(
+                onPressed: (marcando || !puedeAyudar) ? null : onAyuda,
+                icon: marcando
+                    ? const SizedBox(
+                        height: 16,
+                        width: 16,
+                        child: CircularProgressIndicator(strokeWidth: 2))
+                    : const Icon(Icons.back_hand, size: 18),
+                label: const Text('Ayuda'),
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: TrazoColors.coralDark,
+                  side: const BorderSide(color: TrazoColors.coral),
+                ),
               ),
             ),
-          ),
         ],
       ),
     );
