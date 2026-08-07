@@ -14,6 +14,9 @@ import type {
   Evolucion,
   Live,
   PlanLinea,
+  ResumenSesion,
+  SesionListItem,
+  EstadoSesion,
   SugerenciaNivel,
   TokenOut,
   UsuarioFinal,
@@ -70,9 +73,20 @@ export function revisarAlerta(alertaId: string, resultado: string): Promise<Aler
   return http.patch<Alerta>(`/alertas/${encodeURIComponent(alertaId)}/revisar`, { resultado });
 }
 
-// ---- Sesión en vivo ----
+// ---- Sesiones (listado, en vivo e historial) ----
+export function listarSesiones(
+  params: { centro_id?: string; estado?: EstadoSesion; limit?: number } = {},
+  signal?: AbortSignal,
+): Promise<SesionListItem[]> {
+  return http.get<SesionListItem[]>(`/sesiones${buildQuery(params)}`, signal);
+}
+
 export function sesionLive(sesionId: string, signal?: AbortSignal): Promise<Live> {
   return http.get<Live>(`/sesiones/${encodeURIComponent(sesionId)}/live`, signal);
+}
+
+export function resumenSesion(sesionId: string, signal?: AbortSignal): Promise<ResumenSesion> {
+  return http.get<ResumenSesion>(`/sesiones/${encodeURIComponent(sesionId)}/resumen`, signal);
 }
 
 // ---- Plan de trabajo por paciente ----

@@ -109,6 +109,38 @@ export interface Live {
 
 export type EstadoIntento = "solo" | "con_ayuda" | "no_completado";
 
+// ---- Sesiones (listado e historial) ----
+export type EstadoSesion = "abierta" | "cerrada" | "programada";
+
+/** Elemento del listado GET /sesiones. */
+export interface SesionListItem {
+  id: string;
+  nombre: string;
+  fecha: string;
+  modo: string;
+  abierta: boolean;
+  iniciada: boolean;
+  cerrada: boolean;
+  n_participantes: number;
+}
+
+/** Ficha por participante dentro del resumen de una sesión cerrada. */
+export interface FichaResumen {
+  usuario_final_id: string;
+  alias_interno: string;
+  n_intentos: number;
+  solo: number;
+  con_ayuda: number;
+  no_completado: number;
+}
+
+/** Resumen GET /sesiones/{id}/resumen. */
+export interface ResumenSesion {
+  sesion_id: string;
+  nombre: string;
+  fichas: FichaResumen[];
+}
+
 // ---- Plan de trabajo (PlanLinea) ----
 export type TipoLinea = "dominio" | "ejercicio";
 

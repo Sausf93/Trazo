@@ -7,6 +7,7 @@ import { EjerciciosPage } from "./pages/Ejercicios";
 import { LoginPage } from "./pages/Login";
 import { PlanEditorPage } from "./pages/PlanEditor";
 import { SesionLivePage } from "./pages/SesionLive";
+import { SesionesPage } from "./pages/Sesiones";
 import { UsuarioEvolucionPage } from "./pages/UsuarioEvolucion";
 
 export default function App() {
@@ -67,6 +68,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <SesionLivePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/sesiones"
+        element={
+          <ProtectedRoute>
+            <SesionesPage />
           </ProtectedRoute>
         }
       />
