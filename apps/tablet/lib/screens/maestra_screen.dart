@@ -106,6 +106,25 @@ class _ConfigParticipante {
       .toList();
 
   bool get tieneConfig => lineas.isNotEmpty;
+
+  int get total => bloques.values
+      .where((b) => b.incluido)
+      .fold(0, (a, b) => a + b.n);
+
+  /// PLAN ESTÁNDAR: reparte `n` actividades VARIADAS entre todas las categorías.
+  /// La app elegirá en cada una las de la dificultad acorde al nivel. Es el modo
+  /// ágil por defecto: la integradora solo elige nivel y número.
+  void aplicarEstandar(int n) {
+    final claves = kBloques.keys.toList();
+    final base = n ~/ claves.length;
+    final extra = n % claves.length;
+    for (var i = 0; i < claves.length; i++) {
+      final cb = bloques[claves[i]]!;
+      cb.n = base + (i < extra ? 1 : 0);
+      cb.incluido = cb.n > 0;
+    }
+    cargado = true;
+  }
 }
 
 class _AbrirSala extends StatefulWidget {
@@ -128,6 +147,9 @@ class _AbrirSalaState extends State<_AbrirSala> {
   bool _cargando = true;
   bool _creando = false;
   String? _error;
+  // Plan estándar para todos: nivel + nº de actividades variadas.
+  String _nivelEstandar = 'medio';
+  int _numEstandar = 16;
   // Programar: guardar la sala para otro día sin abrirla ahora.
   bool _programar = false;
   DateTime? _fecha;
@@ -313,6 +335,22 @@ class _AbrirSalaState extends State<_AbrirSala> {
     );
   }
 
+  /// Aplica el PLAN ESTÁNDAR (nivel + nº variadas) a TODOS los seleccionados.
+  /// El modo ágil: un toque y todos listos; luego se puede afinar por persona.
+  void _aplicarEstandarTodos() {
+    setState(() {
+      for (final uid in _seleccionados) {
+        final cfg = _configs.putIfAbsent(uid, () => _ConfigParticipante());
+        cfg.nivel = _nivelEstandar;
+        cfg.aplicarEstandar(_numEstandar);
+      }
+    });
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+            'Plan estándar aplicado a ${_seleccionados.length} personas '
+            '($_numEstandar actividades, nivel $_nivelEstandar).')));
+  }
+
   void _toggleParticipante(String uid, bool sel) {
     setState(() {
       if (sel) {
@@ -426,9 +464,98 @@ class _AbrirSalaState extends State<_AbrirSala> {
                 );
               }).toList(),
             ),
-            // Config por participante (colapsada por defecto). En modo grupo
-            // todos hacen el mismo ejercicio compartido, así que se oculta.
+            // PLAN ESTÁNDAR PARA TODOS: lo ágil. La integradora solo elige nivel
+            // y número; la app arma actividades variadas y medibles de la
+            // dificultad adecuada. No hace falta elegir actividades a mano.
             if (_tipo == 'individual' && _seleccionados.isNotEmpty) ...[
+              const SizedBox(height: 22),
+              Card(
+                color: TrazoColors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                  side: const BorderSide(color: TrazoColors.sage, width: 1.5),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Plan estándar para todos',
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w700,
+                              color: TrazoColors.ink)),
+                      const SizedBox(height: 2),
+                      const Text(
+                          'Elige nivel y número; la app pone actividades '
+                          'variadas y medibles. Luego puedes afinar por persona.',
+                          style: TextStyle(
+                              fontSize: 13, color: TrazoColors.sageDark)),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          const Text('Nivel  ',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: TrazoColors.sageDark)),
+                          Expanded(
+                            child: SegmentedButton<String>(
+                              segments: const [
+                                ButtonSegment(value: 'bajo', label: Text('Bajo')),
+                                ButtonSegment(
+                                    value: 'medio', label: Text('Medio')),
+                                ButtonSegment(value: 'alto', label: Text('Alto')),
+                              ],
+                              selected: {_nivelEstandar},
+                              showSelectedIcon: false,
+                              onSelectionChanged: (s) =>
+                                  setState(() => _nivelEstandar = s.first),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          const Text('Actividades  ',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: TrazoColors.sageDark)),
+                          IconButton(
+                            iconSize: 30,
+                            color: TrazoColors.coralDark,
+                            onPressed: _numEstandar > 4
+                                ? () => setState(() => _numEstandar -= 2)
+                                : null,
+                            icon: const Icon(Icons.remove_circle_outline),
+                          ),
+                          Text('$_numEstandar',
+                              style: const TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w700,
+                                  color: TrazoColors.ink)),
+                          IconButton(
+                            iconSize: 30,
+                            color: TrazoColors.sageDark,
+                            onPressed: _numEstandar < 30
+                                ? () => setState(() => _numEstandar += 2)
+                                : null,
+                            icon: const Icon(Icons.add_circle_outline),
+                          ),
+                          const Spacer(),
+                          FilledButton.icon(
+                            onPressed: _aplicarEstandarTodos,
+                            style: FilledButton.styleFrom(
+                                backgroundColor: TrazoColors.sage),
+                            icon: const Icon(Icons.auto_awesome, size: 18),
+                            label: const Text('Aplicar a todos'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               const SizedBox(height: 22),
               const Text('Ajustar actividad de cada persona (opcional)',
                   style: TextStyle(
