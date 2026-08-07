@@ -1257,5 +1257,193 @@
         {"texto": "palabras que rimen con 'mar'"}
       ]
     }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "nombre": "Animales de la granja",
+    "descripcion": "Recordar qué animales se mostraron y localizarlos después entre otros — memoria con material familiar.",
+    "parametros_json": {
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 45,
+      "banco": [
+        {"id": "caballo", "label": "caballo"},
+        {"id": "vaca", "label": "vaca"},
+        {"id": "cerdo", "label": "cerdo"},
+        {"id": "oveja", "label": "oveja"},
+        {"id": "gallina", "label": "gallina"},
+        {"id": "conejo", "label": "conejo"},
+        {"id": "gato", "label": "gato"},
+        {"id": "perro", "label": "perro"}
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "nombre": "Las cosas de la cocina",
+    "descripcion": "Se muestran unos utensilios de cocina y, tras una pausa, hay que reconocer cuáles eran — memoria visual con objetos cotidianos.",
+    "parametros_json": {
+      "recordar_min": 3,
+      "recordar_max": 5,
+      "segundos": 40,
+      "banco": [
+        {"id": "sarten", "label": "sartén"},
+        {"id": "olla", "label": "olla"},
+        {"id": "cuchara", "label": "cuchara"},
+        {"id": "tenedor", "label": "tenedor"},
+        {"id": "cuchillo", "label": "cuchillo"},
+        {"id": "taza", "label": "taza"},
+        {"id": "plato", "label": "plato"},
+        {"id": "vaso", "label": "vaso"},
+        {"id": "bol", "label": "bol"}
+      ]
+    }
+  },
+  {
+    "bloque": "gnosias",
+    "plantilla_tipo": "seleccion_multiple",
+    "nombre": "¿Qué animal es?",
+    "descripcion": "Se muestra un animal y hay que elegir su nombre — denominación por confrontación visual con material muy familiar.",
+    "parametros_json": {
+      "opciones_min": 3,
+      "opciones_max": 4,
+      "items": [
+        {"id": "gato", "instruccion": "¿Qué animal es este?", "imagen": "gato",
+         "correcta": "gato", "distractores": ["perro", "conejo", "ratón"]},
+        {"id": "vaca", "instruccion": "¿Qué animal es este?", "imagen": "vaca",
+         "correcta": "vaca", "distractores": ["caballo", "cerdo", "oveja"]},
+        {"id": "gallina", "instruccion": "¿Qué animal es este?", "imagen": "gallina",
+         "correcta": "gallina", "distractores": ["pájaro", "pollo", "pato"]},
+        {"id": "caballo", "instruccion": "¿Qué animal es este?", "imagen": "caballo",
+         "correcta": "caballo", "distractores": ["vaca", "cerdo", "oveja"]}
+      ]
+    }
+  },
+  {
+    "bloque": "lenguaje",
+    "plantilla_tipo": "evocacion_libre",
+    "nombre": "Aún más categorías",
+    "descripcion": "Fluidez verbal semántica con categorías muy cotidianas y cercanas. La categoría y la cantidad cambian cada vez.",
+    "parametros_json": {
+      "pedir_min": 4,
+      "pedir_max": 8,
+      "prompts": [
+        {"texto": "partes del cuerpo"},
+        {"texto": "días de la semana"},
+        {"texto": "meses del año"},
+        {"texto": "colores"},
+        {"texto": "verduras y hortalizas"},
+        {"texto": "cosas que hay en un dormitorio"}
+      ]
+    }
+  },
+  {
+    "bloque": "funcion_ejecutiva",
+    "plantilla_tipo": "secuencia_ordenar",
+    "nombre": "La higiene en orden",
+    "descripcion": "Ordenar los pasos de una rutina de aseo personal — planificación de tareas de la vida diaria.",
+    "parametros_json": {
+      "pasos_min": 3,
+      "pasos_max": 4,
+      "tareas": [
+        {"id": "dientes", "titulo": "Lavarse los dientes",
+         "pasos": ["Coger el cepillo", "Poner la pasta", "Cepillarse los dientes", "Enjuagarse la boca"]},
+        {"id": "ducha", "titulo": "Ducharse",
+         "pasos": ["Abrir el grifo", "Mojarse", "Enjabonarse", "Secarse con la toalla"]},
+        {"id": "manos", "titulo": "Lavarse las manos",
+         "pasos": ["Abrir el grifo", "Echar jabón", "Frotarse las manos", "Secarse"]}
+      ]
+    }
+  },
+  {
+    "bloque": "percepcion",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los cubiertos",
+    "descripcion": "Contar cuántos cubiertos hay del que se pide, o cuál grupo tiene más. Tarea variable cada vez.",
+    "parametros_json": {
+      "modos": ["contar", "cual_tiene_mas"],
+      "instruccion": "Fíjate bien en los cubiertos",
+      "cantidad_min": 2,
+      "cantidad_max": 9,
+      "objetos": ["cuchara", "tenedor", "cuchillo"]
+    }
+  },
+  {
+    "bloque": "razonamiento",
+    "plantilla_tipo": "seleccion_multiple",
+    "nombre": "¿Dónde se compra?",
+    "descripcion": "Elegir en qué tienda se compra cada producto — razonamiento sobre situaciones cotidianas.",
+    "parametros_json": {
+      "opciones_min": 3,
+      "opciones_max": 4,
+      "items": [
+        {"id": "pan", "instruccion": "¿Dónde se compra el pan?",
+         "correcta": "en la panadería", "distractores": ["en la farmacia", "en la ferretería", "en la zapatería"]},
+        {"id": "carne", "instruccion": "¿Dónde se compra la carne?",
+         "correcta": "en la carnicería", "distractores": ["en la panadería", "en la frutería", "en la papelería"]},
+        {"id": "medicina", "instruccion": "¿Dónde se compra una medicina?",
+         "correcta": "en la farmacia", "distractores": ["en la pescadería", "en la panadería", "en la frutería"]},
+        {"id": "fruta", "instruccion": "¿Dónde se compra la fruta?",
+         "correcta": "en la frutería", "distractores": ["en la carnicería", "en la farmacia", "en la ferretería"]}
+      ]
+    }
+  },
+  {
+    "bloque": "vida_cotidiana",
+    "plantilla_tipo": "arrastrar_posicion",
+    "nombre": "¿Fruta o verdura?",
+    "descripcion": "Llevar cada alimento a su cesto: las frutas con las frutas y las verduras con las verduras — clasificación por categoría.",
+    "parametros_json": {
+      "instruccion": "Pon cada alimento en su cesto",
+      "cantidad_min": 3,
+      "cantidad_max": 4,
+      "muestrear": false,
+      "piezas": [
+        {"id": "manzana", "label": "manzana", "zona_correcta": "frutas"},
+        {"id": "pera", "label": "pera", "zona_correcta": "frutas"},
+        {"id": "platano", "label": "plátano", "zona_correcta": "frutas"},
+        {"id": "naranja", "label": "naranja", "zona_correcta": "frutas"},
+        {"id": "tomate", "label": "tomate", "zona_correcta": "verduras"},
+        {"id": "lechuga", "label": "lechuga", "zona_correcta": "verduras"},
+        {"id": "zanahoria", "label": "zanahoria", "zona_correcta": "verduras"},
+        {"id": "cebolla", "label": "cebolla", "zona_correcta": "verduras"}
+      ],
+      "zonas": [
+        {"id": "frutas", "label": "el cesto de la fruta"},
+        {"id": "verduras", "label": "el cesto de la verdura"}
+      ]
+    }
+  },
+  {
+    "bloque": "vida_cotidiana",
+    "plantilla_tipo": "manejo_cantidad",
+    "nombre": "Paga la compra pequeña",
+    "descripcion": "Reunir el importe justo de una compra pequeña (el pan, la leche) con monedas de euro y céntimos. Importes bajos y cambiantes.",
+    "parametros_json": {
+      "modo": "monedas_justas",
+      "con_centimos": true,
+      "denominaciones_c": [5, 10, 20, 50, 100, 200],
+      "importe_min_c": 55,
+      "importe_max_c": 450,
+      "paso_c": 5
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "El mar y las montañas",
+    "descripcion": "Repasar con el dedo olas del mar y siluetas de montañas — control del trazo continuo con formas evocadoras.",
+    "parametros_json": {
+      "instruccion": "Repasa el dibujo con el dedo",
+      "tolerancia_px": 26,
+      "viewbox": "0 0 300 140",
+      "figuras": [
+        {"id": "olas", "path": "M20,90 q20,-30 40,0 t40,0 t40,0 t40,0 t40,0 t40,0"},
+        {"id": "montanas", "path": "M20,115 L80,45 L120,90 L170,35 L210,90 L260,50 L280,115"},
+        {"id": "colinas", "path": "M20,110 Q70,50 120,110 Q170,50 220,110 Q250,75 280,110"}
+      ]
+    }
   }
 ]
