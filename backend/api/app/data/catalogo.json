@@ -3309,5 +3309,160 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza los números",
+  "descripcion": "Repasar los números con el dedo, con punto de inicio y flechas de dirección.",
+  "parametros_json": {
+   "instruccion": "Repasa el número con el dedo",
+   "tolerancia_px": 22,
+   "viewbox": "0 0 100 145",
+   "figuras": [
+    {
+     "id": "0",
+     "path": "M55,26 C34,26 30,54 30,73 C30,100 42,118 55,118 C70,118 72,96 72,73 C72,50 72,26 55,26"
+    },
+    {
+     "id": "1",
+     "path": "M40,44 L56,30 L56,118"
+    },
+    {
+     "id": "2",
+     "path": "M32,48 C32,26 70,26 70,50 C70,70 36,92 30,116 L74,116"
+    },
+    {
+     "id": "3",
+     "path": "M32,44 C34,26 68,26 66,48 C65,62 48,64 48,64 C48,64 72,66 70,92 C68,116 34,116 30,96"
+    },
+    {
+     "id": "4",
+     "path": "M62,26 L28,92 L78,92 M62,52 L62,118"
+    },
+    {
+     "id": "5",
+     "path": "M70,28 L38,28 L34,66 C46,58 72,58 72,90 C72,116 40,120 30,100"
+    },
+    {
+     "id": "6",
+     "path": "M66,30 C46,30 32,56 32,82 C32,106 46,118 55,118 C70,118 72,98 72,88 C72,72 52,68 40,80"
+    },
+    {
+     "id": "7",
+     "path": "M28,30 L74,30 L44,118 M38,76 L60,76"
+    },
+    {
+     "id": "8",
+     "path": "M53,70 C31,70 31,28 53,28 C75,28 75,70 53,70 C29,70 27,118 53,118 C79,118 75,70 53,70"
+    },
+    {
+     "id": "9",
+     "path": "M70,54 C70,34 52,28 43,32 C32,37 30,54 39,62 C50,72 68,66 70,54 L58,118"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El número que sigue",
+  "descripcion": "Elegir qué número viene después. Orientación numérica y secuencia.",
+  "parametros_json": {
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "n1",
+     "instruccion": "Elige el número",
+     "enunciado": "¿Qué número va DESPUÉS del 1?",
+     "correcta": "2",
+     "distractores": [
+      "3",
+      "0"
+     ]
+    },
+    {
+     "id": "n2",
+     "instruccion": "Elige el número",
+     "enunciado": "¿Qué número va DESPUÉS del 3?",
+     "correcta": "4",
+     "distractores": [
+      "5",
+      "2"
+     ]
+    },
+    {
+     "id": "n3",
+     "instruccion": "Elige el número",
+     "enunciado": "¿Qué número va DESPUÉS del 5?",
+     "correcta": "6",
+     "distractores": [
+      "7",
+      "4"
+     ]
+    },
+    {
+     "id": "n4",
+     "instruccion": "Elige el número",
+     "enunciado": "¿Qué número va DESPUÉS del 7?",
+     "correcta": "8",
+     "distractores": [
+      "9",
+      "6"
+     ]
+    },
+    {
+     "id": "n5",
+     "instruccion": "Elige el número",
+     "enunciado": "¿Qué número va DESPUÉS del 9?",
+     "correcta": "10",
+     "distractores": [
+      "11",
+      "8"
+     ]
+    },
+    {
+     "id": "n6",
+     "instruccion": "Elige el número",
+     "enunciado": "¿Qué número va DESPUÉS del 2?",
+     "correcta": "3",
+     "distractores": [
+      "4",
+      "1"
+     ]
+    },
+    {
+     "id": "n7",
+     "instruccion": "Elige el número",
+     "enunciado": "¿Qué número va ANTES del 6?",
+     "correcta": "5",
+     "distractores": [
+      "7",
+      "4"
+     ]
+    },
+    {
+     "id": "n8",
+     "instruccion": "Elige el número",
+     "enunciado": "¿Qué número va ANTES del 8?",
+     "correcta": "7",
+     "distractores": [
+      "9",
+      "6"
+     ]
+    },
+    {
+     "id": "n9",
+     "instruccion": "Elige el número",
+     "enunciado": "¿Qué número va ANTES del 4?",
+     "correcta": "3",
+     "distractores": [
+      "5",
+      "2"
+     ]
+    }
+   ]
+  }
  }
 ]
