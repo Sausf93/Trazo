@@ -3003,5 +3003,311 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Pasapalabra",
+  "descripcion": "Como en la tele: una definición y la palabra empieza por una letra; elegir cuál es. Vocabulario, muy conservado en mayores.",
+  "parametros_json": {
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "a",
+     "instruccion": "¿Qué palabra es? (con la A)",
+     "enunciado": "Empieza por A: rodear con los brazos",
+     "correcta": "abrazar",
+     "distractores": [
+      "aplaudir",
+      "alcanzar",
+      "abrir"
+     ]
+    },
+    {
+     "id": "b",
+     "instruccion": "¿Qué palabra es? (con la B)",
+     "enunciado": "Empieza por B: tela que se pone a los bebés en el pecho para comer",
+     "correcta": "babero",
+     "distractores": [
+      "bufanda",
+      "bata",
+      "bolsillo"
+     ]
+    },
+    {
+     "id": "c",
+     "instruccion": "¿Qué palabra es? (con la C)",
+     "enunciado": "Empieza por C: planta con muchas espinas que casi no necesita agua",
+     "correcta": "cactus",
+     "distractores": [
+      "clavel",
+      "cebolla",
+      "ciprés"
+     ]
+    },
+    {
+     "id": "d",
+     "instruccion": "¿Qué palabra es? (con la D)",
+     "enunciado": "Empieza por D: lugar con mucho calor, lleno de arena y casi sin lluvia",
+     "correcta": "desierto",
+     "distractores": [
+      "dehesa",
+      "ducha",
+      "despensa"
+     ]
+    },
+    {
+     "id": "e",
+     "instruccion": "¿Qué palabra es? (con la E)",
+     "enunciado": "Empieza por E: animal con el cuerpo cubierto de púas",
+     "correcta": "erizo",
+     "distractores": [
+      "elefante",
+      "escarabajo",
+      "escoba"
+     ]
+    },
+    {
+     "id": "f",
+     "instruccion": "¿Qué palabra es? (con la F)",
+     "enunciado": "Empieza por F: subida de la temperatura del cuerpo al estar enfermos",
+     "correcta": "fiebre",
+     "distractores": [
+      "fatiga",
+      "frío",
+      "flato"
+     ]
+    },
+    {
+     "id": "g",
+     "instruccion": "¿Qué palabra es? (con la G)",
+     "enunciado": "Empieza por G: ave de corral de la que comemos los huevos",
+     "correcta": "gallina",
+     "distractores": [
+      "ganso",
+      "gaviota",
+      "gorrión"
+     ]
+    },
+    {
+     "id": "h",
+     "instruccion": "¿Qué palabra es? (con la H)",
+     "enunciado": "Empieza por H: edificio con muchas habitaciones donde te quedas pagando",
+     "correcta": "hotel",
+     "distractores": [
+      "hospital",
+      "horno",
+      "hangar"
+     ]
+    },
+    {
+     "id": "i",
+     "instruccion": "¿Qué palabra es? (con la I)",
+     "enunciado": "Empieza por I: tierra rodeada de agua por todas partes",
+     "correcta": "isla",
+     "distractores": [
+      "istmo",
+      "iglú",
+      "invierno"
+     ]
+    },
+    {
+     "id": "j",
+     "instruccion": "¿Qué palabra es? (con la J)",
+     "enunciado": "Empieza por J: contrario de viejo",
+     "correcta": "joven",
+     "distractores": [
+      "justo",
+      "jefe",
+      "junco"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Los contrarios",
+  "descripcion": "Elegir la palabra que significa lo contrario. Lenguaje y razonamiento.",
+  "parametros_json": {
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "oscuro",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de OSCURO es...",
+     "correcta": "claro",
+     "distractores": [
+      "negro",
+      "fuerte"
+     ]
+    },
+    {
+     "id": "derrota",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de DERROTA es...",
+     "correcta": "victoria",
+     "distractores": [
+      "batalla",
+      "tristeza"
+     ]
+    },
+    {
+     "id": "dificil",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de DIFÍCIL es...",
+     "correcta": "fácil",
+     "distractores": [
+      "duro",
+      "largo"
+     ]
+    },
+    {
+     "id": "amor",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de AMOR es...",
+     "correcta": "odio",
+     "distractores": [
+      "cariño",
+      "pena"
+     ]
+    },
+    {
+     "id": "salud",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de SALUD es...",
+     "correcta": "enfermedad",
+     "distractores": [
+      "fuerza",
+      "descanso"
+     ]
+    },
+    {
+     "id": "ganar",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de GANAR es...",
+     "correcta": "perder",
+     "distractores": [
+      "jugar",
+      "cobrar"
+     ]
+    },
+    {
+     "id": "viejo",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de VIEJO es...",
+     "correcta": "nuevo",
+     "distractores": [
+      "usado",
+      "roto"
+     ]
+    },
+    {
+     "id": "barato",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de BARATO es...",
+     "correcta": "caro",
+     "distractores": [
+      "pobre",
+      "poco"
+     ]
+    },
+    {
+     "id": "vender",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de VENDER es...",
+     "correcta": "comprar",
+     "distractores": [
+      "pagar",
+      "regalar"
+     ]
+    },
+    {
+     "id": "subir",
+     "instruccion": "Elige el contrario",
+     "enunciado": "El contrario de SUBIR es...",
+     "correcta": "bajar",
+     "distractores": [
+      "saltar",
+      "correr"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Fíjate en las vocales",
+  "descripcion": "Atención al detalle: elegir la palabra que tiene DOS veces la misma vocal.",
+  "parametros_json": {
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "a",
+     "instruccion": "Fíjate bien",
+     "enunciado": "¿Cuál tiene dos letras A?",
+     "correcta": "macarrón",
+     "distractores": [
+      "conejo",
+      "pimiento"
+     ]
+    },
+    {
+     "id": "e",
+     "instruccion": "Fíjate bien",
+     "enunciado": "¿Cuál tiene dos letras E?",
+     "correcta": "entero",
+     "distractores": [
+      "cama",
+      "hijito"
+     ]
+    },
+    {
+     "id": "o",
+     "instruccion": "Fíjate bien",
+     "enunciado": "¿Cuál tiene dos letras O?",
+     "correcta": "adobo",
+     "distractores": [
+      "cama",
+      "fingir"
+     ]
+    },
+    {
+     "id": "i",
+     "instruccion": "Fíjate bien",
+     "enunciado": "¿Cuál tiene dos letras I?",
+     "correcta": "hijito",
+     "distractores": [
+      "cama",
+      "entero"
+     ]
+    },
+    {
+     "id": "a2",
+     "instruccion": "Fíjate bien",
+     "enunciado": "¿Cuál tiene dos letras A?",
+     "correcta": "casa",
+     "distractores": [
+      "conejo",
+      "perro"
+     ]
+    },
+    {
+     "id": "o2",
+     "instruccion": "Fíjate bien",
+     "enunciado": "¿Cuál tiene dos letras O?",
+     "correcta": "coco",
+     "distractores": [
+      "bota",
+      "fuego"
+     ]
+    }
+   ]
+  }
  }
 ]
