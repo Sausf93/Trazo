@@ -1,7 +1,8 @@
 name: Desplegar web comercial (GitHub Pages)
 
-# Publica apps/landing en GitHub Pages. Al primer push habilita Pages solo
-# (enablement: true). La web queda en https://<usuario>.github.io/Trazo/
+# Publica apps/landing en GitHub Pages. Requiere activar Pages UNA vez:
+# Settings -> Pages -> Source: "GitHub Actions". La web queda en
+# https://<usuario>.github.io/Trazo/
 
 on:
   push:

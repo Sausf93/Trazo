@@ -1,5 +1,12 @@
 # Trazo
 
+### 🌐 Web comercial → **https://sausf93.github.io/Trazo/**
+
+<sub>Se publica sola en cada cambio de `apps/landing/`. Si da 404, activa Pages una vez:
+**Settings → Pages → Build and deployment → Source: "GitHub Actions"**.</sub>
+
+---
+
 Herramienta de estimulación cognitiva para personas mayores (mayoría con Alzheimer)
 en centros de día. Tres piezas:
 
