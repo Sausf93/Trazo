@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trazo — Estimulación cognitiva para centros de día y residencias</title>
 <meta name="description" content="Trazo digitaliza la estimulación cognitiva en tablet: ejercicios adaptados a cada persona, panel de evolución individual y de grupo, y detección temprana de cambios. Solicita una demo.">
+<link rel="canonical" href="https://trazo.app/">
+<!-- Open Graph -->
+<meta property="og:title" content="Trazo — Estimulación cognitiva para centros de día y residencias">
+<meta property="og:description" content="Trazo digitaliza la estimulación cognitiva en tablet: ejercicios adaptados a cada persona, panel de evolución individual y de grupo, y detección temprana de cambios.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Trazo — Estimulación cognitiva para centros de día y residencias">
+<meta name="twitter:description" content="Trazo digitaliza la estimulación cognitiva en tablet: ejercicios adaptados a cada persona, panel de evolución individual y de grupo, y detección temprana de cambios.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='11' fill='%237C9885'/><path d='M7%2026%20C11%2014%2015%2030%2020%2022%20C24%2016%2027%2024%2033%2015' fill='none' stroke='%23FFFEFB' stroke-width='3' stroke-linecap='round'/><circle cx='33' cy='15' r='2.6' fill='%23E8A87C'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,13 +46,16 @@
   /* Botones */
   .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:600; font-size:15.5px; padding:14px 24px; border-radius:12px; border:1.6px solid transparent; cursor:pointer; transition:transform .12s ease, background .2s ease, box-shadow .2s ease; white-space:nowrap;}
   .btn:hover{transform:translateY(-1px);}
-  .btn-primary{background:var(--sage); color:#fff; box-shadow:0 10px 22px -12px rgba(92,122,102,.9);}
-  .btn-primary:hover{background:var(--sage-dark);}
+  .btn-primary{background:var(--sage-dark); color:#fff; box-shadow:0 10px 22px -12px rgba(92,122,102,.9);}
+  .btn-primary:hover{background:#4C6856;}
   .btn-ghost{background:transparent; border-color:var(--sand); color:var(--ink);}
   .btn-ghost:hover{background:var(--card);}
-  .btn-coral{background:var(--coral-dark); color:#fff;}
-  .btn-coral:hover{background:#b06a3d;}
+  .btn-coral{background:#B06A3D; color:#fff;}
+  .btn-coral:hover{background:#98592F;}
   .btn-lg{padding:16px 28px; font-size:16.5px;}
+
+  /* Foco de teclado accesible */
+  :focus-visible{outline:2px solid var(--sage-dark); outline-offset:2px;}
 
   /* Logo */
   .logo{display:inline-flex; align-items:center; gap:11px; font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:var(--ink);}
@@ -144,14 +157,14 @@
   .bloque{background:var(--white); border:1px solid var(--sand); border-radius:14px; padding:22px 18px; transition:transform .15s ease, box-shadow .15s ease;}
   .bloque:hover{transform:translateY(-3px); box-shadow:var(--shadow);}
   .bloque .ico{font-size:24px; margin-bottom:10px;}
-  .bloque h4{font-size:16.5px; margin-bottom:3px;}
+  .bloque h3{font-size:16.5px; margin-bottom:3px;}
   .bloque p{font-size:12.5px; color:var(--faint);}
 
   /* Cómo funciona timeline */
   .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; counter-reset:s;}
   .step{position:relative;}
   .step .n{width:38px; height:38px; border-radius:50%; background:var(--sage); color:#fff; font-family:'Fraunces',serif; font-size:18px; display:flex; align-items:center; justify-content:center; margin-bottom:14px;}
-  .step h4{font-size:18px; margin-bottom:6px;}
+  .step h3{font-size:18px; margin-bottom:6px;}
   .step p{font-size:14px; color:var(--muted);}
 
   /* Precios */
@@ -250,7 +263,7 @@
   .il-num{font-family:'Fraunces',serif; font-size:15px; fill:var(--white); font-weight:600;}
   .il-lbl{font-family:'Inter',sans-serif; font-size:11px; font-weight:600; fill:var(--muted);}
   .act-dom{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.11em; text-transform:uppercase; color:var(--sage-dark); margin-bottom:6px;}
-  .act-card h4{font-size:18px; margin-bottom:10px;}
+  .act-card h3{font-size:18px; margin-bottom:10px;}
   .act-works{font-size:13px; color:var(--muted); line-height:1.5; margin-top:auto;}
   .act-works b{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--coral-dark); font-weight:500; display:block; margin-bottom:3px;}
 
@@ -307,7 +320,7 @@
 
 <header id="header">
   <div class="wrap nav">
-    <a href="#top" class="logo"><svg><use href="#logoMark"/></svg>Trazo</a>
+    <a href="#top" class="logo"><svg aria-hidden="true"><use href="#logoMark"/></svg>Trazo</a>
     <nav class="nav-links">
       <a href="#producto">Producto</a>
       <a href="#bloques">Ejercicios</a>
@@ -318,7 +331,7 @@
     <div class="nav-right">
       <a href="#contacto" class="btn btn-ghost">Contacto</a>
       <a href="#contacto" class="btn btn-primary">Solicitar demo</a>
-      <button class="hamb" id="hamb" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+      <button class="hamb" id="hamb" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
     </div>
   </div>
 </header>
@@ -353,10 +366,10 @@
     <div class="device">
       <div class="tablet">
         <div class="tablet-screen">
-          <div class="ts-top"><div class="n"><svg><use href="#logoMark"/></svg>Trazo</div><div class="av"></div></div>
+          <div class="ts-top"><div class="n"><svg aria-hidden="true"><use href="#logoMark"/></svg>Trazo</div><div class="av"></div></div>
           <div class="ts-title">Sigue la línea con el dedo</div>
           <div class="ts-canvas">
-            <svg viewBox="0 0 300 130">
+            <svg viewBox="0 0 300 130" aria-hidden="true">
               <path class="guide" d="M20,95 Q90,20 150,80 T280,55"/>
               <path class="userp" d="M22,93 Q88,28 148,78 T278,57"/>
             </svg>
@@ -407,18 +420,18 @@
         <h3>App para la persona</h3>
         <p>Pantalla completa, un ejercicio a la vez, botones grandes y feedback inmediato. Sin menús ni decisiones de navegación, sin mensajes de "has fallado".</p>
         <ul>
-          <li><svg><use href="#check"/></svg>Ejercicios de los 8 dominios cognitivos</li>
-          <li><svg><use href="#check"/></svg>Dificultad que se ajusta al nivel de cada día</li>
-          <li><svg><use href="#check"/></svg>Funciona sin conexión y en tablets sencillas</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Ejercicios de los 8 dominios cognitivos</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Dificultad que se ajusta al nivel de cada día</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Funciona sin conexión y en tablets sencillas</li>
         </ul>
       </div>
       <div class="fig">
         <div class="tablet" style="box-shadow:none;">
           <div class="tablet-screen">
-            <div class="ts-top"><div class="n"><svg><use href="#logoMark"/></svg>Trazo</div><div class="av"></div></div>
+            <div class="ts-top"><div class="n"><svg aria-hidden="true"><use href="#logoMark"/></svg>Trazo</div><div class="av"></div></div>
             <div class="ts-title">Sigue la línea con el dedo</div>
             <div class="ts-canvas">
-              <svg viewBox="0 0 300 120"><path class="guide" d="M20,90 Q90,15 150,75 T280,50"/><path class="userp" style="animation:none;stroke-dashoffset:0;" d="M22,88 Q88,24 148,74 T278,52"/></svg>
+              <svg viewBox="0 0 300 120" aria-hidden="true"><path class="guide" d="M20,90 Q90,15 150,75 T280,50"/><path class="userp" style="animation:none;stroke-dashoffset:0;" d="M22,88 Q88,24 148,74 T278,52"/></svg>
             </div>
           </div>
         </div>
@@ -430,9 +443,9 @@
         <h3>Panel para el centro</h3>
         <p>Gráficas simples de evolución por persona y por grupo. La tendencia importa más que el dato suelto: se ve cómo cambia con el tiempo, no solo el resultado de hoy.</p>
         <ul>
-          <li><svg><use href="#check"/></svg>Precisión, tiempo, constancia y ayuda necesitada</li>
-          <li><svg><use href="#check"/></svg>Cada intento con su estado: solo, con ayuda o sin completar</li>
-          <li><svg><use href="#check"/></svg>Pensado para profesionales, no para técnicos</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Precisión, tiempo, constancia y ayuda necesitada</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Cada intento con su estado: solo, con ayuda o sin completar</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Pensado para profesionales, no para técnicos</li>
         </ul>
       </div>
       <div class="fig">
@@ -440,7 +453,7 @@
           <div class="panel-head"><span class="u">Carmen R.</span><span class="p">últimas 8 semanas</span></div>
           <div class="panel-sub">Panel del centro · vista individual</div>
           <div class="chart-lbl">Precisión del trazo</div>
-          <svg class="chart" viewBox="0 0 400 110">
+          <svg class="chart" viewBox="0 0 400 110" aria-hidden="true">
             <line class="base" x1="0" y1="80" x2="400" y2="80"/>
             <polyline class="ln" points="10,70 60,60 110,58 160,55 210,52 260,50"/>
             <polyline class="ln alert" points="260,50 310,80 360,95"/>
@@ -457,9 +470,9 @@
         <h3>Sesiones en grupo y vista en vivo</h3>
         <p>Como se trabaja en muchas terapias: en grupo, con un facilitador. Cada persona hace su ejercicio, y la integradora ve a todos a la vez desde una sola pantalla.</p>
         <ul>
-          <li><svg><use href="#check"/></svg>Un toque para marcar "ayuda" por persona</li>
-          <li><svg><use href="#check"/></svg>Aviso suave si alguien lleva un rato atascado</li>
-          <li><svg><use href="#check"/></svg>Evolución individual y de grupo enlazadas</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Un toque para marcar "ayuda" por persona</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Aviso suave si alguien lleva un rato atascado</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Evolución individual y de grupo enlazadas</li>
         </ul>
       </div>
       <div class="fig">
@@ -483,14 +496,14 @@
   </div>
   <div class="wrap">
     <div class="bloques">
-      <div class="bloque"><div class="ico">🧠</div><h4>Atención y memoria</h4><p>Retener y localizar</p></div>
-      <div class="bloque"><div class="ico">💬</div><h4>Lenguaje</h4><p>Palabras y evocación</p></div>
-      <div class="bloque"><div class="ico">🧩</div><h4>Razonamiento</h4><p>Categorizar y relacionar</p></div>
-      <div class="bloque"><div class="ico">👁️</div><h4>Gnosias</h4><p>Reconocer</p></div>
-      <div class="bloque"><div class="ico">✍️</div><h4>Praxias</h4><p>Manos y control motor</p></div>
-      <div class="bloque"><div class="ico">🔍</div><h4>Percepción</h4><p>Separar lo que se solapa</p></div>
-      <div class="bloque"><div class="ico">🗂️</div><h4>Función ejecutiva</h4><p>Planificar una secuencia</p></div>
-      <div class="bloque"><div class="ico">🏠</div><h4>Vida cotidiana</h4><p>Autonomía funcional</p></div>
+      <div class="bloque"><div class="ico">🧠</div><h3>Atención y memoria</h3><p>Retener y localizar</p></div>
+      <div class="bloque"><div class="ico">💬</div><h3>Lenguaje</h3><p>Palabras y evocación</p></div>
+      <div class="bloque"><div class="ico">🧩</div><h3>Razonamiento</h3><p>Categorizar y relacionar</p></div>
+      <div class="bloque"><div class="ico">👁️</div><h3>Gnosias</h3><p>Reconocer</p></div>
+      <div class="bloque"><div class="ico">✍️</div><h3>Praxias</h3><p>Manos y control motor</p></div>
+      <div class="bloque"><div class="ico">🔍</div><h3>Percepción</h3><p>Separar lo que se solapa</p></div>
+      <div class="bloque"><div class="ico">🗂️</div><h3>Función ejecutiva</h3><p>Planificar una secuencia</p></div>
+      <div class="bloque"><div class="ico">🏠</div><h3>Vida cotidiana</h3><p>Autonomía funcional</p></div>
     </div>
   </div>
 </section>
@@ -537,7 +550,7 @@
             </svg>
           </div>
           <div class="act-dom">Praxias · manos y control motor</div>
-          <h4>Sigue la línea</h4>
+          <h3>Sigue la línea</h3>
           <p class="act-works"><b>Trabaja</b>Coordinación mano-ojo y control motor fino (praxias).</p>
         </article>
 
@@ -575,7 +588,7 @@
             </svg>
           </div>
           <div class="act-dom">Razonamiento · categorizar</div>
-          <h4>El intruso</h4>
+          <h3>El intruso</h3>
           <p class="act-works"><b>Trabaja</b>Razonamiento y categorización.</p>
         </article>
 
@@ -597,7 +610,7 @@
             </svg>
           </div>
           <div class="act-dom">Atención y memoria</div>
-          <h4>Memoria de figuras</h4>
+          <h3>Memoria de figuras</h3>
           <p class="act-works"><b>Trabaja</b>Memoria a corto plazo y atención.</p>
         </article>
 
@@ -642,7 +655,7 @@
             </svg>
           </div>
           <div class="act-dom">Función ejecutiva</div>
-          <h4>Ordenar los pasos</h4>
+          <h3>Ordenar los pasos</h3>
           <p class="act-works"><b>Trabaja</b>Función ejecutiva y planificación.</p>
         </article>
 
@@ -670,7 +683,7 @@
             </svg>
           </div>
           <div class="act-dom">Razonamiento · cálculo</div>
-          <h4>¿Cuál tiene más?</h4>
+          <h3>¿Cuál tiene más?</h3>
           <p class="act-works"><b>Trabaja</b>Percepción numérica y cálculo básico.</p>
         </article>
 
@@ -700,7 +713,7 @@
             </svg>
           </div>
           <div class="act-dom">Praxias · vida cotidiana</div>
-          <h4>Poner la mesa</h4>
+          <h3>Poner la mesa</h3>
           <p class="act-works"><b>Trabaja</b>Praxias y autonomía en tareas cotidianas.</p>
         </article>
 
@@ -736,7 +749,7 @@
             </svg>
           </div>
           <div class="act-dom">Lenguaje · fluidez verbal</div>
-          <h4>Objetos por categoría</h4>
+          <h3>Objetos por categoría</h3>
           <p class="act-works"><b>Trabaja</b>Lenguaje y fluidez verbal.</p>
         </article>
 
@@ -767,7 +780,7 @@
             </svg>
           </div>
           <div class="act-dom">Vida cotidiana · cálculo</div>
-          <h4>Manejo de dinero</h4>
+          <h3>Manejo de dinero</h3>
           <p class="act-works"><b>Trabaja</b>Cálculo y autonomía en la vida diaria.</p>
         </article>
 
@@ -785,10 +798,10 @@
     <h2 class="big">De un toque en la pantalla a una alerta útil</h2>
     <p class="lede">El recorrido completo de un dato, para que se entienda de un vistazo.</p>
     <div class="steps">
-      <div class="step"><div class="n">1</div><h4>Hace un ejercicio</h4><p>Con cantidades que cambian cada vez, para que no se memorice y la dificultad se ajuste a su día.</p></div>
-      <div class="step"><div class="n">2</div><h4>Se guarda con su estado</h4><p>Solo, con ayuda o sin completar. Todo queda en su historial, con fecha y ejercicio.</p></div>
-      <div class="step"><div class="n">3</div><h4>El panel lo reúne</h4><p>Lo convierte en gráficas simples por persona y por grupo. Se ve la evolución, no solo el hoy.</p></div>
-      <div class="step"><div class="n">4</div><h4>Avisa si se sale</h4><p>Compara con el histórico propio de esa persona. Si cambia su patrón, lo marca para revisar.</p></div>
+      <div class="step"><div class="n">1</div><h3>Hace un ejercicio</h3><p>Con cantidades que cambian cada vez, para que no se memorice y la dificultad se ajuste a su día.</p></div>
+      <div class="step"><div class="n">2</div><h3>Se guarda con su estado</h3><p>Solo, con ayuda o sin completar. Todo queda en su historial, con fecha y ejercicio.</p></div>
+      <div class="step"><div class="n">3</div><h3>El panel lo reúne</h3><p>Lo convierte en gráficas simples por persona y por grupo. Se ve la evolución, no solo el hoy.</p></div>
+      <div class="step"><div class="n">4</div><h3>Avisa si se sale</h3><p>Compara con el histórico propio de esa persona. Si cambia su patrón, lo marca para revisar.</p></div>
     </div>
   </div>
 </section>
@@ -808,10 +821,10 @@
         <div class="price">Gratis</div>
         <div class="pn">durante el periodo de prueba</div>
         <ul>
-          <li><svg><use href="#check"/></svg>Instalación en vuestras tablets</li>
-          <li><svg><use href="#check"/></svg>Ejercicios de los 8 bloques</li>
-          <li><svg><use href="#check"/></svg>Panel de evolución individual</li>
-          <li><svg><use href="#check"/></svg>Acompañamiento durante la prueba</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Instalación en vuestras tablets</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Ejercicios de los 8 bloques</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Panel de evolución individual</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Acompañamiento durante la prueba</li>
         </ul>
         <a href="#contacto" class="btn btn-ghost">Empezar piloto</a>
       </div>
@@ -821,11 +834,11 @@
         <div class="price">Consúltanos<small> / mes</small></div>
         <div class="pn">según nº de plazas del centro</div>
         <ul>
-          <li><svg><use href="#check"/></svg>Todo lo del piloto, sin límite</li>
-          <li><svg><use href="#check"/></svg>Sesiones individuales y de grupo</li>
-          <li><svg><use href="#check"/></svg>Detección temprana y alertas</li>
-          <li><svg><use href="#check"/></svg>Vista en vivo para la facilitadora</li>
-          <li><svg><use href="#check"/></svg>Soporte prioritario</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Todo lo del piloto, sin límite</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Sesiones individuales y de grupo</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Detección temprana y alertas</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Vista en vivo para la facilitadora</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Soporte prioritario</li>
         </ul>
         <a href="#contacto" class="btn btn-primary">Pedir propuesta</a>
       </div>
@@ -835,10 +848,10 @@
         <div class="price">A medida</div>
         <div class="pn">grupos y redes de centros</div>
         <ul>
-          <li><svg><use href="#check"/></svg>Gestión de varios centros</li>
-          <li><svg><use href="#check"/></svg>Informes agregados</li>
-          <li><svg><use href="#check"/></svg>Formación del equipo</li>
-          <li><svg><use href="#check"/></svg>Acuerdo de tratamiento de datos</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Gestión de varios centros</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Informes agregados</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Formación del equipo</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Acuerdo de tratamiento de datos</li>
         </ul>
         <a href="#contacto" class="btn btn-ghost">Hablar con nosotros</a>
       </div>
@@ -874,15 +887,14 @@
           <h2 class="big">Pide una demo o cuéntanos vuestro caso</h2>
           <p class="lede">Te enseñamos Trazo funcionando y vemos juntos si encaja en vuestro centro. Sin compromiso.</p>
           <div class="row">✉️ <a href="mailto:saulodlsf@gmail.com">saulodlsf@gmail.com</a></div>
-          <div class="row">📞 <span>+34 600 000 000</span> <span class="placeholder">cambiar</span></div>
           <div class="row">📍 <span>España</span></div>
           <p class="small">Respondemos normalmente en 24–48 h laborables.</p>
         </div>
         <form id="demoForm" onsubmit="return enviarDemo(event)">
-          <div class="field"><label>Nombre y centro</label><input name="nombre" required placeholder="Ana López · Centro de Día ..."></div>
-          <div class="field"><label>Email</label><input type="email" name="email" required placeholder="ana@centro.es"></div>
-          <div class="field"><label>Teléfono (opcional)</label><input name="telefono" placeholder="+34 ..."></div>
-          <div class="field"><label>¿Qué necesitáis?</label><textarea name="mensaje" placeholder="Nº de plazas, si ya hacéis estimulación cognitiva, qué os gustaría probar..."></textarea></div>
+          <div class="field"><label for="f-nombre">Nombre y centro</label><input id="f-nombre" name="nombre" required placeholder="Ana López · Centro de Día ..."></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" name="email" required placeholder="ana@centro.es"></div>
+          <div class="field"><label for="f-telefono">Teléfono (opcional)</label><input id="f-telefono" name="telefono" placeholder="+34 ..."></div>
+          <div class="field"><label for="f-mensaje">¿Qué necesitáis?</label><textarea id="f-mensaje" name="mensaje" placeholder="Nº de plazas, si ya hacéis estimulación cognitiva, qué os gustaría probar..."></textarea></div>
           <button type="submit" class="btn btn-coral btn-lg" style="width:100%;">Enviar solicitud de demo</button>
           <p class="small" id="formNote" style="margin-top:10px;">Al enviar se abrirá tu correo con el mensaje preparado.</p>
         </form>
@@ -895,7 +907,7 @@
   <div class="wrap">
     <div class="foot">
       <div>
-        <a href="#top" class="logo" style="font-size:22px; margin-bottom:12px;"><svg><use href="#logoMark"/></svg>Trazo</a>
+        <a href="#top" class="logo" style="font-size:22px; margin-bottom:12px;"><svg aria-hidden="true"><use href="#logoMark"/></svg>Trazo</a>
         <p>Estimulación cognitiva para centros de día y residencias. Ejercicios diarios, evolución por persona y detección temprana.</p>
       </div>
       <div>
@@ -914,7 +926,7 @@
     </div>
     <div class="foot-bottom">
       <span class="mono">© 2026 Trazo · España</span>
-      <span><a href="#" style="color:var(--sage-dark);">Aviso legal</a> · <a href="#" style="color:var(--sage-dark);">Privacidad</a> <span class="placeholder">pendiente</span></span>
+      <span><a href="aviso-legal.html" style="color:var(--sage-dark);">Aviso legal</a> · <a href="privacidad.html" style="color:var(--sage-dark);">Privacidad</a></span>
     </div>
   </div>
 </footer>
@@ -929,9 +941,17 @@
   // Menú móvil
   var hamb = document.getElementById('hamb');
   var menu = document.getElementById('mobileMenu');
-  hamb.addEventListener('click', function(){ menu.classList.toggle('open'); });
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    hamb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    hamb.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  }
+  hamb.addEventListener('click', function(){ setMenu(!menu.classList.contains('open')); });
   menu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    a.addEventListener('click', function(){ setMenu(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && menu.classList.contains('open')){ setMenu(false); hamb.focus(); }
   });
 
   // Slider de ejemplos de actividades
