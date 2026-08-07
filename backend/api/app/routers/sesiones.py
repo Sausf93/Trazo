@@ -4,7 +4,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
@@ -25,11 +25,14 @@ from app.schemas import (
     ParticipanteMasIn,
     ParticipanteProgramadoOut,
     ParticipanteSesion,
+    ResumenParticipante,
+    ResumenSesionOut,
     SesionActivaOut,
     SesionConfigPut,
     SesionIn,
     SesionOut,
     SesionProgramadaOut,
+    SesionResumenOut,
 )
 
 router = APIRouter(prefix="/sesiones", tags=["sesiones"])
@@ -99,6 +102,88 @@ async def sesion_activa(
         ejercicio_compartido_id=ses.ejercicio_compartido_id,
         participantes=participantes,
     )
+
+
+@router.get("", response_model=list[SesionResumenOut])
+async def listar_sesiones(
+    centro_id: str,
+    estado: str | None = None,  # abierta | cerrada | programada | (todas)
+    limit: int = 20,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Historial de sesiones del centro (para el dashboard de la maestra y el panel).
+
+    `estado`: abierta (en vivo), cerrada (pasadas), programada, o sin filtro."""
+    if centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    stmt = select(Sesion).where(Sesion.centro_id == centro_id)
+    if estado == "abierta":
+        stmt = stmt.where(Sesion.abierta.is_(True), Sesion.cerrada.is_(False))
+    elif estado == "cerrada":
+        stmt = stmt.where(Sesion.cerrada.is_(True))
+    elif estado == "programada":
+        stmt = stmt.where(Sesion.abierta.is_(False), Sesion.cerrada.is_(False))
+    stmt = stmt.order_by(Sesion.fecha.desc()).limit(max(1, min(limit, 100)))
+    sesiones = (await db.execute(stmt)).scalars().all()
+
+    salida: list[SesionResumenOut] = []
+    for ses in sesiones:
+        n = (
+            await db.execute(
+                select(func.count()).select_from(SesionParticipante).where(
+                    SesionParticipante.sesion_id == ses.id)
+            )
+        ).scalar() or 0
+        salida.append(SesionResumenOut(
+            id=ses.id, nombre=ses.nombre, fecha=ses.fecha, modo=ses.modo,
+            abierta=ses.abierta, iniciada=ses.iniciada, cerrada=ses.cerrada,
+            n_participantes=n,
+        ))
+    return salida
+
+
+@router.get("/{sesion_id}/resumen", response_model=ResumenSesionOut)
+async def resumen_sesion(
+    sesion_id: str,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Cómo fue la sesión: por participante, cuántas actividades y el desglose
+    solo/con_ayuda/no_completado. Para el cierre con resumen y el historial."""
+    ses = await db.get(Sesion, sesion_id)
+    if ses is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
+    if ses.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+
+    parts = (
+        await db.execute(
+            select(SesionParticipante).where(
+                SesionParticipante.sesion_id == sesion_id)
+        )
+    ).scalars().all()
+
+    fichas: list[ResumenParticipante] = []
+    for p in parts:
+        uf = await db.get(UsuarioFinal, p.usuario_final_id)
+        intentos = (
+            await db.execute(
+                select(Intento.estado).where(
+                    Intento.sesion_id == sesion_id,
+                    Intento.usuario_final_id == p.usuario_final_id,
+                )
+            )
+        ).scalars().all()
+        fichas.append(ResumenParticipante(
+            usuario_final_id=p.usuario_final_id,
+            alias_interno=uf.alias_interno if uf else "?",
+            n_intentos=len(intentos),
+            solo=sum(1 for e in intentos if e == "solo"),
+            con_ayuda=sum(1 for e in intentos if e == "con_ayuda"),
+            no_completado=sum(1 for e in intentos if e == "no_completado"),
+        ))
+    return ResumenSesionOut(sesion_id=sesion_id, nombre=ses.nombre, fichas=fichas)
 
 
 @router.post("", response_model=SesionOut, status_code=status.HTTP_201_CREATED)

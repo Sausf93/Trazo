@@ -181,6 +181,34 @@ class ParticipanteProgramadoOut(BaseModel):
     lineas: list[LineaConfig] = Field(default_factory=list)
 
 
+class SesionResumenOut(BaseModel):
+    """Fila del listado de sesiones (historial / salas abiertas) del centro."""
+    id: str
+    nombre: str | None = None
+    fecha: datetime
+    modo: str
+    abierta: bool
+    iniciada: bool
+    cerrada: bool
+    n_participantes: int
+
+
+class ResumenParticipante(BaseModel):
+    usuario_final_id: str
+    alias_interno: str
+    n_intentos: int
+    solo: int
+    con_ayuda: int
+    no_completado: int
+
+
+class ResumenSesionOut(BaseModel):
+    """Cómo fue la sesión: por participante, desglose de estados."""
+    sesion_id: str
+    nombre: str | None = None
+    fichas: list[ResumenParticipante] = Field(default_factory=list)
+
+
 class SesionProgramadaOut(BaseModel):
     """Sesión programada (borrador) con sus participantes y config, para que la
     maestra la revise y la abra el día señalado."""

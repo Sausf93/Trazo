@@ -65,8 +65,8 @@
      "label": "leche"
     },
     {
-     "id": "manta",
-     "label": "manta"
+     "id": "toalla",
+     "label": "toalla"
     },
     {
      "id": "silla",
@@ -222,7 +222,7 @@
     {
      "id": "paraguas",
      "instruccion": "¿Cómo se llama esto?",
-     "imagen": "obj_paraguas",
+     "imagen": "paraguas",
      "correcta": "paraguas",
      "distractores": [
       "bastón",
@@ -233,7 +233,7 @@
     {
      "id": "tijeras",
      "instruccion": "¿Cómo se llama esto?",
-     "imagen": "obj_tijeras",
+     "imagen": "tijeras",
      "correcta": "tijeras",
      "distractores": [
       "alicates",
@@ -244,23 +244,23 @@
     {
      "id": "plancha",
      "instruccion": "¿Cómo se llama esto?",
-     "imagen": "obj_plancha",
-     "correcta": "plancha",
+     "imagen": "telefono",
+     "correcta": "teléfono",
      "distractores": [
-      "sartén",
-      "tostadora",
-      "báscula"
+      "radio",
+      "mando",
+      "reloj"
      ]
     },
     {
      "id": "regadera",
      "instruccion": "¿Cómo se llama esto?",
-     "imagen": "obj_regadera",
-     "correcta": "regadera",
+     "imagen": "martillo",
+     "correcta": "martillo",
      "distractores": [
-      "cubo",
-      "jarra",
-      "cafetera"
+      "destornillador",
+      "llave inglesa",
+      "sierra"
      ]
     }
    ]
@@ -382,7 +382,7 @@
     {
      "id": "llave",
      "instruccion": "¿Qué va con la llave?",
-     "imagen": "obj_llave",
+     "imagen": "llave",
      "correcta": "puerta",
      "distractores": [
       "ventana",
@@ -393,7 +393,7 @@
     {
      "id": "paraguas",
      "instruccion": "¿Qué va con el paraguas?",
-     "imagen": "obj_paraguas",
+     "imagen": "paraguas",
      "correcta": "lluvia",
      "distractores": [
       "sol",
@@ -404,7 +404,7 @@
     {
      "id": "cepillo",
      "instruccion": "¿Qué va con el cepillo de dientes?",
-     "imagen": "obj_cepillo",
+     "imagen": "cepillo_dientes",
      "correcta": "pasta de dientes",
      "distractores": [
       "jabón",
@@ -414,13 +414,13 @@
     },
     {
      "id": "aguja",
-     "instruccion": "¿Qué va con la aguja?",
-     "imagen": "obj_aguja",
-     "correcta": "hilo",
+     "instruccion": "¿Qué va con el zapato?",
+     "imagen": "zapato",
+     "correcta": "calcetín",
      "distractores": [
-      "martillo",
-      "tijeras",
-      "pincel"
+      "guante",
+      "gorro",
+      "bufanda"
      ]
     }
    ]
@@ -659,8 +659,8 @@
  {
   "bloque": "gnosias",
   "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Adivina por la sombra",
-  "descripcion": "Solo se ve la silueta de un objeto cotidiano; hay que decir qué es.",
+  "nombre": "¿Qué objeto es?",
+  "descripcion": "Mira el dibujo y elige qué objeto es.",
   "parametros_json": {
    "dificultad": "media",
    "opciones_min": 3,
@@ -668,8 +668,8 @@
    "items": [
     {
      "id": "botella",
-     "instruccion": "¿Qué objeto es esta sombra?",
-     "imagen": "sombra_botella",
+     "instruccion": "¿Qué objeto es este?",
+     "imagen": "botella",
      "correcta": "una botella",
      "distractores": [
       "un jarrón",
@@ -679,8 +679,8 @@
     },
     {
      "id": "tijeras",
-     "instruccion": "¿Qué objeto es esta sombra?",
-     "imagen": "sombra_tijeras",
+     "instruccion": "¿Qué objeto es este?",
+     "imagen": "tijeras",
      "correcta": "unas tijeras",
      "distractores": [
       "unas gafas",
@@ -690,8 +690,8 @@
     },
     {
      "id": "silla",
-     "instruccion": "¿Qué objeto es esta sombra?",
-     "imagen": "sombra_silla",
+     "instruccion": "¿Qué objeto es este?",
+     "imagen": "silla",
      "correcta": "una silla",
      "distractores": [
       "una mesa",
@@ -705,8 +705,8 @@
  {
   "bloque": "gnosias",
   "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Solo un trozo",
-  "descripcion": "Se ve solo una parte de un objeto conocido (el asa de una taza) y hay que reconocer el objeto completo.",
+  "nombre": "Reconoce el objeto",
+  "descripcion": "Mira el dibujo y di qué objeto es.",
   "parametros_json": {
    "dificultad": "media",
    "opciones_min": 3,
@@ -714,8 +714,8 @@
    "items": [
     {
      "id": "taza",
-     "instruccion": "¿De qué objeto es este trozo?",
-     "imagen": "trozo_asa_taza",
+     "instruccion": "¿Qué objeto es este?",
+     "imagen": "taza",
      "correcta": "una taza",
      "distractores": [
       "una jarra",
@@ -725,8 +725,8 @@
     },
     {
      "id": "silla",
-     "instruccion": "¿De qué objeto es este trozo?",
-     "imagen": "trozo_patas_silla",
+     "instruccion": "¿Qué objeto es este?",
+     "imagen": "silla",
      "correcta": "una silla",
      "distractores": [
       "una mesa",
@@ -736,8 +736,8 @@
     },
     {
      "id": "reloj",
-     "instruccion": "¿De qué objeto es este trozo?",
-     "imagen": "trozo_esfera_reloj",
+     "instruccion": "¿Qué objeto es este?",
+     "imagen": "reloj",
      "correcta": "un reloj",
      "distractores": [
       "una brújula",
@@ -944,8 +944,8 @@
  {
   "bloque": "percepcion",
   "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Cuál es igual",
-  "descripcion": "Se muestra un detalle (un ojo, una forma) y hay que encontrar cuál es idéntico entre varias opciones.",
+  "nombre": "¿Qué es esto?",
+  "descripcion": "Mira el dibujo y elige la respuesta.",
   "parametros_json": {
    "dificultad": "facil",
    "opciones_min": 3,
@@ -953,24 +953,24 @@
    "items": [
     {
      "id": "hoja",
-     "instruccion": "¿Cuál es igual al modelo?",
-     "imagen": "modelo_hoja",
-     "correcta": "opcion_hoja_c",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "hoja",
+     "correcta": "hoja",
      "distractores": [
-      "opcion_hoja_a",
-      "opcion_hoja_b",
-      "opcion_hoja_d"
+      "flor",
+      "árbol",
+      "trébol"
      ]
     },
     {
      "id": "figura",
-     "instruccion": "¿Cuál es igual al modelo?",
-     "imagen": "modelo_figura",
-     "correcta": "opcion_fig_a",
+     "instruccion": "¿Qué figura es?",
+     "imagen": "estrella",
+     "correcta": "estrella",
      "distractores": [
-      "opcion_fig_b",
-      "opcion_fig_c",
-      "opcion_fig_d"
+      "círculo",
+      "cuadrado",
+      "corazón"
      ]
     }
    ]
@@ -1583,13 +1583,13 @@
      "zona_correcta": "carro"
     },
     {
-     "id": "arroz",
-     "label": "arroz",
+     "id": "patata",
+     "label": "patata",
      "zona_correcta": "carro"
     },
     {
-     "id": "tomates",
-     "label": "tomates",
+     "id": "tomate",
+     "label": "tomate",
      "zona_correcta": "carro"
     }
    ],
@@ -1619,8 +1619,8 @@
      "zona_correcta": "nevera"
     },
     {
-     "id": "yogur",
-     "label": "yogur",
+     "id": "queso",
+     "label": "queso",
      "zona_correcta": "nevera"
     },
     {
@@ -1629,8 +1629,8 @@
      "zona_correcta": "nevera"
     },
     {
-     "id": "arroz",
-     "label": "arroz",
+     "id": "patata",
+     "label": "patata",
      "zona_correcta": "despensa"
     },
     {
@@ -1772,36 +1772,36 @@
    "segundos": 40,
    "banco": [
     {
-     "id": "campana",
-     "label": "campana"
-    },
-    {
      "id": "paraguas",
      "label": "paraguas"
     },
     {
-     "id": "tetera",
-     "label": "tetera"
+     "id": "llave",
+     "label": "llave"
     },
     {
-     "id": "abanico",
-     "label": "abanico"
+     "id": "reloj",
+     "label": "reloj"
     },
     {
-     "id": "candado",
-     "label": "candado"
+     "id": "gafas",
+     "label": "gafas"
     },
     {
-     "id": "farol",
-     "label": "farol"
+     "id": "taza",
+     "label": "taza"
     },
     {
-     "id": "cesta",
-     "label": "cesta"
+     "id": "tijeras",
+     "label": "tijeras"
     },
     {
-     "id": "vela",
-     "label": "vela"
+     "id": "libro",
+     "label": "libro"
+    },
+    {
+     "id": "telefono",
+     "label": "teléfono"
     }
    ]
   }
@@ -1822,8 +1822,8 @@
      "label": "cuchara"
     },
     {
-     "id": "dedal",
-     "label": "dedal"
+     "id": "llave",
+     "label": "llave"
     },
     {
      "id": "boton",
@@ -1834,24 +1834,24 @@
      "label": "moneda"
     },
     {
-     "id": "pinza",
-     "label": "pinza"
+     "id": "peine",
+     "label": "peine"
     },
     {
-     "id": "carrete",
-     "label": "carrete de hilo"
+     "id": "tijeras",
+     "label": "tijeras"
     },
     {
-     "id": "imperdible",
-     "label": "imperdible"
+     "id": "gafas",
+     "label": "gafas"
     },
     {
      "id": "lapiz",
      "label": "lápiz"
     },
     {
-     "id": "goma",
-     "label": "goma"
+     "id": "jabon",
+     "label": "jabón"
     }
    ]
   }
@@ -1930,24 +1930,24 @@
      "label": "aceite"
     },
     {
-     "id": "arroz",
-     "label": "arroz"
+     "id": "patata",
+     "label": "patata"
     },
     {
-     "id": "azucar",
-     "label": "azúcar"
+     "id": "galleta",
+     "label": "galleta"
     },
     {
      "id": "cafe",
      "label": "café"
     },
     {
-     "id": "sal",
-     "label": "sal"
+     "id": "queso",
+     "label": "queso"
     },
     {
-     "id": "harina",
-     "label": "harina"
+     "id": "jamon",
+     "label": "jamón"
     }
    ]
   }
@@ -2357,8 +2357,8 @@
      "zona_correcta": "grandes"
     },
     {
-     "id": "calabaza",
-     "label": "calabaza",
+     "id": "melocoton",
+     "label": "melocotón",
      "zona_correcta": "grandes"
     },
     {
@@ -2372,8 +2372,8 @@
      "zona_correcta": "pequenas"
     },
     {
-     "id": "nuez",
-     "label": "nuez",
+     "id": "fresa",
+     "label": "fresa",
      "zona_correcta": "pequenas"
     }
    ],
@@ -2417,8 +2417,8 @@
      "zona_correcta": "lluvia"
     },
     {
-     "id": "botas_agua",
-     "label": "botas de agua",
+     "id": "guantes",
+     "label": "guantes",
      "zona_correcta": "lluvia"
     },
     {
@@ -2481,13 +2481,13 @@
      "zona_correcta": "bano"
     },
     {
-     "id": "almohada",
-     "label": "almohada",
+     "id": "cama",
+     "label": "cama",
      "zona_correcta": "dormitorio"
     },
     {
-     "id": "manta",
-     "label": "manta",
+     "id": "lampara",
+     "label": "lámpara",
      "zona_correcta": "dormitorio"
     }
    ],
