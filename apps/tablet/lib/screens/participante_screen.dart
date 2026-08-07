@@ -137,7 +137,44 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
 
   // --- Selección de identidad ---------------------------------------------
 
-  void _elegirse(ParticipanteSesion p) {
+  Future<void> _elegirse(ParticipanteSesion p) async {
+    // Confirmación grande: si una persona con Alzheimer toca el nombre de al
+    // lado, sus mediciones irían a OTRA ficha. Se confirma antes de empezar.
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text('¿Eres tú, ${p.aliasInterno}?',
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w800,
+                color: TrazoColors.ink)),
+        actionsAlignment: MainAxisAlignment.spaceEvenly,
+        actions: [
+          OutlinedButton(
+            onPressed: () => Navigator.pop(context, false),
+            style: OutlinedButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
+                textStyle: const TextStyle(fontSize: 20),
+                foregroundColor: TrazoColors.coralDark,
+                side: const BorderSide(color: TrazoColors.coral)),
+            child: const Text('No, soy otro'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: ElevatedButton.styleFrom(
+                backgroundColor: TrazoColors.sage,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
+                textStyle: const TextStyle(
+                    fontSize: 22, fontWeight: FontWeight.w700)),
+            child: const Text('Sí, soy yo'),
+          ),
+        ],
+      ),
+    );
+    if (ok != true || !mounted) return;
     setState(() => _yo = p);
     final sesion = _sesion;
     if (sesion != null && sesion.iniciada) {
