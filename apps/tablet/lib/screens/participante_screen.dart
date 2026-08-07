@@ -68,6 +68,9 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
   // --- Polling del estado de la sala --------------------------------------
 
   Future<void> _poll() async {
+    // Aprovecha cada tick para reenviar mediciones que quedaron pendientes por
+    // un corte de WiFi (no se pierden). flush() es barato si no hay nada.
+    SyncQueue.flush();
     SesionActiva sesion;
     try {
       sesion = await ApiClient.instance.sesionActiva();

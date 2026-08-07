@@ -21,12 +21,22 @@ class SyncQueue {
     } catch (_) {
       ok = false;
     }
-    if (!ok) {
+    if (ok) {
+      // Hay conexión: aprovecha para reenviar lo que quedó pendiente de antes
+      // (si el WiFi se cayó, esas mediciones no se pierden).
+      await flush();
+    } else {
       final prefs = await SharedPreferences.getInstance();
       final pend = prefs.getStringList(_key) ?? [];
       pend.add(jsonEncode(intento.toJson()));
       await prefs.setStringList(_key, pend);
     }
+  }
+
+  /// Cuántos intentos hay pendientes de enviar (para un aviso discreto).
+  static Future<int> pendientes() async {
+    final prefs = await SharedPreferences.getInstance();
+    return (prefs.getStringList(_key) ?? []).length;
   }
 
   /// Reintenta enviar todo lo pendiente. Devuelve cuántos quedaron sin enviar.

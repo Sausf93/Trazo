@@ -1291,7 +1291,9 @@ class _FichaCard extends StatelessWidget {
                         fontWeight: FontWeight.w700,
                         color: TrazoColors.ink)),
               ),
-              if (ficha.ronda > 0)
+              // La ronda nace en 1; solo se muestra el badge a partir de la 2ª
+              // (cuando la maestra ya envió "más"), con el número real.
+              if (ficha.ronda > 1)
                 Container(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 8, vertical: 2),
@@ -1299,7 +1301,7 @@ class _FichaCard extends StatelessWidget {
                     color: TrazoColors.card,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Text('Ronda ${ficha.ronda + 1}',
+                  child: Text('Ronda ${ficha.ronda}',
                       style: const TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,

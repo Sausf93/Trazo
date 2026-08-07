@@ -127,10 +127,8 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
                 },
               ),
             ),
-            Text(objeto.replaceAll('_', ' '),
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    fontSize: 16, color: TrazoColors.sageDark)),
+            // Sin etiqueta de texto bajo el grupo: la persona cuenta lo que VE.
+            // (Nombres como "moneda dorada" solo confundían al mayor.)
           ],
         ),
       ),
