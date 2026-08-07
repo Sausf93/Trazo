@@ -60,23 +60,30 @@ async def sincronizar_catalogo(db: AsyncSession) -> int:
     """
     catalogo = _ejercicios_semilla()
     nombres_json = {cfg["nombre"] for cfg in catalogo}
-    existentes = set(
-        (await db.execute(select(EjercicioCatalogo.nombre))).scalars().all()
-    )
+    por_nombre = {
+        ej.nombre: ej
+        for ej in (await db.execute(select(EjercicioCatalogo))).scalars().all()
+    }
     nuevas = 0
     for cfg in catalogo:
-        if cfg["nombre"] in existentes:
-            continue
-        db.add(EjercicioCatalogo(**cfg))
-        nuevas += 1
-    # El JSON es la fuente de la verdad de qué está ACTIVO: las actividades que ya
-    # no están en el catálogo se DESACTIVAN (no se borran, para conservar el
-    # histórico y no romper referencias); las que vuelven, se reactivan.
-    todas = (await db.execute(select(EjercicioCatalogo))).scalars().all()
-    for ej in todas:
-        debe_estar = ej.nombre in nombres_json
-        if ej.activo != debe_estar:
-            ej.activo = debe_estar
+        ej = por_nombre.get(cfg["nombre"])
+        if ej is None:
+            db.add(EjercicioCatalogo(**cfg))
+            nuevas += 1
+        else:
+            # El JSON es la FUENTE DE LA VERDAD: actualiza los parámetros de las
+            # actividades que ya existen (así los arreglos de contenido se aplican
+            # sin borrar la BD ni perder histórico).
+            ej.bloque = cfg["bloque"]
+            ej.plantilla_tipo = cfg["plantilla_tipo"]
+            ej.descripcion = cfg.get("descripcion")
+            ej.parametros_json = cfg.get("parametros_json", {})
+            ej.activo = True
+    # Las actividades que ya NO están en el JSON se DESACTIVAN (no se borran, para
+    # conservar el histórico y no romper referencias).
+    for nombre, ej in por_nombre.items():
+        if nombre not in nombres_json and ej.activo:
+            ej.activo = False
     await db.commit()
     return nuevas
 
