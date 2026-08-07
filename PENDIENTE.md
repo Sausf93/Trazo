@@ -1,90 +1,62 @@
 # Trazo — Pendientes
 
-Lista viva de cosas por hacer/decidir. Marca con `[x]` lo que se cierre.
+Lista viva. `[x]` = hecho. Actualizada 2026-08-07 tras la jornada de pulido QA.
+Para el detalle de lo hecho recientemente, ver `docs/MEJORAS-QA.md`.
+
+## Hecho recientemente (para que no se pida dos veces)
+- [x] Páginas legales reales (aviso-legal.html, privacidad.html) enlazadas en la landing (borrador, datos fiscales como TODO).
+- [x] Landing: quitado teléfono placeholder y badges; labels de formulario; contraste AA; Open Graph/SEO.
+- [x] Niveles de dificultad por CANTIDAD (bajo 3 / medio 6-8 / alto 10-12) end-to-end.
+- [x] Grafomotricidad: punto de inicio + flechas de dirección en el trazo.
+- [x] Librería de ilustraciones (123 SVG) + arquitectura "foto primero"; 8 dibujos poco claros redibujados; casa y reloj añadidos.
+- [x] Sesiones programadas (dejar sala lista para otro día) — backend + tablet maestra.
+- [x] Config por participante + rondas ("Enviar más") + espera del participante (A+B+C).
+- [x] RGPD: control de acceso por centro (IDOR) cerrado en todos los endpoints de datos de salud.
+- [x] Web: aprobar sugerencias de nivel, editor de plan, gestión de dispositivos.
+- [x] +10 actividades nuevas (catálogo = 81) y sincronización de catálogo al arranque sin borrar la BD.
+- [x] Tablet: timeouts de red, contraste, marca de "elegido", confirmar "Terminar", memoria sin auto-ocultar.
+- [x] Panel: accesibilidad (foco, contraste, role=status), ErrorBoundary, confirmación al revocar tablet.
 
 ## Web comercial (`apps/landing/`)
-- [ ] **Email comercial propio** — ahora se usa el personal (`saulodlsf@gmail.com`).
-      Para dar imagen profesional, registrar algo tipo `hola@trazo.app` /
-      `info@trazo.es` y cambiarlo en `apps/landing/index.html` (aparece en:
-      sección contacto, `EMAIL_DESTINO` del `<script>`, y footer).
-- [ ] **Teléfono de contacto** — hay un placeholder `+34 600 000 000`, poner el real
-      (o quitarlo si preferís solo email/formulario).
-- [ ] **Dominio** — decidir dominio (`trazo.app`, `trazo.es`...) y hosting
-      (Netlify/Vercel/GitHub Pages sirven para el HTML estático).
-- [ ] **Precio del plan "Centro"** — ahora dice "Consúltanos". Definir importe/rango.
-- [ ] **Aviso legal y Política de privacidad** — el footer enlaza a `#` (vacío).
-      Redactar ambas páginas (obligatorio por RGPD al tratar datos de salud).
-- [ ] **Formulario de contacto real** — ahora abre el correo del usuario (`mailto:`).
-      Si se quiere recepción automática, conectar a un servicio (Formspree, un
-      endpoint propio, etc.).
-- [ ] **Logo definitivo** — hay un logo SVG propio hecho a mano; si se quiere una
-      versión "de marca" más trabajada, encargar/diseñar y sustituir. (A Saulo no
-      le convence del todo; lo comentará con su pareja. Está centralizado: cambiarlo
-      es rápido — Logo.tsx en web, símbolo SVG en landing, favicon data-URI, y la
-      tablet.)
-- [ ] **Unificar logo/favicon en la app tablet** (aún tiene el de Flutter por defecto).
-      Se hace en la reorientación maestra/kiosco.
-- [ ] **Textos e imágenes** — revisar copy con Laura; añadir capturas reales del
-      producto cuando estén pulidas.
-- [ ] (Opcional) **Testimonios reales** — cuando haya centros piloto, añadir prueba
-      social real (NO inventar).
+- [ ] **Email propio de dominio** (hoy `saulodlsf@gmail.com`) — registrar `hola@trazo.app`/`info@trazo.es` y cambiarlo en la landing y páginas legales.
+- [ ] **Dominio + hosting** (Netlify/Vercel/GitHub Pages sirven para el HTML estático).
+- [ ] **Precio del plan "Centro"** en la landing (hoy "Consúltanos"). Depende de fijar tarifas (ver abajo).
+- [ ] **Formulario de contacto real** (hoy `mailto:`) — conectar Formspree/Netlify Forms para recibir leads.
+- [ ] **Datos fiscales** en las páginas legales (razón social, NIF/CIF, domicilio) cuando exista la empresa.
+- [ ] **Logo definitivo** (a decidir con Laura) — está centralizado, cambiarlo es rápido.
+- [ ] Revisar copy con Laura; añadir capturas reales del producto; testimonios cuando haya piloto (NO inventar).
 
-## Modelo operativo maestra/esclava — ver `docs/MODELO-OPERATIVO.md`
-Decisiones tomadas: plan por paciente (mixto dominios+concretos) + modo grupo;
-tablets emparejadas al centro una vez; niveles por auto-sugerencia aprobada; fin
-de sesión por nº de ejercicios del plan. Reorienta la app hacia dos caras
-(maestra + kiosco de participante). Implementación pendiente:
-- [x] Backend: entidad `planes_paciente` (líneas: dominio/ejercicio + nivel + nº por sesión). ✅
-- [x] Backend: entidad `dispositivos` (tablets emparejadas al centro, token revocable). ✅
-- [x] Backend: campo `modo` en sesión (individual/grupo) + ejercicio compartido. ✅
-- [x] Backend: construir la "cola" de ejercicios de cada participante desde su plan. ✅ (`/usuarios/{id}/cola`)
-- [x] Backend: motor de auto-sugerencia de nivel (propone, el profesional aprueba). ✅
-- [x] Backend: ciclo de sala (nombre, iniciar, cerrar, /sesiones/activa). ✅
-- [x] Tablet: modo **kiosco participante** (reposo → "¿quién eres?" → reparto por toque → cola con las 8 actividades y mediciones). ✅
-- [x] Tablet: modo **maestra** (abrir sala + monitor en vivo + marcar ayuda + iniciar/cerrar). ✅
-- [x] Tablet: logo/favicon unificado. ✅
-- [x] Web: editor de plan por paciente + gestión de dispositivos. ✅
-- [x] Tests E2E del flujo de sesión (28 en verde). ✅
-- [ ] Web: UI para **aprobar sugerencias de nivel** (endpoint listo, falta pantalla).
-- [ ] Tablet: "Ayuda" antes de que exista el intento (hoy marca el último intento; refinar con flag de sesión-participante).
-- [ ] Visual: subir las actividades de la tablet a ilustración (librería SVG + flutter_svg) — EN CURSO.
-- [ ] **Niveles de dificultad por CANTIDAD** (decidido con Saulo): el `nivel` del plan
-      (bajo/medio/alto) debe fijar cuántas imágenes/objetos tiene el ejercicio →
-      **básico ~3 · intermedio ~6-8 · alto ~10-12**. Aplica a memoria, contar,
-      reconocer, etc. Falta: mapear nivel→cantidad en el motor de plantillas y que el
-      `nivel` de la cola llegue a la generación de instancia (hoy no se pasa) + tablet.
-- [x] Preparar el stack Docker (compose db+api+web+tablet, Dockerfiles, YAML validado). ✅
-- [ ] Ejecutar/probar en Docker — requiere instalar Docker Desktop (hoy solo el cliente).
-- [ ] **Grafomotricidad: guía de dirección del trazo** (apunte de Laura). Muchos
-      mayores nunca aprendieron a escribir bien y no saben por dónde EMPEZAR ni en
-      qué SENTIDO trazar cada letra. En los ejercicios `trazo` (seguir líneas,
-      letras, palabras) mostrar: (a) un **punto de inicio** marcado y (b) **flechas
-      de dirección** a lo largo de la línea guía indicando el recorrido (para letras,
-      el orden/sentido de cada trazo). Se implementa en `trazo_widget` usando la
-      dirección/tangente del propio path (y, para letras con varios trazos, que el
-      guide_path lleve el orden correcto).
-- [ ] Decidir detalles menores (rotación de ejercicios, umbral atascado, PIN de recuperación).
-
-## App tablet (`apps/tablet/`) — base actual (andamiaje)
-- [x] Instalar Flutter y verificar compilación — OK (Flutter 3.44.8, `build web` sin errores, la app bootea).
-- [ ] Prueba visual del dibujo/interacción en el navegador (abrir la app y probar).
-- [x] Renderers específicos para las 8 plantillas — ✅ las 8 jugables (trazo, selección,
-      memoria, ordenar, contar/comparar, arrastrar, evocación, dinero/reloj).
-- [ ] Offline robusto con `drift`/`sqflite` (ahora: cola simple con
-      `shared_preferences`).
-- [ ] Modo kiosco real (Guided Access iPad / kiosk Android).
+## Antes del piloto con datos reales (RGPD — ver `docs/MEJORAS-EXPERTO.md` §6)
+- [ ] **HTTPS/TLS** extremo a extremo (API, tablets, web).
+- [ ] **Cifrado en reposo** de BD y backups; valorar cifrado por columna en `datos_identificativos`.
+- [ ] **Secretos fuera del repo** (JWT_SECRET, BD) — ya hay fail-fast en prod; falta el despliegue real.
+- [ ] **Contrato de encargo de tratamiento (art. 28)** con el centro + **DPIA/EIPD** (categoría especial).
+- [ ] Piloto inicial **solo con alias** (sin nombre real) hasta firmar el marco legal.
 
 ## Backend / infra
-- [ ] Migraciones con Alembic (ahora se crean tablas con `create_all` al arrancar).
-- [ ] Desplegar en servidor (Oracle Cloud + Coolify, según el plan original).
-- [ ] Bot de Telegram para alertas técnicas (servidor caído, sync fallida).
-- [ ] Modo demo con datos sintéticos para enseñar a otros centros.
+- [ ] **Autenticación por token de dispositivo** para el kiosco (hoy la tablet participante usa el JWT de la integradora) — es el pendiente técnico más relevante del modelo operativo.
+- [ ] Migraciones con **Alembic** (hoy: create_all + micro-migraciones idempotentes al arranque).
+- [ ] **Desplegar en servidor** (Oracle Cloud + Coolify, según el plan) con Docker.
+- [ ] Ejecutar/probar el **stack Docker** (compose listo; falta instalar Docker Desktop).
+- [ ] Rendimiento: quitar N+1 en `/live` y `/activa` (polling cada 3-5s).
+- [ ] (Opcional) Bot de Telegram para alertas técnicas (servidor caído, sync fallida).
+
+## App tablet (`apps/tablet/`)
+- [ ] **Offline robusto** con `drift`/`sqflite` (hoy: cola simple + `shared_preferences`).
+- [ ] **Modo kiosco real** (Guided Access iPad / kiosk Android) para bloquear la tablet.
+- [ ] Pulido de accesibilidad restante (ver `docs/MEJORAS-QA.md`): alternativa por toque en `arrastrar_posicion`, más `Semantics`, TTS opcional del enunciado.
+- [ ] Ir sustituyendo dibujos por **fotos reales** poco a poco (soltar foto en `assets/fotos/{id}.png`).
+
+## Panel web (`apps/web/`)
+- [ ] **Alta de personas usuarias** desde el panel (hoy solo se listan; vienen del seed).
+- [ ] Aviso de **cambios sin guardar** en el editor de plan.
+- [ ] Listar sesiones activas en el monitor (hoy hay que pegar el id a mano).
+- [ ] (Opcional) Crear/programar sesiones también desde el panel (hoy se hace desde la tablet maestra).
 
 ## Producto / negocio
-- [ ] Fase 0 del plan: hablar con el centro (¿piloto informal?).
-- [ ] Acuerdo de encargado de tratamiento (RGPD) con el centro.
+- [ ] **Fijar tarifas** (en discusión: modelo por tramos de pacientes; ver notas de la conversación).
+- [ ] Fase 0: **piloto informal** en el centro de Laura (empresa con 5 centros, ~30 pacientes/centro).
+- [ ] Editor de catálogo de actividades en la web (alta/edición sin tocar JSON) — POST /ejercicios ya existe, falta UI.
 
-## Datos de contacto usados actualmente (temporales)
-- Nombre: Saulo Santacruz
-- Email: saulodlsf@gmail.com
-- Teléfono: (pendiente)
+## Datos de contacto actuales (temporales)
+- Nombre: Saulo Santacruz · Email: saulodlsf@gmail.com · Teléfono: (pendiente)
