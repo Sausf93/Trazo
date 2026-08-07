@@ -124,6 +124,56 @@ class PlantillaMemoriaVisual(PlantillaBase):
         )
 
 
+class PlantillaBusqueda(PlantillaBase):
+    """Buscar entre distractores: "toca todas las llaves" (atención sostenida).
+
+    Se muestra un OBJETIVO (p. ej. la llave) y una rejilla con varias copias del
+    objetivo mezcladas con distractores; la persona toca todas las que son el
+    objetivo. Auto-evaluable (aciertos/fallos). Basada en fichas reales del centro.
+    """
+
+    tipo = "busqueda_visual"
+    metricas = ["aciertos", "fallos", "objetivos", "tiempo_ms"]
+
+    def generar(self, parametros, nivel=None, rng=None):
+        rng = self._rng(rng)
+        objetivo = parametros.get("objetivo")
+        distractores = parametros.get("distractores") or []
+        if not objetivo or len(distractores) < 3:
+            raise ValueError("busqueda_visual requiere 'objetivo' y >=3 'distractores'")
+
+        # Más nivel = más celdas (más difícil de rastrear).
+        banda = self.banda_cantidad(nivel)
+        total = {3: 6, 6: 9, 10: 12}.get(banda[0], 9) if banda \
+            else int(parametros.get("total", 9))
+        total = max(6, min(total, 12))
+        n_obj = max(2, total // 3)  # ~1/3 son el objetivo
+
+        def _cel(x):
+            return {"id": x["id"], "label": x.get("label", x["id"])}
+
+        celdas = [_cel(objetivo) for _ in range(n_obj)]
+        for _ in range(total - n_obj):
+            celdas.append(_cel(rng.choice(distractores)))
+        rng.shuffle(celdas)
+
+        etiqueta = objetivo.get("label", objetivo["id"])
+        return InstanciaEjercicio(
+            plantilla=self.tipo,
+            render={
+                "instruccion": parametros.get(
+                    "instruccion", "Toca todas las que sean igual"),
+                "objetivo": _cel(objetivo),
+                "objetivo_label": etiqueta,
+                "celdas": celdas,
+            },
+            cantidad_objetivo={
+                "objetivos": n_obj, "total": total, "objetivo_id": objetivo["id"]},
+            solucion={"objetivo_id": objetivo["id"]},
+            metricas=self.metricas,
+        )
+
+
 class PlantillaSecuenciaOrdenar(PlantillaBase):
     """Ordenar pasos de una tarea, vestirse en orden, seguir la serie."""
 

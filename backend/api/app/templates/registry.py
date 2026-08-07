@@ -4,6 +4,7 @@ from __future__ import annotations
 from app.templates.base import PlantillaBase
 from app.templates.tipos import (
     PlantillaArrastrarPosicion,
+    PlantillaBusqueda,
     PlantillaConteoComparacion,
     PlantillaEvocacionLibre,
     PlantillaManejoCantidad,
@@ -22,6 +23,7 @@ _PLANTILLAS: list[type[PlantillaBase]] = [
     PlantillaArrastrarPosicion,
     PlantillaEvocacionLibre,
     PlantillaManejoCantidad,
+    PlantillaBusqueda,
 ]
 
 REGISTRY: dict[str, PlantillaBase] = {p.tipo: p() for p in _PLANTILLAS}

@@ -3464,5 +3464,158 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca la llave",
+  "descripcion": "Toca todas las llaves entre otros objetos. Atención sostenida.",
+  "parametros_json": {
+   "instruccion": "Toca todas las LLAVES",
+   "objetivo": {
+    "id": "llave",
+    "label": "llave"
+   },
+   "distractores": [
+    {
+     "id": "martillo",
+     "label": "martillo"
+    },
+    {
+     "id": "tijeras",
+     "label": "tijeras"
+    },
+    {
+     "id": "cuchara",
+     "label": "cuchara"
+    },
+    {
+     "id": "taza",
+     "label": "taza"
+    },
+    {
+     "id": "gafas",
+     "label": "gafas"
+    },
+    {
+     "id": "lapiz",
+     "label": "lapiz"
+    },
+    {
+     "id": "vaso",
+     "label": "vaso"
+    },
+    {
+     "id": "libro",
+     "label": "libro"
+    },
+    {
+     "id": "reloj",
+     "label": "reloj"
+    },
+    {
+     "id": "peine",
+     "label": "peine"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca el zapato",
+  "descripcion": "Toca todos los zapatos entre otras prendas.",
+  "parametros_json": {
+   "instruccion": "Toca todos los ZAPATOS",
+   "objetivo": {
+    "id": "zapato",
+    "label": "zapato"
+   },
+   "distractores": [
+    {
+     "id": "camisa",
+     "label": "camisa"
+    },
+    {
+     "id": "pantalon",
+     "label": "pantalon"
+    },
+    {
+     "id": "gorro",
+     "label": "gorro"
+    },
+    {
+     "id": "calcetin",
+     "label": "calcetin"
+    },
+    {
+     "id": "guantes",
+     "label": "guantes"
+    },
+    {
+     "id": "bufanda",
+     "label": "bufanda"
+    },
+    {
+     "id": "gafas",
+     "label": "gafas"
+    },
+    {
+     "id": "chaqueta",
+     "label": "chaqueta"
+    },
+    {
+     "id": "vestido",
+     "label": "vestido"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca la manzana",
+  "descripcion": "Toca todas las manzanas entre otras frutas.",
+  "parametros_json": {
+   "instruccion": "Toca todas las MANZANAS",
+   "objetivo": {
+    "id": "manzana",
+    "label": "manzana"
+   },
+   "distractores": [
+    {
+     "id": "pera",
+     "label": "pera"
+    },
+    {
+     "id": "naranja",
+     "label": "naranja"
+    },
+    {
+     "id": "limon",
+     "label": "limon"
+    },
+    {
+     "id": "platano",
+     "label": "platano"
+    },
+    {
+     "id": "fresa",
+     "label": "fresa"
+    },
+    {
+     "id": "uvas",
+     "label": "uvas"
+    },
+    {
+     "id": "melocoton",
+     "label": "melocoton"
+    },
+    {
+     "id": "melon",
+     "label": "melon"
+    }
+   ]
+  }
  }
 ]

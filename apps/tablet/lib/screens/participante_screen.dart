@@ -8,6 +8,7 @@ import '../models.dart';
 import '../sync_queue.dart';
 import '../theme.dart';
 import '../widgets/arrastrar_posicion_widget.dart';
+import '../widgets/busqueda_visual_widget.dart';
 import '../widgets/conteo_comparacion_widget.dart';
 import '../widgets/evocacion_libre_widget.dart';
 import '../widgets/generico_widget.dart';
@@ -329,6 +330,8 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
         return EvocacionLibreWidget(instancia: inst, onMetricas: onMetricas);
       case 'manejo_cantidad':
         return ManejoCantidadWidget(instancia: inst, onMetricas: onMetricas);
+      case 'busqueda_visual':
+        return BusquedaVisualWidget(instancia: inst, onMetricas: onMetricas);
       default:
         return GenericoWidget(instancia: inst, onMetricas: onMetricas);
     }
