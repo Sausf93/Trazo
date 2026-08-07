@@ -99,6 +99,16 @@ class _TrazoWidgetState extends State<TrazoWidget> {
     return min;
   }
 
+  void _limpiar() {
+    setState(() => _puntosUsuario.clear());
+    // Vuelve a dejar la métrica "sin trazo" para no arrastrar el intento erróneo.
+    widget.onMetricas({
+      'precision': null,
+      'tiempo_ms': DateTime.now().difference(_inicio).inMilliseconds,
+      'puntos_capturados': 0,
+    });
+  }
+
   void _emitirMetricas() {
     if (_puntosUsuario.isEmpty) return;
     int dentro = 0;
@@ -156,6 +166,23 @@ class _TrazoWidgetState extends State<TrazoWidget> {
                 ),
               );
             },
+          ),
+        ),
+        // Rehacer el trazo: un temblor o un gesto erróneo no arruina el intento.
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: TextButton.icon(
+              onPressed: _puntosUsuario.isEmpty ? null : _limpiar,
+              icon: const Icon(Icons.refresh),
+              label: const Text('Empezar de nuevo'),
+              style: TextButton.styleFrom(
+                foregroundColor: TrazoColors.sageDark,
+                textStyle:
+                    const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+              ),
+            ),
           ),
         ),
       ],

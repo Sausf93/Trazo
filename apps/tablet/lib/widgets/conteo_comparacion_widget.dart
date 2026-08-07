@@ -92,12 +92,20 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
         decoration: BoxDecoration(
           color: sel ? const Color(0xFFFBEFE4) : TrazoColors.card,
           border: Border.all(
-              color: sel ? TrazoColors.coral : TrazoColors.sand,
+              color: sel ? TrazoColors.coralDark : TrazoColors.sand,
               width: sel ? 3 : 1.5),
           borderRadius: BorderRadius.circular(14),
         ),
         child: Column(
           children: [
+            // Marca de "elegido" (además del borde) para que sea inequívoco.
+            SizedBox(
+              height: 26,
+              child: sel
+                  ? const Icon(Icons.check_circle,
+                      color: TrazoColors.coralDark, size: 24)
+                  : null,
+            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Wrap(

@@ -41,12 +41,15 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
     _idsCorrectos = _aRecordar.map((e) => _idDe(e)).toSet();
     _restante =
         (render['segundos_memorizar'] as num?)?.toInt() ?? 10;
+    // La cuenta atrás es solo ORIENTATIVA: al llegar a 0 no se ocultan las
+    // figuras (no penalizamos la lentitud, apunte de Laura). Solo avanza la
+    // persona pulsando "Ya lo recuerdo".
     _timer = Timer.periodic(const Duration(seconds: 1), (t) {
       if (!mounted) return;
       setState(() {
-        _restante--;
-        if (_restante <= 0) {
-          _memorizando = false;
+        if (_restante > 0) {
+          _restante--;
+        } else {
           t.cancel();
         }
       });
@@ -114,21 +117,29 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           decoration: BoxDecoration(
-            color: TrazoColors.coralDark,
+            color: _restante > 0 ? TrazoColors.coralDark : TrazoColors.sageDark,
             borderRadius: BorderRadius.circular(30),
           ),
-          child: Text('$_restante',
+          child: Text(_restante > 0 ? '$_restante' : 'Sin prisa',
               style: const TextStyle(
-                  fontSize: 28,
+                  fontSize: 26,
                   fontWeight: FontWeight.bold,
                   color: Colors.white)),
         ),
         const SizedBox(height: 20),
         Expanded(child: _rejillaTarjetas(_aRecordar, seleccionable: false)),
         const SizedBox(height: 12),
-        OutlinedButton(
+        FilledButton.icon(
           onPressed: _terminarMemorizacion,
-          child: const Text('Ya lo recuerdo'),
+          style: FilledButton.styleFrom(
+            backgroundColor: TrazoColors.sage,
+            padding:
+                const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
+            textStyle:
+                const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+          ),
+          icon: const Icon(Icons.check),
+          label: const Text('Ya lo recuerdo'),
         ),
       ],
     );
