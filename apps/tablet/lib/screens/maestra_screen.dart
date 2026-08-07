@@ -993,16 +993,18 @@ class _MonitorState extends State<_Monitor> {
     widget.onCerrada();
   }
 
-  Future<void> _ayuda(FichaLive f) async {
+  /// Marca cómo fue la última actividad de la persona: solo / con_ayuda /
+  /// no_completado (reversible: si se equivoca, toca otro). Es LA medición de la
+  /// integradora sobre lo que observa.
+  Future<void> _marcarEstado(FichaLive f, String estado) async {
     final id = f.ultimoIntentoId;
     if (id == null) {
-      _snack('${f.aliasInterno} aún no tiene ningún intento que marcar.');
+      _snack('${f.aliasInterno} aún no tiene ninguna actividad que valorar.');
       return;
     }
     setState(() => _marcando.add(id));
     try {
-      await ApiClient.instance.marcarEstadoIntento(id, 'con_ayuda');
-      _snack('Marcado "con ayuda" para ${f.aliasInterno}.');
+      await ApiClient.instance.marcarEstadoIntento(id, estado);
       await _poll(silencioso: true);
     } catch (err) {
       _snack('No se pudo marcar: $err');
@@ -1068,7 +1070,7 @@ class _MonitorState extends State<_Monitor> {
                           gridDelegate:
                               const SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 320,
-                            mainAxisExtent: 240,
+                            mainAxisExtent: 268,
                             crossAxisSpacing: 14,
                             mainAxisSpacing: 14,
                           ),
@@ -1079,10 +1081,10 @@ class _MonitorState extends State<_Monitor> {
                               ficha: f,
                               marcando: f.ultimoIntentoId != null &&
                                   _marcando.contains(f.ultimoIntentoId),
-                              puedeAyudar: f.ultimoIntentoId != null,
+                              puedeMarcar: f.ultimoIntentoId != null,
                               enviandoMas:
                                   _enviandoMas.contains(f.usuarioFinalId),
-                              onAyuda: () => _ayuda(f),
+                              onMarcar: (estado) => _marcarEstado(f, estado),
                               onEnviarMas: () => _enviarMas(f),
                             );
                           },
@@ -1200,17 +1202,17 @@ class _EnviarMasDialogState extends State<_EnviarMasDialog> {
 class _FichaCard extends StatelessWidget {
   final FichaLive ficha;
   final bool marcando;
-  final bool puedeAyudar;
+  final bool puedeMarcar;
   final bool enviandoMas;
-  final VoidCallback onAyuda;
+  final ValueChanged<String> onMarcar; // 'solo' | 'con_ayuda' | 'no_completado'
   final VoidCallback onEnviarMas;
 
   const _FichaCard({
     required this.ficha,
     required this.marcando,
-    required this.puedeAyudar,
+    required this.puedeMarcar,
     required this.enviandoMas,
-    required this.onAyuda,
+    required this.onMarcar,
     required this.onEnviarMas,
   });
 
@@ -1329,14 +1331,26 @@ class _FichaCard extends StatelessWidget {
             style: const TextStyle(color: TrazoColors.sageDark),
           ),
           const Spacer(),
-          if (terminado)
+          // Cómo fue la última actividad (LA medición de la integradora): un toque.
+          if (puedeMarcar)
+            Row(
+              children: [
+                _seg('Solo', 'solo', Icons.check_circle, TrazoColors.sage),
+                _seg('Ayuda', 'con_ayuda', Icons.back_hand,
+                    TrazoColors.coralDark),
+                _seg('No pudo', 'no_completado', Icons.close,
+                    const Color(0xFF8A6E52)),
+              ],
+            ),
+          if (terminado) ...[
+            const SizedBox(height: 6),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
                 onPressed: enviandoMas ? null : onEnviarMas,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: TrazoColors.sage,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
                 ),
                 icon: enviandoMas
                     ? const SizedBox(
@@ -1347,26 +1361,41 @@ class _FichaCard extends StatelessWidget {
                     : const Icon(Icons.add, size: 20),
                 label: const Text('Enviar más'),
               ),
-            )
-          else
-            Align(
-              alignment: Alignment.centerRight,
-              child: OutlinedButton.icon(
-                onPressed: (marcando || !puedeAyudar) ? null : onAyuda,
-                icon: marcando
-                    ? const SizedBox(
-                        height: 16,
-                        width: 16,
-                        child: CircularProgressIndicator(strokeWidth: 2))
-                    : const Icon(Icons.back_hand, size: 18),
-                label: const Text('Ayuda'),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: TrazoColors.coralDark,
-                  side: const BorderSide(color: TrazoColors.coral),
-                ),
-              ),
             ),
+          ],
         ],
+      ),
+    );
+  }
+
+  /// Un segmento del control "cómo fue": resalta si es el estado actual.
+  Widget _seg(String label, String valor, IconData icono, Color color) {
+    final activo = ficha.ultimoEstado == valor;
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2),
+        child: OutlinedButton(
+          onPressed: (marcando || !puedeMarcar) ? null : () => onMarcar(valor),
+          style: OutlinedButton.styleFrom(
+            backgroundColor: activo ? color.withValues(alpha: 0.16) : null,
+            foregroundColor: activo ? color : TrazoColors.sageDark,
+            side: BorderSide(
+                color: activo ? color : TrazoColors.sand,
+                width: activo ? 2 : 1),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
+            minimumSize: const Size(0, 44),
+          ),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Row(mainAxisSize: MainAxisSize.min, children: [
+              Icon(icono, size: 15),
+              const SizedBox(width: 3),
+              Text(label,
+                  style: const TextStyle(
+                      fontSize: 12, fontWeight: FontWeight.w600)),
+            ]),
+          ),
+        ),
       ),
     );
   }
