@@ -263,6 +263,19 @@ class ApiClient {
         .toList();
   }
 
+  /// Sesiones del centro (historial). `estado`: abierta | cerrada | programada.
+  Future<List<SesionHistorial>> sesionesAnteriores(
+      {String estado = 'cerrada', int limit = 20}) async {
+    final resp = await http.get(
+        _u('/sesiones', {'centro_id': centroId, 'estado': estado, 'limit': '$limit'}),
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+    _check(resp);
+    final list = jsonDecode(resp.body) as List;
+    return list
+        .map((e) => SesionHistorial.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
   /// Resumen de la sesión al finalizar (por participante: solo/ayuda/no).
   Future<ResumenSesion> resumenSesion(String sesionId) async {
     final resp = await http

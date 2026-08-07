@@ -72,7 +72,15 @@ class _MaestraScreenState extends State<MaestraScreen> {
         backgroundColor: TrazoColors.ivory,
         title: Text(_sesionId == null ? 'Abrir sala' : 'Monitor en vivo'),
         actions: [
-          if (_sesionId == null)
+          if (_sesionId == null && !_comprobando) ...[
+            TextButton.icon(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => const _HistorialScreen())),
+              icon: const Icon(Icons.bar_chart),
+              label: const Text('Historial'),
+              style:
+                  TextButton.styleFrom(foregroundColor: TrazoColors.sageDark),
+            ),
             Padding(
               padding: const EdgeInsets.only(right: 8),
               child: TextButton.icon(
@@ -83,6 +91,7 @@ class _MaestraScreenState extends State<MaestraScreen> {
                     foregroundColor: TrazoColors.sageDark),
               ),
             ),
+          ],
         ],
       ),
       body: _comprobando
@@ -1656,6 +1665,139 @@ class _BarraControl extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Historial de sesiones del centro: la integradora ve las sesiones anteriores
+/// y, al tocar una, el resumen de cómo fue cada persona (para decidir qué mandar).
+class _HistorialScreen extends StatefulWidget {
+  const _HistorialScreen();
+
+  @override
+  State<_HistorialScreen> createState() => _HistorialScreenState();
+}
+
+class _HistorialScreenState extends State<_HistorialScreen> {
+  List<SesionHistorial> _sesiones = [];
+  bool _cargando = true;
+  String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _cargar();
+  }
+
+  Future<void> _cargar() async {
+    setState(() {
+      _cargando = true;
+      _error = null;
+    });
+    try {
+      final s = await ApiClient.instance.sesionesAnteriores();
+      if (!mounted) return;
+      setState(() {
+        _sesiones = s;
+        _cargando = false;
+      });
+    } catch (err) {
+      if (!mounted) return;
+      setState(() {
+        _error = err.toString();
+        _cargando = false;
+      });
+    }
+  }
+
+  Future<void> _verResumen(SesionHistorial s) async {
+    try {
+      final resumen = await ApiClient.instance.resumenSesion(s.id);
+      if (!mounted) return;
+      await showDialog<void>(
+        context: context,
+        builder: (_) => _ResumenSesionDialog(resumen: resumen),
+      );
+    } catch (err) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('No se pudo cargar: $err')));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: TrazoColors.ivory,
+        title: const Text('Sesiones anteriores'),
+      ),
+      body: _cargando
+          ? const Center(child: CircularProgressIndicator())
+          : _error != null
+              ? Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(24),
+                    child: Column(mainAxisSize: MainAxisSize.min, children: [
+                      Text('No se pudo cargar:\n$_error',
+                          textAlign: TextAlign.center,
+                          style:
+                              const TextStyle(color: TrazoColors.coralDark)),
+                      const SizedBox(height: 16),
+                      ElevatedButton.icon(
+                          onPressed: _cargar,
+                          icon: const Icon(Icons.refresh),
+                          label: const Text('Reintentar')),
+                    ]),
+                  ),
+                )
+              : _sesiones.isEmpty
+                  ? const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(32),
+                        child: Text('Aún no hay sesiones anteriores.',
+                            style: TextStyle(
+                                fontSize: 18, color: TrazoColors.sageDark)),
+                      ),
+                    )
+                  : Center(
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 680),
+                        child: ListView.separated(
+                          padding: const EdgeInsets.all(20),
+                          itemCount: _sesiones.length,
+                          separatorBuilder: (_, __) =>
+                              const SizedBox(height: 10),
+                          itemBuilder: (_, i) {
+                            final s = _sesiones[i];
+                            return Card(
+                              color: TrazoColors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(14),
+                                side:
+                                    const BorderSide(color: TrazoColors.sand),
+                              ),
+                              child: ListTile(
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 18, vertical: 8),
+                                title: Text(s.nombre,
+                                    style: const TextStyle(
+                                        fontSize: 19,
+                                        fontWeight: FontWeight.w700,
+                                        color: TrazoColors.ink)),
+                                subtitle: Text(
+                                    '${s.fechaCorta}  ·  ${s.nParticipantes} personas',
+                                    style: const TextStyle(
+                                        color: TrazoColors.sageDark)),
+                                trailing: const Icon(Icons.chevron_right,
+                                    color: TrazoColors.sageDark),
+                                onTap: () => _verResumen(s),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
     );
   }
 }

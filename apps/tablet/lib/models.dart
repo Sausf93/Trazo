@@ -157,6 +157,39 @@ class DispositivoYo {
       );
 }
 
+/// Una sesión del historial del centro (`GET /sesiones?estado=`).
+class SesionHistorial {
+  final String id;
+  final String nombre;
+  final String fecha; // ISO
+  final int nParticipantes;
+  final bool cerrada;
+
+  SesionHistorial({
+    required this.id,
+    required this.nombre,
+    required this.fecha,
+    required this.nParticipantes,
+    required this.cerrada,
+  });
+
+  factory SesionHistorial.fromJson(Map<String, dynamic> j) => SesionHistorial(
+        id: j['id'] as String,
+        nombre: (j['nombre'] ?? 'Sesión') as String,
+        fecha: (j['fecha'] ?? '') as String,
+        nParticipantes: (j['n_participantes'] as num?)?.toInt() ?? 0,
+        cerrada: (j['cerrada'] ?? false) as bool,
+      );
+
+  /// Fecha en formato corto "dd/mm hh:mm" para la UI.
+  String get fechaCorta {
+    final d = DateTime.tryParse(fecha)?.toLocal();
+    if (d == null) return '';
+    String dos(int n) => n.toString().padLeft(2, '0');
+    return '${dos(d.day)}/${dos(d.month)} ${dos(d.hour)}:${dos(d.minute)}';
+  }
+}
+
 /// Resumen de un participante al finalizar la sesión (`GET .../resumen`).
 class FichaResumen {
   final String aliasInterno;
