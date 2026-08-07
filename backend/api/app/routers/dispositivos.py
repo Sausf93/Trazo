@@ -10,11 +10,27 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.deps import get_current_staff
+from app.deps import Acceso, acceso_centro, get_current_staff
 from app.models import ROLES_DISPOSITIVO, Dispositivo, UsuarioStaff
-from app.schemas import DispositivoIn, DispositivoOut
+from app.schemas import DispositivoIn, DispositivoOut, DispositivoYoOut
 
 router = APIRouter(prefix="/dispositivos", tags=["dispositivos"])
+
+
+@router.get("/yo", response_model=DispositivoYoOut)
+async def dispositivo_actual(acceso: Acceso = Depends(acceso_centro)):
+    """La tablet emparejada valida su token y obtiene su contexto (centro, rol).
+
+    Sirve para la pantalla de emparejamiento del kiosco: si el token es válido,
+    devuelve a qué centro pertenece; si no, el propio acceso da 401."""
+    disp = acceso.dispositivo
+    if disp is None:
+        raise HTTPException(
+            status.HTTP_400_BAD_REQUEST, "Falta el token de dispositivo (X-Device-Token)"
+        )
+    return DispositivoYoOut(
+        id=disp.id, centro_id=disp.centro_id, nombre=disp.nombre, rol=disp.rol
+    )
 
 
 @router.post("", response_model=DispositivoOut, status_code=status.HTTP_201_CREATED)

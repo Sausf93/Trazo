@@ -1,14 +1,16 @@
 """Dependencias compartidas: usuario autenticado, auditoría."""
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 import jwt
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, Header, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.models import RegistroAuditoria, UsuarioFinal, UsuarioStaff
+from app.models import Dispositivo, RegistroAuditoria, UsuarioFinal, UsuarioStaff
 from app.security import decode_access_token
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login", auto_error=True)
@@ -51,6 +53,72 @@ def require_roles(*roles: str):
     return _checker
 
 
+@dataclass
+class Acceso:
+    """Contexto de acceso a un centro: lo abre un staff (login) O una tablet
+    emparejada (token de dispositivo). Así los endpoints de kiosco funcionan sin
+    login de la integradora, pero siguen aceptando el login (compatibilidad)."""
+    centro_id: str
+    staff: UsuarioStaff | None = None
+    dispositivo: Dispositivo | None = None
+
+
+async def acceso_centro(
+    x_device_token: str | None = Header(default=None, alias="X-Device-Token"),
+    authorization: str | None = Header(default=None),
+    db: AsyncSession = Depends(get_db),
+) -> Acceso:
+    """Resuelve el centro desde un token de dispositivo (kiosco) o un JWT de staff.
+
+    Prioriza el token de dispositivo si viene; si no, cae al Bearer de staff. Es
+    aditivo: el login clásico sigue valiendo igual."""
+    cred_exc = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="No autenticado",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    # 1) Tablet emparejada (token de dispositivo activo).
+    if x_device_token:
+        disp = (
+            await db.execute(
+                select(Dispositivo).where(
+                    Dispositivo.token == x_device_token,
+                    Dispositivo.activo.is_(True),
+                )
+            )
+        ).scalars().first()
+        if disp is None:
+            raise HTTPException(
+                status.HTTP_401_UNAUTHORIZED, "Dispositivo no autorizado o revocado"
+            )
+        return Acceso(centro_id=disp.centro_id, dispositivo=disp)
+    # 2) Login de staff (Bearer JWT).
+    if authorization and authorization.lower().startswith("bearer "):
+        token = authorization[7:].strip()
+        try:
+            payload = decode_access_token(token)
+            staff_id = payload.get("sub")
+        except jwt.PyJWTError:
+            raise cred_exc
+        staff = await db.get(UsuarioStaff, staff_id) if staff_id else None
+        if staff is None or not staff.activo:
+            raise cred_exc
+        return Acceso(centro_id=staff.centro_id, staff=staff)
+    raise cred_exc
+
+
+async def usuario_del_centro_id(
+    db: AsyncSession, usuario_id: str, centro_id: str
+) -> UsuarioFinal:
+    """Como `usuario_del_centro` pero contra un centro_id (para acceso de kiosco)."""
+    uf = await db.get(UsuarioFinal, usuario_id)
+    if uf is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Usuario no encontrado")
+    if uf.centro_id != centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    return uf
+
+
 async def usuario_del_centro(
     db: AsyncSession, usuario_id: str, staff: UsuarioStaff
 ) -> UsuarioFinal:
@@ -91,4 +159,7 @@ __all__ = [
     "require_roles",
     "auditar",
     "usuario_del_centro",
+    "usuario_del_centro_id",
+    "Acceso",
+    "acceso_centro",
 ]

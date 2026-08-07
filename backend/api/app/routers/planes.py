@@ -11,7 +11,13 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.deps import auditar, get_current_staff
+from app.deps import (
+    Acceso,
+    acceso_centro,
+    auditar,
+    get_current_staff,
+    usuario_del_centro_id,
+)
 from app.models import (
     BLOQUES,
     TIPOS_LINEA_PLAN,
@@ -140,14 +146,15 @@ async def cola_usuario(
     usuario_id: str,
     sesion_id: str | None = Query(default=None),
     db: AsyncSession = Depends(get_db),
-    staff: UsuarioStaff = Depends(get_current_staff),
+    acceso: Acceso = Depends(acceso_centro),
 ):
     """Cola de ejercicios resuelta para la persona (lo que la tablet pide).
 
-    Si se pasa `sesion_id` y la sesión es modo grupo, la cola es el ejercicio
-    compartido (a su nivel). En otro caso se resuelve desde su plan individual.
+    Accesible por login de staff O por token de dispositivo (kiosco). Si se pasa
+    `sesion_id` y la sesión es modo grupo, la cola es el ejercicio compartido (a
+    su nivel). En otro caso se resuelve desde su plan individual.
     """
-    await _get_usuario_del_centro(db, usuario_id, staff)
+    await usuario_del_centro_id(db, usuario_id, acceso.centro_id)
 
     sesion: Sesion | None = None
     modo = "individual"
@@ -155,6 +162,8 @@ async def cola_usuario(
         sesion = await db.get(Sesion, sesion_id)
         if sesion is None:
             raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
+        if sesion.centro_id != acceso.centro_id:
+            raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
         modo = sesion.modo
 
     items_data = await construir_cola(db, usuario_id, sesion)

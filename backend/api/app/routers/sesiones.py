@@ -8,7 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.deps import get_current_staff
+from app.deps import Acceso, acceso_centro, get_current_staff
 from app.models import (
     EjercicioCatalogo,
     Intento,
@@ -56,14 +56,15 @@ def _config_json(nivel: str | None, lineas: list[LineaConfig]) -> dict | None:
 async def sesion_activa(
     centro_id: str,
     db: AsyncSession = Depends(get_db),
-    staff: UsuarioStaff = Depends(get_current_staff),
+    acceso: Acceso = Depends(acceso_centro),
 ):
     """Sesión abierta más reciente del centro + sus participantes.
 
     Es lo que consulta la tablet participante (kiosco) para mostrar la lista de
-    "¿quién eres?" y repartir por toque. Devuelve sesion_id=None si no hay ninguna.
+    "¿quién eres?" y repartir por toque. Accesible por login de staff O por token
+    de dispositivo. Devuelve sesion_id=None si no hay ninguna.
     """
-    if centro_id != staff.centro_id:
+    if centro_id != acceso.centro_id:
         raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
     ses = (
         await db.execute(
@@ -305,12 +306,12 @@ async def descartar_sesion_programada(
 
 
 async def _get_participante(
-    db: AsyncSession, sesion_id: str, usuario_id: str, staff: UsuarioStaff
+    db: AsyncSession, sesion_id: str, usuario_id: str, centro_id: str
 ) -> SesionParticipante:
     ses = await db.get(Sesion, sesion_id)
     if ses is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
-    if ses.centro_id != staff.centro_id:
+    if ses.centro_id != centro_id:
         raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
     sp = (
         await db.execute(
@@ -331,12 +332,13 @@ async def estado_participante(
     sesion_id: str,
     usuario_id: str,
     db: AsyncSession = Depends(get_db),
-    staff: UsuarioStaff = Depends(get_current_staff),
+    acceso: Acceso = Depends(acceso_centro),
 ):
     """Lo consulta la tablet del participante (polling): si empezó, su ronda y si
-    ya terminó. Cuando la ronda sube (la maestra envió más), pide cola de nuevo."""
+    ya terminó. Cuando la ronda sube (la maestra envió más), pide cola de nuevo.
+    Accesible por login de staff O por token de dispositivo."""
     ses = await db.get(Sesion, sesion_id)
-    sp = await _get_participante(db, sesion_id, usuario_id, staff)
+    sp = await _get_participante(db, sesion_id, usuario_id, acceso.centro_id)
     return ParticipanteEstadoOut(
         iniciada=bool(ses and ses.iniciada), ronda=sp.ronda, terminado=sp.terminado
     )
@@ -348,10 +350,11 @@ async def marcar_terminado(
     sesion_id: str,
     usuario_id: str,
     db: AsyncSession = Depends(get_db),
-    staff: UsuarioStaff = Depends(get_current_staff),
+    acceso: Acceso = Depends(acceso_centro),
 ):
-    """La tablet del participante avisa de que terminó su tanda."""
-    sp = await _get_participante(db, sesion_id, usuario_id, staff)
+    """La tablet del participante avisa de que terminó su tanda. Accesible por
+    login de staff O por token de dispositivo."""
+    sp = await _get_participante(db, sesion_id, usuario_id, acceso.centro_id)
     sp.terminado = True
     await db.commit()
     ses = await db.get(Sesion, sesion_id)
@@ -374,7 +377,7 @@ async def enviar_mas(
     Sube la ronda y reinicia `terminado`. Si viene config nueva, la aplica; si no,
     repite la que tuviera (o su plan).
     """
-    sp = await _get_participante(db, sesion_id, usuario_id, staff)
+    sp = await _get_participante(db, sesion_id, usuario_id, staff.centro_id)
     if body is not None and body.lineas:
         sp.config_json = _config_json(body.nivel, body.lineas)
     sp.ronda += 1

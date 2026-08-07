@@ -260,6 +260,14 @@ class DispositivoOut(BaseModel):
     emparejado_en: datetime
 
 
+class DispositivoYoOut(BaseModel):
+    """Contexto que recibe la tablet al validar su token (sin exponer el token)."""
+    id: str
+    centro_id: str
+    nombre: str
+    rol: str
+
+
 # ---- Auto-sugerencia de nivel ----
 
 class SugerenciaNivelOut(BaseModel):

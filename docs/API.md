@@ -39,7 +39,10 @@ Enviar `Authorization: Bearer <token>` en el resto.
 | GET | `/usuarios/{id}/cola?sesion_id=` | Cola de ejercicios resuelta desde el plan (lo que pide la tablet). Si `sesion_id` es modo grupo, devuelve el ejercicio compartido a su nivel. |
 | POST | `/dispositivos` | Emparejar tablet al centro. Body: `nombre`, `rol` (maestra/participante), `centro_id?`. Devuelve `token`. |
 | GET | `/dispositivos?centro_id=&activo=` | Tablets emparejadas del centro. |
+| GET | `/dispositivos/yo` | La tablet valida su token (cabecera `X-Device-Token`) y obtiene su contexto `{id, centro_id, nombre, rol}` (para la pantalla de emparejamiento del kiosco). |
 | PATCH | `/dispositivos/{id}/revocar` | Desvincular una tablet (`activo=false`). |
+
+**Autenticación del kiosco (token de dispositivo).** Los endpoints que usa la tablet participante — `/sesiones/activa`, `/usuarios/{id}/cola`, `/ejercicios` y `/ejercicios/{id}/instancia`, `/sesiones/{id}/participantes/{uid}/estado|terminado`, `POST /sesiones/{id}/intentos` — aceptan **login de staff (Bearer JWT) O token de dispositivo** en la cabecera `X-Device-Token`. Así la tablet emparejada opera sin login de la integradora. Token inválido/revocado → 401; recurso de otro centro → 403. El resto de endpoints (maestra/panel) siguen exigiendo Bearer de staff.
 
 ## Plan de trabajo (`PlanLinea`)
 

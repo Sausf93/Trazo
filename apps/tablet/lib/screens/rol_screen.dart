@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../api/client.dart';
+import '../models.dart';
 import '../theme.dart';
 import '../widgets/trazo_logo.dart';
 import 'login_screen.dart';
@@ -73,6 +74,8 @@ class RolScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 28),
+                      const _EmparejarBar(),
                     ],
                   ),
                 ),
@@ -92,6 +95,100 @@ class RolScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Barra opcional para EMPAREJAR esta tablet al centro con un código. Una vez
+/// emparejada, el rol PARTICIPANTE funciona sin login de la integradora.
+class _EmparejarBar extends StatefulWidget {
+  const _EmparejarBar();
+
+  @override
+  State<_EmparejarBar> createState() => _EmparejarBarState();
+}
+
+class _EmparejarBarState extends State<_EmparejarBar> {
+  bool get _emparejado => ApiClient.instance.emparejado;
+
+  Future<void> _emparejar() async {
+    final ctrl = TextEditingController();
+    final code = await showDialog<String>(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('Emparejar esta tablet'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+                'Pega el código de emparejamiento que te da la integradora '
+                'desde el panel (Dispositivos).',
+                style: TextStyle(fontSize: 15, color: TrazoColors.sageDark)),
+            const SizedBox(height: 12),
+            TextField(
+              controller: ctrl,
+              autofocus: true,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'código',
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancelar')),
+          ElevatedButton(
+              onPressed: () => Navigator.pop(context, ctrl.text.trim()),
+              child: const Text('Emparejar')),
+        ],
+      ),
+    );
+    if (code == null || code.isEmpty) return;
+    try {
+      final DispositivoYo yo =
+          await ApiClient.instance.emparejarDispositivo(code);
+      if (!mounted) return;
+      setState(() {});
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Tablet emparejada a su centro (${yo.nombre}).')));
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toString())));
+    }
+  }
+
+  Future<void> _quitar() async {
+    await ApiClient.instance.desemparejar();
+    if (!mounted) return;
+    setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_emparejado) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.tablet_android, size: 18, color: TrazoColors.sageDark),
+          const SizedBox(width: 8),
+          const Text('Tablet emparejada al centro',
+              style: TextStyle(
+                  color: TrazoColors.sageDark, fontWeight: FontWeight.w600)),
+          const SizedBox(width: 12),
+          TextButton(
+              onPressed: _quitar,
+              child: const Text('Quitar')),
+        ],
+      );
+    }
+    return TextButton.icon(
+      onPressed: _emparejar,
+      icon: const Icon(Icons.link, size: 18),
+      label: const Text('Emparejar esta tablet (opcional)'),
+      style: TextButton.styleFrom(foregroundColor: TrazoColors.sageDark),
     );
   }
 }

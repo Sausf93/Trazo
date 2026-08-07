@@ -19,6 +19,9 @@ class ApiClient {
   String? centroId;
   String? rol;
   String? nombre;
+  // Token de dispositivo (tablet emparejada al centro). Si está, el kiosco opera
+  // sin login de staff: se envía en la cabecera X-Device-Token.
+  String? _deviceToken;
 
   /// Tiempo máximo de espera de cada petición. En el centro el WiFi puede ser
   /// inestable; sin esto una llamada colgada dejaría al mayor atrapado en
@@ -43,6 +46,7 @@ class ApiClient {
   Map<String, String> get _headers => {
         'Content-Type': 'application/json',
         if (_token != null) 'Authorization': 'Bearer $_token',
+        if (_deviceToken != null) 'X-Device-Token': _deviceToken!,
       };
 
   Future<void> cargarSesionGuardada() async {
@@ -51,9 +55,13 @@ class ApiClient {
     centroId = prefs.getString('centro_id');
     rol = prefs.getString('rol');
     nombre = prefs.getString('nombre');
+    _deviceToken = prefs.getString('device_token');
   }
 
-  bool get autenticado => _token != null;
+  /// Autenticada si hay login de staff O la tablet está emparejada (dispositivo).
+  bool get autenticado => _token != null || _deviceToken != null;
+
+  bool get emparejado => _deviceToken != null;
 
   /// Login (form-urlencoded, como espera OAuth2PasswordRequestForm).
   Future<void> login(String email, String password) async {
@@ -81,9 +89,38 @@ class ApiClient {
     _token = null;
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('token');
-    await prefs.remove('centro_id');
     await prefs.remove('rol');
     await prefs.remove('nombre');
+    // No se borra el emparejamiento del dispositivo (es independiente del login).
+    if (_deviceToken == null) await prefs.remove('centro_id');
+  }
+
+  /// Empareja esta tablet al centro con un código (token) que da la integradora
+  /// desde el panel. Valida contra `/dispositivos/yo` y guarda el token + centro.
+  /// Devuelve el contexto del dispositivo (nombre, centro, rol).
+  Future<DispositivoYo> emparejarDispositivo(String token) async {
+    final resp = await http.get(
+      _u('/dispositivos/yo'),
+      headers: {'X-Device-Token': token},
+    ).timeout(_kTimeout, onTimeout: _timeoutErr);
+    if (resp.statusCode == 401) {
+      throw ApiException('Código no válido o revocado.');
+    }
+    _check(resp);
+    final yo = DispositivoYo.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
+    _deviceToken = token;
+    centroId = yo.centroId;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('device_token', token);
+    await prefs.setString('centro_id', yo.centroId);
+    return yo;
+  }
+
+  Future<void> desemparejar() async {
+    _deviceToken = null;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('device_token');
+    if (_token == null) await prefs.remove('centro_id');
   }
 
   // --- Participantes del centro -------------------------------------------

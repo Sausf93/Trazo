@@ -7,7 +7,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.deps import get_current_staff, usuario_del_centro
+from app.deps import Acceso, acceso_centro, get_current_staff, usuario_del_centro
 from app.models import (
     ESTADOS_INTENTO,
     EjercicioCatalogo,
@@ -31,8 +31,10 @@ async def registrar_intento(
     sesion_id: str,
     body: IntentoIn,
     db: AsyncSession = Depends(get_db),
-    staff: UsuarioStaff = Depends(get_current_staff),
+    acceso: Acceso = Depends(acceso_centro),
 ):
+    """Registra un intento (idempotente por id). Accesible por login de staff O
+    por token de dispositivo (la tablet del kiosco registra sus mediciones)."""
     if body.estado not in ESTADOS_INTENTO:
         raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY,
                             f"estado inválido: {body.estado}")
@@ -40,11 +42,11 @@ async def registrar_intento(
     ses = await db.get(Sesion, sesion_id)
     if ses is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
-    # RGPD/seguridad: la sesión y la persona deben ser del centro del staff.
-    if ses.centro_id != staff.centro_id:
+    # RGPD/seguridad: la sesión y la persona deben ser del mismo centro.
+    if ses.centro_id != acceso.centro_id:
         raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
     uf = await db.get(UsuarioFinal, body.usuario_final_id)
-    if uf is None or uf.centro_id != staff.centro_id:
+    if uf is None or uf.centro_id != acceso.centro_id:
         raise HTTPException(status.HTTP_403_FORBIDDEN, "Usuario no pertenece a tu centro")
 
     # Idempotencia: si el cliente reenvía el mismo UUID, no duplicar.

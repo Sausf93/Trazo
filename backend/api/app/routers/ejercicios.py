@@ -6,7 +6,12 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.deps import get_current_staff, require_roles
+from app.deps import (
+    Acceso,
+    acceso_centro,
+    require_roles,
+    usuario_del_centro_id,
+)
 from app.models import BLOQUES, EjercicioCatalogo, UsuarioFinal, UsuarioStaff
 from app.schemas import EjercicioIn, EjercicioOut, InstanciaOut
 from app.templates import get_plantilla, plantilla_existe
@@ -19,7 +24,7 @@ async def listar_ejercicios(
     bloque: str | None = Query(default=None),
     activo: bool | None = Query(default=None),
     db: AsyncSession = Depends(get_db),
-    staff: UsuarioStaff = Depends(get_current_staff),
+    acceso: Acceso = Depends(acceso_centro),
 ):
     stmt = select(EjercicioCatalogo)
     if bloque:
@@ -53,7 +58,7 @@ async def generar_instancia(
     usuario_final_id: str | None = Query(default=None),
     nivel: str | None = Query(default=None, description="bajo/medio/alto (banda de cantidad)"),
     db: AsyncSession = Depends(get_db),
-    staff: UsuarioStaff = Depends(get_current_staff),
+    acceso: Acceso = Depends(acceso_centro),
 ):
     """Genera una tirada concreta del ejercicio (cantidades cambiantes).
 
@@ -68,9 +73,10 @@ async def generar_instancia(
 
     # Prioridad: nivel de dificultad explícito (texto) > nivel base del usuario.
     nivel_efectivo: object | None = nivel if nivel else None
-    if nivel_efectivo is None and usuario_final_id:
-        uf = await db.get(UsuarioFinal, usuario_final_id)
-        if uf is not None:
+    if usuario_final_id:
+        # anti-IDOR: si se pide para un usuario, debe ser del mismo centro.
+        uf = await usuario_del_centro_id(db, usuario_final_id, acceso.centro_id)
+        if nivel_efectivo is None and uf is not None:
             # nivel específico del ejercicio, o del bloque, si existe.
             nivel_efectivo = (uf.nivel_base_json or {}).get(ejercicio_id) \
                 or (uf.nivel_base_json or {}).get(ej.bloque)

@@ -135,6 +135,28 @@ class SesionProgramada {
       );
 }
 
+/// Contexto de una tablet emparejada (`GET /dispositivos/yo`).
+class DispositivoYo {
+  final String id;
+  final String centroId;
+  final String nombre;
+  final String rol;
+
+  DispositivoYo({
+    required this.id,
+    required this.centroId,
+    required this.nombre,
+    required this.rol,
+  });
+
+  factory DispositivoYo.fromJson(Map<String, dynamic> j) => DispositivoYo(
+        id: j['id'] as String,
+        centroId: j['centro_id'] as String,
+        nombre: (j['nombre'] ?? '') as String,
+        rol: (j['rol'] ?? 'participante') as String,
+      );
+}
+
 class UsuarioFinal {
   final String id;
   final String aliasInterno;
