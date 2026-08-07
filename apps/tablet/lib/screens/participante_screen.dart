@@ -657,7 +657,17 @@ class _VistaEjercicio extends StatelessWidget {
           child: SizedBox(
             width: double.infinity,
             child: ElevatedButton.icon(
-              onPressed: onListo,
+              // En el último, confirmar para que un toque accidental no cierre
+              // la tanda sin querer.
+              onPressed: () async {
+                final esUltimo = indice + 1 >= total;
+                if (esUltimo) {
+                  final ok = await _confirmarTerminar(context);
+                  if (ok) onListo();
+                } else {
+                  onListo();
+                }
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: TrazoColors.sage,
                 padding: const EdgeInsets.symmetric(vertical: 24),
@@ -672,4 +682,31 @@ class _VistaEjercicio extends StatelessWidget {
       ],
     );
   }
+}
+
+/// Confirma antes de cerrar la última actividad de la tanda (evita que un toque
+/// accidental termine la sesión de la persona sin querer).
+Future<bool> _confirmarTerminar(BuildContext context) async {
+  final ok = await showDialog<bool>(
+    context: context,
+    builder: (_) => AlertDialog(
+      icon: const Icon(Icons.emoji_events,
+          color: TrazoColors.sageDark, size: 40),
+      title: const Text('¿Has terminado?'),
+      content: const Text('Es la última actividad.',
+          style: TextStyle(fontSize: 18)),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context, false),
+          child: const Text('Seguir un poco'),
+        ),
+        ElevatedButton(
+          onPressed: () => Navigator.pop(context, true),
+          style: ElevatedButton.styleFrom(backgroundColor: TrazoColors.sage),
+          child: const Text('Sí, terminar'),
+        ),
+      ],
+    ),
+  );
+  return ok ?? false;
 }
