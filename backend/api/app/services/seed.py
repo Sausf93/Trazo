@@ -51,10 +51,34 @@ def _ejercicios_semilla() -> list[dict]:
         return json.load(f)
 
 
+async def sincronizar_catalogo(db: AsyncSession) -> int:
+    """Añade al catálogo las actividades del JSON que aún no existan (por nombre).
+
+    Idempotente y NO destructivo: permite dar de alta actividades nuevas editando
+    `catalogo.json` sin borrar la BD (los datos y logins se conservan). Devuelve
+    cuántas se añadieron.
+    """
+    existentes = set(
+        (await db.execute(select(EjercicioCatalogo.nombre))).scalars().all()
+    )
+    nuevas = 0
+    for cfg in _ejercicios_semilla():
+        if cfg["nombre"] in existentes:
+            continue
+        db.add(EjercicioCatalogo(**cfg))
+        nuevas += 1
+    if nuevas:
+        await db.commit()
+    return nuevas
+
+
 async def sembrar(db: AsyncSession) -> None:
     existe = (await db.execute(select(Centro).limit(1))).scalars().first()
     if existe is not None:
-        return  # ya sembrado
+        # Ya hay datos: no re-sembramos la demo, pero SÍ sincronizamos el catálogo
+        # por si se añadieron actividades nuevas al JSON.
+        await sincronizar_catalogo(db)
+        return
 
     ahora = datetime.now(timezone.utc)
 
