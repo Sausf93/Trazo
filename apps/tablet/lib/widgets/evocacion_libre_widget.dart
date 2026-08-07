@@ -78,7 +78,7 @@ class _EvocacionLibreWidgetState extends State<EvocacionLibreWidget> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
                 decoration: BoxDecoration(
-                  color: TrazoColors.coral,
+                  color: TrazoColors.coralDark,
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Text('Di $n',

@@ -66,6 +66,75 @@ class EstadoParticipante {
       );
 }
 
+/// Una línea de config de un participante en una sesión programada ({bloque, n}).
+class LineaConfig {
+  final String bloque;
+  final int n;
+
+  LineaConfig({required this.bloque, required this.n});
+
+  factory LineaConfig.fromJson(Map<String, dynamic> j) => LineaConfig(
+        bloque: (j['bloque'] ?? '') as String,
+        n: (j['n'] as num?)?.toInt() ?? 1,
+      );
+}
+
+/// Un participante de una sesión programada, con su config ya fijada.
+class ParticipanteProgramado {
+  final String usuarioFinalId;
+  final String aliasInterno;
+  final String? nivel;
+  final List<LineaConfig> lineas;
+
+  ParticipanteProgramado({
+    required this.usuarioFinalId,
+    required this.aliasInterno,
+    required this.nivel,
+    required this.lineas,
+  });
+
+  factory ParticipanteProgramado.fromJson(Map<String, dynamic> j) =>
+      ParticipanteProgramado(
+        usuarioFinalId: j['usuario_final_id'] as String,
+        aliasInterno: (j['alias_interno'] ?? '') as String,
+        nivel: j['nivel']?.toString(),
+        lineas: ((j['lineas'] ?? []) as List)
+            .map((e) => LineaConfig.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
+
+  /// Nº total de actividades configuradas (suma de las líneas).
+  int get totalActividades => lineas.fold(0, (a, l) => a + l.n);
+}
+
+/// Una sala dejada PREPARADA (programada) para otro día (`GET /sesiones/programadas`).
+class SesionProgramada {
+  final String id;
+  final String nombre;
+  final String modo;
+  final String? programadaPara; // 'YYYY-MM-DD'
+  final List<ParticipanteProgramado> participantes;
+
+  SesionProgramada({
+    required this.id,
+    required this.nombre,
+    required this.modo,
+    required this.programadaPara,
+    required this.participantes,
+  });
+
+  factory SesionProgramada.fromJson(Map<String, dynamic> j) => SesionProgramada(
+        id: j['id'] as String,
+        nombre: (j['nombre'] ?? 'Sesión') as String,
+        modo: (j['modo'] ?? 'individual') as String,
+        programadaPara: j['programada_para']?.toString(),
+        participantes: ((j['participantes'] ?? []) as List)
+            .map((e) =>
+                ParticipanteProgramado.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
+}
+
 class UsuarioFinal {
   final String id;
   final String aliasInterno;

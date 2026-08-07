@@ -114,7 +114,7 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           decoration: BoxDecoration(
-            color: TrazoColors.coral,
+            color: TrazoColors.coralDark,
             borderRadius: BorderRadius.circular(30),
           ),
           child: Text('$_restante',

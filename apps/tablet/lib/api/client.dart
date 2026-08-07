@@ -20,6 +20,15 @@ class ApiClient {
   String? rol;
   String? nombre;
 
+  /// Tiempo máximo de espera de cada petición. En el centro el WiFi puede ser
+  /// inestable; sin esto una llamada colgada dejaría al mayor atrapado en
+  /// "Preparando…" para siempre. Al vencer, lanza ApiException (rama de error
+  /// con botón "Reintentar").
+  static const Duration _kTimeout = Duration(seconds: 12);
+
+  Never _timeoutErr() =>
+      throw ApiException('No hay conexión con el servidor. Inténtalo de nuevo.');
+
   Uri _u(String path, [Map<String, dynamic>? query]) {
     final base = Uri.parse(Config.apiUrl);
     return Uri(
@@ -52,7 +61,7 @@ class ApiClient {
       _u('/auth/login'),
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: {'username': email, 'password': password},
-    );
+    ).timeout(_kTimeout, onTimeout: _timeoutErr);
     if (resp.statusCode != 200) {
       throw ApiException('Login fallido (${resp.statusCode})');
     }
@@ -81,7 +90,7 @@ class ApiClient {
 
   Future<List<UsuarioFinal>> usuariosDelCentro() async {
     final resp =
-        await http.get(_u('/centros/$centroId/usuarios'), headers: _headers);
+        await http.get(_u('/centros/$centroId/usuarios'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
     final list = jsonDecode(resp.body) as List;
     return list
@@ -94,7 +103,7 @@ class ApiClient {
   Future<List<Ejercicio>> ejercicios({String? bloque}) async {
     final resp = await http.get(
         _u('/ejercicios', {if (bloque != null) 'bloque': bloque}),
-        headers: _headers);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
     final list = jsonDecode(resp.body) as List;
     return list
@@ -110,7 +119,7 @@ class ApiClient {
         if (nivel != null) 'nivel': nivel,
       }),
       headers: _headers,
-    );
+    ).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
     return Instancia.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
   }
@@ -129,6 +138,8 @@ class ApiClient {
     String? ejercicioCompartidoId,
     List<String> participantes = const [],
     List<Map<String, dynamic>> configs = const [],
+    bool programar = false,
+    String? programadaPara, // 'YYYY-MM-DD'
   }) async {
     final resp = await http.post(
       _u('/sesiones'),
@@ -141,8 +152,10 @@ class ApiClient {
           'ejercicio_compartido_id': ejercicioCompartidoId,
         'participantes': participantes,
         if (configs.isNotEmpty) 'configs': configs,
+        if (programar) 'programar': true,
+        if (programadaPara != null) 'programada_para': programadaPara,
       }),
-    );
+    ).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
     return (jsonDecode(resp.body) as Map<String, dynamic>)['id'] as String;
   }
@@ -150,7 +163,7 @@ class ApiClient {
   /// Plan de trabajo de la persona (`GET /usuarios/{id}/plan`).
   Future<List<PlanLinea>> planUsuario(String usuarioId) async {
     final resp =
-        await http.get(_u('/usuarios/$usuarioId/plan'), headers: _headers);
+        await http.get(_u('/usuarios/$usuarioId/plan'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
     final data = jsonDecode(resp.body);
     // El endpoint puede devolver una lista o `{lineas: [...]}`.
@@ -164,27 +177,47 @@ class ApiClient {
   Future<SesionActiva> sesionActiva() async {
     final resp = await http.get(
         _u('/sesiones/activa', {'centro_id': centroId}),
-        headers: _headers);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
     return SesionActiva.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
   }
 
+  /// Salas dejadas PREPARADAS (programadas, sin abrir) del centro.
+  Future<List<SesionProgramada>> sesionesProgramadas() async {
+    final resp = await http.get(
+        _u('/sesiones/programadas', {'centro_id': centroId}),
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+    _check(resp);
+    final list = jsonDecode(resp.body) as List;
+    return list
+        .map((e) => SesionProgramada.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  /// Abre una sesión programada: pasa a estar "en vivo" para los kioscos.
+  Future<void> abrirSesion(String sesionId) async {
+    final resp = await http
+        .patch(_u('/sesiones/$sesionId/abrir'), headers: _headers)
+        .timeout(_kTimeout, onTimeout: _timeoutErr);
+    _check(resp);
+  }
+
   Future<void> iniciarSesion(String sesionId) async {
     final resp =
-        await http.patch(_u('/sesiones/$sesionId/iniciar'), headers: _headers);
+        await http.patch(_u('/sesiones/$sesionId/iniciar'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
   }
 
   Future<void> cerrarSesion(String sesionId) async {
     final resp =
-        await http.patch(_u('/sesiones/$sesionId/cerrar'), headers: _headers);
+        await http.patch(_u('/sesiones/$sesionId/cerrar'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
   }
 
   /// Monitor en vivo de la sesión.
   Future<List<FichaLive>> sesionLive(String sesionId) async {
     final resp =
-        await http.get(_u('/sesiones/$sesionId/live'), headers: _headers);
+        await http.get(_u('/sesiones/$sesionId/live'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
     final data = jsonDecode(resp.body) as Map<String, dynamic>;
     final fichas = (data['fichas'] ?? []) as List;
@@ -198,7 +231,7 @@ class ApiClient {
   Future<List<ColaItem>> colaUsuario(String usuarioId, String sesionId) async {
     final resp = await http.get(
         _u('/usuarios/$usuarioId/cola', {'sesion_id': sesionId}),
-        headers: _headers);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
     final data = jsonDecode(resp.body) as Map<String, dynamic>;
     final items = (data['items'] ?? []) as List;
@@ -214,7 +247,7 @@ class ApiClient {
       String sesionId, String usuarioId) async {
     final resp = await http.get(
         _u('/sesiones/$sesionId/participantes/$usuarioId/estado'),
-        headers: _headers);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
     return EstadoParticipante.fromJson(
         jsonDecode(resp.body) as Map<String, dynamic>);
@@ -226,7 +259,7 @@ class ApiClient {
       String sesionId, String usuarioId) async {
     final resp = await http.post(
         _u('/sesiones/$sesionId/participantes/$usuarioId/terminado'),
-        headers: _headers);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
     return EstadoParticipante.fromJson(
         jsonDecode(resp.body) as Map<String, dynamic>);
@@ -249,7 +282,7 @@ class ApiClient {
       _u('/sesiones/$sesionId/participantes/$usuarioId/mas'),
       headers: _headers,
       body: jsonEncode(body),
-    );
+    ).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
   }
 
@@ -261,7 +294,7 @@ class ApiClient {
       _u('/sesiones/${intento.sesionId}/intentos'),
       headers: _headers,
       body: jsonEncode(intento.toJson()),
-    );
+    ).timeout(_kTimeout, onTimeout: _timeoutErr);
     if (resp.statusCode == 200 || resp.statusCode == 201) {
       try {
         final data = jsonDecode(resp.body) as Map<String, dynamic>;
@@ -279,7 +312,7 @@ class ApiClient {
       _u('/intentos/$intentoId/estado'),
       headers: _headers,
       body: jsonEncode({'estado': estado}),
-    );
+    ).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
   }
 

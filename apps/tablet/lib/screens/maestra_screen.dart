@@ -30,12 +30,32 @@ class _MaestraScreenState extends State<MaestraScreen> {
     Navigator.of(context).maybePop();
   }
 
+  Future<void> _abrirProgramadas() async {
+    final sesionId = await Navigator.of(context).push<String>(
+      MaterialPageRoute(builder: (_) => const _ProgramadasScreen()),
+    );
+    if (sesionId != null) _salaAbierta(sesionId);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: TrazoColors.ivory,
         title: Text(_sesionId == null ? 'Abrir sala' : 'Monitor en vivo'),
+        actions: [
+          if (_sesionId == null)
+            Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: TextButton.icon(
+                onPressed: _abrirProgramadas,
+                icon: const Icon(Icons.event_note),
+                label: const Text('Programadas'),
+                style: TextButton.styleFrom(
+                    foregroundColor: TrazoColors.sageDark),
+              ),
+            ),
+        ],
       ),
       body: _sesionId == null
           ? _AbrirSala(onAbierta: _salaAbierta)
@@ -108,6 +128,9 @@ class _AbrirSalaState extends State<_AbrirSala> {
   bool _cargando = true;
   bool _creando = false;
   String? _error;
+  // Programar: guardar la sala para otro día sin abrirla ahora.
+  bool _programar = false;
+  DateTime? _fecha;
 
   @override
   void initState() {
@@ -221,7 +244,7 @@ class _AbrirSalaState extends State<_AbrirSala> {
           });
         }
       }
-      final sesionId = await ApiClient.instance.crearSesion(
+      await ApiClient.instance.crearSesion(
         tipo: _tipo,
         nombre: _nombre.text.trim(),
         modo: _tipo,
@@ -229,9 +252,17 @@ class _AbrirSalaState extends State<_AbrirSala> {
             _tipo == 'grupo' ? _ejercicioCompartido?.id : null,
         participantes: _seleccionados.toList(),
         configs: configs,
-      );
-      if (!mounted) return;
-      widget.onAbierta(sesionId);
+        programar: _programar,
+        programadaPara:
+            _programar && _fecha != null ? _fmtFecha(_fecha!) : null,
+      ).then((sesionId) {
+        if (!mounted) return;
+        if (_programar) {
+          _confirmarProgramada();
+        } else {
+          widget.onAbierta(sesionId);
+        }
+      });
     } catch (err) {
       if (!mounted) return;
       setState(() {
@@ -239,6 +270,47 @@ class _AbrirSalaState extends State<_AbrirSala> {
         _creando = false;
       });
     }
+  }
+
+  String _fmtFecha(DateTime d) =>
+      '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+
+  Future<void> _elegirFecha() async {
+    final hoy = DateTime.now();
+    final d = await showDatePicker(
+      context: context,
+      initialDate: _fecha ?? hoy.add(const Duration(days: 1)),
+      firstDate: hoy,
+      lastDate: hoy.add(const Duration(days: 365)),
+      helpText: 'Día de la sesión',
+    );
+    if (d != null) setState(() => _fecha = d);
+  }
+
+  Future<void> _confirmarProgramada() async {
+    setState(() {
+      _creando = false;
+      _seleccionados.clear();
+      _configs.clear();
+      _programar = false;
+      _fecha = null;
+    });
+    await showDialog<void>(
+      context: context,
+      builder: (_) => AlertDialog(
+        icon: const Icon(Icons.event_available,
+            color: TrazoColors.sageDark, size: 40),
+        title: const Text('Sesión guardada'),
+        content: const Text(
+            'La abrirás el día señalado desde "Sesiones programadas": solo '
+            'tendrás que abrirla y repartir las tablets.'),
+        actions: [
+          ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Entendido')),
+        ],
+      ),
+    );
   }
 
   void _toggleParticipante(String uid, bool sel) {
@@ -379,7 +451,59 @@ class _AbrirSalaState extends State<_AbrirSala> {
                     ),
                   ),
             ],
-            const SizedBox(height: 28),
+            const SizedBox(height: 22),
+            // Programar para otro día (dejar la sala lista, sin abrirla ahora).
+            Card(
+              color: TrazoColors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(14),
+                side: const BorderSide(color: TrazoColors.sand),
+              ),
+              child: Column(
+                children: [
+                  SwitchListTile(
+                    value: _programar,
+                    activeThumbColor: TrazoColors.sage,
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 16),
+                    title: const Text('Guardar para otro día',
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.w600)),
+                    subtitle: const Text(
+                        'Deja la sala configurada; la abrirás ese día y solo '
+                        'repartirás las tablets.'),
+                    onChanged: (v) => setState(() => _programar = v),
+                  ),
+                  if (_programar)
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.event, color: TrazoColors.sageDark),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Text(
+                              _fecha == null
+                                  ? 'Sin fecha (opcional)'
+                                  : 'Día: ${_fmtFecha(_fecha!)}',
+                              style: const TextStyle(
+                                  fontSize: 16, color: TrazoColors.ink),
+                            ),
+                          ),
+                          TextButton.icon(
+                            onPressed: _elegirFecha,
+                            icon: const Icon(Icons.edit_calendar),
+                            label: Text(_fecha == null
+                                ? 'Elegir día'
+                                : 'Cambiar'),
+                          ),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
             if (_error != null)
               Padding(
                 padding: const EdgeInsets.only(bottom: 12),
@@ -392,14 +516,19 @@ class _AbrirSalaState extends State<_AbrirSala> {
                       _nombre.text.trim().isEmpty)
                   ? null
                   : _abrir,
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                textStyle: const TextStyle(
+                    fontSize: 18, fontWeight: FontWeight.w700),
+              ),
               icon: _creando
                   ? const SizedBox(
                       height: 20,
                       width: 20,
                       child: CircularProgressIndicator(
                           strokeWidth: 2, color: Colors.white))
-                  : const Icon(Icons.meeting_room),
-              label: const Text('Abrir sala'),
+                  : Icon(_programar ? Icons.event_available : Icons.meeting_room),
+              label: Text(_programar ? 'Guardar para otro día' : 'Abrir sala'),
             ),
           ],
         ),
@@ -828,7 +957,7 @@ class _FichaCard extends StatelessWidget {
       case 'no_completado':
         return (
           texto: 'Saltado',
-          color: TrazoColors.sand,
+          color: TrazoColors.coralDark,
           icono: Icons.skip_next
         );
       default:
@@ -948,6 +1077,245 @@ class _FichaCard extends StatelessWidget {
               ),
             ),
         ],
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sesiones programadas: lista de salas preparadas para abrir otro día
+// ---------------------------------------------------------------------------
+
+class _ProgramadasScreen extends StatefulWidget {
+  const _ProgramadasScreen();
+
+  @override
+  State<_ProgramadasScreen> createState() => _ProgramadasScreenState();
+}
+
+class _ProgramadasScreenState extends State<_ProgramadasScreen> {
+  List<SesionProgramada> _sesiones = [];
+  bool _cargando = true;
+  String? _error;
+  final Set<String> _abriendo = {};
+
+  @override
+  void initState() {
+    super.initState();
+    _cargar();
+  }
+
+  Future<void> _cargar() async {
+    setState(() {
+      _cargando = true;
+      _error = null;
+    });
+    try {
+      final s = await ApiClient.instance.sesionesProgramadas();
+      if (!mounted) return;
+      setState(() {
+        _sesiones = s;
+        _cargando = false;
+      });
+    } catch (err) {
+      if (!mounted) return;
+      setState(() {
+        _error = err.toString();
+        _cargando = false;
+      });
+    }
+  }
+
+  Future<void> _abrir(SesionProgramada s) async {
+    setState(() => _abriendo.add(s.id));
+    try {
+      await ApiClient.instance.abrirSesion(s.id);
+      if (!mounted) return;
+      Navigator.of(context).pop(s.id); // vuelve al monitor con la sala abierta
+    } catch (err) {
+      if (!mounted) return;
+      setState(() => _abriendo.remove(s.id));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('No se pudo abrir: $err')));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: TrazoColors.ivory,
+        title: const Text('Sesiones programadas'),
+      ),
+      body: _cargando
+          ? const Center(child: CircularProgressIndicator())
+          : _error != null
+              ? Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(24),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('No se pudo cargar:\n$_error',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: TrazoColors.coralDark)),
+                        const SizedBox(height: 16),
+                        ElevatedButton.icon(
+                          onPressed: _cargar,
+                          icon: const Icon(Icons.refresh),
+                          label: const Text('Reintentar'),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : _sesiones.isEmpty
+                  ? const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(32),
+                        child: Text(
+                          'No hay sesiones guardadas.\n\nPuedes preparar una '
+                          'desde "Abrir sala" activando "Guardar para otro día".',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 18, color: TrazoColors.sageDark),
+                        ),
+                      ),
+                    )
+                  : Center(
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 680),
+                        child: ListView(
+                          padding: const EdgeInsets.all(20),
+                          children: _sesiones
+                              .map((s) => _TarjetaProgramada(
+                                    sesion: s,
+                                    abriendo: _abriendo.contains(s.id),
+                                    onAbrir: () => _abrir(s),
+                                  ))
+                              .toList(),
+                        ),
+                      ),
+                    ),
+    );
+  }
+}
+
+class _TarjetaProgramada extends StatelessWidget {
+  final SesionProgramada sesion;
+  final bool abriendo;
+  final VoidCallback onAbrir;
+
+  const _TarjetaProgramada({
+    required this.sesion,
+    required this.abriendo,
+    required this.onAbrir,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 14),
+      color: TrazoColors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: const BorderSide(color: TrazoColors.sand),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Text(sesion.nombre,
+                      style: const TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          color: TrazoColors.ink)),
+                ),
+                if (sesion.programadaPara != null)
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: TrazoColors.card,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.event,
+                            size: 16, color: TrazoColors.sageDark),
+                        const SizedBox(width: 6),
+                        Text(sesion.programadaPara!,
+                            style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: TrazoColors.sageDark)),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            ...sesion.participantes.map((p) {
+              final cats = p.lineas.isEmpty
+                  ? 'su plan'
+                  : p.lineas
+                      .map((l) => '${etiquetaBloque(l.bloque)} ×${l.n}')
+                      .join(' · ');
+              final nivel = p.nivel != null ? '${p.nivel} · ' : '';
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 3),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(Icons.person_outline,
+                        size: 18, color: TrazoColors.sageDark),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text.rich(TextSpan(children: [
+                        TextSpan(
+                            text: '${p.aliasInterno}: ',
+                            style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: TrazoColors.ink)),
+                        TextSpan(
+                            text: '$nivel$cats',
+                            style: const TextStyle(
+                                fontSize: 16, color: TrazoColors.sageDark)),
+                      ])),
+                    ),
+                  ],
+                ),
+              );
+            }),
+            const SizedBox(height: 14),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: abriendo ? null : onAbrir,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: TrazoColors.sage,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  textStyle: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.w700),
+                ),
+                icon: abriendo
+                    ? const SizedBox(
+                        height: 18,
+                        width: 18,
+                        child: CircularProgressIndicator(
+                            strokeWidth: 2, color: Colors.white))
+                    : const Icon(Icons.meeting_room),
+                label: const Text('Abrir y repartir'),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
