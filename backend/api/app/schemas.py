@@ -216,7 +216,13 @@ class ResumenSesionOut(BaseModel):
     """Cómo fue la sesión: por participante, desglose de estados."""
     sesion_id: str
     nombre: str | None = None
+    notas: str | None = None
     fichas: list[ResumenParticipante] = Field(default_factory=list)
+
+
+class NotaSesionIn(BaseModel):
+    """Observaciones libres de la facilitadora sobre la sesión."""
+    nota: str = Field(default="", max_length=2000)
 
 
 class SesionProgramadaOut(BaseModel):

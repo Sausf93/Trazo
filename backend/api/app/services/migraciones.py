@@ -49,6 +49,11 @@ _COLUMNAS = [
         {"sqlite": "INTEGER NOT NULL DEFAULT 0",
          "postgresql": "INTEGER NOT NULL DEFAULT 0"},
     ),
+    (
+        "sesiones",
+        "notas",
+        {"sqlite": "VARCHAR(2000)", "postgresql": "VARCHAR(2000)"},
+    ),
 ]
 
 

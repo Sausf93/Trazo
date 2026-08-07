@@ -138,6 +138,7 @@ export interface FichaResumen {
 export interface ResumenSesion {
   sesion_id: string;
   nombre: string;
+  notas: string | null;
   fichas: FichaResumen[];
 }
 

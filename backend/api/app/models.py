@@ -199,6 +199,8 @@ class Sesion(Base):
     abierta: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     # Día para el que se dejó preparada (informativo; ordena la lista de programadas).
     programada_para: Mapped[datetime | None] = mapped_column(Date, nullable=True)
+    # Observaciones libres de la facilitadora sobre cómo fue la sesión.
+    notas: Mapped[str | None] = mapped_column(String(2000), nullable=True)
 
     participantes: Mapped[list[SesionParticipante]] = relationship(
         back_populates="sesion", cascade="all, delete-orphan"

@@ -221,14 +221,19 @@ class FichaResumen {
 class ResumenSesion {
   final String sesionId;
   final String nombre;
+  final String? notas;
   final List<FichaResumen> fichas;
 
   ResumenSesion(
-      {required this.sesionId, required this.nombre, required this.fichas});
+      {required this.sesionId,
+      required this.nombre,
+      this.notas,
+      required this.fichas});
 
   factory ResumenSesion.fromJson(Map<String, dynamic> j) => ResumenSesion(
         sesionId: (j['sesion_id'] ?? '') as String,
         nombre: (j['nombre'] ?? 'Sesión') as String,
+        notas: j['notas'] as String?,
         fichas: ((j['fichas'] ?? []) as List)
             .map((e) => FichaResumen.fromJson(e as Map<String, dynamic>))
             .toList(),

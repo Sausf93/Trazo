@@ -22,6 +22,7 @@ from app.schemas import (
     FichaViva,
     LineaConfig,
     LiveOut,
+    NotaSesionIn,
     ParticipanteEstadoOut,
     ParticipanteMasIn,
     ParticipanteProgramadoOut,
@@ -192,27 +193,61 @@ async def resumen_sesion(
                 SesionParticipante.sesion_id == sesion_id)
         )
     ).scalars().all()
+    if not parts:
+        return ResumenSesionOut(
+            sesion_id=sesion_id, nombre=ses.nombre, notas=ses.notas, fichas=[])
+
+    uf_ids = [p.usuario_final_id for p in parts]
+    # Alias de todos los participantes en una consulta (sin N+1).
+    alias = dict((await db.execute(
+        select(UsuarioFinal.id, UsuarioFinal.alias_interno)
+        .where(UsuarioFinal.id.in_(uf_ids))
+    )).all())
+    # Desglose de estados por participante, agregado en SQL (sin N+1).
+    filas = (await db.execute(
+        select(Intento.usuario_final_id, Intento.estado, func.count())
+        .where(Intento.sesion_id == sesion_id)
+        .group_by(Intento.usuario_final_id, Intento.estado)
+    )).all()
+    por_usuario: dict[str, dict[str, int]] = {}
+    for uf_id, estado, n in filas:
+        por_usuario.setdefault(uf_id, {})[estado] = n
 
     fichas: list[ResumenParticipante] = []
     for p in parts:
-        uf = await db.get(UsuarioFinal, p.usuario_final_id)
-        intentos = (
-            await db.execute(
-                select(Intento.estado).where(
-                    Intento.sesion_id == sesion_id,
-                    Intento.usuario_final_id == p.usuario_final_id,
-                )
-            )
-        ).scalars().all()
+        est = por_usuario.get(p.usuario_final_id, {})
+        solo = est.get("solo", 0)
+        con_ayuda = est.get("con_ayuda", 0)
+        no_completado = est.get("no_completado", 0)
         fichas.append(ResumenParticipante(
             usuario_final_id=p.usuario_final_id,
-            alias_interno=uf.alias_interno if uf else "?",
-            n_intentos=len(intentos),
-            solo=sum(1 for e in intentos if e == "solo"),
-            con_ayuda=sum(1 for e in intentos if e == "con_ayuda"),
-            no_completado=sum(1 for e in intentos if e == "no_completado"),
+            alias_interno=alias.get(p.usuario_final_id, "?"),
+            n_intentos=solo + con_ayuda + no_completado,
+            solo=solo,
+            con_ayuda=con_ayuda,
+            no_completado=no_completado,
         ))
-    return ResumenSesionOut(sesion_id=sesion_id, nombre=ses.nombre, fichas=fichas)
+    return ResumenSesionOut(
+        sesion_id=sesion_id, nombre=ses.nombre, notas=ses.notas, fichas=fichas)
+
+
+@router.patch("/{sesion_id}/notas", response_model=ResumenSesionOut)
+async def guardar_notas(
+    sesion_id: str,
+    body: NotaSesionIn,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Guarda las observaciones libres de la facilitadora sobre la sesión."""
+    ses = await db.get(Sesion, sesion_id)
+    if ses is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
+    if ses.centro_id != staff.centro_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    nota = body.nota.strip()
+    ses.notas = nota or None
+    await db.commit()
+    return await resumen_sesion(sesion_id, db=db, staff=staff)
 
 
 @router.post("", response_model=SesionOut, status_code=status.HTTP_201_CREATED)
@@ -578,28 +613,37 @@ async def sesion_live(
     ).scalars().all()
 
     ahora = datetime.now(timezone.utc)
+    # Precarga en bloque (sin N+1): alias, último intento por persona y nombres.
+    uf_ids = [p.usuario_final_id for p in parts]
+    alias = dict((await db.execute(
+        select(UsuarioFinal.id, UsuarioFinal.alias_interno)
+        .where(UsuarioFinal.id.in_(uf_ids))
+    )).all()) if uf_ids else {}
+    # Todos los intentos de la sesión, del más reciente al más antiguo: el
+    # primero que veo de cada persona es su último intento.
+    intentos = (await db.execute(
+        select(Intento).where(Intento.sesion_id == sesion_id)
+        .order_by(Intento.timestamp_inicio.desc())
+    )).scalars().all()
+    ultimo_por_uf: dict[str, Intento] = {}
+    for it in intentos:
+        ultimo_por_uf.setdefault(it.usuario_final_id, it)
+    ej_ids = {it.ejercicio_id for it in ultimo_por_uf.values()}
+    nombres_ej = dict((await db.execute(
+        select(EjercicioCatalogo.id, EjercicioCatalogo.nombre)
+        .where(EjercicioCatalogo.id.in_(ej_ids))
+    )).all()) if ej_ids else {}
+
     fichas: list[FichaViva] = []
     for p in parts:
-        uf = await db.get(UsuarioFinal, p.usuario_final_id)
-        ultimo = (
-            await db.execute(
-                select(Intento)
-                .where(
-                    Intento.sesion_id == sesion_id,
-                    Intento.usuario_final_id == p.usuario_final_id,
-                )
-                .order_by(Intento.timestamp_inicio.desc())
-                .limit(1)
-            )
-        ).scalars().first()
+        ultimo = ultimo_por_uf.get(p.usuario_final_id)
 
         ejercicio_actual = None
         ultimo_estado = None
         segundos = None
         atascado = False
         if ultimo is not None:
-            ej = await db.get(EjercicioCatalogo, ultimo.ejercicio_id)
-            ejercicio_actual = ej.nombre if ej else None
+            ejercicio_actual = nombres_ej.get(ultimo.ejercicio_id)
             ultimo_estado = ultimo.estado
             ref = ultimo.timestamp_fin or ultimo.timestamp_inicio
             if ref is not None:
@@ -613,7 +657,7 @@ async def sesion_live(
         en_curso = (not p.terminado) and p.actividad_actual is not None
         fichas.append(FichaViva(
             usuario_final_id=p.usuario_final_id,
-            alias_interno=uf.alias_interno if uf else "?",
+            alias_interno=alias.get(p.usuario_final_id, "?"),
             ejercicio_actual=p.actividad_actual if en_curso else ejercicio_actual,
             ultimo_estado=ultimo_estado,
             ultimo_intento_id=ultimo.id if ultimo is not None else None,

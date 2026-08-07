@@ -285,6 +285,16 @@ class ApiClient {
     return ResumenSesion.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
   }
 
+  /// Guarda las observaciones libres de la facilitadora sobre la sesión.
+  Future<ResumenSesion> guardarNotaSesion(String sesionId, String nota) async {
+    final resp = await http
+        .patch(_u('/sesiones/$sesionId/notas'),
+            headers: _headers, body: jsonEncode({'nota': nota}))
+        .timeout(_kTimeout, onTimeout: _timeoutErr);
+    _check(resp);
+    return ResumenSesion.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
+  }
+
   // --- Cola del participante ----------------------------------------------
 
   Future<List<ColaItem>> colaUsuario(String usuarioId, String sesionId) async {

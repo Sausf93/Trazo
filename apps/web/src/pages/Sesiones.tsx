@@ -120,6 +120,22 @@ function ResumenDetalle({ sesion, onVolver }: { sesion: SesionListItem; onVolver
           Esta sesión no registró intentos de ninguna persona.
         </StateMessage>
       )}
+      {resumen.data && resumen.data.notas && (
+        <div
+          style={{
+            background: colors.white,
+            border: `1px solid ${colors.sand}`,
+            borderRadius: radius.md,
+            padding: "14px 18px",
+            marginBottom: 18,
+          }}
+        >
+          <div style={{ fontSize: 12, color: colors.textMuted, marginBottom: 6, textTransform: "uppercase", letterSpacing: 0.4 }}>
+            Observaciones de la facilitadora
+          </div>
+          <div style={{ whiteSpace: "pre-wrap", color: colors.text }}>{resumen.data.notas}</div>
+        </div>
+      )}
       {resumen.data && resumen.data.fichas.length > 0 && (
         <div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginBottom: 18 }}>

@@ -1890,28 +1890,113 @@ class _HistorialScreenState extends State<_HistorialScreen> {
 
 /// Resumen al finalizar la sesión: por persona, cuántas actividades y cómo fueron
 /// (solo / con ayuda / no pudo), con una barra proporcional. Cierra el bucle.
-class _ResumenSesionDialog extends StatelessWidget {
+class _ResumenSesionDialog extends StatefulWidget {
   final ResumenSesion resumen;
   const _ResumenSesionDialog({required this.resumen});
 
   @override
+  State<_ResumenSesionDialog> createState() => _ResumenSesionDialogState();
+}
+
+class _ResumenSesionDialogState extends State<_ResumenSesionDialog> {
+  late final TextEditingController _nota =
+      TextEditingController(text: widget.resumen.notas ?? '');
+  bool _guardando = false;
+  bool _guardada = false;
+
+  @override
+  void dispose() {
+    _nota.dispose();
+    super.dispose();
+  }
+
+  Future<void> _guardarNota() async {
+    setState(() {
+      _guardando = true;
+      _guardada = false;
+    });
+    try {
+      await ApiClient.instance
+          .guardarNotaSesion(widget.resumen.sesionId, _nota.text.trim());
+      if (!mounted) return;
+      setState(() {
+        _guardando = false;
+        _guardada = true;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _guardando = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('No se pudo guardar la nota')),
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final r = widget.resumen;
     return AlertDialog(
       icon: const Icon(Icons.emoji_events, color: TrazoColors.sageDark, size: 40),
       title: const Text('Sesión finalizada'),
       content: SizedBox(
         width: 460,
-        child: resumen.fichas.every((f) => f.nIntentos == 0)
-            ? const Text('No se registraron actividades en esta sesión.',
-                style: TextStyle(color: TrazoColors.sageDark))
-            : SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: resumen.fichas
-                      .map((f) => _FilaResumen(ficha: f))
-                      .toList(),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              if (r.fichas.every((f) => f.nIntentos == 0))
+                const Text('No se registraron actividades en esta sesión.',
+                    style: TextStyle(color: TrazoColors.sageDark))
+              else
+                ...r.fichas.map((f) => _FilaResumen(ficha: f)),
+              const SizedBox(height: 16),
+              const Text('Observaciones (opcional)',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700, color: TrazoColors.ink)),
+              const SizedBox(height: 6),
+              TextField(
+                controller: _nota,
+                minLines: 2,
+                maxLines: 4,
+                maxLength: 2000,
+                onChanged: (_) {
+                  if (_guardada) setState(() => _guardada = false);
+                },
+                decoration: const InputDecoration(
+                  hintText:
+                      'Cómo fue la sesión, incidencias, ánimo del grupo…',
+                  border: OutlineInputBorder(),
                 ),
               ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: _guardada
+                    ? const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.check_circle,
+                              color: TrazoColors.sage, size: 18),
+                          SizedBox(width: 4),
+                          Text('Nota guardada',
+                              style: TextStyle(color: TrazoColors.sageDark)),
+                        ],
+                      )
+                    : TextButton.icon(
+                        onPressed: _guardando ? null : _guardarNota,
+                        icon: _guardando
+                            ? const SizedBox(
+                                width: 16,
+                                height: 16,
+                                child:
+                                    CircularProgressIndicator(strokeWidth: 2))
+                            : const Icon(Icons.save_outlined),
+                        label: const Text('Guardar nota'),
+                      ),
+              ),
+            ],
+          ),
+        ),
       ),
       actions: [
         ElevatedButton(
