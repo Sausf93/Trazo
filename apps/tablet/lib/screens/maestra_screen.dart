@@ -833,11 +833,22 @@ class _MonitorState extends State<_Monitor> {
   }
 
   Future<void> _enviarMas(FichaLive f) async {
+    // La maestra elige QUÉ mandar en la nueva tanda (categorías + nº + nivel) o
+    // repite lo mismo. Así no se le manda otra vez casi lo mismo sin querer.
+    final res = await showDialog<_MasResult>(
+      context: context,
+      builder: (_) => _EnviarMasDialog(nombre: f.aliasInterno),
+    );
+    if (res == null) return;
     final uid = f.usuarioFinalId;
     setState(() => _enviandoMas.add(uid));
     try {
-      // Body vacío: repite su config/plan (nueva tanda para quien terminó).
-      await ApiClient.instance.enviarMas(widget.sesionId, uid);
+      if (res.repetir) {
+        await ApiClient.instance.enviarMas(widget.sesionId, uid);
+      } else {
+        await ApiClient.instance.enviarMas(widget.sesionId, uid,
+            nivel: res.nivel, lineas: res.lineas);
+      }
       _snack('Nueva tanda enviada a ${f.aliasInterno}.');
       await _poll(silencioso: true);
     } catch (err) {
@@ -903,6 +914,104 @@ class _MonitorState extends State<_Monitor> {
           iniciando: _iniciando,
           onIniciar: _iniciar,
           onCerrar: _cerrar,
+        ),
+      ],
+    );
+  }
+}
+
+/// Resultado del diálogo "Enviar más": repetir lo mismo, o una config nueva.
+class _MasResult {
+  final bool repetir;
+  final String? nivel;
+  final List<Map<String, dynamic>> lineas;
+  const _MasResult.repetir()
+      : repetir = true,
+        nivel = null,
+        lineas = const [];
+  const _MasResult.config(this.nivel, this.lineas) : repetir = false;
+}
+
+/// Diálogo para elegir QUÉ mandar en la nueva tanda: categorías + nº + nivel,
+/// o repetir lo mismo. Evita mandar otra vez casi los mismos ejercicios.
+class _EnviarMasDialog extends StatefulWidget {
+  final String nombre;
+  const _EnviarMasDialog({required this.nombre});
+
+  @override
+  State<_EnviarMasDialog> createState() => _EnviarMasDialogState();
+}
+
+class _EnviarMasDialogState extends State<_EnviarMasDialog> {
+  String _nivel = 'medio';
+  final Map<String, _ConfigBloque> _bloques = {
+    for (final k in kBloques.keys) k: _ConfigBloque(incluido: false, n: 2),
+  };
+
+  List<Map<String, dynamic>> get _lineas => _bloques.entries
+      .where((e) => e.value.incluido && e.value.n > 0)
+      .map((e) => {'bloque': e.key, 'n': e.value.n})
+      .toList();
+
+  @override
+  Widget build(BuildContext context) {
+    final hayCategorias = _lineas.isNotEmpty;
+    return AlertDialog(
+      title: Text('Enviar más a ${widget.nombre}'),
+      content: SizedBox(
+        width: 480,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Elige categorías y cuántas de cada una, o repite lo '
+                  'mismo de antes.',
+                  style: TextStyle(fontSize: 14, color: TrazoColors.sageDark)),
+              const SizedBox(height: 14),
+              const Text('Nivel',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600, color: TrazoColors.sageDark)),
+              const SizedBox(height: 8),
+              SegmentedButton<String>(
+                segments: const [
+                  ButtonSegment(value: 'bajo', label: Text('Bajo')),
+                  ButtonSegment(value: 'medio', label: Text('Medio')),
+                  ButtonSegment(value: 'alto', label: Text('Alto')),
+                ],
+                selected: {_nivel},
+                showSelectedIcon: false,
+                onSelectionChanged: (s) => setState(() => _nivel = s.first),
+              ),
+              const SizedBox(height: 16),
+              const Text('Categorías y nº de actividades',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600, color: TrazoColors.sageDark)),
+              const SizedBox(height: 8),
+              ...kBloques.entries.map((entry) => _FilaBloque(
+                    etiqueta: entry.value,
+                    cfg: _bloques[entry.key]!,
+                    onCambio: () => setState(() {}),
+                  )),
+            ],
+          ),
+        ),
+      ),
+      actions: [
+        TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancelar')),
+        TextButton(
+            onPressed: () =>
+                Navigator.pop(context, const _MasResult.repetir()),
+            child: const Text('Repetir lo mismo')),
+        ElevatedButton.icon(
+          onPressed: hayCategorias
+              ? () => Navigator.pop(
+                  context, _MasResult.config(_nivel, _lineas))
+              : null,
+          icon: const Icon(Icons.send, size: 18),
+          label: const Text('Enviar'),
         ),
       ],
     );

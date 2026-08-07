@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' show min;
 
 import 'package:flutter/material.dart';
 
@@ -159,88 +160,109 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
 
   Widget _rejillaTarjetas(List<Map<String, dynamic>> items,
       {required bool seleccionable}) {
-    // Columnas adaptativas: cuantas más figuras (nivel alto), más columnas, para
-    // que quepan sin una barra de scroll fea. El scroll (si hace falta) es limpio.
+    // Rejilla que SIEMPRE cabe en pantalla (sin scroll) con tarjetas cuadradas
+    // e imágenes GRANDES: se calcula el nº de columnas/filas y el tamaño de celda
+    // a partir del espacio disponible; la imagen ocupa ~62% de la celda.
     final n = items.length;
-    final columnas = n <= 6 ? 3 : (n <= 12 ? 4 : 5);
-    final imgSize = columnas >= 5 ? 44.0 : (columnas == 4 ? 54.0 : 62.0);
-    return ScrollConfiguration(
-      behavior: const _SinBarraScroll(),
-      child: GridView.count(
-        crossAxisCount: columnas,
-        mainAxisSpacing: 12,
-        crossAxisSpacing: 12,
-        childAspectRatio: 1.05,
-        children: items.map((it) {
-          final id = _idDe(it);
-          final sel = _seleccionadas.contains(id);
-          final tieneDibujo = IlustracionResolver.tiene(id);
-        return InkWell(
-          onTap: seleccionable
-              ? () {
-                  setState(() {
-                    if (sel) {
-                      _seleccionadas.remove(id);
-                    } else {
-                      _seleccionadas.add(id);
-                    }
-                  });
-                  _emitir();
-                }
-              : null,
-          borderRadius: BorderRadius.circular(14),
-          child: Container(
-            alignment: Alignment.center,
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: sel ? const Color(0xFFFBEFE4) : TrazoColors.card,
-              border: Border.all(
-                  color: sel ? TrazoColors.coral : TrazoColors.sand,
-                  width: sel ? 3 : 1.5),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (tieneDibujo) ...[
-                      Ilustracion(id, size: imgSize),
-                      const SizedBox(height: 4),
-                    ],
-                    Flexible(
-                      child: Text(_labelDe(it),
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: tieneDibujo ? 16 : 22,
-                              color: TrazoColors.ink)),
-                    ),
-                  ],
-                ),
-                if (seleccionable && sel)
-                  const Positioned(
-                    top: 0,
-                    right: 0,
-                    child: Icon(Icons.check_circle,
-                        color: TrazoColors.coralDark, size: 28),
-                  ),
-              ],
-            ),
-          ),
+    return LayoutBuilder(
+      builder: (context, c) {
+        final columnas = n <= 6 ? 3 : (n <= 12 ? 4 : 5);
+        final filas = (n / columnas).ceil();
+        const gap = 14.0;
+        final anchoCelda = (c.maxWidth - gap * (columnas - 1)) / columnas;
+        final altoCelda = (c.maxHeight - gap * (filas - 1)) / filas;
+        // Celda cuadrada, acotada para que no se hagan recuadros gigantes.
+        final lado = min(min(anchoCelda, altoCelda), 230.0);
+        final imgSize = (lado * 0.62).clamp(56.0, 150.0);
+
+        final filasWidgets = <Widget>[];
+        for (var f = 0; f < filas; f++) {
+          final celdas = <Widget>[];
+          for (var col = 0; col < columnas; col++) {
+            final idx = f * columnas + col;
+            if (col > 0) celdas.add(const SizedBox(width: gap));
+            celdas.add(idx >= n
+                ? SizedBox(width: lado)
+                : _celdaMemoria(items[idx], lado, imgSize, seleccionable));
+          }
+          if (f > 0) filasWidgets.add(const SizedBox(height: gap));
+          filasWidgets.add(Row(
+              mainAxisAlignment: MainAxisAlignment.center, children: celdas));
+        }
+        return Center(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: filasWidgets),
         );
-      }).toList(),
+      },
+    );
+  }
+
+  Widget _celdaMemoria(Map<String, dynamic> it, double lado, double imgSize,
+      bool seleccionable) {
+    final id = _idDe(it);
+    final sel = _seleccionadas.contains(id);
+    final tieneDibujo = IlustracionResolver.tiene(id);
+    return SizedBox(
+      width: lado,
+      height: lado,
+      child: InkWell(
+        onTap: seleccionable
+            ? () {
+                setState(() {
+                  if (sel) {
+                    _seleccionadas.remove(id);
+                  } else {
+                    _seleccionadas.add(id);
+                  }
+                });
+                _emitir();
+              }
+            : null,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: sel ? const Color(0xFFFBEFE4) : TrazoColors.card,
+            border: Border.all(
+                color: sel ? TrazoColors.coralDark : TrazoColors.sand,
+                width: sel ? 3 : 1.5),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (tieneDibujo) ...[
+                    Ilustracion(id, size: imgSize),
+                    const SizedBox(height: 6),
+                  ],
+                  Flexible(
+                    child: Text(_labelDe(it),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: tieneDibujo ? 17 : 24,
+                            fontWeight: FontWeight.w600,
+                            color: TrazoColors.ink)),
+                  ),
+                ],
+              ),
+              if (seleccionable && sel)
+                const Positioned(
+                  top: 2,
+                  right: 2,
+                  child: Icon(Icons.check_circle,
+                      color: TrazoColors.coralDark, size: 30),
+                ),
+            ],
+          ),
+        ),
       ),
     );
   }
-}
-
-/// Comportamiento de scroll SIN barra visible: el scroll (cuando hace falta por
-/// muchas figuras en nivel alto) se hace arrastrando, sin la barra fea de Material.
-class _SinBarraScroll extends ScrollBehavior {
-  const _SinBarraScroll();
-  @override
-  Widget buildScrollbar(
-          BuildContext context, Widget child, ScrollableDetails details) =>
-      child;
 }

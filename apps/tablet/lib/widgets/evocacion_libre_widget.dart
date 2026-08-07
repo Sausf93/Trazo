@@ -43,10 +43,10 @@ class _EvocacionLibreWidgetState extends State<EvocacionLibreWidget> {
     final textoPrompt = (prompt['texto'] ?? '').toString();
     final n = (render['n_pedidas'] as num?)?.toInt() ?? 1;
 
-    // Instrucción clara según el tipo.
+    // Instrucción clara según el tipo (el nº ya va integrado en "Di N").
     final instruccion = modo == 'completar'
-        ? 'Termina la frase en voz alta'
-        : 'Di en voz alta';
+        ? 'Termina el refrán en voz alta'
+        : 'Di $n en voz alta';
 
     return Center(
       child: ConstrainedBox(
@@ -54,9 +54,20 @@ class _EvocacionLibreWidgetState extends State<EvocacionLibreWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(instruccion,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 24, color: TrazoColors.sageDark)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.record_voice_over,
+                    size: 26, color: TrazoColors.sageDark),
+                const SizedBox(width: 8),
+                Text(instruccion,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                        color: TrazoColors.sageDark)),
+              ],
+            ),
             const SizedBox(height: 20),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
@@ -72,25 +83,14 @@ class _EvocacionLibreWidgetState extends State<EvocacionLibreWidget> {
                       fontWeight: FontWeight.w600,
                       color: TrazoColors.ink)),
             ),
-            // En modo "listar" (di N cosas), recordamos cuántas se piden.
-            if (modo != 'completar') ...[
-              const SizedBox(height: 22),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
-                decoration: BoxDecoration(
-                  color: TrazoColors.coralDark,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Text('Di $n',
-                    style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white)),
-              ),
-            ],
-            const SizedBox(height: 18),
-            const Icon(Icons.volume_up_rounded,
-                size: 40, color: TrazoColors.sand),
+            const SizedBox(height: 22),
+            // Aclara cómo funciona: es hablada, la app no escucha; la valora la
+            // integradora. Evita que la persona espere a que "pase algo".
+            const Text(
+                'Contesta hablando. La app no te escucha: cuando termines, '
+                'pulsa "Siguiente".',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, color: TrazoColors.sageDark)),
           ],
         ),
       ),
