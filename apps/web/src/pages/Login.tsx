@@ -1,6 +1,6 @@
 /** Pantalla de acceso. Guarda el JWT + centro_id/rol vía AuthContext. */
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { ApiError } from "../api/client";
 import { useAuth } from "../auth/AuthContext";
 import { Button, Field, inputStyle } from "../components/ui";
@@ -20,7 +20,7 @@ export function LoginPage() {
 
   // Si ya hay sesión, no tiene sentido mostrar el login.
   if (session) {
-    navigate("/", { replace: true });
+    return <Navigate to="/" replace />;
   }
 
   async function onSubmit(e: React.FormEvent) {
@@ -123,38 +123,40 @@ export function LoginPage() {
           </Button>
         </form>
 
-        <div
-          style={{
-            marginTop: 16,
-            background: colors.card,
-            border: `1px dashed ${colors.sand}`,
-            borderRadius: radius.md,
-            padding: "14px 16px",
-            fontSize: 13.5,
-            color: colors.textMuted,
-          }}
-        >
-          <strong style={{ color: colors.ink }}>Credenciales de demostración</strong>
-          <div className="mono" style={{ marginTop: 6, lineHeight: 1.7 }}>
-            {DEMO_EMAIL} / {DEMO_PASS}
-          </div>
-          <button
-            type="button"
-            onClick={rellenarDemo}
+        {import.meta.env.DEV && (
+          <div
             style={{
-              marginTop: 10,
-              background: "transparent",
-              border: `1.5px solid ${colors.sage}`,
-              color: colors.sageDark,
-              borderRadius: radius.sm,
-              padding: "7px 14px",
-              fontWeight: 600,
+              marginTop: 16,
+              background: colors.card,
+              border: `1px dashed ${colors.sand}`,
+              borderRadius: radius.md,
+              padding: "14px 16px",
               fontSize: 13.5,
+              color: colors.textMuted,
             }}
           >
-            Usar credenciales demo
-          </button>
-        </div>
+            <strong style={{ color: colors.ink }}>Credenciales de demostración</strong>
+            <div className="mono" style={{ marginTop: 6, lineHeight: 1.7 }}>
+              {DEMO_EMAIL} / {DEMO_PASS}
+            </div>
+            <button
+              type="button"
+              onClick={rellenarDemo}
+              style={{
+                marginTop: 10,
+                background: "transparent",
+                border: `1.5px solid ${colors.sage}`,
+                color: colors.sageDark,
+                borderRadius: radius.sm,
+                padding: "7px 14px",
+                fontWeight: 600,
+                fontSize: 13.5,
+              }}
+            >
+              Usar credenciales demo
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -86,6 +86,13 @@ function FilaDispositivo({ disp, onRevocado }: { disp: Dispositivo; onRevocado: 
   const [error, setError] = useState<string | null>(null);
 
   async function revocar() {
+    if (
+      !window.confirm(
+        "¿Seguro que quieres revocar «" + disp.nombre + "»? La tablet dejará de funcionar.",
+      )
+    ) {
+      return;
+    }
     setError(null);
     setRevocando(true);
     try {
@@ -253,7 +260,7 @@ function EmparejarDispositivo({ centroId, onCreado }: { centroId: string; onCrea
 }
 
 function Th({ children }: { children: React.ReactNode }) {
-  return <th style={{ padding: "12px 16px", fontWeight: 600 }}>{children}</th>;
+  return <th scope="col" style={{ padding: "12px 16px", fontWeight: 600 }}>{children}</th>;
 }
 function Td({ children }: { children: React.ReactNode }) {
   return <td style={{ padding: "12px 16px", verticalAlign: "top" }}>{children}</td>;

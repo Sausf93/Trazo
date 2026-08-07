@@ -53,7 +53,7 @@ export function Layout({ children }: { children: ReactNode }) {
                 fontSize: 15.5,
                 textDecoration: "none",
                 color: isActive ? colors.white : colors.ink,
-                background: isActive ? colors.sage : "transparent",
+                background: isActive ? colors.sageDark : "transparent",
               })}
             >
               {item.label}

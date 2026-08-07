@@ -225,7 +225,7 @@ export function PlanEditorPage() {
               </div>
             )}
             {ok && (
-              <div style={{ background: "rgba(124,152,133,0.16)", border: `1px solid ${colors.sage}`, color: colors.sageDark, borderRadius: radius.sm, padding: "10px 12px", fontSize: 14, marginTop: 16 }}>
+              <div role="status" aria-live="polite" style={{ background: "rgba(124,152,133,0.16)", border: `1px solid ${colors.sage}`, color: colors.sageDark, borderRadius: radius.sm, padding: "10px 12px", fontSize: 14, marginTop: 16 }}>
                 Plan guardado correctamente.
               </div>
             )}
@@ -409,10 +409,10 @@ function ColaPreview({ usuarioId }: { usuarioId: string }) {
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14.5, minWidth: 520 }}>
             <thead>
               <tr style={{ textAlign: "left", color: colors.textFaint, fontFamily: fonts.mono, fontSize: 12 }}>
-                <th style={{ padding: "10px 14px", fontWeight: 600 }}>Ejercicio</th>
-                <th style={{ padding: "10px 14px", fontWeight: 600 }}>Bloque</th>
-                <th style={{ padding: "10px 14px", fontWeight: 600 }}>Nivel</th>
-                <th style={{ padding: "10px 14px", fontWeight: 600 }}>Origen</th>
+                <th scope="col" style={{ padding: "10px 14px", fontWeight: 600 }}>Ejercicio</th>
+                <th scope="col" style={{ padding: "10px 14px", fontWeight: 600 }}>Bloque</th>
+                <th scope="col" style={{ padding: "10px 14px", fontWeight: 600 }}>Nivel</th>
+                <th scope="col" style={{ padding: "10px 14px", fontWeight: 600 }}>Origen</th>
               </tr>
             </thead>
             <tbody>

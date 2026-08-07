@@ -62,7 +62,7 @@ export function DashboardPage() {
               <button
                 key={a.id}
                 onClick={() => navigate(`/usuarios/${a.usuario_final_id}`)}
-                style={{ all: "unset", cursor: "pointer", display: "block" }}
+                style={{ background: "none", border: "none", padding: 0, margin: 0, font: "inherit", color: "inherit", textAlign: "left", cursor: "pointer", display: "block" }}
                 aria-label={`Ver evolución de ${aliasPorId.get(a.usuario_final_id) ?? "la persona"}`}
               >
                 <AlertCard alerta={a} aliasLabel={aliasPorId.get(a.usuario_final_id)} />
@@ -112,7 +112,12 @@ export function DashboardPage() {
                   <button
                     onClick={() => navigate(`/usuarios/${u.id}`)}
                     style={{
-                      all: "unset",
+                      background: "none",
+                      border: "none",
+                      margin: 0,
+                      font: "inherit",
+                      color: "inherit",
+                      textAlign: "left",
                       cursor: "pointer",
                       display: "block",
                       width: "100%",

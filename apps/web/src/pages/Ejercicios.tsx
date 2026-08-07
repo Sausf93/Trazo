@@ -178,7 +178,7 @@ function AltaEjercicio({ onCreado }: { onCreado: () => void }) {
           </div>
         )}
         {ok && (
-          <div style={{ background: "rgba(124,152,133,0.16)", border: `1px solid ${colors.sage}`, color: colors.sageDark, borderRadius: radius.sm, padding: "10px 12px", fontSize: 14, marginBottom: 14 }}>
+          <div role="status" aria-live="polite" style={{ background: "rgba(124,152,133,0.16)", border: `1px solid ${colors.sage}`, color: colors.sageDark, borderRadius: radius.sm, padding: "10px 12px", fontSize: 14, marginBottom: 14 }}>
             Ejercicio creado correctamente.
           </div>
         )}
@@ -192,7 +192,7 @@ function AltaEjercicio({ onCreado }: { onCreado: () => void }) {
 }
 
 function Th({ children }: { children: React.ReactNode }) {
-  return <th style={{ padding: "12px 16px", fontWeight: 600 }}>{children}</th>;
+  return <th scope="col" style={{ padding: "12px 16px", fontWeight: 600 }}>{children}</th>;
 }
 function Td({ children }: { children: React.ReactNode }) {
   return <td style={{ padding: "12px 16px", verticalAlign: "top" }}>{children}</td>;

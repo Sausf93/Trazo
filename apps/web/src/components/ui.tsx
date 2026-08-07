@@ -82,7 +82,7 @@ export function Button({
     transition: "filter 120ms ease, background 120ms ease",
   };
   const variants: Record<Variant, CSSProperties> = {
-    primary: { background: colors.sage, color: colors.white, borderColor: colors.sage },
+    primary: { background: colors.sageDark, color: colors.white, borderColor: colors.sageDark },
     coral: { background: colors.coralDark, color: colors.white, borderColor: colors.coralDark },
     ghost: { background: "transparent", color: colors.ink, borderColor: colors.sand },
   };

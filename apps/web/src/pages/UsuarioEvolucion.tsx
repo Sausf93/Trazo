@@ -275,7 +275,7 @@ function LegendDot({ color, label, ring }: { color: string; label: string; ring?
 }
 
 function Th({ children }: { children: React.ReactNode }) {
-  return <th style={{ padding: "12px 16px", fontWeight: 600 }}>{children}</th>;
+  return <th scope="col" style={{ padding: "12px 16px", fontWeight: 600 }}>{children}</th>;
 }
 function Td({ children }: { children: React.ReactNode }) {
   return <td style={{ padding: "12px 16px" }}>{children}</td>;

@@ -94,7 +94,7 @@ function LiveMonitor({ sesionId, onSalir }: { sesionId: string; onSalir: () => v
 
   return (
     <div>
-      <button onClick={onSalir} style={{ all: "unset", cursor: "pointer", color: colors.sageDark, fontSize: 14, fontWeight: 600 }}>
+      <button onClick={onSalir} style={{ background: "none", border: "none", padding: 0, margin: 0, textAlign: "left", cursor: "pointer", color: colors.sageDark, fontSize: 14, fontWeight: 600 }}>
         ← Elegir otra sesión
       </button>
 

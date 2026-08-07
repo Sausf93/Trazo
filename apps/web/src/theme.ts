@@ -18,7 +18,7 @@ export const colors = {
   // Derivados usados en la presentación (texto secundario, fondos suaves).
   text: "#2B3A32",
   textMuted: "#4A5A50",
-  textFaint: "#8A8270",
+  textFaint: "#6E6752",
   alertBg: "#FBEFE4",
   alertText: "#6B5A48",
 } as const;
