@@ -46,6 +46,10 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
   String? _errorInstancia;
   Map<String, dynamic> _valores = {};
   DateTime? _inicioEjercicio;
+  // Algunas actividades (memoria) tienen un paso interno previo (memorizar) en el
+  // que NO debe aparecer el botón global "Siguiente" (si no, se salta la prueba
+  // sin medir). El widget lo controla con onListoParaAvanzar.
+  bool _puedeAvanzar = true;
 
   @override
   void initState() {
@@ -182,6 +186,7 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
       _errorInstancia = null;
       _instancia = null;
       _valores = {};
+      _puedeAvanzar = true; // por defecto se puede avanzar; memoria lo desactiva
     });
     try {
       final inst = await ApiClient.instance.generarInstancia(
@@ -303,7 +308,15 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
         return SeleccionMultipleWidget(
             instancia: inst, onMetricas: onMetricas);
       case 'memoria_visual':
-        return MemoriaVisualWidget(instancia: inst, onMetricas: onMetricas);
+        return MemoriaVisualWidget(
+          instancia: inst,
+          onMetricas: onMetricas,
+          // Durante "memorizar" no debe verse el botón global (evita saltarse la
+          // fase de selección sin medir).
+          onListoParaAvanzar: (v) {
+            if (mounted) setState(() => _puedeAvanzar = v);
+          },
+        );
       case 'secuencia_ordenar':
         return SecuenciaOrdenarWidget(instancia: inst, onMetricas: onMetricas);
       case 'conteo_comparacion':
@@ -379,6 +392,7 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
                 ),
           onReintentar: _reintentar,
           onListo: _terminarEjercicio,
+          mostrarAvanzar: _puedeAvanzar,
         );
     }
   }
@@ -568,6 +582,7 @@ class _VistaEjercicio extends StatelessWidget {
   final Widget? render;
   final VoidCallback onReintentar;
   final VoidCallback onListo;
+  final bool mostrarAvanzar;
 
   const _VistaEjercicio({
     required this.nombrePersona,
@@ -579,6 +594,7 @@ class _VistaEjercicio extends StatelessWidget {
     required this.render,
     required this.onReintentar,
     required this.onListo,
+    this.mostrarAvanzar = true,
   });
 
   @override
@@ -651,34 +667,37 @@ class _VistaEjercicio extends StatelessWidget {
             child: render ?? const SizedBox.shrink(),
           ),
         ),
-        // Único botón grande y amable para el usuario mayor.
-        Padding(
-          padding: const EdgeInsets.fromLTRB(24, 4, 24, 20),
-          child: SizedBox(
-            width: double.infinity,
-            child: ElevatedButton.icon(
-              // En el último, confirmar para que un toque accidental no cierre
-              // la tanda sin querer.
-              onPressed: () async {
-                final esUltimo = indice + 1 >= total;
-                if (esUltimo) {
-                  final ok = await _confirmarTerminar(context);
-                  if (ok) onListo();
-                } else {
-                  onListo();
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: TrazoColors.sage,
-                padding: const EdgeInsets.symmetric(vertical: 24),
-                textStyle: const TextStyle(
-                    fontSize: 28, fontWeight: FontWeight.w800),
+        // Único botón grande y amable. Se OCULTA cuando la actividad tiene un
+        // paso interno pendiente (p. ej. memoria mientras memorizas): así no hay
+        // dos botones a la vez ni se puede saltar la prueba sin medir.
+        if (mostrarAvanzar)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(24, 4, 24, 20),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                // En el último, confirmar para que un toque accidental no cierre
+                // la tanda sin querer.
+                onPressed: () async {
+                  final esUltimo = indice + 1 >= total;
+                  if (esUltimo) {
+                    final ok = await _confirmarTerminar(context);
+                    if (ok) onListo();
+                  } else {
+                    onListo();
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: TrazoColors.sage,
+                  padding: const EdgeInsets.symmetric(vertical: 24),
+                  textStyle: const TextStyle(
+                      fontSize: 28, fontWeight: FontWeight.w800),
+                ),
+                icon: const Icon(Icons.check_circle, size: 32),
+                label: Text(indice + 1 >= total ? 'Terminar' : 'Siguiente'),
               ),
-              icon: const Icon(Icons.check_circle, size: 32),
-              label: Text(indice + 1 >= total ? 'Terminar' : 'Siguiente'),
             ),
           ),
-        ),
       ],
     );
   }

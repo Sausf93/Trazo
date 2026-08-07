@@ -106,17 +106,25 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
                       color: TrazoColors.coralDark, size: 24)
                   : null,
             ),
+            // Los objetos a contar SIEMPRE se ven enteros: se ajusta su tamaño
+            // para que quepan todos sin scroll (nunca ocultar lo que hay que contar).
             Expanded(
-              child: SingleChildScrollView(
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 4,
-                  runSpacing: 4,
-                  children: List.generate(
-                    cantidad,
-                    (_) => Ilustracion(objeto, size: 56),
-                  ),
-                ),
+              child: LayoutBuilder(
+                builder: (context, c) {
+                  final s = _tamObjeto(c.maxWidth, c.maxHeight, cantidad);
+                  return Center(
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
+                      runAlignment: WrapAlignment.center,
+                      spacing: 4,
+                      runSpacing: 4,
+                      children: List.generate(
+                        cantidad,
+                        (_) => Ilustracion(objeto, size: s),
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             Text(objeto.replaceAll('_', ' '),
@@ -172,8 +180,8 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
 
   Widget _tecla(String label, VoidCallback onTap) {
     return SizedBox(
-      width: 64,
-      height: 56,
+      width: 66,
+      height: 62,
       child: OutlinedButton(
         onPressed: onTap,
         style: OutlinedButton.styleFrom(
@@ -185,4 +193,16 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
       ),
     );
   }
+}
+
+/// Tamaño de cada objeto para que los `n` quepan en un área `w`×`h` SIN scroll
+/// (nunca ocultar objetos que hay que contar). Baja el tamaño hasta que caben.
+double _tamObjeto(double w, double h, int n, {double sp = 4}) {
+  if (n <= 0 || w <= 0 || h <= 0) return 40;
+  for (double s = 62; s >= 18; s -= 2) {
+    final cols = ((w + sp) / (s + sp)).floor().clamp(1, n);
+    final rows = (n / cols).ceil();
+    if (rows * (s + sp) <= h + sp) return s;
+  }
+  return 18;
 }

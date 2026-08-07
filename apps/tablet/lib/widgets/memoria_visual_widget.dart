@@ -14,9 +14,15 @@ import 'ilustracion.dart';
 class MemoriaVisualWidget extends StatefulWidget {
   final Instancia instancia;
   final ValueChanged<Map<String, dynamic>> onMetricas;
+  // Avisa al contenedor de si se puede mostrar el botón global "Siguiente":
+  // false mientras se memoriza (para no saltarse la selección), true al elegir.
+  final ValueChanged<bool>? onListoParaAvanzar;
 
   const MemoriaVisualWidget(
-      {super.key, required this.instancia, required this.onMetricas});
+      {super.key,
+      required this.instancia,
+      required this.onMetricas,
+      this.onListoParaAvanzar});
 
   @override
   State<MemoriaVisualWidget> createState() => _MemoriaVisualWidgetState();
@@ -42,6 +48,10 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
     _idsCorrectos = _aRecordar.map((e) => _idDe(e)).toSet();
     _restante =
         (render['segundos_memorizar'] as num?)?.toInt() ?? 10;
+    // Empieza memorizando: oculta el botón global "Siguiente" hasta que la
+    // persona pase a la selección con "Ya lo recuerdo".
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) => widget.onListoParaAvanzar?.call(false));
     // La cuenta atrás es solo ORIENTATIVA: al llegar a 0 no se ocultan las
     // figuras (no penalizamos la lentitud, apunte de Laura). Solo avanza la
     // persona pulsando "Ya lo recuerdo".
@@ -97,6 +107,8 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
       _memorizando = false;
       _restante = 0;
     });
+    // Ya está en la selección: ahora sí se muestra el botón global "Siguiente".
+    widget.onListoParaAvanzar?.call(true);
   }
 
   @override
