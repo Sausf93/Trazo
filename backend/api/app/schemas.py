@@ -150,6 +150,13 @@ class ParticipanteMasIn(BaseModel):
     _nivel_ok = field_validator("nivel")(_validar_nivel)
 
 
+class ActividadActualIn(BaseModel):
+    """Qué actividad está haciendo AHORA la persona (lo reporta el kiosco)."""
+    actividad: str | None = None
+    pos: int = 0
+    total: int = 0
+
+
 class ParticipanteEstadoOut(BaseModel):
     """Estado que consulta la tablet del participante (polling)."""
     iniciada: bool
@@ -411,6 +418,10 @@ class FichaViva(BaseModel):
     atascado: bool = False
     terminado: bool = False  # terminó su tanda; la maestra puede "enviar más"
     ronda: int = 1
+    # Actividad EN CURSO (reportada por el kiosco), para el monitor en vivo.
+    actividad_actual: str | None = None
+    pos_actual: int = 0
+    total_actual: int = 0
 
 
 class LiveOut(BaseModel):

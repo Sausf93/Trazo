@@ -224,6 +224,11 @@ class SesionParticipante(Base):
     # Ronda actual (la maestra puede mandar "más" al terminar) y si terminó la ronda.
     ronda: Mapped[int] = mapped_column(Integer, default=1, nullable=False)
     terminado: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    # Actividad que está haciendo AHORA (la reporta el kiosco), para que el monitor
+    # muestre en vivo en qué va cada persona (no solo el último intento enviado).
+    actividad_actual: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    pos_actual: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    total_actual: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
 
     sesion: Mapped[Sesion] = relationship(back_populates="participantes")
 

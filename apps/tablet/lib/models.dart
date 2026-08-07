@@ -353,6 +353,8 @@ class FichaLive {
   final bool atascado;
   final bool terminado;
   final int ronda;
+  final int posActual;
+  final int totalActual;
 
   FichaLive({
     required this.usuarioFinalId,
@@ -364,6 +366,8 @@ class FichaLive {
     required this.atascado,
     required this.terminado,
     required this.ronda,
+    required this.posActual,
+    required this.totalActual,
   });
 
   factory FichaLive.fromJson(Map<String, dynamic> j) => FichaLive(
@@ -377,6 +381,8 @@ class FichaLive {
         atascado: (j['atascado'] ?? false) as bool,
         terminado: (j['terminado'] ?? false) as bool,
         ronda: (j['ronda'] as num?)?.toInt() ?? 0,
+        posActual: (j['pos_actual'] as num?)?.toInt() ?? 0,
+        totalActual: (j['total_actual'] as num?)?.toInt() ?? 0,
       );
 }
 

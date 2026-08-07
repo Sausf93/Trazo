@@ -242,6 +242,12 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
         _cargandoInstancia = false;
         _inicioEjercicio = DateTime.now();
       });
+      // Avisa al monitor de la maestra de en qué actividad va AHORA.
+      final sid = _sesion?.sesionId;
+      if (sid != null) {
+        ApiClient.instance.reportarActual(
+            sid, yo.usuarioFinalId, inst.nombre, _idx + 1, _cola.length);
+      }
     } catch (err) {
       if (!mounted) return;
       setState(() {
@@ -303,7 +309,19 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
 
   // --- Gesto discreto de salida (para la integradora) ---------------------
 
+  // PIN del personal para salir del kiosco. Configurable al compilar con
+  // --dart-define=KIOSK_PIN=xxxx. Evita que un mayor salga y vea la lista de
+  // nombres del centro o se reasigne a otra persona.
+  static const _pinKiosco =
+      String.fromEnvironment('KIOSK_PIN', defaultValue: '1379');
+
   void _menuIntegradora() async {
+    // Primero el PIN: si un usuario mayor abre esto por azar, no puede salir.
+    final okPin = await showDialog<bool>(
+      context: context,
+      builder: (_) => const _PinDialog(pinCorrecto: _pinKiosco),
+    );
+    if (okPin != true || !mounted) return;
     final accion = await showDialog<String>(
       context: context,
       builder: (_) => AlertDialog(
@@ -771,4 +789,118 @@ Future<bool> _confirmarTerminar(BuildContext context) async {
     ),
   );
   return ok ?? false;
+}
+
+/// Teclado de PIN del personal para salir del kiosco (evita que un mayor salga).
+class _PinDialog extends StatefulWidget {
+  final String pinCorrecto;
+  const _PinDialog({required this.pinCorrecto});
+
+  @override
+  State<_PinDialog> createState() => _PinDialogState();
+}
+
+class _PinDialogState extends State<_PinDialog> {
+  String _entrada = '';
+  bool _error = false;
+
+  void _pulsa(String d) {
+    if (_entrada.length >= widget.pinCorrecto.length) return;
+    setState(() {
+      _entrada += d;
+      _error = false;
+    });
+    if (_entrada.length == widget.pinCorrecto.length) {
+      if (_entrada == widget.pinCorrecto) {
+        Navigator.pop(context, true);
+      } else {
+        setState(() {
+          _error = true;
+          _entrada = '';
+        });
+      }
+    }
+  }
+
+  void _borra() {
+    if (_entrada.isNotEmpty) {
+      setState(() => _entrada = _entrada.substring(0, _entrada.length - 1));
+    }
+  }
+
+  Widget _tecla(String d) => SizedBox(
+        width: 64,
+        height: 60,
+        child: OutlinedButton(
+          onPressed: () => _pulsa(d),
+          style: OutlinedButton.styleFrom(
+              side: const BorderSide(color: TrazoColors.sand)),
+          child: Text(d,
+              style: const TextStyle(fontSize: 24, color: TrazoColors.ink)),
+        ),
+      );
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('PIN del personal'),
+      content: SizedBox(
+        width: 300,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                widget.pinCorrecto.length,
+                (i) => Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 6),
+                  width: 16,
+                  height: 16,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: i < _entrada.length
+                        ? TrazoColors.sageDark
+                        : TrazoColors.sand,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            if (_error)
+              const Text('PIN incorrecto',
+                  style: TextStyle(color: TrazoColors.coralDark)),
+            const SizedBox(height: 12),
+            Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              alignment: WrapAlignment.center,
+              children: [
+                for (final d in ['1', '2', '3', '4', '5', '6', '7', '8', '9'])
+                  _tecla(d),
+                const SizedBox(width: 64),
+                _tecla('0'),
+                SizedBox(
+                  width: 64,
+                  height: 60,
+                  child: OutlinedButton(
+                    onPressed: _borra,
+                    style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: TrazoColors.sand)),
+                    child: const Icon(Icons.backspace_outlined,
+                        color: TrazoColors.sageDark),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancelar')),
+      ],
+    );
+  }
 }

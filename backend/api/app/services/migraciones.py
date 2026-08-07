@@ -32,6 +32,23 @@ _COLUMNAS = [
             "postgresql": "DATE",
         },
     ),
+    (
+        "sesion_participantes",
+        "actividad_actual",
+        {"sqlite": "VARCHAR(200)", "postgresql": "VARCHAR(200)"},
+    ),
+    (
+        "sesion_participantes",
+        "pos_actual",
+        {"sqlite": "INTEGER NOT NULL DEFAULT 0",
+         "postgresql": "INTEGER NOT NULL DEFAULT 0"},
+    ),
+    (
+        "sesion_participantes",
+        "total_actual",
+        {"sqlite": "INTEGER NOT NULL DEFAULT 0",
+         "postgresql": "INTEGER NOT NULL DEFAULT 0"},
+    ),
 ]
 
 

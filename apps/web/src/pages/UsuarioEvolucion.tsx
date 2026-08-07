@@ -13,6 +13,7 @@ import { BLOQUES, labelBloque } from "../api/vocab";
 import { AlertCard } from "../components/AlertCard";
 import { EstadoBadge } from "../components/EstadoBadge";
 import { EvolucionChart, construirSerie } from "../components/EvolucionChart";
+import { InformeFamilia } from "../components/InformeFamilia";
 import { SugerenciasNivel } from "../components/SugerenciasNivel";
 import { Card, PageHeader, Spinner, StateMessage } from "../components/ui";
 import { useAuth } from "../auth/AuthContext";
@@ -53,23 +54,46 @@ export function UsuarioEvolucionPage() {
           title={alias}
           subtitle="Evolución en el tiempo comparada con su propio patrón, nunca con otras personas."
           actions={
-            <Link
-              to={`/usuarios/${id}/plan`}
-              style={{
-                display: "inline-block",
-                fontFamily: fonts.sans,
-                fontWeight: 600,
-                fontSize: 15,
-                padding: "11px 20px",
-                borderRadius: radius.sm,
-                border: `1.5px solid ${colors.sage}`,
-                background: colors.sage,
-                color: colors.white,
-                textDecoration: "none",
-              }}
-            >
-              Editar plan de trabajo
-            </Link>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <button
+                type="button"
+                onClick={() => window.print()}
+                disabled={!evolucion.data || evolucion.data.puntos.length === 0}
+                title="Genera una hoja imprimible que puedes guardar como PDF"
+                style={{
+                  fontFamily: fonts.sans,
+                  fontWeight: 600,
+                  fontSize: 15,
+                  padding: "11px 20px",
+                  borderRadius: radius.sm,
+                  border: `1.5px solid ${colors.sageDark}`,
+                  background: colors.sageDark,
+                  color: colors.white,
+                  opacity: !evolucion.data || evolucion.data.puntos.length === 0 ? 0.55 : 1,
+                  cursor:
+                    !evolucion.data || evolucion.data.puntos.length === 0 ? "not-allowed" : "pointer",
+                }}
+              >
+                Informe para la familia (PDF)
+              </button>
+              <Link
+                to={`/usuarios/${id}/plan`}
+                style={{
+                  display: "inline-block",
+                  fontFamily: fonts.sans,
+                  fontWeight: 600,
+                  fontSize: 15,
+                  padding: "11px 20px",
+                  borderRadius: radius.sm,
+                  border: `1.5px solid ${colors.sage}`,
+                  background: colors.sage,
+                  color: colors.white,
+                  textDecoration: "none",
+                }}
+              >
+                Editar plan de trabajo
+              </Link>
+            </div>
           }
         />
       </div>
@@ -212,6 +236,16 @@ export function UsuarioEvolucionPage() {
             </div>
           </Card>
         </section>
+      )}
+
+      {/* Informe imprimible para la familia: oculto en pantalla, visible al imprimir. */}
+      {evolucion.data && evolucion.data.puntos.length > 0 && (
+        <InformeFamilia
+          alias={alias}
+          bloqueLabel={labelBloque(bloque)}
+          evolucion={evolucion.data}
+          serie={serie}
+        />
       )}
     </div>
   );

@@ -108,3 +108,47 @@ textarea {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+ * Informe para la familia (imprimible / "Guardar como PDF")
+ *
+ * En pantalla, el informe existe en el DOM pero está fuera de la vista, con un
+ * ancho fijo para que la gráfica (Recharts ResponsiveContainer) pueda medirse.
+ * Al imprimir se oculta el resto de la app y solo se muestra el informe.
+ * ------------------------------------------------------------------------ */
+.trazo-informe {
+  position: absolute;
+  left: -10000px;
+  top: 0;
+  width: 680px; /* ancho estable ~ A4 con márgenes; evita gráfica a 0px */
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  /* Ocultar toda la app (navegación, cabeceras, botones…) salvo el informe. */
+  body * {
+    visibility: hidden;
+  }
+  .trazo-informe,
+  .trazo-informe * {
+    visibility: visible;
+  }
+
+  /* Traer el informe al área imprimible y forzar impresión de color/fondos. */
+  .trazo-informe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+}

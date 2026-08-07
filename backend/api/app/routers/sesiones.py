@@ -18,6 +18,7 @@ from app.models import (
     UsuarioStaff,
 )
 from app.schemas import (
+    ActividadActualIn,
     FichaViva,
     LineaConfig,
     LiveOut,
@@ -448,11 +449,30 @@ async def marcar_terminado(
     login de staff O por token de dispositivo."""
     sp = await _get_participante(db, sesion_id, usuario_id, acceso.centro_id)
     sp.terminado = True
+    sp.actividad_actual = None  # ya no está en ninguna actividad
     await db.commit()
     ses = await db.get(Sesion, sesion_id)
     return ParticipanteEstadoOut(
         iniciada=bool(ses and ses.iniciada), ronda=sp.ronda, terminado=True
     )
+
+
+@router.patch("/{sesion_id}/participantes/{usuario_id}/actual",
+              status_code=status.HTTP_204_NO_CONTENT)
+async def reportar_actividad_actual(
+    sesion_id: str,
+    usuario_id: str,
+    body: ActividadActualIn,
+    db: AsyncSession = Depends(get_db),
+    acceso: Acceso = Depends(acceso_centro),
+):
+    """El kiosco reporta en qué actividad va AHORA la persona, para que el monitor
+    de la maestra lo muestre en vivo (no solo el último intento enviado)."""
+    sp = await _get_participante(db, sesion_id, usuario_id, acceso.centro_id)
+    sp.actividad_actual = body.actividad
+    sp.pos_actual = body.pos
+    sp.total_actual = body.total
+    await db.commit()
 
 
 @router.patch("/{sesion_id}/participantes/{usuario_id}/mas",
@@ -567,16 +587,22 @@ async def sesion_live(
                 segundos = (ahora - ref).total_seconds()
                 atascado = (not ses.cerrada) and segundos >= SEGUNDOS_ATASCADO
 
+        # En curso: si el kiosco reportó la actividad actual y no ha terminado,
+        # eso es lo que la maestra debe ver (no el último intento enviado).
+        en_curso = (not p.terminado) and p.actividad_actual is not None
         fichas.append(FichaViva(
             usuario_final_id=p.usuario_final_id,
             alias_interno=uf.alias_interno if uf else "?",
-            ejercicio_actual=ejercicio_actual,
+            ejercicio_actual=p.actividad_actual if en_curso else ejercicio_actual,
             ultimo_estado=ultimo_estado,
             ultimo_intento_id=ultimo.id if ultimo is not None else None,
             segundos_desde_ultimo_intento=segundos,
             atascado=atascado,
             terminado=p.terminado,
             ronda=p.ronda,
+            actividad_actual=p.actividad_actual,
+            pos_actual=p.pos_actual,
+            total_actual=p.total_actual,
         ))
 
     return LiveOut(sesion_id=sesion_id, tipo=ses.tipo, fichas=fichas)

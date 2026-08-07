@@ -1330,6 +1330,16 @@ class _FichaCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(color: TrazoColors.sageDark),
           ),
+          // Posición dentro de su tanda (ej. "Actividad 2 de 5"), en vivo.
+          if (!terminado && ficha.totalActual > 0)
+            Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: Text(
+                'Actividad ${ficha.posActual} de ${ficha.totalActual}',
+                style: const TextStyle(
+                    fontSize: 12, color: TrazoColors.sageDark),
+              ),
+            ),
           const Spacer(),
           // Cómo fue la última actividad (LA medición de la integradora): un toque.
           if (puedeMarcar)

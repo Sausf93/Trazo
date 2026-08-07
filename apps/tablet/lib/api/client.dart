@@ -324,6 +324,20 @@ class ApiClient {
         jsonDecode(resp.body) as Map<String, dynamic>);
   }
 
+  /// El kiosco reporta en qué actividad va AHORA (para el monitor en vivo).
+  /// Fire-and-forget: si falla, no pasa nada (se reintenta al siguiente ejercicio).
+  Future<void> reportarActual(
+      String sesionId, String usuarioId, String? actividad, int pos, int total) async {
+    try {
+      await http
+          .patch(_u('/sesiones/$sesionId/participantes/$usuarioId/actual'),
+              headers: _headers,
+              body: jsonEncode(
+                  {'actividad': actividad, 'pos': pos, 'total': total}))
+          .timeout(_kTimeout, onTimeout: _timeoutErr);
+    } catch (_) {}
+  }
+
   /// La maestra manda OTRA tanda a quien terminó (sube `ronda`, reinicia
   /// `terminado`). Body opcional `{nivel?, lineas:[{bloque,n}]}`; sin body
   /// repite la config/plan del participante.
