@@ -242,7 +242,7 @@
      ]
     },
     {
-     "id": "plancha",
+     "id": "telefono",
      "instruccion": "¿Cómo se llama esto?",
      "imagen": "telefono",
      "correcta": "teléfono",
@@ -253,7 +253,7 @@
      ]
     },
     {
-     "id": "regadera",
+     "id": "martillo",
      "instruccion": "¿Cómo se llama esto?",
      "imagen": "martillo",
      "correcta": "martillo",
@@ -413,7 +413,7 @@
      ]
     },
     {
-     "id": "aguja",
+     "id": "zapato",
      "instruccion": "¿Qué va con el zapato?",
      "imagen": "zapato",
      "correcta": "calcetín",
@@ -928,16 +928,15 @@
   "bloque": "percepcion",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta cuántos hay",
-  "descripcion": "Una escena con varios objetos; contar cuántos hay del que se pide. Cantidad cambiante.",
+  "descripcion": "Una escena con varias fresas; contar cuántas hay. Cantidad cambiante.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
+   "instruccion": "Cuenta cuántas fresas hay",
    "cantidad_min": 3,
    "cantidad_max": 6,
    "objetos": [
-    "fresa",
-    "limon",
-    "uvas"
+    "fresa"
    ]
   }
  },
@@ -1197,7 +1196,7 @@
   "nombre": "Reúne el importe (solo monedas)",
   "descripcion": "Junta una cantidad pequeña usando solo monedas de euro, sin céntimos. Banda fácil; el importe cambia cada vez.",
   "parametros_json": {
-   "dificultad": "media",
+   "dificultad": "facil",
    "modo": "dinero",
    "con_centimos": false,
    "denominaciones_c": [
@@ -1471,9 +1470,9 @@
   "bloque": "vida_cotidiana",
   "plantilla_tipo": "manejo_cantidad",
   "nombre": "¿Qué hora marca?",
-  "descripcion": "Un reloj analógico sencillo; decir o seleccionar qué hora es. Orientación temporal.",
+  "descripcion": "Un reloj analógico sencillo; decir o seleccionar qué hora es. Horas en punto y cuartos. Orientación temporal.",
   "parametros_json": {
-   "dificultad": "dificil",
+   "dificultad": "media",
    "modo": "reloj",
    "minutos": [
     0,
@@ -2224,16 +2223,15 @@
   "bloque": "razonamiento",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta las monedas",
-  "descripcion": "Contar cuántas monedas (o fichas) hay del tipo que se pide. Cantidad cambiante.",
+  "descripcion": "Contar cuántas monedas de euro hay sobre la mesa. Cantidad cambiante.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
-   "instruccion": "Cuenta cuántas hay",
+   "instruccion": "Cuenta cuántas monedas hay",
    "cantidad_min": 3,
    "cantidad_max": 8,
    "objetos": [
-    "moneda_dorada",
-    "moneda_plateada"
+    "moneda_1e"
    ]
   }
  },
@@ -2258,7 +2256,7 @@
   "bloque": "percepcion",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta los animales",
-  "descripcion": "Una escena con varios animales; contar cuántos hay del que se pide. Tarea variable cada vez.",
+  "descripcion": "Una escena con animales de la granja; contar cuántos hay o cuál grupo tiene más. Tarea variable cada vez.",
   "parametros_json": {
    "dificultad": "media",
    "modos": [
@@ -2269,9 +2267,9 @@
    "cantidad_min": 2,
    "cantidad_max": 6,
    "objetos": [
-    "naranja",
-    "manzana_verde",
-    "tomate"
+    "gallina",
+    "oveja",
+    "conejo"
    ]
   }
  },
