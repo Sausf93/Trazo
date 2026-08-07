@@ -4,7 +4,11 @@ from __future__ import annotations
 from datetime import date, datetime
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
+
+from app.models import BLOQUES
+
+NIVELES = ("bajo", "medio", "alto")
 
 
 # ---- Auth ----
@@ -76,10 +80,24 @@ class InstanciaOut(BaseModel):
 
 # ---- Sesiones ----
 
+def _validar_nivel(v: str | None) -> str | None:
+    """Nivel de sesión: solo bajo/medio/alto (None = usa el del plan)."""
+    if v is not None and v not in NIVELES:
+        raise ValueError(f"nivel inválido: {v} (usa {', '.join(NIVELES)})")
+    return v
+
+
 class LineaConfig(BaseModel):
     """Una categoría (bloque) y cuántas actividades de ella en la sesión."""
     bloque: str
     n: int = Field(default=1, ge=1, le=50)
+
+    @field_validator("bloque")
+    @classmethod
+    def _bloque_valido(cls, v: str) -> str:
+        if v not in BLOQUES:
+            raise ValueError(f"bloque inválido: {v}")
+        return v
 
 
 class ParticipanteConfigIn(BaseModel):
@@ -91,6 +109,8 @@ class ParticipanteConfigIn(BaseModel):
     usuario_final_id: str
     nivel: str | None = None  # bajo | medio | alto (aplica a toda su sesión)
     lineas: list[LineaConfig] = Field(default_factory=list)
+
+    _nivel_ok = field_validator("nivel")(_validar_nivel)
 
 
 class SesionIn(BaseModel):
@@ -126,6 +146,8 @@ class ParticipanteMasIn(BaseModel):
     """Otra tanda para un participante que terminó (opcional, nueva config)."""
     nivel: str | None = None
     lineas: list[LineaConfig] = Field(default_factory=list)
+
+    _nivel_ok = field_validator("nivel")(_validar_nivel)
 
 
 class ParticipanteEstadoOut(BaseModel):

@@ -368,6 +368,30 @@ async def test_n_disparatado_rechazado(client):
     assert r.status_code == 422, r.text  # n fuera de rango (le=50)
 
 
+@pytest.mark.asyncio
+async def test_bloque_o_nivel_invalido_rechazado(client):
+    login, headers = await _login(client)
+    centro_id = login["centro_id"]
+    usuarios = await _usuarios(client, headers, centro_id)
+    paco = usuarios["Paco"]
+
+    # Bloque inexistente -> 422 (no cola vacía silenciosa).
+    r = await client.post(
+        "/sesiones", headers=headers,
+        json={"tipo": "individual", "participantes": [paco["id"]],
+              "configs": [{"usuario_final_id": paco["id"],
+                           "lineas": [{"bloque": "inventado", "n": 1}]}]})
+    assert r.status_code == 422, r.text
+
+    # Nivel inválido -> 422.
+    r = await client.post(
+        "/sesiones", headers=headers,
+        json={"tipo": "individual", "participantes": [paco["id"]],
+              "configs": [{"usuario_final_id": paco["id"], "nivel": "altisimo",
+                           "lineas": [{"bloque": "razonamiento", "n": 1}]}]})
+    assert r.status_code == 422, r.text
+
+
 # --------------------------------------------------------------------------
 #  IDOR (RGPD): staff de otro centro -> 403 en endpoints con id ajeno
 # --------------------------------------------------------------------------
