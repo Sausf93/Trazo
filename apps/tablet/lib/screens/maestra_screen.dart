@@ -285,8 +285,53 @@ class _AbrirSalaState extends State<_AbrirSala> {
     }
   }
 
+  /// Aviso (no bloqueante) si otra facilitadora ya tiene una sala EN VIVO
+  /// abierta en el centro, para no duplicar salas sin querer. Devuelve true si
+  /// la maestra decide abrir otra igualmente.
+  Future<bool> _avisarSiHaySalaAbierta() async {
+    List<SesionHistorial> abiertas;
+    try {
+      abiertas = await ApiClient.instance
+          .sesionesAnteriores(estado: 'abierta', limit: 10);
+    } catch (_) {
+      return true; // si no se puede comprobar, no estorbamos
+    }
+    if (abiertas.isEmpty || !mounted) return true;
+    final s = abiertas.first;
+    final quien = (s.staffNombre != null && s.staffNombre!.isNotEmpty)
+        ? s.staffNombre!
+        : 'otra persona';
+    final continuar = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Ya hay una sala abierta'),
+        content: Text(
+          abiertas.length == 1
+              ? 'Hay una sala abierta ("${s.nombre}", ${s.nParticipantes} personas) '
+                  'iniciada por $quien. ¿Quieres abrir otra igualmente?'
+              : 'Hay ${abiertas.length} salas abiertas en el centro. '
+                  '¿Quieres abrir otra igualmente?',
+        ),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: const Text('Cancelar')),
+          ElevatedButton(
+              onPressed: () => Navigator.pop(ctx, true),
+              child: const Text('Abrir otra')),
+        ],
+      ),
+    );
+    return continuar ?? false;
+  }
+
   Future<void> _abrir() async {
     if (_seleccionados.isEmpty || _nombre.text.trim().isEmpty) return;
+    // Solo para salas en vivo: si hay otra abierta, confirmamos antes.
+    if (!_programar) {
+      final seguir = await _avisarSiHaySalaAbierta();
+      if (!seguir || !mounted) return;
+    }
     setState(() {
       _creando = true;
       _error = null;

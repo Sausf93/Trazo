@@ -127,28 +127,49 @@ async def listar_sesiones(
         raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
     stmt = select(Sesion).where(Sesion.centro_id == centro_id)
     if estado == "abierta":
-        stmt = stmt.where(Sesion.abierta.is_(True), Sesion.cerrada.is_(False))
+        # Solo salas EN VIVO reales: abiertas, sin cerrar y no "zombi" (viejas).
+        corte = datetime.now(timezone.utc) - timedelta(hours=_HORAS_SALA_VIVA)
+        stmt = stmt.where(
+            Sesion.abierta.is_(True),
+            Sesion.cerrada.is_(False),
+            Sesion.fecha >= corte,
+        )
     elif estado == "cerrada":
         stmt = stmt.where(Sesion.cerrada.is_(True))
     elif estado == "programada":
         stmt = stmt.where(Sesion.abierta.is_(False), Sesion.cerrada.is_(False))
     stmt = stmt.order_by(Sesion.fecha.desc()).limit(max(1, min(limit, 100)))
     sesiones = (await db.execute(stmt)).scalars().all()
+    if not sesiones:
+        return []
 
-    salida: list[SesionResumenOut] = []
-    for ses in sesiones:
-        n = (
-            await db.execute(
-                select(func.count()).select_from(SesionParticipante).where(
-                    SesionParticipante.sesion_id == ses.id)
-            )
-        ).scalar() or 0
-        salida.append(SesionResumenOut(
+    ids = [s.id for s in sesiones]
+    # Conteo de participantes de TODAS las sesiones en una sola consulta (sin N+1).
+    filas = (await db.execute(
+        select(SesionParticipante.sesion_id, func.count())
+        .where(SesionParticipante.sesion_id.in_(ids))
+        .group_by(SesionParticipante.sesion_id)
+    )).all()
+    conteo = {sid: n for sid, n in filas}
+    # Nombre del staff que abrió cada sesión (una consulta para todos).
+    staff_ids = {s.staff_id for s in sesiones if s.staff_id}
+    nombres: dict[str, str] = {}
+    if staff_ids:
+        nombres = dict((await db.execute(
+            select(UsuarioStaff.id, UsuarioStaff.nombre)
+            .where(UsuarioStaff.id.in_(staff_ids))
+        )).all())
+
+    return [
+        SesionResumenOut(
             id=ses.id, nombre=ses.nombre, fecha=ses.fecha, modo=ses.modo,
             abierta=ses.abierta, iniciada=ses.iniciada, cerrada=ses.cerrada,
-            n_participantes=n,
-        ))
-    return salida
+            n_participantes=conteo.get(ses.id, 0),
+            staff_id=ses.staff_id,
+            staff_nombre=nombres.get(ses.staff_id),
+        )
+        for ses in sesiones
+    ]
 
 
 @router.get("/{sesion_id}/resumen", response_model=ResumenSesionOut)

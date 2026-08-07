@@ -164,6 +164,7 @@ class SesionHistorial {
   final String fecha; // ISO
   final int nParticipantes;
   final bool cerrada;
+  final String? staffNombre; // quién la abrió (para avisar de sala duplicada)
 
   SesionHistorial({
     required this.id,
@@ -171,6 +172,7 @@ class SesionHistorial {
     required this.fecha,
     required this.nParticipantes,
     required this.cerrada,
+    this.staffNombre,
   });
 
   factory SesionHistorial.fromJson(Map<String, dynamic> j) => SesionHistorial(
@@ -179,6 +181,7 @@ class SesionHistorial {
         fecha: (j['fecha'] ?? '') as String,
         nParticipantes: (j['n_participantes'] as num?)?.toInt() ?? 0,
         cerrada: (j['cerrada'] ?? false) as bool,
+        staffNombre: j['staff_nombre'] as String?,
       );
 
   /// Fecha en formato corto "dd/mm hh:mm" para la UI.

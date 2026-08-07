@@ -198,6 +198,9 @@ class SesionResumenOut(BaseModel):
     iniciada: bool
     cerrada: bool
     n_participantes: int
+    # Quién la abrió (para avisar si otra facilitadora ya tiene sala abierta).
+    staff_id: str | None = None
+    staff_nombre: str | None = None
 
 
 class ResumenParticipante(BaseModel):
