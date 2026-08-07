@@ -1,7 +1,7 @@
 """Sesiones (individual/grupo) y vista en vivo para la facilitadora."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import func, select
@@ -38,6 +38,9 @@ from app.schemas import (
 router = APIRouter(prefix="/sesiones", tags=["sesiones"])
 
 SEGUNDOS_ATASCADO = 30.0
+# Una sala abierta más antigua que esto se considera "zombi" y ya no se sirve a
+# los kioscos (la maestra no la cerró; evita actividades sin supervisión).
+_HORAS_SALA_VIVA = 12
 
 
 def _config_json(nivel: str | None, lineas: list[LineaConfig]) -> dict | None:
@@ -69,6 +72,9 @@ async def sesion_activa(
     """
     if centro_id != acceso.centro_id:
         raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
+    # Solo salas RECIENTES: una sala que quedó "abierta" de un día anterior (la
+    # maestra no la cerró) no debe seguir sirviendo actividades sin supervisión.
+    limite = datetime.now(timezone.utc) - timedelta(hours=_HORAS_SALA_VIVA)
     ses = (
         await db.execute(
             select(Sesion)
@@ -76,6 +82,7 @@ async def sesion_activa(
                 Sesion.centro_id == centro_id,
                 Sesion.cerrada.is_(False),
                 Sesion.abierta.is_(True),
+                Sesion.fecha >= limite,
             )
             .order_by(Sesion.fecha.desc())
             .limit(1)
