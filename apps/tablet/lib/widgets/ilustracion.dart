@@ -125,7 +125,7 @@ class IlustracionResolver {
     // Casa / muebles / objetos
     'silla', 'mesa', 'cama', 'sofa', 'lampara', 'puerta', 'ventana', 'telefono',
     'television', 'llave', 'libro', 'lapiz', 'tijeras', 'peine',
-    'cepillo_dientes', 'jabon', 'toalla', 'espejo',
+    'cepillo_dientes', 'jabon', 'toalla', 'espejo', 'casa', 'reloj',
     // Herramientas
     'martillo', 'destornillador', 'llave_inglesa', 'sierra', 'pincel',
     // Vehículos
@@ -171,7 +171,24 @@ class IlustracionResolver {
     'estrellita': 'estrella',
     'margarita': 'flor',
     'rosa': 'flor',
+    'clavel': 'flor',
+    'geranio': 'flor',
+    'tulipan': 'flor',
+    'lirio': 'flor',
+    'amapola': 'flor',
+    'planta': 'flor',
+    'maceta': 'flor',
     'girasol': 'sol',
+    // Casa / reloj (variantes)
+    'casas': 'casa',
+    'hogar': 'casa',
+    'vivienda': 'casa',
+    'chalet': 'casa',
+    'relojes': 'reloj',
+    'reloj_pared': 'reloj',
+    'despertador': 'reloj',
+    'cafe_leche': 'cafe',
+    'cafe_con_leche': 'cafe',
     // Fichas / botones de conteo -> monedas o figuras reconocibles
     'ficha_roja': 'circulo',
     'ficha_azul': 'circulo',
