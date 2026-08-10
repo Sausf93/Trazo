@@ -23,11 +23,13 @@ from app.services.anomalias import (
     IntentoObs,
     agregar_por_sesion,
     detectar_desviacion,
+    detectar_missingness,
     detectar_tendencia_tiempo,
     firma_dificultad,
     rendimiento_resultado,
     segmento_dificultad_actual,
 )
+from app.services.correccion import hubo_interaccion
 
 
 def _tiempo_ms(intento: Intento) -> float | None:
@@ -90,6 +92,16 @@ async def evaluar_usuario_bloque(
     if not intentos:
         return None
 
+    # Vigilancia de "dejar de participar" (missingness): fracción de actividades
+    # SIN INTERACCIÓN por sesión. Necesita la plantilla de cada ejercicio.
+    ej_ids = {i.ejercicio_id for i in intentos}
+    plantillas = dict((await db.execute(
+        select(EjercicioCatalogo.id, EjercicioCatalogo.plantilla_tipo)
+        .where(EjercicioCatalogo.id.in_(ej_ids))
+    )).all()) if ej_ids else {}
+    res_missing = _evaluar_missingness(list(intentos), plantillas)
+    hay_missing = res_missing is not None and res_missing.hay_desconexion
+
     obs = _observaciones(list(intentos))
 
     # (1) Agregar por sesión y (2) quedarnos con el tramo de dificultad vigente.
@@ -123,7 +135,7 @@ async def evaluar_usuario_bloque(
         and _declive_sostenido(serie_rend, res_rend)
     )
     hay_tiempo = res_tiempo is not None and res_tiempo.hay_tendencia
-    if not hay_rend and not hay_tiempo:
+    if not hay_rend and not hay_tiempo and not hay_missing:
         return None
 
     # Evitar duplicar: ¿ya hay una alerta abierta de este bloque?
@@ -140,7 +152,7 @@ async def evaluar_usuario_bloque(
         return None
 
     descripcion, contexto = _redactar(bloque, unidad, res_rend, res_tiempo,
-                                      hay_rend, hay_tiempo)
+                                      hay_rend, hay_tiempo, res_missing, hay_missing)
 
     alerta = Alerta(
         usuario_final_id=usuario_final_id,
@@ -151,6 +163,23 @@ async def evaluar_usuario_bloque(
     )
     db.add(alerta)
     return alerta
+
+
+def _evaluar_missingness(intentos: list[Intento], plantillas: dict[str, str]):
+    """Serie de fracción SIN INTERACCIÓN por sesión y su detección de tendencia."""
+    por_sesion: dict[str, list[bool]] = {}
+    orden: list[str] = []
+    for i in intentos:
+        if i.sesion_id not in por_sesion:
+            por_sesion[i.sesion_id] = []
+            orden.append(i.sesion_id)
+        plantilla = plantillas.get(i.ejercicio_id, "")
+        por_sesion[i.sesion_id].append(hubo_interaccion(plantilla, i.valores_json))
+    serie_tasa = [
+        sum(1 for tocado in por_sesion[s] if not tocado) / len(por_sesion[s])
+        for s in orden if por_sesion[s]
+    ]
+    return detectar_missingness(serie_tasa)
 
 
 def _declive_sostenido(serie: list[float], res) -> bool:
@@ -183,18 +212,33 @@ def _tiempos_relativos_intento(intentos: list[IntentoObs]) -> list[float]:
     return serie
 
 
-def _redactar(bloque, unidad, res_rend, res_tiempo, hay_rend, hay_tiempo):
-    """Construye descripción + contexto alineados con la señal y la unidad."""
+def _redactar(bloque, unidad, res_rend, res_tiempo, hay_rend, hay_tiempo,
+              res_missing=None, hay_missing=False):
+    """Construye descripción + contexto alineados con la(s) señal(es)."""
     contexto: dict = {"unidad": unidad}
-    if hay_rend and hay_tiempo:
-        senal = "rendimiento_y_latencia"
-    elif hay_rend:
-        senal = "rendimiento"
-    else:
-        senal = "latencia"
-    contexto["senal"] = senal
+    senales = []
+    if hay_rend:
+        senales.append("rendimiento")
+    if hay_tiempo:
+        senales.append("latencia")
+    if hay_missing:
+        senales.append("desconexion")
+    contexto["senal"] = "_y_".join(senales) if senales else "ninguna"
 
     frases: list[str] = []
+    if hay_missing and res_missing is not None:
+        contexto.update({
+            "desconexion_baseline_tasa": res_missing.baseline_tasa,
+            "desconexion_reciente_tasa": res_missing.reciente_tasa,
+            "desconexion_n_baseline": res_missing.n_baseline,
+            "desconexion_n_reciente": res_missing.n_reciente,
+        })
+        pct = round(res_missing.reciente_tasa * 100)
+        frases.append(
+            f"participa cada vez menos: en las últimas {res_missing.n_reciente} "
+            f"sesiones dejó sin intentar el {pct}% de las actividades (antes, un "
+            f"{round(res_missing.baseline_tasa * 100)}%)"
+        )
     if hay_rend:
         contexto.update({
             "baseline_media": res_rend.baseline_media,

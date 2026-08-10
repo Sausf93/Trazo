@@ -56,6 +56,7 @@ export interface PuntoEvolucion {
 
 export interface ResumenEvolucion {
   n_intentos: number;
+  n_sin_valorar: number;
   rendimiento_medio: number | null;
   tasa_ayuda: number | null;
 }

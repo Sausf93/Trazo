@@ -192,6 +192,38 @@ def _evocacion_libre(v, o):
     return "sin_valorar"
 
 
+def hubo_interaccion(plantilla: str, valores: dict | None) -> bool:
+    """¿La persona TOCÓ/interactuó con la actividad? (independiente de acertar).
+
+    Sirve para la vigilancia de "dejar de participar" (missingness): distingue el
+    NO-INTENTO real de una tarea que la app no puede juzgar pero sí se intentó.
+    Ante la duda (reloj, respuesta abierta), asumimos que SÍ interactuó, para no
+    inflar falsamente la señal de desconexión.
+    """
+    v = valores or {}
+    if plantilla == "seleccion_multiple":
+        return bool(v.get("eleccion"))
+    if plantilla == "conteo_comparacion":
+        return v.get("respuesta") not in (None, "")
+    if plantilla in ("memoria_visual", "busqueda_visual"):
+        aciertos = int(_num(v.get("aciertos"), 0) or 0)
+        fallos = int(_num(v.get("fallos"), 0) or 0)
+        return (aciertos + fallos) > 0 or bool(v.get("seleccionadas"))
+    if plantilla == "secuencia_ordenar":
+        return int(_num(v.get("movimientos"), 0) or 0) > 0
+    if plantilla == "arrastrar_posicion":
+        return bool(v.get("colocaciones"))
+    if plantilla == "trazo":
+        return int(_num(v.get("puntos_capturados"), 0) or 0) > 0
+    if plantilla == "manejo_cantidad":
+        if "hora_elegida" in v:
+            return True  # reloj: no podemos saberlo -> asumimos que sí
+        return bool(v.get("monedas_usadas"))
+    if plantilla == "evocacion_libre":
+        return True  # respuesta oral: no la oímos -> asumimos que sí
+    return True
+
+
 _CORRECTORES = {
     "seleccion_multiple": _seleccion_multiple,
     "conteo_comparacion": _conteo_comparacion,

@@ -294,3 +294,52 @@ def detectar_tendencia_tiempo(
         n_baseline=len(baseline),
         n_reciente=len(reciente),
     )
+
+
+@dataclass
+class ResultadoMissingness:
+    hay_desconexion: bool
+    baseline_tasa: float
+    reciente_tasa: float
+    n_baseline: int
+    n_reciente: int
+
+
+def detectar_missingness(
+    serie_tasa: list[float],
+    ventana_reciente: int = 2,
+    min_baseline: int = 4,
+    subida_absoluta: float = 0.25,
+    piso_reciente: float = 0.4,
+) -> ResultadoMissingness | None:
+    """Detecta que la persona DEJA DE PARTICIPAR cada vez más.
+
+    Guarda del neuropsicólogo: dejar de interactuar (no-intento) no puede caer en
+    el olvido, porque quien se deteriora suele hacer justo eso. `serie_tasa` es la
+    FRACCIÓN de actividades sin interacción por sesión (0..1), de más antigua a
+    más reciente. Alerta si la ventana reciente sube de forma sostenida respecto
+    al patrón habitual Y supera un piso absoluto (evita falsas alarmas cuando
+    todo el histórico ya tenía algo de no-intento por la mezcla de actividades).
+    """
+    if len(serie_tasa) < min_baseline + ventana_reciente:
+        return None
+
+    baseline = serie_tasa[:-ventana_reciente]
+    reciente = serie_tasa[-ventana_reciente:]
+    media_base = statistics.fmean(baseline)
+    media_rec = statistics.fmean(reciente)
+
+    # Sostenido: TODA la ventana reciente por encima del baseline (no un pico).
+    sostenido = all(x > media_base for x in reciente)
+    hay = (
+        sostenido
+        and (media_rec - media_base) >= subida_absoluta
+        and media_rec >= piso_reciente
+    )
+    return ResultadoMissingness(
+        hay_desconexion=hay,
+        baseline_tasa=round(media_base, 4),
+        reciente_tasa=round(media_rec, 4),
+        n_baseline=len(baseline),
+        n_reciente=len(reciente),
+    )

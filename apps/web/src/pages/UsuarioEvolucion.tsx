@@ -168,6 +168,11 @@ export function UsuarioEvolucionPage() {
           hint={bloque ? labelBloque(bloque) : "Todos los bloques"}
         />
         <ResumenTile
+          label="Sin valorar"
+          value={String(evolucion.data?.resumen.n_sin_valorar ?? "—")}
+          hint="No intentadas o pendientes de revisar (no cuentan)"
+        />
+        <ResumenTile
           label="Sesiones a revisar"
           value={String(nAnomalos)}
           hint="El sistema sugiere mirarlas; no es un juicio"
