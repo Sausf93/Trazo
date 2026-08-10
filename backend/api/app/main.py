@@ -4,11 +4,14 @@ from __future__ import annotations
 import logging
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from sqlalchemy import text
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import settings
-from app.database import AsyncSessionLocal, Base, engine
+from app.database import AsyncSessionLocal, Base, engine, get_db
 
 # Importar modelos para que Base los conozca al crear las tablas.
 from app import models  # noqa: F401
@@ -73,8 +76,20 @@ async def raiz():
 
 
 @app.get("/health", tags=["salud"])
-async def health():
-    return {"status": "ok"}
+async def health(db: AsyncSession = Depends(get_db)):
+    """Sonda de salud: comprueba que la base de datos responde.
+
+    Devuelve 200 {"status":"ok"} si la BD contesta, o 503 {"status":"degraded"}
+    si no. Pensada para el health check del hosting (readiness probe)."""
+    try:
+        await db.execute(text("SELECT 1"))
+    except Exception:  # pragma: no cover
+        logger.exception("Health check: la base de datos no responde")
+        return JSONResponse(
+            status_code=503,
+            content={"status": "degraded", "database": "down"},
+        )
+    return {"status": "ok", "database": "up"}
 
 
 app.include_router(auth.router)
