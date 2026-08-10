@@ -93,18 +93,17 @@ async def sesion_activa(
     if ses is None:
         return SesionActivaOut()
 
-    parts = (
-        await db.execute(
-            select(SesionParticipante).where(SesionParticipante.sesion_id == ses.id)
-        )
-    ).scalars().all()
-    participantes: list[ParticipanteSesion] = []
-    for p in parts:
-        uf = await db.get(UsuarioFinal, p.usuario_final_id)
-        participantes.append(ParticipanteSesion(
-            usuario_final_id=p.usuario_final_id,
-            alias_interno=uf.alias_interno if uf else "?",
-        ))
+    # Participantes + alias en UNA consulta (sin N+1): la consulta el kiosco por
+    # polling, así que evitar el bucle de gets importa.
+    filas = (await db.execute(
+        select(SesionParticipante.usuario_final_id, UsuarioFinal.alias_interno)
+        .join(UsuarioFinal, UsuarioFinal.id == SesionParticipante.usuario_final_id)
+        .where(SesionParticipante.sesion_id == ses.id)
+    )).all()
+    participantes = [
+        ParticipanteSesion(usuario_final_id=uid, alias_interno=alias)
+        for uid, alias in filas
+    ]
     return SesionActivaOut(
         sesion_id=ses.id, nombre=ses.nombre, modo=ses.modo,
         iniciada=ses.iniciada,
@@ -329,35 +328,41 @@ async def sesiones_programadas(
         )
     ).scalars().all()
 
-    salida: list[SesionProgramadaOut] = []
-    for ses in sesiones:
-        parts = (
-            await db.execute(
-                select(SesionParticipante).where(
-                    SesionParticipante.sesion_id == ses.id
-                )
-            )
-        ).scalars().all()
-        participantes: list[ParticipanteProgramadoOut] = []
-        for p in parts:
-            uf = await db.get(UsuarioFinal, p.usuario_final_id)
-            cfg = p.config_json or {}
-            lineas = [
-                LineaConfig(bloque=ln.get("bloque"), n=ln.get("n", 1))
-                for ln in (cfg.get("lineas") or [])
-            ]
-            participantes.append(ParticipanteProgramadoOut(
-                usuario_final_id=p.usuario_final_id,
-                alias_interno=uf.alias_interno if uf else "?",
-                nivel=cfg.get("nivel"),
-                lineas=lineas,
-            ))
-        salida.append(SesionProgramadaOut(
+    if not sesiones:
+        return []
+    # Participantes + alias de TODAS las sesiones en una consulta (sin N+1).
+    ids = [s.id for s in sesiones]
+    filas = (await db.execute(
+        select(
+            SesionParticipante.sesion_id,
+            SesionParticipante.usuario_final_id,
+            SesionParticipante.config_json,
+            UsuarioFinal.alias_interno,
+        )
+        .join(UsuarioFinal, UsuarioFinal.id == SesionParticipante.usuario_final_id)
+        .where(SesionParticipante.sesion_id.in_(ids))
+    )).all()
+    por_sesion: dict[str, list[ParticipanteProgramadoOut]] = {}
+    for sid, uf_id, config_json, alias in filas:
+        cfg = config_json or {}
+        lineas = [
+            LineaConfig(bloque=ln.get("bloque"), n=ln.get("n", 1))
+            for ln in (cfg.get("lineas") or [])
+        ]
+        por_sesion.setdefault(sid, []).append(ParticipanteProgramadoOut(
+            usuario_final_id=uf_id,
+            alias_interno=alias,
+            nivel=cfg.get("nivel"),
+            lineas=lineas,
+        ))
+    return [
+        SesionProgramadaOut(
             id=ses.id, nombre=ses.nombre, modo=ses.modo,
             programada_para=ses.programada_para, fecha=ses.fecha,
-            participantes=participantes,
-        ))
-    return salida
+            participantes=por_sesion.get(ses.id, []),
+        )
+        for ses in sesiones
+    ]
 
 
 @router.patch("/{sesion_id}/abrir", response_model=SesionOut)
