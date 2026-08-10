@@ -49,6 +49,10 @@ def _tiempo_ms(intento: Intento) -> float | None:
 def _observaciones(intentos: list[Intento]) -> list[IntentoObs]:
     obs: list[IntentoObs] = []
     for i in intentos:
+        # Los intentos SIN VALORAR por la integradora no son evidencia de
+        # rendimiento: se excluyen del cálculo (ni suman ni restan).
+        if i.estado == "sin_valorar":
+            continue
         obs.append(
             IntentoObs(
                 sesion_id=i.sesion_id,

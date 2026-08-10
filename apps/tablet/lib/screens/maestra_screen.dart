@@ -1291,9 +1291,16 @@ class _FichaCard extends StatelessWidget {
         );
       case 'no_completado':
         return (
-          texto: 'Saltado',
+          texto: 'No pudo',
           color: TrazoColors.coralDark,
           icono: Icons.skip_next
+        );
+      case 'sin_valorar':
+        // Terminó una actividad pero aún no has dicho cómo fue: márcala abajo.
+        return (
+          texto: 'Sin valorar — marca cómo fue',
+          color: TrazoColors.sageDark,
+          icono: Icons.rate_review_outlined
         );
       default:
         return (
@@ -1949,7 +1956,7 @@ class _ResumenSesionDialogState extends State<_ResumenSesionDialog> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              if (r.fichas.every((f) => f.nIntentos == 0))
+              if (r.fichas.every((f) => f.nIntentos == 0 && f.sinValorar == 0))
                 const Text('No se registraron actividades en esta sesión.',
                     style: TextStyle(color: TrazoColors.sageDark))
               else
@@ -2032,7 +2039,10 @@ class _FilaResumen extends StatelessWidget {
                         fontWeight: FontWeight.w700,
                         color: TrazoColors.ink)),
               ),
-              Text('$total actividades',
+              Text(
+                  ficha.sinValorar > 0
+                      ? '$total valoradas · ${ficha.sinValorar} sin valorar'
+                      : '$total actividades',
                   style: const TextStyle(color: TrazoColors.sageDark)),
             ],
           ),

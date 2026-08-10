@@ -74,7 +74,13 @@ TIPOS_SESION = ("individual", "grupo")
 
 MODOS_SESION = ("individual", "grupo")
 
-ESTADOS_INTENTO = ("solo", "con_ayuda", "no_completado")
+# 'sin_valorar' es el estado con el que NACE un intento desde el kiosco: la
+# integradora aún no ha dicho cómo fue. NO es un resultado: se EXCLUYE del
+# cálculo de rendimiento y de las alertas (contarlo como acierto inflaría la
+# medida; contarlo como fallo daría falsas alarmas). Solo cuando la integradora
+# marca solo/con_ayuda/no_completado pasa a contar.
+ESTADOS_INTENTO = ("sin_valorar", "solo", "con_ayuda", "no_completado")
+ESTADOS_VALORADOS = ("solo", "con_ayuda", "no_completado")
 
 TIPOS_ALERTA = ("individual", "grupo")
 

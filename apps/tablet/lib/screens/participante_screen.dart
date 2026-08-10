@@ -287,7 +287,9 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
         usuarioFinalId: yo.usuarioFinalId,
         sesionId: sesion!.sesionId!,
         ejercicioId: _cola[_idx].ejercicioId,
-        estado: 'solo', // por defecto; la maestra puede marcar "con_ayuda"
+        // Nace SIN VALORAR: no cuenta como acierto hasta que la integradora diga
+        // cómo fue (solo/con_ayuda/no_pudo). Así la medida no se infla sola.
+        estado: 'sin_valorar',
         timestampInicio: _inicioEjercicio ?? DateTime.now(),
         timestampFin: DateTime.now(),
         valores: _valores, // <-- métricas reportadas por el widget

@@ -218,6 +218,7 @@ async def resumen_sesion(
         solo = est.get("solo", 0)
         con_ayuda = est.get("con_ayuda", 0)
         no_completado = est.get("no_completado", 0)
+        sin_valorar = est.get("sin_valorar", 0)
         fichas.append(ResumenParticipante(
             usuario_final_id=p.usuario_final_id,
             alias_interno=alias.get(p.usuario_final_id, "?"),
@@ -225,6 +226,7 @@ async def resumen_sesion(
             solo=solo,
             con_ayuda=con_ayuda,
             no_completado=no_completado,
+            sin_valorar=sin_valorar,
         ))
     return ResumenSesionOut(
         sesion_id=sesion_id, nombre=ses.nombre, notas=ses.notas, fichas=fichas)

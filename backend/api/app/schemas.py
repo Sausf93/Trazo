@@ -206,10 +206,11 @@ class SesionResumenOut(BaseModel):
 class ResumenParticipante(BaseModel):
     usuario_final_id: str
     alias_interno: str
-    n_intentos: int
+    n_intentos: int  # actividades ya valoradas (solo+con_ayuda+no_completado)
     solo: int
     con_ayuda: int
     no_completado: int
+    sin_valorar: int = 0  # hechas pero que la integradora aún no valoró
 
 
 class ResumenSesionOut(BaseModel):

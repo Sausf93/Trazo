@@ -200,6 +200,7 @@ class FichaResumen {
   final int solo;
   final int conAyuda;
   final int noCompletado;
+  final int sinValorar;
 
   FichaResumen({
     required this.aliasInterno,
@@ -207,6 +208,7 @@ class FichaResumen {
     required this.solo,
     required this.conAyuda,
     required this.noCompletado,
+    this.sinValorar = 0,
   });
 
   factory FichaResumen.fromJson(Map<String, dynamic> j) => FichaResumen(
@@ -215,6 +217,7 @@ class FichaResumen {
         solo: (j['solo'] as num?)?.toInt() ?? 0,
         conAyuda: (j['con_ayuda'] as num?)?.toInt() ?? 0,
         noCompletado: (j['no_completado'] as num?)?.toInt() ?? 0,
+        sinValorar: (j['sin_valorar'] as num?)?.toInt() ?? 0,
       );
 }
 

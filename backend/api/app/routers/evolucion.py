@@ -65,7 +65,13 @@ async def evolucion_individual(
     puntos: list[PuntoEvolucion] = []
     rendimientos: list[float] = []
     n_ayuda = 0
+    n_sin_valorar = 0
     for intento, ej in filas:
+        # Los intentos sin valorar por la integradora no son evidencia: se
+        # cuentan aparte y NO entran en la evolución ni en las medias.
+        if intento.estado == "sin_valorar":
+            n_sin_valorar += 1
+            continue
         puntos.append(PuntoEvolucion(
             fecha=intento.timestamp_inicio,
             ejercicio_id=intento.ejercicio_id,
@@ -80,6 +86,7 @@ async def evolucion_individual(
 
     resumen = {
         "n_intentos": len(puntos),
+        "n_sin_valorar": n_sin_valorar,
         "rendimiento_medio": round(sum(rendimientos) / len(rendimientos), 4) if rendimientos else None,
         "tasa_ayuda": round(n_ayuda / len(puntos), 4) if puntos else None,
     }
