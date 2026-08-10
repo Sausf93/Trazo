@@ -61,5 +61,5 @@ async def test_sin_valorar_no_infla_ni_alerta(client):
     r = await client.get(f"/sesiones/{sesion_id}/resumen", headers=headers)
     ficha = next(f for f in r.json()["fichas"] if f["usuario_final_id"] == paco)
     assert ficha["sin_valorar"] == 1
-    assert ficha["solo"] == 0
+    assert ficha["logrado"] == 0
     assert ficha["n_intentos"] == 0

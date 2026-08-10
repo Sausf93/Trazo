@@ -284,8 +284,18 @@ class Intento(Base):
     timestamp_fin: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
-    # solo / con_ayuda / no_completado  -> NUNCA solo acierto/fallo
+    # Estado histórico (compatibilidad). El modelo actual usa `resultado` (qué
+    # hizo, autocorregido) y `con_ayuda` (si la integradora intervino) por
+    # separado; ver services/correccion.py.
     estado: Mapped[str] = mapped_column(String(20), nullable=False)
+    # RESULTADO autocorregido por la app: logrado/parcial/no_logrado/sin_valorar.
+    # Es la señal PRIMARIA de la medición (independiente de la integradora).
+    resultado: Mapped[str] = mapped_column(
+        String(20), default="sin_valorar", nullable=False
+    )
+    # ¿La integradora AYUDÓ en esta actividad? Capa SECUNDARIA, la marca ella y
+    # solo corrobora; nunca dispara una alerta por sí sola.
+    con_ayuda: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     # Métricas específicas del tipo de ejercicio (precisión, tiempo, desviación...).
     valores_json: Mapped[dict] = mapped_column(JSON, default=dict)
     # Qué cantidades concretas se usaron esta vez (dificultad cambiante).

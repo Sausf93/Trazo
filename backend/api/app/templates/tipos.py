@@ -79,7 +79,10 @@ class PlantillaSeleccionMultiple(PlantillaBase):
                 "audio": item.get("audio"),
                 "opciones": opciones,
             },
-            cantidad_objetivo={"n_opciones": len(opciones), "item_id": item.get("id")},
+            # `correcta` viaja aquí para que el backend autocorrija el intento
+            # (la tablet reenvía cantidad_objetivo sin usarla ni mostrarla).
+            cantidad_objetivo={"n_opciones": len(opciones), "item_id": item.get("id"),
+                               "correcta": correcta},
             solucion={"correcta": correcta},
             metricas=self.metricas,
         )
@@ -203,7 +206,10 @@ class PlantillaSecuenciaOrdenar(PlantillaBase):
                 "titulo": tarea.get("titulo"),
                 "pasos_barajados": [{"paso": p, "pos_mostrada": i} for i, (_, p) in enumerate(barajados)],
             },
-            cantidad_objetivo={"n_pasos": n, "tarea_id": tarea.get("id")},
+            # `orden_correcto_pasos` = los pasos en su orden bueno, para que el
+            # backend compare contra el `orden_final` que manda la tablet.
+            cantidad_objetivo={"n_pasos": n, "tarea_id": tarea.get("id"),
+                               "orden_correcto_pasos": list(pasos_ordenados)},
             solucion={"orden_correcto": [idx for idx, _ in barajados]},
             metricas=self.metricas,
         )
@@ -254,7 +260,8 @@ class PlantillaConteoComparacion(PlantillaBase):
                 "modo": modo,
                 "grupos": grupos,
             },
-            cantidad_objetivo={"modo": modo, "cantidades": [g["cantidad"] for g in grupos]},
+            cantidad_objetivo={"modo": modo, "cantidades": [g["cantidad"] for g in grupos],
+                               "solucion": solucion},
             solucion=solucion,
             metricas=self.metricas,
         )
@@ -283,7 +290,9 @@ class PlantillaArrastrarPosicion(PlantillaBase):
                 "piezas": seleccion,
                 "zonas": parametros.get("zonas", []),
             },
-            cantidad_objetivo={"cantidad": n, "n_piezas": len(seleccion)},
+            cantidad_objetivo={"cantidad": n, "n_piezas": len(seleccion),
+                               "emparejamientos": {p["id"]: p.get("zona_correcta")
+                                                   for p in seleccion if "id" in p}},
             solucion={"emparejamientos": {p["id"]: p.get("zona_correcta") for p in seleccion if "id" in p}},
             metricas=self.metricas,
         )

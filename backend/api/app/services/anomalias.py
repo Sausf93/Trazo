@@ -24,6 +24,19 @@ _PESO_ESTADO = {
     "no_completado": 0.0,
 }
 
+# Rendimiento a partir del RESULTADO autocorregido (la señal primaria actual).
+# 'sin_valorar' no está: esos intentos se EXCLUYEN antes de llegar aquí.
+_PESO_RESULTADO = {
+    "logrado": 1.0,
+    "parcial": 0.5,
+    "no_logrado": 0.0,
+}
+
+
+def rendimiento_resultado(resultado: str) -> float:
+    """Escalar 0..1 del resultado autocorregido (logrado/parcial/no_logrado)."""
+    return _PESO_RESULTADO.get(resultado, 0.0)
+
 
 def rendimiento_intento(estado: str, valores: dict | None) -> float:
     """Normaliza un intento a un escalar 0..1 combinando estado + métricas.

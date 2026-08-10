@@ -202,31 +202,39 @@ async def resumen_sesion(
         select(UsuarioFinal.id, UsuarioFinal.alias_interno)
         .where(UsuarioFinal.id.in_(uf_ids))
     )).all())
-    # Desglose de estados por participante, agregado en SQL (sin N+1).
+    # Desglose por RESULTADO autocorregido por participante (sin N+1).
     filas = (await db.execute(
-        select(Intento.usuario_final_id, Intento.estado, func.count())
+        select(Intento.usuario_final_id, Intento.resultado, func.count())
         .where(Intento.sesion_id == sesion_id)
-        .group_by(Intento.usuario_final_id, Intento.estado)
+        .group_by(Intento.usuario_final_id, Intento.resultado)
     )).all()
     por_usuario: dict[str, dict[str, int]] = {}
-    for uf_id, estado, n in filas:
-        por_usuario.setdefault(uf_id, {})[estado] = n
+    for uf_id, resultado, n in filas:
+        por_usuario.setdefault(uf_id, {})[resultado] = n
+    # Cuántas actividades fueron CON AYUDA por participante (capa secundaria).
+    filas_ayuda = (await db.execute(
+        select(Intento.usuario_final_id, func.count())
+        .where(Intento.sesion_id == sesion_id, Intento.con_ayuda.is_(True))
+        .group_by(Intento.usuario_final_id)
+    )).all()
+    ayuda_por_usuario = {uf_id: n for uf_id, n in filas_ayuda}
 
     fichas: list[ResumenParticipante] = []
     for p in parts:
         est = por_usuario.get(p.usuario_final_id, {})
-        solo = est.get("solo", 0)
-        con_ayuda = est.get("con_ayuda", 0)
-        no_completado = est.get("no_completado", 0)
+        logrado = est.get("logrado", 0)
+        parcial = est.get("parcial", 0)
+        no_logrado = est.get("no_logrado", 0)
         sin_valorar = est.get("sin_valorar", 0)
         fichas.append(ResumenParticipante(
             usuario_final_id=p.usuario_final_id,
             alias_interno=alias.get(p.usuario_final_id, "?"),
-            n_intentos=solo + con_ayuda + no_completado,
-            solo=solo,
-            con_ayuda=con_ayuda,
-            no_completado=no_completado,
+            n_intentos=logrado + parcial + no_logrado,
+            logrado=logrado,
+            parcial=parcial,
+            no_logrado=no_logrado,
             sin_valorar=sin_valorar,
+            con_ayuda=ayuda_por_usuario.get(p.usuario_final_id, 0),
         ))
     return ResumenSesionOut(
         sesion_id=sesion_id, nombre=ses.nombre, notas=ses.notas, fichas=fichas)
@@ -647,11 +655,13 @@ async def sesion_live(
 
         ejercicio_actual = None
         ultimo_estado = None
+        ultimo_con_ayuda = False
         segundos = None
         atascado = False
         if ultimo is not None:
             ejercicio_actual = nombres_ej.get(ultimo.ejercicio_id)
-            ultimo_estado = ultimo.estado
+            ultimo_estado = ultimo.resultado  # resultado autocorregido
+            ultimo_con_ayuda = ultimo.con_ayuda
             ref = ultimo.timestamp_fin or ultimo.timestamp_inicio
             if ref is not None:
                 if ref.tzinfo is None:
@@ -667,6 +677,7 @@ async def sesion_live(
             alias_interno=alias.get(p.usuario_final_id, "?"),
             ejercicio_actual=p.actividad_actual if en_curso else ejercicio_actual,
             ultimo_estado=ultimo_estado,
+            ultimo_con_ayuda=ultimo_con_ayuda,
             ultimo_intento_id=ultimo.id if ultimo is not None else None,
             segundos_desde_ultimo_intento=segundos,
             atascado=atascado,

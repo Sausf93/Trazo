@@ -428,8 +428,8 @@ async def test_idor_nuevos_endpoints_403(client, Session):
     assert r.status_code == 403, r.text
     r = await client.get(f"/grupos/{sesion_id}/evolucion", headers=headers2)
     assert r.status_code == 403, r.text
-    r = await client.patch(f"/intentos/{intento_id}/estado", headers=headers2,
-                           json={"estado": "con_ayuda"})
+    r = await client.patch(f"/intentos/{intento_id}/ayuda", headers=headers2,
+                           json={"con_ayuda": True})
     assert r.status_code == 403, r.text
     r = await client.get(f"/sesiones/programadas?centro_id={centro_id}", headers=headers2)
     assert r.status_code == 403, r.text

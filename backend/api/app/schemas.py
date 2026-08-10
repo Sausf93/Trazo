@@ -206,11 +206,12 @@ class SesionResumenOut(BaseModel):
 class ResumenParticipante(BaseModel):
     usuario_final_id: str
     alias_interno: str
-    n_intentos: int  # actividades ya valoradas (solo+con_ayuda+no_completado)
-    solo: int
-    con_ayuda: int
-    no_completado: int
-    sin_valorar: int = 0  # hechas pero que la integradora aún no valoró
+    n_intentos: int  # actividades con resultado (logrado+parcial+no_logrado)
+    logrado: int
+    parcial: int
+    no_logrado: int
+    sin_valorar: int = 0  # no-intento o pendientes de revisión (no cuentan)
+    con_ayuda: int = 0    # de las hechas, en cuántas ayudó la integradora (matiz)
 
 
 class ResumenSesionOut(BaseModel):
@@ -368,6 +369,8 @@ class IntentoOut(BaseModel):
     sesion_id: str
     ejercicio_id: str
     estado: str
+    resultado: str = "sin_valorar"  # autocorregido (señal primaria)
+    con_ayuda: bool = False          # marcado por la integradora (secundario)
     timestamp_inicio: datetime
     timestamp_fin: datetime | None
     valores_json: dict[str, Any]
@@ -375,7 +378,18 @@ class IntentoOut(BaseModel):
 
 
 class EstadoIntentoIn(BaseModel):
-    estado: str  # solo | con_ayuda | no_completado
+    estado: str  # solo | con_ayuda | no_completado (histórico)
+
+
+class AyudaIntentoIn(BaseModel):
+    """La integradora marca/desmarca que AYUDÓ en esta actividad concreta."""
+    con_ayuda: bool = True
+
+
+class ResultadoIntentoIn(BaseModel):
+    """La integradora fija el resultado de una actividad que la app no supo
+    juzgar (cola de revisión): logrado | parcial | no_logrado."""
+    resultado: str
 
 
 # ---- Evolución ----
@@ -422,8 +436,9 @@ class FichaViva(BaseModel):
     usuario_final_id: str
     alias_interno: str
     ejercicio_actual: str | None = None
-    ultimo_estado: str | None = None
-    ultimo_intento_id: str | None = None  # para marcar "con ayuda" desde la maestra
+    ultimo_estado: str | None = None  # resultado autocorregido del último intento
+    ultimo_con_ayuda: bool = False    # si la integradora marcó ayuda en él
+    ultimo_intento_id: str | None = None  # para marcar "le ayudé" desde la maestra
     segundos_desde_ultimo_intento: float | None = None
     atascado: bool = False
     terminado: bool = False  # terminó su tanda; la maestra puede "enviar más"

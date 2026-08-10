@@ -130,7 +130,7 @@ async def test_flujo_completo_sesion(client):
     assert r.status_code == 200, r.text
     n_antes = r.json()["resumen"]["n_intentos"]
 
-    PRECISION = 0.77  # valor distintivo para localizar el punto en la evolución
+    PRECISION = 0.9  # trazo amplio y preciso -> se autocorrige como 'logrado'
     intento_uuid = str(uuid.uuid4())
     r = await client.post(
         f"/sesiones/{sesion_id}/intentos",
@@ -140,15 +140,18 @@ async def test_flujo_completo_sesion(client):
             "usuario_final_id": paco["id"],
             "sesion_id": sesion_id,
             "ejercicio_id": ejercicio_id,
-            "estado": "solo",
-            "valores_json": {"precision": PRECISION, "tiempo_ms": 88000},
+            "estado": "sin_valorar",
+            "valores_json": {"precision": PRECISION, "puntos_capturados": 20,
+                             "tiempo_ms": 88000},
             "cantidad_objetivo_json": {"figura_id": "onda", "tolerancia_px": 24},
         },
     )
     assert r.status_code in (200, 201), r.text
     intento = r.json()
     assert intento["id"] == intento_uuid
-    assert intento["estado"] == "solo"
+    # La app autocorrige el resultado sin que la integradora toque nada.
+    assert intento["resultado"] == "logrado"
+    assert intento["con_ayuda"] is False
 
     # La medición queda guardada: la evolución refleja +1 intento y la métrica.
     r = await client.get(f"/usuarios/{paco['id']}/evolucion?bloque=praxias", headers=headers)
@@ -157,24 +160,26 @@ async def test_flujo_completo_sesion(client):
     precisiones = [p["precision"] for p in ev["puntos"]]
     assert PRECISION in precisiones
 
-    # 8) Live: la ficha del participante trae ultimo_intento_id del intento recién creado.
+    # 8) Live: la ficha trae el intento recién creado y su resultado autocorregido.
     r = await client.get(f"/sesiones/{sesion_id}/live", headers=headers)
     assert r.status_code == 200, r.text
     live = r.json()
     ficha_paco = next(f for f in live["fichas"] if f["usuario_final_id"] == paco["id"])
     assert ficha_paco["ultimo_intento_id"] == intento_uuid
-    assert ficha_paco["ultimo_estado"] == "solo"
+    assert ficha_paco["ultimo_estado"] == "logrado"
 
-    # 6) Marcar con ayuda: PATCH estado -> "con_ayuda", y verificar el cambio.
+    # 6) Marcar "le ayudé" en ESA actividad (capa secundaria): no cambia el
+    # resultado, solo anota la ayuda.
     r = await client.patch(
-        f"/intentos/{intento_uuid}/estado", headers=headers, json={"estado": "con_ayuda"}
+        f"/intentos/{intento_uuid}/ayuda", headers=headers, json={"con_ayuda": True}
     )
     assert r.status_code == 200, r.text
-    assert r.json()["estado"] == "con_ayuda"
+    assert r.json()["con_ayuda"] is True
+    assert r.json()["resultado"] == "logrado"  # el resultado no se toca
     # Se ve reflejado en live.
     r = await client.get(f"/sesiones/{sesion_id}/live", headers=headers)
     ficha_paco = next(f for f in r.json()["fichas"] if f["usuario_final_id"] == paco["id"])
-    assert ficha_paco["ultimo_estado"] == "con_ayuda"
+    assert ficha_paco["ultimo_con_ayuda"] is True
 
     # 9) Cerrar: la sala deja de aparecer como activa.
     r = await client.patch(f"/sesiones/{sesion_id}/cerrar", headers=headers)
@@ -212,8 +217,8 @@ async def test_intento_idempotente_no_duplica(client):
         "usuario_final_id": paco["id"],
         "sesion_id": sesion_id,
         "ejercicio_id": ejercicio["id"],
-        "estado": "solo",
-        "valores_json": {"precision": 0.8, "tiempo_ms": 90000},
+        "estado": "sin_valorar",
+        "valores_json": {"precision": 0.85, "puntos_capturados": 20, "tiempo_ms": 90000},
     }
 
     r1 = await client.post(f"/sesiones/{sesion_id}/intentos", headers=headers, json=payload)
@@ -262,9 +267,18 @@ async def test_serie_descendente_genera_alerta_y_sugerencia(client):
     )
     sesion_id = r.json()["id"]
 
-    # Serie claramente descendente y sostenida (dispara el motor de anomalías).
-    serie = [0.90, 0.90, 0.90, 0.90, 0.90, 0.50, 0.48]
-    for prec in serie:
+    # Serie de RESULTADO claramente descendente y sostenida (dispara el motor):
+    # trazos amplios y precisos (logrado) y luego trazos casi vacíos (no_logrado).
+    serie = [
+        {"precision": 0.9, "puntos_capturados": 20},   # logrado
+        {"precision": 0.9, "puntos_capturados": 20},
+        {"precision": 0.9, "puntos_capturados": 20},
+        {"precision": 0.9, "puntos_capturados": 20},
+        {"precision": 0.9, "puntos_capturados": 20},
+        {"precision": 0.4, "puntos_capturados": 3},    # no_logrado (apenas trazó)
+        {"precision": 0.4, "puntos_capturados": 3},
+    ]
+    for met in serie:
         r = await client.post(
             f"/sesiones/{sesion_id}/intentos",
             headers=headers,
@@ -273,8 +287,8 @@ async def test_serie_descendente_genera_alerta_y_sugerencia(client):
                 "usuario_final_id": uf["id"],
                 "sesion_id": sesion_id,
                 "ejercicio_id": ejercicio["id"],
-                "estado": "solo",
-                "valores_json": {"precision": prec, "tiempo_ms": 90000},
+                "estado": "sin_valorar",
+                "valores_json": {**met, "tiempo_ms": 90000},
             },
         )
         assert r.status_code in (200, 201), r.text

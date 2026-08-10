@@ -19,7 +19,7 @@ from app.models import (
     UsuarioStaff,
 )
 from app.schemas import AlertaOut, EvolucionOut, PuntoEvolucion
-from app.services.anomalias import rendimiento_intento
+from app.services.anomalias import rendimiento_resultado
 
 router = APIRouter(tags=["evolucion"])
 
@@ -67,21 +67,23 @@ async def evolucion_individual(
     n_ayuda = 0
     n_sin_valorar = 0
     for intento, ej in filas:
-        # Los intentos sin valorar por la integradora no son evidencia: se
-        # cuentan aparte y NO entran en la evolución ni en las medias.
-        if intento.estado == "sin_valorar":
+        # Los intentos sin valorar (no-intento o pendientes de revisión) no son
+        # evidencia: se cuentan aparte y NO entran en la evolución ni en la media.
+        if intento.resultado == "sin_valorar":
             n_sin_valorar += 1
             continue
         puntos.append(PuntoEvolucion(
             fecha=intento.timestamp_inicio,
             ejercicio_id=intento.ejercicio_id,
             bloque=ej.bloque,
-            estado=intento.estado,
+            estado=intento.resultado,  # el resultado autocorregido
             precision=_precision(intento.valores_json),
             valores=intento.valores_json or {},
         ))
-        rendimientos.append(rendimiento_intento(intento.estado, intento.valores_json))
-        if intento.estado == "con_ayuda":
+        rendimientos.append(rendimiento_resultado(intento.resultado))
+        # 'con_ayuda' es la capa SECUNDARIA (la marca la integradora), separada
+        # del resultado. Se cuenta como matiz, no dispara nada por sí sola.
+        if intento.con_ayuda:
             n_ayuda += 1
 
     resumen = {

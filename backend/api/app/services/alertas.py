@@ -25,7 +25,7 @@ from app.services.anomalias import (
     detectar_desviacion,
     detectar_tendencia_tiempo,
     firma_dificultad,
-    rendimiento_intento,
+    rendimiento_resultado,
     segmento_dificultad_actual,
 )
 
@@ -49,15 +49,16 @@ def _tiempo_ms(intento: Intento) -> float | None:
 def _observaciones(intentos: list[Intento]) -> list[IntentoObs]:
     obs: list[IntentoObs] = []
     for i in intentos:
-        # Los intentos SIN VALORAR por la integradora no son evidencia de
-        # rendimiento: se excluyen del cálculo (ni suman ni restan).
-        if i.estado == "sin_valorar":
+        # Los intentos SIN VALORAR (no-intento o pendientes de revisión) no son
+        # evidencia de rendimiento: se excluyen del cálculo (ni suman ni restan).
+        # Su ausencia NO se ignora: se vigila aparte (ver detectar_missingness).
+        if i.resultado == "sin_valorar":
             continue
         obs.append(
             IntentoObs(
                 sesion_id=i.sesion_id,
                 ejercicio_id=i.ejercicio_id,
-                rendimiento=rendimiento_intento(i.estado, i.valores_json),
+                rendimiento=rendimiento_resultado(i.resultado),
                 dificultad=firma_dificultad(i.cantidad_objetivo_json),
                 tiempo_ms=_tiempo_ms(i),
             )

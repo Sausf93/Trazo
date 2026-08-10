@@ -54,6 +54,18 @@ _COLUMNAS = [
         "notas",
         {"sqlite": "VARCHAR(2000)", "postgresql": "VARCHAR(2000)"},
     ),
+    (
+        "intentos",
+        "resultado",
+        {"sqlite": "VARCHAR(20) NOT NULL DEFAULT 'sin_valorar'",
+         "postgresql": "VARCHAR(20) NOT NULL DEFAULT 'sin_valorar'"},
+    ),
+    (
+        "intentos",
+        "con_ayuda",
+        {"sqlite": "BOOLEAN NOT NULL DEFAULT 0",
+         "postgresql": "BOOLEAN NOT NULL DEFAULT false"},
+    ),
 ]
 
 
