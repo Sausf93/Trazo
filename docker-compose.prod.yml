@@ -1,0 +1,91 @@
+# ============================================================
+#  Trazo — despliegue de PRODUCCIÓN
+#
+#  Levanta:   docker compose -f docker-compose.prod.yml up -d --build
+#
+#  Diferencias con el compose de desarrollo:
+#   - api en imagen de producción (no-root, sin reload, ENTORNO=prod, sin seed).
+#   - PostgreSQL NO se expone al exterior (solo accesible dentro de la red).
+#   - Caddy como proxy inverso con HTTPS automático (Let's Encrypt).
+#   - Copias de seguridad automáticas de la BD (pg_dump diario, retención 14 días).
+#
+#  Configura antes un fichero .env.prod con: DOMINIO, JWT_SECRET (openssl rand
+#  -hex 32), POSTGRES_PASSWORD, CORS_ORIGINS y ACME_EMAIL. Ver DESPLIEGUE.md.
+# ============================================================
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-trazo}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?define POSTGRES_PASSWORD en .env.prod}
+      POSTGRES_DB: ${POSTGRES_DB:-trazo}
+    # Sin `ports`: la BD NO se publica al host, solo la red interna la ve.
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-trazo} -d ${POSTGRES_DB:-trazo}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./backend/api
+      dockerfile: Dockerfile.prod
+    restart: always
+    environment:
+      ENTORNO: prod
+      SEED_ON_STARTUP: "false"
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-trazo}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-trazo}
+      JWT_SECRET: ${JWT_SECRET:?define JWT_SECRET en .env.prod}
+      CORS_ORIGINS: ${CORS_ORIGINS:-https://${DOMINIO}}
+    depends_on:
+      db:
+        condition: service_healthy
+    # Sin `ports`: solo accesible a través del proxy Caddy.
+    expose:
+      - "8000"
+
+  caddy:
+    image: caddy:2-alpine
+    restart: always
+    depends_on:
+      - api
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMINIO: ${DOMINIO:?define DOMINIO en .env.prod}
+      ACME_EMAIL: ${ACME_EMAIL:?define ACME_EMAIL en .env.prod}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+  # Copias de seguridad: pg_dump diario comprimido, retención 14 días.
+  backup:
+    image: postgres:16-alpine
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PGUSER: ${POSTGRES_USER:-trazo}
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      PGDATABASE: ${POSTGRES_DB:-trazo}
+    volumes:
+      - ./backups:/backups
+    entrypoint: >
+      sh -c 'while true; do
+        f=/backups/trazo-$$(date +%Y%m%d-%H%M%S).sql.gz;
+        pg_dump -h db | gzip > "$$f" && echo "backup ok: $$f";
+        find /backups -name "trazo-*.sql.gz" -mtime +14 -delete;
+        sleep 86400;
+      done'
+
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:

@@ -1,0 +1,34 @@
+# Imagen de PRODUCCIÓN del backend Trazo.
+# Diferencias con el Dockerfile de desarrollo: usuario NO root, sin --reload,
+# healthcheck integrado y sin montar el código (se copia al construir).
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    ENTORNO=prod \
+    SEED_ON_STARTUP=false
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+# Usuario sin privilegios (RGPD/seguridad: el proceso no corre como root).
+RUN useradd --create-home --uid 10001 trazo && chown -R trazo:trazo /app
+USER trazo
+
+EXPOSE 8000
+
+# Sonda de salud (comprueba la BD desde dentro del contenedor).
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+    CMD curl -fsS http://localhost:8000/health || exit 1
+
+# Varios workers para concurrencia. NOTA: el rate-limit de login es en memoria
+# por proceso; con varios workers conviene respaldarlo en Redis (ver DESPLIEGUE.md).
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
