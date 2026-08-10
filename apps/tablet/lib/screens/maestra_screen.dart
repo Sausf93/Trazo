@@ -1038,18 +1038,33 @@ class _MonitorState extends State<_Monitor> {
     widget.onCerrada();
   }
 
-  /// Marca cómo fue la última actividad de la persona: solo / con_ayuda /
-  /// no_completado (reversible: si se equivoca, toca otro). Es LA medición de la
-  /// integradora sobre lo que observa.
-  Future<void> _marcarEstado(FichaLive f, String estado) async {
+  /// Marca/desmarca que la integradora AYUDÓ en la última actividad (capa
+  /// secundaria: no cambia el resultado, que lo pone la app sola).
+  Future<void> _marcarAyuda(FichaLive f, bool conAyuda) async {
     final id = f.ultimoIntentoId;
     if (id == null) {
-      _snack('${f.aliasInterno} aún no tiene ninguna actividad que valorar.');
+      _snack('${f.aliasInterno} aún no tiene ninguna actividad.');
       return;
     }
     setState(() => _marcando.add(id));
     try {
-      await ApiClient.instance.marcarEstadoIntento(id, estado);
+      await ApiClient.instance.marcarAyudaIntento(id, conAyuda);
+      await _poll(silencioso: true);
+    } catch (err) {
+      _snack('No se pudo marcar: $err');
+    } finally {
+      if (mounted) setState(() => _marcando.remove(id));
+    }
+  }
+
+  /// Cola de revisión inline: la integradora fija el resultado de una actividad
+  /// que la app no supo juzgar (sin_valorar) -> logrado / parcial / no_logrado.
+  Future<void> _marcarResultado(FichaLive f, String resultado) async {
+    final id = f.ultimoIntentoId;
+    if (id == null) return;
+    setState(() => _marcando.add(id));
+    try {
+      await ApiClient.instance.marcarResultadoIntento(id, resultado);
       await _poll(silencioso: true);
     } catch (err) {
       _snack('No se pudo marcar: $err');
@@ -1129,7 +1144,8 @@ class _MonitorState extends State<_Monitor> {
                               puedeMarcar: f.ultimoIntentoId != null,
                               enviandoMas:
                                   _enviandoMas.contains(f.usuarioFinalId),
-                              onMarcar: (estado) => _marcarEstado(f, estado),
+                              onAyuda: (v) => _marcarAyuda(f, v),
+                              onResultado: (r) => _marcarResultado(f, r),
                               onEnviarMas: () => _enviarMas(f),
                             );
                           },
@@ -1249,7 +1265,8 @@ class _FichaCard extends StatelessWidget {
   final bool marcando;
   final bool puedeMarcar;
   final bool enviandoMas;
-  final ValueChanged<String> onMarcar; // 'solo' | 'con_ayuda' | 'no_completado'
+  final ValueChanged<bool> onAyuda;        // marcar/desmarcar "le ayudé"
+  final ValueChanged<String> onResultado;  // cola de revisión (logrado/parcial/no_logrado)
   final VoidCallback onEnviarMas;
 
   const _FichaCard({
@@ -1257,7 +1274,8 @@ class _FichaCard extends StatelessWidget {
     required this.marcando,
     required this.puedeMarcar,
     required this.enviandoMas,
-    required this.onMarcar,
+    required this.onAyuda,
+    required this.onResultado,
     required this.onEnviarMas,
   });
 
@@ -1277,28 +1295,29 @@ class _FichaCard extends StatelessWidget {
       );
     }
     switch (ficha.ultimoEstado) {
-      case 'con_ayuda':
+      case 'logrado':
         return (
-          texto: 'Con ayuda',
-          color: TrazoColors.coralDark,
-          icono: Icons.pan_tool_alt
-        );
-      case 'solo':
-        return (
-          texto: 'Terminó solo',
+          texto: 'Lo logró',
           color: TrazoColors.sageDark,
           icono: Icons.check_circle
         );
-      case 'no_completado':
+      case 'parcial':
         return (
-          texto: 'No pudo',
+          texto: 'A medias',
           color: TrazoColors.coralDark,
-          icono: Icons.skip_next
+          icono: Icons.timelapse
+        );
+      case 'no_logrado':
+        return (
+          texto: 'No lo logró',
+          color: TrazoColors.coralDark,
+          icono: Icons.close
         );
       case 'sin_valorar':
-        // Terminó una actividad pero aún no has dicho cómo fue: márcala abajo.
+        // La app no la pudo juzgar (respuesta abierta, trazo dudoso o no tocó):
+        // revísala abajo.
         return (
-          texto: 'Sin valorar — marca cómo fue',
+          texto: 'Revisar: ¿cómo fue?',
           color: TrazoColors.sageDark,
           icono: Icons.rate_review_outlined
         );
@@ -1393,17 +1412,27 @@ class _FichaCard extends StatelessWidget {
               ),
             ),
           const Spacer(),
-          // Cómo fue la última actividad (LA medición de la integradora): un toque.
-          if (puedeMarcar)
+          // La app corrige el resultado sola. La integradora solo interviene:
+          //  · si la app no supo juzgarla (sin_valorar) -> dice cómo fue.
+          //  · marca "le ayudé" cuando de verdad intervino (capa aparte).
+          if (puedeMarcar && ficha.ultimoEstado == 'sin_valorar')
             Row(
               children: [
-                _seg('Solo', 'solo', Icons.check_circle, TrazoColors.sage),
-                _seg('Ayuda', 'con_ayuda', Icons.back_hand,
+                _seg('Logró', 'logrado', Icons.check_circle, TrazoColors.sage),
+                _seg('A medias', 'parcial', Icons.timelapse,
                     TrazoColors.coralDark),
-                _seg('No pudo', 'no_completado', Icons.close,
+                _seg('No pudo', 'no_logrado', Icons.close,
                     const Color(0xFF8A6E52)),
               ],
             ),
+          if (puedeMarcar) ...[
+            const SizedBox(height: 6),
+            _BotonAyuda(
+              activo: ficha.ultimoConAyuda,
+              cargando: marcando,
+              onTap: () => onAyuda(!ficha.ultimoConAyuda),
+            ),
+          ],
           if (terminado) ...[
             const SizedBox(height: 6),
             SizedBox(
@@ -1430,16 +1459,15 @@ class _FichaCard extends StatelessWidget {
     );
   }
 
-  /// Un segmento del control "cómo fue": resalta si es el estado actual.
-  /// Es LA medición que va a la ficha, así que el objetivo táctil es amplio
-  /// (icono arriba, etiqueta debajo) para no errar el toque ni encoger el texto.
+  /// Un botón de la cola de revisión ("¿cómo fue?"): fija el resultado de una
+  /// actividad que la app no supo juzgar. Objetivo táctil amplio.
   Widget _seg(String label, String valor, IconData icono, Color color) {
     final activo = ficha.ultimoEstado == valor;
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 3),
         child: OutlinedButton(
-          onPressed: (marcando || !puedeMarcar) ? null : () => onMarcar(valor),
+          onPressed: (marcando || !puedeMarcar) ? null : () => onResultado(valor),
           style: OutlinedButton.styleFrom(
             backgroundColor: activo ? color.withValues(alpha: 0.16) : null,
             foregroundColor: activo ? color : TrazoColors.ink,
@@ -1462,6 +1490,39 @@ class _FichaCard extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// Botón "Le ayudé": la integradora lo marca cuando de verdad intervino en la
+/// última actividad de esa persona. Toggle (se puede desmarcar si se equivoca).
+class _BotonAyuda extends StatelessWidget {
+  final bool activo;
+  final bool cargando;
+  final VoidCallback onTap;
+
+  const _BotonAyuda(
+      {required this.activo, required this.cargando, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton.icon(
+        onPressed: cargando ? null : onTap,
+        style: OutlinedButton.styleFrom(
+          backgroundColor:
+              activo ? TrazoColors.coralDark.withValues(alpha: 0.16) : null,
+          foregroundColor: activo ? TrazoColors.coralDark : TrazoColors.sageDark,
+          side: BorderSide(
+              color: activo ? TrazoColors.coralDark : TrazoColors.sand,
+              width: activo ? 2 : 1),
+          padding: const EdgeInsets.symmetric(vertical: 10),
+        ),
+        icon: Icon(activo ? Icons.back_hand : Icons.back_hand_outlined, size: 18),
+        label: Text(activo ? 'Le ayudé ✓' : 'Le ayudé',
+            style: const TextStyle(fontWeight: FontWeight.w700)),
       ),
     );
   }
@@ -2047,7 +2108,8 @@ class _FilaResumen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 6),
-          // Barra proporcional: verde=solo, coral=con ayuda, arena=no pudo.
+          // Barra proporcional del RESULTADO: verde=logró, coral=a medias,
+          // arena=no lo logró.
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: SizedBox(
@@ -2056,17 +2118,17 @@ class _FilaResumen extends StatelessWidget {
                   ? Container(color: TrazoColors.card)
                   : Row(
                       children: [
-                        if (ficha.solo > 0)
+                        if (ficha.logrado > 0)
                           Expanded(
-                              flex: ficha.solo,
+                              flex: ficha.logrado,
                               child: Container(color: TrazoColors.sage)),
-                        if (ficha.conAyuda > 0)
+                        if (ficha.parcial > 0)
                           Expanded(
-                              flex: ficha.conAyuda,
+                              flex: ficha.parcial,
                               child: Container(color: TrazoColors.coral)),
-                        if (ficha.noCompletado > 0)
+                        if (ficha.noLogrado > 0)
                           Expanded(
-                              flex: ficha.noCompletado,
+                              flex: ficha.noLogrado,
                               child: Container(color: TrazoColors.sand)),
                       ],
                     ),
@@ -2074,8 +2136,9 @@ class _FilaResumen extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-              'Solo ${ficha.solo}  ·  Con ayuda ${ficha.conAyuda}  ·  '
-              'No pudo ${ficha.noCompletado}',
+              'Logró ${ficha.logrado}  ·  A medias ${ficha.parcial}  ·  '
+              'No lo logró ${ficha.noLogrado}'
+              '${ficha.conAyuda > 0 ? '  ·  con ayuda ${ficha.conAyuda}' : ''}',
               style: const TextStyle(fontSize: 13, color: TrazoColors.sageDark)),
         ],
       ),

@@ -4,15 +4,17 @@ import { Badge } from "./ui";
 import type { EstadoIntento } from "../api/types";
 
 const SIMBOLO: Record<string, string> = {
-  solo: "●",
-  con_ayuda: "◐",
-  no_completado: "○",
+  logrado: "●",
+  parcial: "◐",
+  no_logrado: "○",
+  sin_valorar: "·",
 };
 
 const TONO: Record<string, "sage" | "coral" | "neutral"> = {
-  solo: "sage",
-  con_ayuda: "neutral",
-  no_completado: "coral",
+  logrado: "sage",
+  parcial: "coral",
+  no_logrado: "coral",
+  sin_valorar: "neutral",
 };
 
 export function EstadoBadge({ estado }: { estado: EstadoIntento | string | null | undefined }) {

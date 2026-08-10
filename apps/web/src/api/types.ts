@@ -108,7 +108,7 @@ export interface Live {
   fichas: FichaViva[];
 }
 
-export type EstadoIntento = "solo" | "con_ayuda" | "no_completado";
+export type EstadoIntento = "logrado" | "parcial" | "no_logrado" | "sin_valorar";
 
 // ---- Sesiones (listado e historial) ----
 export type EstadoSesion = "abierta" | "cerrada" | "programada";
@@ -130,9 +130,11 @@ export interface FichaResumen {
   usuario_final_id: string;
   alias_interno: string;
   n_intentos: number;
-  solo: number;
+  logrado: number;
+  parcial: number;
+  no_logrado: number;
+  sin_valorar: number;
   con_ayuda: number;
-  no_completado: number;
 }
 
 /** Resumen GET /sesiones/{id}/resumen. */

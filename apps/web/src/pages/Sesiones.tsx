@@ -84,9 +84,9 @@ export function SesionesPage() {
 }
 
 const SEGMENTOS = [
-  { key: "solo", label: "Solo", color: colors.sage },
-  { key: "con_ayuda", label: "Con ayuda", color: colors.coral },
-  { key: "no_completado", label: "No pudo", color: colors.sand },
+  { key: "logrado", label: "Lo logró", color: colors.sage },
+  { key: "parcial", label: "A medias", color: colors.coral },
+  { key: "no_logrado", label: "No lo logró", color: colors.sand },
 ] as const;
 
 function ResumenDetalle({ sesion, onVolver }: { sesion: SesionListItem; onVolver: () => void }) {
@@ -158,7 +158,7 @@ function ResumenDetalle({ sesion, onVolver }: { sesion: SesionListItem; onVolver
 }
 
 function FichaBarra({ ficha }: { ficha: FichaResumen }) {
-  const total = ficha.solo + ficha.con_ayuda + ficha.no_completado;
+  const total = ficha.logrado + ficha.parcial + ficha.no_logrado;
   return (
     <div
       style={{
@@ -177,7 +177,7 @@ function FichaBarra({ ficha }: { ficha: FichaResumen }) {
 
       <div
         role="img"
-        aria-label={`${ficha.alias_interno}: ${ficha.solo} solo, ${ficha.con_ayuda} con ayuda, ${ficha.no_completado} no pudo`}
+        aria-label={`${ficha.alias_interno}: ${ficha.logrado} lo logró, ${ficha.parcial} a medias, ${ficha.no_logrado} no lo logró`}
         style={{ display: "flex", height: 16, borderRadius: 999, overflow: "hidden", background: colors.card }}
       >
         {total > 0 &&

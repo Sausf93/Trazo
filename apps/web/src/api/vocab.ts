@@ -84,9 +84,10 @@ export const TIPO_LINEA_LABEL: Record<string, string> = {
 };
 
 export const ESTADO_LABEL: Record<string, string> = {
-  solo: "Solo",
-  con_ayuda: "Con ayuda",
-  no_completado: "No completado",
+  logrado: "Lo logró",
+  parcial: "A medias",
+  no_logrado: "No lo logró",
+  sin_valorar: "Sin valorar",
 };
 
 export function labelBloque(b: string | null | undefined): string {

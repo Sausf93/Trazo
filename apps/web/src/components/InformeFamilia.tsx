@@ -73,11 +73,11 @@ export function InformeFamilia({
   const desde = fechas[0];
   const hasta = fechas[fechas.length - 1];
 
-  // Reparto solo / con ayuda / no completado sobre el total de sesiones.
+  // Reparto del resultado (lo logró / a medias / no lo logró) sobre el total.
   const total = puntos.length;
-  const nSolo = puntos.filter((p) => p.estado === "solo").length;
-  const nAyuda = puntos.filter((p) => p.estado === "con_ayuda").length;
-  const nNoComp = puntos.filter((p) => p.estado === "no_completado").length;
+  const nLogrado = puntos.filter((p) => p.estado === "logrado").length;
+  const nParcial = puntos.filter((p) => p.estado === "parcial").length;
+  const nNoLogrado = puntos.filter((p) => p.estado === "no_logrado").length;
   const pct = (n: number) => (total > 0 ? Math.round((n / total) * 100) : 0);
 
   const tendencia = calcularTendencia(serie);
@@ -188,16 +188,16 @@ export function InformeFamilia({
             marginBottom: 14,
           }}
         >
-          <Dato titulo="Sesiones realizadas" valor={String(total)} pie="en este periodo" />
+          <Dato titulo="Actividades realizadas" valor={String(total)} pie="en este periodo" />
           <Dato
-            titulo="Lo hizo por sí mismo/a"
-            valor={total > 0 ? `${pct(nSolo)} %` : "—"}
-            pie={`${nSolo} de ${total} sesiones`}
+            titulo="Las resolvió bien"
+            valor={total > 0 ? `${pct(nLogrado)} %` : "—"}
+            pie={`${nLogrado} de ${total}`}
           />
           <Dato
-            titulo="Necesitó algo de ayuda"
-            valor={total > 0 ? `${pct(nAyuda)} %` : "—"}
-            pie={`${nAyuda} de ${total} sesiones`}
+            titulo="A medias"
+            valor={total > 0 ? `${pct(nParcial)} %` : "—"}
+            pie={`${nParcial} de ${total}`}
           />
         </div>
 
@@ -216,13 +216,13 @@ export function InformeFamilia({
 
           <ul style={{ margin: "10px 0 0", paddingLeft: 18, fontSize: 13, color: colors.textMuted }}>
             <li>
-              Rendimiento medio del periodo: <strong style={{ color: colors.ink }}>{fmtPorcentaje(resumen.rendimiento_medio)}</strong>{" "}
-              (combina aciertos y autonomía).
+              Desempeño medio del periodo: <strong style={{ color: colors.ink }}>{fmtPorcentaje(resumen.rendimiento_medio)}</strong>{" "}
+              (combina aciertos y grado de logro).
             </li>
             <li>
-              Autonomía: hizo <strong style={{ color: colors.ink }}>{pct(nSolo)} %</strong> de las sesiones por sí
-              mismo/a y necesitó ayuda en un <strong style={{ color: colors.ink }}>{pct(nAyuda)} %</strong>.
-              {nNoComp > 0 && ` Quedaron sin completar ${pct(nNoComp)} %.`}
+              Resolvió bien un <strong style={{ color: colors.ink }}>{pct(nLogrado)} %</strong> de las
+              actividades y a medias un <strong style={{ color: colors.ink }}>{pct(nParcial)} %</strong>.
+              {nNoLogrado > 0 && ` No logró un ${pct(nNoLogrado)} %.`}
             </li>
           </ul>
         </div>

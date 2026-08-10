@@ -197,27 +197,30 @@ class SesionHistorial {
 class FichaResumen {
   final String aliasInterno;
   final int nIntentos;
-  final int solo;
-  final int conAyuda;
-  final int noCompletado;
+  final int logrado;
+  final int parcial;
+  final int noLogrado;
   final int sinValorar;
+  final int conAyuda;
 
   FichaResumen({
     required this.aliasInterno,
     required this.nIntentos,
-    required this.solo,
-    required this.conAyuda,
-    required this.noCompletado,
+    required this.logrado,
+    required this.parcial,
+    required this.noLogrado,
     this.sinValorar = 0,
+    this.conAyuda = 0,
   });
 
   factory FichaResumen.fromJson(Map<String, dynamic> j) => FichaResumen(
         aliasInterno: (j['alias_interno'] ?? '') as String,
         nIntentos: (j['n_intentos'] as num?)?.toInt() ?? 0,
-        solo: (j['solo'] as num?)?.toInt() ?? 0,
-        conAyuda: (j['con_ayuda'] as num?)?.toInt() ?? 0,
-        noCompletado: (j['no_completado'] as num?)?.toInt() ?? 0,
+        logrado: (j['logrado'] as num?)?.toInt() ?? 0,
+        parcial: (j['parcial'] as num?)?.toInt() ?? 0,
+        noLogrado: (j['no_logrado'] as num?)?.toInt() ?? 0,
         sinValorar: (j['sin_valorar'] as num?)?.toInt() ?? 0,
+        conAyuda: (j['con_ayuda'] as num?)?.toInt() ?? 0,
       );
 }
 
@@ -366,6 +369,7 @@ class FichaLive {
   final int ronda;
   final int posActual;
   final int totalActual;
+  final bool ultimoConAyuda; // si la integradora marcó ayuda en el último intento
 
   FichaLive({
     required this.usuarioFinalId,
@@ -379,13 +383,15 @@ class FichaLive {
     required this.ronda,
     required this.posActual,
     required this.totalActual,
+    this.ultimoConAyuda = false,
   });
 
   factory FichaLive.fromJson(Map<String, dynamic> j) => FichaLive(
         usuarioFinalId: j['usuario_final_id'] as String,
         aliasInterno: (j['alias_interno'] ?? '') as String,
         ejercicioActual: j['ejercicio_actual'] as String?,
-        ultimoEstado: j['ultimo_estado'] as String?,
+        ultimoEstado: j['ultimo_estado'] as String?, // resultado autocorregido
+        ultimoConAyuda: (j['ultimo_con_ayuda'] ?? false) as bool,
         ultimoIntentoId: j['ultimo_intento_id'] as String?,
         segundosDesdeUltimoIntento:
             (j['segundos_desde_ultimo_intento'] as num?)?.toInt(),

@@ -389,12 +389,24 @@ class ApiClient {
     return null;
   }
 
-  /// Marca un intento como "con_ayuda" (control exclusivo de la maestra).
-  Future<void> marcarEstadoIntento(String intentoId, String estado) async {
+  /// Marca/desmarca que la integradora AYUDÓ en esa actividad concreta (capa
+  /// secundaria: no cambia el resultado autocorregido).
+  Future<void> marcarAyudaIntento(String intentoId, bool conAyuda) async {
     final resp = await http.patch(
-      _u('/intentos/$intentoId/estado'),
+      _u('/intentos/$intentoId/ayuda'),
       headers: _headers,
-      body: jsonEncode({'estado': estado}),
+      body: jsonEncode({'con_ayuda': conAyuda}),
+    ).timeout(_kTimeout, onTimeout: _timeoutErr);
+    _check(resp);
+  }
+
+  /// Cola de revisión: fija el resultado de una actividad que la app no supo
+  /// juzgar (logrado | parcial | no_logrado).
+  Future<void> marcarResultadoIntento(String intentoId, String resultado) async {
+    final resp = await http.patch(
+      _u('/intentos/$intentoId/resultado'),
+      headers: _headers,
+      body: jsonEncode({'resultado': resultado}),
     ).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
   }
