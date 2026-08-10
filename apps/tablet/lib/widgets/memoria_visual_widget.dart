@@ -127,17 +127,26 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 26, color: TrazoColors.ink)),
         const SizedBox(height: 12),
+        // Indicador tranquilo (sin cuenta atrás roja: el número descendente
+        // transmitía prisa y asustaba). Solo un recordatorio amable en verde.
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 9),
           decoration: BoxDecoration(
-            color: _restante > 0 ? TrazoColors.coralDark : TrazoColors.sageDark,
+            color: TrazoColors.sage,
             borderRadius: BorderRadius.circular(30),
           ),
-          child: Text(_restante > 0 ? '$_restante' : 'Sin prisa',
-              style: const TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white)),
+          child: const Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.visibility, color: Colors.white, size: 22),
+              SizedBox(width: 8),
+              Text('Míralas con calma',
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white)),
+            ],
+          ),
         ),
         const SizedBox(height: 20),
         Expanded(child: _rejillaTarjetas(_aRecordar, seleccionable: false)),

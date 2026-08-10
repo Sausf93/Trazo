@@ -33,15 +33,20 @@ class GenericoWidget extends StatelessWidget {
             Text(instruccion,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 28, color: TrazoColors.ink)),
-            const SizedBox(height: 8),
-            Text('(plantilla "${instancia.plantilla}" — vista específica pendiente)',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    fontSize: 13, color: TrazoColors.sand)),
             const SizedBox(height: 28),
-            ElevatedButton(
-              onPressed: () => onMetricas({'completado_manual': true}),
-              child: const Text('Marcar hecho'),
+            // Respaldo digno: nunca mostramos texto técnico al mayor (parecía una
+            // avería). Un botón grande y amable para seguir.
+            SizedBox(
+              height: 60,
+              child: ElevatedButton(
+                onPressed: () => onMetricas({'completado_manual': true}),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  textStyle: const TextStyle(
+                      fontSize: 22, fontWeight: FontWeight.w700),
+                ),
+                child: const Text('Continuar'),
+              ),
             ),
           ],
         ),
