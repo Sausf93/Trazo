@@ -4,7 +4,22 @@ Consolidación de una revisión con 6 perspectivas (arquitecto de software, UX d
 producto, terapeuta ocupacional, integradora "Laura", neuropsicólogo y usuario
 anciano). Marca lo ya aplicado y prioriza lo pendiente.
 
-## ✅ Ya aplicado en esta ronda
+## ✅ Rediseño de la medición (hecho, validado por 3 expertos)
+
+- **Autocorrección del resultado** (`services/correccion.py`): la app puntúa sola
+  cada actividad (logrado/parcial/no_logrado/sin_valorar) con reglas del TO.
+- **Resultado y ayuda separados**: la ayuda la marca la integradora por actividad
+  concreta; nunca cambia el resultado ni dispara alertas sola.
+- **Vigilar la desconexión** (`detectar_missingness`): dejar de participar avisa
+  por sí mismo; lo "sin valorar" se cuenta y se muestra, no se esconde.
+- **Marcado en la tablet**: la maestra solo marca "le ayudé" y resuelve la cola
+  de revisión inline; el resto lo corrige la app.
+
+Pendiente de este bloque (Laura, no bloquea): marcar "le ayudé" en lote a las
+últimas 3-4 de golpe, atajo "hoy va con ayuda en todo", y una cola de revisión
+agrupada por persona al cerrar la sesión.
+
+## ✅ Ya aplicado en rondas anteriores
 
 - **Integridad de la medición**: el intento nace `sin_valorar` y NO cuenta como
   acierto hasta que la integradora lo marca (antes se inflaba solo). Excluido de
