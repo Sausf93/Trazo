@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -5,13 +6,33 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'api/client.dart';
 import 'models.dart';
 
-/// Cola de intentos pendientes de enviar (MVP offline-first).
+/// Cola de intentos pendientes de enviar (offline-first).
 ///
-/// Punto de partida simple con SharedPreferences. En producción se migrará a
-/// `drift`/`sqflite` para robustez. Por diseño es idempotente: cada intento
-/// lleva su UUID, así que reenviar no duplica en el backend.
+/// Idempotente (cada intento lleva su UUID; reenviar no duplica). Endurecida
+/// tras verificación adversarial:
+///  - Todas las operaciones sobre la cola se SERIALIZAN con un candado, para que
+///    encolar y `flush` no se pisen y no se pierda una medición al reescribir.
+///  - La decodificación es por-entrada y tolerante: una entrada corrupta se
+///    descarta (no bloquea el reenvío del resto, "poison-pill").
+///  - Tope de tamaño de la cola (descarta las más antiguas si se desborda).
 class SyncQueue {
   static const _key = 'intentos_pendientes';
+  static const _maxCola = 500;
+
+  // Candado: encadena las operaciones para que nunca se solapen.
+  static Future<void> _cadena = Future.value();
+
+  static Future<T> _sincronizado<T>(Future<T> Function() accion) {
+    final completer = Completer<T>();
+    _cadena = _cadena.then((_) async {
+      try {
+        completer.complete(await accion());
+      } catch (e, s) {
+        completer.completeError(e, s);
+      }
+    });
+    return completer.future;
+  }
 
   /// Intenta enviar; si falla, encola para reintento posterior.
   static Future<void> enviarOEncolar(Intento intento) async {
@@ -22,14 +43,19 @@ class SyncQueue {
       ok = false;
     }
     if (ok) {
-      // Hay conexión: aprovecha para reenviar lo que quedó pendiente de antes
-      // (si el WiFi se cayó, esas mediciones no se pierden).
+      // Hay conexión: reenvía también lo que quedó pendiente de antes.
       await flush();
     } else {
-      final prefs = await SharedPreferences.getInstance();
-      final pend = prefs.getStringList(_key) ?? [];
-      pend.add(jsonEncode(intento.toJson()));
-      await prefs.setStringList(_key, pend);
+      await _sincronizado(() async {
+        final prefs = await SharedPreferences.getInstance();
+        final pend = prefs.getStringList(_key) ?? [];
+        pend.add(jsonEncode(intento.toJson()));
+        // Tope de seguridad: si se desborda, se descartan las más antiguas.
+        final recortada = pend.length > _maxCola
+            ? pend.sublist(pend.length - _maxCola)
+            : pend;
+        await prefs.setStringList(_key, recortada);
+      });
     }
   }
 
@@ -39,16 +65,10 @@ class SyncQueue {
     return (prefs.getStringList(_key) ?? []).length;
   }
 
-  /// Reintenta enviar todo lo pendiente. Devuelve cuántos quedaron sin enviar.
-  static Future<int> flush() async {
-    final prefs = await SharedPreferences.getInstance();
-    final pend = prefs.getStringList(_key) ?? [];
-    if (pend.isEmpty) return 0;
-
-    final restantes = <String>[];
-    for (final raw in pend) {
+  static Intento? _decodifica(String raw) {
+    try {
       final j = jsonDecode(raw) as Map<String, dynamic>;
-      final intento = Intento(
+      return Intento(
         id: j['id'] as String,
         usuarioFinalId: j['usuario_final_id'] as String,
         sesionId: j['sesion_id'] as String,
@@ -62,15 +82,32 @@ class SyncQueue {
         cantidadObjetivo:
             Map<String, dynamic>.from(j['cantidad_objetivo_json'] as Map),
       );
-      bool ok = false;
-      try {
-        ok = await ApiClient.instance.registrarIntento(intento) != null;
-      } catch (_) {
-        ok = false;
-      }
-      if (!ok) restantes.add(raw);
+    } catch (_) {
+      return null; // entrada corrupta: se descarta, no bloquea el resto
     }
-    await prefs.setStringList(_key, restantes);
-    return restantes.length;
+  }
+
+  /// Reintenta enviar todo lo pendiente. Devuelve cuántos quedaron sin enviar.
+  static Future<int> flush() {
+    return _sincronizado(() async {
+      final prefs = await SharedPreferences.getInstance();
+      final pend = prefs.getStringList(_key) ?? [];
+      if (pend.isEmpty) return 0;
+
+      final restantes = <String>[];
+      for (final raw in pend) {
+        final intento = _decodifica(raw);
+        if (intento == null) continue; // descarta la entrada corrupta
+        bool ok = false;
+        try {
+          ok = await ApiClient.instance.registrarIntento(intento) != null;
+        } catch (_) {
+          ok = false;
+        }
+        if (!ok) restantes.add(raw);
+      }
+      await prefs.setStringList(_key, restantes);
+      return restantes.length;
+    });
   }
 }
