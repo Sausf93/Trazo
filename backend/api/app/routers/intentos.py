@@ -4,6 +4,8 @@ from __future__ import annotations
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
@@ -13,6 +15,7 @@ from app.models import (
     EjercicioCatalogo,
     Intento,
     Sesion,
+    SesionParticipante,
     UsuarioFinal,
     UsuarioStaff,
 )
@@ -49,10 +52,28 @@ async def registrar_intento(
     if uf is None or uf.centro_id != acceso.centro_id:
         raise HTTPException(status.HTTP_403_FORBIDDEN, "Usuario no pertenece a tu centro")
 
-    # Idempotencia: si el cliente reenvía el mismo UUID, no duplicar.
+    # La persona debe ser participante de ESTA sesión: si no, se estarían
+    # inyectando intentos en el histórico de otro paciente (falsearía alertas).
+    es_participante = (await db.execute(
+        select(SesionParticipante.id).where(
+            SesionParticipante.sesion_id == sesion_id,
+            SesionParticipante.usuario_final_id == body.usuario_final_id,
+        )
+    )).first()
+    if es_participante is None:
+        raise HTTPException(
+            status.HTTP_403_FORBIDDEN, "La persona no participa en esta sesión")
+
+    # Idempotencia: si el cliente reenvía el mismo UUID, no duplicar. Pero el id
+    # debe corresponder al MISMO usuario y sesión: si no, es un id ajeno (no se
+    # devuelve el intento de otra persona/centro -> anti-IDOR).
     if body.id:
         existente = await db.get(Intento, body.id)
         if existente is not None:
+            if (existente.usuario_final_id != body.usuario_final_id
+                    or existente.sesion_id != sesion_id):
+                raise HTTPException(
+                    status.HTTP_409_CONFLICT, "El id del intento ya está en uso")
             return existente
 
     ej = await db.get(EjercicioCatalogo, body.ejercicio_id)
@@ -74,12 +95,23 @@ async def registrar_intento(
     if body.id:
         intento.id = body.id
     db.add(intento)
-    await db.flush()
 
-    # Reevaluar alertas del bloque para esta persona (siempre contra su histórico).
-    await evaluar_usuario_bloque(db, body.usuario_final_id, ej.bloque)
+    try:
+        await db.flush()
+        # Reevaluar alertas del bloque para esta persona (contra su histórico).
+        await evaluar_usuario_bloque(db, body.usuario_final_id, ej.bloque)
+        await db.commit()
+    except IntegrityError:
+        # Carrera: dos reenvíos concurrentes del mismo id offline. El otro ganó;
+        # tratamos este como reenvío idempotente en vez de devolver un 500.
+        await db.rollback()
+        if body.id:
+            ya = await db.get(Intento, body.id)
+            if ya is not None and ya.usuario_final_id == body.usuario_final_id:
+                return ya
+        raise HTTPException(
+            status.HTTP_409_CONFLICT, "Conflicto al registrar el intento")
 
-    await db.commit()
     await db.refresh(intento)
     return intento
 
