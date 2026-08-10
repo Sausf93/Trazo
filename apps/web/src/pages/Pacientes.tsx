@@ -66,6 +66,7 @@ export function PacientesPage() {
             <input
               style={inputStyle}
               value={nuevoAlias}
+              aria-label="Añadir persona (alias interno)"
               placeholder="p. ej. Paco M."
               onChange={(e) => setNuevoAlias(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && anadir()}
@@ -80,6 +81,7 @@ export function PacientesPage() {
           <input
             style={inputStyle}
             value={busqueda}
+            aria-label="Buscar persona por nombre"
             placeholder="Buscar por nombre…"
             onChange={(e) => setBusqueda(e.target.value)}
           />
@@ -111,13 +113,17 @@ function FilaPaciente({ usuario, onCambio }: { usuario: UsuarioFinal; onCambio: 
   const [editando, setEditando] = useState(false);
   const [alias, setAlias] = useState(usuario.alias_interno);
   const [ocupado, setOcupado] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function guardar() {
     setOcupado(true);
+    setError(null);
     try {
       await editarUsuario(usuario.id, { alias_interno: alias.trim() || usuario.alias_interno });
       setEditando(false);
       onCambio();
+    } catch {
+      setError("No se pudo guardar el cambio. Revisa la conexión e inténtalo de nuevo.");
     } finally {
       setOcupado(false);
     }
@@ -126,9 +132,12 @@ function FilaPaciente({ usuario, onCambio }: { usuario: UsuarioFinal; onCambio: 
   async function baja() {
     if (!window.confirm(`¿Dar de baja a "${usuario.alias_interno}"? Se conserva su histórico, pero deja de aparecer.`)) return;
     setOcupado(true);
+    setError(null);
     try {
       await darDeBajaUsuario(usuario.id);
       onCambio();
+    } catch {
+      setError("No se pudo dar de baja. Inténtalo de nuevo.");
     } finally {
       setOcupado(false);
     }
@@ -152,6 +161,7 @@ function FilaPaciente({ usuario, onCambio }: { usuario: UsuarioFinal; onCambio: 
           style={{ ...inputStyle, flex: "1 1 180px" }}
           value={alias}
           autoFocus
+          aria-label={`Editar el nombre de ${usuario.alias_interno}`}
           onChange={(e) => setAlias(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && guardar()}
         />
@@ -159,6 +169,9 @@ function FilaPaciente({ usuario, onCambio }: { usuario: UsuarioFinal; onCambio: 
         <span style={{ flex: "1 1 180px", fontFamily: "Fraunces, serif", fontSize: 18 }}>
           {usuario.alias_interno}
         </span>
+      )}
+      {error && (
+        <span role="alert" style={{ flexBasis: "100%", color: colors.coralDeep, fontSize: 13 }}>{error}</span>
       )}
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
         <Link to={`/usuarios/${usuario.id}`}><Button variant="ghost">Evolución</Button></Link>

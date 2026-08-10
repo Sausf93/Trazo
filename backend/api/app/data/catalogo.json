@@ -4475,5 +4475,220 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Repasa las cosas de casa",
+  "descripcion": "Repasar con el dedo objetos cotidianos reconocibles: una taza, un paraguas, una llave y un reloj.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "instruccion": "Repasa el dibujo con el dedo",
+   "tolerancia_px": 26,
+   "viewbox": "0 0 300 140",
+   "figuras": [
+    {
+     "id": "taza",
+     "path": "M100,55 L100,105 C100,116 170,116 170,105 L170,55 Z M170,68 C196,68 196,102 170,102"
+    },
+    {
+     "id": "paraguas",
+     "path": "M70,72 C70,36 180,36 180,72 Z M125,72 L125,112 C125,122 142,122 142,110"
+    },
+    {
+     "id": "llave",
+     "path": "M80,80 m-18,0 a18,18 0 1,0 36,0 a18,18 0 1,0 -36,0 M98,80 L205,80 L205,96 M182,80 L182,96"
+    },
+    {
+     "id": "reloj",
+     "path": "M150,72 m-42,0 a42,42 0 1,0 84,0 a42,42 0 1,0 -84,0 M150,72 L150,42 M150,72 L172,72"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Dibuja la naturaleza",
+  "descripcion": "Repasar con el dedo formas de la naturaleza de varios trazos: el sol, una nube, una flor y una hoja. Exige planificar el recorrido.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Copia el dibujo con el dedo",
+   "tolerancia_px": 18,
+   "viewbox": "0 0 300 140",
+   "figuras": [
+    {
+     "id": "sol",
+     "path": "M150,70 m-24,0 a24,24 0 1,0 48,0 a24,24 0 1,0 -48,0 M150,32 L150,16 M150,108 L150,124 M112,70 L96,70 M188,70 L204,70 M123,43 L112,32 M177,43 L188,32 M123,97 L112,108 M177,97 L188,108"
+    },
+    {
+     "id": "nube",
+     "path": "M92,98 C70,98 70,72 94,72 C97,54 130,54 134,72 C160,66 172,94 148,98 Z"
+    },
+    {
+     "id": "flor",
+     "path": "M150,72 m-11,0 a11,11 0 1,0 22,0 a11,11 0 1,0 -22,0 M150,61 C136,42 164,42 150,61 M150,83 C136,102 164,102 150,83 M139,72 C120,58 120,86 139,72 M161,72 C180,58 180,86 161,72 M150,102 L150,124"
+    },
+    {
+     "id": "hoja",
+     "path": "M150,112 C108,92 108,40 150,24 C192,40 192,92 150,112 Z M150,112 L150,28"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "Rutinas domésticas en orden",
+  "descripcion": "Ordenar los pasos de tareas domesticas habituales: poner la lavadora, fregar los platos y tender la ropa.",
+  "parametros_json": {
+   "dificultad": "media",
+   "pasos_min": 3,
+   "pasos_max": 4,
+   "tareas": [
+    {
+     "id": "lavadora",
+     "titulo": "Poner la lavadora",
+     "pasos": [
+      "Meter la ropa sucia",
+      "Echar el detergente",
+      "Cerrar la puerta",
+      "Encender la lavadora"
+     ]
+    },
+    {
+     "id": "platos",
+     "titulo": "Fregar los platos",
+     "pasos": [
+      "Abrir el grifo",
+      "Echar jabon en el estropajo",
+      "Fregar los platos",
+      "Aclararlos con agua"
+     ]
+    },
+    {
+     "id": "tender",
+     "titulo": "Tender la ropa",
+     "pasos": [
+      "Sacar la ropa mojada",
+      "Sacudir cada prenda",
+      "Colgarla en el tendedero",
+      "Poner las pinzas"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "calculo",
+  "plantilla_tipo": "manejo_cantidad",
+  "nombre": "Las monedas justas (1 y 2 euros)",
+  "descripcion": "Elegir las monedas exactas para pagar un importe redondo de pocos euros usando solo monedas de 1 y 2 euros, sin centimos. Importe cambiante.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "modo": "monedas_justas",
+   "con_centimos": false,
+   "denominaciones_c": [
+    100,
+    200
+   ],
+   "importe_min_c": 200,
+   "importe_max_c": 800,
+   "paso_c": 100
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "La ropa del armario",
+  "descripcion": "Se muestran unas prendas de ropa y, tras una pausa, hay que reconocer cuáles eran entre varias — memoria visual con objetos cotidianos.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 40,
+   "banco": [
+    {
+     "id": "camisa",
+     "label": "camisa"
+    },
+    {
+     "id": "pantalon",
+     "label": "pantalón"
+    },
+    {
+     "id": "abrigo",
+     "label": "abrigo"
+    },
+    {
+     "id": "zapato",
+     "label": "zapato"
+    },
+    {
+     "id": "sombrero",
+     "label": "sombrero"
+    },
+    {
+     "id": "calcetin",
+     "label": "calcetín"
+    },
+    {
+     "id": "bufanda",
+     "label": "bufanda"
+    },
+    {
+     "id": "vestido",
+     "label": "vestido"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca las flores",
+  "descripcion": "Tocar todas las flores mezcladas con otros elementos del campo. Atencion sostenida y rastreo visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todas las FLORES",
+   "objetivo": {
+    "id": "flor",
+    "label": "flor"
+   },
+   "distractores": [
+    {
+     "id": "hoja",
+     "label": "hoja"
+    },
+    {
+     "id": "arbol",
+     "label": "arbol"
+    },
+    {
+     "id": "seta",
+     "label": "seta"
+    },
+    {
+     "id": "mariposa",
+     "label": "mariposa"
+    },
+    {
+     "id": "abeja",
+     "label": "abeja"
+    },
+    {
+     "id": "piedra",
+     "label": "piedra"
+    },
+    {
+     "id": "nube",
+     "label": "nube"
+    },
+    {
+     "id": "caracol",
+     "label": "caracol"
+    }
+   ]
+  }
  }
 ]
