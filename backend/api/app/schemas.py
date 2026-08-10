@@ -35,6 +35,12 @@ class UsuarioFinalIn(BaseModel):
     nivel_base_json: dict[str, Any] = Field(default_factory=dict)
 
 
+class UsuarioFinalUpdate(BaseModel):
+    """Editar un usuario final: alias y/o nivel base. Campos omitidos no cambian."""
+    alias_interno: str | None = None
+    nivel_base_json: dict[str, Any] | None = None
+
+
 class UsuarioFinalOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: str
