@@ -1,0 +1,2 @@
+# Los APK son binarios: no se versionan en git, se suben al publicar.
+*.apk
