@@ -38,7 +38,10 @@ def rendimiento_resultado(resultado: str) -> float:
     return _PESO_RESULTADO.get(resultado, 0.0)
 
 
-def rendimiento_intento(estado: str, valores: dict | None) -> float:
+def rendimiento_intento(estado: str, valores: dict | None) -> float:  # LEGACY
+    # Ruta ANTIGUA (estado solo/con_ayuda/no_completado). Ya no la usa ninguna
+    # ruta de producción: el rendimiento sale de `rendimiento_resultado`. Se
+    # conserva solo por compatibilidad de tests históricos.
     """Normaliza un intento a un escalar 0..1 combinando estado + métricas.
 
     - `estado` marca el techo: no_completado=0, con_ayuda=0.5, solo=1.0.
@@ -172,9 +175,13 @@ class SesionObs:
 # tirada (respuesta correcta, ids, importes, hora...) y NO deben entrar en la
 # firma: si entran, cada intento sale con firma única, nunca se acumula baseline
 # y la alerta de declive no puede dispararse (regresión detectada en auditoría).
+# OJO: 'modo' y 'banda' NO entran: en las actividades con `modos`/`bandas` se
+# eligen AL AZAR por tirada (rng.choice), así que cambiarían la firma en cada
+# intento y el baseline nunca acumularía (agujero detectado en verificación).
+# Solo van descriptores deterministas por nivel.
 _CLAVES_DIFICULTAD = frozenset({
     "n_opciones", "n_figuras", "n_rejilla", "n_pasos", "cantidad",
-    "n_piezas", "objetivos", "total", "modo", "banda", "tolerancia_px",
+    "n_piezas", "objetivos", "total", "tolerancia_px",
 })
 
 

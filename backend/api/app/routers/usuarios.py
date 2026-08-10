@@ -7,7 +7,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
 from app.deps import auditar, get_current_staff, usuario_del_centro
-from app.models import DatosIdentificativos, UsuarioFinal, UsuarioStaff
+from app.models import (
+    DatosIdentificativos,
+    Sesion,
+    SesionParticipante,
+    UsuarioFinal,
+    UsuarioStaff,
+)
 from app.schemas import UsuarioFinalIn, UsuarioFinalOut, UsuarioFinalUpdate
 
 router = APIRouter(tags=["usuarios"])
@@ -68,7 +74,11 @@ async def editar_usuario(
     integradora: corregir un nombre mal puesto, ajustar el nivel de partida)."""
     uf = await usuario_del_centro(db, usuario_id, staff)  # anti-IDOR
     if body.alias_interno is not None:
-        uf.alias_interno = body.alias_interno
+        alias = body.alias_interno.strip()
+        if not alias:
+            raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY,
+                                "El alias no puede quedar vacío")
+        uf.alias_interno = alias
     if body.nivel_base_json is not None:
         uf.nivel_base_json = body.nivel_base_json
     await auditar(db, staff, "editar_usuario", usuario_final_id=uf.id)
@@ -87,7 +97,20 @@ async def dar_de_baja_usuario(
     salas, pero se conserva su histórico. La integradora gestiona sus plazas."""
     uf = await usuario_del_centro(db, usuario_id, staff)  # anti-IDOR
     uf.activo = False
-    await auditar(db, staff, "baja_usuario", usuario_final_id=uf.id)
+    # Sacarlo de las salas AÚN NO CERRADAS (abiertas o programadas): no debe
+    # seguir apareciendo. Las sesiones ya cerradas se conservan (histórico).
+    part_ids = (await db.execute(
+        select(SesionParticipante.id)
+        .join(Sesion, Sesion.id == SesionParticipante.sesion_id)
+        .where(SesionParticipante.usuario_final_id == uf.id,
+               Sesion.cerrada.is_(False))
+    )).scalars().all()
+    for pid in part_ids:
+        obj = await db.get(SesionParticipante, pid)
+        if obj is not None:
+            await db.delete(obj)
+    await auditar(db, staff, "baja_usuario", usuario_final_id=uf.id,
+                  detalle=f"salas_limpiadas={len(part_ids)}")
     await db.commit()
     await db.refresh(uf)
     return uf

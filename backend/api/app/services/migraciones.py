@@ -79,6 +79,9 @@ _INDICES = [
     ("ix_intentos_sesion", "intentos", "(sesion_id)"),
     ("ix_sesiones_centro_fecha", "sesiones", "(centro_id, fecha)"),
     ("ix_sesion_participantes_sesion", "sesion_participantes", "(sesion_id)"),
+    # La tabla alertas se consulta en el path caliente (anti-duplicado en cada
+    # intento) y en los listados por usuario/centro.
+    ("ix_alertas_usuario", "alertas", "(usuario_final_id, fecha_revision)"),
 ]
 
 

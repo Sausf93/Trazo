@@ -178,8 +178,9 @@ async def resumen_sesion(
     db: AsyncSession = Depends(get_db),
     staff: UsuarioStaff = Depends(get_current_staff),
 ):
-    """Cómo fue la sesión: por participante, cuántas actividades y el desglose
-    solo/con_ayuda/no_completado. Para el cierre con resumen y el historial."""
+    """Cómo fue la sesión: por participante, cuántas actividades y el desglose por
+    RESULTADO (logrado/parcial/no_logrado/sin_valorar) + cuántas con ayuda. Para
+    el cierre con resumen y el historial."""
     ses = await db.get(Sesion, sesion_id)
     if ses is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Sesión no encontrada")
@@ -312,6 +313,9 @@ async def _validar_participantes(
             raise HTTPException(status.HTTP_404_NOT_FOUND, f"Participante {uf_id} no existe")
         if uf.centro_id != staff.centro_id:
             raise HTTPException(status.HTTP_403_FORBIDDEN, "Participante de otro centro")
+        if not uf.activo:
+            raise HTTPException(status.HTTP_409_CONFLICT,
+                                f"El participante {uf.alias_interno} está dado de baja")
 
 
 @router.get("/programadas", response_model=list[SesionProgramadaOut])

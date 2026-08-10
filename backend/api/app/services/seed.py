@@ -163,6 +163,15 @@ async def sembrar(db: AsyncSession) -> None:
     serie_paquito = [0.86, 0.88, 0.90, 0.89, 0.91, 0.90, 0.62, 0.55]  # cae al final
     serie_marisa = [0.70, 0.72, 0.74, 0.76, 0.78, 0.80, 0.82, 0.85]   # mejora
 
+    def _resultado_demo(prec: float) -> str:
+        """Mapa precisión->resultado para los datos de demo (la ruta real lo
+        autocorrige; aquí lo fijamos explícito para que el escenario sea nítido)."""
+        if prec >= 0.75:
+            return "logrado"
+        if prec >= 0.6:
+            return "parcial"
+        return "no_logrado"
+
     for uf, serie in [(participantes[0], serie_paquito), (participantes[1], serie_marisa)]:
         n = len(serie)
         for idx, prec in enumerate(serie):
@@ -176,8 +185,10 @@ async def sembrar(db: AsyncSession) -> None:
             db.add(Intento(
                 usuario_final_id=uf.id, sesion_id=ses.id, ejercicio_id=ej_praxias.id,
                 timestamp_inicio=fecha, timestamp_fin=fecha + timedelta(minutes=2),
-                estado="solo",
-                valores_json={"precision": prec, "tiempo_ms": 90000},
+                estado="solo",  # histórico (compat)
+                resultado=_resultado_demo(prec),  # señal PRIMARIA (ruta nueva)
+                valores_json={"precision": prec, "puntos_capturados": 20,
+                              "tiempo_ms": 90000},
                 cantidad_objetivo_json={"figura_id": "onda", "tolerancia_px": 24},
             ))
 
