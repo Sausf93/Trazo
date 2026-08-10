@@ -24,7 +24,11 @@ class Settings(BaseSettings):
     # CORS (cadena separada por comas)
     cors_origins: str = "http://localhost:5173,http://localhost:3000"
 
-    # Comportamiento de arranque
+    # Comportamiento de arranque. La siembra de datos de DEMO (que crea cuentas
+    # con contraseña conocida) solo debe ocurrir en dev: además de este flag, el
+    # arranque exige entorno == "dev" para sembrar (ver main.py). Así un
+    # despliegue de producción no queda con credenciales de demo aunque olvide
+    # apagar el flag.
     seed_on_startup: bool = True
     app_timezone: str = "Europe/Madrid"
 

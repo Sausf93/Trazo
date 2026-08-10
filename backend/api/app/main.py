@@ -44,7 +44,18 @@ async def lifespan(app: FastAPI):
             logger.info("Migración: columnas añadidas -> %s", ", ".join(creadas))
     logger.info("Tablas verificadas/creadas.")
 
-    if settings.seed_on_startup:
+    es_dev = settings.entorno.lower() == "dev"
+    if not es_dev:
+        logger.info("Arranque en entorno '%s' (producción): sin datos de demo.",
+                    settings.entorno)
+    else:
+        logger.warning(
+            "Arranque en ENTORNO=dev: datos y credenciales de DEMO activos. "
+            "En producción define ENTORNO=prod y un JWT_SECRET propio."
+        )
+    # La siembra de demo SOLO en dev, aunque el flag quede encendido por error:
+    # evita que un despliegue de producción cree cuentas con contraseña conocida.
+    if settings.seed_on_startup and es_dev:
         async with AsyncSessionLocal() as db:
             try:
                 await sembrar(db)
