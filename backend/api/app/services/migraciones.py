@@ -69,6 +69,35 @@ _COLUMNAS = [
 ]
 
 
+# Índices de las consultas calientes (histórico de alertas/evolución, live,
+# resumen, salas activas). `CREATE INDEX IF NOT EXISTS` es idempotente y portable
+# a SQLite y PostgreSQL. Sin ellos, en producción serían sequential scans según
+# crecen los datos (auditoría de arquitectura).
+_INDICES = [
+    ("ix_intentos_usuario_ejercicio", "intentos", "(usuario_final_id, ejercicio_id)"),
+    ("ix_intentos_usuario_ts", "intentos", "(usuario_final_id, timestamp_inicio)"),
+    ("ix_intentos_sesion", "intentos", "(sesion_id)"),
+    ("ix_sesiones_centro_fecha", "sesiones", "(centro_id, fecha)"),
+    ("ix_sesion_participantes_sesion", "sesion_participantes", "(sesion_id)"),
+]
+
+
+def migrar_indices(conn: Connection) -> list[str]:
+    """Crea los índices que falten (idempotente). Devuelve los creados."""
+    inspector = inspect(conn)
+    tablas = set(inspector.get_table_names())
+    creados: list[str] = []
+    for nombre, tabla, cols in _INDICES:
+        if tabla not in tablas:
+            continue
+        existentes = {ix["name"] for ix in inspector.get_indexes(tabla)}
+        if nombre in existentes:
+            continue
+        conn.execute(text(f'CREATE INDEX IF NOT EXISTS {nombre} ON {tabla} {cols}'))
+        creados.append(nombre)
+    return creados
+
+
 def migrar_columnas(conn: Connection) -> list[str]:
     """Añade las columnas que falten. Devuelve la lista de columnas creadas."""
     inspector = inspect(conn)

@@ -167,8 +167,20 @@ class SesionObs:
     n_intentos: int
 
 
+# Claves de `cantidad_objetivo` que describen la DIFICULTAD (estables entre
+# instancias de la misma actividad/nivel). El resto de claves cambian en cada
+# tirada (respuesta correcta, ids, importes, hora...) y NO deben entrar en la
+# firma: si entran, cada intento sale con firma única, nunca se acumula baseline
+# y la alerta de declive no puede dispararse (regresión detectada en auditoría).
+_CLAVES_DIFICULTAD = frozenset({
+    "n_opciones", "n_figuras", "n_rejilla", "n_pasos", "cantidad",
+    "n_piezas", "objetivos", "total", "modo", "banda", "tolerancia_px",
+})
+
+
 def firma_dificultad(cantidad_objetivo: dict | None, nivel: str | None = None) -> str:
-    """Firma estable de la dificultad de un intento (nivel + cantidades usadas).
+    """Firma estable de la dificultad de un intento (nivel + descriptores de
+    dificultad), ignorando lo que cambia por instancia.
 
     Dos intentos con la misma firma son comparables; al cambiar la firma se
     reinicia el baseline (evita la falsa alarma tras subir el nivel).
@@ -178,7 +190,8 @@ def firma_dificultad(cantidad_objetivo: dict | None, nivel: str | None = None) -
         partes.append(f"nivel={nivel}")
     if cantidad_objetivo:
         for clave in sorted(cantidad_objetivo):
-            partes.append(f"{clave}={cantidad_objetivo[clave]}")
+            if clave in _CLAVES_DIFICULTAD:
+                partes.append(f"{clave}={cantidad_objetivo[clave]}")
     return "|".join(partes) if partes else "base"
 
 

@@ -47,6 +47,22 @@ async def evolucion_individual(
     staff: UsuarioStaff = Depends(get_current_staff),
 ):
     await usuario_del_centro(db, usuario_id, staff)  # anti-IDOR (datos de salud)
+    ev = await _calcular_evolucion(db, usuario_id, bloque, desde, hasta)
+    await auditar(db, staff, "ver_evolucion", usuario_final_id=usuario_id,
+                  detalle=f"bloque={bloque}")
+    await db.commit()
+    return ev
+
+
+async def _calcular_evolucion(
+    db: AsyncSession,
+    usuario_id: str,
+    bloque: str | None,
+    desde: datetime | None,
+    hasta: datetime | None,
+) -> EvolucionOut:
+    """Calcula la evolución de una persona (sin auditar ni commitear: lo hace
+    quien llama). Reutilizable para individual y para grupo con un solo commit."""
     stmt = (
         select(Intento, EjercicioCatalogo)
         .join(EjercicioCatalogo, Intento.ejercicio_id == EjercicioCatalogo.id)
@@ -92,11 +108,6 @@ async def evolucion_individual(
         "rendimiento_medio": round(sum(rendimientos) / len(rendimientos), 4) if rendimientos else None,
         "tasa_ayuda": round(n_ayuda / len(puntos), 4) if puntos else None,
     }
-
-    await auditar(db, staff, "ver_evolucion", usuario_final_id=usuario_id,
-                  detalle=f"bloque={bloque}")
-    await db.commit()
-
     return EvolucionOut(usuario_final_id=usuario_id, bloque=bloque, puntos=puntos, resumen=resumen)
 
 
@@ -135,10 +146,12 @@ async def evolucion_grupo(
         )
     ).scalars().all()
 
+    # Un solo commit para todo el grupo (antes: N consultas + N commits en un GET).
     salida: list[EvolucionOut] = []
     for p in parts:
-        ev = await evolucion_individual(
-            p.usuario_final_id, bloque=bloque, desde=None, hasta=None, db=db, staff=staff
-        )
-        salida.append(ev)
+        salida.append(
+            await _calcular_evolucion(db, p.usuario_final_id, bloque, None, None))
+    await auditar(db, staff, "ver_evolucion_grupo",
+                  detalle=f"sesion={sesion_id} n={len(parts)}")
+    await db.commit()
     return salida

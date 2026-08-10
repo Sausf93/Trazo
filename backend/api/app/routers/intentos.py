@@ -9,7 +9,13 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.deps import Acceso, acceso_centro, get_current_staff, usuario_del_centro
+from app.deps import (
+    Acceso,
+    acceso_centro,
+    auditar,
+    get_current_staff,
+    usuario_del_centro,
+)
 from app.models import (
     ESTADOS_INTENTO,
     EjercicioCatalogo,
@@ -140,6 +146,8 @@ async def marcar_ayuda(
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Intento no encontrado")
     await usuario_del_centro(db, intento.usuario_final_id, staff)
     intento.con_ayuda = bool(body.con_ayuda)
+    await auditar(db, staff, "marcar_ayuda", usuario_final_id=intento.usuario_final_id,
+                  detalle=f"intento={intento_id} con_ayuda={intento.con_ayuda}")
     await db.commit()
     await db.refresh(intento)
     return intento
@@ -163,6 +171,8 @@ async def marcar_resultado(
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Intento no encontrado")
     await usuario_del_centro(db, intento.usuario_final_id, staff)
     intento.resultado = body.resultado
+    await auditar(db, staff, "marcar_resultado", usuario_final_id=intento.usuario_final_id,
+                  detalle=f"intento={intento_id} resultado={body.resultado}")
     ej = await db.get(EjercicioCatalogo, intento.ejercicio_id)
     if ej is not None:
         await evaluar_usuario_bloque(db, intento.usuario_final_id, ej.bloque)

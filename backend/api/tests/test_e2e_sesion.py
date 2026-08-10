@@ -278,7 +278,7 @@ async def test_serie_descendente_genera_alerta_y_sugerencia(client):
         {"precision": 0.4, "puntos_capturados": 3},    # no_logrado (apenas trazó)
         {"precision": 0.4, "puntos_capturados": 3},
     ]
-    for met in serie:
+    for idx, met in enumerate(serie):
         r = await client.post(
             f"/sesiones/{sesion_id}/intentos",
             headers=headers,
@@ -289,6 +289,11 @@ async def test_serie_descendente_genera_alerta_y_sugerencia(client):
                 "ejercicio_id": ejercicio["id"],
                 "estado": "sin_valorar",
                 "valores_json": {**met, "tiempo_ms": 90000},
+                # cantidad_objetivo REALISTA: la figura cambia en cada tirada
+                # (como en producción). La dificultad (tolerancia_px) es estable,
+                # así que la firma debe agruparlos pese a que figura_id varíe.
+                "cantidad_objetivo_json": {"figura_id": f"onda_{idx}",
+                                           "tolerancia_px": 24},
             },
         )
         assert r.status_code in (200, 201), r.text

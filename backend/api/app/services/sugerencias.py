@@ -13,7 +13,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import EjercicioCatalogo, Intento, PlanPacienteLinea
-from app.services.anomalias import detectar_desviacion, rendimiento_intento
+from app.services.anomalias import detectar_desviacion, rendimiento_resultado
 
 NIVELES = ["bajo", "medio", "alto"]
 
@@ -134,4 +134,7 @@ async def _serie_rendimiento(
         .order_by(Intento.timestamp_inicio.asc())
     )
     intentos = (await db.execute(stmt)).scalars().all()
-    return [rendimiento_intento(i.estado, i.valores_json) for i in intentos]
+    # Señal primaria = RESULTADO autocorregido (no el estado/ayuda): sin_valorar
+    # se excluye para no sugerir bajar de nivel por no-intentos o pendientes.
+    return [rendimiento_resultado(i.resultado)
+            for i in intentos if i.resultado != "sin_valorar"]

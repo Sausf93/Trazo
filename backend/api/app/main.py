@@ -26,7 +26,7 @@ from app.routers import (
     sesiones,
     usuarios,
 )
-from app.services.migraciones import migrar_columnas
+from app.services.migraciones import migrar_columnas, migrar_indices
 from app.services.seed import sembrar
 
 logger = logging.getLogger("trazo")
@@ -42,6 +42,9 @@ async def lifespan(app: FastAPI):
         creadas = await conn.run_sync(migrar_columnas)
         if creadas:
             logger.info("Migración: columnas añadidas -> %s", ", ".join(creadas))
+        indices = await conn.run_sync(migrar_indices)
+        if indices:
+            logger.info("Migración: índices creados -> %s", ", ".join(indices))
     logger.info("Tablas verificadas/creadas.")
 
     es_dev = settings.entorno.lower() == "dev"

@@ -31,6 +31,10 @@ from app.services.anomalias import (
 )
 from app.services.correccion import hubo_interaccion
 
+# Nº máximo de intentos recientes que se reevalúan por bloque (ventana acotada:
+# la evaluación corre en cada intento y no debe reescanear años de histórico).
+_MAX_HISTORIAL = 80
+
 
 def _tiempo_ms(intento: Intento) -> float | None:
     """Tiempo de la actividad en ms: de `valores_json.tiempo_ms` o de los sellos."""
@@ -78,7 +82,9 @@ async def evaluar_usuario_bloque(
     Devuelve la Alerta creada (aún sin commit) o None. El commit lo hace quien
     llama, para poder agrupar varias evaluaciones en una transacción.
     """
-    # Intentos de esa persona en ese bloque, de más antiguo a más reciente.
+    # Ventana histórica ACOTADA: esta evaluación corre en CADA registro de intento
+    # (path caliente del kiosco), así que no reprocesamos todo el pasado. Los
+    # últimos _MAX_HISTORIAL intentos bastan de sobra para baseline+reciente.
     stmt = (
         select(Intento)
         .join(EjercicioCatalogo, Intento.ejercicio_id == EjercicioCatalogo.id)
@@ -86,9 +92,10 @@ async def evaluar_usuario_bloque(
             Intento.usuario_final_id == usuario_final_id,
             EjercicioCatalogo.bloque == bloque,
         )
-        .order_by(Intento.timestamp_inicio.asc())
+        .order_by(Intento.timestamp_inicio.desc())
+        .limit(_MAX_HISTORIAL)
     )
-    intentos = (await db.execute(stmt)).scalars().all()
+    intentos = list(reversed((await db.execute(stmt)).scalars().all()))
     if not intentos:
         return None
 
