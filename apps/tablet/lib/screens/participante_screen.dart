@@ -51,6 +51,11 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
   // que NO debe aparecer el botón global "Siguiente" (si no, se salta la prueba
   // sin medir). El widget lo controla con onListoParaAvanzar.
   bool _puedeAvanzar = true;
+  // Ticks de polling fallidos seguidos (WiFi caído). A partir de 3 (~9 s) se
+  // muestra un aviso en las pantallas de espera para que la integradora actúe;
+  // el mayor no se queda con un "Esperando…" eterno sin saber que algo va mal.
+  int _fallosSeguidos = 0;
+  bool get _sinConexion => _fallosSeguidos >= 3;
 
   @override
   void initState() {
@@ -75,9 +80,13 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
     try {
       sesion = await ApiClient.instance.sesionActiva();
     } catch (_) {
+      // Fallo de red: cuenta el tick y refresca por si toca mostrar el aviso.
+      _fallosSeguidos++;
+      if (mounted && _sinConexion) setState(() {});
       return; // reintenta en el siguiente tick
     }
     if (!mounted) return;
+    if (_fallosSeguidos != 0) _fallosSeguidos = 0; // recuperada la conexión
     _sesion = sesion;
 
     // La sala se cerró: volver a la pantalla de espera.
@@ -404,6 +413,13 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
         child: Stack(
           children: [
             Positioned.fill(child: _contenido()),
+            // Aviso de sin conexión: el mayor no se queda con un "Esperando…"
+            // eterno; la integradora ve que debe revisar el WiFi.
+            if (_sinConexion)
+              const Positioned(
+                top: 0, left: 0, right: 0,
+                child: _BannerSinConexion(),
+              ),
             // Gesto discreto: esquina superior izquierda + pulsación larga.
             Positioned(
               top: 0,
@@ -462,6 +478,42 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
 // ---------------------------------------------------------------------------
 // Sub-pantallas del kiosco
 // ---------------------------------------------------------------------------
+
+/// Banda superior cuando se pierde la conexión durante la espera. Grande y
+/// clara para que la integradora la vea de lejos y revise el WiFi.
+class _BannerSinConexion extends StatelessWidget {
+  const _BannerSinConexion();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Material(
+      color: TrazoColors.coralDark,
+      child: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.wifi_off, color: Colors.white, size: 26),
+              SizedBox(width: 12),
+              Flexible(
+                child: Text(
+                  'Sin conexión. Avisa a la responsable para revisar el WiFi.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class _Esperando extends StatelessWidget {
   const _Esperando();
@@ -626,7 +678,15 @@ class _Terminado extends StatelessWidget {
           SizedBox(height: 12),
           Text('Has terminado. Espera un momento…',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 24, color: TrazoColors.sageDark)),
+              style: TextStyle(fontSize: 24, color: TrazoColors.ink)),
+          SizedBox(height: 28),
+          // Pulso suave: comunica "sigo contigo", no está colgada.
+          SizedBox(
+            width: 34,
+            height: 34,
+            child: CircularProgressIndicator(
+                strokeWidth: 3, color: TrazoColors.sage),
+          ),
         ],
       ),
     );

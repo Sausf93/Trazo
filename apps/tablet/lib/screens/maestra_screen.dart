@@ -1115,7 +1115,7 @@ class _MonitorState extends State<_Monitor> {
                           gridDelegate:
                               const SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 320,
-                            mainAxisExtent: 268,
+                            mainAxisExtent: 292,
                             crossAxisSpacing: 14,
                             mainAxisSpacing: 14,
                           ),
@@ -1424,31 +1424,35 @@ class _FichaCard extends StatelessWidget {
   }
 
   /// Un segmento del control "cómo fue": resalta si es el estado actual.
+  /// Es LA medición que va a la ficha, así que el objetivo táctil es amplio
+  /// (icono arriba, etiqueta debajo) para no errar el toque ni encoger el texto.
   Widget _seg(String label, String valor, IconData icono, Color color) {
     final activo = ficha.ultimoEstado == valor;
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 2),
+        padding: const EdgeInsets.symmetric(horizontal: 3),
         child: OutlinedButton(
           onPressed: (marcando || !puedeMarcar) ? null : () => onMarcar(valor),
           style: OutlinedButton.styleFrom(
             backgroundColor: activo ? color.withValues(alpha: 0.16) : null,
-            foregroundColor: activo ? color : TrazoColors.sageDark,
+            foregroundColor: activo ? color : TrazoColors.ink,
             side: BorderSide(
                 color: activo ? color : TrazoColors.sand,
-                width: activo ? 2 : 1),
+                width: activo ? 2.2 : 1),
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
-            minimumSize: const Size(0, 44),
+            minimumSize: const Size(0, 60),
           ),
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Row(mainAxisSize: MainAxisSize.min, children: [
-              Icon(icono, size: 15),
-              const SizedBox(width: 3),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icono, size: 22),
+              const SizedBox(height: 3),
               Text(label,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
                   style: const TextStyle(
-                      fontSize: 12, fontWeight: FontWeight.w600)),
-            ]),
+                      fontSize: 14, fontWeight: FontWeight.w700, height: 1.05)),
+            ],
           ),
         ),
       ),
