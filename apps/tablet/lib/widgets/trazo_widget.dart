@@ -169,18 +169,22 @@ class _TrazoWidgetState extends State<TrazoWidget> {
           ),
         ),
         // Rehacer el trazo: un temblor o un gesto erróneo no arruina el intento.
+        // Objetivo táctil amplio y centrado: es la acción de rescate, justo para
+        // manos que tiemblan, así que tiene que ser fácil de acertar y de ver.
         Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: TextButton.icon(
+          padding: const EdgeInsets.only(top: 12),
+          child: Center(
+            child: OutlinedButton.icon(
               onPressed: _puntosUsuario.isEmpty ? null : _limpiar,
-              icon: const Icon(Icons.refresh),
+              icon: const Icon(Icons.refresh, size: 24),
               label: const Text('Empezar de nuevo'),
-              style: TextButton.styleFrom(
+              style: OutlinedButton.styleFrom(
                 foregroundColor: TrazoColors.sageDark,
+                side: const BorderSide(color: TrazoColors.sand, width: 1.5),
+                padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
+                minimumSize: const Size(0, 56),
                 textStyle:
-                    const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+                    const TextStyle(fontSize: 19, fontWeight: FontWeight.w700),
               ),
             ),
           ),

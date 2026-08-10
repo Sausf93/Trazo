@@ -35,8 +35,12 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
 
     return Column(
       children: [
+        // Enunciado acotado a 3 líneas: si es largo no debe comerse el espacio
+        // reservado a las opciones (grandes) ni provocar overflow.
         Text(enunciado,
             textAlign: TextAlign.center,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.w600,

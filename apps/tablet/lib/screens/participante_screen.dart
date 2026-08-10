@@ -609,15 +609,19 @@ class _BotonNombre extends StatelessWidget {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Text(
+            // Encoge el nombre para que SIEMPRE quepa entero: un mayor puede no
+            // reconocer su nombre cortado con "…" y elegir mal (mediría a otro).
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
               nombre,
               textAlign: TextAlign.center,
               maxLines: 2,
-              overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.w700,
                   color: Colors.white),
+            ),
             ),
           ),
         ),
