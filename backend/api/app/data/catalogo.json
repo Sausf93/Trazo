@@ -4279,5 +4279,201 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Copia el dibujo",
+  "descripcion": "Reproducir con el dedo dibujos reconocibles de varios trazos: una casa, un barco, un pez. Exige planificar el recorrido, no solo repasar una linea.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Copia el dibujo con el dedo",
+   "tolerancia_px": 16,
+   "viewbox": "0 0 300 140",
+   "figuras": [
+    {
+     "id": "casa",
+     "path": "M60,120 L60,55 L150,20 L240,55 L240,120 Z M105,120 L105,82 L145,82 L145,120"
+    },
+    {
+     "id": "barco",
+     "path": "M55,88 L245,88 L215,120 L85,120 Z M150,88 L150,30 L215,72 L150,72"
+    },
+    {
+     "id": "pez",
+     "path": "M55,70 C95,38 175,38 215,70 C175,102 95,102 55,70 Z M215,70 L255,45 L255,95 Z"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "manejo_cantidad",
+  "nombre": "La hora con minutos",
+  "descripcion": "Un reloj analogico con la aguja en cualquier minuto de cinco en cinco; hay que leer la hora exacta. Version exigente de la lectura del reloj.",
+  "parametros_json": {
+   "dificultad": "dificil",
+   "modo": "reloj",
+   "minutos": [
+    0,
+    5,
+    10,
+    20,
+    25,
+    35,
+    40,
+    50,
+    55
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "El calendario en orden",
+  "descripcion": "Colocar en su orden los dias de la semana, las estaciones del ano o los primeros meses. Orientacion temporal y secuenciacion.",
+  "parametros_json": {
+   "dificultad": "media",
+   "pasos_min": 4,
+   "pasos_max": 5,
+   "tareas": [
+    {
+     "id": "dias",
+     "titulo": "Los dias de la semana",
+     "instruccion": "Ordena los dias de la semana",
+     "pasos": [
+      "Lunes",
+      "Martes",
+      "Miercoles",
+      "Jueves",
+      "Viernes"
+     ]
+    },
+    {
+     "id": "estaciones",
+     "titulo": "Las estaciones del ano",
+     "instruccion": "Ordena las estaciones, empezando por la primavera",
+     "pasos": [
+      "Primavera",
+      "Verano",
+      "Otono",
+      "Invierno"
+     ]
+    },
+    {
+     "id": "meses",
+     "titulo": "Los meses del ano",
+     "instruccion": "Ordena los meses, empezando por enero",
+     "pasos": [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Las partes del cuerpo",
+  "descripcion": "Se dice para que sirve una parte del cuerpo y hay que elegir cual es. Comprension de ordenes sencillas y esquema corporal.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "ver",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Con esta parte del cuerpo VEMOS. ¿Cual es?",
+     "correcta": "los ojos",
+     "distractores": [
+      "las orejas",
+      "las manos",
+      "los pies"
+     ]
+    },
+    {
+     "id": "oir",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Con esta parte del cuerpo OIMOS. ¿Cual es?",
+     "correcta": "las orejas",
+     "distractores": [
+      "la nariz",
+      "los pies",
+      "las manos"
+     ]
+    },
+    {
+     "id": "andar",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Con esta parte del cuerpo ANDAMOS. ¿Cual es?",
+     "correcta": "los pies",
+     "distractores": [
+      "las manos",
+      "los ojos",
+      "la boca"
+     ]
+    },
+    {
+     "id": "coger",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Con esta parte del cuerpo COGEMOS las cosas. ¿Cual es?",
+     "correcta": "las manos",
+     "distractores": [
+      "los pies",
+      "las orejas",
+      "la nariz"
+     ]
+    },
+    {
+     "id": "oler",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Con esta parte del cuerpo OLEMOS. ¿Cual es?",
+     "correcta": "la nariz",
+     "distractores": [
+      "los ojos",
+      "las orejas",
+      "los pies"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca los corazones",
+  "descripcion": "Tocar todos los corazones entre unas pocas figuras geometricas distintas. Rejilla pequena y objetivo muy diferenciado.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "instruccion": "Toca todos los CORAZONES",
+   "total": 6,
+   "objetivo": {
+    "id": "corazon",
+    "label": "corazon"
+   },
+   "distractores": [
+    {
+     "id": "circulo",
+     "label": "circulo"
+    },
+    {
+     "id": "cuadrado",
+     "label": "cuadrado"
+    },
+    {
+     "id": "triangulo",
+     "label": "triangulo"
+    },
+    {
+     "id": "estrella",
+     "label": "estrella"
+    }
+   ]
+  }
  }
 ]
