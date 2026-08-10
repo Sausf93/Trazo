@@ -6,6 +6,7 @@ import '../models.dart';
 import '../services/actualizacion.dart';
 import '../theme.dart';
 import '../widgets/trazo_logo.dart';
+import 'galeria_screen.dart';
 import 'login_screen.dart';
 import 'maestra_screen.dart';
 import 'participante_screen.dart';
@@ -78,6 +79,18 @@ class RolScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 28),
                       const _EmparejarBar(),
+                      const SizedBox(height: 4),
+                      // Modo demo: probar las actividades sin login ni sala.
+                      TextButton.icon(
+                        onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (_) => const GaleriaScreen()),
+                        ),
+                        icon: const Icon(Icons.grid_view, size: 18),
+                        label: const Text('Ver actividades (demo)'),
+                        style: TextButton.styleFrom(
+                            foregroundColor: TrazoColors.sageDark),
+                      ),
                     ],
                   ),
                 ),

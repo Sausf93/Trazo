@@ -1,14 +1,17 @@
-name: Desplegar web comercial (GitHub Pages)
+name: Desplegar web comercial + demo (GitHub Pages)
 
-# Publica apps/landing en GitHub Pages. Requiere activar Pages UNA vez:
-# Settings -> Pages -> Source: "GitHub Actions". La web queda en
-# https://<usuario>.github.io/Trazo/
+# Publica en GitHub Pages:
+#  - la web comercial (apps/landing) en la raíz
+#  - la app de tablet compilada a web, como DEMO jugable, en /demo
+# Requiere activar Pages UNA vez: Settings -> Pages -> Source: "GitHub Actions".
+# La web queda en https://<usuario>.github.io/Trazo/ y el demo en /Trazo/demo/.
 
 on:
   push:
     branches: [main]
     paths:
       - 'apps/landing/**'
+      - 'apps/tablet/**'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -29,12 +32,31 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Instalar Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Compilar el demo de la tablet (web)
+        working-directory: apps/tablet
+        run: |
+          flutter pub get
+          flutter build web --release --base-href /Trazo/demo/
+
+      - name: Montar el sitio (landing + demo)
+        run: |
+          mkdir -p _site
+          cp -r apps/landing/* _site/
+          mkdir -p _site/demo
+          cp -r apps/tablet/build/web/* _site/demo/
+
       - name: Configurar Pages
         uses: actions/configure-pages@v5
-      - name: Subir la carpeta de la web
+      - name: Subir el sitio
         uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/landing
+          path: _site
       - name: Desplegar
         id: deployment
         uses: actions/deploy-pages@v4

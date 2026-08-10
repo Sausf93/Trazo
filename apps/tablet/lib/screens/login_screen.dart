@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../api/client.dart';
 import '../theme.dart';
 import '../widgets/trazo_logo.dart';
+import 'galeria_screen.dart';
 import 'rol_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -90,6 +91,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: CircularProgressIndicator(
                               strokeWidth: 2, color: Colors.white))
                       : const Text('Entrar'),
+                ),
+                const SizedBox(height: 12),
+                // Acceso al modo demo sin credenciales (para probar/enseñar las
+                // actividades, también en la versión web alojada).
+                TextButton.icon(
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const GaleriaScreen()),
+                  ),
+                  icon: const Icon(Icons.grid_view, size: 18),
+                  label: const Text('Ver actividades de ejemplo'),
+                  style: TextButton.styleFrom(
+                      foregroundColor: TrazoColors.sageDark),
                 ),
               ],
             ),
