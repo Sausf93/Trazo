@@ -10,7 +10,6 @@ import '../theme.dart';
 import '../widgets/arrastrar_posicion_widget.dart';
 import '../widgets/busqueda_visual_widget.dart';
 import '../widgets/conteo_comparacion_widget.dart';
-import '../widgets/evocacion_libre_widget.dart';
 import '../widgets/generico_widget.dart';
 import '../widgets/manejo_cantidad_widget.dart';
 import '../widgets/memoria_visual_widget.dart';
@@ -395,8 +394,6 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
       case 'arrastrar_posicion':
         return ArrastrarPosicionWidget(
             instancia: inst, onMetricas: onMetricas);
-      case 'evocacion_libre':
-        return EvocacionLibreWidget(instancia: inst, onMetricas: onMetricas);
       case 'manejo_cantidad':
         return ManejoCantidadWidget(instancia: inst, onMetricas: onMetricas);
       case 'busqueda_visual':

@@ -8,7 +8,6 @@ import random
 from app.templates.base import PlantillaBase
 from app.templates.tipos import (
     PlantillaConteoComparacion,
-    PlantillaEvocacionLibre,
     PlantillaMemoriaVisual,
 )
 
@@ -54,22 +53,6 @@ def test_conteo_por_nivel():
             assert lo <= c <= hi, f"{nivel}: {c} fuera de [{lo},{hi}]"
 
 
-def test_evocacion_por_nivel():
-    p = PlantillaEvocacionLibre()
-    params = {"prompts": [{"texto": "cosas de la cocina"}]}
-    assert p.generar(params, nivel="bajo", rng=RNG()).cantidad_objetivo["n_pedidas"] == 3
-    n = p.generar(params, nivel="alto", rng=RNG()).cantidad_objetivo["n_pedidas"]
-    assert 10 <= n <= 12
-
-
-def test_evocacion_completar_pide_una_ignora_banda():
-    # Refranes: "completar" siempre pide 1, aunque el nivel sea alto (banda 10-12).
-    p = PlantillaEvocacionLibre()
-    params = {"modo": "completar", "prompts": [{"texto": "Perro ladrador..."}]}
-    for nivel in ["bajo", "medio", "alto"]:
-        inst = p.generar(params, nivel=nivel, rng=RNG())
-        assert inst.cantidad_objetivo["n_pedidas"] == 1
-        assert inst.render["modo"] == "completar"
 
 
 def test_nivel_dict_sigue_funcionando():

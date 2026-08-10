@@ -79,9 +79,5 @@ def test_trazo_solo_extremos():
     assert corregir("trazo", {"precision": None, "puntos_capturados": 0}, {}) == "sin_valorar"
 
 
-def test_evocacion_siempre_revisar():
-    assert corregir("evocacion_libre", {"n_pedidas": 5}, {}) == "sin_valorar"
-
-
 def test_plantilla_desconocida_no_revienta():
     assert corregir("algo_raro", {"x": 1}, {}) == "sin_valorar"

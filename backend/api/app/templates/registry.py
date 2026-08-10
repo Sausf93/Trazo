@@ -6,7 +6,6 @@ from app.templates.tipos import (
     PlantillaArrastrarPosicion,
     PlantillaBusqueda,
     PlantillaConteoComparacion,
-    PlantillaEvocacionLibre,
     PlantillaManejoCantidad,
     PlantillaMemoriaVisual,
     PlantillaSecuenciaOrdenar,
@@ -21,7 +20,6 @@ _PLANTILLAS: list[type[PlantillaBase]] = [
     PlantillaSecuenciaOrdenar,
     PlantillaConteoComparacion,
     PlantillaArrastrarPosicion,
-    PlantillaEvocacionLibre,
     PlantillaManejoCantidad,
     PlantillaBusqueda,
 ]

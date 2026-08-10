@@ -66,7 +66,7 @@ PLANTILLAS = (
     "secuencia_ordenar",
     "conteo_comparacion",
     "arrastrar_posicion",
-    "evocacion_libre",
+    "busqueda_visual",
     "manejo_cantidad",
 )
 

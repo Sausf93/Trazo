@@ -298,47 +298,6 @@ class PlantillaArrastrarPosicion(PlantillaBase):
         )
 
 
-class PlantillaEvocacionLibre(PlantillaBase):
-    """Objetos por categoría, palabras por sílaba, completar refranes.
-
-    La respuesta es abierta (dicha/escrita) — la valida la integradora desde su
-    control, no se autocorrige. Se registra cuántas válidas sobre las pedidas.
-    """
-
-    tipo = "evocacion_libre"
-    metricas = ["n_pedidas", "n_validas", "tiempo_ms"]
-
-    def generar(self, parametros, nivel=None, rng=None):
-        rng = self._rng(rng)
-        prompts = parametros.get("prompts") or [{"texto": "objetos de la cocina"}]
-        prompt = rng.choice(prompts)
-        # `modo`: "listar" (di N palabras/objetos) o "completar" (un refrán/frase).
-        # En "completar" solo se pide UNA respuesta (la banda de cantidad no aplica).
-        modo = parametros.get("modo", "listar")
-        if modo == "completar":
-            n_pedidas = 1
-        else:
-            banda = self.banda_cantidad(nivel)
-            if banda:
-                n_pedidas = rng.randint(banda[0], banda[1])
-            else:
-                n_pedidas = _rango(nivel, parametros, "pedir_min", "pedir_max", 5, 10, rng)
-
-        return InstanciaEjercicio(
-            plantilla=self.tipo,
-            render={
-                "instruccion": parametros.get("instruccion", "Di o escribe:"),
-                "prompt": prompt,
-                "n_pedidas": n_pedidas,
-                "modo": modo,
-                "respuesta_abierta": True,
-            },
-            cantidad_objetivo={"n_pedidas": n_pedidas, "prompt": prompt, "modo": modo},
-            solucion={"validacion": "manual_integradora"},
-            metricas=self.metricas,
-        )
-
-
 # --- Denominaciones del euro (trabajo interno SIEMPRE en céntimos enteros) ---
 # Monedas: 1c, 2c, 5c, 10c, 20c, 50c, 1€, 2€.  Billetes: 5, 10, 20, 50, 100, 200, 500 €.
 MONEDAS_C = [1, 2, 5, 10, 20, 50, 100, 200]

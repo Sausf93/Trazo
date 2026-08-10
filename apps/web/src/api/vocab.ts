@@ -35,7 +35,7 @@ export const PLANTILLAS = [
   "secuencia_ordenar",
   "conteo_comparacion",
   "arrastrar_posicion",
-  "evocacion_libre",
+  "busqueda_visual",
   "manejo_cantidad",
 ] as const;
 
@@ -48,7 +48,7 @@ export const PLANTILLA_LABEL: Record<string, string> = {
   secuencia_ordenar: "Secuencia / ordenar",
   conteo_comparacion: "Conteo / comparación",
   arrastrar_posicion: "Arrastrar a posición",
-  evocacion_libre: "Evocación libre",
+  busqueda_visual: "Búsqueda visual",
   manejo_cantidad: "Manejo de cantidad",
 };
 

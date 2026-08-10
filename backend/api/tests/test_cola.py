@@ -48,7 +48,7 @@ async def _setup_basico(db: AsyncSession):
     # Dos ejercicios de praxias (para probar rotación) + uno de lenguaje.
     p1 = EjercicioCatalogo(bloque="praxias", plantilla_tipo="trazo", nombre="A-linea")
     p2 = EjercicioCatalogo(bloque="praxias", plantilla_tipo="trazo", nombre="B-arco")
-    l1 = EjercicioCatalogo(bloque="lenguaje", plantilla_tipo="evocacion_libre", nombre="Palabras")
+    l1 = EjercicioCatalogo(bloque="lenguaje", plantilla_tipo="seleccion_multiple", nombre="Palabras")
     db.add_all([p1, p2, l1])
     await db.flush()
     return centro, staff, uf, p1, p2, l1

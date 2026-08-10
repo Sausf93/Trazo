@@ -187,11 +187,6 @@ def _trazo(v, o):
     return "sin_valorar"     # banda intermedia -> revisar
 
 
-def _evocacion_libre(v, o):
-    # Respuesta oral/abierta: la app no la oye. SIEMPRE la revisa la integradora.
-    return "sin_valorar"
-
-
 def hubo_interaccion(plantilla: str, valores: dict | None) -> bool:
     """¿La persona TOCÓ/interactuó con la actividad? (independiente de acertar).
 
@@ -219,8 +214,6 @@ def hubo_interaccion(plantilla: str, valores: dict | None) -> bool:
         if "hora_elegida" in v:
             return True  # reloj: no podemos saberlo -> asumimos que sí
         return bool(v.get("monedas_usadas"))
-    if plantilla == "evocacion_libre":
-        return True  # respuesta oral: no la oímos -> asumimos que sí
     return True
 
 
@@ -233,5 +226,4 @@ _CORRECTORES = {
     "arrastrar_posicion": _arrastrar_posicion,
     "manejo_cantidad": _manejo_cantidad,
     "trazo": _trazo,
-    "evocacion_libre": _evocacion_libre,
 }

@@ -5,7 +5,7 @@ import '../theme.dart';
 
 /// Vista genérica para plantillas cuyo renderer específico aún no está hecho
 /// (memoria_visual, secuencia_ordenar, conteo_comparacion, arrastrar_posicion,
-/// evocacion_libre, manejo_cantidad). Muestra la instrucción de forma legible y
+/// manejo_cantidad). Muestra la instrucción de forma legible y
 /// permite marcar el intento como completado. A completar por tipo en fases
 /// siguientes.
 class GenericoWidget extends StatelessWidget {
