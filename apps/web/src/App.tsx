@@ -5,6 +5,7 @@ import { DashboardPage } from "./pages/Dashboard";
 import { DispositivosPage } from "./pages/Dispositivos";
 import { EjerciciosPage } from "./pages/Ejercicios";
 import { LoginPage } from "./pages/Login";
+import { PacientesPage } from "./pages/Pacientes";
 import { PlanEditorPage } from "./pages/PlanEditor";
 import { SesionLivePage } from "./pages/SesionLive";
 import { SesionesPage } from "./pages/Sesiones";
@@ -20,6 +21,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <DashboardPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/pacientes"
+        element={
+          <ProtectedRoute>
+            <PacientesPage />
           </ProtectedRoute>
         }
       />

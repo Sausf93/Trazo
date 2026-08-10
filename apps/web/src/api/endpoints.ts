@@ -33,6 +33,18 @@ export function listarUsuarios(centroId: string, signal?: AbortSignal): Promise<
   return http.get<UsuarioFinal[]>(`/centros/${encodeURIComponent(centroId)}/usuarios`, signal);
 }
 
+export function crearUsuario(body: { alias_interno: string; nivel_base_json?: Record<string, unknown> }): Promise<UsuarioFinal> {
+  return http.post<UsuarioFinal>("/usuarios", body);
+}
+
+export function editarUsuario(id: string, body: { alias_interno?: string; nivel_base_json?: Record<string, unknown> }): Promise<UsuarioFinal> {
+  return http.patch<UsuarioFinal>(`/usuarios/${encodeURIComponent(id)}`, body);
+}
+
+export function darDeBajaUsuario(id: string): Promise<UsuarioFinal> {
+  return http.post<UsuarioFinal>(`/usuarios/${encodeURIComponent(id)}/baja`);
+}
+
 // ---- Ejercicios ----
 export function listarEjercicios(
   params: { bloque?: string; activo?: boolean } = {},
