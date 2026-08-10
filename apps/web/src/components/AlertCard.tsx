@@ -133,7 +133,7 @@ function ContextItem({ label, value, alert }: { label: string; value: string; al
           fontSize: 17,
           fontWeight: 600,
           margin: 0,
-          color: alert ? colors.coralDark : colors.ink,
+          color: alert ? colors.coralDeep : colors.ink,
         }}
       >
         {value}

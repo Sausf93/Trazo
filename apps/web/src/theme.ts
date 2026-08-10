@@ -12,6 +12,9 @@ export const colors = {
   sageDark: "#5C7A66",
   coral: "#E8A87C",
   coralDark: "#C97B4A",
+  // Coral oscuro para texto/botones con texto blanco: cumple contraste WCAG AA
+  // (coralDark #C97B4A sobre blanco se queda en ~3.1:1, insuficiente).
+  coralDeep: "#9C4E24",
   sand: "#C9BFA4",
   white: "#FFFEFB",
 

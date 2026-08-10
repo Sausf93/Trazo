@@ -83,7 +83,7 @@ export function Button({
   };
   const variants: Record<Variant, CSSProperties> = {
     primary: { background: colors.sageDark, color: colors.white, borderColor: colors.sageDark },
-    coral: { background: colors.coralDark, color: colors.white, borderColor: colors.coralDark },
+    coral: { background: colors.coralDeep, color: colors.white, borderColor: colors.coralDeep },
     ghost: { background: "transparent", color: colors.ink, borderColor: colors.sand },
   };
   const disabledStyle: CSSProperties = rest.disabled
