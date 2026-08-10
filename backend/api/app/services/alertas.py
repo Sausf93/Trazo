@@ -224,8 +224,19 @@ def _redactar(bloque, unidad, res_rend, res_tiempo, hay_rend, hay_tiempo):
             f"{res_tiempo.n_reciente} {unidad}"
         )
 
+    # Encuadre responsable: esto NO es un diagnóstico ni mide "deterioro". Es un
+    # cambio en el DESEMPEÑO de la actividad, que puede deberse a muchas causas
+    # ajenas a lo cognitivo. El profesional decide tras descartarlas.
+    contexto["no_diagnostico"] = True
+    contexto["causas_a_descartar"] = [
+        "vista o audición", "dolor o malestar físico", "cambio de medicación",
+        "estado de ánimo o un día malo", "infección (p. ej. de orina)",
+        "sueño o cansancio",
+    ]
     descripcion = (
-        f"Cambio sostenido en '{bloque}': " + "; y ".join(frases)
-        + ". Puede merecer una revisión."
+        f"Cambio sostenido en el desempeño de '{bloque}': " + "; y ".join(frases)
+        + ". No es un diagnóstico ni indica deterioro por sí solo: conviene "
+        "revisarlo descartando antes causas frecuentes (vista/oído, dolor, "
+        "medicación, ánimo, un día malo, una infección)."
     )
     return descripcion, contexto

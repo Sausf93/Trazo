@@ -125,6 +125,24 @@ export function UsuarioEvolucionPage() {
         </select>
       </div>
 
+      {/* Encuadre responsable: qué es y qué NO es esta pantalla */}
+      <div
+        style={{
+          border: `1px solid ${colors.sand}`,
+          background: colors.card,
+          borderRadius: 12,
+          padding: "12px 16px",
+          marginBottom: 18,
+          fontSize: 13,
+          color: colors.textMuted,
+        }}
+      >
+        Estos datos reflejan el <strong style={{ color: colors.ink }}>desempeño en las actividades</strong>,
+        no una medida de deterioro cognitivo. Un cambio puede deberse a vista u oído, dolor, medicación,
+        ánimo o un día malo: úsalo como apoyo para <strong style={{ color: colors.ink }}>mirar con más
+        atención</strong> y decidir con tu criterio, descartando antes esas causas.
+      </div>
+
       {/* Resumen */}
       <div
         style={{
@@ -142,18 +160,17 @@ export function UsuarioEvolucionPage() {
         <ResumenTile
           label="Tasa de ayuda"
           value={fmtPorcentaje(evolucion.data?.resumen.tasa_ayuda ?? null)}
-          hint="Proporción de intentos con ayuda"
-          alert={(evolucion.data?.resumen.tasa_ayuda ?? 0) >= 0.3}
+          hint="Proporción de intentos con ayuda (se lee comparándola con su propio histórico)"
         />
         <ResumenTile
-          label="Intentos registrados"
+          label="Intentos valorados"
           value={String(evolucion.data?.resumen.n_intentos ?? "—")}
           hint={bloque ? labelBloque(bloque) : "Todos los bloques"}
         />
         <ResumenTile
-          label="Puntos fuera de patrón"
+          label="Sesiones a revisar"
           value={String(nAnomalos)}
-          hint="Sesiones marcadas para revisar"
+          hint="El sistema sugiere mirarlas; no es un juicio"
           alert={nAnomalos > 0}
         />
       </div>

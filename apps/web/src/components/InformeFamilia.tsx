@@ -82,7 +82,6 @@ export function InformeFamilia({
 
   const tendencia = calcularTendencia(serie);
   const tTexto = TENDENCIA_TEXTO[tendencia];
-  const nAnomalos = serie.filter((p) => p.anomalo).length;
 
   const generado = new Date();
 
@@ -225,13 +224,6 @@ export function InformeFamilia({
               mismo/a y necesitó ayuda en un <strong style={{ color: colors.ink }}>{pct(nAyuda)} %</strong>.
               {nNoComp > 0 && ` Quedaron sin completar ${pct(nNoComp)} %.`}
             </li>
-            {nAnomalos > 0 && (
-              <li>
-                El equipo ha marcado{" "}
-                <strong style={{ color: colors.ink }}>{nAnomalos}</strong>{" "}
-                {nAnomalos === 1 ? "sesión" : "sesiones"} para revisar con más atención.
-              </li>
-            )}
           </ul>
         </div>
       </section>
@@ -248,9 +240,11 @@ export function InformeFamilia({
       >
         <p style={{ margin: 0 }}>
           Este informe es <strong>orientativo</strong> y tiene una finalidad divulgativa para la familia.
-          No constituye un diagnóstico ni sustituye la valoración del equipo profesional del centro,
-          que es quien interpreta la evolución en su contexto. Para cualquier duda, consulte con el
-          personal de referencia.
+          Refleja el <strong>desempeño en las actividades</strong>, no una medida de deterioro cognitivo:
+          un cambio puede deberse a muchas causas ajenas a lo cognitivo (vista u oído, dolor, medicación,
+          ánimo, un día malo o una infección pasajera). No constituye un diagnóstico ni sustituye la
+          valoración del equipo profesional del centro, que es quien la interpreta en su contexto. Para
+          cualquier duda, consulte con el personal de referencia.
         </p>
         <p style={{ margin: "8px 0 0" }}>
           Documento generado por Trazo el {fmtFecha(generado.toISOString())}. Datos tratados conforme al
