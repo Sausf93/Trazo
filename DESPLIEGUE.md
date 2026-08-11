@@ -31,6 +31,7 @@ hay que alojar.
    POSTGRES_USER=trazo
    POSTGRES_DB=trazo
    CORS_ORIGINS=https://sausf93.github.io
+   BACKUP_PASSPHRASE=<frase larga para cifrar las copias; guárdala aparte y a salvo>
    ```
 3. **Levanta**:
    ```bash
@@ -64,14 +65,19 @@ panel se dan de alta las integradoras y los pacientes.
 
 ## Copias de seguridad y restauración
 
-- Las copias van a `./backups/trazo-AAAAMMDD-HHMMSS.sql.gz` (diarias, 14 días).
+- Las copias van a `./backups/trazo-AAAAMMDD-HHMMSS.sql.gz.gpg` (diarias, 14 días),
+  **cifradas** con `BACKUP_PASSPHRASE` (cifrado en reposo).
 - **Prueba la restauración** (imprescindible: una copia sin restore probado no es
   una copia):
   ```bash
-  gunzip -c backups/trazo-AAAAMMDD-HHMMSS.sql.gz | \
-    docker compose -f docker-compose.prod.yml exec -T db psql -U trazo -d trazo
+  gpg --batch --passphrase "$BACKUP_PASSPHRASE" -d backups/trazo-AAAAMMDD-HHMMSS.sql.gz.gpg \
+    | gunzip \
+    | docker compose -f docker-compose.prod.yml --env-file .env.prod exec -T db psql -U trazo -d trazo
   ```
-- Copia también los `./backups` fuera del servidor (otro disco / almacenamiento).
+- Copia los `./backups` **fuera del servidor** (otro disco / almacenamiento).
+- **Cifrado de la BD en disco**: además del cifrado de las copias, cifra el
+  volumen del host donde vive PostgreSQL (LUKS / disco cifrado del proveedor).
+  Para datos de categoría especial es lo recomendable.
 
 ## Notas y pendientes conocidos
 

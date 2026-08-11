@@ -66,7 +66,8 @@ services:
       - caddy_data:/data
       - caddy_config:/config
 
-  # Copias de seguridad: pg_dump diario comprimido, retención 14 días.
+  # Copias de seguridad: pg_dump diario, comprimido y CIFRADO en reposo (gpg
+  # simétrico con BACKUP_PASSPHRASE), retención 14 días.
   backup:
     image: postgres:16-alpine
     restart: always
@@ -77,13 +78,15 @@ services:
       PGUSER: ${POSTGRES_USER:-trazo}
       PGPASSWORD: ${POSTGRES_PASSWORD}
       PGDATABASE: ${POSTGRES_DB:-trazo}
+      BACKUP_PASSPHRASE: ${BACKUP_PASSPHRASE:?define BACKUP_PASSPHRASE en .env.prod}
     volumes:
       - ./backups:/backups
     entrypoint: >
-      sh -c 'while true; do
-        f=/backups/trazo-$$(date +%Y%m%d-%H%M%S).sql.gz;
-        pg_dump -h db | gzip > "$$f" && echo "backup ok: $$f";
-        find /backups -name "trazo-*.sql.gz" -mtime +14 -delete;
+      sh -c 'apk add --no-cache gnupg >/dev/null 2>&1;
+      while true; do
+        f=/backups/trazo-$$(date +%Y%m%d-%H%M%S).sql.gz.gpg;
+        pg_dump -h db | gzip | gpg --batch --yes --passphrase "$$BACKUP_PASSPHRASE" -c -o "$$f" && echo "backup cifrado ok: $$f";
+        find /backups -name "trazo-*.sql.gz.gpg" -mtime +14 -delete;
         sleep 86400;
       done'
 
