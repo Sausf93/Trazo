@@ -38,17 +38,29 @@ hay que alojar.
    ```
 4. Caddy sacará el certificado solo. Comprueba: `https://TU_DOMINIO/health`
    debe responder `{"status":"ok","database":"up"}`.
-5. **Apunta el panel y la tablet** a esa URL:
-   - Panel web (Pages): configura `VITE_API_URL=https://TU_DOMINIO`.
-   - Tablet (APK): compila con `--dart-define=API_URL=https://TU_DOMINIO`
+5. **Crea el primer centro y la cuenta de acceso** (ver "Datos iniciales").
+6. **Apunta el panel y la tablet** a esa URL:
+   - **Panel web** (apps/web): es un build estático que **compilas tú apuntando a
+     tu backend** (`VITE_API_URL=https://TU_DOMINIO npm run build`) y sirves en
+     cualquier hosting estático. NO se publica solo en GitHub Pages (ahí solo van
+     la web comercial y el demo). Puedes servirlo detrás del mismo Caddy.
+   - **Tablet** (APK): compila con `--dart-define=API_URL=https://TU_DOMINIO`
      (ver `apps/tablet/DISTRIBUCION_TABLET.md`).
 
 ## Datos iniciales
 
-En producción NO se siembran datos de demo (`ENTORNO=prod`). Para crear el primer
-centro y la primera cuenta de integradora, usa un script de alta o inserta en la
-BD el centro + un `UsuarioStaff` con contraseña ya hasheada (bcrypt). *(Pendiente:
-un comando de bootstrap `crear-centro`.)*
+En producción NO se siembran datos de demo (`ENTORNO=prod`), así que la BD arranca
+vacía. Crea el primer centro y su cuenta de administración con el comando de
+bootstrap (dentro del contenedor `api`):
+
+```bash
+docker compose -f docker-compose.prod.yml --env-file .env.prod exec api \
+  python -m app.bootstrap --centro "Centro de Día X" \
+  --email admin@centrox.es --nombre "Nombre Apellidos" --password "una-contraseña-fuerte"
+```
+
+Es idempotente (si la cuenta ya existe, no hace nada). A partir de ahí, desde el
+panel se dan de alta las integradoras y los pacientes.
 
 ## Copias de seguridad y restauración
 

@@ -68,11 +68,16 @@ async def lifespan(app: FastAPI):
     yield
 
 
+_es_dev = settings.entorno.lower() == "dev"
 app = FastAPI(
     title="Trazo API",
     description="Estimulación cognitiva para centros de día — backend.",
     version="0.1.0",
     lifespan=lifespan,
+    # En producción se ocultan la documentación interactiva y el esquema OpenAPI.
+    docs_url="/docs" if _es_dev else None,
+    redoc_url=None,
+    openapi_url="/openapi.json" if _es_dev else None,
 )
 
 app.add_middleware(
