@@ -280,6 +280,27 @@ class Ejercicio {
 }
 
 /// Una tirada concreta del ejercicio, generada por el motor de plantillas.
+/// Un intento reciente para revisar/marcar en lote desde el monitor.
+class IntentoRevision {
+  final String id;
+  final String ejercicio;
+  final String resultado;
+  final bool conAyuda;
+
+  IntentoRevision(
+      {required this.id,
+      required this.ejercicio,
+      required this.resultado,
+      required this.conAyuda});
+
+  factory IntentoRevision.fromJson(Map<String, dynamic> j) => IntentoRevision(
+        id: j['id'] as String,
+        ejercicio: (j['ejercicio'] ?? '') as String,
+        resultado: (j['resultado'] ?? 'sin_valorar') as String,
+        conAyuda: (j['con_ayuda'] ?? false) as bool,
+      );
+}
+
 class Instancia {
   final String ejercicioId;
   final String nombre;

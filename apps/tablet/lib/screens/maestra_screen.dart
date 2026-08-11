@@ -1073,6 +1073,32 @@ class _MonitorState extends State<_Monitor> {
     }
   }
 
+  /// Abre el diálogo para revisar/marcar las últimas 3-4 actividades de la
+  /// persona de golpe (lo que pedía Laura: no solo la última).
+  Future<void> _revisarLote(FichaLive f) async {
+    List<IntentoRevision> intentos;
+    try {
+      intentos = await ApiClient.instance.ultimosIntentos(
+          widget.sesionId, f.usuarioFinalId, limit: 4);
+    } catch (err) {
+      _snack('No se pudieron cargar las últimas: $err');
+      return;
+    }
+    if (!mounted) return;
+    if (intentos.isEmpty) {
+      _snack('${f.aliasInterno} aún no tiene actividades.');
+      return;
+    }
+    await showDialog<void>(
+      context: context,
+      builder: (_) => _RevisionLoteDialog(
+        alias: f.aliasInterno,
+        intentos: intentos,
+      ),
+    );
+    await _poll(silencioso: true);
+  }
+
   Future<void> _enviarMas(FichaLive f) async {
     // La maestra elige QUÉ mandar en la nueva tanda (categorías + nº + nivel) o
     // repite lo mismo. Así no se le manda otra vez casi lo mismo sin querer.
@@ -1147,6 +1173,7 @@ class _MonitorState extends State<_Monitor> {
                               onAyuda: (v) => _marcarAyuda(f, v),
                               onResultado: (r) => _marcarResultado(f, r),
                               onEnviarMas: () => _enviarMas(f),
+                              onRevisar: () => _revisarLote(f),
                             );
                           },
                         ),
@@ -1268,6 +1295,7 @@ class _FichaCard extends StatelessWidget {
   final ValueChanged<bool> onAyuda;        // marcar/desmarcar "le ayudé"
   final ValueChanged<String> onResultado;  // cola de revisión (logrado/parcial/no_logrado)
   final VoidCallback onEnviarMas;
+  final VoidCallback onRevisar;            // revisar/marcar en lote las últimas
 
   const _FichaCard({
     required this.ficha,
@@ -1277,6 +1305,7 @@ class _FichaCard extends StatelessWidget {
     required this.onAyuda,
     required this.onResultado,
     required this.onEnviarMas,
+    required this.onRevisar,
   });
 
   ({String texto, Color color, IconData icono}) get _estado {
@@ -1432,6 +1461,19 @@ class _FichaCard extends StatelessWidget {
               cargando: marcando,
               onTap: () => onAyuda(!ficha.ultimoConAyuda),
             ),
+            const SizedBox(height: 4),
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton.icon(
+                onPressed: onRevisar,
+                icon: const Icon(Icons.history, size: 16),
+                label: const Text('Revisar últimas'),
+                style: TextButton.styleFrom(
+                    foregroundColor: TrazoColors.sageDark,
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    minimumSize: const Size(0, 32)),
+              ),
+            ),
           ],
           if (terminado) ...[
             const SizedBox(height: 6),
@@ -1524,6 +1566,163 @@ class _BotonAyuda extends StatelessWidget {
         label: Text(activo ? 'Le ayudé ✓' : 'Le ayudé',
             style: const TextStyle(fontWeight: FontWeight.w700)),
       ),
+    );
+  }
+}
+
+/// Diálogo para marcar en LOTE las últimas actividades de una persona: marcar
+/// "le ayudé" en cualquiera, y resolver las que quedaron sin valorar.
+class _RevisionLoteDialog extends StatefulWidget {
+  final String alias;
+  final List<IntentoRevision> intentos;
+  const _RevisionLoteDialog({required this.alias, required this.intentos});
+
+  @override
+  State<_RevisionLoteDialog> createState() => _RevisionLoteDialogState();
+}
+
+class _RevisionLoteDialogState extends State<_RevisionLoteDialog> {
+  late final List<IntentoRevision> _items = List.of(widget.intentos);
+  final Set<String> _ocupado = {};
+
+  void _reemplaza(int i, IntentoRevision nuevo) {
+    setState(() => _items[i] = nuevo);
+  }
+
+  Future<void> _ayuda(int i, bool v) async {
+    final it = _items[i];
+    setState(() => _ocupado.add(it.id));
+    try {
+      await ApiClient.instance.marcarAyudaIntento(it.id, v);
+      _reemplaza(i, IntentoRevision(
+          id: it.id, ejercicio: it.ejercicio, resultado: it.resultado, conAyuda: v));
+    } catch (_) {} finally {
+      if (mounted) setState(() => _ocupado.remove(it.id));
+    }
+  }
+
+  Future<void> _resultado(int i, String r) async {
+    final it = _items[i];
+    setState(() => _ocupado.add(it.id));
+    try {
+      await ApiClient.instance.marcarResultadoIntento(it.id, r);
+      _reemplaza(i, IntentoRevision(
+          id: it.id, ejercicio: it.ejercicio, resultado: r, conAyuda: it.conAyuda));
+    } catch (_) {} finally {
+      if (mounted) setState(() => _ocupado.remove(it.id));
+    }
+  }
+
+  String _txtRes(String r) => switch (r) {
+        'logrado' => 'Lo logró',
+        'parcial' => 'A medias',
+        'no_logrado' => 'No lo logró',
+        _ => 'Sin valorar',
+      };
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('Últimas de ${widget.alias}'),
+      content: SizedBox(
+        width: 460,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (var i = 0; i < _items.length; i++) _fila(i),
+            ],
+          ),
+        ),
+      ),
+      actions: [
+        ElevatedButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Listo')),
+      ],
+    );
+  }
+
+  Widget _fila(int i) {
+    final it = _items[i];
+    final cargando = _ocupado.contains(it.id);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Text(it.ejercicio,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w700, color: TrazoColors.ink)),
+              ),
+              Text(_txtRes(it.resultado),
+                  style: const TextStyle(
+                      fontSize: 13, color: TrazoColors.sageDark)),
+            ],
+          ),
+          const SizedBox(height: 4),
+          // Si quedó sin valorar, resolver aquí; siempre, marcar la ayuda.
+          Row(
+            children: [
+              if (it.resultado == 'sin_valorar') ...[
+                _mini('Logró', () => _resultado(i, 'logrado'), cargando),
+                _mini('A medias', () => _resultado(i, 'parcial'), cargando),
+                _mini('No pudo', () => _resultado(i, 'no_logrado'), cargando),
+                const SizedBox(width: 8),
+              ],
+              const Spacer(),
+              _AyudaChip(
+                activo: it.conAyuda,
+                cargando: cargando,
+                onTap: () => _ayuda(i, !it.conAyuda),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _mini(String t, VoidCallback onTap, bool cargando) => Padding(
+        padding: const EdgeInsets.only(right: 6),
+        child: OutlinedButton(
+          onPressed: cargando ? null : onTap,
+          style: OutlinedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              minimumSize: const Size(0, 36)),
+          child: Text(t, style: const TextStyle(fontSize: 13)),
+        ),
+      );
+}
+
+class _AyudaChip extends StatelessWidget {
+  final bool activo;
+  final bool cargando;
+  final VoidCallback onTap;
+  const _AyudaChip(
+      {required this.activo, required this.cargando, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton.icon(
+      onPressed: cargando ? null : onTap,
+      style: OutlinedButton.styleFrom(
+        backgroundColor:
+            activo ? TrazoColors.coralDark.withValues(alpha: 0.16) : null,
+        foregroundColor: activo ? TrazoColors.coralDark : TrazoColors.sageDark,
+        side: BorderSide(
+            color: activo ? TrazoColors.coralDark : TrazoColors.sand),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        minimumSize: const Size(0, 36),
+      ),
+      icon: Icon(activo ? Icons.back_hand : Icons.back_hand_outlined, size: 16),
+      label: Text(activo ? 'Le ayudé ✓' : 'Le ayudé',
+          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700)),
     );
   }
 }

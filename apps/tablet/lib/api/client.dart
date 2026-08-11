@@ -400,6 +400,19 @@ class ApiClient {
     _check(resp);
   }
 
+  /// Últimos intentos de una persona en la sesión (para marcar en lote).
+  Future<List<IntentoRevision>> ultimosIntentos(
+      String sesionId, String usuarioId, {int limit = 4}) async {
+    final resp = await http.get(
+        _u('/sesiones/$sesionId/participantes/$usuarioId/intentos',
+            {'limit': '$limit'}),
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+    _check(resp);
+    return (jsonDecode(resp.body) as List)
+        .map((e) => IntentoRevision.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
   /// Cola de revisión: fija el resultado de una actividad que la app no supo
   /// juzgar (logrado | parcial | no_logrado).
   Future<void> marcarResultadoIntento(String intentoId, String resultado) async {

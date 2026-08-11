@@ -8,7 +8,7 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.deps import Acceso, acceso_centro, get_current_staff
+from app.deps import Acceso, acceso_centro, get_current_staff, usuario_del_centro
 from app.models import (
     EjercicioCatalogo,
     Intento,
@@ -20,6 +20,7 @@ from app.models import (
 from app.schemas import (
     ActividadActualIn,
     FichaViva,
+    IntentoRevisionOut,
     LineaConfig,
     LiveOut,
     NotaSesionIn,
@@ -548,6 +549,35 @@ async def reportar_actividad_actual(
     sp.pos_actual = body.pos
     sp.total_actual = body.total
     await db.commit()
+
+
+@router.get("/{sesion_id}/participantes/{usuario_id}/intentos",
+            response_model=list[IntentoRevisionOut])
+async def ultimos_intentos_participante(
+    sesion_id: str,
+    usuario_id: str,
+    limit: int = 4,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Los últimos intentos de una persona en la sesión, para que la integradora
+    marque la ayuda o resuelva la revisión de VARIAS de golpe (no solo la última)."""
+    await usuario_del_centro(db, usuario_id, staff)  # anti-IDOR
+    filas = (await db.execute(
+        select(Intento, EjercicioCatalogo.nombre)
+        .join(EjercicioCatalogo, EjercicioCatalogo.id == Intento.ejercicio_id)
+        .where(Intento.sesion_id == sesion_id,
+               Intento.usuario_final_id == usuario_id)
+        .order_by(Intento.timestamp_inicio.desc())
+        .limit(max(1, min(limit, 10)))
+    )).all()
+    return [
+        IntentoRevisionOut(
+            id=i.id, ejercicio=nombre, resultado=i.resultado,
+            con_ayuda=i.con_ayuda, cuando=i.timestamp_inicio,
+        )
+        for i, nombre in filas
+    ]
 
 
 @router.patch("/{sesion_id}/participantes/{usuario_id}/mas",

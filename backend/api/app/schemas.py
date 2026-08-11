@@ -478,3 +478,12 @@ class LiveOut(BaseModel):
     sesion_id: str
     tipo: str
     fichas: list[FichaViva]
+
+
+class IntentoRevisionOut(BaseModel):
+    """Un intento reciente de una persona, para revisar/marcar en lote."""
+    id: str
+    ejercicio: str
+    resultado: str
+    con_ayuda: bool
+    cuando: datetime
