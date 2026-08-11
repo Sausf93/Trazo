@@ -52,6 +52,7 @@ BLOQUES = (
     "atencion_memoria",
     "lenguaje",
     "razonamiento",
+    "calculo",
     "gnosias",
     "praxias",
     "percepcion",

@@ -114,9 +114,14 @@ export function EvolucionChart({ data }: { data: PuntoChart[] }) {
           <ReferenceLine y={0.5} stroke={colors.sand} strokeDasharray="3 3" />
           <XAxis
             dataKey="fecha"
-            tickFormatter={(v: string) => fmtFecha(v)}
+            // Etiqueta corta (sin año) y separación mínima entre marcas: con varias
+            // sesiones el mismo día, Recharts descarta las que se solaparían en vez
+            // de amontonarlas/cortarlas. El tooltip sigue mostrando la fecha entera.
+            tickFormatter={(v: string) => fmtFecha(v).replace(/\s\d{4}$/, "")}
             tick={{ fill: colors.textFaint, fontSize: 11, fontFamily: fonts.mono }}
             stroke={colors.sand}
+            minTickGap={28}
+            interval="preserveStartEnd"
           />
           <YAxis
             domain={[0, 1]}
