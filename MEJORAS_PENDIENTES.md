@@ -1,5 +1,35 @@
 # Roadmap de mejoras — revisión multidisciplinar
 
+## 🏁 Veredicto tras 3 rondas de pulido multi-agente
+
+**Código: "casi listo para piloto"** — verificado adversarialmente 3 veces. Se
+reparó el bug crítico de la detección de alertas (dos veces), se cerró el gate de
+inactivos, se segmentó la firma por nivel, se endureció la cola offline, se añadió
+gestión de pacientes, despliegue de producción (TLS, backups, no-root, bootstrap)
+y 14 actividades nuevas (90 → 104). 70 tests en verde.
+
+**Bloqueantes REALES para un piloto con pacientes reales (NO son código — son
+tuyos, de negocio/legal):**
+1. **Entidad jurídica y datos fiscales** (aviso-legal/privacidad tienen [Razón
+   social]/[NIF] como placeholder; contacto en gmail personal).
+2. **Contrato de encargo del tratamiento (art. 28 RGPD)** con el centro
+   (centro = responsable, Trazo = encargado).
+3. **Consentimiento informado operativo** + figura de representante legal para
+   personas con capacidad modificada (la tabla existe, falta el flujo).
+4. **DPIA / Evaluación de Impacto (art. 35)** — exigible (datos de salud + sujetos
+   vulnerables).
+5. **Cifrado en reposo** de BD y backups (hoy solo TLS en tránsito).
+6. **Arrancar el stack de producción de verdad** una vez (nunca se ha ejecutado) y
+   **probar la restauración** de un backup.
+
+Con eso resuelto (más registrar/servir el panel apuntando a tu backend), el
+producto es desplegable en un centro. Lo de abajo es mejora continua.
+
+---
+
+## Roadmap original
+
+
 Consolidación de una revisión con 6 perspectivas (arquitecto de software, UX de
 producto, terapeuta ocupacional, integradora "Laura", neuropsicólogo y usuario
 anciano). Marca lo ya aplicado y prioriza lo pendiente.
