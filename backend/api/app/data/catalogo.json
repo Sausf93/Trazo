@@ -4865,5 +4865,298 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Sigue la flecha",
+  "descripcion": "Repasar con el dedo flechas que apuntan arriba, abajo, a la izquierda y a la derecha, empezando por la cola y terminando en la punta.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "instruccion": "Repasa la flecha con el dedo, de la cola a la punta",
+   "tolerancia_px": 26,
+   "viewbox": "0 0 300 140",
+   "figuras": [
+    {
+     "id": "flecha_derecha",
+     "path": "M40,70 L250,70 M250,70 L218,50 M250,70 L218,90"
+    },
+    {
+     "id": "flecha_izquierda",
+     "path": "M260,70 L50,70 M50,70 L82,50 M50,70 L82,90"
+    },
+    {
+     "id": "flecha_arriba",
+     "path": "M150,120 L150,25 M150,25 L124,55 M150,25 L176,55"
+    },
+    {
+     "id": "flecha_abajo",
+     "path": "M150,20 L150,115 M150,115 L124,85 M150,115 L176,85"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué pasa después?",
+  "descripcion": "Situaciones cotidianas muy breves; elegir la consecuencia lógica de lo que ocurre. Razonamiento causa-efecto.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "helado",
+     "instruccion": "Elige lo que pasa",
+     "enunciado": "Dejas un helado al sol. ¿Qué pasa?",
+     "correcta": "se derrite",
+     "distractores": [
+      "se congela",
+      "se hace más grande",
+      "se pone duro"
+     ]
+    },
+    {
+     "id": "planta",
+     "instruccion": "Elige lo que pasa",
+     "enunciado": "No riegas una planta en muchos días. ¿Qué le pasa?",
+     "correcta": "se seca",
+     "distractores": [
+      "florece",
+      "crece más",
+      "se moja"
+     ]
+    },
+    {
+     "id": "lluvia",
+     "instruccion": "Elige lo que pasa",
+     "enunciado": "Sales a la calle con lluvia y sin paraguas. ¿Qué pasa?",
+     "correcta": "te mojas",
+     "distractores": [
+      "te secas",
+      "tienes calor",
+      "te quemas"
+     ]
+    },
+    {
+     "id": "fuego",
+     "instruccion": "Elige lo que pasa",
+     "enunciado": "Pones agua fría al fuego y esperas. ¿Qué pasa?",
+     "correcta": "se calienta",
+     "distractores": [
+      "se congela",
+      "se seca",
+      "se ensucia"
+     ]
+    },
+    {
+     "id": "vaso",
+     "instruccion": "Elige lo que pasa",
+     "enunciado": "Un vaso de cristal se cae al suelo. ¿Qué pasa?",
+     "correcta": "se rompe",
+     "distractores": [
+      "rebota",
+      "crece",
+      "se dobla"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "Del principio al final",
+  "descripcion": "Ordenar de principio a fin procesos naturales que todos conocen: las etapas de la vida, el crecimiento de una planta o el de una mariposa.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "pasos_min": 3,
+   "pasos_max": 5,
+   "tareas": [
+    {
+     "id": "vida",
+     "titulo": "Las etapas de la vida",
+     "instruccion": "Ordena del más joven al más mayor",
+     "pasos": [
+      "Bebé",
+      "Niño",
+      "Joven",
+      "Adulto",
+      "Anciano"
+     ]
+    },
+    {
+     "id": "planta",
+     "titulo": "Cómo crece una planta",
+     "instruccion": "Ordena desde el principio",
+     "pasos": [
+      "Semilla",
+      "Brote",
+      "Planta pequeña",
+      "Árbol"
+     ]
+    },
+    {
+     "id": "mariposa",
+     "titulo": "Cómo nace una mariposa",
+     "instruccion": "Ordena desde el principio",
+     "pasos": [
+      "Huevo",
+      "Oruga",
+      "Capullo",
+      "Mariposa"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "calculo",
+  "plantilla_tipo": "conteo_comparacion",
+  "nombre": "Los globos de la fiesta",
+  "descripcion": "Una escena con globos de colores; cada tirada pide contar los de un color o decir de qué color hay más. La tarea alterna entre contar y comparar en cada instancia.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "modos": [
+    "contar",
+    "cual_tiene_mas"
+   ],
+   "instruccion": "Fíjate bien en los globos",
+   "cantidad_min": 2,
+   "cantidad_max": 5,
+   "objetos": [
+    "globo_rojo",
+    "globo_azul",
+    "globo_verde"
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "Arriba o abajo",
+  "descripcion": "Arrastrar cada cosa a donde corresponde: lo que va en el cielo, arriba; lo que va en el suelo, abajo. Orientacion espacial.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "instruccion": "Pon cada cosa en su sitio: el cielo arriba, el suelo abajo",
+   "cantidad_min": 3,
+   "cantidad_max": 4,
+   "muestrear": true,
+   "piezas": [
+    {
+     "id": "sol",
+     "label": "sol",
+     "zona_correcta": "cielo"
+    },
+    {
+     "id": "nube",
+     "label": "nube",
+     "zona_correcta": "cielo"
+    },
+    {
+     "id": "pajaro",
+     "label": "pajaro",
+     "zona_correcta": "cielo"
+    },
+    {
+     "id": "estrella",
+     "label": "estrella",
+     "zona_correcta": "cielo"
+    },
+    {
+     "id": "hierba",
+     "label": "hierba",
+     "zona_correcta": "suelo"
+    },
+    {
+     "id": "flor",
+     "label": "flor",
+     "zona_correcta": "suelo"
+    },
+    {
+     "id": "piedra",
+     "label": "piedra",
+     "zona_correcta": "suelo"
+    },
+    {
+     "id": "hormiga",
+     "label": "hormiga",
+     "zona_correcta": "suelo"
+    }
+   ],
+   "zonas": [
+    {
+     "id": "cielo",
+     "label": "arriba, el cielo"
+    },
+    {
+     "id": "suelo",
+     "label": "abajo, el suelo"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca el número 5",
+  "descripcion": "Tocar todos los números 5 mezclados con otros números. Atención sostenida con material simbólico.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todos los números 5",
+   "objetivo": {
+    "id": "5",
+    "label": "5"
+   },
+   "distractores": [
+    {
+     "id": "1",
+     "label": "1"
+    },
+    {
+     "id": "2",
+     "label": "2"
+    },
+    {
+     "id": "3",
+     "label": "3"
+    },
+    {
+     "id": "6",
+     "label": "6"
+    },
+    {
+     "id": "8",
+     "label": "8"
+    },
+    {
+     "id": "9",
+     "label": "9"
+    },
+    {
+     "id": "0",
+     "label": "0"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "manejo_cantidad",
+  "nombre": "Junta los euros",
+  "descripcion": "Reunir un importe redondo de pocos euros usando solo monedas de 1 y 2 euros, sin centimos. El importe cambia cada vez.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "modo": "dinero",
+   "con_centimos": false,
+   "denominaciones_c": [
+    100,
+    200
+   ],
+   "importe_min_c": 100,
+   "importe_max_c": 500,
+   "paso_c": 100
+  }
  }
 ]
