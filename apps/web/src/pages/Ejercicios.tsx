@@ -15,7 +15,7 @@ import { colors, fonts, radius } from "../theme";
 
 export function EjerciciosPage() {
   const { isAdmin } = useAuth();
-  const ejercicios = useAsync<Ejercicio[]>((s) => listarEjercicios({}, s), []);
+  const ejercicios = useAsync<Ejercicio[]>((s) => listarEjercicios({ activo: true }, s), []);
 
   return (
     <div>

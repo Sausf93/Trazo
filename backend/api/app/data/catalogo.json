@@ -556,63 +556,6 @@
  {
   "bloque": "gnosias",
   "plantilla_tipo": "seleccion_multiple",
-  "nombre": "¿Qué sonido es?",
-  "descripcion": "Se escucha un sonido cotidiano y hay que elegir a qué corresponde — gnosia auditiva.",
-  "parametros_json": {
-   "dificultad": "facil",
-   "opciones_min": 3,
-   "opciones_max": 4,
-   "items": [
-    {
-     "id": "timbre",
-     "instruccion": "¿Qué es este sonido?",
-     "audio": "sonido_timbre",
-     "correcta": "un timbre",
-     "distractores": [
-      "un teléfono",
-      "una alarma",
-      "un despertador"
-     ]
-    },
-    {
-     "id": "agua",
-     "instruccion": "¿Qué es este sonido?",
-     "audio": "sonido_agua",
-     "correcta": "agua corriendo",
-     "distractores": [
-      "lluvia",
-      "el viento",
-      "una cascada lejana"
-     ]
-    },
-    {
-     "id": "perro",
-     "instruccion": "¿Qué es este sonido?",
-     "audio": "sonido_perro",
-     "correcta": "un perro ladrando",
-     "distractores": [
-      "un gato",
-      "un pájaro",
-      "una vaca"
-     ]
-    },
-    {
-     "id": "campana",
-     "instruccion": "¿Qué es este sonido?",
-     "audio": "sonido_campana",
-     "correcta": "una campana",
-     "distractores": [
-      "un martillo",
-      "unas llaves",
-      "un vaso roto"
-     ]
-    }
-   ]
-  }
- },
- {
-  "bloque": "gnosias",
-  "plantilla_tipo": "seleccion_multiple",
   "nombre": "¿Qué objeto es?",
   "descripcion": "Mira el dibujo y elige qué objeto es.",
   "parametros_json": {
@@ -4530,31 +4473,23 @@
     },
     {
      "id": "arbol",
-     "label": "arbol"
+     "label": "árbol"
     },
     {
-     "id": "seta",
-     "label": "seta"
+     "id": "sol",
+     "label": "sol"
     },
     {
-     "id": "mariposa",
-     "label": "mariposa"
+     "id": "manzana",
+     "label": "manzana"
     },
     {
-     "id": "abeja",
-     "label": "abeja"
-    },
-    {
-     "id": "piedra",
-     "label": "piedra"
+     "id": "pajaro",
+     "label": "pájaro"
     },
     {
      "id": "nube",
      "label": "nube"
-    },
-    {
-     "id": "caracol",
-     "label": "caracol"
     }
    ]
   }

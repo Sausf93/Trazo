@@ -132,6 +132,8 @@ class IlustracionResolver {
     'coche', 'autobus', 'bicicleta', 'tren', 'avion', 'barco', 'moto', 'camion',
     // Naturaleza
     'nube', 'arbol', 'montana', 'hoja',
+    // Fiesta
+    'globo_rojo', 'globo_azul', 'globo_verde',
   };
 
   /// Alias: id del catálogo -> nombre de archivo canónico. Amplía aquí libremente.

@@ -138,8 +138,11 @@ class ApiClient {
   // --- Ejercicios ----------------------------------------------------------
 
   Future<List<Ejercicio>> ejercicios({String? bloque}) async {
+    // Solo actividades ACTIVAS: las retiradas del catálogo quedan inactivas en la
+    // BD (se conservan por histórico) pero no deben ofrecerse para hacerlas.
     final resp = await http.get(
-        _u('/ejercicios', {if (bloque != null) 'bloque': bloque}),
+        _u('/ejercicios',
+            {'activo': 'true', if (bloque != null) 'bloque': bloque}),
         headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
     _check(resp);
     final list = jsonDecode(resp.body) as List;

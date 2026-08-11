@@ -237,21 +237,37 @@ class PlantillaConteoComparacion(PlantillaBase):
 
         # Nº de grupos también cambiante (mínimo 2 para poder comparar).
         n_grupos = min(len(objetos), max(2, rng.randint(2, 3)))
-        grupos = []
-        for obj in objetos[:n_grupos]:
-            grupos.append({"objeto": obj, "cantidad": rng.randint(int(lo), int(hi))})
+        objs = objetos[:n_grupos]
+        lo, hi = int(lo), int(hi)
+        if hi <= lo:
+            hi = lo + 1  # hace falta rango para poder desempatar
 
-        if modo == "cual_tiene_mas":
-            gmax = max(grupos, key=lambda g: g["cantidad"])
-            solucion = {"objeto_mayor": gmax["objeto"]}
-        elif modo == "cual_tiene_menos":
-            gmin = min(grupos, key=lambda g: g["cantidad"])
-            solucion = {"objeto_menor": gmin["objeto"]}
-        elif modo == "sumar":
-            solucion = {"total": sum(g["cantidad"] for g in grupos)}
-        else:  # contar (uno concreto)
-            objetivo = rng.choice(grupos)
-            solucion = {"objeto": objetivo["objeto"], "cantidad": objetivo["cantidad"]}
+        grupos = []
+        if modo in ("cual_tiene_mas", "cual_tiene_menos"):
+            # CLAVE: el extremo debe ser ÚNICO. Si dos grupos empatan en el máximo
+            # (o el mínimo), la pregunta no tiene respuesta y la autocorrección se
+            # rompe. Se construye un ganador estrictamente mayor/menor que el resto.
+            idx = rng.randrange(n_grupos)
+            if modo == "cual_tiene_mas":
+                ganador = rng.randint(lo + 1, hi)
+                for i, obj in enumerate(objs):
+                    c = ganador if i == idx else rng.randint(lo, ganador - 1)
+                    grupos.append({"objeto": obj, "cantidad": c})
+                solucion = {"objeto_mayor": objs[idx]}
+            else:
+                ganador = rng.randint(lo, hi - 1)
+                for i, obj in enumerate(objs):
+                    c = ganador if i == idx else rng.randint(ganador + 1, hi)
+                    grupos.append({"objeto": obj, "cantidad": c})
+                solucion = {"objeto_menor": objs[idx]}
+        else:
+            for obj in objs:
+                grupos.append({"objeto": obj, "cantidad": rng.randint(lo, hi)})
+            if modo == "sumar":
+                solucion = {"total": sum(g["cantidad"] for g in grupos)}
+            else:  # contar (uno concreto)
+                objetivo = rng.choice(grupos)
+                solucion = {"objeto": objetivo["objeto"], "cantidad": objetivo["cantidad"]}
 
         return InstanciaEjercicio(
             plantilla=self.tipo,

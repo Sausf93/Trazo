@@ -45,12 +45,27 @@ def test_memoria_alto_se_limita_al_banco():
 
 
 def test_conteo_por_nivel():
+    # En modo "sumar" (o contar) las cantidades respetan la banda del nivel.
     p = PlantillaConteoComparacion()
-    params = {"objetos": ["manzana", "pera"], "modo": "cual_tiene_mas"}
+    params = {"objetos": ["manzana", "pera"], "modo": "sumar"}
     for nivel, (lo, hi) in [("bajo", (3, 3)), ("medio", (6, 8)), ("alto", (10, 12))]:
         inst = p.generar(params, nivel=nivel, rng=RNG())
         for c in inst.cantidad_objetivo["cantidades"]:
             assert lo <= c <= hi, f"{nivel}: {c} fuera de [{lo},{hi}]"
+
+
+def test_conteo_comparacion_extremo_unico():
+    # Una comparación DEBE tener un único ganador; si empata, no tiene respuesta.
+    # Incluye la banda degenerada "bajo" (3,3), que se amplía para poder desempatar.
+    p = PlantillaConteoComparacion()
+    for modo in ("cual_tiene_mas", "cual_tiene_menos"):
+        params = {"objetos": ["manzana", "pera", "uva"], "modo": modo}
+        for nivel in ("bajo", "medio", "alto"):
+            for semilla in range(50):
+                inst = p.generar(params, nivel=nivel, rng=random.Random(semilla))
+                cs = inst.cantidad_objetivo["cantidades"]
+                extremo = max(cs) if modo == "cual_tiene_mas" else min(cs)
+                assert cs.count(extremo) == 1, f"{modo}/{nivel}: empate en {cs}"
 
 
 

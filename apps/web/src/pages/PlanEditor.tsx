@@ -57,7 +57,7 @@ export function PlanEditorPage() {
   const centroId = session!.centro_id;
 
   const usuarios = useAsync<UsuarioFinal[]>((s) => listarUsuarios(centroId, s), [centroId]);
-  const ejercicios = useAsync<Ejercicio[]>((s) => listarEjercicios({}, s), []);
+  const ejercicios = useAsync<Ejercicio[]>((s) => listarEjercicios({ activo: true }, s), []);
   const plan = useAsync<PlanLinea[]>((s) => obtenerPlan(id, s), [id]);
 
   const alias = usuarios.data?.find((u) => u.id === id)?.alias_interno ?? id;
