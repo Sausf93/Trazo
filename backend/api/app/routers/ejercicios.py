@@ -87,6 +87,13 @@ async def generar_instancia(
     except ValueError as e:
         raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, str(e))
 
+    # El nivel viaja en cantidad_objetivo para que la firma de dificultad segmente
+    # por nivel (reinicia el baseline al subir/bajar y evita el falso positivo de
+    # declive en plantillas cuyo cantidad_objetivo no lleva un descriptor numérico
+    # del nivel, p. ej. conteo_comparacion).
+    if nivel_efectivo not in (None, ""):
+        instancia.cantidad_objetivo["nivel"] = str(nivel_efectivo)
+
     return InstanciaOut(
         ejercicio_id=ej.id,
         nombre=ej.nombre,

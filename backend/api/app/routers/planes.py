@@ -154,7 +154,9 @@ async def cola_usuario(
     `sesion_id` y la sesión es modo grupo, la cola es el ejercicio compartido (a
     su nivel). En otro caso se resuelve desde su plan individual.
     """
-    await usuario_del_centro_id(db, usuario_id, acceso.centro_id)
+    uf = await usuario_del_centro_id(db, usuario_id, acceso.centro_id)
+    if not uf.activo:
+        raise HTTPException(status.HTTP_409_CONFLICT, "El usuario está dado de baja")
 
     sesion: Sesion | None = None
     modo = "individual"

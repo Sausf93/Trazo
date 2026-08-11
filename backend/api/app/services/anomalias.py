@@ -180,6 +180,7 @@ class SesionObs:
 # intento y el baseline nunca acumularía (agujero detectado en verificación).
 # Solo van descriptores deterministas por nivel.
 _CLAVES_DIFICULTAD = frozenset({
+    "nivel",  # el generador lo inyecta: segmenta por nivel en toda plantilla
     "n_opciones", "n_figuras", "n_rejilla", "n_pasos", "cantidad",
     "n_piezas", "objetivos", "total", "tolerancia_px",
 })

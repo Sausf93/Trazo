@@ -97,12 +97,14 @@ async def dar_de_baja_usuario(
     salas, pero se conserva su histórico. La integradora gestiona sus plazas."""
     uf = await usuario_del_centro(db, usuario_id, staff)  # anti-IDOR
     uf.activo = False
-    # Sacarlo de las salas AÚN NO CERRADAS (abiertas o programadas): no debe
-    # seguir apareciendo. Las sesiones ya cerradas se conservan (histórico).
+    # Sacarlo solo de las salas AÚN NO INICIADAS (programadas o recién abiertas):
+    # no debe aparecer para trabajar. Las sesiones ya iniciadas o cerradas se
+    # conservan intactas para no perder el trabajo ya hecho de ese día.
     part_ids = (await db.execute(
         select(SesionParticipante.id)
         .join(Sesion, Sesion.id == SesionParticipante.sesion_id)
         .where(SesionParticipante.usuario_final_id == uf.id,
+               Sesion.iniciada.is_(False),
                Sesion.cerrada.is_(False))
     )).scalars().all()
     for pid in part_ids:

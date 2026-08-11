@@ -58,6 +58,11 @@ async def registrar_intento(
     uf = await db.get(UsuarioFinal, body.usuario_final_id)
     if uf is None or uf.centro_id != acceso.centro_id:
         raise HTTPException(status.HTTP_403_FORBIDDEN, "Usuario no pertenece a tu centro")
+    if not uf.activo:
+        raise HTTPException(status.HTTP_409_CONFLICT, "El usuario está dado de baja")
+    if ses.cerrada:
+        raise HTTPException(status.HTTP_409_CONFLICT,
+                            "La sesión está cerrada: no admite más intentos")
 
     # La persona debe ser participante de ESTA sesión: si no, se estarían
     # inyectando intentos en el histórico de otro paciente (falsearía alertas).
