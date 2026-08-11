@@ -4690,5 +4690,180 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Señala lo que te pido",
+  "descripcion": "Se pide una categoría (una fruta, un animal, un mueble) y hay que tocar la imagen que le corresponde entre varias.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "fruta",
+     "instruccion": "Toca la FRUTA",
+     "imagen": "categoria_fruta",
+     "correcta": "img_pera",
+     "distractores": [
+      "img_silla",
+      "img_zapato",
+      "img_reloj"
+     ]
+    },
+    {
+     "id": "animal",
+     "instruccion": "Toca el ANIMAL",
+     "imagen": "categoria_animal",
+     "correcta": "img_gato",
+     "distractores": [
+      "img_mesa",
+      "img_taza",
+      "img_paraguas"
+     ]
+    },
+    {
+     "id": "ropa",
+     "instruccion": "Toca la PRENDA DE ROPA",
+     "imagen": "categoria_ropa",
+     "correcta": "img_camisa",
+     "distractores": [
+      "img_tenedor",
+      "img_flor",
+      "img_coche"
+     ]
+    },
+    {
+     "id": "mueble",
+     "instruccion": "Toca el MUEBLE",
+     "imagen": "categoria_mueble",
+     "correcta": "img_silla",
+     "distractores": [
+      "img_manzana",
+      "img_perro",
+      "img_llave"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivina por la pista",
+  "descripcion": "Se da una descripción breve del objeto (color, forma, uso) y hay que elegir la imagen que encaja. Comprensión y evocación por atributos.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "platano",
+     "instruccion": "Elige la imagen",
+     "enunciado": "Es una fruta amarilla y alargada.",
+     "imagen": "pista_platano",
+     "correcta": "img_platano",
+     "distractores": [
+      "img_manzana",
+      "img_uva",
+      "img_fresa"
+     ]
+    },
+    {
+     "id": "reloj",
+     "instruccion": "Elige la imagen",
+     "enunciado": "Sirve para saber la hora y se lleva en la muñeca.",
+     "imagen": "pista_reloj",
+     "correcta": "img_reloj",
+     "distractores": [
+      "img_gafas",
+      "img_anillo",
+      "img_pulsera"
+     ]
+    },
+    {
+     "id": "gato",
+     "instruccion": "Elige la imagen",
+     "enunciado": "Es un animal que dice 'miau'.",
+     "imagen": "pista_gato",
+     "correcta": "img_gato",
+     "distractores": [
+      "img_perro",
+      "img_vaca",
+      "img_gallo"
+     ]
+    },
+    {
+     "id": "sombrero",
+     "instruccion": "Elige la imagen",
+     "enunciado": "Se pone en la cabeza para el sol.",
+     "imagen": "pista_sombrero",
+     "correcta": "img_sombrero",
+     "distractores": [
+      "img_paraguas",
+      "img_bufanda",
+      "img_guantes"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Sonidos de la naturaleza",
+  "descripcion": "Se escucha un sonido de la naturaleza y hay que elegir de qué se trata entre varias opciones. Reconocimiento auditivo (gnosias).",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "lluvia",
+     "instruccion": "¿Qué es este sonido?",
+     "audio": "sonido_lluvia",
+     "correcta": "la lluvia",
+     "distractores": [
+      "el mar",
+      "el viento",
+      "un río"
+     ]
+    },
+    {
+     "id": "pajaros",
+     "instruccion": "¿Qué es este sonido?",
+     "audio": "sonido_pajaros",
+     "correcta": "pájaros cantando",
+     "distractores": [
+      "un gato",
+      "una campana",
+      "un grillo"
+     ]
+    },
+    {
+     "id": "trueno",
+     "instruccion": "¿Qué es este sonido?",
+     "audio": "sonido_trueno",
+     "correcta": "un trueno",
+     "distractores": [
+      "un tambor",
+      "una puerta",
+      "un coche"
+     ]
+    },
+    {
+     "id": "olas",
+     "instruccion": "¿Qué es este sonido?",
+     "audio": "sonido_olas",
+     "correcta": "las olas del mar",
+     "distractores": [
+      "la lluvia",
+      "una cascada",
+      "el viento"
+     ]
+    }
+   ]
+  }
  }
 ]

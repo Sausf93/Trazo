@@ -10,9 +10,35 @@
     "segundos_memorizar": 60,
     "a_recordar": [
      {
+      "id": "coche",
+      "label": "coche"
+     },
+     {
+      "id": "casa",
+      "label": "casa"
+     },
+     {
+      "id": "arbol",
+      "label": "árbol"
+     },
+     {
       "id": "flor",
       "label": "flor"
      },
+     {
+      "id": "sol",
+      "label": "sol"
+     },
+     {
+      "id": "corazon",
+      "label": "corazón"
+     },
+     {
+      "id": "luna",
+      "label": "luna"
+     }
+    ],
+    "rejilla_seleccion": [
      {
       "id": "luna",
       "label": "luna"
@@ -22,34 +48,12 @@
       "label": "casa"
      },
      {
-      "id": "estrella",
-      "label": "estrella"
-     },
-     {
       "id": "corazon",
       "label": "corazón"
      },
      {
-      "id": "sol",
-      "label": "sol"
-     },
-     {
       "id": "coche",
       "label": "coche"
-     }
-    ],
-    "rejilla_seleccion": [
-     {
-      "id": "coche",
-      "label": "coche"
-     },
-     {
-      "id": "sol",
-      "label": "sol"
-     },
-     {
-      "id": "flor",
-      "label": "flor"
      },
      {
       "id": "estrella",
@@ -60,16 +64,12 @@
       "label": "árbol"
      },
      {
-      "id": "corazon",
-      "label": "corazón"
+      "id": "sol",
+      "label": "sol"
      },
      {
-      "id": "casa",
-      "label": "casa"
-     },
-     {
-      "id": "luna",
-      "label": "luna"
+      "id": "flor",
+      "label": "flor"
      }
     ]
    },
@@ -94,46 +94,16 @@
     "segundos_memorizar": 30,
     "a_recordar": [
      {
-      "id": "vaso",
-      "label": "vaso"
-     },
-     {
-      "id": "libro",
-      "label": "libro"
-     },
-     {
-      "id": "zapato",
-      "label": "zapato"
-     },
-     {
-      "id": "silla",
-      "label": "silla"
-     },
-     {
-      "id": "leche",
-      "label": "leche"
-     },
-     {
-      "id": "toalla",
-      "label": "toalla"
-     },
-     {
       "id": "reloj",
       "label": "reloj"
      },
      {
       "id": "llave",
       "label": "llave"
-     }
-    ],
-    "rejilla_seleccion": [
-     {
-      "id": "llave",
-      "label": "llave"
      },
      {
-      "id": "vaso",
-      "label": "vaso"
+      "id": "libro",
+      "label": "libro"
      },
      {
       "id": "pan",
@@ -148,20 +118,50 @@
       "label": "silla"
      },
      {
-      "id": "reloj",
-      "label": "reloj"
+      "id": "vaso",
+      "label": "vaso"
      },
      {
-      "id": "leche",
-      "label": "leche"
+      "id": "toalla",
+      "label": "toalla"
+     }
+    ],
+    "rejilla_seleccion": [
+     {
+      "id": "vaso",
+      "label": "vaso"
+     },
+     {
+      "id": "libro",
+      "label": "libro"
+     },
+     {
+      "id": "pan",
+      "label": "pan"
+     },
+     {
+      "id": "zapato",
+      "label": "zapato"
+     },
+     {
+      "id": "silla",
+      "label": "silla"
      },
      {
       "id": "toalla",
       "label": "toalla"
      },
      {
-      "id": "libro",
-      "label": "libro"
+      "id": "leche",
+      "label": "leche"
+     },
+     {
+      "id": "reloj",
+      "label": "reloj"
+     },
+     {
+      "id": "llave",
+      "label": "llave"
      }
     ]
    },
@@ -186,42 +186,8 @@
     "segundos_memorizar": 45,
     "a_recordar": [
      {
-      "id": "cuchara",
-      "label": "cuchara"
-     },
-     {
-      "id": "gafas",
-      "label": "gafas"
-     },
-     {
-      "id": "sombrero",
-      "label": "sombrero"
-     },
-     {
-      "id": "paraguas",
-      "label": "paraguas"
-     },
-     {
-      "id": "taza",
-      "label": "taza"
-     },
-     {
       "id": "maceta",
       "label": "maceta"
-     }
-    ],
-    "rejilla_seleccion": [
-     {
-      "id": "tijeras",
-      "label": "tijeras"
-     },
-     {
-      "id": "taza",
-      "label": "taza"
-     },
-     {
-      "id": "paraguas",
-      "label": "paraguas"
      },
      {
       "id": "peine",
@@ -236,17 +202,55 @@
       "label": "cuchara"
      },
      {
+      "id": "paraguas",
+      "label": "paraguas"
+     },
+     {
+      "id": "taza",
+      "label": "taza"
+     },
+     {
+      "id": "sombrero",
+      "label": "sombrero"
+     }
+    ],
+    "rejilla_seleccion": [
+     {
+      "id": "maceta",
+      "label": "maceta"
+     },
+     {
+      "id": "tijeras",
+      "label": "tijeras"
+     },
+     {
+      "id": "taza",
+      "label": "taza"
+     },
+     {
+      "id": "cuchara",
+      "label": "cuchara"
+     },
+     {
+      "id": "peine",
+      "label": "peine"
+     },
+     {
       "id": "sombrero",
       "label": "sombrero"
      },
      {
-      "id": "maceta",
-      "label": "maceta"
+      "id": "paraguas",
+      "label": "paraguas"
+     },
+     {
+      "id": "gafas",
+      "label": "gafas"
      }
     ]
    },
    "cantidad_objetivo": {
-    "n_figuras": 6,
+    "n_figuras": 7,
     "n_rejilla": 8
    },
    "metricas": [
@@ -263,19 +267,19 @@
    "plantilla": "seleccion_multiple",
    "render": {
     "instruccion": "¿Cómo termina el refrán?",
-    "enunciado": "Perro ladrador...",
+    "enunciado": "Agua que no has de beber...",
     "imagen": null,
     "audio": null,
     "opciones": [
-     "buen guardián",
-     "mal cazador",
-     "poco mordedor"
+     "guárdala bien",
+     "bébela después",
+     "déjala correr"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
-    "item_id": "perro",
-    "correcta": "poco mordedor"
+    "item_id": "agua",
+    "correcta": "déjala correr"
    },
    "metricas": [
     "correcto",
@@ -292,18 +296,18 @@
    "render": {
     "instruccion": "¿Cómo se llama esto?",
     "enunciado": null,
-    "imagen": "tijeras",
+    "imagen": "paraguas",
     "audio": null,
     "opciones": [
-     "alicates",
-     "cuchillo",
-     "tijeras"
+     "sombrilla",
+     "bastón",
+     "paraguas"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
-    "item_id": "tijeras",
-    "correcta": "tijeras"
+    "item_id": "paraguas",
+    "correcta": "paraguas"
    },
    "metricas": [
     "correcto",
@@ -318,21 +322,21 @@
    "bloque": "lenguaje",
    "plantilla": "seleccion_multiple",
    "render": {
-    "instruccion": "Toca la imagen de: manzana",
+    "instruccion": "Toca la imagen de: gato",
     "enunciado": null,
     "imagen": null,
-    "audio": "voz_manzana",
+    "audio": "voz_gato",
     "opciones": [
-     "img_manzana",
-     "img_pera",
-     "img_cereza",
-     "img_tomate"
+     "img_perro",
+     "img_conejo",
+     "img_raton",
+     "img_gato"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 4,
-    "item_id": "manzana",
-    "correcta": "img_manzana"
+    "item_id": "gato",
+    "correcta": "img_gato"
    },
    "metricas": [
     "correcto",
@@ -352,15 +356,14 @@
     "imagen": null,
     "audio": null,
     "opciones": [
-     "silla",
+     "plátano",
      "mesa",
-     "cama",
      "armario",
-     "plátano"
+     "cama"
     ]
    },
    "cantidad_objetivo": {
-    "n_opciones": 5,
+    "n_opciones": 4,
     "item_id": "muebles",
     "correcta": "plátano"
    },
@@ -377,21 +380,20 @@
    "bloque": "razonamiento",
    "plantilla": "seleccion_multiple",
    "render": {
-    "instruccion": "¿Qué va con el cepillo de dientes?",
+    "instruccion": "¿Qué va con la llave?",
     "enunciado": null,
-    "imagen": "cepillo_dientes",
+    "imagen": "llave",
     "audio": null,
     "opciones": [
-     "pasta de dientes",
-     "jabón",
-     "peine",
-     "toalla"
+     "silla",
+     "puerta",
+     "plato"
     ]
    },
    "cantidad_objetivo": {
-    "n_opciones": 4,
-    "item_id": "cepillo",
-    "correcta": "pasta de dientes"
+    "n_opciones": 3,
+    "item_id": "llave",
+    "correcta": "puerta"
    },
    "metricas": [
     "correcto",
@@ -406,20 +408,21 @@
    "bloque": "razonamiento",
    "plantilla": "seleccion_multiple",
    "render": {
-    "instruccion": "¿Qué número sigue?",
-    "enunciado": "2, 4, 6, 8, ...",
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": "círculo, cuadrado, círculo, cuadrado, ...",
     "imagen": null,
     "audio": null,
     "opciones": [
-     "12",
-     "10",
-     "9"
+     "triángulo",
+     "estrella",
+     "cuadrado",
+     "círculo"
     ]
    },
    "cantidad_objetivo": {
-    "n_opciones": 3,
-    "item_id": "numeros",
-    "correcta": "10"
+    "n_opciones": 4,
+    "item_id": "formas",
+    "correcta": "círculo"
    },
    "metricas": [
     "correcto",
@@ -439,14 +442,13 @@
     "imagen": null,
     "audio": null,
     "opciones": [
-     "abrigo",
-     "camiseta",
      "bufanda",
-     "guantes"
+     "guantes",
+     "camiseta"
     ]
    },
    "cantidad_objetivo": {
-    "n_opciones": 4,
+    "n_opciones": 3,
     "item_id": "verano",
     "correcta": "camiseta"
    },
@@ -468,22 +470,22 @@
     "grupos": [
      {
       "objeto": "manzana",
-      "cantidad": 8
+      "cantidad": 6
      },
      {
       "objeto": "pera",
-      "cantidad": 8
+      "cantidad": 7
      }
     ]
    },
    "cantidad_objetivo": {
     "modo": "sumar",
     "cantidades": [
-     8,
-     8
+     6,
+     7
     ],
     "solucion": {
-     "total": 16
+     "total": 13
     }
    },
    "metricas": [
@@ -500,19 +502,19 @@
    "render": {
     "instruccion": "¿Qué emoción muestra esta cara?",
     "enunciado": null,
-    "imagen": "cara_enfado",
+    "imagen": "cara_sorpresa",
     "audio": null,
     "opciones": [
-     "tristeza",
+     "sorpresa",
+     "miedo",
      "alegría",
-     "enfado",
-     "sorpresa"
+     "enfado"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 4,
-    "item_id": "enfado",
-    "correcta": "enfado"
+    "item_id": "sorpresa",
+    "correcta": "sorpresa"
    },
    "metricas": [
     "correcto",
@@ -530,17 +532,18 @@
     "instruccion": "¿Qué es este sonido?",
     "enunciado": null,
     "imagen": null,
-    "audio": "sonido_agua",
+    "audio": "sonido_timbre",
     "opciones": [
-     "agua corriendo",
-     "lluvia",
-     "una cascada lejana"
+     "un timbre",
+     "una alarma",
+     "un despertador",
+     "un teléfono"
     ]
    },
    "cantidad_objetivo": {
-    "n_opciones": 3,
-    "item_id": "agua",
-    "correcta": "agua corriendo"
+    "n_opciones": 4,
+    "item_id": "timbre",
+    "correcta": "un timbre"
    },
    "metricas": [
     "correcto",
@@ -560,9 +563,9 @@
     "imagen": "tijeras",
     "audio": null,
     "opciones": [
-     "unas tijeras",
-     "unas pinzas",
      "una llave",
+     "unas pinzas",
+     "unas tijeras",
      "unas gafas"
     ]
    },
@@ -589,9 +592,9 @@
     "imagen": "reloj",
     "audio": null,
     "opciones": [
-     "un reloj",
      "una moneda",
-     "un plato"
+     "un plato",
+     "un reloj"
     ]
    },
    "cantidad_objetivo": {
@@ -613,12 +616,12 @@
    "plantilla": "trazo",
    "render": {
     "instruccion": "Sigue la línea con el dedo",
-    "guide_path": "M20,100 Q90,20 150,80 T280,60",
+    "guide_path": "M40,30 C120,30 60,110 140,110 C220,110 160,30 260,30",
     "tolerancia_px": 24,
     "viewbox": "0 0 300 140"
    },
    "cantidad_objetivo": {
-    "figura_id": "onda",
+    "figura_id": "ese",
     "tolerancia_px": 24
    },
    "metricas": [
@@ -636,12 +639,12 @@
    "plantilla": "trazo",
    "render": {
     "instruccion": "Copia la figura con el dedo",
-    "guide_path": "M150,25 C110,25 80,48 80,72 C80,96 110,118 150,118 C190,118 220,96 220,72 C220,48 190,25 150,25 Z",
+    "guide_path": "M70,30 L230,30 L230,115 L70,115 Z",
     "tolerancia_px": 28,
     "viewbox": "0 0 300 140"
    },
    "cantidad_objetivo": {
-    "figura_id": "circulo",
+    "figura_id": "cuadrado",
     "tolerancia_px": 28
    },
    "metricas": [
@@ -682,12 +685,12 @@
    "plantilla": "trazo",
    "render": {
     "instruccion": "Lleva el dedo hasta el final del camino",
-    "guide_path": "M20,115 L80,115 Q150,15 220,115 L280,115",
+    "guide_path": "M150,70 m-10,0 a10,10 0 1,1 20,0 a25,25 0 1,1 -50,0 a45,45 0 1,1 90,0",
     "tolerancia_px": 26,
     "viewbox": "0 0 300 140"
    },
    "cantidad_objetivo": {
-    "figura_id": "puente",
+    "figura_id": "caracol",
     "tolerancia_px": 26
    },
    "metricas": [
@@ -775,7 +778,7 @@
     "grupos": [
      {
       "objeto": "manzana_roja",
-      "cantidad": 8
+      "cantidad": 7
      },
      {
       "objeto": "manzana_verde",
@@ -786,7 +789,7 @@
    "cantidad_objetivo": {
     "modo": "cual_tiene_mas",
     "cantidades": [
-     8,
+     7,
      7
     ],
     "solucion": {
@@ -810,18 +813,18 @@
     "grupos": [
      {
       "objeto": "fresa",
-      "cantidad": 6
+      "cantidad": 8
      }
     ]
    },
    "cantidad_objetivo": {
     "modo": "contar",
     "cantidades": [
-     6
+     8
     ],
     "solucion": {
      "objeto": "fresa",
-     "cantidad": 6
+     "cantidad": 8
     }
    },
    "metricas": [
@@ -836,20 +839,20 @@
    "bloque": "percepcion",
    "plantilla": "seleccion_multiple",
    "render": {
-    "instruccion": "¿Qué es esto?",
+    "instruccion": "¿Qué figura es?",
     "enunciado": null,
-    "imagen": "hoja",
+    "imagen": "estrella",
     "audio": null,
     "opciones": [
-     "árbol",
-     "hoja",
-     "trébol"
+     "estrella",
+     "corazón",
+     "cuadrado"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
-    "item_id": "hoja",
-    "correcta": "hoja"
+    "item_id": "figura",
+    "correcta": "estrella"
    },
    "metricas": [
     "correcto",
@@ -868,15 +871,15 @@
     "titulo": "Ordena los círculos",
     "pasos_barajados": [
      {
-      "paso": "círculo grande",
+      "paso": "círculo mediano",
       "pos_mostrada": 0
      },
      {
-      "paso": "círculo mediano",
+      "paso": "círculo enorme",
       "pos_mostrada": 1
      },
      {
-      "paso": "círculo enorme",
+      "paso": "círculo grande",
       "pos_mostrada": 2
      }
     ]
@@ -907,19 +910,19 @@
     "titulo": "Lavar una camisa",
     "pasos_barajados": [
      {
-      "paso": "Lavar",
+      "paso": "Planchar",
       "pos_mostrada": 0
      },
      {
-      "paso": "Planchar",
+      "paso": "Guardar",
       "pos_mostrada": 1
      },
      {
-      "paso": "Guardar",
+      "paso": "Tender",
       "pos_mostrada": 2
      },
      {
-      "paso": "Tender",
+      "paso": "Lavar",
       "pos_mostrada": 3
      }
     ]
@@ -991,14 +994,13 @@
     "imagen": null,
     "audio": null,
     "opciones": [
-     "unas tijeras",
-     "una regla",
      "un martillo",
+     "unas tijeras",
      "una cuchara"
     ]
    },
    "cantidad_objetivo": {
-    "n_opciones": 4,
+    "n_opciones": 3,
     "item_id": "papel",
     "correcta": "unas tijeras"
    },
@@ -1015,20 +1017,20 @@
    "bloque": "funcion_ejecutiva",
    "plantilla": "seleccion_multiple",
    "render": {
-    "instruccion": "Para hacer la cama, ¿qué paso sobra?",
+    "instruccion": "Para lavarse las manos, ¿qué paso sobra?",
     "enunciado": null,
     "imagen": null,
     "audio": null,
     "opciones": [
-     "colocar la almohada",
-     "encender el horno",
-     "poner la manta"
+     "abrir el grifo",
+     "secarse",
+     "peinarse"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
-    "item_id": "cama",
-    "correcta": "encender el horno"
+    "item_id": "lavarse",
+    "correcta": "peinarse"
    },
    "metricas": [
     "correcto",
@@ -1043,10 +1045,10 @@
    "bloque": "vida_cotidiana",
    "plantilla": "manejo_cantidad",
    "render": {
-    "instruccion": "Reúne 5,50 € con las monedas y billetes",
+    "instruccion": "Reúne 6,00 € con las monedas y billetes",
     "modo": "dinero",
-    "importe_c": 550,
-    "importe_texto": "5,50 €",
+    "importe_c": 600,
+    "importe_texto": "6,00 €",
     "denominaciones": [
      {
       "valor_c": 50,
@@ -1065,7 +1067,7 @@
    "cantidad_objetivo": {
     "modo": "dinero",
     "banda": null,
-    "importe_c": 550,
+    "importe_c": 600,
     "denominaciones_c": [
      50,
      100,
@@ -1085,10 +1087,10 @@
    "bloque": "vida_cotidiana",
    "plantilla": "manejo_cantidad",
    "render": {
-    "instruccion": "Reúne 2,52 € con las monedas y billetes",
+    "instruccion": "Reúne 9,47 € con las monedas y billetes",
     "modo": "dinero",
-    "importe_c": 252,
-    "importe_texto": "2,52 €",
+    "importe_c": 947,
+    "importe_texto": "9,47 €",
     "denominaciones": [
      {
       "valor_c": 1,
@@ -1127,7 +1129,7 @@
    "cantidad_objetivo": {
     "modo": "dinero",
     "banda": null,
-    "importe_c": 252,
+    "importe_c": 947,
     "denominaciones_c": [
      1,
      2,
@@ -1152,10 +1154,10 @@
    "bloque": "vida_cotidiana",
    "plantilla": "manejo_cantidad",
    "render": {
-    "instruccion": "Reúne 17,65 € con las monedas y billetes",
+    "instruccion": "Reúne 41,05 € con las monedas y billetes",
     "modo": "dinero",
-    "importe_c": 1765,
-    "importe_texto": "17,65 €",
+    "importe_c": 4105,
+    "importe_texto": "41,05 €",
     "denominaciones": [
      {
       "valor_c": 5,
@@ -1206,7 +1208,7 @@
    "cantidad_objetivo": {
     "modo": "dinero",
     "banda": null,
-    "importe_c": 1765,
+    "importe_c": 4105,
     "denominaciones_c": [
      5,
      10,
@@ -1234,10 +1236,10 @@
    "bloque": "vida_cotidiana",
    "plantilla": "manejo_cantidad",
    "render": {
-    "instruccion": "Elige las monedas justas para pagar 2,15 €",
+    "instruccion": "Elige las monedas justas para pagar 3,99 €",
     "modo": "monedas_justas",
-    "importe_c": 215,
-    "importe_texto": "2,15 €",
+    "importe_c": 399,
+    "importe_texto": "3,99 €",
     "denominaciones": [
      {
       "valor_c": 1,
@@ -1276,7 +1278,7 @@
    "cantidad_objetivo": {
     "modo": "monedas_justas",
     "banda": null,
-    "importe_c": 215,
+    "importe_c": 399,
     "denominaciones_c": [
      1,
      2,
@@ -1301,12 +1303,12 @@
    "bloque": "vida_cotidiana",
    "plantilla": "manejo_cantidad",
    "render": {
-    "instruccion": "Pagas 14,07 € con 20,00 €. ¿Cuánto te devuelven?",
+    "instruccion": "Pagas 1,53 € con 5,00 €. ¿Cuánto te devuelven?",
     "modo": "vuelta",
-    "precio_c": 1407,
-    "precio_texto": "14,07 €",
-    "pago_c": 2000,
-    "pago_texto": "20,00 €",
+    "precio_c": 153,
+    "precio_texto": "1,53 €",
+    "pago_c": 500,
+    "pago_texto": "5,00 €",
     "denominaciones": [
      {
       "valor_c": 1,
@@ -1357,8 +1359,8 @@
    "cantidad_objetivo": {
     "modo": "vuelta",
     "banda": null,
-    "precio_c": 1407,
-    "pago_c": 2000
+    "precio_c": 153,
+    "pago_c": 500
    },
    "metricas": [
     "correcto",
@@ -1373,12 +1375,12 @@
    "bloque": "vida_cotidiana",
    "plantilla": "manejo_cantidad",
    "render": {
-    "instruccion": "Pagas 85,80 € con 100,00 €. ¿Cuánto te devuelven?",
+    "instruccion": "Pagas 16,15 € con 20,00 €. ¿Cuánto te devuelven?",
     "modo": "vuelta",
-    "precio_c": 8580,
-    "precio_texto": "85,80 €",
-    "pago_c": 10000,
-    "pago_texto": "100,00 €",
+    "precio_c": 1615,
+    "precio_texto": "16,15 €",
+    "pago_c": 2000,
+    "pago_texto": "20,00 €",
     "denominaciones": [
      {
       "valor_c": 5,
@@ -1429,8 +1431,8 @@
    "cantidad_objetivo": {
     "modo": "vuelta",
     "banda": null,
-    "precio_c": 8580,
-    "pago_c": 10000
+    "precio_c": 1615,
+    "pago_c": 2000
    },
    "metricas": [
     "correcto",
@@ -1445,35 +1447,29 @@
    "bloque": "vida_cotidiana",
    "plantilla": "manejo_cantidad",
    "render": {
-    "instruccion": "Cuesta 29,10 €. Con lo que llevas, ¿te llega para pagar?",
+    "instruccion": "Cuesta 6,00 €. Con lo que llevas, ¿te llega para pagar?",
     "modo": "llega_para_pagar",
-    "precio_c": 2910,
-    "precio_texto": "29,10 €",
-    "disponible_c": 4290,
-    "disponible_texto": "42,90 €",
+    "precio_c": 600,
+    "precio_texto": "6,00 €",
+    "disponible_c": 450,
+    "disponible_texto": "4,50 €",
     "monedero": [
-     {
-      "valor_c": 2000,
-      "etiqueta": "20€",
-      "cantidad": 2
-     },
      {
       "valor_c": 200,
       "etiqueta": "2€",
-      "cantidad": 1
+      "cantidad": 2
      },
      {
       "valor_c": 50,
       "etiqueta": "50c",
       "cantidad": 1
-     },
-     {
-      "valor_c": 20,
-      "etiqueta": "20c",
-      "cantidad": 2
      }
     ],
     "denominaciones": [
+     {
+      "valor_c": 5,
+      "etiqueta": "5c"
+     },
      {
       "valor_c": 10,
       "etiqueta": "10c"
@@ -1493,30 +1489,14 @@
      {
       "valor_c": 200,
       "etiqueta": "2€"
-     },
-     {
-      "valor_c": 500,
-      "etiqueta": "5€"
-     },
-     {
-      "valor_c": 1000,
-      "etiqueta": "10€"
-     },
-     {
-      "valor_c": 2000,
-      "etiqueta": "20€"
-     },
-     {
-      "valor_c": 5000,
-      "etiqueta": "50€"
      }
     ]
    },
    "cantidad_objetivo": {
     "modo": "llega_para_pagar",
-    "banda": "billetes",
-    "precio_c": 2910,
-    "disponible_c": 4290
+    "banda": "monedas",
+    "precio_c": 600,
+    "disponible_c": 450
    },
    "metricas": [
     "correcto",
@@ -1531,10 +1511,24 @@
    "bloque": "vida_cotidiana",
    "plantilla": "manejo_cantidad",
    "render": {
-    "instruccion": "Elige las monedas justas para pagar 3,00 €",
-    "modo": "monedas_justas",
-    "importe_c": 300,
-    "importe_texto": "3,00 €",
+    "instruccion": "Cuesta 4,50 €. Con lo que llevas, ¿te llega para pagar?",
+    "modo": "llega_para_pagar",
+    "precio_c": 450,
+    "precio_texto": "4,50 €",
+    "disponible_c": 300,
+    "disponible_texto": "3,00 €",
+    "monedero": [
+     {
+      "valor_c": 200,
+      "etiqueta": "2€",
+      "cantidad": 1
+     },
+     {
+      "valor_c": 100,
+      "etiqueta": "1€",
+      "cantidad": 1
+     }
+    ],
     "denominaciones": [
      {
       "valor_c": 50,
@@ -1551,14 +1545,10 @@
     ]
    },
    "cantidad_objetivo": {
-    "modo": "monedas_justas",
+    "modo": "llega_para_pagar",
     "banda": "facil_monedas",
-    "importe_c": 300,
-    "denominaciones_c": [
-     50,
-     100,
-     200
-    ]
+    "precio_c": 450,
+    "disponible_c": 300
    },
    "metricas": [
     "correcto",
@@ -1575,13 +1565,13 @@
    "render": {
     "instruccion": "¿Qué hora marca?",
     "modo": "reloj",
-    "hora": 9,
-    "minuto": 0
+    "hora": 5,
+    "minuto": 45
    },
    "cantidad_objetivo": {
     "modo": "reloj",
-    "hora": 9,
-    "minuto": 0
+    "hora": 5,
+    "minuto": 45
    },
    "metricas": [
     "correcto",
@@ -1597,7 +1587,7 @@
    "plantilla": "arrastrar_posicion",
    "render": {
     "instruccion": "Coloca cada cosa en su sitio en la mesa",
-    "multiplicador": 2,
+    "multiplicador": 4,
     "piezas": [
      {
       "id": "plato",
@@ -1649,7 +1639,7 @@
     ]
    },
    "cantidad_objetivo": {
-    "cantidad": 2,
+    "cantidad": 4,
     "n_piezas": 5,
     "emparejamientos": {
      "plato": "centro",
@@ -1673,31 +1663,26 @@
    "plantilla": "arrastrar_posicion",
    "render": {
     "instruccion": "Lleva al carro lo que pide la lista",
-    "multiplicador": 5,
+    "multiplicador": 4,
     "piezas": [
+     {
+      "id": "tomate",
+      "label": "tomate",
+      "zona_correcta": "carro"
+     },
+     {
+      "id": "huevos",
+      "label": "huevos",
+      "zona_correcta": "carro"
+     },
      {
       "id": "manzanas",
       "label": "manzanas",
       "zona_correcta": "carro"
      },
      {
-      "id": "pan",
-      "label": "pan",
-      "zona_correcta": "carro"
-     },
-     {
-      "id": "aceite",
-      "label": "aceite",
-      "zona_correcta": "carro"
-     },
-     {
-      "id": "leche",
-      "label": "leche",
-      "zona_correcta": "carro"
-     },
-     {
-      "id": "huevos",
-      "label": "huevos",
+      "id": "patata",
+      "label": "patata",
       "zona_correcta": "carro"
      }
     ],
@@ -1709,14 +1694,13 @@
     ]
    },
    "cantidad_objetivo": {
-    "cantidad": 5,
-    "n_piezas": 5,
+    "cantidad": 4,
+    "n_piezas": 4,
     "emparejamientos": {
+     "tomate": "carro",
+     "huevos": "carro",
      "manzanas": "carro",
-     "pan": "carro",
-     "aceite": "carro",
-     "leche": "carro",
-     "huevos": "carro"
+     "patata": "carro"
     }
    },
    "metricas": [
@@ -1733,7 +1717,7 @@
    "plantilla": "arrastrar_posicion",
    "render": {
     "instruccion": "Guarda cada alimento donde corresponde",
-    "multiplicador": 4,
+    "multiplicador": 3,
     "piezas": [
      {
       "id": "leche",
@@ -1778,7 +1762,7 @@
     ]
    },
    "cantidad_objetivo": {
-    "cantidad": 4,
+    "cantidad": 3,
     "n_piezas": 6,
     "emparejamientos": {
      "leche": "nevera",
@@ -1803,12 +1787,12 @@
    "plantilla": "trazo",
    "render": {
     "instruccion": "Repasa la cenefa sin levantar el dedo",
-    "guide_path": "M20,110 L20,60 L60,60 L60,110 L100,110 L100,60 L140,60 L140,110 L180,110 L180,60 L220,60 L220,110 L260,110 L260,60",
+    "guide_path": "M20,80 q20,-40 40,0 t40,0 t40,0 t40,0 t40,0 t40,0",
     "tolerancia_px": 24,
     "viewbox": "0 0 300 140"
    },
    "cantidad_objetivo": {
-    "figura_id": "almenas",
+    "figura_id": "ondas",
     "tolerancia_px": 24
    },
    "metricas": [
@@ -1826,12 +1810,12 @@
    "plantilla": "trazo",
    "render": {
     "instruccion": "Sigue la espiral con el dedo",
-    "guide_path": "M150,70 m-8,0 a8,8 0 1,1 16,0 a24,24 0 1,1 -48,0 a44,44 0 1,1 88,0",
+    "guide_path": "M150,70 m0,-52 a52,52 0 1,1 -1,0 a40,40 0 1,0 1,12 a28,28 0 1,1 -1,0 a16,16 0 1,0 1,10",
     "tolerancia_px": 28,
     "viewbox": "0 0 300 140"
    },
    "cantidad_objetivo": {
-    "figura_id": "caracol",
+    "figura_id": "espiral_ancha",
     "tolerancia_px": 28
    },
    "metricas": [
@@ -1849,12 +1833,12 @@
    "plantilla": "trazo",
    "render": {
     "instruccion": "Repasa la letra o el número con el dedo",
-    "guide_path": "M170,30 L110,30 L110,120 M110,72 L165,72",
+    "guide_path": "M150,70 C110,70 110,25 150,25 C190,25 190,70 150,70 C110,70 110,120 150,120 C190,120 190,70 150,70 Z",
     "tolerancia_px": 26,
     "viewbox": "0 0 300 140"
    },
    "cantidad_objetivo": {
-    "figura_id": "efe",
+    "figura_id": "ocho",
     "tolerancia_px": 26
    },
    "metricas": [
@@ -1872,12 +1856,12 @@
    "plantilla": "trazo",
    "render": {
     "instruccion": "Dibuja la parte que falta con el dedo",
-    "guide_path": "M150,120 L150,70 L90,70 L150,30",
+    "guide_path": "M150,120 L150,80 M150,80 C120,80 105,55 130,50 C120,35 150,30 150,45",
     "tolerancia_px": 28,
     "viewbox": "0 0 300 140"
    },
    "cantidad_objetivo": {
-    "figura_id": "media_casa",
+    "figura_id": "medio_arbol",
     "tolerancia_px": 28
    },
    "metricas": [
@@ -1898,62 +1882,62 @@
     "segundos_memorizar": 40,
     "a_recordar": [
      {
-      "id": "gafas",
-      "label": "gafas"
-     },
-     {
-      "id": "reloj",
-      "label": "reloj"
-     },
-     {
-      "id": "tijeras",
-      "label": "tijeras"
-     },
-     {
-      "id": "llave",
-      "label": "llave"
-     },
-     {
-      "id": "libro",
-      "label": "libro"
-     },
-     {
-      "id": "taza",
-      "label": "taza"
-     }
-    ],
-    "rejilla_seleccion": [
-     {
-      "id": "reloj",
-      "label": "reloj"
-     },
-     {
-      "id": "taza",
-      "label": "taza"
-     },
-     {
-      "id": "tijeras",
-      "label": "tijeras"
-     },
-     {
-      "id": "gafas",
-      "label": "gafas"
-     },
-     {
-      "id": "libro",
-      "label": "libro"
-     },
-     {
-      "id": "llave",
-      "label": "llave"
-     },
-     {
       "id": "paraguas",
       "label": "paraguas"
      },
      {
+      "id": "taza",
+      "label": "taza"
+     },
+     {
+      "id": "gafas",
+      "label": "gafas"
+     },
+     {
+      "id": "llave",
+      "label": "llave"
+     },
+     {
+      "id": "libro",
+      "label": "libro"
+     },
+     {
+      "id": "tijeras",
+      "label": "tijeras"
+     }
+    ],
+    "rejilla_seleccion": [
+     {
+      "id": "gafas",
+      "label": "gafas"
+     },
+     {
+      "id": "libro",
+      "label": "libro"
+     },
+     {
+      "id": "reloj",
+      "label": "reloj"
+     },
+     {
+      "id": "taza",
+      "label": "taza"
+     },
+     {
+      "id": "tijeras",
+      "label": "tijeras"
+     },
+     {
+      "id": "llave",
+      "label": "llave"
+     },
+     {
       "id": "telefono",
       "label": "teléfono"
+     },
+     {
+      "id": "paraguas",
+      "label": "paraguas"
      }
     ]
    },
@@ -1978,52 +1962,14 @@
     "segundos_memorizar": 45,
     "a_recordar": [
      {
-      "id": "lapiz",
-      "label": "lápiz"
-     },
-     {
-      "id": "peine",
-      "label": "peine"
-     },
-     {
-      "id": "gafas",
-      "label": "gafas"
-     },
-     {
-      "id": "llave",
-      "label": "llave"
-     },
-     {
-      "id": "moneda",
-      "label": "moneda"
-     },
-     {
-      "id": "cuchara",
-      "label": "cuchara"
-     },
-     {
-      "id": "boton",
-      "label": "botón"
-     },
-     {
       "id": "jabon",
       "label": "jabón"
-     }
-    ],
-    "rejilla_seleccion": [
-     {
-      "id": "cuchara",
-      "label": "cuchara"
      },
      {
       "id": "tijeras",
       "label": "tijeras"
      },
      {
-      "id": "lapiz",
-      "label": "lápiz"
-     },
-     {
       "id": "boton",
       "label": "botón"
      },
@@ -2032,20 +1978,58 @@
       "label": "moneda"
      },
      {
-      "id": "gafas",
-      "label": "gafas"
+      "id": "cuchara",
+      "label": "cuchara"
      },
      {
-      "id": "jabon",
-      "label": "jabón"
+      "id": "llave",
+      "label": "llave"
      },
      {
       "id": "peine",
       "label": "peine"
      },
      {
+      "id": "gafas",
+      "label": "gafas"
+     }
+    ],
+    "rejilla_seleccion": [
+     {
+      "id": "boton",
+      "label": "botón"
+     },
+     {
+      "id": "tijeras",
+      "label": "tijeras"
+     },
+     {
+      "id": "moneda",
+      "label": "moneda"
+     },
+     {
+      "id": "jabon",
+      "label": "jabón"
+     },
+     {
+      "id": "cuchara",
+      "label": "cuchara"
+     },
+     {
+      "id": "lapiz",
+      "label": "lápiz"
+     },
+     {
+      "id": "gafas",
+      "label": "gafas"
+     },
+     {
       "id": "llave",
       "label": "llave"
+     },
+     {
+      "id": "peine",
+      "label": "peine"
      }
     ]
    },
@@ -2070,71 +2054,67 @@
     "segundos_memorizar": 40,
     "a_recordar": [
      {
-      "id": "fresa",
-      "label": "fresa"
-     },
-     {
-      "id": "cereza",
-      "label": "cereza"
-     },
-     {
-      "id": "naranja",
-      "label": "naranja"
-     },
-     {
-      "id": "melon",
-      "label": "melón"
-     },
-     {
-      "id": "uva",
-      "label": "uva"
-     },
-     {
       "id": "manzana",
       "label": "manzana"
      },
      {
-      "id": "pera",
-      "label": "pera"
-     }
-    ],
-    "rejilla_seleccion": [
-     {
-      "id": "pera",
-      "label": "pera"
-     },
-     {
-      "id": "naranja",
-      "label": "naranja"
-     },
-     {
-      "id": "uva",
-      "label": "uva"
-     },
-     {
-      "id": "cereza",
-      "label": "cereza"
+      "id": "fresa",
+      "label": "fresa"
      },
      {
       "id": "platano",
       "label": "plátano"
      },
      {
+      "id": "cereza",
+      "label": "cereza"
+     },
+     {
+      "id": "melon",
+      "label": "melón"
+     },
+     {
+      "id": "uva",
+      "label": "uva"
+     }
+    ],
+    "rejilla_seleccion": [
+     {
+      "id": "uva",
+      "label": "uva"
+     },
+     {
+      "id": "melon",
+      "label": "melón"
+     },
+     {
+      "id": "pera",
+      "label": "pera"
+     },
+     {
       "id": "manzana",
       "label": "manzana"
+     },
+     {
+      "id": "platano",
+      "label": "plátano"
      },
      {
       "id": "fresa",
       "label": "fresa"
      },
      {
-      "id": "melon",
-      "label": "melón"
+      "id": "cereza",
+      "label": "cereza"
+     },
+     {
+      "id": "naranja",
+      "label": "naranja"
      }
     ]
    },
    "cantidad_objetivo": {
-    "n_figuras": 7,
+    "n_figuras": 6,
     "n_rejilla": 8
    },
    "metricas": [
@@ -2154,70 +2134,70 @@
     "segundos_memorizar": 35,
     "a_recordar": [
      {
-      "id": "galleta",
-      "label": "galleta"
-     },
-     {
-      "id": "jamon",
-      "label": "jamón"
-     },
-     {
       "id": "patata",
       "label": "patata"
      },
      {
-      "id": "leche",
-      "label": "leche"
-     },
-     {
-      "id": "cafe",
-      "label": "café"
+      "id": "huevos",
+      "label": "huevos"
      },
      {
       "id": "aceite",
       "label": "aceite"
      },
-     {
-      "id": "huevos",
-      "label": "huevos"
-     }
-    ],
-    "rejilla_seleccion": [
      {
       "id": "jamon",
       "label": "jamón"
-     },
-     {
-      "id": "aceite",
-      "label": "aceite"
      },
      {
       "id": "queso",
       "label": "queso"
      },
      {
-      "id": "leche",
-      "label": "leche"
+      "id": "pan",
+      "label": "pan"
+     },
+     {
+      "id": "cafe",
+      "label": "café"
+     }
+    ],
+    "rejilla_seleccion": [
+     {
+      "id": "aceite",
+      "label": "aceite"
      },
      {
       "id": "pan",
       "label": "pan"
      },
      {
-      "id": "patata",
-      "label": "patata"
+      "id": "leche",
+      "label": "leche"
      },
      {
-      "id": "cafe",
-      "label": "café"
+      "id": "galleta",
+      "label": "galleta"
      },
      {
       "id": "huevos",
       "label": "huevos"
      },
      {
-      "id": "galleta",
-      "label": "galleta"
+      "id": "jamon",
+      "label": "jamón"
+     },
+     {
+      "id": "cafe",
+      "label": "café"
+     },
+     {
+      "id": "patata",
+      "label": "patata"
+     },
+     {
+      "id": "queso",
+      "label": "queso"
      }
     ]
    },
@@ -2242,67 +2222,75 @@
     "segundos_memorizar": 45,
     "a_recordar": [
      {
-      "id": "tulipan",
-      "label": "tulipán"
-     },
-     {
-      "id": "margarita",
-      "label": "margarita"
-     },
-     {
-      "id": "girasol",
-      "label": "girasol"
-     },
-     {
-      "id": "geranio",
-      "label": "geranio"
-     },
-     {
-      "id": "lirio",
-      "label": "lirio"
-     },
-     {
       "id": "clavel",
       "label": "clavel"
-     }
-    ],
-    "rejilla_seleccion": [
+     },
      {
       "id": "amapola",
       "label": "amapola"
      },
      {
-      "id": "lirio",
-      "label": "lirio"
-     },
-     {
       "id": "tulipan",
       "label": "tulipán"
-     },
-     {
-      "id": "girasol",
-      "label": "girasol"
-     },
-     {
-      "id": "geranio",
-      "label": "geranio"
      },
      {
       "id": "rosa",
       "label": "rosa"
      },
      {
-      "id": "clavel",
-      "label": "clavel"
+      "id": "lirio",
+      "label": "lirio"
+     },
+     {
+      "id": "geranio",
+      "label": "geranio"
+     },
+     {
+      "id": "girasol",
+      "label": "girasol"
      },
      {
       "id": "margarita",
       "label": "margarita"
      }
+    ],
+    "rejilla_seleccion": [
+     {
+      "id": "lirio",
+      "label": "lirio"
+     },
+     {
+      "id": "rosa",
+      "label": "rosa"
+     },
+     {
+      "id": "geranio",
+      "label": "geranio"
+     },
+     {
+      "id": "tulipan",
+      "label": "tulipán"
+     },
+     {
+      "id": "margarita",
+      "label": "margarita"
+     },
+     {
+      "id": "clavel",
+      "label": "clavel"
+     },
+     {
+      "id": "amapola",
+      "label": "amapola"
+     },
+     {
+      "id": "girasol",
+      "label": "girasol"
+     }
     ]
    },
    "cantidad_objetivo": {
-    "n_figuras": 6,
+    "n_figuras": 8,
     "n_rejilla": 8
    },
    "metricas": [
@@ -2319,34 +2307,29 @@
    "plantilla": "secuencia_ordenar",
    "render": {
     "instruccion": "Ordena los pasos",
-    "titulo": "Ponerse el pantalón",
+    "titulo": "Ponerse la camisa",
     "pasos_barajados": [
      {
-      "paso": "Ponerse los zapatos",
+      "paso": "Ponerse la camisa",
       "pos_mostrada": 0
      },
      {
-      "paso": "Ponerse el cinturón",
+      "paso": "Ponerse la camiseta interior",
       "pos_mostrada": 1
      },
      {
-      "paso": "Ponerse el pantalón",
+      "paso": "Abrochar los botones",
       "pos_mostrada": 2
-     },
-     {
-      "paso": "Ponerse la ropa interior",
-      "pos_mostrada": 3
      }
     ]
    },
    "cantidad_objetivo": {
-    "n_pasos": 4,
-    "tarea_id": "vestir_abajo",
+    "n_pasos": 3,
+    "tarea_id": "vestir_arriba",
     "orden_correcto_pasos": [
-     "Ponerse la ropa interior",
-     "Ponerse el pantalón",
-     "Ponerse el cinturón",
-     "Ponerse los zapatos"
+     "Ponerse la camiseta interior",
+     "Ponerse la camisa",
+     "Abrochar los botones"
     ]
    },
    "metricas": [
@@ -2363,34 +2346,39 @@
    "plantilla": "secuencia_ordenar",
    "render": {
     "instruccion": "Ordena los pasos",
-    "titulo": "Por la mañana",
+    "titulo": "Un día de la semana",
     "pasos_barajados": [
      {
-      "paso": "Lavarse la cara",
+      "paso": "Desayunar",
       "pos_mostrada": 0
      },
      {
-      "paso": "Desayunar",
+      "paso": "Merendar",
       "pos_mostrada": 1
      },
      {
-      "paso": "Despertarse",
+      "paso": "Cenar",
       "pos_mostrada": 2
      },
      {
-      "paso": "Vestirse",
+      "paso": "Levantarse",
       "pos_mostrada": 3
+     },
+     {
+      "paso": "Comer",
+      "pos_mostrada": 4
      }
     ]
    },
    "cantidad_objetivo": {
-    "n_pasos": 4,
-    "tarea_id": "manana",
+    "n_pasos": 5,
+    "tarea_id": "jornada",
     "orden_correcto_pasos": [
-     "Despertarse",
-     "Lavarse la cara",
-     "Vestirse",
-     "Desayunar"
+     "Levantarse",
+     "Desayunar",
+     "Comer",
+     "Merendar",
+     "Cenar"
     ]
    },
    "metricas": [
@@ -2407,33 +2395,33 @@
    "plantilla": "secuencia_ordenar",
    "render": {
     "instruccion": "Ordena los pasos",
-    "titulo": "Hacer la compra",
+    "titulo": "Comprar el pan",
     "pasos_barajados": [
      {
-      "paso": "Coger el carro",
+      "paso": "Pagar",
       "pos_mostrada": 0
      },
      {
-      "paso": "Pasar por caja",
+      "paso": "Coger el monedero",
       "pos_mostrada": 1
      },
      {
-      "paso": "Pagar",
+      "paso": "Ir a la panadería",
       "pos_mostrada": 2
      },
      {
-      "paso": "Elegir los productos",
+      "paso": "Pedir el pan",
       "pos_mostrada": 3
      }
     ]
    },
    "cantidad_objetivo": {
     "n_pasos": 4,
-    "tarea_id": "compra",
+    "tarea_id": "pan",
     "orden_correcto_pasos": [
-     "Coger el carro",
-     "Elegir los productos",
-     "Pasar por caja",
+     "Coger el monedero",
+     "Ir a la panadería",
+     "Pedir el pan",
      "Pagar"
     ]
    },
@@ -2451,34 +2439,34 @@
    "plantilla": "secuencia_ordenar",
    "render": {
     "instruccion": "Ordena los pasos",
-    "titulo": "Tortilla francesa",
+    "titulo": "Café con leche",
     "pasos_barajados": [
      {
-      "paso": "Calentar la sartén",
+      "paso": "Juntarlos en la taza",
       "pos_mostrada": 0
      },
      {
-      "paso": "Cascar los huevos",
+      "paso": "Hacer el café",
       "pos_mostrada": 1
      },
      {
-      "paso": "Batir los huevos",
+      "paso": "Calentar la leche",
       "pos_mostrada": 2
      },
      {
-      "paso": "Echar el huevo",
+      "paso": "Añadir azúcar",
       "pos_mostrada": 3
      }
     ]
    },
    "cantidad_objetivo": {
     "n_pasos": 4,
-    "tarea_id": "tortilla",
+    "tarea_id": "cafe_leche",
     "orden_correcto_pasos": [
-     "Cascar los huevos",
-     "Batir los huevos",
-     "Calentar la sartén",
-     "Echar el huevo"
+     "Calentar la leche",
+     "Hacer el café",
+     "Juntarlos en la taza",
+     "Añadir azúcar"
     ]
    },
    "metricas": [
@@ -2498,31 +2486,36 @@
     "titulo": "De menor a mayor",
     "pasos_barajados": [
      {
-      "paso": "7",
+      "paso": "20",
       "pos_mostrada": 0
      },
      {
-      "paso": "3",
+      "paso": "40",
       "pos_mostrada": 1
      },
      {
-      "paso": "12",
+      "paso": "50",
       "pos_mostrada": 2
      },
      {
-      "paso": "18",
+      "paso": "10",
       "pos_mostrada": 3
+     },
+     {
+      "paso": "30",
+      "pos_mostrada": 4
      }
     ]
    },
    "cantidad_objetivo": {
-    "n_pasos": 4,
-    "tarea_id": "salteados",
+    "n_pasos": 5,
+    "tarea_id": "decenas",
     "orden_correcto_pasos": [
-     "3",
-     "7",
-     "12",
-     "18"
+     "10",
+     "20",
+     "30",
+     "40",
+     "50"
     ]
    },
    "metricas": [
@@ -2547,7 +2540,7 @@
      },
      {
       "objeto": "boton_pequeno",
-      "cantidad": 6
+      "cantidad": 8
      }
     ]
    },
@@ -2555,10 +2548,10 @@
     "modo": "cual_tiene_menos",
     "cantidades": [
      8,
-     6
+     8
     ],
     "solucion": {
-     "objeto_menor": "boton_pequeno"
+     "objeto_menor": "boton_grande"
     }
    },
    "metricas": [
@@ -2574,31 +2567,31 @@
    "plantilla": "conteo_comparacion",
    "render": {
     "instruccion": "Fíjate bien en los dos grupos",
-    "modo": "cual_tiene_menos",
+    "modo": "cual_tiene_mas",
     "grupos": [
      {
       "objeto": "estrella",
-      "cantidad": 7
+      "cantidad": 6
      },
      {
       "objeto": "corazon",
-      "cantidad": 8
+      "cantidad": 6
      },
      {
       "objeto": "circulo",
-      "cantidad": 8
+      "cantidad": 7
      }
     ]
    },
    "cantidad_objetivo": {
-    "modo": "cual_tiene_menos",
+    "modo": "cual_tiene_mas",
     "cantidades": [
-     7,
-     8,
-     8
+     6,
+     6,
+     7
     ],
     "solucion": {
-     "objeto_menor": "estrella"
+     "objeto_mayor": "circulo"
     }
    },
    "metricas": [
@@ -2618,18 +2611,18 @@
     "grupos": [
      {
       "objeto": "moneda_1e",
-      "cantidad": 8
+      "cantidad": 6
      }
     ]
    },
    "cantidad_objetivo": {
     "modo": "contar",
     "cantidades": [
-     8
+     6
     ],
     "solucion": {
      "objeto": "moneda_1e",
-     "cantidad": 8
+     "cantidad": 6
     }
    },
    "metricas": [
@@ -2653,7 +2646,7 @@
      },
      {
       "objeto": "naranja",
-      "cantidad": 8
+      "cantidad": 7
      }
     ]
    },
@@ -2661,10 +2654,10 @@
     "modo": "sumar",
     "cantidades": [
      8,
-     8
+     7
     ],
     "solucion": {
-     "total": 16
+     "total": 15
     }
    },
    "metricas": [
@@ -2680,15 +2673,15 @@
    "plantilla": "conteo_comparacion",
    "render": {
     "instruccion": "Fíjate en los animales",
-    "modo": "contar",
+    "modo": "cual_tiene_mas",
     "grupos": [
      {
       "objeto": "gallina",
-      "cantidad": 8
+      "cantidad": 6
      },
      {
       "objeto": "oveja",
-      "cantidad": 7
+      "cantidad": 8
      },
      {
       "objeto": "conejo",
@@ -2697,15 +2690,14 @@
     ]
    },
    "cantidad_objetivo": {
-    "modo": "contar",
+    "modo": "cual_tiene_mas",
     "cantidades": [
+     6,
      8,
-     7,
      8
     ],
     "solucion": {
-     "objeto": "gallina",
-     "cantidad": 8
+     "objeto_mayor": "oveja"
     }
    },
    "metricas": [
@@ -2721,7 +2713,7 @@
    "plantilla": "arrastrar_posicion",
    "render": {
     "instruccion": "Pon cada cosa en la caja de su color",
-    "multiplicador": 3,
+    "multiplicador": 4,
     "piezas": [
      {
       "id": "tomate",
@@ -2770,7 +2762,7 @@
     ]
    },
    "cantidad_objetivo": {
-    "cantidad": 3,
+    "cantidad": 4,
     "n_piezas": 6,
     "emparejamientos": {
      "tomate": "rojo",
@@ -2939,7 +2931,7 @@
    "plantilla": "arrastrar_posicion",
    "render": {
     "instruccion": "Lleva cada cosa a su habitación",
-    "multiplicador": 4,
+    "multiplicador": 3,
     "piezas": [
      {
       "id": "sarten",
@@ -2988,7 +2980,7 @@
     ]
    },
    "cantidad_objetivo": {
-    "cantidad": 4,
+    "cantidad": 3,
     "n_piezas": 6,
     "emparejamientos": {
      "sarten": "cocina",
@@ -3016,16 +3008,24 @@
     "segundos_memorizar": 45,
     "a_recordar": [
      {
+      "id": "gallina",
+      "label": "gallina"
+     },
+     {
       "id": "gato",
       "label": "gato"
      },
      {
-      "id": "cerdo",
-      "label": "cerdo"
+      "id": "vaca",
+      "label": "vaca"
      },
      {
-      "id": "conejo",
-      "label": "conejo"
+      "id": "perro",
+      "label": "perro"
+     },
+     {
+      "id": "cerdo",
+      "label": "cerdo"
      },
      {
       "id": "oveja",
@@ -3036,8 +3036,8 @@
       "label": "caballo"
      },
      {
-      "id": "vaca",
-      "label": "vaca"
+      "id": "conejo",
+      "label": "conejo"
      }
     ],
     "rejilla_seleccion": [
@@ -3046,18 +3046,6 @@
       "label": "cerdo"
      },
      {
-      "id": "vaca",
-      "label": "vaca"
-     },
-     {
-      "id": "gallina",
-      "label": "gallina"
-     },
-     {
-      "id": "oveja",
-      "label": "oveja"
-     },
-     {
       "id": "caballo",
       "label": "caballo"
      },
@@ -3070,13 +3058,25 @@
       "label": "conejo"
      },
      {
+      "id": "vaca",
+      "label": "vaca"
+     },
+     {
+      "id": "oveja",
+      "label": "oveja"
+     },
+     {
       "id": "perro",
       "label": "perro"
+     },
+     {
+      "id": "gallina",
+      "label": "gallina"
      }
     ]
    },
    "cantidad_objetivo": {
-    "n_figuras": 6,
+    "n_figuras": 8,
     "n_rejilla": 8
    },
    "metricas": [
@@ -3096,32 +3096,24 @@
     "segundos_memorizar": 40,
     "a_recordar": [
      {
-      "id": "bol",
-      "label": "bol"
-     },
-     {
-      "id": "olla",
-      "label": "olla"
-     },
-     {
       "id": "plato",
       "label": "plato"
-     },
-     {
-      "id": "cuchara",
-      "label": "cuchara"
      },
      {
       "id": "tenedor",
       "label": "tenedor"
      },
      {
+      "id": "vaso",
+      "label": "vaso"
+     },
+     {
       "id": "sarten",
       "label": "sartén"
      },
      {
-      "id": "taza",
-      "label": "taza"
+      "id": "cuchara",
+      "label": "cuchara"
      },
      {
       "id": "cuchillo",
@@ -3130,45 +3122,45 @@
     ],
     "rejilla_seleccion": [
      {
-      "id": "taza",
-      "label": "taza"
-     },
-     {
-      "id": "tenedor",
-      "label": "tenedor"
-     },
-     {
-      "id": "olla",
-      "label": "olla"
-     },
-     {
       "id": "sarten",
       "label": "sartén"
+     },
+     {
+      "id": "taza",
+      "label": "taza"
      },
      {
       "id": "bol",
       "label": "bol"
      },
      {
-      "id": "cuchara",
-      "label": "cuchara"
-     },
-     {
       "id": "plato",
       "label": "plato"
+     },
+     {
+      "id": "vaso",
+      "label": "vaso"
+     },
+     {
+      "id": "olla",
+      "label": "olla"
      },
      {
       "id": "cuchillo",
       "label": "cuchillo"
      },
      {
-      "id": "vaso",
-      "label": "vaso"
+      "id": "tenedor",
+      "label": "tenedor"
+     },
+     {
+      "id": "cuchara",
+      "label": "cuchara"
      }
     ]
    },
    "cantidad_objetivo": {
-    "n_figuras": 8,
+    "n_figuras": 6,
     "n_rejilla": 9
    },
    "metricas": [
@@ -3186,18 +3178,18 @@
    "render": {
     "instruccion": "¿Qué animal es este?",
     "enunciado": null,
-    "imagen": "gato",
+    "imagen": "gallina",
     "audio": null,
     "opciones": [
-     "perro",
-     "conejo",
-     "gato"
+     "gallina",
+     "pájaro",
+     "pato"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
-    "item_id": "gato",
-    "correcta": "gato"
+    "item_id": "gallina",
+    "correcta": "gallina"
    },
    "metricas": [
     "correcto",
@@ -3216,31 +3208,26 @@
     "titulo": "Ducharse",
     "pasos_barajados": [
      {
-      "paso": "Abrir el grifo",
+      "paso": "Mojarse",
       "pos_mostrada": 0
      },
      {
-      "paso": "Mojarse",
+      "paso": "Enjabonarse",
       "pos_mostrada": 1
      },
      {
-      "paso": "Enjabonarse",
+      "paso": "Abrir el grifo",
       "pos_mostrada": 2
-     },
-     {
-      "paso": "Secarse con la toalla",
-      "pos_mostrada": 3
      }
     ]
    },
    "cantidad_objetivo": {
-    "n_pasos": 4,
+    "n_pasos": 3,
     "tarea_id": "ducha",
     "orden_correcto_pasos": [
      "Abrir el grifo",
      "Mojarse",
-     "Enjabonarse",
-     "Secarse con la toalla"
+     "Enjabonarse"
     ]
    },
    "metricas": [
@@ -3257,27 +3244,26 @@
    "plantilla": "conteo_comparacion",
    "render": {
     "instruccion": "Fíjate bien en los cubiertos",
-    "modo": "contar",
+    "modo": "cual_tiene_mas",
     "grupos": [
      {
       "objeto": "cuchara",
-      "cantidad": 8
+      "cantidad": 6
      },
      {
       "objeto": "tenedor",
-      "cantidad": 6
+      "cantidad": 7
      }
     ]
    },
    "cantidad_objetivo": {
-    "modo": "contar",
+    "modo": "cual_tiene_mas",
     "cantidades": [
-     8,
-     6
+     6,
+     7
     ],
     "solucion": {
-     "objeto": "tenedor",
-     "cantidad": 6
+     "objeto_mayor": "tenedor"
     }
    },
    "metricas": [
@@ -3292,21 +3278,21 @@
    "bloque": "razonamiento",
    "plantilla": "seleccion_multiple",
    "render": {
-    "instruccion": "¿Dónde se compra la carne?",
+    "instruccion": "¿Dónde se compra una medicina?",
     "enunciado": null,
     "imagen": null,
     "audio": null,
     "opciones": [
-     "en la papelería",
+     "en la farmacia",
      "en la frutería",
-     "en la panadería",
-     "en la carnicería"
+     "en la pescadería",
+     "en la panadería"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 4,
-    "item_id": "carne",
-    "correcta": "en la carnicería"
+    "item_id": "medicina",
+    "correcta": "en la farmacia"
    },
    "metricas": [
     "correcto",
@@ -3322,7 +3308,7 @@
    "plantilla": "arrastrar_posicion",
    "render": {
     "instruccion": "Pon cada alimento en su cesto",
-    "multiplicador": 4,
+    "multiplicador": 3,
     "piezas": [
      {
       "id": "manzana",
@@ -3377,7 +3363,7 @@
     ]
    },
    "cantidad_objetivo": {
-    "cantidad": 4,
+    "cantidad": 3,
     "n_piezas": 8,
     "emparejamientos": {
      "manzana": "frutas",
@@ -3403,10 +3389,10 @@
    "bloque": "vida_cotidiana",
    "plantilla": "manejo_cantidad",
    "render": {
-    "instruccion": "Elige las monedas justas para pagar 1,65 €",
+    "instruccion": "Elige las monedas justas para pagar 3,05 €",
     "modo": "monedas_justas",
-    "importe_c": 165,
-    "importe_texto": "1,65 €",
+    "importe_c": 305,
+    "importe_texto": "3,05 €",
     "denominaciones": [
      {
       "valor_c": 5,
@@ -3437,7 +3423,7 @@
    "cantidad_objetivo": {
     "modo": "monedas_justas",
     "banda": null,
-    "importe_c": 165,
+    "importe_c": 305,
     "denominaciones_c": [
      5,
      10,
@@ -3461,12 +3447,12 @@
    "plantilla": "trazo",
    "render": {
     "instruccion": "Repasa el dibujo con el dedo",
-    "guide_path": "M20,115 L80,45 L120,90 L170,35 L210,90 L260,50 L280,115",
+    "guide_path": "M20,110 Q70,50 120,110 Q170,50 220,110 Q250,75 280,110",
     "tolerancia_px": 26,
     "viewbox": "0 0 300 140"
    },
    "cantidad_objetivo": {
-    "figura_id": "montanas",
+    "figura_id": "colinas",
     "tolerancia_px": 26
    },
    "metricas": [
@@ -3483,21 +3469,20 @@
    "bloque": "razonamiento",
    "plantilla": "seleccion_multiple",
    "render": {
-    "instruccion": "¿Quién trabaja con la aguja y el hilo?",
+    "instruccion": "¿Quién hace el pan en el horno?",
     "enunciado": null,
     "imagen": null,
     "audio": null,
     "opciones": [
-     "el sastre",
-     "el herrero",
-     "el albañil",
-     "el pescador"
+     "el carpintero",
+     "el panadero",
+     "el labrador"
     ]
    },
    "cantidad_objetivo": {
-    "n_opciones": 4,
-    "item_id": "aguja",
-    "correcta": "el sastre"
+    "n_opciones": 3,
+    "item_id": "horno",
+    "correcta": "el panadero"
    },
    "metricas": [
     "correcto",
@@ -3513,20 +3498,20 @@
    "plantilla": "seleccion_multiple",
    "render": {
     "instruccion": "Elige lo que falta",
-    "enunciado": "Al pasar la barca, me dijo el...",
+    "enunciado": "Tengo una vaca lechera, no es una vaca...",
     "imagen": null,
     "audio": null,
     "opciones": [
-     "capitán",
-     "barquero",
-     "marinero",
-     "pescador"
+     "pequeña",
+     "casera",
+     "ligera",
+     "cualquiera"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 4,
-    "item_id": "barca",
-    "correcta": "barquero"
+    "item_id": "vaca",
+    "correcta": "cualquiera"
    },
    "metricas": [
     "correcto",
@@ -3542,19 +3527,20 @@
    "plantilla": "seleccion_multiple",
    "render": {
     "instruccion": "Elige lo que falta",
-    "enunciado": "Año de nieves...",
+    "enunciado": "Cielo empedrado...",
     "imagen": null,
     "audio": null,
     "opciones": [
-     "año de lluvias",
-     "año de bienes",
-     "año de fríos"
+     "día soleado",
+     "suelo mojado",
+     "campo sembrado",
+     "monte nevado"
     ]
    },
    "cantidad_objetivo": {
-    "n_opciones": 3,
-    "item_id": "nieves",
-    "correcta": "año de bienes"
+    "n_opciones": 4,
+    "item_id": "empedrado",
+    "correcta": "suelo mojado"
    },
    "metricas": [
     "correcto",
@@ -3569,20 +3555,20 @@
    "bloque": "lenguaje",
    "plantilla": "seleccion_multiple",
    "render": {
-    "instruccion": "¿Qué palabra es? (con la J)",
-    "enunciado": "Empieza por J: contrario de viejo",
+    "instruccion": "¿Qué palabra es? (con la F)",
+    "enunciado": "Empieza por F: subida de la temperatura del cuerpo al estar enfermos",
     "imagen": null,
     "audio": null,
     "opciones": [
-     "jefe",
-     "joven",
-     "justo"
+     "frío",
+     "fiebre",
+     "fatiga"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
-    "item_id": "j",
-    "correcta": "joven"
+    "item_id": "f",
+    "correcta": "fiebre"
    },
    "metricas": [
     "correcto",
@@ -3598,19 +3584,19 @@
    "plantilla": "seleccion_multiple",
    "render": {
     "instruccion": "Elige el contrario",
-    "enunciado": "El contrario de SALUD es...",
+    "enunciado": "El contrario de AMOR es...",
     "imagen": null,
     "audio": null,
     "opciones": [
-     "fuerza",
-     "descanso",
-     "enfermedad"
+     "cariño",
+     "pena",
+     "odio"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
-    "item_id": "salud",
-    "correcta": "enfermedad"
+    "item_id": "amor",
+    "correcta": "odio"
    },
    "metricas": [
     "correcto",
@@ -3626,19 +3612,19 @@
    "plantilla": "seleccion_multiple",
    "render": {
     "instruccion": "Fíjate bien",
-    "enunciado": "¿Cuál tiene dos letras I?",
+    "enunciado": "¿Cuál tiene dos letras O?",
     "imagen": null,
     "audio": null,
     "opciones": [
-     "entero",
-     "cama",
-     "hijito"
+     "bota",
+     "coco",
+     "fuego"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
-    "item_id": "i",
-    "correcta": "hijito"
+    "item_id": "o2",
+    "correcta": "coco"
    },
    "metricas": [
     "correcto",
@@ -3654,12 +3640,12 @@
    "plantilla": "trazo",
    "render": {
     "instruccion": "Repasa el número con el dedo",
-    "guide_path": "M40,44 L56,30 L56,118",
+    "guide_path": "M62,26 L28,92 L78,92 M62,52 L62,118",
     "tolerancia_px": 22,
     "viewbox": "0 0 100 145"
    },
    "cantidad_objetivo": {
-    "figura_id": "1",
+    "figura_id": "4",
     "tolerancia_px": 22
    },
    "metricas": [
@@ -3677,19 +3663,19 @@
    "plantilla": "seleccion_multiple",
    "render": {
     "instruccion": "Elige el número",
-    "enunciado": "¿Qué número va DESPUÉS del 3?",
+    "enunciado": "¿Qué número va DESPUÉS del 1?",
     "imagen": null,
     "audio": null,
     "opciones": [
      "2",
-     "4",
-     "5"
+     "0",
+     "3"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
-    "item_id": "n2",
-    "correcta": "4"
+    "item_id": "n1",
+    "correcta": "2"
    },
    "metricas": [
     "correcto",
@@ -3712,8 +3698,8 @@
     "objetivo_label": "llave",
     "celdas": [
      {
-      "id": "peine",
-      "label": "peine"
+      "id": "vaso",
+      "label": "vaso"
      },
      {
       "id": "llave",
@@ -3724,28 +3710,28 @@
       "label": "libro"
      },
      {
-      "id": "vaso",
-      "label": "vaso"
-     },
-     {
-      "id": "llave",
-      "label": "llave"
-     },
-     {
       "id": "taza",
       "label": "taza"
      },
      {
-      "id": "martillo",
-      "label": "martillo"
+      "id": "llave",
+      "label": "llave"
      },
      {
       "id": "llave",
       "label": "llave"
      },
      {
-      "id": "martillo",
-      "label": "martillo"
+      "id": "gafas",
+      "label": "gafas"
+     },
+     {
+      "id": "tijeras",
+      "label": "tijeras"
+     },
+     {
+      "id": "peine",
+      "label": "peine"
      }
     ]
    },
@@ -3780,36 +3766,36 @@
       "label": "zapato"
      },
      {
-      "id": "guantes",
-      "label": "guantes"
+      "id": "bufanda",
+      "label": "bufanda"
      },
      {
-      "id": "camisa",
-      "label": "camisa"
+      "id": "bufanda",
+      "label": "bufanda"
+     },
+     {
+      "id": "vestido",
+      "label": "vestido"
+     },
+     {
+      "id": "gafas",
+      "label": "gafas"
+     },
+     {
+      "id": "zapato",
+      "label": "zapato"
+     },
+     {
+      "id": "vestido",
+      "label": "vestido"
      },
      {
       "id": "zapato",
       "label": "zapato"
      },
      {
-      "id": "camisa",
-      "label": "camisa"
-     },
-     {
-      "id": "pantalon",
-      "label": "pantalon"
-     },
-     {
       "id": "gorro",
       "label": "gorro"
-     },
-     {
-      "id": "gorro",
-      "label": "gorro"
-     },
-     {
-      "id": "zapato",
-      "label": "zapato"
      }
     ]
    },
@@ -3840,40 +3826,40 @@
     "objetivo_label": "manzana",
     "celdas": [
      {
-      "id": "uvas",
-      "label": "uvas"
-     },
-     {
       "id": "manzana",
       "label": "manzana"
      },
      {
+      "id": "limon",
+      "label": "limon"
+     },
+     {
+      "id": "platano",
+      "label": "platano"
+     },
+     {
       "id": "uvas",
       "label": "uvas"
      },
      {
-      "id": "manzana",
-      "label": "manzana"
-     },
-     {
-      "id": "uvas",
-      "label": "uvas"
-     },
-     {
-      "id": "melocoton",
-      "label": "melocoton"
-     },
-     {
-      "id": "pera",
-      "label": "pera"
-     },
-     {
-      "id": "manzana",
-      "label": "manzana"
+      "id": "limon",
+      "label": "limon"
      },
      {
       "id": "melon",
       "label": "melon"
+     },
+     {
+      "id": "manzana",
+      "label": "manzana"
+     },
+     {
+      "id": "limon",
+      "label": "limon"
+     },
+     {
+      "id": "manzana",
+      "label": "manzana"
      }
     ]
    },
@@ -3901,8 +3887,8 @@
     "imagen": null,
     "audio": null,
     "opciones": [
-     "6",
      "9",
+     "6",
      "8"
     ]
    },
@@ -3925,19 +3911,19 @@
    "plantilla": "seleccion_multiple",
    "render": {
     "instruccion": "Elige la respuesta correcta",
-    "enunciado": "10 - 3 = ?",
+    "enunciado": "8 - 4 = ?",
     "imagen": null,
     "audio": null,
     "opciones": [
-     "7",
-     "8",
-     "6"
+     "3",
+     "5",
+     "4"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
-    "item_id": "r7",
-    "correcta": "7"
+    "item_id": "r5",
+    "correcta": "4"
    },
    "metricas": [
     "correcto",
@@ -3958,8 +3944,8 @@
     "audio": null,
     "opciones": [
      "9",
-     "2",
-     "4"
+     "4",
+     "2"
     ]
    },
    "cantidad_objetivo": {
@@ -3988,16 +3974,8 @@
     "objetivo_label": "cuchara",
     "celdas": [
      {
-      "id": "cuchara",
-      "label": "cuchara"
-     },
-     {
-      "id": "cuchillo",
-      "label": "cuchillo"
-     },
-     {
-      "id": "vaso",
-      "label": "vaso"
+      "id": "bol",
+      "label": "bol"
      },
      {
       "id": "bol",
@@ -4006,18 +3984,26 @@
      {
       "id": "cuchara",
       "label": "cuchara"
-     },
-     {
-      "id": "botella",
-      "label": "botella"
      },
      {
       "id": "sarten",
       "label": "sarten"
      },
      {
-      "id": "bol",
-      "label": "bol"
+      "id": "plato",
+      "label": "plato"
+     },
+     {
+      "id": "cuchillo",
+      "label": "cuchillo"
+     },
+     {
+      "id": "cuchara",
+      "label": "cuchara"
+     },
+     {
+      "id": "sarten",
+      "label": "sarten"
      },
      {
       "id": "cuchara",
@@ -4052,40 +4038,40 @@
     "objetivo_label": "taza",
     "celdas": [
      {
-      "id": "taza",
-      "label": "taza"
+      "id": "bol",
+      "label": "bol"
      },
      {
-      "id": "tenedor",
-      "label": "tenedor"
-     },
-     {
-      "id": "taza",
-      "label": "taza"
-     },
-     {
-      "id": "cuchillo",
-      "label": "cuchillo"
-     },
-     {
-      "id": "cuchillo",
-      "label": "cuchillo"
-     },
-     {
-      "id": "tenedor",
-      "label": "tenedor"
-     },
-     {
-      "id": "taza",
-      "label": "taza"
+      "id": "vaso",
+      "label": "vaso"
      },
      {
       "id": "bol",
       "label": "bol"
      },
      {
+      "id": "taza",
+      "label": "taza"
+     },
+     {
+      "id": "sarten",
+      "label": "sarten"
+     },
+     {
+      "id": "taza",
+      "label": "taza"
+     },
+     {
+      "id": "olla",
+      "label": "olla"
+     },
+     {
       "id": "botella",
       "label": "botella"
+     },
+     {
+      "id": "taza",
+      "label": "taza"
      }
     ]
    },
@@ -4113,8 +4099,8 @@
     "imagen": null,
     "audio": null,
     "opciones": [
-     "noche",
      "tarde",
+     "noche",
      "sol"
     ]
    },
@@ -4137,19 +4123,19 @@
    "plantilla": "seleccion_multiple",
    "render": {
     "instruccion": "Elige el grupo",
-    "enunciado": "La manzana es una...",
+    "enunciado": "El martillo es una...",
     "imagen": null,
     "audio": null,
     "opciones": [
-     "flor",
-     "fruta",
-     "verdura"
+     "herramienta",
+     "prenda de ropa",
+     "fruta"
     ]
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
-    "item_id": "manzana",
-    "correcta": "fruta"
+    "item_id": "martillo",
+    "correcta": "herramienta"
    },
    "metricas": [
     "correcto",
@@ -4165,12 +4151,12 @@
    "plantilla": "trazo",
    "render": {
     "instruccion": "Copia el dibujo con el dedo",
-    "guide_path": "M55,70 C95,38 175,38 215,70 C175,102 95,102 55,70 Z M215,70 L255,45 L255,95 Z",
+    "guide_path": "M60,120 L60,55 L150,20 L240,55 L240,120 Z M105,120 L105,82 L145,82 L145,120",
     "tolerancia_px": 16,
     "viewbox": "0 0 300 140"
    },
    "cantidad_objetivo": {
-    "figura_id": "pez",
+    "figura_id": "casa",
     "tolerancia_px": 16
    },
    "metricas": [
@@ -4189,13 +4175,13 @@
    "render": {
     "instruccion": "¿Qué hora marca?",
     "modo": "reloj",
-    "hora": 11,
-    "minuto": 20
+    "hora": 8,
+    "minuto": 35
    },
    "cantidad_objetivo": {
     "modo": "reloj",
-    "hora": 11,
-    "minuto": 20
+    "hora": 8,
+    "minuto": 35
    },
    "metricas": [
     "correcto",
@@ -4210,40 +4196,40 @@
    "bloque": "funcion_ejecutiva",
    "plantilla": "secuencia_ordenar",
    "render": {
-    "instruccion": "Ordena los meses, empezando por enero",
-    "titulo": "Los meses del ano",
+    "instruccion": "Ordena los dias de la semana",
+    "titulo": "Los dias de la semana",
     "pasos_barajados": [
      {
-      "paso": "Marzo",
+      "paso": "Martes",
       "pos_mostrada": 0
      },
      {
-      "paso": "Febrero",
+      "paso": "Viernes",
       "pos_mostrada": 1
      },
      {
-      "paso": "Enero",
+      "paso": "Jueves",
       "pos_mostrada": 2
      },
      {
-      "paso": "Mayo",
+      "paso": "Miercoles",
       "pos_mostrada": 3
      },
      {
-      "paso": "Abril",
+      "paso": "Lunes",
       "pos_mostrada": 4
      }
     ]
    },
    "cantidad_objetivo": {
     "n_pasos": 5,
-    "tarea_id": "meses",
+    "tarea_id": "dias",
     "orden_correcto_pasos": [
-     "Enero",
-     "Febrero",
-     "Marzo",
-     "Abril",
-     "Mayo"
+     "Lunes",
+     "Martes",
+     "Miercoles",
+     "Jueves",
+     "Viernes"
     ]
    },
    "metricas": [
@@ -4260,19 +4246,20 @@
    "plantilla": "seleccion_multiple",
    "render": {
     "instruccion": "Elige la respuesta",
-    "enunciado": "Con esta parte del cuerpo VEMOS. ¿Cual es?",
+    "enunciado": "Con esta parte del cuerpo OIMOS. ¿Cual es?",
     "imagen": null,
     "audio": null,
     "opciones": [
-     "los pies",
      "las orejas",
-     "los ojos"
+     "las manos",
+     "la nariz",
+     "los pies"
     ]
    },
    "cantidad_objetivo": {
-    "n_opciones": 3,
-    "item_id": "ver",
-    "correcta": "los ojos"
+    "n_opciones": 4,
+    "item_id": "oir",
+    "correcta": "las orejas"
    },
    "metricas": [
     "correcto",
@@ -4299,12 +4286,12 @@
       "label": "corazon"
      },
      {
-      "id": "circulo",
-      "label": "circulo"
+      "id": "cuadrado",
+      "label": "cuadrado"
      },
      {
-      "id": "estrella",
-      "label": "estrella"
+      "id": "circulo",
+      "label": "circulo"
      },
      {
       "id": "circulo",
@@ -4317,6 +4304,10 @@
      {
       "id": "cuadrado",
       "label": "cuadrado"
+     },
+     {
+      "id": "estrella",
+      "label": "estrella"
      },
      {
       "id": "corazon",
@@ -4325,10 +4316,6 @@
      {
       "id": "triangulo",
       "label": "triangulo"
-     },
-     {
-      "id": "cuadrado",
-      "label": "cuadrado"
      }
     ]
    },
@@ -4375,12 +4362,12 @@
    "plantilla": "trazo",
    "render": {
     "instruccion": "Copia el dibujo con el dedo",
-    "guide_path": "M92,98 C70,98 70,72 94,72 C97,54 130,54 134,72 C160,66 172,94 148,98 Z",
+    "guide_path": "M150,72 m-11,0 a11,11 0 1,0 22,0 a11,11 0 1,0 -22,0 M150,61 C136,42 164,42 150,61 M150,83 C136,102 164,102 150,83 M139,72 C120,58 120,86 139,72 M161,72 C180,58 180,86 161,72 M150,102 L150,124",
     "tolerancia_px": 18,
     "viewbox": "0 0 300 140"
    },
    "cantidad_objetivo": {
-    "figura_id": "nube",
+    "figura_id": "flor",
     "tolerancia_px": 18
    },
    "metricas": [
@@ -4398,29 +4385,34 @@
    "plantilla": "secuencia_ordenar",
    "render": {
     "instruccion": "Ordena los pasos",
-    "titulo": "Poner la lavadora",
+    "titulo": "Tender la ropa",
     "pasos_barajados": [
      {
-      "paso": "Echar el detergente",
+      "paso": "Sacar la ropa mojada",
       "pos_mostrada": 0
      },
      {
-      "paso": "Cerrar la puerta",
+      "paso": "Poner las pinzas",
       "pos_mostrada": 1
      },
      {
-      "paso": "Meter la ropa sucia",
+      "paso": "Colgarla en el tendedero",
       "pos_mostrada": 2
+     },
+     {
+      "paso": "Sacudir cada prenda",
+      "pos_mostrada": 3
      }
     ]
    },
    "cantidad_objetivo": {
-    "n_pasos": 3,
-    "tarea_id": "lavadora",
+    "n_pasos": 4,
+    "tarea_id": "tender",
     "orden_correcto_pasos": [
-     "Meter la ropa sucia",
-     "Echar el detergente",
-     "Cerrar la puerta"
+     "Sacar la ropa mojada",
+     "Sacudir cada prenda",
+     "Colgarla en el tendedero",
+     "Poner las pinzas"
     ]
    },
    "metricas": [
@@ -4436,10 +4428,10 @@
    "bloque": "calculo",
    "plantilla": "manejo_cantidad",
    "render": {
-    "instruccion": "Elige las monedas justas para pagar 2,00 €",
+    "instruccion": "Elige las monedas justas para pagar 7,00 €",
     "modo": "monedas_justas",
-    "importe_c": 200,
-    "importe_texto": "2,00 €",
+    "importe_c": 700,
+    "importe_texto": "7,00 €",
     "denominaciones": [
      {
       "valor_c": 100,
@@ -4454,7 +4446,7 @@
    "cantidad_objetivo": {
     "modo": "monedas_justas",
     "banda": null,
-    "importe_c": 200,
+    "importe_c": 700,
     "denominaciones_c": [
      100,
      200
@@ -4477,62 +4469,62 @@
     "segundos_memorizar": 40,
     "a_recordar": [
      {
-      "id": "sombrero",
-      "label": "sombrero"
+      "id": "vestido",
+      "label": "vestido"
+     },
+     {
+      "id": "bufanda",
+      "label": "bufanda"
      },
      {
       "id": "calcetin",
       "label": "calcetín"
      },
      {
-      "id": "bufanda",
-      "label": "bufanda"
+      "id": "sombrero",
+      "label": "sombrero"
      },
      {
-      "id": "vestido",
-      "label": "vestido"
+      "id": "pantalon",
+      "label": "pantalón"
+     },
+     {
+      "id": "zapato",
+      "label": "zapato"
      },
      {
       "id": "camisa",
       "label": "camisa"
      },
      {
-      "id": "zapato",
-      "label": "zapato"
-     },
-     {
       "id": "abrigo",
       "label": "abrigo"
-     },
-     {
-      "id": "pantalon",
-      "label": "pantalón"
      }
     ],
     "rejilla_seleccion": [
-     {
-      "id": "zapato",
-      "label": "zapato"
-     },
-     {
-      "id": "bufanda",
-      "label": "bufanda"
-     },
-     {
-      "id": "vestido",
-      "label": "vestido"
-     },
      {
       "id": "sombrero",
       "label": "sombrero"
      },
      {
+      "id": "vestido",
+      "label": "vestido"
+     },
+     {
+      "id": "bufanda",
+      "label": "bufanda"
+     },
+     {
       "id": "camisa",
       "label": "camisa"
      },
      {
       "id": "abrigo",
       "label": "abrigo"
+     },
+     {
+      "id": "zapato",
+      "label": "zapato"
      },
      {
       "id": "pantalon",
@@ -4573,36 +4565,36 @@
       "label": "flor"
      },
      {
-      "id": "abeja",
-      "label": "abeja"
+      "id": "flor",
+      "label": "flor"
+     },
+     {
+      "id": "piedra",
+      "label": "piedra"
      },
      {
       "id": "flor",
       "label": "flor"
      },
      {
-      "id": "flor",
-      "label": "flor"
+      "id": "caracol",
+      "label": "caracol"
+     },
+     {
+      "id": "piedra",
+      "label": "piedra"
+     },
+     {
+      "id": "piedra",
+      "label": "piedra"
      },
      {
       "id": "caracol",
       "label": "caracol"
      },
      {
-      "id": "arbol",
-      "label": "arbol"
-     },
-     {
-      "id": "caracol",
-      "label": "caracol"
-     },
-     {
-      "id": "caracol",
-      "label": "caracol"
-     },
-     {
-      "id": "abeja",
-      "label": "abeja"
+      "id": "seta",
+      "label": "seta"
      }
     ]
    },
@@ -4618,6 +4610,91 @@
     "tiempo_ms"
    ],
    "dificultad": "media"
+  },
+  {
+   "ejercicio_id": "Señala lo que te pido",
+   "nombre": "Señala lo que te pido",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Toca la FRUTA",
+    "enunciado": null,
+    "imagen": "categoria_fruta",
+    "audio": null,
+    "opciones": [
+     "img_reloj",
+     "img_silla",
+     "img_pera"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "fruta",
+    "correcta": "img_pera"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ],
+   "dificultad": "facil"
+  },
+  {
+   "ejercicio_id": "Adivina por la pista",
+   "nombre": "Adivina por la pista",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la imagen",
+    "enunciado": "Es una fruta amarilla y alargada.",
+    "imagen": "pista_platano",
+    "audio": null,
+    "opciones": [
+     "img_uva",
+     "img_manzana",
+     "img_platano"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "platano",
+    "correcta": "img_platano"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ],
+   "dificultad": "media"
+  },
+  {
+   "ejercicio_id": "Sonidos de la naturaleza",
+   "nombre": "Sonidos de la naturaleza",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "¿Qué es este sonido?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": "sonido_olas",
+    "opciones": [
+     "las olas del mar",
+     "la lluvia",
+     "el viento",
+     "una cascada"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "olas",
+    "correcta": "las olas del mar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ],
+   "dificultad": "facil"
   }
  ]
 }
