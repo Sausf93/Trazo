@@ -8,13 +8,21 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import get_db
 from app.deps import auditar, get_current_staff, usuario_del_centro
 from app.models import (
+    ROLES_OTORGANTE,
+    Consentimiento,
     DatosIdentificativos,
     Sesion,
     SesionParticipante,
     UsuarioFinal,
     UsuarioStaff,
 )
-from app.schemas import UsuarioFinalIn, UsuarioFinalOut, UsuarioFinalUpdate
+from app.schemas import (
+    ConsentimientoIn,
+    ConsentimientoOut,
+    UsuarioFinalIn,
+    UsuarioFinalOut,
+    UsuarioFinalUpdate,
+)
 
 router = APIRouter(tags=["usuarios"])
 
@@ -116,3 +124,51 @@ async def dar_de_baja_usuario(
     await db.commit()
     await db.refresh(uf)
     return uf
+
+
+@router.post("/usuarios/{usuario_id}/consentimiento", response_model=ConsentimientoOut,
+             status_code=status.HTTP_201_CREATED)
+async def registrar_consentimiento(
+    usuario_id: str,
+    body: ConsentimientoIn,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Deja constancia de que hay consentimiento firmado para esta persona (RGPD).
+
+    `rol_otorgante` distingue si lo otorga la propia persona o su representante/
+    tutor (imprescindible con capacidad modificada). `documento_ref` apunta al
+    documento físico/escaneado archivado; la app NO guarda el documento."""
+    uf = await usuario_del_centro(db, usuario_id, staff)  # anti-IDOR
+    if body.rol_otorgante not in ROLES_OTORGANTE:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY,
+                            f"rol_otorgante inválido (usa {', '.join(ROLES_OTORGANTE)})")
+    cons = Consentimiento(
+        usuario_final_id=uf.id,
+        tipo=body.tipo,
+        otorgado_por=body.otorgado_por,
+        rol_otorgante=body.rol_otorgante,
+        documento_ref=body.documento_ref,
+    )
+    db.add(cons)
+    await auditar(db, staff, "registrar_consentimiento", usuario_final_id=uf.id,
+                  detalle=f"tipo={body.tipo} rol={body.rol_otorgante}")
+    await db.commit()
+    await db.refresh(cons)
+    return cons
+
+
+@router.get("/usuarios/{usuario_id}/consentimiento", response_model=list[ConsentimientoOut])
+async def listar_consentimientos(
+    usuario_id: str,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Consentimientos registrados de una persona (para saber si está en regla)."""
+    await usuario_del_centro(db, usuario_id, staff)  # anti-IDOR
+    cons = (await db.execute(
+        select(Consentimiento)
+        .where(Consentimiento.usuario_final_id == usuario_id)
+        .order_by(Consentimiento.fecha.desc())
+    )).scalars().all()
+    return cons

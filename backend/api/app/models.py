@@ -176,7 +176,15 @@ class Consentimiento(Base):
     tipo: Mapped[str] = mapped_column(String(60), nullable=False)
     fecha: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
     otorgado_por: Mapped[str] = mapped_column(String(200), nullable=False)
+    # Quién otorga el consentimiento (RGPD, personas con capacidad modificada):
+    # titular | representante_legal | tutor | guardador_hecho.
+    rol_otorgante: Mapped[str] = mapped_column(
+        String(30), default="titular", nullable=False
+    )
     documento_ref: Mapped[str | None] = mapped_column(String(255), nullable=True)
+
+
+ROLES_OTORGANTE = ("titular", "representante_legal", "tutor", "guardador_hecho")
 
 
 class Sesion(Base):

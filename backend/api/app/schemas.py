@@ -35,6 +35,25 @@ class UsuarioFinalIn(BaseModel):
     nivel_base_json: dict[str, Any] = Field(default_factory=dict)
 
 
+class ConsentimientoIn(BaseModel):
+    """Registro de un consentimiento otorgado para una persona usuaria."""
+    tipo: str = "uso_y_seguimiento"  # p. ej. uso_y_seguimiento | imagen
+    otorgado_por: str  # nombre de quien lo otorga (titular o representante)
+    rol_otorgante: str = "titular"  # titular|representante_legal|tutor|guardador_hecho
+    documento_ref: str | None = None  # referencia al documento firmado (archivador)
+
+
+class ConsentimientoOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: str
+    usuario_final_id: str
+    tipo: str
+    fecha: datetime
+    otorgado_por: str
+    rol_otorgante: str
+    documento_ref: str | None
+
+
 class UsuarioFinalUpdate(BaseModel):
     """Editar un usuario final: alias y/o nivel base. Campos omitidos no cambian."""
     alias_interno: str | None = None

@@ -66,6 +66,12 @@ _COLUMNAS = [
         {"sqlite": "BOOLEAN NOT NULL DEFAULT 0",
          "postgresql": "BOOLEAN NOT NULL DEFAULT false"},
     ),
+    (
+        "consentimientos",
+        "rol_otorgante",
+        {"sqlite": "VARCHAR(30) NOT NULL DEFAULT 'titular'",
+         "postgresql": "VARCHAR(30) NOT NULL DEFAULT 'titular'"},
+    ),
 ]
 
 
@@ -82,6 +88,7 @@ _INDICES = [
     # La tabla alertas se consulta en el path caliente (anti-duplicado en cada
     # intento) y en los listados por usuario/centro.
     ("ix_alertas_usuario", "alertas", "(usuario_final_id, fecha_revision)"),
+    ("ix_consentimientos_usuario", "consentimientos", "(usuario_final_id)"),
 ]
 
 
