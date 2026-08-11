@@ -267,52 +267,6 @@
   }
  },
  {
-  "bloque": "lenguaje",
-  "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Palabra e imagen",
-  "descripcion": "Se lee una palabra en voz alta y hay que elegir la imagen que le corresponde.",
-  "parametros_json": {
-   "dificultad": "facil",
-   "opciones_min": 3,
-   "opciones_max": 4,
-   "items": [
-    {
-     "id": "manzana",
-     "instruccion": "Toca la imagen de: manzana",
-     "audio": "voz_manzana",
-     "correcta": "img_manzana",
-     "distractores": [
-      "img_pera",
-      "img_tomate",
-      "img_cereza"
-     ]
-    },
-    {
-     "id": "gato",
-     "instruccion": "Toca la imagen de: gato",
-     "audio": "voz_gato",
-     "correcta": "img_gato",
-     "distractores": [
-      "img_perro",
-      "img_conejo",
-      "img_raton"
-     ]
-    },
-    {
-     "id": "silla",
-     "instruccion": "Toca la imagen de: silla",
-     "audio": "voz_silla",
-     "correcta": "img_silla",
-     "distractores": [
-      "img_mesa",
-      "img_sofa",
-      "img_taburete"
-     ]
-    }
-   ]
-  }
- },
- {
   "bloque": "razonamiento",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "El intruso",
@@ -4281,32 +4235,6 @@
   }
  },
  {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Copia el dibujo",
-  "descripcion": "Reproducir con el dedo dibujos reconocibles de varios trazos: una casa, un barco, un pez. Exige planificar el recorrido, no solo repasar una linea.",
-  "parametros_json": {
-   "dificultad": "media",
-   "instruccion": "Copia el dibujo con el dedo",
-   "tolerancia_px": 16,
-   "viewbox": "0 0 300 140",
-   "figuras": [
-    {
-     "id": "casa",
-     "path": "M60,120 L60,55 L150,20 L240,55 L240,120 Z M105,120 L105,82 L145,82 L145,120"
-    },
-    {
-     "id": "barco",
-     "path": "M55,88 L245,88 L215,120 L85,120 Z M150,88 L150,30 L215,72 L150,72"
-    },
-    {
-     "id": "pez",
-     "path": "M55,70 C95,38 175,38 215,70 C175,102 95,102 55,70 Z M215,70 L255,45 L255,95 Z"
-    }
-   ]
-  }
- },
- {
   "bloque": "vida_cotidiana",
   "plantilla_tipo": "manejo_cantidad",
   "nombre": "La hora con minutos",
@@ -4472,66 +4400,6 @@
     {
      "id": "estrella",
      "label": "estrella"
-    }
-   ]
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Repasa las cosas de casa",
-  "descripcion": "Repasar con el dedo objetos cotidianos reconocibles: una taza, un paraguas, una llave y un reloj.",
-  "parametros_json": {
-   "dificultad": "facil",
-   "instruccion": "Repasa el dibujo con el dedo",
-   "tolerancia_px": 26,
-   "viewbox": "0 0 300 140",
-   "figuras": [
-    {
-     "id": "taza",
-     "path": "M100,55 L100,105 C100,116 170,116 170,105 L170,55 Z M170,68 C196,68 196,102 170,102"
-    },
-    {
-     "id": "paraguas",
-     "path": "M70,72 C70,36 180,36 180,72 Z M125,72 L125,112 C125,122 142,122 142,110"
-    },
-    {
-     "id": "llave",
-     "path": "M80,80 m-18,0 a18,18 0 1,0 36,0 a18,18 0 1,0 -36,0 M98,80 L205,80 L205,96 M182,80 L182,96"
-    },
-    {
-     "id": "reloj",
-     "path": "M150,72 m-42,0 a42,42 0 1,0 84,0 a42,42 0 1,0 -84,0 M150,72 L150,42 M150,72 L172,72"
-    }
-   ]
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Dibuja la naturaleza",
-  "descripcion": "Repasar con el dedo formas de la naturaleza de varios trazos: el sol, una nube, una flor y una hoja. Exige planificar el recorrido.",
-  "parametros_json": {
-   "dificultad": "media",
-   "instruccion": "Copia el dibujo con el dedo",
-   "tolerancia_px": 18,
-   "viewbox": "0 0 300 140",
-   "figuras": [
-    {
-     "id": "sol",
-     "path": "M150,70 m-24,0 a24,24 0 1,0 48,0 a24,24 0 1,0 -48,0 M150,32 L150,16 M150,108 L150,124 M112,70 L96,70 M188,70 L204,70 M123,43 L112,32 M177,43 L188,32 M123,97 L112,108 M177,97 L188,108"
-    },
-    {
-     "id": "nube",
-     "path": "M92,98 C70,98 70,72 94,72 C97,54 130,54 134,72 C160,66 172,94 148,98 Z"
-    },
-    {
-     "id": "flor",
-     "path": "M150,72 m-11,0 a11,11 0 1,0 22,0 a11,11 0 1,0 -22,0 M150,61 C136,42 164,42 150,61 M150,83 C136,102 164,102 150,83 M139,72 C120,58 120,86 139,72 M161,72 C180,58 180,86 161,72 M150,102 L150,124"
-    },
-    {
-     "id": "hoja",
-     "path": "M150,112 C108,92 108,40 150,24 C192,40 192,92 150,112 Z M150,112 L150,28"
     }
    ]
   }
@@ -4704,45 +4572,41 @@
     {
      "id": "fruta",
      "instruccion": "Toca la FRUTA",
-     "imagen": "categoria_fruta",
-     "correcta": "img_pera",
+     "correcta": "pera",
      "distractores": [
-      "img_silla",
-      "img_zapato",
-      "img_reloj"
+      "silla",
+      "zapato",
+      "reloj"
      ]
     },
     {
      "id": "animal",
      "instruccion": "Toca el ANIMAL",
-     "imagen": "categoria_animal",
-     "correcta": "img_gato",
+     "correcta": "gato",
      "distractores": [
-      "img_mesa",
-      "img_taza",
-      "img_paraguas"
+      "mesa",
+      "taza",
+      "paraguas"
      ]
     },
     {
      "id": "ropa",
      "instruccion": "Toca la PRENDA DE ROPA",
-     "imagen": "categoria_ropa",
-     "correcta": "img_camisa",
+     "correcta": "camisa",
      "distractores": [
-      "img_tenedor",
-      "img_flor",
-      "img_coche"
+      "tenedor",
+      "flor",
+      "coche"
      ]
     },
     {
      "id": "mueble",
      "instruccion": "Toca el MUEBLE",
-     "imagen": "categoria_mueble",
-     "correcta": "img_silla",
+     "correcta": "silla",
      "distractores": [
-      "img_manzana",
-      "img_perro",
-      "img_llave"
+      "manzana",
+      "perro",
+      "llave"
      ]
     }
    ]
@@ -4762,136 +4626,45 @@
      "id": "platano",
      "instruccion": "Elige la imagen",
      "enunciado": "Es una fruta amarilla y alargada.",
-     "imagen": "pista_platano",
-     "correcta": "img_platano",
+     "correcta": "platano",
      "distractores": [
-      "img_manzana",
-      "img_uva",
-      "img_fresa"
+      "manzana",
+      "uva",
+      "fresa"
      ]
     },
     {
      "id": "reloj",
      "instruccion": "Elige la imagen",
      "enunciado": "Sirve para saber la hora y se lleva en la muñeca.",
-     "imagen": "pista_reloj",
-     "correcta": "img_reloj",
+     "correcta": "reloj",
      "distractores": [
-      "img_gafas",
-      "img_anillo",
-      "img_pulsera"
+      "gafas",
+      "anillo",
+      "pulsera"
      ]
     },
     {
      "id": "gato",
      "instruccion": "Elige la imagen",
      "enunciado": "Es un animal que dice 'miau'.",
-     "imagen": "pista_gato",
-     "correcta": "img_gato",
+     "correcta": "gato",
      "distractores": [
-      "img_perro",
-      "img_vaca",
-      "img_gallo"
+      "perro",
+      "vaca",
+      "gallo"
      ]
     },
     {
      "id": "sombrero",
      "instruccion": "Elige la imagen",
      "enunciado": "Se pone en la cabeza para el sol.",
-     "imagen": "pista_sombrero",
-     "correcta": "img_sombrero",
+     "correcta": "sombrero",
      "distractores": [
-      "img_paraguas",
-      "img_bufanda",
-      "img_guantes"
+      "paraguas",
+      "bufanda",
+      "guantes"
      ]
-    }
-   ]
-  }
- },
- {
-  "bloque": "gnosias",
-  "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Sonidos de la naturaleza",
-  "descripcion": "Se escucha un sonido de la naturaleza y hay que elegir de qué se trata entre varias opciones. Reconocimiento auditivo (gnosias).",
-  "parametros_json": {
-   "dificultad": "facil",
-   "opciones_min": 3,
-   "opciones_max": 4,
-   "items": [
-    {
-     "id": "lluvia",
-     "instruccion": "¿Qué es este sonido?",
-     "audio": "sonido_lluvia",
-     "correcta": "la lluvia",
-     "distractores": [
-      "el mar",
-      "el viento",
-      "un río"
-     ]
-    },
-    {
-     "id": "pajaros",
-     "instruccion": "¿Qué es este sonido?",
-     "audio": "sonido_pajaros",
-     "correcta": "pájaros cantando",
-     "distractores": [
-      "un gato",
-      "una campana",
-      "un grillo"
-     ]
-    },
-    {
-     "id": "trueno",
-     "instruccion": "¿Qué es este sonido?",
-     "audio": "sonido_trueno",
-     "correcta": "un trueno",
-     "distractores": [
-      "un tambor",
-      "una puerta",
-      "un coche"
-     ]
-    },
-    {
-     "id": "olas",
-     "instruccion": "¿Qué es este sonido?",
-     "audio": "sonido_olas",
-     "correcta": "las olas del mar",
-     "distractores": [
-      "la lluvia",
-      "una cascada",
-      "el viento"
-     ]
-    }
-   ]
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Sigue la flecha",
-  "descripcion": "Repasar con el dedo flechas que apuntan arriba, abajo, a la izquierda y a la derecha, empezando por la cola y terminando en la punta.",
-  "parametros_json": {
-   "dificultad": "facil",
-   "instruccion": "Repasa la flecha con el dedo, de la cola a la punta",
-   "tolerancia_px": 26,
-   "viewbox": "0 0 300 140",
-   "figuras": [
-    {
-     "id": "flecha_derecha",
-     "path": "M40,70 L250,70 M250,70 L218,50 M250,70 L218,90"
-    },
-    {
-     "id": "flecha_izquierda",
-     "path": "M260,70 L50,70 M50,70 L82,50 M50,70 L82,90"
-    },
-    {
-     "id": "flecha_arriba",
-     "path": "M150,120 L150,25 M150,25 L124,55 M150,25 L176,55"
-    },
-    {
-     "id": "flecha_abajo",
-     "path": "M150,20 L150,115 M150,115 L124,85 M150,115 L176,85"
     }
    ]
   }

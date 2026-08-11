@@ -45,11 +45,9 @@ class TrazoApp extends StatelessWidget {
           child: child!,
         );
       },
-      // El login se pide UNA sola vez: si ya hay token, se va directo a
-      // elegir el rol de la tablet (maestra o participante).
-      home: ApiClient.instance.autenticado
-          ? const RolScreen()
-          : const LoginScreen(),
+      // Lo primero SIEMPRE es elegir el rol de la tablet. El login solo se pide
+      // si se elige MAESTRA (la persona participante nunca hace login).
+      home: const RolScreen(),
     );
   }
 }

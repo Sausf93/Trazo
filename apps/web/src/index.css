@@ -128,20 +128,15 @@ textarea {
     background: #fff;
   }
 
-  /* Ocultar toda la app (navegación, cabeceras, botones…) salvo el informe. */
-  body * {
-    visibility: hidden;
-  }
-  .trazo-informe,
-  .trazo-informe * {
-    visibility: visible;
+  /* Se oculta TODA la app (está en #root); el informe vive fuera, en body (portal),
+     así que no arrastra el alto de la app y no salen páginas en blanco. */
+  #root {
+    display: none !important;
   }
 
-  /* Traer el informe al área imprimible y forzar impresión de color/fondos. */
   .trazo-informe {
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: static;
+    left: auto;
     width: 100%;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;

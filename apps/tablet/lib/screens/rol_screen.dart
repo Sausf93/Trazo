@@ -20,9 +20,47 @@ class RolScreen extends StatelessWidget {
     await ApiClient.instance.logout();
     if (!context.mounted) return;
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (_) => const LoginScreen()),
+      MaterialPageRoute(builder: (_) => const RolScreen()),
       (_) => false,
     );
+  }
+
+  /// MAESTRA: si aún no hay sesión iniciada, pide login; si ya la hay, entra.
+  void _irMaestra(BuildContext context) {
+    if (ApiClient.instance.autenticado) {
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const MaestraScreen()));
+    } else {
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const LoginScreen()));
+    }
+  }
+
+  /// PARTICIPANTE: NUNCA hace login. Funciona si la tablet está vinculada al
+  /// centro (emparejada) o si la responsable ya entró como maestra en esta
+  /// tablet. Si no, se explica en lugar de pedir credenciales.
+  void _irParticipante(BuildContext context) {
+    if (ApiClient.instance.autenticado || ApiClient.instance.emparejado) {
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const ParticipanteScreen()));
+    } else {
+      showDialog<void>(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text('Esta tablet aún no está lista'),
+          content: const Text(
+              'Para que esta tablet muestre las actividades, la responsable debe '
+              'vincularla al centro una vez (botón "Emparejar esta tablet"), o '
+              'entrar como MAESTRA en ella. Luego ya no hará falta.',
+              style: TextStyle(fontSize: 16, color: TrazoColors.sageDark)),
+          actions: [
+            TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Entendido')),
+          ],
+        ),
+      );
+    }
   }
 
   @override
@@ -55,10 +93,7 @@ class RolScreen extends StatelessWidget {
                               titulo: 'MAESTRA',
                               subtitulo: 'Abrir sala y seguir al grupo',
                               color: TrazoColors.sage,
-                              onTap: () => Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (_) => const MaestraScreen()),
-                              ),
+                              onTap: () => _irMaestra(context),
                             ),
                           ),
                           const SizedBox(width: 24),
@@ -68,11 +103,7 @@ class RolScreen extends StatelessWidget {
                               titulo: 'PARTICIPANTE',
                               subtitulo: 'Hacer los ejercicios',
                               color: TrazoColors.coralDark,
-                              onTap: () => Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (_) =>
-                                        const ParticipanteScreen()),
-                              ),
+                              onTap: () => _irParticipante(context),
                             ),
                           ),
                         ],

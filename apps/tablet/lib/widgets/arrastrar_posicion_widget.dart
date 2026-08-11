@@ -152,13 +152,19 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
     );
   }
 
-  Widget _chipPieza(String id, String label, {bool seleccionada = false}) {
+  Widget _chipPieza(String id, String label,
+      {bool seleccionada = false, bool compacto = false}) {
     final tieneDibujo = IlustracionResolver.tiene(id);
+    final tamDibujo = compacto ? 40.0 : 52.0;
+    // Ancho FIJO: así una etiqueta larga ("cepillo de dientes") no ensancha la
+    // caja ni descuadra la fila; el texto se ajusta a 2 líneas.
+    final ancho = compacto ? 92.0 : 116.0;
     return Material(
       color: Colors.transparent,
       child: Container(
+        width: ancho,
         padding: EdgeInsets.symmetric(
-            horizontal: tieneDibujo ? 12 : 20, vertical: tieneDibujo ? 10 : 14),
+            horizontal: 8, vertical: compacto ? 8 : 12),
         decoration: BoxDecoration(
           color: seleccionada ? TrazoColors.coral : TrazoColors.card,
           border: Border.all(
@@ -170,14 +176,18 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
           mainAxisSize: MainAxisSize.min,
           children: [
             if (tieneDibujo) ...[
-              Ilustracion(id, size: 56),
+              Ilustracion(id, size: tamDibujo),
               const SizedBox(height: 4),
             ],
             Text(label,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                    fontSize: tieneDibujo ? 16 : 22,
+                    fontSize: compacto ? 13 : (tieneDibujo ? 15 : 19),
+                    height: 1.05,
                     fontWeight:
-                        seleccionada ? FontWeight.bold : FontWeight.normal,
+                        seleccionada ? FontWeight.bold : FontWeight.w500,
                     color: seleccionada ? Colors.white : TrazoColors.ink)),
           ],
         ),
@@ -244,7 +254,7 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        _chipPieza(piezaId, _labelDe(pieza)),
+        _chipPieza(piezaId, _labelDe(pieza), compacto: true),
         Positioned(
           top: -8,
           right: -8,

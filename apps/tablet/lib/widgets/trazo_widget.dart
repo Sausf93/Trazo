@@ -229,19 +229,20 @@ class _TrazoPainter extends CustomPainter {
       ..color = const Color(0xFFDCD3BE);
     canvas.drawPath(guia, guiaPaint);
 
-    // Flechas de dirección a lo largo de la guía (hacia dónde trazar).
+    // Flechas de dirección a lo largo de la guía (hacia dónde trazar). Grandes y
+    // visibles: para un mayor, la dirección tiene que "saltar a la vista".
     final flechaPaint = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 2.4
+      ..strokeWidth = 4
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round
       ..color = TrazoColors.coralDark;
     for (final (pos, ang) in flechas) {
       final dir = Offset(math.cos(ang), math.sin(ang));
       final perp = Offset(-dir.dy, dir.dx);
-      final tip = pos + dir * 5;
-      final a = tip - dir * 8 + perp * 4.5;
-      final b = tip - dir * 8 - perp * 4.5;
+      final tip = pos + dir * 8;
+      final a = tip - dir * 13 + perp * 7.5;
+      final b = tip - dir * 13 - perp * 7.5;
       canvas.drawPath(
         Path()
           ..moveTo(a.dx, a.dy)
@@ -250,16 +251,41 @@ class _TrazoPainter extends CustomPainter {
         flechaPaint,
       );
     }
-    // Punto de inicio: "empieza aquí" (verde). Clave para quien no sabe escribir.
-    canvas.drawCircle(inicioGuia, 6.5, Paint()..color = TrazoColors.sage);
+
+    // Punto de inicio: "EMPIEZA AQUÍ". Es lo primero que debe ver quien nunca
+    // aprendió a escribir. Disco verde grande con halo blanco + etiqueta.
+    canvas.drawCircle(
+        inicioGuia, 15, Paint()..color = Colors.white.withValues(alpha: 0.9));
+    canvas.drawCircle(inicioGuia, 11, Paint()..color = TrazoColors.sage);
     canvas.drawCircle(
       inicioGuia,
-      6.5,
+      11,
       Paint()
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 2
+        ..strokeWidth = 3
         ..color = TrazoColors.sageDark,
     );
+    final tp = TextPainter(
+      text: const TextSpan(
+        text: 'Empieza',
+        style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w800,
+            color: TrazoColors.sageDark),
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout();
+    // Etiqueta debajo del punto, centrada y sin salirse del viewBox.
+    final lx = (inicioGuia.dx - tp.width / 2).clamp(0.0, vbW - tp.width);
+    final ly = (inicioGuia.dy + 15).clamp(0.0, vbH - tp.height);
+    // Fondo claro para que el texto se lea sobre la guía.
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(
+          Rect.fromLTWH(lx - 3, ly - 1, tp.width + 6, tp.height + 2),
+          const Radius.circular(4)),
+      Paint()..color = Colors.white.withValues(alpha: 0.85),
+    );
+    tp.paint(canvas, Offset(lx, ly));
 
     // Trazo del usuario
     if (puntosUsuario.length > 1) {

@@ -8,6 +8,7 @@
  * Pensado para "Imprimir → Guardar como PDF": no usa librerías externas.
  * RGPD: solo se muestra el alias interno, nunca el nombre real.
  */
+import { createPortal } from "react-dom";
 import type { Evolucion } from "../api/types";
 import { EvolucionChart, type PuntoChart } from "./EvolucionChart";
 import { colors, fonts } from "../theme";
@@ -85,7 +86,9 @@ export function InformeFamilia({
 
   const generado = new Date();
 
-  return (
+  // Se saca fuera de la app (portal a body) para que al imprimir se pueda ocultar
+  // TODA la app (#root) sin llevarse el informe -> se acaban las páginas en blanco.
+  return createPortal(
     <article
       className="trazo-informe"
       aria-label="Informe de evolución para la familia"
@@ -251,7 +254,8 @@ export function InformeFamilia({
           RGPD: se identifica a la persona mediante un código interno, sin datos personales.
         </p>
       </footer>
-    </article>
+    </article>,
+    document.body,
   );
 }
 

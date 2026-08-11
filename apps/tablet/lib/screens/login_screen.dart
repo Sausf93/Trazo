@@ -4,7 +4,7 @@ import '../api/client.dart';
 import '../theme.dart';
 import '../widgets/trazo_logo.dart';
 import 'galeria_screen.dart';
-import 'rol_screen.dart';
+import 'maestra_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -27,8 +27,10 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       await ApiClient.instance.login(_email.text.trim(), _pass.text);
       if (!mounted) return;
+      // Se llega aquí solo desde el botón MAESTRA, así que tras entrar se va
+      // directo al control de la maestra.
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const RolScreen()),
+        MaterialPageRoute(builder: (_) => const MaestraScreen()),
       );
     } catch (e) {
       setState(() => _error = e.toString());

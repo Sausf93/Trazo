@@ -83,6 +83,9 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins_list,
+    # En desarrollo aceptamos cualquier puerto de localhost (panel/tablet en
+    # local); en producción solo los orígenes explícitos de la configuración.
+    allow_origin_regex=r"http://localhost:\d+" if _es_dev else None,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

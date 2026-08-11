@@ -5,14 +5,15 @@ import { useAuth } from "../auth/AuthContext";
 import { Logo } from "./Logo";
 import { colors, radius } from "../theme";
 
+// Menú del día a día de la integradora. "Ejercicios" (catálogo, avanzado) y
+// "Dispositivos" (emparejar tablets) se dejan fuera para no recargar; las rutas
+// siguen existiendo por si se necesitan.
 const NAV = [
   { to: "/", label: "Panel", end: true },
   { to: "/pacientes", label: "Pacientes" },
   { to: "/alertas", label: "Alertas" },
-  { to: "/ejercicios", label: "Ejercicios" },
   { to: "/sesion", label: "En directo" },
   { to: "/sesiones", label: "Historial de sesiones" },
-  { to: "/dispositivos", label: "Dispositivos" },
 ];
 
 export function Layout({ children }: { children: ReactNode }) {
