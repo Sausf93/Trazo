@@ -81,8 +81,8 @@ export function labelRolDispositivo(r: string | null | undefined): string {
 }
 
 export const TIPO_LINEA_LABEL: Record<string, string> = {
-  dominio: "Dominio",
-  ejercicio: "Ejercicio concreto",
+  dominio: "Trabajar un área",
+  ejercicio: "Actividad concreta",
 };
 
 export const ESTADO_LABEL: Record<string, string> = {

@@ -107,11 +107,11 @@ export function PlanEditorPage() {
     // Validación mínima antes de enviar.
     for (const l of lineas) {
       if (l.tipo === "dominio" && !l.bloque) {
-        setError("Cada línea de dominio necesita un bloque.");
+        setError("Cada área necesita que elijas cuál.");
         return;
       }
       if (l.tipo === "ejercicio" && !l.ejercicio_id) {
-        setError("Cada línea de ejercicio necesita un ejercicio concreto.");
+        setError("Cada actividad concreta necesita que elijas cuál.");
         return;
       }
     }
@@ -152,7 +152,7 @@ export function PlanEditorPage() {
         <PageHeader
           eyebrow="Plan de trabajo"
           title={alias}
-          subtitle="Monta el plan con calma: dominios (el motor rota ejercicios) y/o ejercicios concretos. El número por sesión marca cuándo termina la persona."
+          subtitle="Elige en qué trabaja esta persona. Puedes trabajar un área entera (el sistema elige las actividades y las va variando) o elegir tú una actividad concreta. «Cuántas por sesión» es lo que hace cada día."
         />
       </div>
 
@@ -172,15 +172,15 @@ export function PlanEditorPage() {
         <>
           <Card style={{ marginBottom: 22 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 10, marginBottom: 16 }}>
-              <h2 style={{ fontSize: 19 }}>Líneas del plan</h2>
+              <h2 style={{ fontSize: 19 }}>Qué trabaja en cada sesión</h2>
               <span className="mono" style={{ fontSize: 12.5, color: colors.textFaint }}>
-                {lineas.length} línea{lineas.length === 1 ? "" : "s"}
+                {lineas.length} en el plan
               </span>
             </div>
 
             {lineas.length === 0 && (
               <StateMessage title="Plan vacío">
-                Añade líneas de dominio o de ejercicio concreto para armar el plan de esta persona.
+                Añade un área para trabajar, o elige actividades concretas para esta persona.
               </StateMessage>
             )}
 
@@ -203,19 +203,19 @@ export function PlanEditorPage() {
 
             <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 18 }}>
               <Button variant="ghost" onClick={() => anadir("dominio")}>
-                + Añadir dominio
+                + Trabajar un área
               </Button>
               <Button
                 variant="ghost"
                 onClick={() => anadir("ejercicio")}
                 disabled={ejercicioList.length === 0}
               >
-                + Añadir ejercicio concreto
+                + Elegir una actividad
               </Button>
             </div>
             {ejercicioList.length === 0 && (
               <p style={{ fontSize: 12.5, color: colors.textFaint, marginTop: 8 }}>
-                No hay ejercicios en el catálogo todavía; solo puedes añadir líneas por dominio.
+                Aún no hay actividades en el catálogo; de momento solo puedes trabajar por áreas.
               </p>
             )}
 
@@ -285,7 +285,7 @@ function LineaEditor({
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "0 16px" }}>
-        <MiniField label="Tipo">
+        <MiniField label="Qué añadir">
           <select
             value={linea.tipo}
             onChange={(e) => {
@@ -306,7 +306,7 @@ function LineaEditor({
         </MiniField>
 
         {linea.tipo === "dominio" ? (
-          <MiniField label="Bloque">
+          <MiniField label="Área">
             <select
               value={linea.bloque ?? ""}
               onChange={(e) => onChange({ bloque: e.target.value })}
@@ -318,7 +318,7 @@ function LineaEditor({
             </select>
           </MiniField>
         ) : (
-          <MiniField label="Ejercicio">
+          <MiniField label="Actividad">
             <select
               value={linea.ejercicio_id ?? ""}
               onChange={(e) => onChange({ ejercicio_id: e.target.value })}
@@ -333,7 +333,7 @@ function LineaEditor({
           </MiniField>
         )}
 
-        <MiniField label="Nivel">
+        <MiniField label="Dificultad">
           <select
             value={linea.nivel}
             onChange={(e) => onChange({ nivel: e.target.value })}
@@ -345,7 +345,7 @@ function LineaEditor({
           </select>
         </MiniField>
 
-        <MiniField label="Nº por sesión">
+        <MiniField label="Cuántas por sesión">
           <input
             type="number"
             min={1}
@@ -376,11 +376,11 @@ function ColaPreview({ usuarioId }: { usuarioId: string }) {
   if (!ver) {
     return (
       <Card>
-        <h2 style={{ fontSize: 19, marginBottom: 4 }}>Vista previa de la cola</h2>
+        <h2 style={{ fontSize: 19, marginBottom: 4 }}>Qué actividades le tocarán</h2>
         <p style={{ color: colors.textMuted, fontSize: 14, marginBottom: 14 }}>
-          Muestra los ejercicios que la tablet pediría con el plan guardado.
+          Comprueba, antes de guardar, las actividades que la tablet le irá pidiendo con este plan.
         </p>
-        <Button variant="ghost" onClick={() => setVer(true)}>Ver cola resultante</Button>
+        <Button variant="ghost" onClick={() => setVer(true)}>Ver qué le tocará</Button>
       </Card>
     );
   }
@@ -388,7 +388,7 @@ function ColaPreview({ usuarioId }: { usuarioId: string }) {
   return (
     <Card>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 10, marginBottom: 12 }}>
-        <h2 style={{ fontSize: 19 }}>Vista previa de la cola</h2>
+        <h2 style={{ fontSize: 19 }}>Qué actividades le tocarán</h2>
         <Button variant="ghost" onClick={() => cola.reload()} disabled={cola.loading}>
           Actualizar
         </Button>
@@ -400,8 +400,8 @@ function ColaPreview({ usuarioId }: { usuarioId: string }) {
         </StateMessage>
       )}
       {cola.data && cola.data.items.length === 0 && (
-        <StateMessage title="Cola vacía">
-          El plan actual no genera ningún ejercicio. Guarda alguna línea activa y vuelve a intentarlo.
+        <StateMessage title="Sin actividades">
+          Con este plan no le tocaría ninguna actividad. Añade y guarda al menos un área o una actividad activa.
         </StateMessage>
       )}
       {cola.data && cola.data.items.length > 0 && (
@@ -409,10 +409,10 @@ function ColaPreview({ usuarioId }: { usuarioId: string }) {
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14.5, minWidth: 520 }}>
             <thead>
               <tr style={{ textAlign: "left", color: colors.textFaint, fontFamily: fonts.mono, fontSize: 12 }}>
-                <th scope="col" style={{ padding: "10px 14px", fontWeight: 600 }}>Ejercicio</th>
-                <th scope="col" style={{ padding: "10px 14px", fontWeight: 600 }}>Bloque</th>
-                <th scope="col" style={{ padding: "10px 14px", fontWeight: 600 }}>Nivel</th>
-                <th scope="col" style={{ padding: "10px 14px", fontWeight: 600 }}>Origen</th>
+                <th scope="col" style={{ padding: "10px 14px", fontWeight: 600 }}>Actividad</th>
+                <th scope="col" style={{ padding: "10px 14px", fontWeight: 600 }}>Área</th>
+                <th scope="col" style={{ padding: "10px 14px", fontWeight: 600 }}>Dificultad</th>
+                <th scope="col" style={{ padding: "10px 14px", fontWeight: 600 }}>De dónde sale</th>
               </tr>
             </thead>
             <tbody>
