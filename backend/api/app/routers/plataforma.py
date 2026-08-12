@@ -22,6 +22,7 @@ from app.schemas import (
     CentroInfoOut,
     CentroPlataformaIn,
     CentroPlataformaOut,
+    StaffOut,
 )
 
 router = APIRouter(prefix="/plataforma", tags=["plataforma"])
@@ -87,6 +88,22 @@ async def listar_centros(
         )
         for c in centros
     ]
+
+
+@router.get("/centros/{centro_id}/staff", response_model=list[StaffOut])
+async def staff_de_centro(
+    centro_id: str,
+    x_platform_token: str | None = Header(default=None, alias="X-Platform-Token"),
+    db: AsyncSession = Depends(get_db),
+):
+    """Cuentas de un centro (para que el super-admin vea quién puede entrar)."""
+    _exigir_token(x_platform_token)
+    filas = (await db.execute(
+        select(UsuarioStaff)
+        .where(UsuarioStaff.centro_id == centro_id)
+        .order_by(UsuarioStaff.creado_en.asc())
+    )).scalars().all()
+    return filas
 
 
 @router.patch("/centros/{centro_id}", response_model=CentroInfoOut)

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trazo · Super-admin</title>
+<style>
+  :root{
+    --ivory:#FAF6EF; --card:#F2ECDF; --ink:#2B3A32; --sage:#7C9885; --sage-dark:#5C7A66;
+    --coral:#E8A87C; --coral-dark:#C97B4A; --sand:#C9BFA4; --white:#FFFEFB; --muted:#4A5A50; --faint:#6E6752;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ivory);color:var(--ink);
+    font-family:"Segoe UI",system-ui,Arial,sans-serif;font-size:16px;line-height:1.5}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;margin:0}
+  a{color:inherit}
+  .wrap{max-width:900px;margin:0 auto;padding:28px 20px 60px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-dark);font-weight:700}
+  .logo{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .logo .mark{width:40px;height:40px;border-radius:11px;background:var(--sage);display:flex;align-items:center;justify-content:center}
+  .card{background:var(--white);border:1px solid var(--sand);border-radius:16px;padding:20px;margin-bottom:16px}
+  label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+  input,select{width:100%;padding:11px 13px;border:1.5px solid var(--sand);border-radius:10px;background:var(--white);
+    color:var(--ink);font-size:15px;font-family:inherit}
+  input:focus,select:focus{outline:3px solid var(--sage-dark);outline-offset:1px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+  .btn{border:1.5px solid var(--sage-dark);background:var(--sage-dark);color:var(--white);font-weight:600;
+    font-size:15px;padding:11px 18px;border-radius:10px;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--sage-dark);border-color:var(--sand)}
+  .btn.coral{background:var(--coral-dark);border-color:var(--coral-dark)}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .grow{flex:1 1 240px}
+  .badge{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+  .badge.ok{background:#EDF3EE;color:var(--sage-dark)}
+  .badge.block{background:#FBEFE4;color:var(--coral-dark)}
+  .muted{color:var(--faint);font-size:13px}
+  .msg{font-size:14px;margin-top:10px}
+  .msg.err{color:var(--coral-dark)}
+  .msg.ok{color:var(--sage-dark)}
+  .centro{border:1px solid var(--sand);border-radius:14px;padding:16px;margin-bottom:12px;background:var(--white)}
+  .centro.blocked{opacity:.72}
+  .staff-list{margin-top:12px;border-top:1px dashed var(--sand);padding-top:10px}
+  .staff-row{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:4px 0}
+  .hidden{display:none}
+  .topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ENTRADA (token) -->
+  <section id="gate">
+    <div class="logo">
+      <span class="mark"><svg width="26" height="26" viewBox="0 0 40 40"><path d="M7 26 C11 14 15 30 20 22 C24 16 27 24 33 15" fill="none" stroke="#FFFEFB" stroke-width="3" stroke-linecap="round"/><circle cx="33" cy="15" r="2.6" fill="#E8A87C"/></svg></span>
+      <div><div class="eyebrow">Trazo</div><h1 style="font-size:26px">Super-admin</h1></div>
+    </div>
+    <p class="muted" style="margin:8px 0 20px">Acceso reservado a la plataforma. Introduce el token para gestionar los centros.</p>
+    <div class="card" style="max-width:460px">
+      <label>Dirección de la API</label>
+      <input id="apiBase" placeholder="http://localhost:8000">
+      <label style="margin-top:14px">Token de plataforma</label>
+      <input id="token" type="password" placeholder="X-Platform-Token" autocomplete="off">
+      <div style="margin-top:16px" class="row">
+        <button class="btn" id="entrar">Entrar</button>
+      </div>
+      <div id="gateMsg" class="msg"></div>
+    </div>
+  </section>
+
+  <!-- PANEL -->
+  <section id="panel" class="hidden">
+    <div class="topbar">
+      <div class="logo" style="margin:0">
+        <span class="mark"><svg width="26" height="26" viewBox="0 0 40 40"><path d="M7 26 C11 14 15 30 20 22 C24 16 27 24 33 15" fill="none" stroke="#FFFEFB" stroke-width="3" stroke-linecap="round"/><circle cx="33" cy="15" r="2.6" fill="#E8A87C"/></svg></span>
+        <div><div class="eyebrow">Trazo · Super-admin</div><h1 style="font-size:24px">Centros</h1></div>
+      </div>
+      <button class="btn ghost" id="salir">Cerrar</button>
+    </div>
+
+    <!-- Crear centro -->
+    <div class="card">
+      <h2 style="font-size:18px;margin-bottom:14px">Dar de alta un centro nuevo</h2>
+      <div class="grid">
+        <div><label>Nombre del centro</label><input id="cNombre" placeholder="Centro de Día X"></div>
+        <div><label>Email del administrador</label><input id="cEmail" placeholder="admin@centrox.es"></div>
+        <div><label>Contraseña (mín. 8)</label><input id="cPass" type="password" placeholder="••••••••"></div>
+        <div><label>Nombre del administrador</label><input id="cAdmin" placeholder="Nombre Apellidos"></div>
+      </div>
+      <div class="row" style="margin-top:16px">
+        <button class="btn" id="crear">Crear centro + admin</button>
+        <span id="crearMsg" class="msg"></span>
+      </div>
+    </div>
+
+    <div id="lista"></div>
+  </section>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let API = "", TOKEN = "";
+
+function headers(){ return { "X-Platform-Token": TOKEN, "Content-Type": "application/json" }; }
+async function api(path, opts={}){
+  const r = await fetch(API + path, { headers: headers(), ...opts });
+  const txt = await r.text();
+  let body; try { body = txt ? JSON.parse(txt) : null; } catch { body = txt; }
+  if(!r.ok){ const e = new Error((body && body.detail) || ("Error "+r.status)); e.status = r.status; throw e; }
+  return body;
+}
+
+async function entrar(){
+  API = ($("apiBase").value.trim() || "http://localhost:8000").replace(/\/$/, "");
+  TOKEN = $("token").value.trim();
+  $("gateMsg").textContent = "";
+  if(!TOKEN){ $("gateMsg").className = "msg err"; $("gateMsg").textContent = "Pon el token."; return; }
+  try {
+    await api("/plataforma/centros");   // valida el token
+    sessionStorage.setItem("tz_api", API);
+    sessionStorage.setItem("tz_tok", TOKEN);
+    $("gate").classList.add("hidden");
+    $("panel").classList.remove("hidden");
+    cargar();
+  } catch(e){
+    $("gateMsg").className = "msg err";
+    $("gateMsg").textContent = e.status === 401 ? "Token incorrecto." :
+      e.status === 404 ? "La plataforma no tiene token configurado en el servidor." :
+      "No se pudo conectar con la API. Revisa la dirección.";
+  }
+}
+
+function salir(){
+  sessionStorage.removeItem("tz_tok");
+  TOKEN = "";
+  $("panel").classList.add("hidden");
+  $("gate").classList.remove("hidden");
+}
+
+async function cargar(){
+  $("lista").innerHTML = '<p class="muted">Cargando centros…</p>';
+  try {
+    const centros = await api("/plataforma/centros");
+    if(!centros.length){ $("lista").innerHTML = '<p class="muted">Aún no hay centros. Crea el primero arriba.</p>'; return; }
+    $("lista").innerHTML = centros.map(tarjetaCentro).join("");
+  } catch(e){
+    $("lista").innerHTML = '<p class="msg err">No se pudieron cargar los centros: '+e.message+'</p>';
+  }
+}
+
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function fecha(iso){ try { return new Date(iso).toLocaleDateString("es-ES"); } catch { return ""; } }
+
+function tarjetaCentro(c){
+  const badge = c.activo ? '<span class="badge ok">Activo</span>' : '<span class="badge block">Bloqueado</span>';
+  const btn = c.activo
+    ? `<button class="btn coral" onclick="bloquear('${c.id}', false)">Bloquear</button>`
+    : `<button class="btn" onclick="bloquear('${c.id}', true)">Reactivar</button>`;
+  return `<div class="centro ${c.activo ? '' : 'blocked'}" id="c-${c.id}">
+    <div class="row">
+      <div class="grow">
+        <h3 style="font-size:19px">${esc(c.nombre)} &nbsp;${badge}</h3>
+        <div class="muted">Alta: ${fecha(c.creado_en)} · ${c.n_staff_activos}/${c.n_staff} cuentas activas · ${c.n_pacientes} pacientes</div>
+      </div>
+      <button class="btn ghost" onclick="verStaff('${c.id}')">Ver cuentas</button>
+      ${btn}
+    </div>
+    <div class="staff-list hidden" id="s-${c.id}"></div>
+  </div>`;
+}
+
+async function bloquear(id, activo){
+  if(!confirm(activo ? "¿Reactivar el acceso de este centro?" : "¿Bloquear el acceso de este centro? Nadie podrá entrar (los datos se conservan).")) return;
+  try { await api("/plataforma/centros/"+id, { method:"PATCH", body: JSON.stringify({ activo }) }); cargar(); }
+  catch(e){ alert("No se pudo: "+e.message); }
+}
+
+async function verStaff(id){
+  const box = $("s-"+id);
+  if(!box.classList.contains("hidden")){ box.classList.add("hidden"); return; }
+  box.classList.remove("hidden");
+  box.innerHTML = '<span class="muted">Cargando cuentas…</span>';
+  try {
+    const staff = await api("/plataforma/centros/"+id+"/staff");
+    if(!staff.length){ box.innerHTML = '<span class="muted">Sin cuentas.</span>'; return; }
+    box.innerHTML = staff.map(s => `<div class="staff-row">
+      <span><b>${esc(s.nombre)}</b> · ${s.rol === 'admin_centro' ? 'Administración' : 'Maestra'} · ${esc(s.email)}</span>
+      <span class="badge ${s.activo ? 'ok' : 'block'}">${s.activo ? 'activa' : 'baja'}</span>
+    </div>`).join("");
+  } catch(e){ box.innerHTML = '<span class="msg err">'+e.message+'</span>'; }
+}
+
+async function crearCentro(){
+  const body = {
+    centro: $("cNombre").value.trim(),
+    email: $("cEmail").value.trim(),
+    password: $("cPass").value,
+    nombre: $("cAdmin").value.trim() || "Administración del centro",
+  };
+  const msg = $("crearMsg"); msg.textContent = "";
+  if(!body.centro || !body.email){ msg.className="msg err"; msg.textContent="Pon nombre de centro y email."; return; }
+  if(body.password.length < 8){ msg.className="msg err"; msg.textContent="La contraseña debe tener al menos 8 caracteres."; return; }
+  try {
+    const r = await api("/plataforma/centros", { method:"POST", body: JSON.stringify(body) });
+    msg.className = "msg ok"; msg.textContent = r.mensaje;
+    $("cNombre").value = $("cEmail").value = $("cPass").value = $("cAdmin").value = "";
+    cargar();
+  } catch(e){ msg.className="msg err"; msg.textContent = "No se pudo: "+e.message; }
+}
+
+// Eventos + restaurar sesión
+$("entrar").onclick = entrar;
+$("token").addEventListener("keydown", e => { if(e.key === "Enter") entrar(); });
+$("salir").onclick = salir;
+$("crear").onclick = crearCentro;
+$("apiBase").value = sessionStorage.getItem("tz_api") || "http://localhost:8000";
+if(sessionStorage.getItem("tz_tok")){
+  $("token").value = sessionStorage.getItem("tz_tok");
+  entrar();
+}
+</script>
+</body>
+</html>
