@@ -25,10 +25,11 @@ USER trazo
 
 EXPOSE 8000
 
-# Sonda de salud (comprueba la BD desde dentro del contenedor).
+# Sonda de salud (comprueba la BD desde dentro del contenedor). Usa $PORT si viene.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
-    CMD curl -fsS http://localhost:8000/health || exit 1
+    CMD curl -fsS "http://localhost:${PORT:-8000}/health" || exit 1
 
-# Varios workers para concurrencia. NOTA: el rate-limit de login es en memoria
-# por proceso; con varios workers conviene respaldarlo en Redis (ver DESPLIEGUE.md).
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
+# Escucha en $PORT (Cloud Run lo inyecta; por defecto 8000 para docker-compose) y
+# usa WEB_CONCURRENCY workers. En Cloud Run pon WEB_CONCURRENCY=1 (el rate-limit
+# de login es en memoria por proceso; con varios workers conviene Redis, ver guía).
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000} --workers ${WEB_CONCURRENCY:-2}"]

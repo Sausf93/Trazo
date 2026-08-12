@@ -1,0 +1,12 @@
+# Build de la imagen del backend usando Dockerfile.prod (Cloud Build).
+# Uso:
+#   gcloud builds submit backend/api \
+#     --config=deploy/cloudbuild.yaml \
+#     --substitutions=_IMAGE=REGION-docker.pkg.dev/PROJECT/trazo/api:latest
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ['build', '-f', 'Dockerfile.prod', '-t', '${_IMAGE}', '.']
+images:
+  - '${_IMAGE}'
+options:
+  logging: CLOUD_LOGGING_ONLY

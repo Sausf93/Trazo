@@ -10,10 +10,18 @@ from sqlalchemy.orm import DeclarativeBase
 
 from app.config import settings
 
+# SSL solo para Postgres gestionado (ssl=True usa el contexto por defecto, que
+# valida el certificado del servidor; Aiven/Supabase traen certificados válidos).
+# SQLite u otros no llevan connect_args.
+_connect_args: dict = {}
+if settings.db_ssl and settings.database_url.startswith("postgresql"):
+    _connect_args["ssl"] = True
+
 engine = create_async_engine(
     settings.database_url,
     echo=False,
     pool_pre_ping=True,
+    connect_args=_connect_args,
 )
 
 AsyncSessionLocal = async_sessionmaker(

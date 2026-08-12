@@ -15,6 +15,9 @@ class Settings(BaseSettings):
 
     # Base de datos
     database_url: str = "postgresql+asyncpg://trazo:trazo@localhost:5432/trazo"
+    # SSL para Postgres gestionado (Aiven/Supabase/etc. lo exigen). asyncpg NO
+    # entiende ?sslmode= en la URL, así que se activa con este flag: DB_SSL=true.
+    db_ssl: bool = False
 
     # JWT
     jwt_secret: str = _JWT_SECRET_DEV
