@@ -1,9 +1,16 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
 import 'api/client.dart';
+import 'screens/galeria_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/rol_screen.dart';
 import 'theme.dart';
+
+/// La web comercial enlaza a `/demo/?vitrina=1`: en ese caso la app abre directa
+/// una muestra de actividades (vitrina), sin la pantalla de rol/login interna.
+bool get _esVitrina =>
+    kIsWeb && Uri.base.queryParameters.containsKey('vitrina');
 
 /// Para poder navegar al login desde fuera del árbol de widgets (p. ej. cuando
 /// la API responde 401 por token caducado).
@@ -45,9 +52,11 @@ class TrazoApp extends StatelessWidget {
           child: child!,
         );
       },
-      // Lo primero SIEMPRE es elegir el rol de la tablet. El login solo se pide
-      // si se elige MAESTRA (la persona participante nunca hace login).
-      home: const RolScreen(),
+      // Desde la web comercial (?vitrina=1) se entra directo a la muestra de
+      // actividades. En la app normal, lo primero SIEMPRE es elegir el rol de la
+      // tablet; el login solo se pide si se elige MAESTRA (la persona
+      // participante nunca hace login).
+      home: _esVitrina ? const GaleriaScreen(vitrina: true) : const RolScreen(),
     );
   }
 }

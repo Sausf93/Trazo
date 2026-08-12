@@ -56,8 +56,26 @@ Widget renderActividadDemo(
   }
 }
 
+/// Puñado de actividades representativas para la VITRINA de la web comercial:
+/// una por cada tipo, elegidas por ser vistosas y fáciles de entender. Es lo que
+/// ve quien pulsa "Probar las actividades" en la landing (no la app interna).
+const _kVitrina = <String>[
+  'Sigue la línea',                 // trazo (con "Empieza" y flechas)
+  '¿Qué objeto es?',                // elegir imagen
+  'Completar refranes',             // elegir palabra
+  'Memoria de figuras',             // memoria visual
+  'Cuenta cuántos hay',             // contar
+  'Poner la mesa',                  // arrastrar a su sitio
+  'Busca los corazones',            // búsqueda visual
+  'Preparar una tortilla',          // ordenar pasos
+  'Reúne el importe (solo monedas)',// dinero
+];
+
 class GaleriaScreen extends StatefulWidget {
-  const GaleriaScreen({super.key});
+  /// En modo vitrina se muestra solo una muestra curada y con textos pensados
+  /// para un cliente, no para la persona que abre la app interna.
+  final bool vitrina;
+  const GaleriaScreen({super.key, this.vitrina = false});
 
   @override
   State<GaleriaScreen> createState() => _GaleriaScreenState();
@@ -76,9 +94,17 @@ class _GaleriaScreenState extends State<GaleriaScreen> {
   Future<void> _cargar() async {
     final txt = await rootBundle.loadString('assets/demo_actividades.json');
     final data = jsonDecode(txt) as Map<String, dynamic>;
-    final lista = (data['actividades'] as List)
+    var lista = (data['actividades'] as List)
         .map((e) => Instancia.fromJson(e as Map<String, dynamic>))
         .toList();
+    if (widget.vitrina) {
+      // Solo la muestra curada, en el orden de _kVitrina.
+      final porNombre = {for (final x in lista) x.nombre: x};
+      lista = [
+        for (final n in _kVitrina)
+          if (porNombre[n] != null) porNombre[n]!,
+      ];
+    }
     if (!mounted) return;
     setState(() {
       _todas = lista;
@@ -99,9 +125,10 @@ class _GaleriaScreenState extends State<GaleriaScreen> {
     for (var i = 0; i < _todas.length; i++) {
       porBloque.putIfAbsent(_todas[i].bloque, () => []).add(i);
     }
+    final vitrina = widget.vitrina;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Actividades (demo)'),
+        title: Text(vitrina ? 'Actividades de muestra' : 'Actividades (demo)'),
         backgroundColor: TrazoColors.white,
         foregroundColor: TrazoColors.ink,
       ),
@@ -110,28 +137,41 @@ class _GaleriaScreenState extends State<GaleriaScreen> {
           : ListView(
               padding: const EdgeInsets.all(16),
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 12),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
                   child: Text(
-                    'Toca cualquier actividad para probarla como en la tablet. '
-                    'Es una muestra; no guarda nada.',
-                    style: TextStyle(color: TrazoColors.sageDark, fontSize: 15),
+                    vitrina
+                        ? 'Algunos ejemplos de lo que hace la persona en la tablet. '
+                            'Tócalos para probarlos: así de sencillos y claros. '
+                            'No hace falta instalar nada ni guardar datos.'
+                        : 'Toca cualquier actividad para probarla como en la tablet. '
+                            'Es una muestra; no guarda nada.',
+                    style: const TextStyle(color: TrazoColors.sageDark, fontSize: 15),
                   ),
                 ),
-                for (final entry in porBloque.entries) ...[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12, bottom: 6),
-                    child: Text(_kBloques[entry.key] ?? entry.key,
-                        style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w800,
-                            color: TrazoColors.ink)),
-                  ),
-                  ...entry.value.map((i) => _FilaActividad(
+                if (vitrina)
+                  // Muestra curada: lista simple, sin agrupar por bloque ni
+                  // mostrar el nombre técnico de la plantilla.
+                  for (var i = 0; i < _todas.length; i++)
+                    _FilaActividad(
                         inst: _todas[i],
                         onTap: () => _jugar(i),
-                      )),
-                ],
+                        mostrarTipo: false)
+                else
+                  for (final entry in porBloque.entries) ...[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12, bottom: 6),
+                      child: Text(_kBloques[entry.key] ?? entry.key,
+                          style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w800,
+                              color: TrazoColors.ink)),
+                    ),
+                    ...entry.value.map((i) => _FilaActividad(
+                          inst: _todas[i],
+                          onTap: () => _jugar(i),
+                        )),
+                  ],
               ],
             ),
     );
@@ -141,7 +181,10 @@ class _GaleriaScreenState extends State<GaleriaScreen> {
 class _FilaActividad extends StatelessWidget {
   final Instancia inst;
   final VoidCallback onTap;
-  const _FilaActividad({required this.inst, required this.onTap});
+  // El nombre técnico de la plantilla solo interesa en modo interno, no al cliente.
+  final bool mostrarTipo;
+  const _FilaActividad(
+      {required this.inst, required this.onTap, this.mostrarTipo = true});
 
   @override
   Widget build(BuildContext context) {
@@ -153,8 +196,10 @@ class _FilaActividad extends StatelessWidget {
         title: Text(inst.nombre,
             style: const TextStyle(
                 fontWeight: FontWeight.w700, color: TrazoColors.ink)),
-        subtitle: Text(inst.plantilla,
-            style: const TextStyle(color: TrazoColors.sageDark, fontSize: 12)),
+        subtitle: mostrarTipo
+            ? Text(inst.plantilla,
+                style: const TextStyle(color: TrazoColors.sageDark, fontSize: 12))
+            : null,
         trailing: const Icon(Icons.play_circle_outline,
             color: TrazoColors.sage, size: 30),
       ),
