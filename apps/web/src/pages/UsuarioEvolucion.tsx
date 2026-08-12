@@ -47,6 +47,12 @@ export function UsuarioEvolucionPage() {
     () => (alertas.data ?? []).filter((a) => a.fecha_revision == null),
     [alertas.data],
   );
+  // ¿La alerta es de PARTICIPACIÓN (deja actividades sin intentar)? Entonces la
+  // gráfica de precisión engaña (solo cuenta lo intentado) y hay que avisarlo.
+  const hayDesconexion = useMemo(
+    () => pendientes.some((a) => String(a.contexto_json?.senal ?? "").includes("desconexion")),
+    [pendientes],
+  );
 
   return (
     <div>
@@ -231,12 +237,31 @@ export function UsuarioEvolucionPage() {
 
           {/* Gráfica */}
           <Card style={{ marginBottom: 26 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
               <h2 style={{ fontSize: 19 }}>Cómo le va sesión a sesión</h2>
               <span className="mono" style={{ fontSize: 12, color: colors.textFaint }}>
                 {bloque ? labelBloque(bloque) : "Todas las áreas"}
               </span>
             </div>
+            <p style={{ fontSize: 12.5, color: colors.textFaint, marginBottom: hayDesconexion ? 10 : 8 }}>
+              Cuenta solo las actividades que <strong>intentó</strong>; las que deja sin hacer no salen aquí.
+            </p>
+            {hayDesconexion && (
+              <div
+                style={{
+                  background: colors.alertBg,
+                  border: `1px solid ${colors.coral}`,
+                  borderRadius: radius.sm,
+                  padding: "10px 12px",
+                  fontSize: 13.5,
+                  color: colors.ink,
+                  marginBottom: 12,
+                }}
+              >
+                Ojo: esta línea puede verse bien e incluso subir, porque solo mide lo que intenta. Lo que
+                ha cambiado es que <strong>intenta menos</strong> — fíjate en «Sin puntuar», arriba.
+              </div>
+            )}
             {evolucion.loading && <Spinner label="Cargando evolución…" />}
             {evolucion.error && (
               <StateMessage tone="error" title="No se pudo cargar la evolución">
@@ -328,18 +353,39 @@ function Veredicto({
 
   if (!cargando) {
     if (pendientes.length > 0) {
-      const areas = [
+      const areasTxt = [
         ...new Set(
           pendientes
             .map((a) => (a.bloque_afectado ? labelBloque(a.bloque_afectado) : null))
             .filter((x): x is string => x != null),
         ),
-      ];
+      ].join(" y ");
+      // La "señal" dice QUÉ cambió, y evita la contradicción con la gráfica:
+      // la precisión sube porque solo cuenta lo que intenta; si lo que baja es la
+      // PARTICIPACIÓN, hay que decirlo con esas palabras, no "va peor".
+      const clases = new Set(
+        pendientes.flatMap((a) => String(a.contexto_json?.senal ?? "").split("_y_")),
+      );
+      const menosParticipacion = clases.has("desconexion");
+      const peorAcierto = clases.has("rendimiento");
+      const masLento = clases.has("latencia");
+
       tono = "ambar";
       titulo = `Conviene mirar a ${alias} esta semana`;
-      detalle = areas.length
-        ? `Ha habido un cambio en ${areas.join(" y ")}.`
-        : "Ha habido un cambio en su forma habitual de participar.";
+      if (menosParticipacion && !peorAcierto) {
+        detalle =
+          "Le sale bien lo que hace, pero participa cada vez menos: últimamente deja bastantes actividades sin intentar. Eso es lo que conviene mirar (no el acierto).";
+      } else if (peorAcierto) {
+        detalle = `Le cuesta más que de costumbre${areasTxt ? ` en ${areasTxt}` : ""}${
+          menosParticipacion ? ", y además participa menos" : ""
+        }.`;
+      } else if (masLento) {
+        detalle = `Tarda más de lo habitual${areasTxt ? ` en ${areasTxt}` : ""}.`;
+      } else {
+        detalle = areasTxt
+          ? `Ha habido un cambio en ${areasTxt}.`
+          : "Ha habido un cambio en su forma habitual de participar.";
+      }
       consejo =
         "Antes de nada, descarta causas frecuentes (vista u oído, dolor, medicación, ánimo, un día malo). Justo abajo tienes qué ha cambiado.";
     } else if (nIntentos === 0 || rendimiento == null) {
