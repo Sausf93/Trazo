@@ -138,14 +138,21 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
           ),
         ),
         const SizedBox(height: 20),
-        // Zonas destino.
+        // Zonas destino: tarjetas de tamaño FIJO y centradas, que se reparten en
+        // filas. Antes se estiraban a toda la altura y quedaban cajas enormes
+        // vacías; ahora son compactas y ordenadas en cualquier pantalla.
         Expanded(
-          child: GridView.count(
-            crossAxisCount: _zonas.length <= 2 ? _zonas.length.clamp(1, 2) : 3,
-            mainAxisSpacing: 16,
-            crossAxisSpacing: 16,
-            childAspectRatio: 1.4,
-            children: _zonas.map(_zona).toList(),
+          child: SingleChildScrollView(
+            child: Center(
+              child: Wrap(
+                spacing: 14,
+                runSpacing: 14,
+                alignment: WrapAlignment.center,
+                children: _zonas
+                    .map((z) => SizedBox(width: 240, height: 150, child: _zona(z)))
+                    .toList(),
+              ),
+            ),
           ),
         ),
       ],

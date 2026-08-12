@@ -17,6 +17,7 @@ import '../widgets/manejo_cantidad_widget.dart';
 import '../widgets/memoria_visual_widget.dart';
 import '../widgets/secuencia_ordenar_widget.dart';
 import '../widgets/seleccion_multiple_widget.dart';
+import '../widgets/trazo_logo.dart';
 import '../widgets/trazo_widget.dart';
 
 const _kBloques = {
@@ -120,15 +121,16 @@ class _GaleriaScreenState extends State<GaleriaScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Agrupar por bloque conservando el orden de aparición.
+    if (widget.vitrina) return _buildVitrina(context);
+
+    // --- Modo interno: catálogo completo agrupado por bloque ---
     final porBloque = <String, List<int>>{};
     for (var i = 0; i < _todas.length; i++) {
       porBloque.putIfAbsent(_todas[i].bloque, () => []).add(i);
     }
-    final vitrina = widget.vitrina;
     return Scaffold(
       appBar: AppBar(
-        title: Text(vitrina ? 'Actividades de muestra' : 'Actividades (demo)'),
+        title: const Text('Actividades (demo)'),
         backgroundColor: TrazoColors.white,
         foregroundColor: TrazoColors.ink,
       ),
@@ -137,43 +139,192 @@ class _GaleriaScreenState extends State<GaleriaScreen> {
           : ListView(
               padding: const EdgeInsets.all(16),
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 12),
                   child: Text(
-                    vitrina
-                        ? 'Algunos ejemplos de lo que hace la persona en la tablet. '
-                            'Tócalos para probarlos: así de sencillos y claros. '
-                            'No hace falta instalar nada ni guardar datos.'
-                        : 'Toca cualquier actividad para probarla como en la tablet. '
-                            'Es una muestra; no guarda nada.',
-                    style: const TextStyle(color: TrazoColors.sageDark, fontSize: 15),
+                    'Toca cualquier actividad para probarla como en la tablet. '
+                    'Es una muestra; no guarda nada.',
+                    style: TextStyle(color: TrazoColors.sageDark, fontSize: 15),
                   ),
                 ),
-                if (vitrina)
-                  // Muestra curada: lista simple, sin agrupar por bloque ni
-                  // mostrar el nombre técnico de la plantilla.
-                  for (var i = 0; i < _todas.length; i++)
-                    _FilaActividad(
+                for (final entry in porBloque.entries) ...[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12, bottom: 6),
+                    child: Text(_kBloques[entry.key] ?? entry.key,
+                        style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w800,
+                            color: TrazoColors.ink)),
+                  ),
+                  ...entry.value.map((i) => _FilaActividad(
                         inst: _todas[i],
                         onTap: () => _jugar(i),
-                        mostrarTipo: false)
-                else
-                  for (final entry in porBloque.entries) ...[
-                    Padding(
-                      padding: const EdgeInsets.only(top: 12, bottom: 6),
-                      child: Text(_kBloques[entry.key] ?? entry.key,
-                          style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w800,
-                              color: TrazoColors.ink)),
-                    ),
-                    ...entry.value.map((i) => _FilaActividad(
-                          inst: _todas[i],
-                          onTap: () => _jugar(i),
-                        )),
-                  ],
+                      )),
+                ],
               ],
             ),
+    );
+  }
+
+  // --- Vitrina de la web comercial: paleta de la marca, tarjetas cálidas ---
+  Widget _buildVitrina(BuildContext context) {
+    return Scaffold(
+      backgroundColor: TrazoColors.ivory,
+      body: _cargando
+          ? const Center(child: CircularProgressIndicator())
+          : SafeArea(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 34),
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 880),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const TrazoLogo(size: 46),
+                            const SizedBox(width: 14),
+                            const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Trazo',
+                                    style: TextStyle(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w700,
+                                        color: TrazoColors.ink,
+                                        height: 1.0)),
+                                Text('Estimulación cognitiva en tablet',
+                                    style: TextStyle(
+                                        fontSize: 13.5,
+                                        color: TrazoColors.sageDark,
+                                        fontWeight: FontWeight.w600)),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 26),
+                        const Text('Actividades de muestra',
+                            style: TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.w700,
+                                color: TrazoColors.ink,
+                                height: 1.1)),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Algunos ejemplos de lo que hace la persona en la tablet. '
+                          'Tócalos para probarlos: así de sencillos y claros. No hace '
+                          'falta instalar nada ni se guarda ningún dato.',
+                          style: TextStyle(
+                              fontSize: 16.5,
+                              color: TrazoColors.sageDark,
+                              height: 1.5),
+                        ),
+                        const SizedBox(height: 26),
+                        LayoutBuilder(
+                          builder: (context, c) {
+                            final cols = c.maxWidth > 620 ? 2 : 1;
+                            const gap = 16.0;
+                            final w = (c.maxWidth - (cols - 1) * gap) / cols;
+                            return Wrap(
+                              spacing: gap,
+                              runSpacing: gap,
+                              children: [
+                                for (var i = 0; i < _todas.length; i++)
+                                  SizedBox(
+                                    width: w,
+                                    child: _VitrinaCard(
+                                      inst: _todas[i],
+                                      onTap: () => _jugar(i),
+                                    ),
+                                  ),
+                              ],
+                            );
+                          },
+                        ),
+                        const SizedBox(height: 24),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+    );
+  }
+}
+
+/// Icono representativo de cada tipo de actividad (para la vitrina).
+IconData _iconoPlantilla(String plantilla) {
+  switch (plantilla) {
+    case 'trazo':
+      return Icons.gesture;
+    case 'seleccion_multiple':
+      return Icons.touch_app;
+    case 'memoria_visual':
+      return Icons.grid_view_rounded;
+    case 'conteo_comparacion':
+      return Icons.tag;
+    case 'arrastrar_posicion':
+      return Icons.pan_tool_alt;
+    case 'busqueda_visual':
+      return Icons.search;
+    case 'secuencia_ordenar':
+      return Icons.format_list_numbered;
+    case 'manejo_cantidad':
+      return Icons.euro;
+    default:
+      return Icons.play_arrow_rounded;
+  }
+}
+
+/// Tarjeta de la vitrina: icono en círculo salvia, nombre y "Probar" en coral.
+class _VitrinaCard extends StatelessWidget {
+  final Instancia inst;
+  final VoidCallback onTap;
+  const _VitrinaCard({required this.inst, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: TrazoColors.white,
+      borderRadius: BorderRadius.circular(16),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(16),
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: TrazoColors.sand, width: 1.5),
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 48,
+                height: 48,
+                decoration: const BoxDecoration(
+                  color: Color(0xFFEDF3EE),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(_iconoPlantilla(inst.plantilla),
+                    color: TrazoColors.sageDark, size: 25),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Text(inst.nombre,
+                    style: const TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w700,
+                        color: TrazoColors.ink,
+                        height: 1.15)),
+              ),
+              const SizedBox(width: 10),
+              const Icon(Icons.play_circle_fill,
+                  color: TrazoColors.coralDark, size: 30),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
@@ -181,10 +332,7 @@ class _GaleriaScreenState extends State<GaleriaScreen> {
 class _FilaActividad extends StatelessWidget {
   final Instancia inst;
   final VoidCallback onTap;
-  // El nombre técnico de la plantilla solo interesa en modo interno, no al cliente.
-  final bool mostrarTipo;
-  const _FilaActividad(
-      {required this.inst, required this.onTap, this.mostrarTipo = true});
+  const _FilaActividad({required this.inst, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -196,10 +344,8 @@ class _FilaActividad extends StatelessWidget {
         title: Text(inst.nombre,
             style: const TextStyle(
                 fontWeight: FontWeight.w700, color: TrazoColors.ink)),
-        subtitle: mostrarTipo
-            ? Text(inst.plantilla,
-                style: const TextStyle(color: TrazoColors.sageDark, fontSize: 12))
-            : null,
+        subtitle: Text(inst.plantilla,
+            style: const TextStyle(color: TrazoColors.sageDark, fontSize: 12)),
         trailing: const Icon(Icons.play_circle_outline,
             color: TrazoColors.sage, size: 30),
       ),
