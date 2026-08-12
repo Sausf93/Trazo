@@ -10,10 +10,21 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.models import Dispositivo, RegistroAuditoria, UsuarioFinal, UsuarioStaff
+from app.models import Centro, Dispositivo, RegistroAuditoria, UsuarioFinal, UsuarioStaff
 from app.security import decode_access_token
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login", auto_error=True)
+
+# Mensaje único para un centro suspendido (impago, etc.): se corta el acceso pero
+# los datos se conservan. Se comprueba en CADA petición, así el bloqueo del
+# super-admin surte efecto al instante, incluso con tokens ya emitidos.
+CENTRO_SUSPENDIDO = "Centro suspendido. Contacta con Trazo para reactivarlo."
+
+
+async def _exigir_centro_activo(db: AsyncSession, centro_id: str) -> None:
+    centro = await db.get(Centro, centro_id)
+    if centro is None or not centro.activo:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, CENTRO_SUSPENDIDO)
 
 
 async def get_current_staff(
@@ -36,6 +47,8 @@ async def get_current_staff(
     staff = await db.get(UsuarioStaff, staff_id)
     if staff is None or not staff.activo:
         raise cred_exc
+    # El centro debe seguir activo (no suspendido por la plataforma).
+    await _exigir_centro_activo(db, staff.centro_id)
     return staff
 
 
@@ -91,6 +104,7 @@ async def acceso_centro(
             raise HTTPException(
                 status.HTTP_401_UNAUTHORIZED, "Dispositivo no autorizado o revocado"
             )
+        await _exigir_centro_activo(db, disp.centro_id)
         return Acceso(centro_id=disp.centro_id, dispositivo=disp)
     # 2) Login de staff (Bearer JWT).
     if authorization and authorization.lower().startswith("bearer "):
@@ -103,6 +117,7 @@ async def acceso_centro(
         staff = await db.get(UsuarioStaff, staff_id) if staff_id else None
         if staff is None or not staff.activo:
             raise cred_exc
+        await _exigir_centro_activo(db, staff.centro_id)
         return Acceso(centro_id=staff.centro_id, staff=staff)
     raise cred_exc
 

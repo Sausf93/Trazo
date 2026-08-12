@@ -131,7 +131,7 @@ class IlustracionResolver {
     // Vehículos
     'coche', 'autobus', 'bicicleta', 'tren', 'avion', 'barco', 'moto', 'camion',
     // Naturaleza
-    'nube', 'arbol', 'montana', 'hoja',
+    'nube', 'arbol', 'montana', 'hoja', 'hierba', 'piedra', 'hormiga',
     // Fiesta
     'globo_rojo', 'globo_azul', 'globo_verde',
   };

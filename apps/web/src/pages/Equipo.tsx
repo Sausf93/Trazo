@@ -3,6 +3,7 @@
  * maestras (integradoras). Ellas luego dan de alta pacientes y hacen sesiones.
  */
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { actualizarStaff, crearStaff, listarStaff } from "../api/endpoints";
 import type { Staff } from "../api/types";
 import { useAuth } from "../auth/AuthContext";
@@ -12,6 +13,9 @@ import { colors, radius } from "../theme";
 
 export function EquipoPage() {
   const { session } = useAuth();
+  // Guarda de rol en el front: "Equipo" es solo del admin del centro (el backend
+  // ya lo exige, pero así una maestra que teclee /equipo no ve una página rota).
+  const esAdmin = session?.rol === "admin_centro";
   const equipo = useAsync<Staff[]>((s) => listarStaff(s), []);
 
   const [nombre, setNombre] = useState("");
@@ -21,6 +25,9 @@ export function EquipoPage() {
   const [creando, setCreando] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [ok, setOk] = useState<string | null>(null);
+
+  // Todos los hooks quedan declarados arriba; la guarda va después.
+  if (!esAdmin) return <Navigate to="/" replace />;
 
   async function anadir() {
     setError(null);

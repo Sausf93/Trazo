@@ -7,7 +7,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.models import UsuarioStaff
+from app.models import Centro, UsuarioStaff
 from app.schemas import TokenOut
 from app.security import create_access_token, verify_password
 from app.services.rate_limit import limitador_login
@@ -41,8 +41,11 @@ async def login(
             headers={"Retry-After": str(espera)},
         )
 
+    # El email se guarda en minúsculas al dar de alta: normalizamos aquí también
+    # para que la mayúscula/minúscula con la que se teclee no impida entrar.
+    email = form.username.strip().lower()
     staff = (
-        await db.execute(select(UsuarioStaff).where(UsuarioStaff.email == form.username))
+        await db.execute(select(UsuarioStaff).where(UsuarioStaff.email == email))
     ).scalars().first()
 
     if staff is None or not verify_password(form.password, staff.password_hash) or not staff.activo:
@@ -50,6 +53,15 @@ async def login(
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Email o contraseña incorrectos",
+        )
+
+    # Centro suspendido por la plataforma (p. ej. impago): se corta el acceso,
+    # pero los datos siguen intactos hasta que se reactive.
+    centro = await db.get(Centro, staff.centro_id)
+    if centro is None or not centro.activo:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Centro suspendido. Contacta con Trazo para reactivarlo.",
         )
 
     # Login correcto: se olvida el historial de fallos de esa IP+email.

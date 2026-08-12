@@ -10,12 +10,19 @@ from __future__ import annotations
 import secrets
 
 from fastapi import APIRouter, Depends, Header, HTTPException, status
+from sqlalchemy import Integer, cast, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bootstrap import alta_centro_admin
 from app.config import settings
 from app.database import get_db
-from app.schemas import CentroPlataformaIn, CentroPlataformaOut
+from app.models import Centro, UsuarioFinal, UsuarioStaff
+from app.schemas import (
+    CentroEstadoIn,
+    CentroInfoOut,
+    CentroPlataformaIn,
+    CentroPlataformaOut,
+)
 
 router = APIRouter(prefix="/plataforma", tags=["plataforma"])
 
@@ -40,3 +47,67 @@ async def crear_centro(
     mensaje, creado = await alta_centro_admin(
         db, body.centro, body.email, body.password, body.nombre)
     return CentroPlataformaOut(mensaje=mensaje, creado=creado)
+
+
+@router.get("/centros", response_model=list[CentroInfoOut])
+async def listar_centros(
+    x_platform_token: str | None = Header(default=None, alias="X-Platform-Token"),
+    db: AsyncSession = Depends(get_db),
+):
+    """Todos los centros con su estado (activo/bloqueado) y nº de cuentas/pacientes."""
+    _exigir_token(x_platform_token)
+    centros = (await db.execute(
+        select(Centro).order_by(Centro.creado_en.asc())
+    )).scalars().all()
+
+    # Conteos por centro en 2 consultas (sin N+1).
+    staff_tot: dict[str, int] = {}
+    staff_act: dict[str, int] = {}
+    for cid, tot, act in (await db.execute(
+        select(UsuarioStaff.centro_id, func.count(),
+               func.sum(cast(UsuarioStaff.activo, Integer)))
+        .group_by(UsuarioStaff.centro_id)
+    )).all():
+        staff_tot[cid] = int(tot or 0)
+        staff_act[cid] = int(act or 0)
+    pac_tot: dict[str, int] = {}
+    for cid, tot in (await db.execute(
+        select(UsuarioFinal.centro_id, func.count())
+        .where(UsuarioFinal.activo.is_(True))
+        .group_by(UsuarioFinal.centro_id)
+    )).all():
+        pac_tot[cid] = int(tot or 0)
+
+    return [
+        CentroInfoOut(
+            id=c.id, nombre=c.nombre, activo=c.activo, creado_en=c.creado_en,
+            n_staff=staff_tot.get(c.id, 0),
+            n_staff_activos=staff_act.get(c.id, 0),
+            n_pacientes=pac_tot.get(c.id, 0),
+        )
+        for c in centros
+    ]
+
+
+@router.patch("/centros/{centro_id}", response_model=CentroInfoOut)
+async def cambiar_estado_centro(
+    centro_id: str,
+    body: CentroEstadoIn,
+    x_platform_token: str | None = Header(default=None, alias="X-Platform-Token"),
+    db: AsyncSession = Depends(get_db),
+):
+    """Bloquea (activo=false) o reactiva (activo=true) un centro. No borra datos.
+
+    Al bloquear, nadie de ese centro puede entrar ni usar la API (el estado se
+    comprueba en cada petición). Al reactivar, todo vuelve a funcionar igual."""
+    _exigir_token(x_platform_token)
+    centro = await db.get(Centro, centro_id)
+    if centro is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Centro no encontrado")
+    centro.activo = body.activo
+    await db.commit()
+    await db.refresh(centro)
+    return CentroInfoOut(
+        id=centro.id, nombre=centro.nombre, activo=centro.activo,
+        creado_en=centro.creado_en,
+    )

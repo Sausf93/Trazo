@@ -113,3 +113,55 @@ async def test_plataforma_crea_centro_con_token(client, monkeypatch):
     assert r.json()["creado"] is True
     # El nuevo admin puede iniciar sesión.
     _, _ = await _login(client, ("jefe@nuevo.local", "clave1234"))
+
+
+@pytest.mark.asyncio
+async def test_login_insensible_a_mayusculas(client):
+    # Se registra en minúsculas; debe poder entrar con mayúsculas.
+    r = await client.post("/auth/login",
+                          data={"username": "Admin@Trazo.Local", "password": "trazo1234"})
+    assert r.status_code == 200, r.text
+
+
+@pytest.mark.asyncio
+async def test_superadmin_bloquea_y_reactiva_centro(client, monkeypatch):
+    monkeypatch.setattr(settings, "platform_token", "tok")
+    ph = {"X-Platform-Token": "tok"}
+
+    # El super-admin ve el centro demo en la lista.
+    r = await client.get("/plataforma/centros", headers=ph)
+    assert r.status_code == 200, r.text
+    centros = r.json()
+    assert len(centros) >= 1
+    centro = centros[0]
+    assert centro["activo"] is True
+    assert centro["n_staff"] >= 2  # admin + integradora demo
+    cid = centro["id"]
+
+    # Con el centro activo, el admin entra normal.
+    _, admin_h = await _login(client, ADMIN)
+    assert (await client.get("/staff", headers=admin_h)).status_code == 200
+
+    # BLOQUEAR el centro.
+    r = await client.patch(f"/plataforma/centros/{cid}", headers=ph, json={"activo": False})
+    assert r.status_code == 200
+    assert r.json()["activo"] is False
+
+    # Ahora NADIE de ese centro entra: ni login nuevo…
+    r = await client.post("/auth/login",
+                          data={"username": ADMIN[0], "password": ADMIN[1]})
+    assert r.status_code == 403
+    # …ni un token ya emitido antes del bloqueo.
+    assert (await client.get("/staff", headers=admin_h)).status_code == 403
+
+    # REACTIVAR: todo vuelve a funcionar.
+    r = await client.patch(f"/plataforma/centros/{cid}", headers=ph, json={"activo": True})
+    assert r.status_code == 200 and r.json()["activo"] is True
+    _, admin_h2 = await _login(client, ADMIN)
+    assert (await client.get("/staff", headers=admin_h2)).status_code == 200
+
+
+@pytest.mark.asyncio
+async def test_bloquear_centro_requiere_token(client):
+    r = await client.patch("/plataforma/centros/lo-que-sea", json={"activo": False})
+    assert r.status_code == 404  # sin PLATFORM_TOKEN configurado, no existe

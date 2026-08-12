@@ -77,6 +77,23 @@ class CentroPlataformaOut(BaseModel):
     creado: bool
 
 
+class CentroInfoOut(BaseModel):
+    """Ficha de un centro para el super-admin (nivel 0)."""
+    model_config = ConfigDict(from_attributes=True)
+    id: str
+    nombre: str
+    activo: bool
+    creado_en: datetime
+    n_staff: int = 0
+    n_staff_activos: int = 0
+    n_pacientes: int = 0
+
+
+class CentroEstadoIn(BaseModel):
+    # activo=false BLOQUEA el centro (impago, etc.); true lo REACTIVA. No borra nada.
+    activo: bool
+
+
 class TokenOut(BaseModel):
     access_token: str
     token_type: str = "bearer"
