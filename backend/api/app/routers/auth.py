@@ -61,6 +61,7 @@ async def login(
     )
     return TokenOut(
         access_token=token,
+        id=staff.id,
         rol=staff.rol,
         nombre=staff.nombre,
         centro_id=staff.centro_id,

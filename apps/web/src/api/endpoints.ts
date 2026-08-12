@@ -18,6 +18,7 @@ import type {
   SesionListItem,
   EstadoSesion,
   SugerenciaNivel,
+  Staff,
   TokenOut,
   UsuarioFinal,
 } from "./types";
@@ -26,6 +27,27 @@ import type {
 export function login(email: string, password: string): Promise<TokenOut> {
   // OAuth2PasswordRequestForm: username = email.
   return http.postForm<TokenOut>("/auth/login", { username: email, password });
+}
+
+// ---- Equipo (staff del centro) ----
+export function listarStaff(signal?: AbortSignal): Promise<Staff[]> {
+  return http.get<Staff[]>("/staff", signal);
+}
+
+export function crearStaff(body: {
+  nombre: string;
+  email: string;
+  password: string;
+  rol?: string;
+}): Promise<Staff> {
+  return http.post<Staff>("/staff", body);
+}
+
+export function actualizarStaff(
+  id: string,
+  body: { nombre?: string; activo?: boolean },
+): Promise<Staff> {
+  return http.patch<Staff>(`/staff/${encodeURIComponent(id)}`, body);
 }
 
 // ---- Usuarios finales ----

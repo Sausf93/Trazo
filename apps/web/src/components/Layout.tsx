@@ -16,6 +16,9 @@ const NAV = [
   { to: "/sesiones", label: "Historial de sesiones" },
 ];
 
+// "Equipo" (alta de maestras) solo lo ve el admin del centro.
+const NAV_ADMIN = [{ to: "/equipo", label: "Equipo", end: false }];
+
 export function Layout({ children }: { children: ReactNode }) {
   const { session, signOut } = useAuth();
   const navigate = useNavigate();
@@ -43,7 +46,7 @@ export function Layout({ children }: { children: ReactNode }) {
         </div>
 
         <nav style={{ display: "flex", flexDirection: "column", gap: 4 }} aria-label="Navegación principal">
-          {NAV.map((item) => (
+          {(session?.rol === "admin_centro" ? [...NAV, ...NAV_ADMIN] : NAV).map((item) => (
             <NavLink
               key={item.to}
               to={item.to}

@@ -4,6 +4,7 @@ import { AlertasPage } from "./pages/Alertas";
 import { DashboardPage } from "./pages/Dashboard";
 import { DispositivosPage } from "./pages/Dispositivos";
 import { EjerciciosPage } from "./pages/Ejercicios";
+import { EquipoPage } from "./pages/Equipo";
 import { LoginPage } from "./pages/Login";
 import { PacientesPage } from "./pages/Pacientes";
 import { PlanEditorPage } from "./pages/PlanEditor";
@@ -29,6 +30,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <PacientesPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/equipo"
+        element={
+          <ProtectedRoute>
+            <EquipoPage />
           </ProtectedRoute>
         }
       />

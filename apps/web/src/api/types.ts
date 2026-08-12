@@ -6,6 +6,7 @@
 export interface TokenOut {
   access_token: string;
   token_type: string;
+  id: string;
   rol: string;
   nombre: string;
   centro_id: string;
@@ -17,6 +18,16 @@ export interface UsuarioFinal {
   alias_interno: string;
   fecha_alta: string;
   nivel_base_json: Record<string, unknown>;
+  activo: boolean;
+}
+
+/** Cuenta de equipo del centro (integradora o admin del centro). */
+export interface Staff {
+  id: string;
+  centro_id: string;
+  nombre: string;
+  email: string;
+  rol: string;
   activo: boolean;
 }
 

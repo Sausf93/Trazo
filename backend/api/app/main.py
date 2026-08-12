@@ -23,7 +23,9 @@ from app.routers import (
     evolucion,
     intentos,
     planes,
+    plataforma,
     sesiones,
+    staff,
     usuarios,
 )
 from app.services.migraciones import migrar_columnas, migrar_indices
@@ -123,3 +125,5 @@ app.include_router(evolucion.router)
 app.include_router(alertas.router)
 app.include_router(planes.router)
 app.include_router(dispositivos.router)
+app.include_router(staff.router)
+app.include_router(plataforma.router)

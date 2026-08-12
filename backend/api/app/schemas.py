@@ -18,9 +18,69 @@ class LoginIn(BaseModel):
     password: str
 
 
+# ---- Equipo (staff del centro) ----
+
+# El email se trata como texto (igual que en el login): usar EmailStr rechazaría
+# dominios reservados como `.local`, que usamos en pruebas.
+def _email_basico(v: str) -> str:
+    v = v.strip().lower()
+    if "@" not in v or "." not in v.split("@")[-1] or len(v) < 5:
+        raise ValueError("email no válido")
+    return v
+
+
+class StaffIn(BaseModel):
+    nombre: str = Field(min_length=1, max_length=200)
+    email: str
+    password: str = Field(min_length=8, max_length=128)
+    # El admin del centro da de alta integradoras; puede crear otro admin si quiere.
+    rol: str = "integradora"
+
+    _norm_email = field_validator("email")(_email_basico)
+
+    @field_validator("rol")
+    @classmethod
+    def _rol_valido(cls, v: str) -> str:
+        if v not in ("integradora", "admin_centro"):
+            raise ValueError("rol debe ser 'integradora' o 'admin_centro'")
+        return v
+
+
+class StaffUpdate(BaseModel):
+    nombre: str | None = Field(default=None, min_length=1, max_length=200)
+    activo: bool | None = None
+
+
+class StaffOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: str
+    centro_id: str
+    nombre: str
+    email: str
+    rol: str
+    activo: bool
+
+
+# ---- Plataforma (nivel 0: alta de centros) ----
+
+class CentroPlataformaIn(BaseModel):
+    centro: str = Field(min_length=1, max_length=200)
+    email: str
+    password: str = Field(min_length=8, max_length=128)
+    nombre: str = "Administración del centro"
+
+    _norm_email = field_validator("email")(_email_basico)
+
+
+class CentroPlataformaOut(BaseModel):
+    mensaje: str
+    creado: bool
+
+
 class TokenOut(BaseModel):
     access_token: str
     token_type: str = "bearer"
+    id: str
     rol: str
     nombre: str
     centro_id: str

@@ -32,6 +32,11 @@ class Settings(BaseSettings):
     seed_on_startup: bool = True
     app_timezone: str = "Europe/Madrid"
 
+    # Token de PLATAFORMA (nivel 0): protege el alta de centros + su primer admin
+    # (POST /plataforma/centros). Si está vacío, ese endpoint queda DESHABILITADO.
+    # Solo lo conoce el dueño de la plataforma (tú). Nunca se expone al panel.
+    platform_token: str = ""
+
     @property
     def cors_origins_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]

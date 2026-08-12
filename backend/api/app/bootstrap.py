@@ -27,36 +27,46 @@ from app.models import Centro, UsuarioStaff
 from app.security import hash_password
 
 
+async def alta_centro_admin(db, nombre_centro: str, email: str, password: str,
+                            nombre_staff: str) -> tuple[str, bool]:
+    """Crea (idempotente) un centro y su cuenta admin sobre la sesión `db` dada.
+
+    Devuelve (mensaje, creado). No hace commit del engine global: opera sobre la
+    sesión que le pasen, así vale tanto para el CLI como para el endpoint de
+    plataforma (y es testeable sobre la BD de test)."""
+    existe = (await db.execute(
+        select(UsuarioStaff).where(UsuarioStaff.email == email)
+    )).scalars().first()
+    if existe is not None:
+        return (f"La cuenta {email} ya existe (no se hace nada).", False)
+
+    centro = (await db.execute(
+        select(Centro).where(Centro.nombre == nombre_centro)
+    )).scalars().first()
+    if centro is None:
+        centro = Centro(nombre=nombre_centro)
+        db.add(centro)
+        await db.flush()
+
+    db.add(UsuarioStaff(
+        centro_id=centro.id,
+        nombre=nombre_staff,
+        rol="admin_centro",
+        email=email,
+        password_hash=hash_password(password),
+    ))
+    await db.commit()
+    return (f"Creado el centro '{nombre_centro}' y la cuenta {email} "
+            f"(rol admin_centro). Ya puedes iniciar sesión.", True)
+
+
 async def crear_centro_y_admin(nombre_centro: str, email: str, password: str,
-                               nombre_staff: str) -> str:
+                               nombre_staff: str) -> tuple[str, bool]:
+    """Versión autónoma para el CLI: abre su propio motor y crea las tablas."""
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-
     async with AsyncSessionLocal() as db:
-        existe = (await db.execute(
-            select(UsuarioStaff).where(UsuarioStaff.email == email)
-        )).scalars().first()
-        if existe is not None:
-            return f"La cuenta {email} ya existe (no se hace nada)."
-
-        centro = (await db.execute(
-            select(Centro).where(Centro.nombre == nombre_centro)
-        )).scalars().first()
-        if centro is None:
-            centro = Centro(nombre=nombre_centro)
-            db.add(centro)
-            await db.flush()
-
-        db.add(UsuarioStaff(
-            centro_id=centro.id,
-            nombre=nombre_staff,
-            rol="admin_centro",
-            email=email,
-            password_hash=hash_password(password),
-        ))
-        await db.commit()
-        return (f"Creado el centro '{nombre_centro}' y la cuenta {email} "
-                f"(rol admin_centro). Ya puedes iniciar sesión.")
+        return await alta_centro_admin(db, nombre_centro, email, password, nombre_staff)
 
 
 def main() -> None:
@@ -75,7 +85,8 @@ def main() -> None:
     if len(password) < 8:
         raise SystemExit("La contraseña debe tener al menos 8 caracteres.")
 
-    msg = asyncio.run(crear_centro_y_admin(args.centro, args.email, password, args.nombre))
+    msg, _creado = asyncio.run(
+        crear_centro_y_admin(args.centro, args.email, password, args.nombre))
     print(msg)
 
 
