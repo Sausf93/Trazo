@@ -7,10 +7,14 @@ import 'screens/login_screen.dart';
 import 'screens/rol_screen.dart';
 import 'theme.dart';
 
-/// La web comercial enlaza a `/demo/?vitrina=1`: en ese caso la app abre directa
-/// una muestra de actividades (vitrina), sin la pantalla de rol/login interna.
+/// La web comercial sirve la app bajo la ruta `/demo/` (local y en el deploy):
+/// ahí la app abre directa una muestra de actividades (vitrina), sin la pantalla
+/// de rol/login interna. Se detecta por la RUTA (robusto a caché y a que se
+/// pierda un parámetro) y también admite `?vitrina=1` como respaldo.
 bool get _esVitrina =>
-    kIsWeb && Uri.base.queryParameters.containsKey('vitrina');
+    kIsWeb &&
+    (Uri.base.path.contains('/demo') ||
+        Uri.base.queryParameters.containsKey('vitrina'));
 
 /// Para poder navegar al login desde fuera del árbol de widgets (p. ej. cuando
 /// la API responde 401 por token caducado).
