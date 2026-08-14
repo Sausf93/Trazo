@@ -26,8 +26,10 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
   @override
   Widget build(BuildContext context) {
     final render = widget.instancia.render;
+    // Cast tolerante: una instancia malformada del backend no debe tumbar la
+    // tablet en pleno kiosco (mejor sin opciones que un crash).
     final opciones =
-        (render['opciones'] as List).map((e) => e.toString()).toList();
+        (render['opciones'] as List? ?? const []).map((e) => e.toString()).toList();
     final enunciado = render['enunciado'] as String? ??
         render['instruccion'] as String? ??
         'Elige la correcta';

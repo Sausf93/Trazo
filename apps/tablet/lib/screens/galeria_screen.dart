@@ -93,24 +93,30 @@ class _GaleriaScreenState extends State<GaleriaScreen> {
   }
 
   Future<void> _cargar() async {
-    final txt = await rootBundle.loadString('assets/demo_actividades.json');
-    final data = jsonDecode(txt) as Map<String, dynamic>;
-    var lista = (data['actividades'] as List)
-        .map((e) => Instancia.fromJson(e as Map<String, dynamic>))
-        .toList();
-    if (widget.vitrina) {
-      // Solo la muestra curada, en el orden de _kVitrina.
-      final porNombre = {for (final x in lista) x.nombre: x};
-      lista = [
-        for (final n in _kVitrina)
-          if (porNombre[n] != null) porNombre[n]!,
-      ];
+    try {
+      final txt = await rootBundle.loadString('assets/demo_actividades.json');
+      final data = jsonDecode(txt) as Map<String, dynamic>;
+      var lista = (data['actividades'] as List? ?? const [])
+          .map((e) => Instancia.fromJson(e as Map<String, dynamic>))
+          .toList();
+      if (widget.vitrina) {
+        // Solo la muestra curada, en el orden de _kVitrina.
+        final porNombre = {for (final x in lista) x.nombre: x};
+        lista = [
+          for (final n in _kVitrina)
+            if (porNombre[n] != null) porNombre[n]!,
+        ];
+      }
+      if (!mounted) return;
+      setState(() {
+        _todas = lista;
+        _cargando = false;
+      });
+    } catch (_) {
+      // Nunca dejar la vitrina colgada en el spinner: se muestra vacía.
+      if (!mounted) return;
+      setState(() => _cargando = false);
     }
-    if (!mounted) return;
-    setState(() {
-      _todas = lista;
-      _cargando = false;
-    });
   }
 
   void _jugar(int index) {

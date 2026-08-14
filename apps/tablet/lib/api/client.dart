@@ -429,16 +429,23 @@ class ApiClient {
 
   void _check(http.Response resp) {
     if (resp.statusCode == 401) {
-      // Token caducado o inválido: cerrar sesión y volver al login.
-      _token = null;
-      SharedPreferences.getInstance().then((p) {
-        p.remove('token');
-        p.remove('centro_id');
-        p.remove('rol');
-        p.remove('nombre');
-      });
-      onNoAutorizado?.call();
-      throw ApiException('Sesión caducada. Vuelve a iniciar sesión.');
+      if (_token != null) {
+        // Caducidad de la sesión de STAFF (login): cerrar y volver al login.
+        _token = null;
+        SharedPreferences.getInstance().then((p) {
+          p.remove('token');
+          p.remove('rol');
+          p.remove('nombre');
+          // El centro solo se borra si NO es una tablet emparejada.
+          if (_deviceToken == null) p.remove('centro_id');
+        });
+        onNoAutorizado?.call();
+        throw ApiException('Sesión caducada. Vuelve a iniciar sesión.');
+      }
+      // 401 en tablet emparejada (kiosco, sin login de staff): NO forzar login ni
+      // borrar el centro. Es un fallo puntual o el dispositivo fue revocado; la
+      // pantalla de rol ya maneja el caso "esta tablet aún no está lista".
+      throw ApiException('No autorizado.');
     }
     if (resp.statusCode >= 400) {
       throw ApiException('Error ${resp.statusCode}: ${resp.body}');

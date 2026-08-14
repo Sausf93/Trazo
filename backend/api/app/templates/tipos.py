@@ -260,19 +260,26 @@ class PlantillaConteoComparacion(PlantillaBase):
                     c = ganador if i == idx else rng.randint(ganador + 1, hi)
                     grupos.append({"objeto": obj, "cantidad": c})
                 solucion = {"objeto_menor": objs[idx]}
-        else:
+        elif modo == "contar":
+            # UN SOLO tipo de objeto: así es inequívoco QUÉ contar (con varios
+            # grupos no se sabía cuál y salía un no_logrado injusto).
+            obj = objs[0]
+            cant = rng.randint(lo, hi)
+            grupos = [{"objeto": obj, "cantidad": cant}]
+            solucion = {"objeto": obj, "cantidad": cant}
+        else:  # sumar
             for obj in objs:
                 grupos.append({"objeto": obj, "cantidad": rng.randint(lo, hi)})
-            if modo == "sumar":
-                solucion = {"total": sum(g["cantidad"] for g in grupos)}
-            else:  # contar (uno concreto)
-                objetivo = rng.choice(grupos)
-                solucion = {"objeto": objetivo["objeto"], "cantidad": objetivo["cantidad"]}
+            solucion = {"total": sum(g["cantidad"] for g in grupos)}
+
+        instruccion = parametros.get("instruccion", "¿Cuál tiene más?")
+        if modo == "contar":
+            instruccion = "Cuenta cuántos hay y di el número"
 
         return InstanciaEjercicio(
             plantilla=self.tipo,
             render={
-                "instruccion": parametros.get("instruccion", "¿Cuál tiene más?"),
+                "instruccion": instruccion,
                 "modo": modo,
                 "grupos": grupos,
             },

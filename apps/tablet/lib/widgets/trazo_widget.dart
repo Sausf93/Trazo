@@ -41,11 +41,13 @@ class _TrazoWidgetState extends State<TrazoWidget> {
   void initState() {
     super.initState();
     final render = widget.instancia.render;
-    _guia = parseSvgPathData(render['guide_path'] as String);
+    // Cast tolerante: una instancia malformada no debe tumbar la tablet.
+    final gp = render['guide_path'];
+    _guia = (gp is String && gp.isNotEmpty) ? parseSvgPathData(gp) : Path();
     _tolerancia = (render['tolerancia_px'] as num?)?.toDouble() ?? 24.0;
     final vb = (render['viewbox'] as String? ?? '0 0 300 140').split(' ');
-    _vbW = double.tryParse(vb[2]) ?? 300;
-    _vbH = double.tryParse(vb[3]) ?? 140;
+    _vbW = (vb.length > 2 ? double.tryParse(vb[2]) : null) ?? 300;
+    _vbH = (vb.length > 3 ? double.tryParse(vb[3]) : null) ?? 140;
     _muestrasGuia = _muestrear(_guia, paso: 3.0);
     _inicioGuia = _muestrasGuia.isNotEmpty ? _muestrasGuia.first : Offset.zero;
     _flechas = _calcularFlechas(_guia);

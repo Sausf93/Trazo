@@ -275,8 +275,22 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
     }
   }
 
+  // Evita que una doble pulsación de "Siguiente" registre el intento dos veces
+  // (medición duplicada) y salte una actividad.
+  bool _avanzando = false;
+
   /// Registra el intento (la MEDICIÓN) y pasa al siguiente ejercicio.
   Future<void> _terminarEjercicio() async {
+    if (_avanzando) return;
+    _avanzando = true;
+    try {
+      await _terminarEjercicioImpl();
+    } finally {
+      _avanzando = false;
+    }
+  }
+
+  Future<void> _terminarEjercicioImpl() async {
     final yo = _yo;
     final sesion = _sesion;
     final inst = _instancia;
