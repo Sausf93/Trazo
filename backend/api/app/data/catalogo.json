@@ -1244,11 +1244,11 @@
  {
   "bloque": "vida_cotidiana",
   "plantilla_tipo": "manejo_cantidad",
-  "nombre": "¿Te llega para pagar?",
-  "descripcion": "Se muestra un precio y lo que llevas en el monedero; decidir si alcanza. Varias bandas de dificultad.",
+  "nombre": "Paga la cuenta justa",
+  "descripcion": "Se muestra un precio; reúne las monedas o billetes justos para pagarlo. Varias bandas de dificultad.",
   "parametros_json": {
    "dificultad": "media",
-   "modo": "llega_para_pagar",
+   "modo": "monedas_justas",
    "bandas": [
     {
      "id": "monedas",
@@ -1294,8 +1294,7 @@
    "modos": [
     "dinero",
     "monedas_justas",
-    "vuelta",
-    "llega_para_pagar"
+    "vuelta"
    ],
    "bandas": [
     {

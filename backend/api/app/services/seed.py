@@ -136,13 +136,20 @@ async def sembrar(db: AsyncSession) -> None:
         db.add(DatosIdentificativos(usuario_final_id=uf.id, nombre_real=nombre_real))
         participantes.append(uf)
 
-    # Ejercicios (catálogo completo, cargado del JSON data-driven).
-    por_nombre: dict[str, EjercicioCatalogo] = {}
-    for cfg in _ejercicios_semilla():
-        ej = EjercicioCatalogo(**cfg)
-        db.add(ej)
-        await db.flush()
-        por_nombre[cfg["nombre"]] = ej
+    # El catálogo de actividades ya se sincroniza al arrancar (main.py, común a
+    # dev y prod). Aquí lo REUTILIZAMOS para los datos de demo — no lo recreamos,
+    # o saldrían duplicados. Salvaguarda: si estuviera vacío (p. ej. en tests que
+    # llaman a sembrar directamente), lo cargamos aquí.
+    por_nombre: dict[str, EjercicioCatalogo] = {
+        ej.nombre: ej
+        for ej in (await db.execute(select(EjercicioCatalogo))).scalars().all()
+    }
+    if not por_nombre:
+        for cfg in _ejercicios_semilla():
+            ej = EjercicioCatalogo(**cfg)
+            db.add(ej)
+            await db.flush()
+            por_nombre[cfg["nombre"]] = ej
 
     await db.flush()
 

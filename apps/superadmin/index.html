@@ -213,7 +213,7 @@ $("entrar").onclick = entrar;
 $("token").addEventListener("keydown", e => { if(e.key === "Enter") entrar(); });
 $("salir").onclick = salir;
 $("crear").onclick = crearCentro;
-$("apiBase").value = sessionStorage.getItem("tz_api") || "http://localhost:8000";
+$("apiBase").value = sessionStorage.getItem("tz_api") || "https://trazo-api-11684717030.europe-southwest1.run.app";
 if(sessionStorage.getItem("tz_tok")){
   $("token").value = sessionStorage.getItem("tz_tok");
   entrar();

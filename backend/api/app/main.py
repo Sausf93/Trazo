@@ -29,7 +29,7 @@ from app.routers import (
     usuarios,
 )
 from app.services.migraciones import migrar_columnas, migrar_indices
-from app.services.seed import sembrar
+from app.services.seed import sembrar, sincronizar_catalogo
 
 logger = logging.getLogger("trazo")
 logging.basicConfig(level=logging.INFO)
@@ -39,6 +39,12 @@ logging.basicConfig(level=logging.INFO)
 async def lifespan(app: FastAPI):
     # Crear tablas si no existen (MVP; en producción se pasaría a Alembic).
     async with engine.begin() as conn:
+        # Lock de arranque (solo Postgres): serializa create_all + migraciones
+        # entre procesos/instancias. Sin él, al desplegar o escalar, dos arranques
+        # simultáneos compiten en CREATE INDEX / ALTER TABLE. El advisory lock de
+        # transacción se libera solo al cerrar este bloque.
+        if conn.dialect.name == "postgresql":
+            await conn.execute(text("SELECT pg_advisory_xact_lock(727274)"))
         await conn.run_sync(Base.metadata.create_all)
         # Añadir columnas nuevas a tablas ya existentes sin borrar la BD.
         creadas = await conn.run_sync(migrar_columnas)
@@ -48,6 +54,16 @@ async def lifespan(app: FastAPI):
         if indices:
             logger.info("Migración: índices creados -> %s", ", ".join(indices))
     logger.info("Tablas verificadas/creadas.")
+
+    # El CATÁLOGO de actividades es CONTENIDO del producto (no datos de demo): se
+    # carga y actualiza SIEMPRE, también en producción. Sin esto, un despliegue de
+    # prod se queda sin ninguna actividad que asignar o jugar.
+    async with AsyncSessionLocal() as db:
+        try:
+            nuevas = await sincronizar_catalogo(db)
+            logger.info("Catálogo sincronizado (%s actividades nuevas).", nuevas)
+        except Exception:  # pragma: no cover
+            logger.exception("Fallo al sincronizar el catálogo de actividades")
 
     es_dev = settings.entorno.lower() == "dev"
     if not es_dev:

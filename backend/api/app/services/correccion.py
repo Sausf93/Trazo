@@ -67,6 +67,10 @@ def _seleccion_multiple(v, o):
 
 def _conteo_comparacion(v, o):
     respuesta = v.get("respuesta")
+    # En las comparaciones (cual_tiene_mas/menos) el widget manda {grupo, objeto};
+    # en sumar/contar manda un número. Normalizamos al valor comparable.
+    if isinstance(respuesta, dict):
+        respuesta = respuesta.get("objeto")
     sol = o.get("solucion") or {}
     modo = v.get("modo") or o.get("modo")
     if respuesta is None or respuesta == "":
@@ -157,17 +161,26 @@ def _manejo_cantidad(v, o):
         hora_ok = (int(_num(h, -1)) % 12) == (int(_num(oh, -2)) % 12)
         min_ok = int(_num(m, -1)) == int(_num(om, -2))
         return "logrado" if (hora_ok and min_ok) else "no_logrado"
-    # Dinero: el total compuesto contra el importe/vuelta objetivo (en céntimos).
+    # Dinero: el objetivo está en CÉNTIMOS. El cliente puede enviar el total en
+    # céntimos (245) o en euros (2.45); aceptamos ambas unidades para que un
+    # importe compuesto EXACTO se puntúe logrado venga en la unidad que venga.
     total = v.get("total_compuesto")
     monedas = v.get("monedas_usadas") or []
     if total is None and not monedas:
         return "sin_valorar"  # no puso ninguna moneda
+    if total is None:
+        total = sum((_num(m, 0) or 0) for m in monedas)
     objetivo_c = o.get("importe_c")
     if objetivo_c is None and o.get("pago_c") is not None and o.get("precio_c") is not None:
         objetivo_c = int(_num(o["pago_c"], 0)) - int(_num(o["precio_c"], 0))  # vuelta
     if objetivo_c is None:
         return "sin_valorar"
-    return "logrado" if int(_num(total, -1)) == int(_num(objetivo_c, -2)) else "no_logrado"
+    t = _num(total)
+    if t is None:
+        return "no_logrado"
+    obj = int(_num(objetivo_c, -2))
+    acierta = int(round(t)) == obj or int(round(t * 100)) == obj
+    return "logrado" if acierta else "no_logrado"
 
 
 def _trazo(v, o):
