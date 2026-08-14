@@ -4497,7 +4497,7 @@
   "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Señala lo que te pido",
-  "descripcion": "Se pide una categoría (una fruta, un animal, un mueble) y hay que tocar la imagen que le corresponde entre varias.",
+  "descripcion": "Se pide una categoría (una fruta, un animal, un mueble) y hay que elegir, entre varias palabras, la que le corresponde.",
   "parametros_json": {
    "dificultad": "facil",
    "opciones_min": 3,
@@ -4550,7 +4550,7 @@
   "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Adivina por la pista",
-  "descripcion": "Se da una descripción breve del objeto (color, forma, uso) y hay que elegir la imagen que encaja. Comprensión y evocación por atributos.",
+  "descripcion": "Se da una descripción breve del objeto (color, forma, uso) y hay que elegir, entre varias palabras, la que encaja. Comprensión y evocación por atributos.",
   "parametros_json": {
    "dificultad": "media",
    "opciones_min": 3,

@@ -11,6 +11,7 @@ import { colors, radius } from "../theme";
 const NAV = [
   { to: "/", label: "Panel", end: true },
   { to: "/pacientes", label: "Pacientes" },
+  { to: "/dispositivos", label: "Tablets" },
   { to: "/alertas", label: "Alertas" },
   { to: "/sesion", label: "En directo" },
   { to: "/sesiones", label: "Historial de sesiones" },

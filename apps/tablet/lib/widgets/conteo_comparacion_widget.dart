@@ -40,6 +40,10 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
     final instruccion =
         render['instruccion'] as String? ?? '¿Cuál tiene más?';
     final modo = render['modo'] as String? ?? 'cual_tiene_mas';
+    // 'cual_tiene_mas' y 'cual_tiene_menos' se responden TOCANDO un grupo; solo
+    // 'sumar' y 'contar' usan el teclado numérico. (Antes 'menos' caía al teclado
+    // y su respuesta nunca cuadraba -> siempre no_logrado e irresoluble.)
+    final esComparacion = modo == 'cual_tiene_mas' || modo == 'cual_tiene_menos';
     final grupos = (render['grupos'] as List? ?? [])
         .map((e) => Map<String, dynamic>.from(e as Map))
         .toList();
@@ -59,13 +63,13 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: _grupoCard(i, grupos[i],
-                        seleccionable: modo == 'cual_tiene_mas'),
+                        seleccionable: esComparacion),
                   ),
                 ),
             ],
           ),
         ),
-        if (modo != 'cual_tiene_mas') ...[
+        if (!esComparacion) ...[
           const SizedBox(height: 16),
           _tecladoNumerico(),
         ],

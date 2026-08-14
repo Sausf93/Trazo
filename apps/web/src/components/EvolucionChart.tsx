@@ -1,8 +1,9 @@
 /**
- * Gráfica temporal de precisión por sesión.
- * Los puntos que caen fuera del patrón propio de la persona se pintan en coral
- * (mismo criterio que el motor de alertas del backend), y no dependen solo del
- * color: se dibujan más grandes y con anillo.
+ * Gráfica temporal de precisión por sesión — una TENDENCIA para acompañar la
+ * lectura. La detección real de "fuera de patrón" vive en el backend (motor de
+ * alertas, por sesión y segmentado por dificultad) y se muestra como el veredicto
+ * y las tarjetas de alerta; aquí NO se reimplementa una heurística aparte que
+ * podría contradecirla (antes pintaba puntos coral que no casaban con una alerta).
  */
 import {
   CartesianGrid,
@@ -17,7 +18,6 @@ import {
 import type { PuntoEvolucion } from "../api/types";
 import { colors, fonts } from "../theme";
 import { fmtFecha, fmtPorcentaje } from "../utils/format";
-import { marcarFueraDePatron } from "../utils/anomalia";
 import { labelEstado } from "../api/vocab";
 
 export interface PuntoChart {
@@ -32,13 +32,12 @@ export function construirSerie(puntos: PuntoEvolucion[]): PuntoChart[] {
   const conPrecision = puntos.filter(
     (p): p is PuntoEvolucion & { precision: number } => p.precision != null,
   );
-  const flags = marcarFueraDePatron(conPrecision.map((p) => p.precision));
   return conPrecision.map((p, i) => ({
     idx: i,
     fecha: p.fecha,
     precision: p.precision,
     estado: p.estado,
-    anomalo: flags[i],
+    anomalo: false, // la señal real de "fuera de patrón" la da el backend (alertas)
   }));
 }
 

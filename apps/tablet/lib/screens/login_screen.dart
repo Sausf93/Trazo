@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../api/client.dart';
+import '../config.dart';
 import '../theme.dart';
 import '../widgets/trazo_logo.dart';
 import 'galeria_screen.dart';
@@ -14,8 +15,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _email = TextEditingController(text: 'integradora@trazo.local');
-  final _pass = TextEditingController(text: 'trazo1234');
+  // Las credenciales de DEMO solo se pre-rellenan si la app apunta a un entorno
+  // local (dev). En producción los campos van vacíos: si no, una maestra real
+  // pulsaría "Entrar" con un usuario demo inexistente y vería un 401.
+  static bool get _esDev => Config.apiUrl.contains('localhost');
+  final _email = TextEditingController(
+      text: _esDev ? 'integradora@trazo.local' : '');
+  final _pass = TextEditingController(text: _esDev ? 'trazo1234' : '');
   bool _cargando = false;
   String? _error;
 

@@ -41,7 +41,6 @@ export function UsuarioEvolucionPage() {
     () => (evolucion.data ? construirSerie(evolucion.data.puntos) : []),
     [evolucion.data],
   );
-  const nAnomalos = serie.filter((p) => p.anomalo).length;
   // Alerta "pendiente" = generada y aún sin revisar. Es lo que decide el veredicto.
   const pendientes = useMemo(
     () => (alertas.data ?? []).filter((a) => a.fecha_revision == null),
@@ -227,12 +226,6 @@ export function UsuarioEvolucionPage() {
               value={String(evolucion.data?.resumen.n_sin_valorar ?? "—")}
               hint="No las intentó o están por revisar (no cuentan)"
             />
-            <ResumenTile
-              label="Días a mirar"
-              value={String(nAnomalos)}
-              hint="El sistema sugiere mirarlos; no es un juicio"
-              alert={nAnomalos > 0}
-            />
           </div>
 
           {/* Gráfica */}
@@ -269,12 +262,6 @@ export function UsuarioEvolucionPage() {
               </StateMessage>
             )}
             {evolucion.data && <EvolucionChart data={serie} />}
-            {evolucion.data && (
-              <div style={{ display: "flex", gap: 18, flexWrap: "wrap", marginTop: 10, fontSize: 12.5, color: colors.textFaint }}>
-                <LegendDot color={colors.sage} label="Como de costumbre" />
-                <LegendDot color={colors.coralDark} ring label="Se sale de lo habitual (mirar)" />
-              </div>
-            )}
           </Card>
 
           {/* Sugerencias de nivel (el profesional decide) */}
@@ -475,34 +462,6 @@ function ResumenTile({
       </div>
       {hint && <div style={{ fontSize: 12, color: colors.textFaint, marginTop: 2 }}>{hint}</div>}
     </div>
-  );
-}
-
-function LegendDot({ color, label, ring }: { color: string; label: string; ring?: boolean }) {
-  return (
-    <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-      <span style={{ position: "relative", width: 14, height: 14, display: "inline-block" }} aria-hidden>
-        {ring && (
-          <span
-            style={{
-              position: "absolute",
-              inset: 0,
-              borderRadius: "50%",
-              border: `2px solid ${colors.coral}`,
-            }}
-          />
-        )}
-        <span
-          style={{
-            position: "absolute",
-            inset: 4,
-            borderRadius: "50%",
-            background: color,
-          }}
-        />
-      </span>
-      {label}
-    </span>
   );
 }
 

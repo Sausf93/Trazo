@@ -272,9 +272,14 @@ class PlantillaConteoComparacion(PlantillaBase):
                 grupos.append({"objeto": obj, "cantidad": rng.randint(lo, hi)})
             solucion = {"total": sum(g["cantidad"] for g in grupos)}
 
-        instruccion = parametros.get("instruccion", "¿Cuál tiene más?")
-        if modo == "contar":
-            instruccion = "Cuenta cuántos hay y di el número"
+        # La instrucción se fija por MODO (la actividad varía de modo en cada
+        # tirada): así siempre dice sin ambigüedad qué hay que hacer.
+        instruccion = {
+            "cual_tiene_mas": "Toca el grupo que tiene MÁS",
+            "cual_tiene_menos": "Toca el grupo que tiene MENOS",
+            "sumar": "¿Cuántos hay en total? Escribe el número",
+            "contar": "Cuenta cuántos hay y escribe el número",
+        }.get(modo, parametros.get("instruccion", "¿Cuál tiene más?"))
 
         return InstanciaEjercicio(
             plantilla=self.tipo,
