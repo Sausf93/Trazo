@@ -151,3 +151,27 @@ textarea {
     margin: 14mm;
   }
 }
+
+/* Documento imprimible (consentimiento, contrato…): mismo patrón que el informe,
+ * pero con su propia clase para que al imprimirlo NO se cuele ningún informe. */
+.trazo-doc {
+  position: absolute;
+  left: -10000px;
+  top: 0;
+  width: 680px;
+}
+
+@media print {
+  body:has(.trazo-doc) #root,
+  body:has(.trazo-doc) .trazo-informe {
+    display: none !important;
+  }
+
+  .trazo-doc {
+    position: static;
+    left: auto;
+    width: 100%;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

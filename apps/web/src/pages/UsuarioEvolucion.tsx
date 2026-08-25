@@ -360,7 +360,7 @@ export function UsuarioEvolucionPage() {
       {id && <ObjetivosPaciente usuarioId={id} />}
 
       {/* Consentimiento RGPD: constancia de que la persona está en regla. */}
-      {id && <ConsentimientoPaciente usuarioId={id} />}
+      {id && <ConsentimientoPaciente usuarioId={id} personaAlias={alias} />}
 
       {/* Informe imprimible para la familia: oculto en pantalla, visible al imprimir. */}
       {evolucion.data && evolucion.data.puntos.length > 0 && (

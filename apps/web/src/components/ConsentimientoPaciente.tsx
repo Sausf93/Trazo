@@ -9,9 +9,11 @@ import { listarConsentimientos, registrarConsentimiento } from "../api/endpoints
 import { ApiError } from "../api/client";
 import type { Consentimiento } from "../api/types";
 import { useAsync } from "../hooks/useAsync";
-import { Card, Spinner, StateMessage } from "./ui";
+import { useAuth } from "../auth/AuthContext";
+import { Card, Spinner, StateMessage, Button } from "./ui";
 import { colors, radius } from "../theme";
 import { fmtFecha } from "../utils/format";
+import { ConsentimientoImprimible, VERSION_CONSENTIMIENTO } from "./ConsentimientoImprimible";
 
 const ROLES: { value: string; label: string }[] = [
   { value: "titular", label: "La propia persona" },
@@ -28,14 +30,17 @@ function labelDe(list: { value: string; label: string }[], v: string): string {
   return list.find((x) => x.value === v)?.label ?? v;
 }
 
-export function ConsentimientoPaciente({ usuarioId }: { usuarioId: string }) {
+export function ConsentimientoPaciente({ usuarioId, personaAlias }: { usuarioId: string; personaAlias?: string }) {
   const cons = useAsync<Consentimiento[]>((s) => listarConsentimientos(usuarioId, s), [usuarioId]);
+  const { session } = useAuth();
   const [error, setError] = useState<string | null>(null);
   const [guardando, setGuardando] = useState(false);
   const [tipo, setTipo] = useState("uso_y_seguimiento");
   const [otorgadoPor, setOtorgadoPor] = useState("");
   const [rol, setRol] = useState("titular");
   const [docRef, setDocRef] = useState("");
+  // Cuando != null, se monta el documento imprimible de ese tipo y se imprime.
+  const [imprimirTipo, setImprimirTipo] = useState<string | null>(null);
 
   // ¿Falta el consentimiento básico de uso? (aviso visible para estar en regla)
   const tieneUso = (cons.data ?? []).some((c) => c.tipo === "uso_y_seguimiento");
@@ -77,10 +82,30 @@ export function ConsentimientoPaciente({ usuarioId }: { usuarioId: string }) {
           )
         )}
       </div>
-      <p style={{ color: colors.textMuted, fontSize: 14, marginBottom: 14 }}>
-        Constancia de que hay consentimiento firmado. La app no guarda el documento: anota solo
-        dónde está archivado (una referencia).
+      <p style={{ color: colors.textMuted, fontSize: 14, marginBottom: 12 }}>
+        Genera el documento ya rellenado, imprímelo o guárdalo en PDF y hazlo firmar. Después,
+        registra abajo el consentimiento (queda con fecha y en el registro de auditoría) y anota
+        dónde archivas el original.
       </p>
+      <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center", marginBottom: 16 }}>
+        <Button variant="ghost" onClick={() => setImprimirTipo("uso_y_seguimiento")}>
+          Consentimiento de uso — PDF para firmar
+        </Button>
+        <Button variant="ghost" onClick={() => setImprimirTipo("imagen")}>
+          Consentimiento de imagen — PDF
+        </Button>
+        <span style={{ fontSize: 12, color: colors.textFaint }}>
+          Texto {VERSION_CONSENTIMIENTO} · borrador pendiente de revisión legal
+        </span>
+      </div>
+      {imprimirTipo && (
+        <ConsentimientoImprimible
+          centro={session?.centro_nombre ?? ""}
+          personaAlias={personaAlias ?? usuarioId}
+          tipo={imprimirTipo}
+          onHecho={() => setImprimirTipo(null)}
+        />
+      )}
 
       {error && <div style={{ marginBottom: 12 }}><StateMessage tone="error">{error}</StateMessage></div>}
       {cons.error && (
