@@ -450,7 +450,8 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
         delBloque.where((i) => !_veredictos.containsKey(i.nombre)).toList();
     if (pendientes.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Ya revisaste todas las de este bloque 🎉')));
+          content: Text(
+              'Marcaste todas las de este bloque; no queda ninguna que jugar.')));
       return;
     }
     Navigator.of(context)
@@ -636,18 +637,17 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
                 for (final clave in clavesOrdenadas)
                   Builder(builder: (_) {
                     final total = porBloque[clave]!.length;
-                    final pend = _pendientesDe(porBloque[clave]!);
-                    final hecho = pend == 0;
+                    final pend = _pendientesDe(porBloque[clave]!); // sin marcar
+                    final marcadas = total - pend;
                     return Card(
                       color: TrazoColors.white,
                       margin: const EdgeInsets.symmetric(vertical: 5),
                       child: ListTile(
                         onTap: () => _abrirBloque(porBloque[clave]!),
                         leading: CircleAvatar(
-                          backgroundColor:
-                              hecho ? TrazoColors.sage : TrazoColors.sageDark,
+                          backgroundColor: TrazoColors.sageDark,
                           foregroundColor: Colors.white,
-                          child: Text(hecho ? '✓' : '$pend',
+                          child: Text('$total',
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 15)),
                         ),
@@ -657,16 +657,13 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
                                 color: TrazoColors.ink,
                                 fontSize: 17)),
                         subtitle: Text(
-                            hecho
-                                ? 'Todas revisadas ($total)'
-                                : '$pend por revisar de $total',
+                            marcadas > 0
+                                ? '$total actividades · $marcadas marcadas (no salen)'
+                                : '$total actividades — tócalo para jugarlas',
                             style: const TextStyle(
                                 color: TrazoColors.sageDark, fontSize: 13)),
-                        trailing: Icon(Icons.play_circle_fill,
-                            color: hecho
-                                ? TrazoColors.sand
-                                : TrazoColors.coralDark,
-                            size: 32),
+                        trailing: const Icon(Icons.play_circle_fill,
+                            color: TrazoColors.coralDark, size: 32),
                       ),
                     );
                   }),
@@ -736,11 +733,9 @@ class _JugarDemoState extends State<_JugarDemo> {
   }
 
   void _siguiente() {
-    // En el banco: si la actividad actual no está marcada (ni a revisar ni otro
-    // grupo), se da por VÁLIDA sola al pasar. Así solo hay que marcar lo que falla.
-    if (widget.mostrarProgreso && _veredicto == null) {
-      BancoVeredictos.instance.guardar(_inst.nombre, 'valida', '');
-    }
+    // En el banco NO se marca nada al pasar: las actividades siguen en el bucle y
+    // se pueden repetir una y otra vez. Solo desaparecen las que marcas como
+    // "a revisar" u "otro grupo" (se excluyen la próxima vez que abras el bloque).
     setState(() {
       final sig = _i + 1;
       if (sig >= widget.actividades.length) {
@@ -838,10 +833,10 @@ class _JugarDemoState extends State<_JugarDemo> {
               Expanded(
                 child: Text(
                     _veredicto == null
-                        ? 'Si está bien, no marques nada: pasa a Siguiente (se da por válida).'
+                        ? 'Puedes repetirla. Marca solo si es dudosa o no vale.'
                         : (_veredicto!.estado == 'otro_grupo'
-                            ? 'Marcada: otro grupo.'
-                            : 'Marcada: a revisar.'),
+                            ? 'Marcada: otro grupo (no volverá a salir).'
+                            : 'Marcada: a revisar (no volverá a salir).'),
                     style: const TextStyle(
                         fontSize: 12, color: TrazoColors.sageDark)),
               ),
