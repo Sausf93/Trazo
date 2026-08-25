@@ -8,8 +8,10 @@ import { Link, Navigate } from "react-router-dom";
 import { listarDocumentos, listarUsuarios } from "../api/endpoints";
 import type { DocumentoLegal, UsuarioFinal } from "../api/types";
 import { useAuth } from "../auth/AuthContext";
-import { Card, PageHeader, Spinner, StateMessage } from "../components/ui";
+import { useState } from "react";
+import { Button, Card, PageHeader, Spinner, StateMessage } from "../components/ui";
 import { DocumentosLegales } from "../components/DocumentosLegales";
+import { DpaImprimible } from "../components/DpaImprimible";
 import { useAsync } from "../hooks/useAsync";
 import { colors } from "../theme";
 
@@ -40,6 +42,7 @@ export function CumplimientoPage() {
   const centroId = session?.centro_id ?? "";
   const docs = useAsync<DocumentoLegal[]>((s) => listarDocumentos({ solo_centro: true }, s), []);
   const personas = useAsync<UsuarioFinal[]>((s) => listarUsuarios(centroId, s), [centroId]);
+  const [imprimirDpa, setImprimirDpa] = useState(false);
 
   if (!esAdmin) return <Navigate to="/" replace />;
 
@@ -78,9 +81,18 @@ export function CumplimientoPage() {
 
       <Card>
         <h2 style={{ fontSize: 17, marginBottom: 4 }}>Documentos del centro</h2>
-        <p style={{ fontSize: 13.5, color: colors.textMuted, marginBottom: 14 }}>
+        <p style={{ fontSize: 13.5, color: colors.textMuted, marginBottom: 12 }}>
           Guarda aquí el DPA, el RAT y la DPIA. Quedan en la app, con fecha y auditados, y se pueden descargar.
         </p>
+        <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", marginBottom: 14 }}>
+          <Button variant="ghost" onClick={() => setImprimirDpa(true)}>
+            Generar contrato de encargo (DPA) — PDF para firmar
+          </Button>
+          <span style={{ fontSize: 12, color: colors.textFaint }}>borrador pendiente de revisión legal</span>
+        </div>
+        {imprimirDpa && (
+          <DpaImprimible centro={session?.centro_nombre ?? ""} onHecho={() => setImprimirDpa(false)} />
+        )}
         {docs.error && <StateMessage tone="error">{docs.error}</StateMessage>}
         <DocumentosLegales
           tipos={[

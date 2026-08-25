@@ -63,8 +63,18 @@ class PlantillaTrazo(PlantillaBase):
             vb_w = float(str(viewbox).split()[2])
         except (IndexError, ValueError):
             vb_w = 300.0
-        if vb_w > 0 and abs(vb_w - 300.0) > 1e-6:
-            tolerancia = max(4.0, round(tolerancia * vb_w / 300.0, 1))
+        # La tolerancia se escala al ancho de la figura para que un dígito estrecho
+        # no la tenga tan holgada que cualquier garabato puntúe. En PALABRAS el
+        # viewBox es muy ancho (varias letras) pero cada letra sigue siendo pequeña,
+        # así que se puede fijar `tolerancia_ref_w` (ancho de UNA letra) para que la
+        # exigencia sea la de una letra suelta, no la del renglón entero.
+        ancho_ref = parametros.get("tolerancia_ref_w", vb_w)
+        try:
+            ancho_ref = float(ancho_ref)
+        except (TypeError, ValueError):
+            ancho_ref = vb_w
+        if ancho_ref > 0 and abs(ancho_ref - 300.0) > 1e-6:
+            tolerancia = max(4.0, round(tolerancia * ancho_ref / 300.0, 1))
         return InstanciaEjercicio(
             plantilla=self.tipo,
             render={

@@ -702,8 +702,8 @@
       "viewbox": "0 0 300 140",
       "figuras": [
         {
-          "id": "estrella",
-          "path": "M150,20 L172,88 L242,88 L186,128 L208,120 L150,90 L92,120 L114,128 L58,88 L128,88 Z"
+          "id": "casa_sencilla",
+          "path": "M60,160 L60,95 L150,45 L240,95 L240,160 Z"
         },
         {
           "id": "escalera",
@@ -743,7 +743,7 @@
     }
   },
   {
-    "bloque": "praxias",
+    "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
     "nombre": "Encaja la pieza",
     "descripcion": "Arrastrar cada pieza (redonda, cuadrada, triangular) hasta el hueco de su misma forma.",
@@ -1389,8 +1389,8 @@
           "path": "M150,120 L150,70 L90,70 L150,30"
         },
         {
-          "id": "medio_arbol",
-          "path": "M150,120 L150,80 M150,80 C120,80 105,55 130,50 C120,35 150,30 150,45"
+          "id": "media_curva",
+          "path": "M150,130 C108,130 108,40 150,40"
         }
       ]
     }
@@ -3766,7 +3766,7 @@
     }
   },
   {
-    "bloque": "calculo",
+    "bloque": "vida_cotidiana",
     "plantilla_tipo": "manejo_cantidad",
     "nombre": "Las monedas justas (1 y 2 euros)",
     "descripcion": "Elegir las monedas exactas para pagar un importe redondo de pocos euros usando solo monedas de 1 y 2 euros, sin centimos. Importe cambiante.",
@@ -4116,7 +4116,7 @@
     }
   },
   {
-    "bloque": "gnosias",
+    "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
     "nombre": "Arriba o abajo",
     "descripcion": "Arrastrar cada cosa a donde corresponde: lo que va en el cielo, arriba; lo que va en el suelo, abajo. Orientacion espacial.",
@@ -5168,7 +5168,7 @@
     }
   },
   {
-    "bloque": "praxias",
+    "bloque": "gnosias",
     "plantilla_tipo": "seleccion_multiple",
     "nombre": "Los gestos de siempre",
     "descripcion": "Se describe una intención y hay que elegir qué gesto se hace con el cuerpo. Reconocimiento del gesto (praxias).",
@@ -35782,6 +35782,234 @@
           "id": "destornillador",
           "label": "destornillador",
           "zona_correcta": "herramienta"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra MAMA",
+    "descripcion": "Repasa con el dedo o el lápiz la palabra MAMA.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra MAMA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "mama",
+          "path": "M30,118 L30,28 L50,80 L70,28 L70,118 M150,28 L130,118 M150,28 L170,118 M138,82 L162,82 M230,118 L230,28 L250,80 L270,28 L270,118 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra PAPA",
+    "descripcion": "Repasa con el dedo o el lápiz la palabra PAPA.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra PAPA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "papa",
+          "path": "M32,118 L32,28 L58,28 C74,28 74,66 58,66 L32,66 M150,28 L130,118 M150,28 L170,118 M138,82 L162,82 M232,118 L232,28 L258,28 C274,28 274,66 258,66 L232,66 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra MANO",
+    "descripcion": "Repasa con el dedo o el lápiz la palabra MANO.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra MANO",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "mano",
+          "path": "M30,118 L30,28 L50,80 L70,28 L70,118 M150,28 L130,118 M150,28 L170,118 M138,82 L162,82 M230,118 L230,28 L270,118 L270,28 M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra LUNA",
+    "descripcion": "Repasa con el dedo o el lápiz la palabra LUNA.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra LUNA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "luna",
+          "path": "M32,28 L32,118 L70,118 M130,28 L130,92 C130,112 170,112 170,92 L170,28 M230,118 L230,28 L270,118 L270,28 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra PATO",
+    "descripcion": "Repasa con el dedo o el lápiz la palabra PATO.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra PATO",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "pato",
+          "path": "M32,118 L32,28 L58,28 C74,28 74,66 58,66 L32,66 M150,28 L130,118 M150,28 L170,118 M138,82 L162,82 M228,30 L272,30 M250,30 L250,118 M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra PINO",
+    "descripcion": "Repasa con el dedo o el lápiz la palabra PINO.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra PINO",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "pino",
+          "path": "M32,118 L32,28 L58,28 C74,28 74,66 58,66 L32,66 M150,28 L150,118 M230,118 L230,28 L270,118 L270,28 M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra VINO",
+    "descripcion": "Repasa con el dedo o el lápiz la palabra VINO.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra VINO",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "vino",
+          "path": "M30,28 L50,118 L70,28 M150,28 L150,118 M230,118 L230,28 L270,118 L270,28 M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra DEDO",
+    "descripcion": "Repasa con el dedo o el lápiz la palabra DEDO.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra DEDO",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "dedo",
+          "path": "M32,28 L32,118 M32,28 L52,28 C74,28 74,118 52,118 L32,118 M130,28 L130,118 M130,28 L170,28 M130,72 L162,72 M130,118 L170,118 M232,28 L232,118 M232,28 L252,28 C274,28 274,118 252,118 L232,118 M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra MIEL",
+    "descripcion": "Repasa con el dedo o el lápiz la palabra MIEL.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra MIEL",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "miel",
+          "path": "M30,118 L30,28 L50,80 L70,28 L70,118 M150,28 L150,118 M230,28 L230,118 M230,28 L270,28 M230,72 L262,72 M230,118 L270,118 M332,28 L332,118 L370,118"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra PAN",
+    "descripcion": "Repasa con el dedo o el lápiz la palabra PAN.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "instruccion": "Traza la palabra PAN",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 300 145",
+      "figuras": [
+        {
+          "id": "pan",
+          "path": "M32,118 L32,28 L58,28 C74,28 74,66 58,66 L32,66 M150,28 L130,118 M150,28 L170,118 M138,82 L162,82 M230,118 L230,28 L270,118 L270,28"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra OLA",
+    "descripcion": "Repasa con el dedo o el lápiz la palabra OLA.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "instruccion": "Traza la palabra OLA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 300 145",
+      "figuras": [
+        {
+          "id": "ola",
+          "path": "M50,28 C33,28 28,50 28,73 C28,96 33,118 50,118 C67,118 72,96 72,73 C72,50 67,28 50,28 Z M132,28 L132,118 L170,118 M250,28 L230,118 M250,28 L270,118 M238,82 L262,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra TAPA",
+    "descripcion": "Repasa con el dedo o el lápiz la palabra TAPA.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra TAPA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "tapa",
+          "path": "M28,30 L72,30 M50,30 L50,118 M150,28 L130,118 M150,28 L170,118 M138,82 L162,82 M232,118 L232,28 L258,28 C274,28 274,66 258,66 L232,66 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
         }
       ]
     }
