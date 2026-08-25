@@ -8,6 +8,7 @@ import { EquipoPage } from "./pages/Equipo";
 import { LoginPage } from "./pages/Login";
 import { PacientesPage } from "./pages/Pacientes";
 import { PlanEditorPage } from "./pages/PlanEditor";
+import { RevisarPage } from "./pages/Revisar";
 import { SesionLivePage } from "./pages/SesionLive";
 import { SesionesPage } from "./pages/Sesiones";
 import { UsuarioEvolucionPage } from "./pages/UsuarioEvolucion";
@@ -62,6 +63,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <AlertasPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/revisar"
+        element={
+          <ProtectedRoute>
+            <RevisarPage />
           </ProtectedRoute>
         }
       />

@@ -31,11 +31,18 @@ class Ilustracion extends StatelessWidget {
           width: size,
           height: size,
           fit: BoxFit.contain,
-          errorBuilder: (_, __, ___) => _FallbackInicial(id: id, size: size),
+          // Si la foto registrada aún no está empaquetada, NO caer al círculo:
+          // usar el dibujo SVG de la librería (degradado digno). El círculo con
+          // inicial es el último recurso.
+          errorBuilder: (_, __, ___) => _svgOFallback(),
         ),
       );
     }
-    // 2) Dibujo SVG de la librería.
+    // 2) Dibujo SVG de la librería (o fallback).
+    return _svgOFallback();
+  }
+
+  Widget _svgOFallback() {
     final asset = IlustracionResolver.assetPara(id);
     if (asset == null) {
       return _FallbackInicial(id: id, size: size);
@@ -157,7 +164,6 @@ class IlustracionResolver {
     'copa': 'vaso',
     'taza_cafe': 'taza',
     'cuenco': 'bol',
-    'servilleta': 'cuadrado',
     // Cocina / despensa
     'cazuela': 'olla',
     'cacerola': 'olla',
@@ -171,16 +177,10 @@ class IlustracionResolver {
     'redonda': 'circulo',
     'circunferencia': 'circulo',
     'estrellita': 'estrella',
-    'margarita': 'flor',
-    'rosa': 'flor',
-    'clavel': 'flor',
     'geranio': 'flor',
-    'tulipan': 'flor',
     'lirio': 'flor',
     'amapola': 'flor',
     'planta': 'flor',
-    'maceta': 'flor',
-    'girasol': 'sol',
     // Casa / reloj (variantes)
     'casas': 'casa',
     'hogar': 'casa',
@@ -317,7 +317,6 @@ class IlustracionResolver {
     'tijera': 'tijeras',
     'peineta': 'peine',
     'cepillo_pelo': 'peine',
-    'cepillo': 'cepillo_dientes',
     'cepillo_de_dientes': 'cepillo_dientes',
     'pastilla_jabon': 'jabon',
     'toallita': 'toalla',
@@ -412,7 +411,106 @@ class IlustracionResolver {
   /// que haya fotos en `assets/fotos/` — estrategia de sustituir dibujos por
   /// fotos poco a poco. Vacío = por ahora solo dibujos. Ejemplo:
   ///   'perro': 'assets/fotos/perro.png',
-  static const Map<String, String> _fotos = {};
+  static const Map<String, String> _fotos = {
+    'arbol': 'assets/fotos/arbol.png',
+    'autobus': 'assets/fotos/autobus.png',
+    'barco': 'assets/fotos/barco.png',
+    'bicicleta': 'assets/fotos/bicicleta.png',
+    'bol': 'assets/fotos/bol.png',
+    'botella': 'assets/fotos/botella.png',
+    'bufanda': 'assets/fotos/bufanda.png',
+    'caballo': 'assets/fotos/caballo.png',
+    'cafe': 'assets/fotos/cafe.png',
+    'calcetin': 'assets/fotos/calcetin.png',
+    'camion': 'assets/fotos/camion.png',
+    'camisa': 'assets/fotos/camisa.png',
+    'casa': 'assets/fotos/casa.png',
+    'cebolla': 'assets/fotos/cebolla.png',
+    'cerdo': 'assets/fotos/cerdo.png',
+    'cereza': 'assets/fotos/cereza.png',
+    'chaqueta': 'assets/fotos/chaqueta.png',
+    'coche': 'assets/fotos/coche.png',
+    'conejo': 'assets/fotos/conejo.png',
+    'cuchara': 'assets/fotos/cuchara.png',
+    'espejo': 'assets/fotos/espejo.png',
+    'flor': 'assets/fotos/flor.png',
+    'fresa': 'assets/fotos/fresa.png',
+    'gafas': 'assets/fotos/gafas.png',
+    'gato': 'assets/fotos/gato.png',
+    'globo_azul': 'assets/fotos/globo_azul.png',
+    'globo_verde': 'assets/fotos/globo_verde.png',
+    'hierba': 'assets/fotos/hierba.png',
+    'hoja': 'assets/fotos/hoja.png',
+    'huevo': 'assets/fotos/huevo.png',
+    'jabon': 'assets/fotos/jabon.png',
+    'lampara': 'assets/fotos/lampara.png',
+    'lapiz': 'assets/fotos/lapiz.png',
+    'lechuga': 'assets/fotos/lechuga.png',
+    'manzana': 'assets/fotos/manzana.png',
+    'manzana_verde': 'assets/fotos/manzana_verde.png',
+    'mesa': 'assets/fotos/mesa.png',
+    'montana': 'assets/fotos/montana.png',
+    'moto': 'assets/fotos/moto.png',
+    'naranja': 'assets/fotos/naranja.png',
+    'nevera': 'assets/fotos/nevera.png',
+    'nube': 'assets/fotos/nube.png',
+    'olla': 'assets/fotos/olla.png',
+    'oveja': 'assets/fotos/oveja.png',
+    'pajaro': 'assets/fotos/pajaro.png',
+    'pan': 'assets/fotos/pan.png',
+    'pantalon': 'assets/fotos/pantalon.png',
+    'paraguas': 'assets/fotos/paraguas.png',
+    'patata': 'assets/fotos/patata.png',
+    'pera': 'assets/fotos/pera.png',
+    'perro': 'assets/fotos/perro.png',
+    'pescado': 'assets/fotos/pescado.png',
+    'pimiento': 'assets/fotos/pimiento.png',
+    'puerta': 'assets/fotos/puerta.png',
+    'queso': 'assets/fotos/queso.png',
+    'reloj': 'assets/fotos/reloj.png',
+    'sandia': 'assets/fotos/sandia.png',
+    'sarten': 'assets/fotos/sarten.png',
+    'silla': 'assets/fotos/silla.png',
+    'sofa': 'assets/fotos/sofa.png',
+    'taza': 'assets/fotos/taza.png',
+    'telefono': 'assets/fotos/telefono.png',
+    'television': 'assets/fotos/television.png',
+    'tomate': 'assets/fotos/tomate.png',
+    'tren': 'assets/fotos/tren.png',
+    'uvas': 'assets/fotos/uvas.png',
+    'vaca': 'assets/fotos/vaca.png',
+    'ventana': 'assets/fotos/ventana.png',
+    'vestido': 'assets/fotos/vestido.png',
+    'zanahoria': 'assets/fotos/zanahoria.png',
+    'zapato': 'assets/fotos/zapato.png',
+    'rosa': 'assets/fotos/rosa.png',
+    'clavel': 'assets/fotos/clavel.png',
+    'margarita': 'assets/fotos/margarita.png',
+    'girasol': 'assets/fotos/girasol.png',
+    'tulipan': 'assets/fotos/tulipan.png',
+    'servilleta': 'assets/fotos/servilleta.png',
+    'maceta': 'assets/fotos/maceta.png',
+    'cepillo': 'assets/fotos/cepillo.png',
+    'destornillador': 'assets/fotos/destornillador.png',
+    'martillo': 'assets/fotos/martillo.png',
+    'llave': 'assets/fotos/llave.png',
+    'cepillo_dientes': 'assets/fotos/cepillo_dientes.png',
+    'toalla': 'assets/fotos/toalla.png',
+    'libro': 'assets/fotos/libro.png',
+    'pollo': 'assets/fotos/pollo.png',
+    'pez': 'assets/fotos/pez.png',
+    'raton': 'assets/fotos/raton.png',
+    'hormiga': 'assets/fotos/hormiga.png',
+    'piedra': 'assets/fotos/piedra.png',
+    'leche': 'assets/fotos/leche.png',
+    'avion': 'assets/fotos/avion.png',
+    'cuchillo': 'assets/fotos/cuchillo.png',
+    'galleta': 'assets/fotos/galleta.png',
+    'gallina': 'assets/fotos/gallina.png',
+    'globo_rojo': 'assets/fotos/globo_rojo.png',
+    'guantes': 'assets/fotos/guantes.png',
+    'limon': 'assets/fotos/limon.png',
+  };
 
   /// Ruta de la FOTO real para un id, o `null` si aún no hay foto (usar dibujo).
   static String? fotoPara(String raw) {
@@ -421,8 +519,11 @@ class IlustracionResolver {
     return _fotos[canon] ?? _fotos[s];
   }
 
-  /// `true` si existe una ilustración concreta para el id.
-  static bool tiene(String raw) => _canonico(raw) != null;
+  /// `true` si existe una ilustración concreta (FOTO o dibujo) para el id.
+  /// Incluye las fotos: si no, los widgets que preguntan `tiene()` antes de
+  /// pintar mostrarían TEXTO para objetos que sí tienen foto (rosa, servilleta,
+  /// cepillo…), volviendo el ejercicio de lectura e ilegible para baja visión.
+  static bool tiene(String raw) => fotoPara(raw) != null || _canonico(raw) != null;
 
   /// Etiqueta legible para accesibilidad (id con espacios).
   static String etiqueta(String raw) => raw.replaceAll('_', ' ');

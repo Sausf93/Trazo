@@ -14,11 +14,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import (
     EjercicioCatalogo,
+    Intento,
     PlanPacienteLinea,
     Sesion,
     SesionParticipante,
@@ -38,15 +39,40 @@ def _clamp_n(valor) -> int:
     return min(_MAX_N, max(1, n))
 
 
-async def _cola_desde_config(db: AsyncSession, config: dict) -> list["ItemColaData"]:
+async def _cola_desde_config(
+    db: AsyncSession, config: dict, usuario_final_id: str
+) -> list["ItemColaData"]:
     """Cola a partir de la config que fija la maestra para la sesión.
 
-    config = {"nivel": "medio", "lineas": [{"bloque": "razonamiento", "n": 4}, ...]}
-    Ese nivel aplica a todas las actividades de la sesión de esa persona.
+    config = {
+      "nivel": "medio",
+      "lineas": [{"bloque": "razonamiento", "n": 4}, ...],   # por dominio
+      "ejercicios": [{"ejercicio_id": "…", "nivel": "bajo"}, ...],  # concretos
+    }
+    - `ejercicios` = actividades CONCRETAS que la integradora eligió EN VIVO (o una
+      propuesta aceptada); van primero, con su propio nivel si se indica.
+    - `lineas` = bloques; el nivel de la config aplica a todas salvo que la línea
+      traiga el suyo. Dentro de un bloque se prioriza lo MENOS jugado (frescura).
     """
     nivel = config.get("nivel")
-    dificultad = _NIVEL_DIFICULTAD.get(nivel)
     cola: list[ItemColaData] = []
+
+    # 1) Actividades concretas elegidas en vivo (o propuesta aceptada).
+    for it in config.get("ejercicios", []) or []:
+        eid = it.get("ejercicio_id") if isinstance(it, dict) else it
+        if not eid:
+            continue
+        ej = await db.get(EjercicioCatalogo, eid)
+        if ej is None or not ej.activo:
+            continue
+        ni = (it.get("nivel") if isinstance(it, dict) else None) or nivel
+        cola.append(ItemColaData(
+            ejercicio_id=ej.id, nombre=ej.nombre, bloque=ej.bloque,
+            plantilla=ej.plantilla_tipo, nivel=ni, origen="en_vivo",
+        ))
+
+    # 2) Bloques (dominio) fijados para la sesión.
+    dificultad = _NIVEL_DIFICULTAD.get(nivel)
     for linea in config.get("lineas", []):
         bloque = linea.get("bloque")
         n = _clamp_n(linea.get("n", 1))
@@ -55,6 +81,7 @@ async def _cola_desde_config(db: AsyncSession, config: dict) -> list["ItemColaDa
         candidatos = await _ejercicios_de_bloque(db, bloque, dificultad)
         if not candidatos:
             continue
+        candidatos = await _ordenar_por_frescura(db, usuario_final_id, candidatos)
         for i in range(n):
             ej = candidatos[i % len(candidatos)]
             cola.append(ItemColaData(
@@ -64,6 +91,33 @@ async def _cola_desde_config(db: AsyncSession, config: dict) -> list["ItemColaDa
     return cola
 
 
+async def _ordenar_por_frescura(
+    db: AsyncSession, usuario_final_id: str,
+    candidatos: list[EjercicioCatalogo],
+) -> list[EjercicioCatalogo]:
+    """Ordena los candidatos poniendo delante los que la persona ha jugado MENOS.
+
+    Así la app "propone" actividades frescas cada día (no siempre las mismas) sin
+    dejar de ser DETERMINISTA: a igualdad de uso se conserva el orden de entrada
+    (por nombre). Con historial vacío el orden es idéntico al de antes."""
+    ids = [e.id for e in candidatos]
+    if not ids:
+        return candidatos
+    filas = (
+        await db.execute(
+            select(Intento.ejercicio_id, func.count())
+            .where(
+                Intento.usuario_final_id == usuario_final_id,
+                Intento.ejercicio_id.in_(ids),
+            )
+            .group_by(Intento.ejercicio_id)
+        )
+    ).all()
+    uso = {eid: c for eid, c in filas}
+    # sorted es estable: los empates (mismo uso) mantienen el orden por nombre.
+    return sorted(candidatos, key=lambda e: uso.get(e.id, 0))
+
+
 @dataclass
 class ItemColaData:
     ejercicio_id: str
@@ -71,7 +125,10 @@ class ItemColaData:
     bloque: str
     plantilla: str
     nivel: str | None
-    origen: str  # 'dominio' | 'ejercicio' | 'grupo'
+    # De dónde nace el ítem: plan por dominio/ejercicio, grupo compartido, config
+    # de sesión (bloques que fijó la maestra), o 'en_vivo' (actividad concreta
+    # elegida por la integradora en el momento o propuesta aceptada).
+    origen: str  # 'dominio' | 'ejercicio' | 'grupo' | 'sesion' | 'en_vivo'
     plan_linea_id: str | None = None
 
 
@@ -177,7 +234,7 @@ async def construir_cola(
             )
         ).scalars().first()
         if sp is not None and sp.config_json:
-            return await _cola_desde_config(db, sp.config_json)
+            return await _cola_desde_config(db, sp.config_json, usuario_final_id)
 
     # --- Modo individual: resolver el plan de la persona ---
     lineas = (
@@ -215,8 +272,18 @@ async def construir_cola(
                 db, ln.bloque, _NIVEL_DIFICULTAD.get(ln.nivel))
             if not candidatos:
                 continue
-            # Rotación determinista: recorre el catálogo del bloque, ciclando
-            # si se piden más de los disponibles.
+            # Si la dificultad pedida tiene MENOS ejercicios que `n`, se completa
+            # con el resto del bloque (otras dificultades) para NO repetir la misma
+            # actividad en una sesión (repetir falsea la base de la evolución).
+            if len(candidatos) < n:
+                vistos_ej = {e.id for e in candidatos}
+                for e in await _ejercicios_de_bloque(db, ln.bloque, None):
+                    if e.id not in vistos_ej:
+                        candidatos.append(e)
+                        vistos_ej.add(e.id)
+            # Frescura: primero lo MENOS jugado por esta persona (la app propone
+            # variedad); determinista, con historial vacío = orden por nombre.
+            candidatos = await _ordenar_por_frescura(db, usuario_final_id, candidatos)
             for i in range(n):
                 ej = candidatos[i % len(candidatos)]
                 cola.append(ItemColaData(

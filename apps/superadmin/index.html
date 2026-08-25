@@ -142,10 +142,37 @@ async function cargar(){
   try {
     const centros = await api("/plataforma/centros");
     if(!centros.length){ $("lista").innerHTML = '<p class="muted">Aún no hay centros. Crea el primero arriba.</p>'; return; }
-    $("lista").innerHTML = centros.map(tarjetaCentro).join("");
+    $("lista").innerHTML = resumenGlobal(centros) + centros.map(tarjetaCentro).join("");
   } catch(e){
     $("lista").innerHTML = '<p class="msg err">No se pudieron cargar los centros: '+e.message+'</p>';
   }
+}
+
+// Cabecera de totales de TODA la plataforma (vista de panel global).
+function resumenGlobal(centros){
+  const sum = (f) => centros.reduce((a,c)=>a+(f(c)||0),0);
+  const t = {
+    centros: centros.length,
+    activos: centros.filter(c=>c.activo).length,
+    trab: sum(c=>c.n_staff_activos),
+    personas: sum(c=>c.n_pacientes),
+    activas: sum(c=>c.personas_activas),
+    sobre: centros.filter(c=>c.sobre_tope).length,
+  };
+  const tile = (n,l) => `<div style="flex:1;min-width:110px;text-align:center">
+    <div style="font-size:30px;font-weight:800;color:#1F7A70;line-height:1">${n}</div>
+    <div style="font-size:12.5px;color:#5A716E;margin-top:4px">${l}</div></div>`;
+  const aviso = t.sobre>0
+    ? `<div style="margin-top:12px;background:#FDEEE8;border:1px solid #E7B7A0;border-radius:10px;padding:10px 14px;color:#8A3B22;font-size:13.5px">⚠ ${t.sobre} centro(s) por encima de su tope de personas — revisa la facturación por excedente.</div>`
+    : '';
+  return `<div style="background:#F5FBFA;border:1px solid #D2E6E2;border-radius:14px;padding:18px;margin-bottom:20px">
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      ${tile(t.centros, 'centros ('+t.activos+' activos)')}
+      ${tile(t.trab, 'trabajadores')}
+      ${tile(t.personas, 'personas de alta')}
+      ${tile(t.activas, 'activas este mes')}
+    </div>${aviso}
+  </div>`;
 }
 
 function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
@@ -153,14 +180,21 @@ function fecha(iso){ try { return new Date(iso).toLocaleDateString("es-ES"); } c
 
 function tarjetaCentro(c){
   const badge = c.activo ? '<span class="badge ok">Activo</span>' : '<span class="badge block">Bloqueado</span>';
+  // Aviso de TOPE: personas activas del mes vs plan. Si se pasa, badge naranja
+  // (base de la facturación por excedente / detección de "1 centro en 3 sedes").
+  const tope = c.tope_personas || 0;
+  const act = c.personas_activas || 0;
+  const topeBadge = (c.sobre_tope)
+    ? `<span class="badge block" title="Se ha pasado del tope del plan">⚠ ${act}/${tope} activas · +${c.personas_extra} extra</span>`
+    : (tope ? `<span class="badge ok" style="background:#E8F5F2;color:#1F7A70">${act}/${tope} activas</span>` : '');
   const btn = c.activo
     ? `<button class="btn coral" onclick="bloquear('${c.id}', false)">Bloquear</button>`
     : `<button class="btn" onclick="bloquear('${c.id}', true)">Reactivar</button>`;
   return `<div class="centro ${c.activo ? '' : 'blocked'}" id="c-${c.id}">
     <div class="row">
       <div class="grow">
-        <h3 style="font-size:19px">${esc(c.nombre)} &nbsp;${badge}</h3>
-        <div class="muted">Alta: ${fecha(c.creado_en)} · ${c.n_staff_activos}/${c.n_staff} cuentas activas · ${c.n_pacientes} pacientes</div>
+        <h3 style="font-size:19px">${esc(c.nombre)} &nbsp;${badge} &nbsp;${topeBadge}</h3>
+        <div class="muted">Alta: ${fecha(c.creado_en)} · ${c.n_staff_activos}/${c.n_staff} cuentas activas · ${c.n_pacientes} personas dadas de alta · ${act} activas este mes (plan: ${tope})</div>
       </div>
       <button class="btn ghost" onclick="verStaff('${c.id}')">Ver cuentas</button>
       ${btn}

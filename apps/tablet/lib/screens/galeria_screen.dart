@@ -5,8 +5,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart'
+    show Clipboard, ClipboardData, rootBundle;
 
+import '../banco_veredictos.dart';
 import '../models.dart';
 import '../theme.dart';
 import '../widgets/arrastrar_posicion_widget.dart';
@@ -14,6 +16,7 @@ import '../widgets/busqueda_visual_widget.dart';
 import '../widgets/conteo_comparacion_widget.dart';
 import '../widgets/generico_widget.dart';
 import '../widgets/manejo_cantidad_widget.dart';
+import '../widgets/memoria_parejas_widget.dart';
 import '../widgets/memoria_visual_widget.dart';
 import '../widgets/secuencia_ordenar_widget.dart';
 import '../widgets/seleccion_multiple_widget.dart';
@@ -31,6 +34,28 @@ const _kBloques = {
   'vida_cotidiana': 'Vida cotidiana',
 };
 
+/// Traduce el Map de métricas a un resumen legible (esta pantalla también
+/// alimenta la vitrina comercial: nunca debe verse el Map en crudo).
+String _resumenMetricas(Map<String, dynamic> m) {
+  const etiquetas = {
+    'correcto': 'Resultado',
+    'aciertos': 'Aciertos',
+    'errores': 'Errores',
+    'intentos': 'Intentos',
+    'pistas': 'Pistas',
+    'ayudas': 'Ayudas',
+  };
+  final partes = <String>[];
+  m.forEach((k, v) {
+    // Se omite el ruido técnico (tiempos en ms, ids, etc.).
+    if (k.contains('tiempo') || k.contains('ms') || k.endsWith('_id')) return;
+    final etiqueta = etiquetas[k] ?? k.replaceAll('_', ' ');
+    final valor = v is bool ? (v ? 'sí' : 'no') : '$v';
+    partes.add('$etiqueta: $valor');
+  });
+  return partes.isEmpty ? 'actividad completada.' : partes.join('  ·  ');
+}
+
 /// Construye el widget de la actividad (mismo repertorio que el kiosco real).
 Widget renderActividadDemo(
     Instancia inst, ValueChanged<Map<String, dynamic>> onMetricas) {
@@ -41,6 +66,9 @@ Widget renderActividadDemo(
       return SeleccionMultipleWidget(instancia: inst, onMetricas: onMetricas);
     case 'memoria_visual':
       return MemoriaVisualWidget(
+          instancia: inst, onMetricas: onMetricas, onListoParaAvanzar: (_) {});
+    case 'parejas':
+      return MemoriaParejasWidget(
           instancia: inst, onMetricas: onMetricas, onListoParaAvanzar: (_) {});
     case 'secuencia_ordenar':
       return SecuenciaOrdenarWidget(instancia: inst, onMetricas: onMetricas);
@@ -61,15 +89,16 @@ Widget renderActividadDemo(
 /// una por cada tipo, elegidas por ser vistosas y fáciles de entender. Es lo que
 /// ve quien pulsa "Probar las actividades" en la landing (no la app interna).
 const _kVitrina = <String>[
-  'Sigue la línea',                 // trazo (con "Empieza" y flechas)
-  '¿Qué objeto es?',                // elegir imagen
-  'Completar refranes',             // elegir palabra
-  'Memoria de figuras',             // memoria visual
-  'Cuenta cuántos hay',             // contar
-  'Poner la mesa',                  // arrastrar a su sitio
-  'Busca los corazones',            // búsqueda visual
-  'Preparar una tortilla',          // ordenar pasos
-  'Reúne el importe (solo monedas)',// dinero
+  'Sigue la línea', // trazo (con "Empieza" y flechas)
+  '¿Qué objeto es?', // elegir imagen
+  'Completar refranes', // elegir palabra
+  'Memoria de figuras', // memoria visual
+  'Parejas de animales', // parejas (encontrar iguales)
+  'Cuenta cuántos hay', // contar
+  '¿Fruta o verdura?', // arrastrar a su sitio (categoría clara)
+  'Busca los corazones', // búsqueda visual
+  'Ordena las etapas de la vida', // ordenar pasos (orden inequívoco)
+  'Reúne el importe (solo monedas)', // dinero
 ];
 
 class GaleriaScreen extends StatefulWidget {
@@ -180,18 +209,19 @@ class _GaleriaScreenState extends State<GaleriaScreen> {
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 34),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 34),
                 child: Center(
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 880),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
+                        const Row(
                           children: [
-                            const TrazoLogo(size: 46),
-                            const SizedBox(width: 14),
-                            const Column(
+                            TrazoLogo(size: 46),
+                            SizedBox(width: 18),
+                            Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('Trazo',
@@ -268,6 +298,8 @@ IconData _iconoPlantilla(String plantilla) {
       return Icons.touch_app;
     case 'memoria_visual':
       return Icons.grid_view_rounded;
+    case 'parejas':
+      return Icons.style;
     case 'conteo_comparacion':
       return Icons.tag;
     case 'arrastrar_posicion':
@@ -359,12 +391,250 @@ class _FilaActividad extends StatelessWidget {
   }
 }
 
+/// BANCO DE PRUEBAS (solo admin supremo): elige un bloque y recorre TODAS sus
+/// actividades una a una, para revisar que se ven bien, tienen sentido y no
+/// tienen dibujos rotos. No guarda nada. Se entra por URL secreta (ver main.dart).
+class BancoPruebasScreen extends StatefulWidget {
+  const BancoPruebasScreen({super.key});
+
+  @override
+  State<BancoPruebasScreen> createState() => _BancoPruebasScreenState();
+}
+
+class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
+  List<Instancia> _todas = [];
+  bool _cargando = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _cargar();
+  }
+
+  Future<void> _cargar() async {
+    try {
+      final txt = await rootBundle.loadString('assets/demo_actividades.json');
+      final data = jsonDecode(txt) as Map<String, dynamic>;
+      final lista = (data['actividades'] as List? ?? const [])
+          .map((e) => Instancia.fromJson(e as Map<String, dynamic>))
+          .toList();
+      if (!mounted) return;
+      setState(() {
+        _todas = lista;
+        _cargando = false;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _cargando = false);
+    }
+  }
+
+  void _abrirBloque(List<Instancia> delBloque) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(
+          builder: (_) => _JugarDemo(
+              actividades: delBloque, indiceInicial: 0, mostrarProgreso: true),
+        ))
+        .then((_) => setState(() {})); // refresca el contador al volver
+  }
+
+  /// Resumen de lo que la especialista ha marcado, con la lista de "a revisar" y
+  /// un botón para copiarla (y pasársela a quien lo arregla).
+  Future<void> _verMarcadas() async {
+    final todos = await BancoVeredictos.instance.todos();
+    if (!mounted) return;
+    final validas =
+        todos.entries.where((e) => e.value.estado == 'valida').toList();
+    final revisar = todos.entries
+        .where((e) => e.value.estado == 'revisar')
+        .toList()
+      ..sort((a, b) => a.key.compareTo(b.key));
+
+    String textoExport() {
+      final b = StringBuffer();
+      b.writeln('TRAZO — actividades a revisar (${revisar.length}):');
+      for (final e in revisar) {
+        b.writeln(
+            '• ${e.key}${e.value.nota.isNotEmpty ? ' — ${e.value.nota}' : ''}');
+      }
+      b.writeln(
+          '\nValidadas: ${validas.length} · A revisar: ${revisar.length}');
+      return b.toString();
+    }
+
+    await showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: TrazoColors.ivory,
+      builder: (ctx) => DraggableScrollableSheet(
+        expand: false,
+        initialChildSize: 0.7,
+        maxChildSize: 0.95,
+        builder: (ctx, scroll) => Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Lo que has marcado',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w800,
+                      color: TrazoColors.ink)),
+              const SizedBox(height: 4),
+              Text(
+                  '✅ Válidas: ${validas.length}    ⚠️ A revisar: ${revisar.length}',
+                  style: const TextStyle(
+                      fontSize: 15, color: TrazoColors.sageDark)),
+              const SizedBox(height: 12),
+              if (revisar.isEmpty)
+                const Text('Aún no has marcado ninguna «a revisar».',
+                    style: TextStyle(color: TrazoColors.sageDark))
+              else
+                Expanded(
+                  child: ListView(
+                    controller: scroll,
+                    children: [
+                      for (final e in revisar)
+                        Card(
+                          color: TrazoColors.white,
+                          margin: const EdgeInsets.symmetric(vertical: 4),
+                          child: ListTile(
+                            leading: const Icon(Icons.report_problem,
+                                color: TrazoColors.coralDark),
+                            title: Text(e.key,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w700)),
+                            subtitle: e.value.nota.isEmpty
+                                ? null
+                                : Text(e.value.nota),
+                            trailing: IconButton(
+                              icon: const Icon(Icons.delete_outline),
+                              tooltip: 'Quitar de la lista',
+                              onPressed: () async {
+                                await BancoVeredictos.instance.borrar(e.key);
+                                if (ctx.mounted) Navigator.pop(ctx);
+                                _verMarcadas();
+                              },
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              const SizedBox(height: 8),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: revisar.isEmpty
+                      ? null
+                      : () async {
+                          await Clipboard.setData(
+                              ClipboardData(text: textoExport()));
+                          if (ctx.mounted) {
+                            ScaffoldMessenger.of(ctx).showSnackBar(
+                                const SnackBar(content: Text('Lista copiada')));
+                          }
+                        },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: TrazoColors.sageDark,
+                      padding: const EdgeInsets.symmetric(vertical: 14)),
+                  icon: const Icon(Icons.copy),
+                  label: const Text('Copiar la lista de «a revisar»'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Agrupa por bloque en el orden de _kBloques (y añade los que falten al final).
+    final porBloque = <String, List<Instancia>>{};
+    for (final inst in _todas) {
+      porBloque.putIfAbsent(inst.bloque, () => []).add(inst);
+    }
+    final clavesOrdenadas = <String>[
+      ...(_kBloques.keys.where(porBloque.containsKey)),
+      ...(porBloque.keys.where((k) => !_kBloques.containsKey(k))),
+    ];
+
+    return Scaffold(
+      backgroundColor: TrazoColors.ivory,
+      appBar: AppBar(
+        title: const Text('Banco de pruebas · por bloque'),
+        backgroundColor: TrazoColors.white,
+        foregroundColor: TrazoColors.ink,
+        actions: [
+          TextButton.icon(
+            onPressed: _verMarcadas,
+            icon: const Icon(Icons.fact_check, color: TrazoColors.sageDark),
+            label: const Text('Lo marcado',
+                style: TextStyle(
+                    color: TrazoColors.sageDark, fontWeight: FontWeight.w700)),
+          ),
+        ],
+      ),
+      body: _cargando
+          ? const Center(child: CircularProgressIndicator())
+          : ListView(
+              padding: const EdgeInsets.all(16),
+              children: [
+                Text(
+                  'Elige un bloque y recórrelo entero: revisa que cada actividad '
+                  'se ve bien, tiene sentido y no le faltan dibujos. '
+                  '${_todas.length} actividades en total. No guarda nada.',
+                  style: const TextStyle(
+                      color: TrazoColors.sageDark, fontSize: 15),
+                ),
+                const SizedBox(height: 16),
+                for (final clave in clavesOrdenadas)
+                  Card(
+                    color: TrazoColors.white,
+                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    child: ListTile(
+                      onTap: () => _abrirBloque(porBloque[clave]!),
+                      leading: CircleAvatar(
+                        backgroundColor: TrazoColors.sageDark,
+                        foregroundColor: Colors.white,
+                        child: Text('${porBloque[clave]!.length}',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15)),
+                      ),
+                      title: Text(_kBloques[clave] ?? clave,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w800,
+                              color: TrazoColors.ink,
+                              fontSize: 17)),
+                      subtitle: Text(
+                          '${porBloque[clave]!.length} actividades — tócalo para probarlas todas',
+                          style: const TextStyle(
+                              color: TrazoColors.sageDark, fontSize: 13)),
+                      trailing: const Icon(Icons.play_circle_fill,
+                          color: TrazoColors.coralDark, size: 32),
+                    ),
+                  ),
+              ],
+            ),
+    );
+  }
+}
+
 /// Reproductor a pantalla completa: prueba la actividad y muestra qué mediría la
 /// app cuando la persona responde. "Siguiente" pasa a la actividad de al lado.
 class _JugarDemo extends StatefulWidget {
   final List<Instancia> actividades;
   final int indiceInicial;
-  const _JugarDemo({required this.actividades, required this.indiceInicial});
+
+  /// En el banco de pruebas: muestra "N/total" para saber cuántas quedan del
+  /// bloque (en la vitrina/demo no aporta y distrae, así que va apagado).
+  final bool mostrarProgreso;
+  const _JugarDemo(
+      {required this.actividades,
+      required this.indiceInicial,
+      this.mostrarProgreso = false});
 
   @override
   State<_JugarDemo> createState() => _JugarDemoState();
@@ -376,11 +646,143 @@ class _JugarDemoState extends State<_JugarDemo> {
 
   Instancia get _inst => widget.actividades[_i];
 
+  bool _vuelta =
+      false; // en el banco: ya se recorrió el bloque entero al menos una vez
+
+  // Veredicto de la especialista sobre la actividad actual (solo banco).
+  Veredicto? _veredicto;
+  final TextEditingController _notaCtrl = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.mostrarProgreso) _cargarVeredicto();
+  }
+
+  @override
+  void dispose() {
+    _notaCtrl.dispose();
+    super.dispose();
+  }
+
+  Future<void> _cargarVeredicto() async {
+    final v = await BancoVeredictos.instance.para(_inst.nombre);
+    if (!mounted) return;
+    setState(() {
+      _veredicto = v;
+      _notaCtrl.text = v?.nota ?? '';
+    });
+  }
+
+  Future<void> _marcar(String estado) async {
+    await BancoVeredictos.instance
+        .guardar(_inst.nombre, estado, _notaCtrl.text.trim());
+    if (!mounted) return;
+    setState(() => _veredicto = Veredicto(estado, _notaCtrl.text.trim()));
+  }
+
   void _siguiente() {
     setState(() {
-      _i = (_i + 1) % widget.actividades.length;
+      final sig = _i + 1;
+      if (sig >= widget.actividades.length) {
+        _vuelta = true; // vuelve al principio del bloque
+      }
+      _i = sig % widget.actividades.length;
       _ultimasMetricas = null;
     });
+    if (widget.mostrarProgreso) _cargarVeredicto();
+  }
+
+  // Nota plegada por defecto: en el móvil roba mucha pantalla a la actividad.
+  bool _notaAbierta = false;
+
+  /// Barra COMPACTA del banco (móvil): veredicto + nota plegable + Siguiente, en
+  /// el mínimo espacio, para dejar casi toda la pantalla a la actividad.
+  Widget _barraBanco() {
+    final v = _veredicto;
+    Color fondo(String e) => v?.estado == e
+        ? (e == 'valida' ? TrazoColors.sageDark : TrazoColors.coralDark)
+        : TrazoColors.white;
+    Color texto(String e) => v?.estado == e ? Colors.white : TrazoColors.ink;
+
+    Widget chip(String estado, IconData ic, String etq, Color borde) =>
+        Expanded(
+          child: OutlinedButton.icon(
+            onPressed: () => _marcar(estado),
+            style: OutlinedButton.styleFrom(
+              backgroundColor: fondo(estado),
+              foregroundColor: texto(estado),
+              side: BorderSide(color: borde),
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              visualDensity: VisualDensity.compact,
+            ),
+            icon: Icon(ic, size: 18),
+            label: Text(etq, style: const TextStyle(fontSize: 14)),
+          ),
+        );
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.fromLTRB(10, 6, 10, 8),
+      color: const Color(0xFFF3F7F5),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (_notaAbierta)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: TextField(
+                controller: _notaCtrl,
+                minLines: 1,
+                maxLines: 2,
+                autofocus: true,
+                style: const TextStyle(fontSize: 14),
+                decoration: InputDecoration(
+                  isDense: true,
+                  hintText: 'Qué falla, qué cambiar…',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+                onChanged: (t) {
+                  if (v != null) {
+                    BancoVeredictos.instance
+                        .guardar(_inst.nombre, v.estado, t.trim());
+                  }
+                },
+              ),
+            ),
+          Row(
+            children: [
+              chip(
+                  'valida', Icons.check_circle, 'Válida', TrazoColors.sageDark),
+              const SizedBox(width: 6),
+              chip('revisar', Icons.report_problem, 'Revisar',
+                  TrazoColors.coralDark),
+              const SizedBox(width: 6),
+              // Nota (plegable): el punto rojo indica que ya hay texto escrito.
+              IconButton(
+                onPressed: () => setState(() => _notaAbierta = !_notaAbierta),
+                tooltip: 'Nota',
+                icon: Icon(
+                    _notaCtrl.text.trim().isEmpty
+                        ? Icons.sticky_note_2_outlined
+                        : Icons.sticky_note_2,
+                    color: TrazoColors.sageDark),
+              ),
+              const SizedBox(width: 2),
+              ElevatedButton(
+                onPressed: _siguiente,
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: TrazoColors.sageDark,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 12)),
+                child: const Text('Siguiente →'),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -395,11 +797,24 @@ class _JugarDemoState extends State<_JugarDemo> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Text(_inst.nombre,
-                        style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w800,
-                            color: TrazoColors.ink)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (widget.mostrarProgreso)
+                          Text(
+                              '${_i + 1} / ${widget.actividades.length}  ·  ${_inst.plantilla}',
+                              style: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  color: TrazoColors.sageDark)),
+                        Text(_inst.nombre,
+                            style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800,
+                                color: TrazoColors.ink)),
+                      ],
+                    ),
                   ),
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
@@ -411,7 +826,8 @@ class _JugarDemoState extends State<_JugarDemo> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                // En el banco (móvil) casi sin margen: la actividad manda.
+                padding: EdgeInsets.all(widget.mostrarProgreso ? 6 : 16),
                 // Clave por índice: recrea el estado del widget al cambiar.
                 child: KeyedSubtree(
                   key: ValueKey(_i),
@@ -421,40 +837,62 @@ class _JugarDemoState extends State<_JugarDemo> {
                 ),
               ),
             ),
-            if (_ultimasMetricas != null)
+            // Banco de pruebas: avisa cuando ya se recorrió el bloque entero (para
+            // que el revisor sepa que dio la vuelta y no siga en bucle sin darse cuenta).
+            if (widget.mostrarProgreso && _vuelta)
               Container(
                 width: double.infinity,
-                color: TrazoColors.card,
-                padding: const EdgeInsets.all(12),
+                color: TrazoColors.sageDark,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
                 child: Text(
-                  'La app registró: ${_ultimasMetricas.toString()}',
+                  'Has recorrido las ${widget.actividades.length} de este bloque; vuelve a empezar.',
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
-                      fontSize: 13, color: TrazoColors.sageDark),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white),
                 ),
               ),
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('Cerrar'),
-                    ),
+            // Banco: barra compacta (veredicto + Siguiente). Demo/vitrina: fila normal.
+            if (widget.mostrarProgreso)
+              _barraBanco()
+            else ...[
+              if (_ultimasMetricas != null)
+                Container(
+                  width: double.infinity,
+                  color: TrazoColors.card,
+                  padding: const EdgeInsets.all(12),
+                  child: Text(
+                    'En esta prueba — ${_resumenMetricas(_ultimasMetricas!)}',
+                    style: const TextStyle(
+                        fontSize: 13, color: TrazoColors.sageDark),
                   ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: ElevatedButton.icon(
-                      onPressed: _siguiente,
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: TrazoColors.sage),
-                      icon: const Icon(Icons.arrow_forward),
-                      label: const Text('Siguiente'),
+                ),
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: const Text('Cerrar'),
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: _siguiente,
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: TrazoColors.sageDark),
+                        icon: const Icon(Icons.arrow_forward),
+                        label: const Text('Siguiente'),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
+            ],
           ],
         ),
       ),

@@ -63,3 +63,77 @@ async def test_sin_valorar_no_infla_ni_alerta(client):
     assert ficha["sin_valorar"] == 1
     assert ficha["logrado"] == 0
     assert ficha["n_intentos"] == 0
+
+
+@pytest.mark.asyncio
+async def test_cola_revision_lista_y_resuelve(client):
+    """La bandeja lista los sin_valorar; al fijar el resultado desaparecen de la
+    cola y pasan a contar en la evolución."""
+    login, headers = await _login(client)
+    centro_id = login["centro_id"]
+    usuarios = await _usuarios(client, headers, centro_id)
+    paco = usuarios["Paco"]["id"]
+    ej = (await client.get("/ejercicios?activo=true", headers=headers)).json()[0]
+
+    r = await client.post("/sesiones", headers=headers,
+                          json={"tipo": "individual", "participantes": [paco]})
+    sesion_id = r.json()["id"]
+    intento_id = str(uuid.uuid4())
+    await client.post(f"/sesiones/{sesion_id}/intentos", headers=headers,
+                      json={"id": intento_id, "usuario_final_id": paco,
+                            "sesion_id": sesion_id, "ejercicio_id": ej["id"],
+                            "estado": "sin_valorar", "valores_json": {},
+                            "cantidad_objetivo_json": {}})
+
+    # Aparece en la cola de revisión con su contexto.
+    r = await client.get("/pendientes", headers=headers)
+    assert r.status_code == 200, r.text
+    pend = next(p for p in r.json() if p["id"] == intento_id)
+    assert pend["alias_interno"] == "Paco" and pend["ejercicio"]
+
+    # La integradora lo marca logrado -> ya no está pendiente.
+    r = await client.patch(f"/intentos/{intento_id}/resultado", headers=headers,
+                           json={"resultado": "logrado"})
+    assert r.status_code == 200, r.text
+    r = await client.get("/pendientes", headers=headers)
+    assert all(p["id"] != intento_id for p in r.json())
+
+
+@pytest.mark.asyncio
+async def test_cola_revision_aislada_por_centro(client, Session):
+    """Un staff de otro centro no ve los pendientes ajenos (multi-tenant)."""
+    from app.models import Centro, UsuarioStaff
+    from app.security import hash_password
+
+    login, headers = await _login(client)
+    centro_id = login["centro_id"]
+    usuarios = await _usuarios(client, headers, centro_id)
+    paco = usuarios["Paco"]["id"]
+    ej = (await client.get("/ejercicios?activo=true", headers=headers)).json()[0]
+    r = await client.post("/sesiones", headers=headers,
+                          json={"tipo": "individual", "participantes": [paco]})
+    sesion_id = r.json()["id"]
+    intento_id = str(uuid.uuid4())
+    await client.post(f"/sesiones/{sesion_id}/intentos", headers=headers,
+                      json={"id": intento_id, "usuario_final_id": paco,
+                            "sesion_id": sesion_id, "ejercicio_id": ej["id"],
+                            "estado": "sin_valorar", "valores_json": {},
+                            "cantidad_objetivo_json": {}})
+
+    async with Session() as db:
+        c2 = Centro(nombre="Centro Ajeno")
+        db.add(c2)
+        await db.flush()
+        db.add(UsuarioStaff(centro_id=c2.id, nombre="Ajeno", rol="integradora",
+                            email="ajeno@trazo.local", password_hash=hash_password("trazo1234")))
+        await db.commit()
+    r = await client.post("/auth/login",
+                          data={"username": "ajeno@trazo.local", "password": "trazo1234"})
+    headers2 = {"Authorization": f"Bearer {r.json()['access_token']}"}
+
+    # El centro ajeno no ve el pendiente de Paco.
+    r = await client.get("/pendientes", headers=headers2)
+    assert all(p["id"] != intento_id for p in r.json())
+    # Y filtrar por la persona ajena da 403.
+    r = await client.get(f"/pendientes?usuario_final_id={paco}", headers=headers2)
+    assert r.status_code == 403, r.text

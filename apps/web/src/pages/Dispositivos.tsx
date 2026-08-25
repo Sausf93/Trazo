@@ -31,26 +31,26 @@ export function DispositivosPage() {
   return (
     <div>
       <PageHeader
-        eyebrow="Dispositivos"
+        eyebrow="Tablets"
         title="Tablets emparejadas"
-        subtitle="Las tablets del centro se emparejan una sola vez. En el día a día no piden login; si se pierde una, se desvincula desde aquí."
+        subtitle="Las tablets del centro se emparejan una sola vez. En el día a día se abren solas; si se pierde una, se desvincula desde aquí."
       />
 
       <EmparejarDispositivo centroId={centroId} onCreado={() => dispositivos.reload()} />
 
       <section aria-labelledby="lista-dispositivos">
         <h2 id="lista-dispositivos" style={{ fontSize: 20, marginBottom: 14 }}>
-          Dispositivos del centro
+          Tablets del centro
         </h2>
 
-        {dispositivos.loading && <Spinner label="Cargando dispositivos…" />}
+        {dispositivos.loading && <Spinner label="Cargando tablets…" />}
         {dispositivos.error && (
-          <StateMessage tone="error" title="No se pudieron cargar los dispositivos">
+          <StateMessage tone="error" title="No se pudieron cargar las tablets">
             {dispositivos.error}
           </StateMessage>
         )}
         {dispositivos.data && dispositivos.data.length === 0 && (
-          <StateMessage title="Sin dispositivos">
+          <StateMessage title="Sin tablets">
             Todavía no hay ninguna tablet emparejada. Empareja la primera con el formulario de arriba.
           </StateMessage>
         )}
@@ -63,7 +63,7 @@ export function DispositivosPage() {
                     <Th>Nombre</Th>
                     <Th>Rol</Th>
                     <Th>Estado</Th>
-                    <Th>Alta</Th>
+                    <Th>Última actividad</Th>
                     <Th> </Th>
                   </tr>
                 </thead>
@@ -88,7 +88,7 @@ function FilaDispositivo({ disp, onRevocado }: { disp: Dispositivo; onRevocado: 
   async function revocar() {
     if (
       !window.confirm(
-        "¿Seguro que quieres revocar «" + disp.nombre + "»? La tablet dejará de funcionar.",
+        "¿Seguro que quieres desvincular «" + disp.nombre + "»? La tablet dejará de funcionar hasta que la vuelvas a emparejar.",
       )
     ) {
       return;
@@ -99,7 +99,7 @@ function FilaDispositivo({ disp, onRevocado }: { disp: Dispositivo; onRevocado: 
       await revocarDispositivo(disp.id);
       onRevocado();
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "No se pudo revocar el dispositivo.");
+      setError(err instanceof ApiError ? err.message : "No se pudo desvincular la tablet.");
     } finally {
       setRevocando(false);
     }
@@ -113,13 +113,20 @@ function FilaDispositivo({ disp, onRevocado }: { disp: Dispositivo; onRevocado: 
       </Td>
       <Td><Badge tone={disp.rol === "maestra" ? "sage" : "neutral"}>{labelRolDispositivo(disp.rol)}</Badge></Td>
       <Td>
-        {disp.activo ? <Badge tone="sage">Activo</Badge> : <Badge tone="coral">Revocado</Badge>}
+        {disp.activo ? <Badge tone="sage">Activa</Badge> : <Badge tone="coral">Desvinculada</Badge>}
       </Td>
-      <Td>{fmtFecha(disp.fecha_alta)}</Td>
+      <Td>
+        <div style={{ fontSize: 13 }}>
+          {disp.visto_en ? fmtFecha(disp.visto_en) : "sin actividad aún"}
+        </div>
+        <div style={{ fontSize: 11, color: colors.textFaint }}>
+          emparejada {fmtFecha(disp.emparejado_en ?? disp.fecha_alta)}
+        </div>
+      </Td>
       <Td>
         {disp.activo && (
           <Button variant="coral" onClick={revocar} disabled={revocando} style={{ padding: "8px 14px", fontSize: 14 }}>
-            {revocando ? "Revocando…" : "Revocar"}
+            {revocando ? "Desvinculando…" : "Desvincular"}
           </Button>
         )}
         {error && (
@@ -176,8 +183,10 @@ function EmparejarDispositivo({ centroId, onCreado }: { centroId: string; onCrea
     <Card style={{ marginBottom: 26 }}>
       <h2 style={{ fontSize: 19, marginBottom: 4 }}>Emparejar una tablet</h2>
       <p style={{ color: colors.textMuted, fontSize: 14, marginBottom: 18 }}>
-        Da de alta una tablet nueva. El rol se fija al emparejar: <strong>maestra</strong> (la de la
-        trabajadora, con login) o <strong>participante</strong> (kiosco, sin login).
+        Da de alta una tablet nueva. Con el código, la tablet queda vinculada a tu centro una sola vez.
+        Después, la misma tablet sirve para las dos cosas y se elige en cada uso: <strong>Maestra</strong>{" "}
+        (pide el acceso de la profesional) o <strong>Participante</strong> (se abre sola y solo muestra las
+        actividades a la persona usuaria).
       </p>
 
       <form onSubmit={onSubmit}>
@@ -232,7 +241,8 @@ function EmparejarDispositivo({ centroId, onCreado }: { centroId: string; onCrea
             Tablet «{creado.nombre}» emparejada
           </strong>
           <p style={{ fontSize: 13.5, color: colors.textMuted, marginBottom: 10 }}>
-            Copia este token ahora: es lo que introduce la tablet para vincularse y no se vuelve a mostrar.
+            Copia este código de emparejamiento ahora: es lo que escribes en la tablet para vincularla
+            (en la tablet: «Emparejar esta tablet» y pega el código), y no se vuelve a mostrar.
           </p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
             <code
@@ -250,7 +260,7 @@ function EmparejarDispositivo({ centroId, onCreado }: { centroId: string; onCrea
               {creado.token}
             </code>
             <Button variant="ghost" type="button" onClick={copiarToken}>
-              {copiado ? "Copiado ✓" : "Copiar token"}
+              {copiado ? "Copiado ✓" : "Copiar código"}
             </Button>
           </div>
         </div>

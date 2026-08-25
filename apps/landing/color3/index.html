@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trazo — Salvia Renovada</title>
+<meta name="description" content="Trazo digitaliza la estimulación cognitiva en tablet para centros de día y residencias: planificas nivel y número por persona en minutos, todo se mide solo y avisa pronto de cambios en el desempeño. Tablets sin login. Solicita una demo.">
+<link rel="canonical" href="https://trazo.app/">
+<!-- Open Graph -->
+<meta property="og:title" content="Trazo — Estimulación cognitiva para centros de día y residencias">
+<meta property="og:description" content="Trazo digitaliza la estimulación cognitiva en tablet: ejercicios adaptados a cada persona, panel de evolución individual y de grupo, y detección temprana de cambios.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Trazo — Estimulación cognitiva para centros de día y residencias">
+<meta name="twitter:description" content="Trazo digitaliza la estimulación cognitiva en tablet: ejercicios adaptados a cada persona, panel de evolución individual y de grupo, y detección temprana de cambios.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='11' fill='%2313A992'/><path d='M7%2026%20C11%2014%2015%2030%2020%2022%20C24%2016%2027%2024%2033%2015' fill='none' stroke='%23FFFEFB' stroke-width='3' stroke-linecap='round'/><circle cx='33' cy='15' r='2.6' fill='%23E8A87C'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Verde unificado: el acento (--sage) se acerca al tono sobrio dominante
+       (--sage-dark) para que ningún verde "cante" más fuerte que el resto. */
+    --ivory:#F6FAF6; --card:#E9F2E8; --ink:#243026; --sage:#13A992;
+    --sage-dark:#3F7A5E; --coral:#E8946A; --coral-dark:#BE5B37;
+    --sand:#D8E5D6; --white:#FFFEFB; --muted:#63715F; --faint:#93A08E;
+    --shadow:0 24px 50px -28px rgba(43,58,50,.4);
+    --radius:18px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
+  body{background:var(--ivory); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+  a{color:inherit; text-decoration:none;}
+  img,svg{max-width:100%;}
+  .wrap{width:100%; max-width:1180px; margin:0 auto; padding:0 clamp(20px,4vw,32px);}
+  section{padding:clamp(56px,8vw,96px) 0;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif; font-weight:500; letter-spacing:-.015em; color:var(--ink); line-height:1.08;}
+  .eyebrow{font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--sage-dark); margin-bottom:16px; display:inline-flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--sage-dark);}
+  h2.big{font-size:clamp(28px,4.4vw,44px); max-width:15ch; margin-bottom:16px;}
+  .lede{max-width:60ch; color:var(--muted); font-size:clamp(15px,1.7vw,18px); margin-bottom:44px;}
+  .center{text-align:center;}
+  .center .eyebrow{justify-content:center;}
+  .center h2.big, .center .lede{margin-left:auto; margin-right:auto;}
+
+  /* Botones */
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:600; font-size:15.5px; padding:14px 24px; border-radius:12px; border:1.6px solid transparent; cursor:pointer; transition:transform .12s ease, background .2s ease, box-shadow .2s ease; white-space:nowrap;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--sage-dark); color:#fff; box-shadow:0 10px 22px -12px rgba(92,122,102,.9);}
+  .btn-primary:hover{background:#4C6856;}
+  .btn-ghost{background:transparent; border-color:var(--sand); color:var(--ink);}
+  .btn-ghost:hover{background:var(--card);}
+  .btn-coral{background:#B06A3D; color:#fff;}
+  .btn-coral:hover{background:#98592F;}
+  .btn-lg{padding:16px 28px; font-size:16.5px;}
+
+  /* Foco de teclado accesible */
+  :focus-visible{outline:2px solid var(--sage-dark); outline-offset:2px;}
+
+  /* Logo */
+  .logo{display:inline-flex; align-items:center; gap:11px; font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:var(--ink);}
+  .logo svg{width:34px; height:34px; flex-shrink:0;}
+
+  /* Header */
+  header{position:sticky; top:0; z-index:100; background:rgba(250,246,239,.82); backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid transparent; transition:border-color .2s ease, box-shadow .2s ease;}
+  header.scrolled{border-color:rgba(201,191,164,.55); box-shadow:0 8px 24px -20px rgba(43,58,50,.5);}
+  .nav{display:flex; align-items:center; justify-content:space-between; height:70px; gap:20px;}
+  .nav-links{display:flex; gap:28px; align-items:center;}
+  .nav-links a{font-size:15px; color:var(--muted); font-weight:500;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-right{display:flex; gap:12px; align-items:center;}
+  .hamb{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px;}
+  .hamb span{width:24px; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  /* Menú móvil */
+  .mobile-menu{display:none; position:fixed; inset:70px 0 auto 0; background:var(--ivory); border-bottom:1px solid var(--sand); padding:16px clamp(20px,4vw,32px) 24px; z-index:99; box-shadow:var(--shadow);}
+  .mobile-menu.open{display:block;}
+  .mobile-menu a{display:block; padding:13px 0; font-size:17px; color:var(--ink); border-bottom:1px solid rgba(201,191,164,.4);}
+  .mobile-menu .btn{margin-top:16px; width:100%;}
+
+  /* Hero */
+  .hero{padding:clamp(48px,7vw,84px) 0 clamp(40px,6vw,72px); position:relative; isolation:isolate;}
+  /* Halo suave del verde de marca detrás de la tablet: da vida y profundidad
+     sin oscurecer nada (se adapta a cada paleta vía color-mix del primary). */
+  .hero::before{content:""; position:absolute; top:-140px; right:-60px; width:min(560px,60vw); height:min(560px,60vw); border-radius:50%; background:radial-gradient(circle, color-mix(in srgb, var(--sage) 24%, transparent), transparent 68%); z-index:-1; pointer-events:none;}
+  @media (max-width:860px){ .hero::before{display:none;} }
+  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(32px,5vw,56px); align-items:center;}
+  h1.title{font-size:clamp(36px,6vw,64px); margin-bottom:22px;}
+  .hero p.sub{font-size:clamp(16px,2vw,20px); color:var(--muted); max-width:52ch; margin-bottom:30px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .hero-trust{margin-top:24px; display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--faint);}
+  .hero-trust .badge{display:inline-flex; gap:6px; align-items:center; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--sage-dark);}
+
+  /* Mock tablet hero */
+  .device{position:relative;}
+  .tablet{background:#1F2B24; border-radius:26px; padding:14px; box-shadow:var(--shadow);}
+  .tablet-screen{background:var(--white); border-radius:16px; padding:20px 18px 22px;}
+  .ts-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;}
+  .ts-top .n{font-family:'Fraunces',serif; font-size:18px; color:var(--sage-dark); display:flex; align-items:center; gap:7px;}
+  .ts-top .n svg{width:20px; height:20px;}
+  .ts-top .av{width:30px; height:30px; border-radius:50%; background:var(--coral);}
+  .ts-title{font-size:14px; color:var(--muted); margin-bottom:12px;}
+  .ts-canvas{background:#FCFAF4; border:2px dashed var(--sand); border-radius:14px; padding:16px;}
+  .ts-canvas svg{width:100%; height:auto; display:block;}
+  .guide{fill:none; stroke:#DCD3BE; stroke-width:10; stroke-linecap:round;}
+  .userp{fill:none; stroke:var(--coral-dark); stroke-width:5; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:520; stroke-dashoffset:520; animation:draw 2.8s ease-out .4s forwards;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .ts-bottom{display:flex; justify-content:space-between; align-items:center; margin-top:14px;}
+  .dots{display:flex; gap:6px;} .dots .d{width:8px; height:8px; border-radius:50%; background:var(--sand);} .dots .d.on{background:var(--sage);}
+  .ts-next{background:var(--sage); color:#fff; border-radius:10px; padding:9px 16px; font-size:13px; font-weight:600;}
+  /* Tarjeta flotante de alerta */
+  .float-alert{position:absolute; right:-14px; bottom:-18px; width:min(260px,72%); background:var(--white); border:1px solid var(--coral); border-radius:14px; padding:14px 16px; box-shadow:var(--shadow); display:flex; gap:11px;}
+  .float-alert .pip{width:9px; height:9px; border-radius:50%; background:var(--coral-dark); margin-top:5px; flex-shrink:0;}
+  .float-alert .t{font-weight:600; font-size:13.5px; margin-bottom:2px;}
+  .float-alert .b{font-size:12px; color:#6B5A48; line-height:1.4;}
+
+  /* Banda estadísticas — clara y aireada (los números en el verde de marca,
+     no un bloque oscuro). Enmarcada con hairlines finas para leerse como módulo. */
+  .stats{background:var(--ivory); border-top:1px solid var(--sand); border-bottom:1px solid var(--sand);}
+  .stats .wrap{padding-top:clamp(40px,5.5vw,60px); padding-bottom:clamp(40px,5.5vw,60px);}
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .stat .num{font-family:'Fraunces',serif; font-size:clamp(32px,4.2vw,46px); color:var(--sage-dark); line-height:1; font-variant-numeric:tabular-nums;}
+  .stat .lbl{font-size:13.5px; color:var(--muted); margin-top:8px;}
+  .band-for{margin-top:34px; padding-top:26px; border-top:1px solid var(--sand); display:flex; flex-wrap:wrap; align-items:center; gap:12px 26px;}
+  .band-for .k{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--sage-dark);}
+  .band-for span.item{font-family:'Fraunces',serif; font-size:17px; color:var(--ink);}
+
+  /* Feature rows alternas */
+  .feature{display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,56px); align-items:center; margin-top:clamp(40px,6vw,64px);}
+  .feature:first-of-type{margin-top:0;}
+  .feature.rev .fig{order:2;}
+  .feature h3{font-size:clamp(22px,3vw,30px); margin-bottom:12px;}
+  .feature p{color:var(--muted); font-size:16px; margin-bottom:16px;}
+  .feature ul{list-style:none;}
+  .feature li{display:flex; gap:10px; align-items:flex-start; margin-bottom:10px; font-size:15px; color:var(--muted);}
+  .feature li svg{width:19px; height:19px; margin-top:2px; flex-shrink:0;}
+  /* Prosa de bloques (párrafos largos) justificada, con guionado para que quede
+     limpia sin ríos de espacio. Los intros centrados se dejan como están. */
+  .why-card p, .feature p, .step p, .act-card p{text-align:justify; hyphens:auto;}
+  .fig{background:var(--card); border:1px solid rgba(201,191,164,.5); border-radius:var(--radius); padding:clamp(18px,3vw,28px);}
+  .panel{background:var(--white); border:1px solid var(--sand); border-radius:14px; padding:18px;}
+  .panel-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;}
+  .panel-head .u{font-family:'Fraunces',serif; font-size:18px;}
+  .panel-head .p{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--faint);}
+  .panel-sub{font-size:12.5px; color:var(--faint); margin-bottom:16px;}
+  .chart-lbl{font-size:12.5px; font-weight:600; color:var(--muted); margin-bottom:8px;}
+  .chart{width:100%; height:120px; display:block;}
+  .ln{fill:none; stroke:var(--sage); stroke-width:2.6;} .ln.alert{stroke:var(--coral-dark);}
+  .pt{fill:var(--sage);} .pt.alert{fill:var(--coral-dark);}
+  .base{stroke:var(--sand); stroke-width:1; stroke-dasharray:3,3;}
+  .alert-card{background:#FBEFE4; border:1px solid var(--coral); border-radius:12px; padding:14px 16px; display:flex; gap:11px; margin-top:14px;}
+  .alert-card .pip{width:9px;height:9px;border-radius:50%;background:var(--coral-dark);margin-top:5px;flex-shrink:0;}
+  .alert-card .t{font-weight:600; font-size:13.5px; margin-bottom:2px;} .alert-card .b{font-size:12.5px; color:#6B5A48;}
+  /* fichas vista en vivo */
+  .live{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .live-tile{background:var(--white); border:1px solid var(--sand); border-radius:12px; padding:14px;}
+  .live-tile.stuck{border:2px solid var(--coral);}
+  .live-tile .nm{font-family:'Fraunces',serif; font-size:16px; margin-bottom:2px;}
+  .live-tile .ex{font-size:11.5px; color:var(--faint); margin-bottom:10px;}
+  .live-flag{font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--coral-dark); margin-bottom:8px; display:block;}
+  .live-btn{display:block; text-align:center; border-radius:9px; padding:8px; font-size:12.5px; font-weight:600; background:var(--card); border:1.5px solid var(--sand); color:var(--ink);}
+  .live-btn.on{background:#FBEFE4; border-color:var(--coral); color:var(--coral-dark);}
+
+  /* 8 bloques */
+  .bloques{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .bloque{background:var(--white); border:1px solid var(--sand); border-radius:14px; padding:22px 18px; transition:transform .15s ease, box-shadow .15s ease;}
+  .bloque:hover{transform:translateY(-3px); box-shadow:var(--shadow);}
+  .bloque .ico{font-size:24px; margin-bottom:10px;}
+  .bloque h3{font-size:16.5px; margin-bottom:3px;}
+  .bloque p{font-size:12.5px; color:var(--faint);}
+
+  /* Diferenciadores */
+  .why{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .why-card{background:var(--white); border:1px solid var(--sand); border-radius:var(--radius); padding:26px 22px; transition:transform .15s ease, box-shadow .15s ease;}
+  .why-card:hover{transform:translateY(-3px); box-shadow:var(--shadow);}
+  .why-card .wi{width:46px; height:46px; border-radius:12px; background:var(--card); display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:16px;}
+  .why-card h3{font-size:19px; margin-bottom:8px;}
+  .why-card p{font-size:14px; color:var(--muted); line-height:1.55;}
+  .why-card .vs{display:block; margin-top:12px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--coral-dark);}
+
+  /* Modelo de precios */
+  .model{background:var(--white); border:1px solid var(--sand); border-radius:var(--radius); padding:clamp(24px,3.5vw,36px); margin-bottom:26px;}
+  .model-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .model-item{display:flex; flex-direction:column; gap:6px;}
+  .model-item .mi-k{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--sage-dark);}
+  .model-item .mi-v{font-family:'Fraunces',serif; font-size:19px; color:var(--ink); line-height:1.15;}
+  .model-item .mi-d{font-size:12.5px; color:var(--faint); line-height:1.45;}
+  @media (max-width:860px){ .model-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .model-grid{grid-template-columns:1fr;} }
+
+  /* Cómo funciona timeline */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; counter-reset:s;}
+  .step{position:relative;}
+  .step .n{width:38px; height:38px; border-radius:50%; background:var(--sage); color:#fff; font-family:'Fraunces',serif; font-size:18px; display:flex; align-items:center; justify-content:center; margin-bottom:14px;}
+  .step h3{font-size:18px; margin-bottom:6px;}
+  .step p{font-size:14px; color:var(--muted);}
+
+  /* Precios */
+  .planes{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch;}
+  .plan{background:var(--white); border:1px solid var(--sand); border-radius:var(--radius); padding:30px 26px; display:flex; flex-direction:column;}
+  .plan.dest{border:2px solid var(--sage); box-shadow:var(--shadow); position:relative;}
+  .plan.dest::before{content:"Más elegido"; position:absolute; top:-12px; left:26px; background:var(--sage); color:#fff; font-size:11px; font-weight:600; padding:4px 12px; border-radius:20px;}
+  .plan .tag{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--sage-dark); margin-bottom:12px;}
+  .plan h3{font-size:24px; margin-bottom:6px;}
+  .plan .price{font-family:'Fraunces',serif; font-size:32px; margin:10px 0 2px;}
+  .plan .price small{font-size:15px; color:var(--faint); font-family:'Inter',sans-serif;}
+  .plan .pn{font-size:12.5px; color:var(--faint); margin-bottom:20px;}
+  .plan ul{list-style:none; margin-bottom:24px; flex:1;}
+  .plan li{font-size:14px; color:var(--muted); padding:8px 0; border-bottom:1px solid rgba(201,191,164,.4); display:flex; gap:9px; align-items:flex-start;}
+  .plan li svg{width:17px;height:17px;margin-top:2px;flex-shrink:0;}
+  .plan .btn{width:100%;}
+  .rgpd-note{margin-top:24px; font-size:13px; color:var(--faint); max-width:66ch;}
+
+  /* FAQ */
+  .faq{max-width:780px; margin:0 auto;}
+  .qa{border-bottom:1px solid var(--sand);}
+  .qa summary{list-style:none; cursor:pointer; padding:20px 0; font-family:'Fraunces',serif; font-size:19px; color:var(--ink); display:flex; justify-content:space-between; align-items:center; gap:16px;}
+  .qa summary::-webkit-details-marker{display:none;}
+  .qa summary .plus{color:var(--sage-dark); font-size:24px; transition:transform .2s;}
+  .qa[open] summary .plus{transform:rotate(45deg);}
+  .qa .a{padding:0 0 20px; color:var(--muted); font-size:15px; max-width:64ch;}
+
+  /* Contacto — tarjeta clara y elevada (nada de fondo verde oscuro). Un borde
+     superior en el verde de marca la remata con carácter sin oscurecerla. */
+  .contact{background:var(--white); color:var(--ink); border:1px solid var(--sand); border-top:3px solid var(--sage-dark); border-radius:24px; padding:clamp(32px,5vw,56px); box-shadow:var(--shadow);}
+  .contact h2{color:var(--ink); max-width:16ch;}
+  .contact .lede{color:var(--muted);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,4vw,44px); align-items:start;}
+  .contact-info .row{display:flex; gap:11px; align-items:center; margin-bottom:15px; font-size:15.5px; color:var(--ink);}
+  .contact-info a{color:var(--coral-dark); font-weight:600;}
+  .contact-info .small{font-size:13px; color:var(--faint); margin-top:6px;}
+  form .field{margin-bottom:16px;}
+  form label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px; font-family:'JetBrains Mono',monospace; letter-spacing:.04em;}
+  form input, form textarea{width:100%; background:var(--ivory); border:1px solid var(--sand); border-radius:10px; padding:12px 14px; color:var(--ink); font-family:'Inter',sans-serif; font-size:15px; transition:border-color .15s ease, box-shadow .15s ease;}
+  form input::placeholder, form textarea::placeholder{color:var(--faint);}
+  form input:focus, form textarea:focus{outline:none; border-color:var(--sage-dark); box-shadow:0 0 0 3px rgba(92,122,102,.14);}
+  form textarea{resize:vertical; min-height:92px;}
+
+  /* Footer */
+  footer{padding:56px 0 64px;}
+  .foot{display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:32px; border-top:1px solid var(--sand); padding-top:36px;}
+  .foot p{font-size:13.5px; color:var(--faint);}
+  .foot h5{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--sage-dark); margin-bottom:14px; font-weight:500;}
+  .foot a{display:block; font-size:14px; color:var(--muted); padding:5px 0;}
+  .foot a:hover{color:var(--ink);}
+  .foot .mono{font-family:'JetBrains Mono',monospace; font-size:12.5px;}
+  .foot-bottom{margin-top:32px; padding-top:20px; border-top:1px solid rgba(201,191,164,.4); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12.5px; color:var(--faint);}
+  .placeholder{background:#FBEFE4; color:var(--coral-dark); padding:1px 6px; border-radius:5px; font-family:'JetBrains Mono',monospace; font-size:.82em;}
+
+  /* ---------- Slider de ejemplos de actividades ---------- */
+  .ejemplos-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:26px;}
+  .slider-nav{display:flex; gap:10px; flex-shrink:0;}
+  .slider-nav button{width:46px; height:46px; border-radius:50%; border:1.6px solid var(--sand); background:var(--white); color:var(--ink); font-size:19px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s ease, border-color .2s ease, transform .12s ease;}
+  .slider-nav button:hover{background:var(--card); transform:translateY(-1px);}
+  .slider-nav button:disabled{opacity:.35; cursor:default; transform:none; background:var(--white);}
+  .slider-nav button svg{width:18px; height:18px;}
+
+  .slider-viewport{overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; margin:0 calc(-1 * clamp(20px,4vw,32px)); padding:6px clamp(20px,4vw,32px) 12px;}
+  .slider-viewport::-webkit-scrollbar{display:none;}
+  .slider-track{display:flex; gap:20px;}
+  .act-card{scroll-snap-align:center; flex:0 0 clamp(260px,34%,340px); background:var(--white); border:1px solid var(--sand); border-radius:var(--radius); padding:18px 18px 20px; display:flex; flex-direction:column;}
+  .act-mock{background:#FCFAF4; border:1.6px dashed var(--sand); border-radius:14px; padding:14px; position:relative; margin-bottom:16px;}
+  .act-mock .mock-tag{position:absolute; top:9px; left:12px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#A79E88; letter-spacing:.03em;}
+  .act-mock svg{width:100%; height:132px; display:block; margin-top:8px;}
+  /* Trazos "a mano / boceto" dentro de los mockups */
+  .sk{fill:none; stroke:var(--sage-dark); stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+  .sk-faint{fill:none; stroke:var(--sand); stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+  .sk-dash{fill:none; stroke:var(--sand); stroke-width:2; stroke-linecap:round; stroke-dasharray:5,6;}
+  .sk-coral{fill:none; stroke:var(--coral-dark); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round;}
+  .sk-fill-sage{fill:var(--sage); opacity:.9;}
+  .sk-fill-coral{fill:var(--coral); opacity:.9;}
+  .sk-fill-card{fill:var(--card);}
+  .sk-txt{font-family:'JetBrains Mono',monospace; font-size:11px; fill:var(--faint);}
+  /* Ilustraciones planas a color (estilo NeuronUP) dentro de los mockups */
+  .ol{stroke:#243026; stroke-opacity:.32; stroke-width:1.5; stroke-linejoin:round; stroke-linecap:round;}
+  .ol-w{stroke:var(--white); stroke-width:2; stroke-linejoin:round; stroke-linecap:round;}
+  .f-white{fill:var(--white);}   .f-card{fill:var(--card);}
+  .f-sage{fill:var(--sage);}     .f-sage-d{fill:var(--sage-dark);}
+  .f-coral{fill:var(--coral);}   .f-coral-d{fill:var(--coral-dark);}
+  .f-sand{fill:var(--sand);}     .f-ink{fill:var(--ink);}
+  .f-steel{fill:#B7BDC4;}        .f-steel-d{fill:#8F97A0;}
+  .f-silver{fill:#CBD1D8;}       .f-silver-d{fill:#A4ACB5;}
+  .f-gold{fill:#E3B84F;}         .f-gold-d{fill:#C69A34;}
+  .f-copper{fill:#CE8A57;}
+  .f-leather{fill:#B0703B;}      .f-leather-d{fill:#8A5628;}
+  .f-water{fill:#B9DAE6;}
+  .f-apple{fill:#C0492F;}        .f-apple-d{fill:#9C3924;}
+  .f-banana{fill:#E3C24F;}       .f-banana-d{fill:#C79E30;}
+  .f-leaf{fill:#13A992;}         .f-leaf-d{fill:#3F7A5E;}
+  .f-soil{fill:#8A5628;}
+  .il-txt{font-family:'JetBrains Mono',monospace; font-size:10.5px; fill:var(--faint);}
+  .il-num{font-family:'Fraunces',serif; font-size:15px; fill:var(--white); font-weight:600;}
+  .il-lbl{font-family:'Inter',sans-serif; font-size:11px; font-weight:600; fill:var(--muted);}
+  .act-dom{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.11em; text-transform:uppercase; color:var(--sage-dark); margin-bottom:6px;}
+  .act-card h3{font-size:18px; margin-bottom:10px;}
+  .act-works{font-size:13px; color:var(--muted); line-height:1.5; margin-top:auto;}
+  .act-works b{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--coral-dark); font-weight:500; display:block; margin-bottom:3px;}
+
+  .slider-dots{display:flex; justify-content:center; gap:9px; margin-top:22px;}
+  .slider-dots button{width:9px; height:9px; padding:0; border-radius:50%; border:none; background:var(--sand); cursor:pointer; transition:background .2s ease, transform .2s ease;}
+  .slider-dots button.on{background:var(--sage); transform:scale(1.25);}
+  .slider-hint{text-align:center; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--faint); margin-top:14px;}
+
+  /* Responsive */
+  @media (max-width:1024px){
+    .stat-grid{grid-template-columns:repeat(2,1fr); gap:26px;}
+    .bloques{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:repeat(2,1fr); gap:28px;}
+    .why{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:860px){
+    .act-card{flex-basis:clamp(240px,52%,300px);}
+    .nav-links{display:none;}
+    .nav-right .btn-ghost{display:none;}
+    .hamb{display:flex;}
+    .hero-grid{grid-template-columns:1fr; gap:40px;}
+    .device{max-width:440px; margin:0 auto;}
+    .feature{grid-template-columns:1fr; gap:28px;}
+    .feature.rev .fig{order:0;}
+    .planes{grid-template-columns:1fr; max-width:440px; margin:0 auto;}
+    .contact-grid{grid-template-columns:1fr;}
+    .foot{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    .act-card{flex-basis:86%;}
+    .ejemplos-head{align-items:center;}
+    .bloques{grid-template-columns:1fr 1fr;}
+    .why{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    .stat-grid{grid-template-columns:1fr 1fr;}
+    .foot{grid-template-columns:1fr;}
+    .hero-actions .btn{flex:1;}
+    .float-alert{right:0; bottom:-24px;}
+  }
+</style>
+</head>
+<body><div style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#00000022;color:#fff;font:600 13px system-ui;text-align:center;padding:4px">Boceto · Salvia Renovada · color3</div>
+
+<!-- SVG reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logoMark" viewBox="0 0 40 40">
+    <rect width="40" height="40" rx="11" fill="#13A992"/>
+    <path d="M7 26 C11 14 15 30 20 22 C24 16 27 24 33 15" fill="none" stroke="#FFFEFB" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="33" cy="15" r="2.6" fill="#E8946A"/>
+  </symbol>
+  <symbol id="check" viewBox="0 0 20 20">
+    <circle cx="10" cy="10" r="10" fill="#13A992"/>
+    <path d="M6 10.5 L9 13.5 L14.5 7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="logo"><svg aria-hidden="true"><use href="#logoMark"/></svg>Trazo</a>
+    <nav class="nav-links">
+      <a href="#porque">Por qué</a>
+      <a href="#producto">Producto</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#precios">Precios</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#contacto" class="btn btn-ghost">Contacto</a>
+      <a href="#contacto" class="btn btn-primary">Solicitar demo</a>
+      <button class="hamb" id="hamb" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#porque">Por qué</a>
+  <a href="#producto">Producto</a>
+  <a href="#bloques">Ejercicios</a>
+  <a href="#como">Cómo funciona</a>
+  <a href="#precios">Precios</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contacto" class="btn btn-primary">Solicitar demo</a>
+</div>
+
+<a id="top"></a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Estimulación cognitiva · para centros y redes</span>
+      <h1 class="title">Se planifica en minutos y se mide sola</h1>
+      <p class="sub">Eliges nivel y número de ejercicios por persona y Trazo arma un plan variado y estándar. Las personas trabajan en tablet y todo queda medido: comparamos a cada una consigo misma para avisar pronto de cualquier cambio.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary btn-lg">Solicitar una demo →</a>
+        <a href="demo/index.html?vitrina=1" class="btn btn-ghost btn-lg">Probar las actividades ahora</a>
+      </div>
+      <div class="hero-trust">
+        <span class="badge">✓ tablets sin login</span>
+        <span class="badge">✓ funciona sin conexión</span>
+        <span class="badge">✓ datos protegidos (RGPD)</span>
+      </div>
+    </div>
+    <div class="device">
+      <div class="tablet">
+        <div class="tablet-screen">
+          <div class="ts-top"><div class="n"><svg aria-hidden="true"><use href="#logoMark"/></svg>Trazo</div><div class="av"></div></div>
+          <div class="ts-title">Sigue la línea con el dedo</div>
+          <div class="ts-canvas">
+            <svg viewBox="0 0 300 130" aria-hidden="true">
+              <path class="guide" d="M20,95 Q90,20 150,80 T280,55"/>
+              <path class="userp" d="M22,93 Q88,28 148,78 T278,57"/>
+            </svg>
+          </div>
+          <div class="ts-bottom">
+            <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div>
+            <div class="ts-next">Siguiente</div>
+          </div>
+        </div>
+      </div>
+      <div class="float-alert">
+        <div class="pip"></div>
+        <div><div class="t">Cambio detectado</div><div class="b">Carmen se sale de su patrón habitual esta semana.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS / PARA QUIÉN -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat-grid">
+      <div class="stat"><div class="num">8</div><div class="lbl">dominios cognitivos cubiertos</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">vistas: persona, grupo y alertas</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">comparado con su propio histórico</div></div>
+      <div class="stat"><div class="num">0€</div><div class="lbl">para empezar el piloto</div></div>
+    </div>
+    <div class="band-for">
+      <span class="k">Pensado para</span>
+      <span class="item">Centros de día</span>
+      <span class="item">Residencias</span>
+      <span class="item">Unidades de memoria</span>
+      <span class="item">Terapia ocupacional</span>
+      <span class="item">Asociaciones de familiares</span>
+    </div>
+  </div>
+</div>
+
+<!-- DIFERENCIADORES -->
+<section id="porque" style="background:var(--card);">
+  <div class="wrap center">
+    <span class="eyebrow">Por qué Trazo</span>
+    <h2 class="big">Cuatro mejoras que se notan en tu día a día</h2>
+    <p class="lede">Menos tiempo montando sesiones, más información útil y una experiencia digna para la persona mayor.</p>
+  </div>
+  <div class="wrap">
+    <div class="why">
+      <div class="why-card">
+        <div class="wi" aria-hidden="true">⚡</div>
+        <h3>Ágil de planificar</h3>
+        <p>Eliges nivel y número de ejercicios por persona y la app arma un plan variado y estándar. No montas la sesión actividad a actividad.</p>
+        <span class="vs">Minutos, no horas</span>
+      </div>
+      <div class="why-card">
+        <div class="wi" aria-hidden="true">📈</div>
+        <h3>Se mide solo</h3>
+        <p>Cada intento queda registrado. Comparamos a la persona consigo misma para detectar pronto un cambio en su patrón habitual.</p>
+        <span class="vs">Detección temprana</span>
+      </div>
+      <div class="why-card">
+        <div class="wi" aria-hidden="true">🌿</div>
+        <h3>Respetuoso con el mayor</h3>
+        <p>Actividades reconocibles y adultas: la mesa, el mercado, el monedero. Nada infantil ni mensajes de "has fallado".</p>
+        <span class="vs">Digno, no infantil</span>
+      </div>
+      <div class="why-card">
+        <div class="wi" aria-hidden="true">📱</div>
+        <h3>Tablets sin login</h3>
+        <p>Las tablets de participante van emparejadas al centro. La persona solo ve su actividad; nadie tiene que iniciar sesión.</p>
+        <span class="vs">Reparte y listo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTO -->
+<section id="producto">
+  <div class="wrap">
+    <span class="eyebrow">El producto</span>
+    <h2 class="big">Una herramienta pensada para quien cuida</h2>
+    <p class="lede">La persona mayor solo ve la actividad; el profesional tiene el control y la información. Tres piezas que trabajan juntas.</p>
+
+    <div class="feature">
+      <div>
+        <h3>App para la persona</h3>
+        <p>Pantalla completa, un ejercicio a la vez, botones grandes y feedback inmediato. Sin menús ni decisiones de navegación, sin mensajes de "has fallado".</p>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Ejercicios de los 8 dominios cognitivos</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Dificultad que se ajusta al nivel de cada día</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Funciona sin conexión y en tablets sencillas</li>
+        </ul>
+      </div>
+      <div class="fig">
+        <div class="tablet" style="box-shadow:none;">
+          <div class="tablet-screen">
+            <div class="ts-top"><div class="n"><svg aria-hidden="true"><use href="#logoMark"/></svg>Trazo</div><div class="av"></div></div>
+            <div class="ts-title">Sigue la línea con el dedo</div>
+            <div class="ts-canvas">
+              <svg viewBox="0 0 300 120" aria-hidden="true"><path class="guide" d="M20,90 Q90,15 150,75 T280,50"/><path class="userp" style="animation:none;stroke-dashoffset:0;" d="M22,88 Q88,24 148,74 T278,52"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature rev">
+      <div>
+        <h3>Panel para el centro</h3>
+        <p>Gráficas simples de evolución por persona y por grupo. La tendencia importa más que el dato suelto: se ve cómo cambia con el tiempo, no solo el resultado de hoy.</p>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Precisión, tiempo, constancia y ayuda necesitada</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Cada intento con su estado: solo, con ayuda o sin completar</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Pensado para profesionales, no para técnicos</li>
+        </ul>
+      </div>
+      <div class="fig">
+        <div class="panel">
+          <div class="panel-head"><span class="u">Carmen R.</span><span class="p">últimas 8 semanas</span></div>
+          <div class="panel-sub">Panel del centro · vista individual</div>
+          <div class="chart-lbl">Precisión del trazo</div>
+          <svg class="chart" viewBox="0 0 400 110" aria-hidden="true">
+            <line class="base" x1="0" y1="80" x2="400" y2="80"/>
+            <polyline class="ln" points="10,70 60,60 110,58 160,55 210,52 260,50"/>
+            <polyline class="ln alert" points="260,50 310,80 360,95"/>
+            <circle class="pt" cx="10" cy="70" r="3.5"/><circle class="pt" cx="60" cy="60" r="3.5"/><circle class="pt" cx="110" cy="58" r="3.5"/><circle class="pt" cx="160" cy="55" r="3.5"/><circle class="pt" cx="210" cy="52" r="3.5"/><circle class="pt" cx="260" cy="50" r="3.5"/>
+            <circle class="pt alert" cx="310" cy="80" r="4.5"/><circle class="pt alert" cx="360" cy="95" r="4.5"/>
+          </svg>
+          <div class="alert-card"><div class="pip"></div><div><div class="t">Cambio detectado esta semana</div><div class="b">Las últimas 2 sesiones se salen de su rango habitual — puede merecer una revisión.</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div>
+        <h3>Sesiones en grupo y vista en vivo</h3>
+        <p>Como se trabaja en muchas terapias: en grupo, con un facilitador. Cada persona hace su ejercicio, y la integradora ve a todos a la vez desde una sola pantalla.</p>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Un toque para marcar "ayuda" por persona</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Aviso suave si alguien lleva un rato atascado</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Evolución individual y de grupo enlazadas</li>
+        </ul>
+      </div>
+      <div class="fig">
+        <div class="live">
+          <div class="live-tile"><div class="nm">Paquito</div><div class="ex">Relación lógica</div><span class="live-btn">Ayuda</span></div>
+          <div class="live-tile"><div class="nm">Marisa</div><div class="ex">Relación lógica</div><span class="live-btn on">Ayuda ✓</span></div>
+          <div class="live-tile stuck"><span class="live-flag">🔊 30s sin tocar</span><div class="nm">Juan</div><div class="ex">Relación lógica</div><span class="live-btn">Ayuda</span></div>
+          <div class="live-tile"><div class="nm">Lola</div><div class="ex">Relación lógica</div><span class="live-btn">Ayuda</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 BLOQUES -->
+<section id="bloques" style="background:var(--card);">
+  <div class="wrap center">
+    <span class="eyebrow">Catálogo de ejercicios</span>
+    <h2 class="big">Ocho dominios cognitivos, muchos ejercicios</h2>
+    <p class="lede">Organizados como las herramientas clínicas de estimulación cognitiva. El catálogo crece sin depender de programación.</p>
+  </div>
+  <div class="wrap">
+    <div class="bloques">
+      <div class="bloque"><div class="ico">🧠</div><h3>Atención y memoria</h3><p>Retener y localizar</p></div>
+      <div class="bloque"><div class="ico">💬</div><h3>Lenguaje</h3><p>Palabras y evocación</p></div>
+      <div class="bloque"><div class="ico">🧩</div><h3>Razonamiento</h3><p>Categorizar y relacionar</p></div>
+      <div class="bloque"><div class="ico">👁️</div><h3>Gnosias</h3><p>Reconocer</p></div>
+      <div class="bloque"><div class="ico">✍️</div><h3>Praxias</h3><p>Manos y control motor</p></div>
+      <div class="bloque"><div class="ico">🔍</div><h3>Percepción</h3><p>Separar lo que se solapa</p></div>
+      <div class="bloque"><div class="ico">🗂️</div><h3>Función ejecutiva</h3><p>Planificar una secuencia</p></div>
+      <div class="bloque"><div class="ico">🏠</div><h3>Vida cotidiana</h3><p>Autonomía funcional</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EJEMPLOS DE ACTIVIDADES (SLIDER) -->
+<section id="ejemplos">
+  <div class="wrap">
+    <div class="ejemplos-head">
+      <div>
+        <span class="eyebrow">Ejemplos de actividades</span>
+        <h2 class="big" style="margin-bottom:0;">Así se ven algunas actividades</h2>
+      </div>
+      <div class="slider-nav">
+        <button id="actPrev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button id="actNext" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <p class="lede" style="margin-bottom:26px;">Bocetos orientativos — un pantallazo de cómo se ve cada tipo de actividad. No son jugables aquí; son para hacerse una idea.</p>
+  </div>
+  <div class="wrap">
+    <div class="slider-viewport" id="actViewport">
+      <div class="slider-track" id="actTrack">
+
+        <!-- 1 · Trazo -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: seguir una línea con un lápiz">
+              <path class="sk-dash" d="M20,95 C60,40 96,112 150,72 C178,50 196,64 215,47"/>
+              <path fill="none" stroke="#BE5B37" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" d="M20,95 C60,40 96,112 150,72 C178,50 196,64 215,47"/>
+              <circle cx="20" cy="95" r="7" class="f-sage ol"/>
+              <circle cx="20" cy="95" r="3" class="f-white"/>
+              <g transform="translate(252,10) rotate(135)">
+                <rect x="-3" y="-6.5" width="9" height="13" rx="2" class="f-coral-d ol"/>
+                <rect x="6" y="-6.5" width="5" height="13" class="f-steel ol"/>
+                <rect x="11" y="-6.5" width="29" height="13" class="f-gold ol"/>
+                <path d="M40,-6.5 L52,0 L40,6.5 Z" class="f-copper ol"/>
+                <path d="M47.5,-2.6 L52,0 L47.5,2.6 Z" class="f-ink"/>
+              </g>
+            </svg>
+          </div>
+          <div class="act-dom">Praxias · manos y control motor</div>
+          <h3>Sigue la línea</h3>
+          <p class="act-works"><b>Trabaja</b>Coordinación mano-ojo y control motor fino (praxias).</p>
+        </article>
+
+        <!-- 2 · Selección múltiple -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: encontrar el intruso, tres manzanas y un plátano">
+              <line x1="14" y1="86" x2="246" y2="86" stroke="#D8E5D6" stroke-width="3" stroke-linecap="round"/>
+              <g>
+                <rect x="44" y="26" width="3.4" height="12" class="f-leather"/>
+                <ellipse cx="55" cy="30" rx="9" ry="5" transform="rotate(-24 55 30)" class="f-leaf ol"/>
+                <path class="f-apple ol" d="M46,40 a17,16 0 1 0 4,0 a10,7 0 0 1 -4,0 z"/>
+                <path class="f-apple-d" d="M56,44 a13,15 0 0 1 0,28 a17,16 0 0 0 0,-28 z"/>
+              </g>
+              <g>
+                <rect x="102" y="26" width="3.4" height="12" class="f-leather"/>
+                <ellipse cx="113" cy="30" rx="9" ry="5" transform="rotate(-24 113 30)" class="f-leaf ol"/>
+                <path class="f-apple ol" d="M104,40 a17,16 0 1 0 4,0 a10,7 0 0 1 -4,0 z"/>
+                <path class="f-apple-d" d="M114,44 a13,15 0 0 1 0,28 a17,16 0 0 0 0,-28 z"/>
+              </g>
+              <g>
+                <rect x="142" y="26" width="3.4" height="12" class="f-leather"/>
+                <ellipse cx="153" cy="30" rx="9" ry="5" transform="rotate(-24 153 30)" class="f-leaf ol"/>
+                <path class="f-apple ol" d="M144,40 a17,16 0 1 0 4,0 a10,7 0 0 1 -4,0 z"/>
+                <path class="f-apple-d" d="M154,44 a13,15 0 0 1 0,28 a17,16 0 0 0 0,-28 z"/>
+              </g>
+              <g>
+                <circle cx="189" cy="54" r="25" fill="none" stroke="#BE5B37" stroke-width="2.4" stroke-dasharray="6,6"/>
+                <path class="f-banana ol" d="M172,40 q10,-4 18,2 q16,10 18,30 q-6,4 -11,1 q-2,-18 -18,-25 q-8,-3 -11,-1 q-2,-5 4,-7 z"/>
+                <path class="f-banana-d" d="M195,48 q10,10 13,24 q-6,4 -11,1 q-1,-14 -9,-22 q4,-2 7,-3 z"/>
+                <path d="M170,41 l-3,-4" class="ol"/>
+              </g>
+              <text x="130" y="122" text-anchor="middle" class="il-txt">señala el que no encaja</text>
+            </svg>
+          </div>
+          <div class="act-dom">Razonamiento · categorizar</div>
+          <h3>El intruso</h3>
+          <p class="act-works"><b>Trabaja</b>Razonamiento y categorización.</p>
+        </article>
+
+        <!-- 3 · Memoria visual -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: memoria de figuras en tarjetas">
+              <rect x="20" y="18" width="50" height="58" rx="8" class="f-white ol"/>
+              <circle cx="45" cy="47" r="15" class="f-sage"/>
+              <rect x="80" y="18" width="50" height="58" rx="8" class="f-white ol"/>
+              <rect x="90" y="32" width="30" height="30" rx="4" class="f-coral"/>
+              <rect x="140" y="18" width="50" height="58" rx="8" class="f-white ol"/>
+              <path d="M165,31 l16,30 h-32 z" class="f-gold"/>
+              <rect x="200" y="18" width="50" height="58" rx="8" class="f-coral-d ol"/>
+              <circle cx="225" cy="47" r="13" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-opacity=".85"/>
+              <text x="225" y="53" text-anchor="middle" style="font-family:'Fraunces',serif;font-size:20px;font-weight:600;fill:#FFFEFB;">?</text>
+              <text x="130" y="106" text-anchor="middle" class="il-txt">¿qué figura faltaba?</text>
+            </svg>
+          </div>
+          <div class="act-dom">Atención y memoria</div>
+          <h3>Memoria de figuras</h3>
+          <p class="act-works"><b>Trabaja</b>Memoria a corto plazo y atención.</p>
+        </article>
+
+        <!-- 4 · Secuencia / ordenar -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: ordenar los pasos del crecimiento de una planta">
+              <g>
+                <rect x="12" y="26" width="62" height="70" rx="8" class="f-white ol"/>
+                <path class="f-copper ol" d="M28,74 h30 l-4,14 h-22 z"/>
+                <rect x="26" y="70" width="34" height="7" rx="2" class="f-copper"/>
+                <circle cx="43" cy="63" r="4" class="f-soil"/>
+                <circle cx="21" cy="34" r="10" class="f-sage-d"/><text x="21" y="38" text-anchor="middle" class="il-num">1</text>
+              </g>
+              <path d="M78,62 h12 l-4,-4 m4,4 l-4,4" class="ol" fill="none"/>
+              <g>
+                <rect x="99" y="26" width="62" height="70" rx="8" class="f-white ol"/>
+                <path class="f-copper ol" d="M115,74 h30 l-4,14 h-22 z"/>
+                <rect x="113" y="70" width="34" height="7" rx="2" class="f-copper"/>
+                <path d="M130,70 V52" stroke="#3F7A5E" stroke-width="2.4" fill="none"/>
+                <path class="f-leaf" d="M130,58 q-12,-3 -14,-12 q11,-1 14,9 z"/>
+                <path class="f-leaf-d" d="M130,54 q12,-4 15,-13 q-12,0 -15,10 z"/>
+                <circle cx="108" cy="34" r="10" class="f-sage-d"/><text x="108" y="38" text-anchor="middle" class="il-num">2</text>
+              </g>
+              <path d="M165,62 h12 l-4,-4 m4,4 l-4,4" class="ol" fill="none"/>
+              <g>
+                <rect x="186" y="26" width="62" height="70" rx="8" class="f-sage ol" fill-opacity=".14"/>
+                <rect x="186" y="26" width="62" height="70" rx="8" fill="none" stroke="#3F7A5E" stroke-width="2"/>
+                <path class="f-copper ol" d="M202,74 h30 l-4,14 h-22 z"/>
+                <rect x="200" y="70" width="34" height="7" rx="2" class="f-copper"/>
+                <path d="M217,70 V48" stroke="#3F7A5E" stroke-width="2.4" fill="none"/>
+                <path class="f-leaf" d="M217,60 q-11,-2 -13,-10 q10,-1 13,8 z"/>
+                <g transform="translate(217,40)">
+                  <circle cx="0" cy="-9" r="6" class="f-coral"/><circle cx="9" cy="0" r="6" class="f-coral"/>
+                  <circle cx="-9" cy="0" r="6" class="f-coral"/><circle cx="0" cy="9" r="6" class="f-coral"/>
+                  <circle cx="0" cy="0" r="6" class="f-gold ol"/>
+                </g>
+                <circle cx="195" cy="34" r="10" class="f-coral-d"/><text x="195" y="38" text-anchor="middle" class="il-num">3</text>
+              </g>
+              <text x="130" y="120" text-anchor="middle" class="il-txt">de la semilla a la flor</text>
+            </svg>
+          </div>
+          <div class="act-dom">Función ejecutiva</div>
+          <h3>Ordenar los pasos</h3>
+          <p class="act-works"><b>Trabaja</b>Función ejecutiva y planificación.</p>
+        </article>
+
+        <!-- 5 · Conteo / comparación -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: comparar cuál tiene más manzanas">
+              <rect x="14" y="20" width="98" height="92" rx="12" class="f-card ol"/>
+              <g>
+                <g transform="translate(40,46)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+                <g transform="translate(72,42)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+                <g transform="translate(90,72)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+                <g transform="translate(52,78)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+                <g transform="translate(30,80)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+              </g>
+              <rect x="148" y="20" width="98" height="92" rx="12" class="f-card ol"/>
+              <g>
+                <g transform="translate(178,50)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+                <g transform="translate(212,48)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+                <g transform="translate(196,80)"><rect x="-1.5" y="-13" width="3" height="7" class="f-leather"/><ellipse cx="6" cy="-10" rx="6" ry="3.4" transform="rotate(-22 6 -10)" class="f-leaf"/><circle r="11" class="f-apple ol"/></g>
+              </g>
+              <circle cx="130" cy="66" r="13" class="f-coral-d"/>
+              <text x="130" y="72" text-anchor="middle" style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;fill:#FFFEFB;">?</text>
+            </svg>
+          </div>
+          <div class="act-dom">Razonamiento · cálculo</div>
+          <h3>¿Cuál tiene más?</h3>
+          <p class="act-works"><b>Trabaja</b>Percepción numérica y cálculo básico.</p>
+        </article>
+
+        <!-- 6 · Arrastrar / posición -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: poner la mesa con plato, cubiertos y vaso">
+              <rect x="26" y="20" width="208" height="80" rx="14" class="f-card ol"/>
+              <circle cx="130" cy="60" r="34" class="f-white ol"/>
+              <circle cx="130" cy="60" r="23" fill="none" stroke="#13A992" stroke-width="2.4"/>
+              <g>
+                <path class="f-steel ol" d="M69,30 v16 M76,29 v18 M83,30 v16"/>
+                <path class="f-steel ol" d="M72,45 q0,4 4,4 q4,0 4,-4 v-2 h-8 z"/>
+                <rect x="74" y="47" width="4" height="46" rx="2" class="f-steel-d"/>
+              </g>
+              <g>
+                <path class="f-steel ol" d="M182,30 q10,10 5,32 l-9,0 q-4,-22 4,-32 z"/>
+                <rect x="181" y="60" width="4.4" height="33" rx="2" class="f-steel-d"/>
+              </g>
+              <g>
+                <path class="f-water" d="M199,34 l2.4,20 h15 l2.4,-20 z"/>
+                <path class="f-water" style="opacity:.55" d="M199,34 l1,8 h19 l1,-8 z"/>
+                <path fill="none" stroke="#8F97A0" stroke-width="2" stroke-linejoin="round" d="M197,30 l3,28 h16 l3,-28 z"/>
+              </g>
+              <text x="130" y="122" text-anchor="middle" class="il-txt">pon cada cosa en su sitio</text>
+            </svg>
+          </div>
+          <div class="act-dom">Praxias · vida cotidiana</div>
+          <h3>Poner la mesa</h3>
+          <p class="act-works"><b>Trabaja</b>Praxias y autonomía en tareas cotidianas.</p>
+        </article>
+
+        <!-- 7 · Evocación libre -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: nombrar objetos de la categoría cocina">
+              <rect x="16" y="12" width="228" height="28" rx="14" class="f-sage"/>
+              <circle cx="34" cy="26" r="9" class="f-coral-d"/>
+              <path class="f-white" d="M34,20 v12 M30,20 c-1,4 1,5 4,5 M38,20 c1,4 -1,5 -4,5" stroke="#FFFEFB" stroke-width="1.4" fill="none"/>
+              <text x="50" y="30" style="font-family:'Fraunces',serif;font-size:15px;font-weight:600;fill:#FFFEFB;">La cocina</text>
+              <g>
+                <rect x="16" y="50" width="110" height="34" rx="9" class="f-white ol"/>
+                <circle cx="35" cy="67" r="12" class="f-white ol"/><circle cx="35" cy="67" r="7" fill="none" stroke="#13A992" stroke-width="2"/>
+                <text x="54" y="71" class="il-lbl">plato</text>
+              </g>
+              <g>
+                <rect x="134" y="50" width="110" height="34" rx="9" class="f-white ol"/>
+                <path class="f-coral ol" d="M150,57 h16 l-2,17 q-6,3 -12,0 z"/><path d="M166,60 q7,0 7,6 q0,6 -7,6" fill="none" class="ol"/>
+                <text x="182" y="71" class="il-lbl">taza</text>
+              </g>
+              <g>
+                <rect x="16" y="90" width="110" height="34" rx="9" class="f-white ol"/>
+                <ellipse cx="35" cy="102" rx="6" ry="8" class="f-steel ol"/><rect x="33" y="107" width="4" height="12" rx="2" class="f-steel-d"/>
+                <text x="54" y="112" class="il-lbl">cuchara</text>
+              </g>
+              <g>
+                <rect x="134" y="90" width="110" height="34" rx="9" fill="none" stroke="#D8E5D6" stroke-width="1.6" stroke-dasharray="5,5"/>
+                <path d="M152,107 h14 M159,100 v14" stroke="#BE5B37" stroke-width="2.4" stroke-linecap="round"/>
+                <text x="176" y="112" class="il-lbl" style="fill:var(--coral-dark);">añade</text>
+              </g>
+            </svg>
+          </div>
+          <div class="act-dom">Lenguaje · fluidez verbal</div>
+          <h3>Objetos por categoría</h3>
+          <p class="act-works"><b>Trabaja</b>Lenguaje y fluidez verbal.</p>
+        </article>
+
+        <!-- 8 · Manejo de cantidad -->
+        <article class="act-card">
+          <div class="act-mock">
+            <span class="mock-tag">// ejemplo</span>
+            <svg viewBox="0 0 260 132" role="img" aria-label="Ilustración: guardar monedas de euro en el monedero">
+              <g>
+                <ellipse cx="46" cy="80" rx="20" ry="7" class="f-gold-d" opacity=".5"/>
+                <circle cx="46" cy="48" r="20" class="f-gold ol"/>
+                <circle cx="46" cy="48" r="13.5" class="f-silver ol"/>
+                <text x="46" y="53" text-anchor="middle" style="font-family:'Fraunces',serif;font-size:13px;font-weight:600;fill:#8A5628;">2€</text>
+              </g>
+              <g>
+                <circle cx="92" cy="70" r="16" class="f-gold ol"/>
+                <circle cx="92" cy="70" r="10.5" class="f-silver ol"/>
+                <text x="92" y="74" text-anchor="middle" style="font-family:'Fraunces',serif;font-size:11px;font-weight:600;fill:#8A5628;">1€</text>
+              </g>
+              <path d="M118,60 h26 l-5,-5 m5,5 l-5,5" fill="none" stroke="#3F7A5E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <g>
+                <path class="f-leather ol" d="M158,58 q0,-14 28,-14 q28,0 28,14 v22 q0,16 -28,16 q-28,0 -28,-16 z"/>
+                <path class="f-leather-d" d="M158,58 q0,-14 28,-14 q28,0 28,14 q-28,-9 -56,0 z"/>
+                <path fill="none" stroke="#8A5628" stroke-width="1.6" d="M158,66 q28,-10 56,0"/>
+                <rect x="180" y="62" width="12" height="9" rx="2" class="f-gold ol"/>
+              </g>
+              <text x="130" y="122" text-anchor="middle" class="il-txt">guarda las monedas en el monedero</text>
+            </svg>
+          </div>
+          <div class="act-dom">Vida cotidiana · cálculo</div>
+          <h3>Manejo de dinero</h3>
+          <p class="act-works"><b>Trabaja</b>Cálculo y autonomía en la vida diaria.</p>
+        </article>
+
+      </div>
+    </div>
+    <div class="slider-dots" id="actDots"></div>
+    <p class="slider-hint">Desliza para ver más · 8 actividades de ejemplo</p>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como">
+  <div class="wrap">
+    <span class="eyebrow">Cómo funciona en el día a día</span>
+    <h2 class="big">Cuatro pasos, y la sesión está lista</h2>
+    <p class="lede">Sin montar la sesión ejercicio a ejercicio. La integradora decide el nivel y el ritmo; Trazo hace el resto y lo mide todo.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Planificas por persona</h3><p>Eliges nivel y número de ejercicios para cada usuario. Trazo arma un plan variado y estándar, sin elegir actividades una a una.</p></div>
+      <div class="step"><div class="n">2</div><h3>Repartes las tablets</h3><p>Las tablets van emparejadas al centro, sin login. Le das una a cada persona y ya está en su plan.</p></div>
+      <div class="step"><div class="n">3</div><h3>Cada uno hace su plan</h3><p>Una actividad a la vez, a pantalla completa. Tú acompañas desde tu vista en vivo y marcas ayuda con un toque.</p></div>
+      <div class="step"><div class="n">4</div><h3>Ves resultados y alertas</h3><p>Todo queda medido. El panel muestra la evolución por persona y por grupo, y avisa si alguien se sale de su patrón.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVA -->
+<section id="comparativa">
+  <div class="wrap center">
+    <span class="eyebrow">Por qué cambian</span>
+    <h2 class="big">La alternativa ágil a las plataformas tradicionales</h2>
+    <p class="lede">Muchos centros dejan las herramientas clásicas porque son caras y poco dinámicas. Trazo nace justo de ahí.</p>
+  </div>
+  <div class="wrap">
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; min-width:520px; font-size:15.5px;">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding:14px 12px; color:var(--faint); font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:.06em;"></th>
+            <th style="text-align:left; padding:14px 16px; font-family:'Fraunces',serif; font-size:19px; color:var(--sage-dark); background:var(--white); border-radius:12px 12px 0 0;">Trazo</th>
+            <th style="text-align:left; padding:14px 12px; color:var(--muted); font-weight:600;">Plataformas tradicionales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-top:1px solid var(--sand);">
+            <td style="padding:14px 12px; color:var(--ink); font-weight:600;">Coste</td>
+            <td style="padding:14px 16px; background:var(--white);">Por paciente <strong>activo</strong> al mes; si un mes no trabaja, no cuenta</td>
+            <td style="padding:14px 12px; color:var(--muted);">Licencias caras, se pague o no se use</td>
+          </tr>
+          <tr style="border-top:1px solid var(--sand);">
+            <td style="padding:14px 12px; color:var(--ink); font-weight:600;">Preparar la sesión</td>
+            <td style="padding:14px 16px; background:var(--white);">Eliges nivel y número; el plan se arma solo, en <strong>minutos</strong></td>
+            <td style="padding:14px 12px; color:var(--muted);">Montar la sesión actividad a actividad</td>
+          </tr>
+          <tr style="border-top:1px solid var(--sand);">
+            <td style="padding:14px 12px; color:var(--ink); font-weight:600;">La persona mayor</td>
+            <td style="padding:14px 16px; background:var(--white);">Tablet <strong>sin login</strong>, un ejercicio a la vez, funciona sin conexión</td>
+            <td style="padding:14px 12px; color:var(--muted);">Interfaces con menús y pasos que confunden</td>
+          </tr>
+          <tr style="border-top:1px solid var(--sand);">
+            <td style="padding:14px 12px; color:var(--ink); font-weight:600;">Medición</td>
+            <td style="padding:14px 16px; background:var(--white);">Se corrige sola y compara a cada persona <strong>consigo misma</strong>; avisa de cambios</td>
+            <td style="padding:14px 12px; color:var(--muted);">Informes de uso, poco accionables</td>
+          </tr>
+          <tr style="border-top:1px solid var(--sand);">
+            <td style="padding:14px 12px; color:var(--ink); font-weight:600;">Para empezar</td>
+            <td style="padding:14px 16px; background:var(--white); border-radius:0 0 12px 12px;"><strong>Piloto sin coste</strong> con usuarios reales, sin permanencia</td>
+            <td style="padding:14px 12px; color:var(--muted);">Contratos y permanencia</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="text-align:center; margin-top:20px;"><a href="demo/index.html?vitrina=1" class="btn btn-ghost">Probar las actividades ahora</a></p>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios" style="background:var(--card);">
+  <div class="wrap center">
+    <span class="eyebrow">Planes y precios</span>
+    <h2 class="big">Un modelo claro, pensado para cadenas</h2>
+    <p class="lede" style="text-align:left;">Pagas por paciente activo al mes: si un mes no trabaja, no cuenta. Instalación y formación incluidas, sin permanencia y con piloto sin coste para ver el encaje antes de decidir. Más ágil y asequible que las herramientas tradicionales.</p>
+  </div>
+  <div class="wrap">
+    <div class="model">
+      <div class="model-grid">
+        <div class="model-item">
+          <span class="mi-k">Modelo</span>
+          <span class="mi-v">Por paciente activo / mes</span>
+          <span class="mi-d">Solo pagas por quien de verdad usa Trazo cada mes.</span>
+        </div>
+        <div class="model-item">
+          <span class="mi-k">Incluido</span>
+          <span class="mi-v">Instalación y formación</span>
+          <span class="mi-d">Ponemos las tablets a punto y formamos al equipo, sin coste aparte.</span>
+        </div>
+        <div class="model-item">
+          <span class="mi-k">Compromiso</span>
+          <span class="mi-v">Sin permanencia</span>
+          <span class="mi-d">Mes a mes. Si no encaja, lo dejáis cuando queráis.</span>
+        </div>
+        <div class="model-item">
+          <span class="mi-k">Para empezar</span>
+          <span class="mi-v">Piloto sin coste</span>
+          <span class="mi-d">Probáis con usuarios reales antes de contratar nada.</span>
+        </div>
+      </div>
+    </div>
+    <div class="planes">
+      <div class="plan">
+        <div class="tag">Para empezar</div>
+        <h3>Piloto</h3>
+        <div class="price">0€</div>
+        <div class="pn">durante el periodo de prueba</div>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Instalación en vuestras tablets</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Ejercicios de los 8 bloques</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Panel de evolución individual</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Acompañamiento durante la prueba</li>
+        </ul>
+        <a href="#contacto" class="btn btn-ghost">Empezar piloto</a>
+      </div>
+      <div class="plan dest">
+        <div class="tag">Completo</div>
+        <h3>Centro</h3>
+        <div class="price">Por paciente<small> / activo al mes</small></div>
+        <div class="pn">tarifa según volumen · te pasamos el detalle</div>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Todo lo del piloto, sin límite</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Sesiones individuales y de grupo</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Detección temprana y alertas</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Vista en vivo para la facilitadora</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Instalación, formación y soporte incluidos</li>
+        </ul>
+        <a href="#contacto" class="btn btn-primary">Solicitar presupuesto</a>
+      </div>
+      <div class="plan">
+        <div class="tag">Varios centros</div>
+        <h3>Red</h3>
+        <div class="price">A medida</div>
+        <div class="pn">grupos y redes de centros</div>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Precio por volumen para toda la red</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Gestión de varios centros</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Informes agregados</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Formación del equipo y acuerdo de datos</li>
+        </ul>
+        <a href="#contacto" class="btn btn-ghost">Solicitar presupuesto</a>
+      </div>
+    </div>
+    <p class="rgpd-note" style="text-align:left;">El importe por paciente activo se ajusta al volumen de la cadena; te enviamos las tarifas detalladas tras una breve toma de contacto. Trazo trata datos de salud (categoría especial del RGPD): el centro es el responsable del tratamiento y nosotros actuamos como encargados; firmamos el acuerdo correspondiente antes de empezar.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap center" style="margin-bottom:8px;">
+    <span class="eyebrow">Preguntas frecuentes</span>
+    <h2 class="big">Lo que suelen preguntarnos</h2>
+  </div>
+  <div class="wrap">
+    <div class="faq">
+      <details class="qa" open><summary>¿Necesitamos tablets nuevas o potentes?<span class="plus">+</span></summary><div class="a">No. Trazo está pensado para funcionar con soltura en tablets sencillas, del tipo que ya suele haber en los centros. Y funciona sin conexión: sincroniza cuando vuelve a haber red.</div></details>
+      <details class="qa"><summary>¿La persona mayor tiene que saber usar la tablet?<span class="plus">+</span></summary><div class="a">No. Solo ve la actividad, a pantalla completa, sin menús ni botones de navegación. Toda la parte de control (avanzar, saltar, marcar ayuda) la lleva la persona que acompaña, desde su propio control.</div></details>
+      <details class="qa"><summary>¿Cómo protegéis los datos?<span class="plus">+</span></summary><div class="a">Los datos de las personas usuarias van pseudonimizados y el nombre real se guarda aparte, con acceso restringido. El centro es el responsable del tratamiento y nosotros el encargado; firmamos el acuerdo que exige el RGPD para datos de salud.</div></details>
+      <details class="qa"><summary>¿Qué es exactamente la "detección temprana"?<span class="plus">+</span></summary><div class="a">El sistema compara cada resultado con el histórico de esa misma persona (nunca con otras). Si empeora de forma sostenida fuera de su patrón habitual, lo marca para que un profesional lo revise. El objetivo no es que mejoren siempre, es que no empeoren sin que nadie se dé cuenta a tiempo. <strong>No es un diagnóstico ni un producto sanitario</strong>: mide el desempeño en las actividades (que puede variar por vista, oído, ánimo, medicación…) y es siempre el profesional quien lo interpreta.</div></details>
+      <details class="qa"><summary>¿Cuánto cuesta y cómo empezamos?<span class="plus">+</span></summary><div class="a">Se empieza con un piloto sin coste para probar el encaje. Después se paga por paciente activo al mes, con instalación y formación incluidas y sin permanencia. El importe se ajusta al volumen de la cadena: escríbenos y organizamos una demo y una propuesta con tarifas detalladas.</div></details>
+      <details class="qa"><summary>¿Tenemos que elegir las actividades una a una?<span class="plus">+</span></summary><div class="a">No. Eliges el nivel y el número de ejercicios por persona y Trazo arma un plan variado y estándar automáticamente. Esa es la gran diferencia frente a herramientas más manuales: montar una sesión te lleva minutos, no una tarde.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="contact">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="eyebrow" style="color:var(--sand);">Hablemos</span>
+          <h2 class="big">Pide una demo o cuéntanos vuestro caso</h2>
+          <p class="lede">Te enseñamos Trazo funcionando, vemos si encaja en vuestro centro y te enviamos las tarifas detalladas según vuestro volumen. Sin compromiso.</p>
+          <div class="row">✉️ <a href="mailto:saulodlsf@gmail.com">saulodlsf@gmail.com</a></div>
+          <div class="row">📍 <span>España</span></div>
+          <p class="small">Respondemos normalmente en 24–48 h laborables.</p>
+        </div>
+        <form id="demoForm" onsubmit="return enviarDemo(event)">
+          <div class="field"><label for="f-nombre">Nombre y centro</label><input id="f-nombre" name="nombre" required placeholder="Ana López · Centro de Día ..."></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" name="email" required placeholder="ana@centro.es"></div>
+          <div class="field"><label for="f-telefono">Teléfono (opcional)</label><input id="f-telefono" name="telefono" placeholder="+34 ..."></div>
+          <div class="field"><label for="f-mensaje">¿Qué necesitáis?</label><textarea id="f-mensaje" name="mensaje" placeholder="Nº de plazas, si ya hacéis estimulación cognitiva, qué os gustaría probar..."></textarea></div>
+          <button type="submit" class="btn btn-coral btn-lg" style="width:100%;">Enviar solicitud de demo</button>
+          <p class="small" id="formNote" style="margin-top:10px;">Al enviar se abrirá tu correo con el mensaje preparado. Te responderemos con una propuesta y las tarifas detalladas para vuestro volumen.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#top" class="logo" style="font-size:22px; margin-bottom:12px;"><svg aria-hidden="true"><use href="#logoMark"/></svg>Trazo</a>
+        <p>Estimulación cognitiva para centros de día y residencias. Ejercicios diarios, evolución por persona y detección temprana.</p>
+      </div>
+      <div>
+        <h5>Producto</h5>
+        <a href="#producto">Qué es</a>
+        <a href="#bloques">Ejercicios</a>
+        <a href="#como">Cómo funciona</a>
+        <a href="#precios">Precios</a>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <a href="mailto:saulodlsf@gmail.com">saulodlsf@gmail.com</a>
+        <a href="#contacto">Solicitar demo</a>
+        <a href="#faq">Preguntas frecuentes</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="mono">© 2026 Trazo · España</span>
+      <span><a href="aviso-legal.html" style="color:var(--sage-dark);">Aviso legal</a> · <a href="privacidad.html" style="color:var(--sage-dark);">Privacidad</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header con sombra al hacer scroll
+  var header = document.getElementById('header');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 8);
+  });
+
+  // Menú móvil
+  var hamb = document.getElementById('hamb');
+  var menu = document.getElementById('mobileMenu');
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    hamb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    hamb.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  }
+  hamb.addEventListener('click', function(){ setMenu(!menu.classList.contains('open')); });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ setMenu(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && menu.classList.contains('open')){ setMenu(false); hamb.focus(); }
+  });
+
+  // Slider de ejemplos de actividades
+  (function(){
+    var vp = document.getElementById('actViewport');
+    var track = document.getElementById('actTrack');
+    if(!vp || !track) return;
+    var prev = document.getElementById('actPrev');
+    var next = document.getElementById('actNext');
+    var dotsWrap = document.getElementById('actDots');
+    var cards = Array.prototype.slice.call(track.children);
+
+    // Un punto por tarjeta; marca activo el más centrado en el viewport
+    cards.forEach(function(_, i){
+      var b = document.createElement('button');
+      b.setAttribute('aria-label', 'Ir a la actividad ' + (i + 1));
+      b.addEventListener('click', function(){ scrollToCard(i); });
+      dotsWrap.appendChild(b);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    // La tarjeta activa se CENTRA en el viewport (no pegada a la izquierda).
+    function activeIndex(){
+      var centro = vp.scrollLeft + vp.clientWidth / 2;
+      var mejor = 0, minDist = Infinity;
+      for(var i = 0; i < cards.length; i++){
+        var c = cards[i];
+        var cc = c.offsetLeft + c.offsetWidth / 2;
+        var d = Math.abs(cc - centro);
+        if(d < minDist){ minDist = d; mejor = i; }
+      }
+      return mejor;
+    }
+    function scrollToCard(i){
+      var c = cards[i];
+      var left = c.offsetLeft - (vp.clientWidth - c.offsetWidth) / 2;
+      vp.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+    }
+    function sync(){
+      var idx = activeIndex();
+      dots.forEach(function(d, i){ d.classList.toggle('on', i === idx); });
+      prev.disabled = idx <= 0;
+      next.disabled = idx >= cards.length - 1;
+    }
+    prev.addEventListener('click', function(){ scrollToCard(Math.max(0, activeIndex() - 1)); });
+    next.addEventListener('click', function(){ scrollToCard(Math.min(cards.length - 1, activeIndex() + 1)); });
+
+    var raf;
+    vp.addEventListener('scroll', function(){
+      window.cancelAnimationFrame(raf);
+      raf = window.requestAnimationFrame(sync);
+    });
+    window.addEventListener('resize', sync);
+    sync();
+  })();
+
+  // Formulario -> abre el correo con el mensaje preparado
+  var EMAIL_DESTINO = "saulodlsf@gmail.com"; // CAMBIAR por email comercial cuando exista
+  function enviarDemo(e){
+    e.preventDefault();
+    var f = e.target;
+    var asunto = encodeURIComponent("Solicitud de demo — Trazo");
+    var cuerpo = encodeURIComponent(
+      "Nombre y centro: " + f.nombre.value + "\n" +
+      "Email: " + f.email.value + "\n" +
+      "Teléfono: " + (f.telefono.value||"-") + "\n\n" +
+      f.mensaje.value
+    );
+    window.location.href = "mailto:" + EMAIL_DESTINO + "?subject=" + asunto + "&body=" + cuerpo;
+    document.getElementById('formNote').textContent = "Abriendo tu correo… si no se abre, escríbenos a " + EMAIL_DESTINO;
+    return false;
+  }
+</script>
+</body>
+</html>

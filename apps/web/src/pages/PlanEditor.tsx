@@ -280,7 +280,7 @@ function LineaEditor({
         <div style={{ display: "flex", gap: 6 }}>
           <IconBtn label="Subir" disabled={index === 0} onClick={() => onMove(-1)}>↑</IconBtn>
           <IconBtn label="Bajar" disabled={index === total - 1} onClick={() => onMove(1)}>↓</IconBtn>
-          <IconBtn label="Quitar línea" onClick={onRemove} danger>×</IconBtn>
+          <IconBtn label="Quitar" onClick={onRemove} danger>×</IconBtn>
         </div>
       </div>
 
@@ -363,7 +363,7 @@ function LineaEditor({
           onChange={(e) => onChange({ activo: e.target.checked })}
           style={{ width: 17, height: 17 }}
         />
-        Línea activa
+        Incluir en el plan
       </label>
     </div>
   );

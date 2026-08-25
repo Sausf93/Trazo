@@ -8,6 +8,7 @@ from app.templates.tipos import (
     PlantillaConteoComparacion,
     PlantillaManejoCantidad,
     PlantillaMemoriaVisual,
+    PlantillaParejas,
     PlantillaSecuenciaOrdenar,
     PlantillaSeleccionMultiple,
     PlantillaTrazo,
@@ -22,6 +23,7 @@ _PLANTILLAS: list[type[PlantillaBase]] = [
     PlantillaArrastrarPosicion,
     PlantillaManejoCantidad,
     PlantillaBusqueda,
+    PlantillaParejas,
 ]
 
 REGISTRY: dict[str, PlantillaBase] = {p.tipo: p() for p in _PLANTILLAS}

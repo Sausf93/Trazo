@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:path_drawing/path_drawing.dart';
 
 import '../models.dart';
@@ -32,7 +33,8 @@ class _TrazoWidgetState extends State<TrazoWidget> {
   // Guía tipo cuadernillo: cada sub-trazo se numera en su orden de escritura y
   // una flecha corta marca por dónde arranca. Imprescindible para mayores que
   // nunca aprendieron a escribir (apunte de Laura): siguen los números 1, 2, 3…
-  late final List<(Offset, double)> _inicios; // por sub-trazo: posición + ángulo inicial
+  late final List<(Offset, double)>
+      _inicios; // por sub-trazo: posición + ángulo inicial
 
   final List<Offset> _puntosUsuario = []; // en coords del viewBox
   final DateTime _inicio = DateTime.now();
@@ -105,6 +107,7 @@ class _TrazoWidgetState extends State<TrazoWidget> {
   }
 
   void _limpiar() {
+    HapticFeedback.selectionClick();
     setState(() => _puntosUsuario.clear());
     // Vuelve a dejar la métrica "sin trazo" para no arrastrar el intento erróneo.
     widget.onMetricas({
@@ -151,19 +154,22 @@ class _TrazoWidgetState extends State<TrazoWidget> {
           child: Text(
             widget.instancia.render['instruccion'] as String? ??
                 'Sigue la línea con el dedo o el lápiz',
-            style: TextStyle(
-                fontSize: estrecho ? 20 : 26, color: TrazoColors.ink),
+            style:
+                TextStyle(fontSize: estrecho ? 20 : 26, color: TrazoColors.ink),
           ),
         ),
         Expanded(
           child: LayoutBuilder(
             builder: (context, constraints) {
-              final size =
-                  Size(constraints.maxWidth, constraints.maxHeight);
+              final size = Size(constraints.maxWidth, constraints.maxHeight);
               return GestureDetector(
                 key: const ValueKey('trazo-lienzo'),
-                onPanStart: (d) => setState(
-                    () => _puntosUsuario.add(_aViewBox(d.localPosition, size))),
+                onPanStart: (d) {
+                  HapticFeedback
+                      .selectionClick(); // confirma que empezó a trazar
+                  setState(() =>
+                      _puntosUsuario.add(_aViewBox(d.localPosition, size)));
+                },
                 onPanUpdate: (d) => setState(
                     () => _puntosUsuario.add(_aViewBox(d.localPosition, size))),
                 onPanEnd: (_) => _emitirMetricas(),
@@ -201,7 +207,8 @@ class _TrazoWidgetState extends State<TrazoWidget> {
               style: OutlinedButton.styleFrom(
                 foregroundColor: TrazoColors.sageDark,
                 side: const BorderSide(color: TrazoColors.sand, width: 1.5),
-                padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
                 minimumSize: const Size(0, 56),
                 textStyle:
                     const TextStyle(fontSize: 19, fontWeight: FontWeight.w700),
@@ -314,9 +321,7 @@ class _TrazoPainter extends CustomPainter {
         text: TextSpan(
           text: '${i + 1}',
           style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w900,
-              color: Colors.white),
+              fontSize: 15, fontWeight: FontWeight.w900, color: Colors.white),
         ),
         textDirection: TextDirection.ltr,
       )..layout();

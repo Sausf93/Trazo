@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../models.dart';
 import '../theme.dart';
@@ -30,52 +31,63 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
     // tablet en pleno kiosco (mejor sin opciones que un crash).
     final opciones =
         (render['opciones'] as List? ?? const []).map((e) => e.toString()).toList();
+    final instruccion = render['instruccion'] as String?;
     final enunciado = render['enunciado'] as String? ??
         render['instruccion'] as String? ??
         'Elige la correcta';
+    // Si vienen AMBOS y difieren (p. ej. series: instruccion='¿Qué sigue?' y
+    // enunciado='rojo, azul, rojo…'), se pinta la consigna encima; si no, la
+    // serie quedaba en pantalla sin ninguna pregunta que dijera qué hacer.
+    final mostrarConsigna = instruccion != null &&
+        instruccion.isNotEmpty &&
+        instruccion != enunciado;
     final imagen = (render['imagen'] ?? '').toString();
 
-    return Column(
-      children: [
-        // Enunciado acotado a 3 líneas: si es largo no debe comerse el espacio
-        // reservado a las opciones (grandes) ni provocar overflow.
-        Text(enunciado,
-            textAlign: TextAlign.center,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.w600,
-                color: TrazoColors.ink)),
-        // Si la actividad muestra una imagen (p. ej. "¿qué animal es?"), grande.
-        if (imagen.isNotEmpty && IlustracionResolver.tiene(imagen)) ...[
-          const SizedBox(height: 12),
-          Ilustracion(imagen, size: 110),
-        ],
-        const SizedBox(height: 18),
-        Expanded(
-          child: LayoutBuilder(
-            builder: (context, c) {
-              final n = opciones.length;
-              const gap = 14.0;
-              // Cada opción ocupa a lo ancho; alto repartido pero acotado para
-              // que no salgan cuadros gigantes.
-              final alto =
-                  ((c.maxHeight - gap * (n - 1)) / n).clamp(60.0, 128.0);
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  for (var i = 0; i < n; i++) ...[
-                    if (i > 0) const SizedBox(height: gap),
-                    _opcion(opciones[i], alto),
-                  ],
-                ],
-              );
-            },
+    final n = opciones.length;
+    const gap = 14.0;
+    // Se desplaza SOLO si no cabe (minHeight = alto disponible). Así en pantallas
+    // altas se centra y llena, y en tablets bajas (1024x600) con 5 opciones no
+    // desborda ni corta la última opción: aparece scroll de rescate. El enunciado
+    // NUNCA se trunca (las adivinanzas perderían la pista y medirían injusto).
+    return LayoutBuilder(builder: (context, c) {
+      return SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: c.maxHeight),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 6),
+              if (mostrarConsigna) ...[
+                Text(instruccion,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
+                        color: TrazoColors.sageDark)),
+                const SizedBox(height: 8),
+              ],
+              Text(enunciado,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w600,
+                      color: TrazoColors.ink)),
+              if (imagen.isNotEmpty && IlustracionResolver.tiene(imagen)) ...[
+                const SizedBox(height: 12),
+                Ilustracion(imagen, size: 110),
+              ],
+              const SizedBox(height: 18),
+              // Opciones a un tamaño táctil cómodo y estable (no gigantes).
+              for (var i = 0; i < n; i++) ...[
+                if (i > 0) const SizedBox(height: gap),
+                _opcion(opciones[i], 66),
+              ],
+              const SizedBox(height: 8),
+            ],
           ),
         ),
-      ],
-    );
+      );
+    });
   }
 
   Widget _opcion(String op, double alto) {
@@ -95,6 +107,7 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
           child: InkWell(
             borderRadius: BorderRadius.circular(16),
             onTap: () {
+              HapticFeedback.selectionClick();
               setState(() => _elegida = op);
               widget.onMetricas({
                 'eleccion': op,
@@ -120,9 +133,11 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
                     const SizedBox(width: 10),
                   ],
                   Flexible(
+                    // Hasta 3 líneas: una respuesta larga (un refrán) se muestra
+                    // ENTERA envuelta en vez de cortarse con "…" a 2 líneas.
                     child: Text(op,
                         textAlign: TextAlign.center,
-                        maxLines: 2,
+                        maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                             fontSize: fontSize,

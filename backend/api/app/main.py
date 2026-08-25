@@ -22,6 +22,7 @@ from app.routers import (
     ejercicios,
     evolucion,
     intentos,
+    objetivos,
     planes,
     plataforma,
     sesiones,
@@ -58,12 +59,26 @@ async def lifespan(app: FastAPI):
     # El CATÁLOGO de actividades es CONTENIDO del producto (no datos de demo): se
     # carga y actualiza SIEMPRE, también en producción. Sin esto, un despliegue de
     # prod se queda sin ninguna actividad que asignar o jugar.
-    async with AsyncSessionLocal() as db:
-        try:
-            nuevas = await sincronizar_catalogo(db)
-            logger.info("Catálogo sincronizado (%s actividades nuevas).", nuevas)
-        except Exception:  # pragma: no cover
-            logger.exception("Fallo al sincronizar el catálogo de actividades")
+    #
+    # Se serializa entre instancias con un advisory lock de SESIÓN (distinto del de
+    # arranque): sin él, dos arranques a la vez (deploy/autoescalado) verían la misma
+    # actividad ausente e insertarían filas duplicadas (el macheo es por nombre y no
+    # hay unique). El lock vive en una conexión dedicada durante toda la sync.
+    try:
+        if engine.dialect.name == "postgresql":
+            async with engine.connect() as lock_conn:
+                await lock_conn.execute(text("SELECT pg_advisory_lock(727275)"))
+                try:
+                    async with AsyncSessionLocal() as db:
+                        nuevas = await sincronizar_catalogo(db)
+                finally:
+                    await lock_conn.execute(text("SELECT pg_advisory_unlock(727275)"))
+        else:
+            async with AsyncSessionLocal() as db:
+                nuevas = await sincronizar_catalogo(db)
+        logger.info("Catálogo sincronizado (%s actividades nuevas).", nuevas)
+    except Exception:  # pragma: no cover
+        logger.exception("Fallo al sincronizar el catálogo de actividades")
 
     es_dev = settings.entorno.lower() == "dev"
     if not es_dev:
@@ -140,6 +155,7 @@ app.include_router(intentos.router)
 app.include_router(evolucion.router)
 app.include_router(alertas.router)
 app.include_router(planes.router)
+app.include_router(objetivos.router)
 app.include_router(dispositivos.router)
 app.include_router(staff.router)
 app.include_router(plataforma.router)

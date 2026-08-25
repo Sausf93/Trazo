@@ -102,9 +102,13 @@ def _por_aciertos_fallos(v, o, clave_objetivos):
     # bulto (TO).
     if aciertos >= objetivos and fallos == 0:
         return "logrado"
-    if aciertos >= 1:
+    # "Tocar a bulto": si hay tantos o más fallos que aciertos, no discrimina;
+    # premiar eso con 'parcial' (0.5) inflaría el desempeño de quien no reconoce
+    # y ensucia la evolución y el informe. Solo hay 'parcial' si acierta MÁS de
+    # lo que falla.
+    if aciertos >= 1 and aciertos > fallos:
         return "parcial"
-    return "no_logrado"  # tocó (fallos>0) pero no acertó ninguna
+    return "no_logrado"  # no acertó ninguna, o tocó a bulto (fallos>=aciertos)
 
 
 def _memoria_visual(v, o):
@@ -130,8 +134,24 @@ def _secuencia_ordenar(v, o):
     n = min(len(orden_final), len(correcto))
     if n == 0:
         return "sin_valorar"
+    # Exactitud posicional (señal estricta).
     aciertos = sum(1 for i in range(n) if orden_final[i] == correcto[i])
-    return _grada(aciertos / len(correcto), hubo_intento=True)
+    ratio_pos = aciertos / len(correcto)
+    # Orden RELATIVO (señal justa): fracción de pares en el orden correcto. Así un
+    # desplazamiento de un paso puntúa alto en vez de hundir a 0 la exactitud
+    # posicional; refleja mejor el desempeño real (principio: medir, no castigar).
+    rank = {paso: i for i, paso in enumerate(correcto)}
+    seq = [rank[p] for p in orden_final if p in rank]
+    ratio_pares = ratio_pos
+    if len(seq) >= 2:
+        total = concordantes = 0
+        for i in range(len(seq)):
+            for j in range(i + 1, len(seq)):
+                total += 1
+                if seq[i] < seq[j]:
+                    concordantes += 1
+        ratio_pares = concordantes / total if total else ratio_pos
+    return _grada(max(ratio_pos, ratio_pares), hubo_intento=True)
 
 
 def _arrastrar_posicion(v, o):
@@ -158,9 +178,24 @@ def _manejo_cantidad(v, o):
         oh, om = o.get("hora"), o.get("minuto")
         if oh is None or om is None:
             return "sin_valorar"
-        hora_ok = (int(_num(h, -1)) % 12) == (int(_num(oh, -2)) % 12)
-        min_ok = int(_num(m, -1)) == int(_num(om, -2))
-        return "logrado" if (hora_ok and min_ok) else "no_logrado"
+        h12 = int(_num(h, -1)) % 12
+        oh12 = int(_num(oh, -2)) % 12
+        om_i = int(_num(om, -2))
+        # Tolerancia clínica: con minutos altos (>=40) la aguja horaria ya está a
+        # 2/3 hacia la hora siguiente; leer "las X menos veinte/cuarto" (hora+1) es
+        # una lectura razonable, no un fallo. El minuto sí debe coincidir.
+        if om_i >= 40:
+            hora_ok = h12 == oh12 or h12 == (oh12 + 1) % 12
+        else:
+            hora_ok = h12 == oh12
+        min_ok = int(_num(m, -1)) == om_i
+        # Acertar la HORA pero fallar el minuto es un logro parcial (leyó bien la
+        # aguja de las horas): informa mejor que un no_logrado seco.
+        if hora_ok and min_ok:
+            return "logrado"
+        if hora_ok:
+            return "parcial"
+        return "no_logrado"
     # Dinero: el objetivo está en CÉNTIMOS. El cliente puede enviar el total en
     # céntimos (245) o en euros (2.45); aceptamos ambas unidades para que un
     # importe compuesto EXACTO se puntúe logrado venga en la unidad que venga.
@@ -179,8 +214,16 @@ def _manejo_cantidad(v, o):
     if t is None:
         return "no_logrado"
     obj = int(_num(objetivo_c, -2))
-    acierta = int(round(t)) == obj or int(round(t * 100)) == obj
-    return "logrado" if acierta else "no_logrado"
+    # El total puede venir en céntimos (245) o en euros (2.45): mide la distancia
+    # en la interpretación más favorable.
+    diff = min(abs(int(round(t)) - obj), abs(int(round(t * 100)) - obj))
+    if diff == 0:
+        return "logrado"
+    # Se quedó CERCA (<=10% del importe, mínimo 5 cént.): logro parcial, no un
+    # fallo seco. Reconoce el casi-acierto (p. ej. 2,40 € para 2,45 €).
+    if diff <= max(5, round(abs(obj) * 0.10)):
+        return "parcial"
+    return "no_logrado"
 
 
 def _trazo(v, o):
@@ -198,6 +241,22 @@ def _trazo(v, o):
     if precision >= 0.8 and puntos >= 15:
         return "logrado"     # trazo amplio y preciso
     return "sin_valorar"     # banda intermedia -> revisar
+
+
+def _parejas(v, o):
+    # El juego SOLO termina cuando se encuentran todas las parejas; por eso el
+    # desempeño se mide por los ERRORES (destapes fallidos), no por si acabó.
+    n = int(_num(o.get("n_pares"), 0) or 0)
+    encontradas = _num(v.get("pares_encontrados"))
+    if n <= 0 or encontradas is None:
+        return "sin_valorar"
+    encontradas = int(encontradas)
+    if encontradas < n:
+        return "sin_valorar"  # lo dejó a medias: no es un fallo, no puntúa
+    errores = int(_num(v.get("errores"), 0) or 0)
+    # Un tablero de n parejas requiere n aciertos; cada error es un intento de más.
+    # fracción = aciertos / (aciertos + errores). 0 errores -> 1.0 (logrado).
+    return _grada(n / (n + errores) if (n + errores) else 1.0, hubo_intento=True)
 
 
 def hubo_interaccion(plantilla: str, valores: dict | None) -> bool:
@@ -227,6 +286,9 @@ def hubo_interaccion(plantilla: str, valores: dict | None) -> bool:
         if "hora_elegida" in v:
             return True  # reloj: no podemos saberlo -> asumimos que sí
         return bool(v.get("monedas_usadas"))
+    if plantilla == "parejas":
+        return (int(_num(v.get("pares_encontrados"), 0) or 0) > 0
+                or int(_num(v.get("errores"), 0) or 0) > 0)
     return True
 
 
@@ -239,4 +301,5 @@ _CORRECTORES = {
     "arrastrar_posicion": _arrastrar_posicion,
     "manejo_cantidad": _manejo_cantidad,
     "trazo": _trazo,
+    "parejas": _parejas,
 }

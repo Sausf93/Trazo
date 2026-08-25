@@ -1,0 +1,993 @@
+[
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Dichos de siempre",
+  "descripcion": "Refranes menos evidentes que los habituales; falta el final y hay que elegirlo. Reminiscencia y lenguaje.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "caballo_regalado",
+     "instruccion": "Elige lo que falta",
+     "enunciado": "A caballo regalado...",
+     "correcta": "no le mires el diente",
+     "distractores": [
+      "no le des de comer",
+      "átalo bien corto",
+      "míralo de lejos"
+     ]
+    },
+    {
+     "id": "quien_abarca",
+     "instruccion": "Elige lo que falta",
+     "enunciado": "Quien mucho abarca...",
+     "correcta": "poco aprieta",
+     "distractores": [
+      "mucho consigue",
+      "todo lo alcanza",
+      "nunca se cansa"
+     ]
+    },
+    {
+     "id": "casa_herrero",
+     "instruccion": "Elige lo que falta",
+     "enunciado": "En casa del herrero...",
+     "correcta": "cuchillo de palo",
+     "distractores": [
+      "buen martillo de hierro",
+      "el fuego encendido",
+      "mucho trabajo"
+     ]
+    },
+    {
+     "id": "cria_cuervos",
+     "instruccion": "Elige lo que falta",
+     "enunciado": "Cría cuervos...",
+     "correcta": "y te sacarán los ojos",
+     "distractores": [
+      "y tendrás compañía",
+      "y volarán muy lejos",
+      "y cantarán al alba"
+     ]
+    },
+    {
+     "id": "vale_tarde",
+     "instruccion": "Elige lo que falta",
+     "enunciado": "Más vale tarde...",
+     "correcta": "que nunca",
+     "distractores": [
+      "que pronto",
+      "que mal hecho",
+      "que deprisa"
+     ]
+    },
+    {
+     "id": "no_madrugar",
+     "instruccion": "Elige lo que falta",
+     "enunciado": "No por mucho madrugar...",
+     "correcta": "amanece más temprano",
+     "distractores": [
+      "se llega más lejos",
+      "se duerme mejor",
+      "se trabaja más"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Canciones de la infancia",
+  "descripcion": "Canciones populares de toda la vida a las que falta una palabra; elegir cuál. Reminiscencia muy conservada.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "boton_raton",
+     "instruccion": "Elige lo que falta",
+     "enunciado": "Debajo de un botón, ton, ton, que encontró Martín, tin, tin, había un...",
+     "correcta": "ratón",
+     "distractores": [
+      "gato",
+      "perro",
+      "pájaro"
+     ]
+    },
+    {
+     "id": "patio_casa",
+     "instruccion": "Elige lo que falta",
+     "enunciado": "El patio de mi casa es particular; cuando llueve se...",
+     "correcta": "moja como los demás",
+     "distractores": [
+      "seca en un instante",
+      "llena de flores",
+      "cierra por la noche"
+     ]
+    },
+    {
+     "id": "muneca_azul",
+     "instruccion": "Elige lo que falta",
+     "enunciado": "Tengo una muñeca vestida de...",
+     "correcta": "azul",
+     "distractores": [
+      "rojo",
+      "verde",
+      "rosa"
+     ]
+    },
+    {
+     "id": "anton",
+     "instruccion": "Elige lo que falta",
+     "enunciado": "Antón, Antón, Antón...",
+     "correcta": "Pirulero",
+     "distractores": [
+      "panadero",
+      "caballero",
+      "carpintero"
+     ]
+    },
+    {
+     "id": "mambru",
+     "instruccion": "Elige lo que falta",
+     "enunciado": "Mambrú se fue a la...",
+     "correcta": "guerra",
+     "distractores": [
+      "feria",
+      "sierra",
+      "tierra"
+     ]
+    },
+    {
+     "id": "don_gato",
+     "instruccion": "Elige lo que falta",
+     "enunciado": "Estaba el señor don Gato sentadito en su...",
+     "correcta": "tejado",
+     "distractores": [
+      "balcón",
+      "sillón",
+      "regazo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Como esto es a aquello",
+  "descripcion": "Analogías sencillas: se da una pareja y hay que completar la segunda con la misma lógica. Razonamiento verbal.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "guante_calcetin",
+     "instruccion": "Completa la frase",
+     "enunciado": "El guante es a la mano como el calcetín es al...",
+     "correcta": "pie",
+     "distractores": [
+      "brazo",
+      "cuello",
+      "codo"
+     ]
+    },
+    {
+     "id": "dia_noche",
+     "instruccion": "Completa la frase",
+     "enunciado": "El día es a la luz como la noche es a la...",
+     "correcta": "oscuridad",
+     "distractores": [
+      "luna",
+      "estrella",
+      "cama"
+     ]
+    },
+    {
+     "id": "perro_gato",
+     "instruccion": "Completa la frase",
+     "enunciado": "El perro es a ladrar como el gato es a...",
+     "correcta": "maullar",
+     "distractores": [
+      "rugir",
+      "cantar",
+      "aullar"
+     ]
+    },
+    {
+     "id": "uva_aceituna",
+     "instruccion": "Completa la frase",
+     "enunciado": "La uva es al vino como la aceituna es al...",
+     "correcta": "aceite",
+     "distractores": [
+      "vinagre",
+      "zumo",
+      "pan"
+     ]
+    },
+    {
+     "id": "invierno_verano",
+     "instruccion": "Completa la frase",
+     "enunciado": "El invierno es al frío como el verano es al...",
+     "correcta": "calor",
+     "distractores": [
+      "viento",
+      "mar",
+      "lluvia"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué hace falta?",
+  "descripcion": "Para hacer algo cotidiano hay que deducir qué objeto se necesita. Razonamiento práctico.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "escribir_carta",
+     "instruccion": "Para escribir una carta, ¿qué necesitas?",
+     "correcta": "un bolígrafo",
+     "distractores": [
+      "un tenedor",
+      "una toalla",
+      "un peine"
+     ]
+    },
+    {
+     "id": "abrir_puerta",
+     "instruccion": "Para abrir una puerta cerrada con llave, ¿qué necesitas?",
+     "correcta": "la llave",
+     "distractores": [
+      "un martillo",
+      "unas gafas",
+      "una escoba"
+     ]
+    },
+    {
+     "id": "hacer_sopa",
+     "instruccion": "Para hacer una sopa caliente, ¿qué necesitas?",
+     "correcta": "una olla al fuego",
+     "distractores": [
+      "un espejo",
+      "una almohada",
+      "un paraguas"
+     ]
+    },
+    {
+     "id": "ver_de_cerca",
+     "instruccion": "Para ver de cerca cuando la vista falla, ¿qué necesitas?",
+     "correcta": "unas gafas",
+     "distractores": [
+      "unos guantes",
+      "un sombrero",
+      "unos zapatos"
+     ]
+    },
+    {
+     "id": "protegerse_lluvia",
+     "instruccion": "Para no mojarte cuando llueve, ¿qué necesitas?",
+     "correcta": "un paraguas",
+     "distractores": [
+      "un abanico",
+      "unas gafas de sol",
+      "un ventilador"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "calculo",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Cuentas de la compra",
+  "descripcion": "Pequeños problemas de la vida diaria resueltos de cabeza; elegir el resultado. Cálculo con sentido.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "barras_pan",
+     "instruccion": "Compras 3 barras de pan y te comes 1. ¿Cuántas te quedan?",
+     "correcta": "2",
+     "distractores": [
+      "1",
+      "3",
+      "4"
+     ]
+    },
+    {
+     "id": "huevos_tortilla",
+     "instruccion": "Tienes 5 huevos y usas 2 para la tortilla. ¿Cuántos quedan?",
+     "correcta": "3",
+     "distractores": [
+      "2",
+      "4",
+      "7"
+     ]
+    },
+    {
+     "id": "sillas_mesa",
+     "instruccion": "Hay 4 sillas en la mesa y traes 2 más. ¿Cuántas hay en total?",
+     "correcta": "6",
+     "distractores": [
+      "2",
+      "5",
+      "8"
+     ]
+    },
+    {
+     "id": "media_docena",
+     "instruccion": "Compras media docena de naranjas. ¿Cuántas son?",
+     "correcta": "6",
+     "distractores": [
+      "3",
+      "12",
+      "10"
+     ]
+    },
+    {
+     "id": "galletas_mitad",
+     "instruccion": "Un paquete trae 10 galletas y te comes la mitad. ¿Cuántas quedan?",
+     "correcta": "5",
+     "distractores": [
+      "2",
+      "8",
+      "10"
+     ]
+    },
+    {
+     "id": "dos_monedas",
+     "instruccion": "Tienes 2 monedas de 2 euros. ¿Cuánto dinero tienes?",
+     "correcta": "4 euros",
+     "distractores": [
+      "2 euros",
+      "6 euros",
+      "8 euros"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "calculo",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El cambio justo",
+  "descripcion": "Situaciones de pago corrientes en las que hay que decir cuánto devuelven. Cálculo con dinero.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "cafe_1_2",
+     "instruccion": "Un café cuesta 1 euro. Pagas con 2 euros. ¿Cuánto te devuelven?",
+     "correcta": "1 euro",
+     "distractores": [
+      "2 euros",
+      "50 céntimos",
+      "3 euros"
+     ]
+    },
+    {
+     "id": "pan_1_5",
+     "instruccion": "El pan cuesta 1 euro. Pagas con un billete de 5 euros. ¿Cuánto te devuelven?",
+     "correcta": "4 euros",
+     "distractores": [
+      "3 euros",
+      "5 euros",
+      "1 euro"
+     ]
+    },
+    {
+     "id": "pan_justo",
+     "instruccion": "Una barra de pan vale 2 euros y pagas con una moneda de 2 euros. ¿Cuánto te devuelven?",
+     "correcta": "nada, es el importe justo",
+     "distractores": [
+      "1 euro",
+      "2 euros",
+      "50 céntimos"
+     ]
+    },
+    {
+     "id": "periodico",
+     "instruccion": "El periódico cuesta 1 euro y medio. Pagas con 2 euros. ¿Cuánto te devuelven?",
+     "correcta": "50 céntimos",
+     "distractores": [
+      "1 euro",
+      "1 euro y medio",
+      "20 céntimos"
+     ]
+    },
+    {
+     "id": "dos_cafes",
+     "instruccion": "Dos cafés cuestan 1 euro cada uno. Pagas con 5 euros. ¿Cuánto te devuelven?",
+     "correcta": "3 euros",
+     "distractores": [
+      "2 euros",
+      "4 euros",
+      "5 euros"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué fruta es?",
+  "descripcion": "Se muestra la ilustración de una fruta y hay que nombrarla. Reconocimiento visual (gnosias).",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "manzana",
+     "instruccion": "¿Qué fruta es?",
+     "imagen": "manzana",
+     "correcta": "una manzana",
+     "distractores": [
+      "una pera",
+      "un tomate",
+      "una pelota"
+     ]
+    },
+    {
+     "id": "platano",
+     "instruccion": "¿Qué fruta es?",
+     "imagen": "platano",
+     "correcta": "un plátano",
+     "distractores": [
+      "un pepino",
+      "una zanahoria",
+      "un limón"
+     ]
+    },
+    {
+     "id": "naranja",
+     "instruccion": "¿Qué fruta es?",
+     "imagen": "naranja",
+     "correcta": "una naranja",
+     "distractores": [
+      "un limón",
+      "una manzana",
+      "una cebolla"
+     ]
+    },
+    {
+     "id": "limon",
+     "instruccion": "¿Qué fruta es?",
+     "imagen": "limon",
+     "correcta": "un limón",
+     "distractores": [
+      "una naranja",
+      "una pera",
+      "un huevo"
+     ]
+    },
+    {
+     "id": "sandia",
+     "instruccion": "¿Qué fruta es?",
+     "imagen": "sandia",
+     "correcta": "una sandía",
+     "distractores": [
+      "un melón",
+      "una calabaza",
+      "una pelota"
+     ]
+    },
+    {
+     "id": "fresa",
+     "instruccion": "¿Qué fruta es?",
+     "imagen": "fresa",
+     "correcta": "una fresa",
+     "distractores": [
+      "un tomate",
+      "una manzana",
+      "una ciruela"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Las herramientas del taller",
+  "descripcion": "Se muestra la ilustración de una herramienta de siempre y hay que nombrarla. Reconocimiento visual y reminiscencia.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "martillo",
+     "instruccion": "¿Qué herramienta es?",
+     "imagen": "martillo",
+     "correcta": "un martillo",
+     "distractores": [
+      "un destornillador",
+      "una llave",
+      "una cuchara"
+     ]
+    },
+    {
+     "id": "destornillador",
+     "instruccion": "¿Qué herramienta es?",
+     "imagen": "destornillador",
+     "correcta": "un destornillador",
+     "distractores": [
+      "un martillo",
+      "un cuchillo",
+      "un lápiz"
+     ]
+    },
+    {
+     "id": "sierra",
+     "instruccion": "¿Qué herramienta es?",
+     "imagen": "sierra",
+     "correcta": "una sierra",
+     "distractores": [
+      "un martillo",
+      "un peine",
+      "un cuchillo"
+     ]
+    },
+    {
+     "id": "pincel",
+     "instruccion": "¿Qué herramienta es?",
+     "imagen": "pincel",
+     "correcta": "un pincel",
+     "distractores": [
+      "un lápiz",
+      "una cuchara",
+      "un peine"
+     ]
+    },
+    {
+     "id": "tijeras",
+     "instruccion": "¿Qué herramienta es?",
+     "imagen": "tijeras",
+     "correcta": "unas tijeras",
+     "distractores": [
+      "unas gafas",
+      "unas llaves",
+      "un martillo"
+     ]
+    },
+    {
+     "id": "llave",
+     "instruccion": "¿Qué herramienta es?",
+     "imagen": "llave",
+     "correcta": "una llave",
+     "distractores": [
+      "unas tijeras",
+      "un destornillador",
+      "una cuchara"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "En el día a día",
+  "descripcion": "Situaciones corrientes de la casa en las que hay que elegir la respuesta sensata. Juicio práctico.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "suena_telefono",
+     "instruccion": "Si suena el teléfono, ¿qué haces?",
+     "correcta": "lo contesto",
+     "distractores": [
+      "lo guardo en la nevera",
+      "lo riego",
+      "lo tiro a la basura"
+     ]
+    },
+    {
+     "id": "frio_casa",
+     "instruccion": "Si tienes frío en casa, ¿qué haces?",
+     "correcta": "me pongo una chaqueta",
+     "distractores": [
+      "abro la ventana de par en par",
+      "me quito los zapatos",
+      "me echo agua fría"
+     ]
+    },
+    {
+     "id": "cae_comida",
+     "instruccion": "Si se te cae comida al suelo, ¿qué haces?",
+     "correcta": "la recojo",
+     "distractores": [
+      "la piso",
+      "la dejo ahí siempre",
+      "la guardo en el bolsillo"
+     ]
+    },
+    {
+     "id": "tienes_sed",
+     "instruccion": "Si tienes sed, ¿qué haces?",
+     "correcta": "bebo un vaso de agua",
+     "distractores": [
+      "me acuesto a dormir",
+      "abro el paraguas",
+      "me pongo el abrigo"
+     ]
+    },
+    {
+     "id": "antes_comer",
+     "instruccion": "Antes de sentarte a comer, ¿qué conviene hacer?",
+     "correcta": "lavarme las manos",
+     "distractores": [
+      "peinarme",
+      "apagar todas las luces",
+      "cerrar la puerta con llave"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "La cocina española",
+  "descripcion": "Platos y dulces de toda la vida: ingredientes y costumbres. Reminiscencia de la cocina tradicional.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "tortilla_patatas",
+     "instruccion": "¿Qué lleva la tortilla de patatas?",
+     "correcta": "huevos y patatas",
+     "distractores": [
+      "arroz y pollo",
+      "harina y azúcar",
+      "pan y queso"
+     ]
+    },
+    {
+     "id": "gazpacho_color",
+     "instruccion": "¿De qué color es el gazpacho?",
+     "correcta": "rojo",
+     "distractores": [
+      "verde",
+      "amarillo",
+      "blanco"
+     ]
+    },
+    {
+     "id": "paella_arroz",
+     "instruccion": "¿Cuál es el ingrediente principal de la paella?",
+     "correcta": "el arroz",
+     "distractores": [
+      "la pasta",
+      "la patata",
+      "el pan"
+     ]
+    },
+    {
+     "id": "cocido_garbanzos",
+     "instruccion": "El cocido se hace principalmente con...",
+     "correcta": "garbanzos",
+     "distractores": [
+      "arroz",
+      "macarrones",
+      "acelgas"
+     ]
+    },
+    {
+     "id": "churro_chocolate",
+     "instruccion": "Los churros se suelen mojar en...",
+     "correcta": "chocolate caliente",
+     "distractores": [
+      "leche fría",
+      "zumo de naranja",
+      "vino tinto"
+     ]
+    },
+    {
+     "id": "turron_navidad",
+     "instruccion": "El turrón es un dulce típico de...",
+     "correcta": "la Navidad",
+     "distractores": [
+      "la Semana Santa",
+      "el verano",
+      "los cumpleaños"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Piensa antes de actuar",
+  "descripcion": "Situaciones en las que hay que anticiparse y elegir el paso más sensato. Planificación y control.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "va_a_llover",
+     "instruccion": "Va a llover y sales a la calle. ¿Qué coges?",
+     "correcta": "el paraguas",
+     "distractores": [
+      "las gafas de sol",
+      "el abanico",
+      "el sombrero de paja"
+     ]
+    },
+    {
+     "id": "cruzar_calle",
+     "instruccion": "Antes de cruzar la calle, ¿qué haces?",
+     "correcta": "miro a los dos lados",
+     "distractores": [
+      "cierro los ojos",
+      "echo a correr",
+      "me paro a descansar"
+     ]
+    },
+    {
+     "id": "llamar_hija",
+     "instruccion": "Quieres llamar por teléfono a tu hija. ¿Qué necesitas saber?",
+     "correcta": "su número de teléfono",
+     "distractores": [
+      "su color favorito",
+      "el día de su santo",
+      "su estatura"
+     ]
+    },
+    {
+     "id": "vas_cocinar",
+     "instruccion": "Vas a empezar a cocinar. ¿Qué haces primero?",
+     "correcta": "me lavo las manos",
+     "distractores": [
+      "friego los platos sucios",
+      "apago el fuego",
+      "pongo la mesa"
+     ]
+    },
+    {
+     "id": "vas_acostarte",
+     "instruccion": "Te vas a acostar. ¿Qué conviene hacer antes?",
+     "correcta": "apagar la luz",
+     "distractores": [
+      "poner la lavadora",
+      "abrir la puerta de la calle",
+      "encender la radio a tope"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿De qué color es?",
+  "descripcion": "Se nombra una cosa conocida y hay que decir de qué color es. Percepción del color y conocimiento cotidiano.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "cielo",
+     "instruccion": "¿De qué color es el cielo en un día despejado?",
+     "correcta": "azul",
+     "distractores": [
+      "verde",
+      "marrón",
+      "negro"
+     ]
+    },
+    {
+     "id": "platano_maduro",
+     "instruccion": "¿De qué color es un plátano maduro?",
+     "correcta": "amarillo",
+     "distractores": [
+      "rojo",
+      "azul",
+      "morado"
+     ]
+    },
+    {
+     "id": "hierba",
+     "instruccion": "¿De qué color es la hierba del campo?",
+     "correcta": "verde",
+     "distractores": [
+      "naranja",
+      "gris",
+      "rosa"
+     ]
+    },
+    {
+     "id": "tomate",
+     "instruccion": "¿De qué color es un tomate maduro?",
+     "correcta": "rojo",
+     "distractores": [
+      "azul",
+      "blanco",
+      "verde"
+     ]
+    },
+    {
+     "id": "nieve",
+     "instruccion": "¿De qué color es la nieve?",
+     "correcta": "blanco",
+     "distractores": [
+      "negro",
+      "amarillo",
+      "rojo"
+     ]
+    },
+    {
+     "id": "carbon",
+     "instruccion": "¿De qué color es el carbón?",
+     "correcta": "negro",
+     "distractores": [
+      "blanco",
+      "verde",
+      "rojo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Geografía de España",
+  "descripcion": "Ciudades, capitales y lugares conocidos de España. Memoria de siempre (semántica).",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "capital_espana",
+     "instruccion": "¿Cuál es la capital de España?",
+     "correcta": "Madrid",
+     "distractores": [
+      "Barcelona",
+      "Sevilla",
+      "Valencia"
+     ]
+    },
+    {
+     "id": "giralda",
+     "instruccion": "¿En qué ciudad está la Giralda?",
+     "correcta": "Sevilla",
+     "distractores": [
+      "Madrid",
+      "Bilbao",
+      "Zaragoza"
+     ]
+    },
+    {
+     "id": "capital_cataluna",
+     "instruccion": "¿Cuál es la capital de Cataluña?",
+     "correcta": "Barcelona",
+     "distractores": [
+      "Madrid",
+      "Valencia",
+      "Tarragona"
+     ]
+    },
+    {
+     "id": "alhambra",
+     "instruccion": "La Alhambra está en...",
+     "correcta": "Granada",
+     "distractores": [
+      "Córdoba",
+      "Málaga",
+      "Almería"
+     ]
+    },
+    {
+     "id": "valencia_mar",
+     "instruccion": "¿Junto a qué mar está Valencia?",
+     "correcta": "el mar Mediterráneo",
+     "distractores": [
+      "el mar Cantábrico",
+      "el océano Atlántico",
+      "el mar del Norte"
+     ]
+    },
+    {
+     "id": "guggenheim",
+     "instruccion": "El museo Guggenheim está en...",
+     "correcta": "Bilbao",
+     "distractores": [
+      "Madrid",
+      "Sevilla",
+      "Toledo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Los gestos de siempre",
+  "descripcion": "Se describe una intención y hay que elegir qué gesto se hace con el cuerpo. Reconocimiento del gesto (praxias).",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "decir_adios",
+     "instruccion": "Para decir adiós desde lejos, ¿qué haces?",
+     "correcta": "muevo la mano en el aire",
+     "distractores": [
+      "doy una palmada",
+      "me toco la nariz",
+      "cierro el puño"
+     ]
+    },
+    {
+     "id": "dar_mano",
+     "instruccion": "Para saludar dando la mano, ¿qué haces?",
+     "correcta": "estiro la mano derecha",
+     "distractores": [
+      "levanto los dos brazos",
+      "doy un paso atrás",
+      "me cruzo de brazos"
+     ]
+    },
+    {
+     "id": "decir_si",
+     "instruccion": "Para decir que sí sin hablar, ¿qué haces?",
+     "correcta": "muevo la cabeza de arriba abajo",
+     "distractores": [
+      "muevo la cabeza de un lado a otro",
+      "levanto una ceja",
+      "cierro los ojos"
+     ]
+    },
+    {
+     "id": "pedir_silencio",
+     "instruccion": "Para pedir silencio, ¿qué haces?",
+     "correcta": "me pongo un dedo en los labios",
+     "distractores": [
+      "aplaudo fuerte",
+      "doy un pisotón",
+      "abro los brazos"
+     ]
+    },
+    {
+     "id": "llamar_lejos",
+     "instruccion": "Para llamar a alguien que está lejos, ¿qué haces?",
+     "correcta": "muevo la mano hacia mí",
+     "distractores": [
+      "me tapo la cara",
+      "me siento en el suelo",
+      "cruzo los dedos"
+     ]
+    }
+   ]
+  }
+ }
+]

@@ -15,6 +15,7 @@ dependencies:
   path_drawing: ^1.0.1    # parsear el guide_path (SVG) del ejercicio de trazo
   shared_preferences: ^2.3.3  # token + cola offline simple (MVP)
   package_info_plus: ^8.0.0   # versión instalada (aviso de actualización APK)
+  flutter_tts: ^4.2.0         # leer en voz alta la instrucción (mayores que no leen bien)
 
 dev_dependencies:
   flutter_test:

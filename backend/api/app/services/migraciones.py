@@ -16,6 +16,22 @@ from sqlalchemy.engine import Connection
 # Cada entrada: (tabla, columna, {dialecto: "tipo + default"}).
 _COLUMNAS = [
     (
+        "usuarios_staff",
+        "pin_hash",
+        {"sqlite": "VARCHAR(255)", "postgresql": "VARCHAR(255)"},
+    ),
+    (
+        "centros",
+        "tope_personas",
+        {"sqlite": "INTEGER NOT NULL DEFAULT 30",
+         "postgresql": "INTEGER NOT NULL DEFAULT 30"},
+    ),
+    (
+        "dispositivos",
+        "visto_en",
+        {"sqlite": "TIMESTAMP", "postgresql": "TIMESTAMPTZ"},
+    ),
+    (
         "sesiones",
         "abierta",
         {
@@ -36,6 +52,11 @@ _COLUMNAS = [
         "sesion_participantes",
         "actividad_actual",
         {"sqlite": "VARCHAR(200)", "postgresql": "VARCHAR(200)"},
+    ),
+    (
+        "sesion_participantes",
+        "actividad_actual_en",
+        {"sqlite": "TIMESTAMP", "postgresql": "TIMESTAMPTZ"},
     ),
     (
         "sesion_participantes",

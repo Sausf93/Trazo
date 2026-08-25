@@ -19,6 +19,9 @@ class ApiClient {
   String? centroId;
   String? rol;
   String? nombre;
+  // Nombre de ESTA tablet (el que puso el centro al emparejarla). Sirve para
+  // identificar físicamente la tablet y poder desvincular la correcta si se pierde.
+  String? nombreDispositivo;
   // Token de dispositivo (tablet emparejada al centro). Si está, el kiosco opera
   // sin login de staff: se envía en la cabecera X-Device-Token.
   String? _deviceToken;
@@ -31,6 +34,18 @@ class ApiClient {
 
   Never _timeoutErr() =>
       throw ApiException('No hay conexión con el servidor. Inténtalo de nuevo.');
+
+  /// Convierte cualquier fallo de transporte (sin WiFi, DNS caído, TLS,
+  /// conexión rechazada… todo lo que NO es un timeout) en un ApiException con
+  /// mensaje humano. Sin esto, un SocketException/ClientException crudo llegaría
+  /// a la pantalla del personal (login/maestra/emparejar) tal cual. El WiFi del
+  /// centro es inestable, así que este caso es muy probable. Se aplica al final
+  /// de cada petición; los ApiException (incluido el del timeout) se respetan.
+  Never _comoRed(Object e) {
+    if (e is ApiException) throw e;
+    throw ApiException(
+        'No hay conexión con el servidor. Revisa el WiFi e inténtalo de nuevo.');
+  }
 
   Uri _u(String path, [Map<String, dynamic>? query]) {
     final base = Uri.parse(Config.apiUrl);
@@ -56,6 +71,7 @@ class ApiClient {
     rol = prefs.getString('rol');
     nombre = prefs.getString('nombre');
     _deviceToken = prefs.getString('device_token');
+    nombreDispositivo = prefs.getString('device_nombre');
   }
 
   /// Autenticada si hay login de staff O la tablet está emparejada (dispositivo).
@@ -63,17 +79,28 @@ class ApiClient {
 
   bool get emparejado => _deviceToken != null;
 
+  /// Hay login de STAFF (integradora/admin). Distinto de `autenticado`: una tablet
+  /// emparejada está "autenticada" por el token de dispositivo pero NO tiene login
+  /// de staff, y la pantalla MAESTRA sí lo necesita (crear/abrir sala exige staff).
+  bool get staffLogueado => _token != null;
+
   /// Login (form-urlencoded, como espera OAuth2PasswordRequestForm).
   Future<void> login(String email, String password) async {
     final resp = await http.post(
       _u('/auth/login'),
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: {'username': email, 'password': password},
-    ).timeout(_kTimeout, onTimeout: _timeoutErr);
-    if (resp.statusCode != 200) {
-      throw ApiException('Login fallido (${resp.statusCode})');
+    ).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
+    if (resp.statusCode == 401) {
+      throw ApiException('Email o contraseña incorrectos.');
     }
-    final data = jsonDecode(resp.body) as Map<String, dynamic>;
+    if (resp.statusCode != 200) {
+      throw ApiException('No se pudo iniciar sesión. Vuelve a intentarlo.');
+    }
+    await _guardarSesionStaff(jsonDecode(resp.body) as Map<String, dynamic>);
+  }
+
+  Future<void> _guardarSesionStaff(Map<String, dynamic> data) async {
     _token = data['access_token'] as String;
     centroId = data['centro_id'] as String?;
     rol = data['rol'] as String?;
@@ -83,6 +110,38 @@ class ApiClient {
     if (centroId != null) await prefs.setString('centro_id', centroId!);
     if (rol != null) await prefs.setString('rol', rol!);
     if (nombre != null) await prefs.setString('nombre', nombre!);
+  }
+
+  /// Equipo del centro de ESTA tablet (para el selector "¿quién eres?" de la
+  /// maestra). Requiere que la tablet esté emparejada (token de dispositivo).
+  Future<List<StaffPick>> equipoDelCentro() async {
+    final resp = await http.get(_u('/dispositivos/equipo'), headers: _headers)
+        .timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
+    _check(resp);
+    return (jsonDecode(resp.body) as List)
+        .map((e) => StaffPick.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  /// Login de la maestra en la tablet: elige su nombre (staffId). El PIN solo hace
+  /// falta si ese profesional lo tiene puesto. Lanza ApiException('PIN') si se pide.
+  Future<void> loginTablet(String staffId, {String? pin}) async {
+    final resp = await http.post(
+      _u('/auth/tablet'),
+      headers: {..._headers, 'Content-Type': 'application/json'},
+      body: jsonEncode({'staff_id': staffId, if (pin != null) 'pin': pin}),
+    ).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
+    if (resp.statusCode == 401) {
+      // El backend marca con la cabecera cuándo es que falta/falla el PIN.
+      if (resp.headers['x-requiere-pin'] == '1' || pin != null) {
+        throw ApiException('PIN');
+      }
+      throw ApiException('No se pudo entrar. Inténtalo de nuevo.');
+    }
+    if (resp.statusCode != 200) {
+      throw ApiException('No se pudo entrar. Inténtalo de nuevo.');
+    }
+    await _guardarSesionStaff(jsonDecode(resp.body) as Map<String, dynamic>);
   }
 
   Future<void> logout() async {
@@ -102,7 +161,7 @@ class ApiClient {
     final resp = await http.get(
       _u('/dispositivos/yo'),
       headers: {'X-Device-Token': token},
-    ).timeout(_kTimeout, onTimeout: _timeoutErr);
+    ).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     if (resp.statusCode == 401) {
       throw ApiException('Código no válido o revocado.');
     }
@@ -110,9 +169,11 @@ class ApiClient {
     final yo = DispositivoYo.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
     _deviceToken = token;
     centroId = yo.centroId;
+    nombreDispositivo = yo.nombre;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('device_token', token);
     await prefs.setString('centro_id', yo.centroId);
+    await prefs.setString('device_nombre', yo.nombre);
     return yo;
   }
 
@@ -127,7 +188,7 @@ class ApiClient {
 
   Future<List<UsuarioFinal>> usuariosDelCentro() async {
     final resp =
-        await http.get(_u('/centros/$centroId/usuarios'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        await http.get(_u('/centros/$centroId/usuarios'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     final list = jsonDecode(resp.body) as List;
     return list
@@ -143,7 +204,7 @@ class ApiClient {
     final resp = await http.get(
         _u('/ejercicios',
             {'activo': 'true', if (bloque != null) 'bloque': bloque}),
-        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     final list = jsonDecode(resp.body) as List;
     return list
@@ -159,7 +220,7 @@ class ApiClient {
         if (nivel != null) 'nivel': nivel,
       }),
       headers: _headers,
-    ).timeout(_kTimeout, onTimeout: _timeoutErr);
+    ).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     return Instancia.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
   }
@@ -195,7 +256,7 @@ class ApiClient {
         if (programar) 'programar': true,
         if (programadaPara != null) 'programada_para': programadaPara,
       }),
-    ).timeout(_kTimeout, onTimeout: _timeoutErr);
+    ).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     return (jsonDecode(resp.body) as Map<String, dynamic>)['id'] as String;
   }
@@ -203,7 +264,7 @@ class ApiClient {
   /// Plan de trabajo de la persona (`GET /usuarios/{id}/plan`).
   Future<List<PlanLinea>> planUsuario(String usuarioId) async {
     final resp =
-        await http.get(_u('/usuarios/$usuarioId/plan'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        await http.get(_u('/usuarios/$usuarioId/plan'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     final data = jsonDecode(resp.body);
     // El endpoint puede devolver una lista o `{lineas: [...]}`.
@@ -217,7 +278,17 @@ class ApiClient {
   Future<SesionActiva> sesionActiva() async {
     final resp = await http.get(
         _u('/sesiones/activa', {'centro_id': centroId}),
-        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
+    _check(resp);
+    return SesionActiva.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
+  }
+
+  /// La sala abierta que abrió ESTA maestra (para recuperar su monitor tras un
+  /// refresco cuando el centro tiene varias salas). Requiere login de staff.
+  Future<SesionActiva> miSalaAbierta() async {
+    final resp = await http.get(_u('/sesiones/mia-abierta'),
+            headers: _headers)
+        .timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     return SesionActiva.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
   }
@@ -226,7 +297,7 @@ class ApiClient {
   Future<List<SesionProgramada>> sesionesProgramadas() async {
     final resp = await http.get(
         _u('/sesiones/programadas', {'centro_id': centroId}),
-        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     final list = jsonDecode(resp.body) as List;
     return list
@@ -238,26 +309,26 @@ class ApiClient {
   Future<void> abrirSesion(String sesionId) async {
     final resp = await http
         .patch(_u('/sesiones/$sesionId/abrir'), headers: _headers)
-        .timeout(_kTimeout, onTimeout: _timeoutErr);
+        .timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
   }
 
   Future<void> iniciarSesion(String sesionId) async {
     final resp =
-        await http.patch(_u('/sesiones/$sesionId/iniciar'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        await http.patch(_u('/sesiones/$sesionId/iniciar'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
   }
 
   Future<void> cerrarSesion(String sesionId) async {
     final resp =
-        await http.patch(_u('/sesiones/$sesionId/cerrar'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        await http.patch(_u('/sesiones/$sesionId/cerrar'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
   }
 
   /// Monitor en vivo de la sesión.
   Future<List<FichaLive>> sesionLive(String sesionId) async {
     final resp =
-        await http.get(_u('/sesiones/$sesionId/live'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        await http.get(_u('/sesiones/$sesionId/live'), headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     final data = jsonDecode(resp.body) as Map<String, dynamic>;
     final fichas = (data['fichas'] ?? []) as List;
@@ -271,7 +342,7 @@ class ApiClient {
       {String estado = 'cerrada', int limit = 20}) async {
     final resp = await http.get(
         _u('/sesiones', {'centro_id': centroId, 'estado': estado, 'limit': '$limit'}),
-        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     final list = jsonDecode(resp.body) as List;
     return list
@@ -283,7 +354,7 @@ class ApiClient {
   Future<ResumenSesion> resumenSesion(String sesionId) async {
     final resp = await http
         .get(_u('/sesiones/$sesionId/resumen'), headers: _headers)
-        .timeout(_kTimeout, onTimeout: _timeoutErr);
+        .timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     return ResumenSesion.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
   }
@@ -293,7 +364,7 @@ class ApiClient {
     final resp = await http
         .patch(_u('/sesiones/$sesionId/notas'),
             headers: _headers, body: jsonEncode({'nota': nota}))
-        .timeout(_kTimeout, onTimeout: _timeoutErr);
+        .timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     return ResumenSesion.fromJson(jsonDecode(resp.body) as Map<String, dynamic>);
   }
@@ -303,7 +374,7 @@ class ApiClient {
   Future<List<ColaItem>> colaUsuario(String usuarioId, String sesionId) async {
     final resp = await http.get(
         _u('/usuarios/$usuarioId/cola', {'sesion_id': sesionId}),
-        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     final data = jsonDecode(resp.body) as Map<String, dynamic>;
     final items = (data['items'] ?? []) as List;
@@ -319,7 +390,7 @@ class ApiClient {
       String sesionId, String usuarioId) async {
     final resp = await http.get(
         _u('/sesiones/$sesionId/participantes/$usuarioId/estado'),
-        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     return EstadoParticipante.fromJson(
         jsonDecode(resp.body) as Map<String, dynamic>);
@@ -331,7 +402,7 @@ class ApiClient {
       String sesionId, String usuarioId) async {
     final resp = await http.post(
         _u('/sesiones/$sesionId/participantes/$usuarioId/terminado'),
-        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     return EstadoParticipante.fromJson(
         jsonDecode(resp.body) as Map<String, dynamic>);
@@ -347,49 +418,67 @@ class ApiClient {
               headers: _headers,
               body: jsonEncode(
                   {'actividad': actividad, 'pos': pos, 'total': total}))
-          .timeout(_kTimeout, onTimeout: _timeoutErr);
+          .timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     } catch (_) {}
   }
 
+  /// Lo que la app PROPONE para la persona: `n` actividades frescas (lo menos
+  /// jugado primero). La maestra las revisa y decide; nunca se aplican solas.
+  Future<List<ColaItem>> propuesta(String usuarioId, {int n = 4}) async {
+    final resp = await http.get(
+        _u('/usuarios/$usuarioId/propuesta', {'n': '$n'}),
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
+    _check(resp);
+    final list = jsonDecode(resp.body) as List;
+    return list
+        .map((e) => ColaItem.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
   /// La maestra manda OTRA tanda a quien terminó (sube `ronda`, reinicia
-  /// `terminado`). Body opcional `{nivel?, lineas:[{bloque,n}]}`; sin body
-  /// repite la config/plan del participante.
+  /// `terminado`). Body opcional `{nivel?, lineas:[{bloque,n}], ejercicios:[id]}`;
+  /// `ejercicios` = actividades CONCRETAS elegidas en vivo o una propuesta
+  /// aceptada. Sin body repite la config/plan del participante.
   Future<void> enviarMas(
     String sesionId,
     String usuarioId, {
     String? nivel,
     List<Map<String, dynamic>>? lineas,
+    List<String>? ejercicios,
   }) async {
     final body = <String, dynamic>{
       if (nivel != null) 'nivel': nivel,
       if (lineas != null) 'lineas': lineas,
+      if (ejercicios != null && ejercicios.isNotEmpty) 'ejercicios': ejercicios,
     };
     final resp = await http.patch(
       _u('/sesiones/$sesionId/participantes/$usuarioId/mas'),
       headers: _headers,
       body: jsonEncode(body),
-    ).timeout(_kTimeout, onTimeout: _timeoutErr);
+    ).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
   }
 
   // --- Intentos ------------------------------------------------------------
 
-  /// Registra un intento. Devuelve el id del intento creado (o null si falló).
-  Future<String?> registrarIntento(Intento intento) async {
+  /// Registra un intento. Distingue tres desenlaces para que la cola offline
+  /// NO reintente eternamente un error definitivo (p. ej. la sala se cerró justo
+  /// al terminar: 409). Un error de red/timeout lanza ApiException (lo trata la
+  /// cola como transitorio).
+  Future<EnvioIntento> registrarIntento(Intento intento) async {
     final resp = await http.post(
       _u('/sesiones/${intento.sesionId}/intentos'),
       headers: _headers,
       body: jsonEncode(intento.toJson()),
-    ).timeout(_kTimeout, onTimeout: _timeoutErr);
+    ).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     if (resp.statusCode == 200 || resp.statusCode == 201) {
-      try {
-        final data = jsonDecode(resp.body) as Map<String, dynamic>;
-        return (data['id'] ?? intento.id) as String;
-      } catch (_) {
-        return intento.id;
-      }
+      return EnvioIntento.creado;
     }
-    return null;
+    // 4xx no recuperables: reintentar nunca lo va a arreglar -> descartar.
+    const permanentes = {400, 401, 403, 404, 409, 410, 422};
+    if (permanentes.contains(resp.statusCode)) return EnvioIntento.permanente;
+    // 5xx, 408, 429, etc.: puede funcionar más tarde -> reintentar.
+    return EnvioIntento.transitorio;
   }
 
   /// Marca/desmarca que la integradora AYUDÓ en esa actividad concreta (capa
@@ -399,7 +488,7 @@ class ApiClient {
       _u('/intentos/$intentoId/ayuda'),
       headers: _headers,
       body: jsonEncode({'con_ayuda': conAyuda}),
-    ).timeout(_kTimeout, onTimeout: _timeoutErr);
+    ).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
   }
 
@@ -409,7 +498,7 @@ class ApiClient {
     final resp = await http.get(
         _u('/sesiones/$sesionId/participantes/$usuarioId/intentos',
             {'limit': '$limit'}),
-        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr);
+        headers: _headers).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
     return (jsonDecode(resp.body) as List)
         .map((e) => IntentoRevision.fromJson(e as Map<String, dynamic>))
@@ -423,7 +512,7 @@ class ApiClient {
       _u('/intentos/$intentoId/resultado'),
       headers: _headers,
       body: jsonEncode({'resultado': resultado}),
-    ).timeout(_kTimeout, onTimeout: _timeoutErr);
+    ).timeout(_kTimeout, onTimeout: _timeoutErr).catchError(_comoRed);
     _check(resp);
   }
 
@@ -448,7 +537,16 @@ class ApiClient {
       throw ApiException('No autorizado.');
     }
     if (resp.statusCode >= 400) {
-      throw ApiException('Error ${resp.statusCode}: ${resp.body}');
+      // Nunca mostrar el cuerpo crudo (JSON/status) al usuario —lo ve hasta el
+      // mayor en la pantalla del participante—. Usar el 'detail' si es un texto
+      // legible; si no, un mensaje humano genérico.
+      var msg = 'No se pudo completar la acción. Vuelve a intentarlo.';
+      try {
+        final d = jsonDecode(resp.body);
+        final det = d is Map ? d['detail'] : null;
+        if (det is String && det.trim().isNotEmpty) msg = det;
+      } catch (_) {}
+      throw ApiException(msg);
     }
   }
 }
@@ -459,3 +557,10 @@ class ApiException implements Exception {
   @override
   String toString() => mensaje;
 }
+
+/// Desenlace de registrar un intento (para la cola offline).
+///  - creado: guardado en el servidor.
+///  - transitorio: fallo recuperable (red, timeout, 5xx) -> reintentar luego.
+///  - permanente: error definitivo (sesión cerrada, no participa, datos
+///    inválidos) -> descartar, reintentar nunca funcionaría.
+enum EnvioIntento { creado, transitorio, permanente }

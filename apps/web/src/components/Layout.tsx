@@ -1,7 +1,8 @@
 /** Marco de la aplicación: barra lateral de navegación + área de contenido. */
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
+import { listarPendientes } from "../api/endpoints";
 import { Logo } from "./Logo";
 import { colors, radius } from "../theme";
 
@@ -10,8 +11,9 @@ import { colors, radius } from "../theme";
 // siguen existiendo por si se necesitan.
 const NAV = [
   { to: "/", label: "Panel", end: true },
-  { to: "/pacientes", label: "Pacientes" },
+  { to: "/pacientes", label: "Personas" },
   { to: "/dispositivos", label: "Tablets" },
+  { to: "/revisar", label: "Por revisar" },
   { to: "/alertas", label: "Alertas" },
   { to: "/sesion", label: "En directo" },
   { to: "/sesiones", label: "Historial de sesiones" },
@@ -23,6 +25,24 @@ const NAV_ADMIN = [{ to: "/equipo", label: "Equipo", end: false }];
 export function Layout({ children }: { children: ReactNode }) {
   const { session, signOut } = useAuth();
   const navigate = useNavigate();
+
+  // Contador de "por revisar" en el menú: la integradora ve si hay cola sin
+  // entrar (esos intentos no cuentan hasta valorarlos, no deben acumularse).
+  const [porRevisar, setPorRevisar] = useState<number | null>(null);
+  useEffect(() => {
+    let vivo = true;
+    const refrescar = () =>
+      listarPendientes({ limit: 200 })
+        .then((p) => vivo && setPorRevisar(p.length))
+        .catch(() => {});
+    refrescar();
+    // La bandeja avisa al valorar un intento para mantener el contador al día.
+    window.addEventListener("trazo:pendientes-cambiaron", refrescar);
+    return () => {
+      vivo = false;
+      window.removeEventListener("trazo:pendientes-cambiaron", refrescar);
+    };
+  }, []);
 
   return (
     <div style={{ display: "flex", minHeight: "100vh", background: colors.ivory }}>
@@ -53,7 +73,10 @@ export function Layout({ children }: { children: ReactNode }) {
               to={item.to}
               end={item.end}
               style={({ isActive }) => ({
-                display: "block",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 8,
                 padding: "10px 14px",
                 borderRadius: radius.sm,
                 fontWeight: 600,
@@ -63,7 +86,25 @@ export function Layout({ children }: { children: ReactNode }) {
                 background: isActive ? colors.sageDark : "transparent",
               })}
             >
-              {item.label}
+              <span>{item.label}</span>
+              {item.to === "/revisar" && porRevisar != null && porRevisar > 0 && (
+                <span
+                  className="mono"
+                  aria-label={`${porRevisar} por revisar`}
+                  style={{
+                    fontSize: 11.5,
+                    fontWeight: 700,
+                    minWidth: 20,
+                    textAlign: "center",
+                    padding: "1px 6px",
+                    borderRadius: 999,
+                    background: colors.coral,
+                    color: colors.white,
+                  }}
+                >
+                  {porRevisar}
+                </span>
+              )}
             </NavLink>
           ))}
         </nav>

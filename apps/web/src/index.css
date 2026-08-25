@@ -1,17 +1,20 @@
 :root {
-  --ivory: #faf6ef;
-  --card: #f2ecdf;
-  --ink: #2b3a32;
-  --sage: #7c9885;
-  --sage-dark: #5c7a66;
-  --coral: #e8a87c;
-  --coral-dark: #c97b4a;
-  --sand: #c9bfa4;
+  /* Paleta oficial "Aqua Green" (elegida por Saulo). Nombres conservados. */
+  --ivory: #f5fbfa;
+  --card: #e8f5f2;
+  --ink: #12312e;
+  --sage: #12a99b;
+  --sage-dark: #1f7a70;
+  --coral: #f08a6b;
+  --coral-dark: #c4553a;
+  --sand: #d2e6e2;
   --white: #fffefb;
-  --text-muted: #4a5a50;
-  --text-faint: #6e6752;
-  --alert-bg: #fbefe4;
-  --alert-text: #6b5a48;
+  --text-muted: #5a716e;
+  --text-faint: #7e938f;
+  --alert-bg: #fdeee8;
+  --alert-text: #7a4a3a;
+  --azul: #2c7595;
+  --azul-dark: #215a73;
 
   --font-serif: "Fraunces", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
@@ -128,9 +131,10 @@ textarea {
     background: #fff;
   }
 
-  /* Se oculta TODA la app (está en #root); el informe vive fuera, en body (portal),
-     así que no arrastra el alto de la app y no salen páginas en blanco. */
-  #root {
+  /* Se oculta la app (#root) SOLO cuando hay un informe montado fuera (portal a
+     body). Con :has() evitamos que un Ctrl+P en una pantalla normal (sin informe)
+     imprima una página en blanco: ahí #root sigue visible y se imprime la página. */
+  body:has(.trazo-informe) #root {
     display: none !important;
   }
 

@@ -1,6 +1,7 @@
 import 'dart:math' show min;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../models.dart';
 import '../theme.dart';
@@ -64,63 +65,122 @@ class _BusquedaVisualWidgetState extends State<BusquedaVisualWidget> {
   Widget build(BuildContext context) {
     final instruccion = widget.instancia.render['instruccion'] as String? ??
         'Toca todas las iguales';
-    return Column(
-      children: [
-        // Objetivo: qué hay que buscar, grande y claro.
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-          margin: const EdgeInsets.only(bottom: 12),
-          decoration: BoxDecoration(
-            color: TrazoColors.card,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: TrazoColors.sage, width: 2),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(instruccion,
-                  style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600,
-                      color: TrazoColors.ink)),
-              const SizedBox(width: 14),
-              Ilustracion(_objetivoId, size: 52),
-            ],
-          ),
-        ),
-        Expanded(child: _rejilla()),
-      ],
+    return LayoutBuilder(
+      builder: (context, c) {
+        // Móvil vertical: viewport estrecho o bajo. Se usa una vista con scroll
+        // y tamaños cómodos fijos para que nada se recorte ni se salga.
+        final estrecho = c.maxWidth < 520 || c.maxHeight < 640;
+        if (estrecho) {
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                _objetivo(instruccion, estrecho: true),
+                _progreso(),
+                _rejilla(estrecho: true),
+                const SizedBox(height: 12),
+              ],
+            ),
+          );
+        }
+        return Column(
+          children: [
+            _objetivo(instruccion, estrecho: false),
+            _progreso(),
+            Expanded(child: _rejilla(estrecho: false)),
+          ],
+        );
+      },
     );
   }
 
-  Widget _rejilla() {
+  /// Objetivo: qué hay que buscar, grande y claro. En móvil la figura es algo
+  /// más pequeña y el texto puede envolver para que la fila no se salga de ancho.
+  Widget _objetivo(String instruccion, {required bool estrecho}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+      margin: const EdgeInsets.only(bottom: 12),
+      decoration: BoxDecoration(
+        color: TrazoColors.card,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: TrazoColors.sage, width: 2),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Flexible(
+            child: Text(instruccion,
+                style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                    color: TrazoColors.ink)),
+          ),
+          const SizedBox(width: 14),
+          _figura(_objetivoId, estrecho ? 56 : 72),
+        ],
+      ),
+    );
+  }
+
+  /// Cuántas del objetivo lleva encontradas, para que el mayor sepa si ya están
+  /// todas (antes no había ninguna señal de "he terminado de buscar").
+  Widget _progreso() {
+    final encontradas = _seleccionadas
+        .where((i) => (_celdas[i]['id'] ?? '').toString() == _objetivoId)
+        .length;
+    final completo = encontradas >= _totalObjetivos && _totalObjetivos > 0;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Text(
+        completo ? '¡Las has encontrado todas!' : 'Encontradas: $encontradas',
+        style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: completo ? TrazoColors.sageDark : TrazoColors.ink),
+      ),
+    );
+  }
+
+  Widget _rejilla({required bool estrecho}) {
     final n = _celdas.length;
     return LayoutBuilder(
       builder: (context, c) {
-        final columnas = n <= 6 ? 3 : (n <= 12 ? 4 : 5);
+        // Nunca más columnas que celdas: evita huecos vacíos que descentran.
+        // En móvil vertical usamos menos columnas para que las celdas no se hagan
+        // diminutas y la figura siga siendo reconocible.
+        final columnas = min(
+            estrecho ? (n <= 4 ? 2 : 3) : (n <= 6 ? 3 : (n <= 12 ? 4 : 5)), n);
         final filas = (n / columnas).ceil();
-        const gap = 14.0;
+        final gap = estrecho ? 14.0 : 22.0;
         final anchoCelda = (c.maxWidth - gap * (columnas - 1)) / columnas;
-        final altoCelda = (c.maxHeight - gap * (filas - 1)) / filas;
-        final lado = min(min(anchoCelda, altoCelda), 200.0);
-        final imgSize = (lado * 0.66).clamp(56.0, 150.0);
+        final double lado;
+        if (estrecho) {
+          // Dentro de un scroll: el alto es ilimitado, así que la celda se
+          // dimensiona por ancho con un mínimo cómodo (mejor scroll que recortar).
+          lado = min(anchoCelda, 160.0);
+        } else {
+          final altoCelda = (c.maxHeight - gap * (filas - 1)) / filas;
+          lado = min(min(anchoCelda, altoCelda), 200.0);
+        }
+        // La figura ocupa la mayor parte de la celda (antes 0.66 se veía pequeña,
+        // sobre todo el pájaro y figuras con margen): se agranda para el mayor.
+        final imgSize = (lado * 0.82).clamp(64.0, 168.0);
 
         final filasWidgets = <Widget>[];
         for (var f = 0; f < filas; f++) {
           final celdas = <Widget>[];
           for (var col = 0; col < columnas; col++) {
             final idx = f * columnas + col;
-            if (col > 0) celdas.add(const SizedBox(width: gap));
-            celdas.add(idx >= n
-                ? SizedBox(width: lado)
-                : _celda(idx, lado, imgSize));
+            if (idx >= n) break; // sin celdas vacías: la última fila se centra
+            if (celdas.isNotEmpty) celdas.add(SizedBox(width: gap));
+            celdas.add(_celda(idx, lado, imgSize));
           }
-          if (f > 0) filasWidgets.add(const SizedBox(height: gap));
+          if (f > 0) filasWidgets.add(SizedBox(height: gap));
           filasWidgets.add(Row(
               mainAxisAlignment: MainAxisAlignment.center, children: celdas));
         }
         return Center(
           child: Column(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: filasWidgets),
         );
@@ -128,15 +188,38 @@ class _BusquedaVisualWidgetState extends State<BusquedaVisualWidget> {
     );
   }
 
+  /// Pinta la figura por su id; si NO tiene ilustración (p. ej. los dígitos de
+  /// "Busca el número 5"), muestra el propio texto GRANDE y legible en vez del
+  /// círculo con inicial fina (baja visión), igual que hace memoria_visual.
+  Widget _figura(String id, double size) {
+    if (IlustracionResolver.tiene(id)) return Ilustracion(id, size: size);
+    return SizedBox(
+      width: size,
+      height: size,
+      child: Center(
+        child: Text(id,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: size * 0.6,
+                fontWeight: FontWeight.w700,
+                color: TrazoColors.ink)),
+      ),
+    );
+  }
+
   Widget _celda(int idx, double lado, double imgSize) {
     final id = (_celdas[idx]['id'] ?? '').toString();
     final sel = _seleccionadas.contains(idx);
     return SizedBox(
+      // key con el ID (y el idx para unicidad): el test toca por ID, no por
+      // posición, porque la rejilla se baraja al pintarse.
+      key: ValueKey('bcelda|$id|$idx'),
       width: lado,
       height: lado,
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
         onTap: () {
+          HapticFeedback.selectionClick();
           setState(() {
             if (sel) {
               _seleccionadas.remove(idx);
@@ -148,7 +231,7 @@ class _BusquedaVisualWidgetState extends State<BusquedaVisualWidget> {
         },
         child: Container(
           alignment: Alignment.center,
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             color: sel ? const Color(0xFFFBEFE4) : TrazoColors.card,
             border: Border.all(
@@ -159,7 +242,7 @@ class _BusquedaVisualWidgetState extends State<BusquedaVisualWidget> {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              Ilustracion(id, size: imgSize),
+              _figura(id, imgSize),
               if (sel)
                 const Positioned(
                   top: 2,

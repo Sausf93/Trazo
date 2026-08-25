@@ -34,15 +34,44 @@ class PlantillaTrazo(PlantillaBase):
         figuras = parametros.get("figuras") or [
             {"id": "onda", "path": "M20,100 Q90,20 150,80 T280,60"},
         ]
-        figura = rng.choice(figuras)
-        tolerancia = self._nivel_val(nivel, "tolerancia_px", parametros.get("tolerancia_px", 24))
+        nivel_txt = nivel.strip().lower() if isinstance(nivel, str) else None
+        # La dificultad escala con el nivel del paciente (antes era fija/al azar):
+        # figura por COMPLEJIDAD (proxy = longitud del path) y TOLERANCIA del trazo.
+        if len(figuras) > 1 and nivel_txt in ("bajo", "alto"):
+            ordenadas = sorted(figuras, key=lambda f: len(str(f.get("path", ""))))
+            mitad = max(1, len(ordenadas) // 2)
+            pool = ordenadas[:mitad] if nivel_txt == "bajo" else ordenadas[-mitad:]
+            figura = rng.choice(pool)
+        else:
+            figura = rng.choice(figuras)
+        # Tolerancia: más holgada en 'bajo' (menos exigente), más fina en 'alto'.
+        _tol = {"bajo": 40, "medio": 28, "alto": 20}
+        if isinstance(nivel, dict) and "tolerancia_px" in nivel:
+            tolerancia = nivel["tolerancia_px"]
+        elif nivel_txt in _tol:
+            tolerancia = _tol[nivel_txt]
+        else:
+            tolerancia = parametros.get("tolerancia_px", 24)
+        # Las tolerancias base están calibradas para un viewBox de ANCHO 300. Si la
+        # figura usa otro (p. ej. los números en "0 0 100 145"), hay que escalarla a
+        # las unidades de ESA figura; si no, una tolerancia de 40 tapa casi todo el
+        # ancho del dígito y CUALQUIER garabato puntuaría 'logrado' (rompía la
+        # medición: inflaba evolución e informe a familia). Las figuras de ancho 300
+        # quedan idénticas (factor 1).
+        viewbox = parametros.get("viewbox", "0 0 300 140")
+        try:
+            vb_w = float(str(viewbox).split()[2])
+        except (IndexError, ValueError):
+            vb_w = 300.0
+        if vb_w > 0 and abs(vb_w - 300.0) > 1e-6:
+            tolerancia = max(4.0, round(tolerancia * vb_w / 300.0, 1))
         return InstanciaEjercicio(
             plantilla=self.tipo,
             render={
                 "instruccion": parametros.get("instruccion", "Sigue la línea con el dedo"),
                 "guide_path": figura["path"],
                 "tolerancia_px": tolerancia,
-                "viewbox": parametros.get("viewbox", "0 0 300 140"),
+                "viewbox": viewbox,
             },
             cantidad_objetivo={"figura_id": figura.get("id"), "tolerancia_px": tolerancia},
             solucion={"guide_path": figura["path"]},
@@ -62,7 +91,15 @@ class PlantillaSeleccionMultiple(PlantillaBase):
         if not items:
             raise ValueError("seleccion_multiple requiere 'items' en parametros")
         item = rng.choice(items)
-        n_opciones = _rango(nivel, parametros, "opciones_min", "opciones_max", 3, 4, rng)
+        # Nº de opciones según el nivel del paciente: 'bajo' = menos donde elegir
+        # (menos carga), 'alto' = más distractores. Antes era al azar y un paciente
+        # muy afectado podía toparse con 5 opciones.
+        _opc = {"bajo": 3, "medio": 4, "alto": 5}
+        nivel_txt = nivel.strip().lower() if isinstance(nivel, str) else None
+        if nivel_txt in _opc:
+            n_opciones = _opc[nivel_txt]
+        else:
+            n_opciones = _rango(nivel, parametros, "opciones_min", "opciones_max", 3, 4, rng)
 
         correcta = item["correcta"]
         distractores = [d for d in item.get("distractores", []) if d != correcta]
@@ -99,16 +136,26 @@ class PlantillaMemoriaVisual(PlantillaBase):
         banco = parametros.get("banco") or []
         if len(banco) < 4:
             raise ValueError("memoria_visual requiere al menos 4 elementos en 'banco'")
-        banda = self.banda_cantidad(nivel)
-        if banda:
-            n = rng.randint(banda[0], banda[1])
+        # Número a MEMORIZAR: banda PROPIA y suave. La memoria de trabajo de un
+        # mayor con deterioro ronda 3-4 ítems; NO se reutilizan las _BANDAS
+        # genéricas (bajo=3, medio=6-8, alto=10-12), pensadas para nº de imágenes
+        # EN PANTALLA (búsqueda), no para retener (pedía memorizar 8-12: imposible).
+        _mem = {"bajo": 3, "medio": 4, "alto": 5}
+        nivel_txt = nivel.strip().lower() if isinstance(nivel, str) else None
+        if nivel_txt in _mem:
+            n = _mem[nivel_txt]
         else:
-            n = _rango(nivel, parametros, "recordar_min", "recordar_max", 2, 5, rng)
-        n = min(n, len(banco))
+            n = _rango(nivel, parametros, "recordar_min", "recordar_max", 2, 4, rng)
+        # Presupuesto REAL de distractores: la rejilla NUNCA puede ser idéntica a
+        # lo memorizado (si no, se "gana" tocando todo y no se mide memoria). Se
+        # reservan al menos max(2, n) huecos para distractores dentro del banco.
+        min_distractores = max(2, n)
+        n = max(1, min(n, len(banco) - min_distractores))
 
         a_recordar = rng.sample(banco, n)
         restantes = [x for x in banco if x not in a_recordar]
-        n_distractores = min(len(restantes), max(n, parametros.get("distractores", n)))
+        objetivo_distractores = max(min_distractores, parametros.get("distractores", min_distractores))
+        n_distractores = min(len(restantes), objetivo_distractores)
         distractores = rng.sample(restantes, n_distractores) if restantes else []
         rejilla = a_recordar + distractores
         rng.shuffle(rejilla)
@@ -244,20 +291,25 @@ class PlantillaConteoComparacion(PlantillaBase):
 
         grupos = []
         if modo in ("cual_tiene_mas", "cual_tiene_menos"):
-            # CLAVE: el extremo debe ser ÚNICO. Si dos grupos empatan en el máximo
-            # (o el mínimo), la pregunta no tiene respuesta y la autocorrección se
-            # rompe. Se construye un ganador estrictamente mayor/menor que el resto.
+            # CLAVE: el extremo debe ser ÚNICO **y con margen visible**. Comparar a
+            # ojo 12 vs 11 es imposible para un mayor: se limita el tope (contar a
+            # ojo pierde sentido pasado ~9) y se fuerza que el ganador difiera del
+            # resto en al menos `margen`.
+            margen = 2
+            tope = max(margen + 1, min(hi, 9))
+            piso = max(1, min(lo, tope - margen))
             idx = rng.randrange(n_grupos)
             if modo == "cual_tiene_mas":
-                ganador = rng.randint(lo + 1, hi)
+                # Ganador PRIMERO, con hueco garantizado para el resto por debajo.
+                ganador = rng.randint(piso + margen, tope)
                 for i, obj in enumerate(objs):
-                    c = ganador if i == idx else rng.randint(lo, ganador - 1)
+                    c = ganador if i == idx else rng.randint(piso, ganador - margen)
                     grupos.append({"objeto": obj, "cantidad": c})
                 solucion = {"objeto_mayor": objs[idx]}
             else:
-                ganador = rng.randint(lo, hi - 1)
+                ganador = rng.randint(piso, tope - margen)
                 for i, obj in enumerate(objs):
-                    c = ganador if i == idx else rng.randint(ganador + 1, hi)
+                    c = ganador if i == idx else rng.randint(ganador + margen, tope)
                     grupos.append({"objeto": obj, "cantidad": c})
                 solucion = {"objeto_menor": objs[idx]}
         elif modo == "contar":
@@ -268,8 +320,15 @@ class PlantillaConteoComparacion(PlantillaBase):
             grupos = [{"objeto": obj, "cantidad": cant}]
             solucion = {"objeto": obj, "cantidad": cant}
         else:  # sumar
+            # El TOTAL a sumar no debe pasar de ~15: sumar 30+ objetos diminutos es
+            # un examen, no estimulación (y obliga a encoger los dibujos). Se acota
+            # el máximo por grupo para que la suma quede manejable.
+            total_max = min(hi * n_grupos, 15)
+            por_grupo_max = max(1, total_max // n_grupos)
+            por_grupo_min = max(1, min(int(lo), por_grupo_max))
             for obj in objs:
-                grupos.append({"objeto": obj, "cantidad": rng.randint(lo, hi)})
+                grupos.append({"objeto": obj,
+                               "cantidad": rng.randint(por_grupo_min, por_grupo_max)})
             solucion = {"total": sum(g["cantidad"] for g in grupos)}
 
         # La instrucción se fija por MODO (la actividad varía de modo en cada
@@ -308,12 +367,32 @@ class PlantillaArrastrarPosicion(PlantillaBase):
             raise ValueError("arrastrar_posicion requiere 'piezas' en parametros")
         # Cantidad cambiante: p.ej. nº de comensales al poner la mesa.
         n = _rango(nivel, parametros, "cantidad_min", "cantidad_max", 2, 4, rng)
-        seleccion = rng.sample(piezas, min(n, len(piezas))) if parametros.get("muestrear") else piezas
+        if parametros.get("muestrear"):
+            n = min(n, len(piezas))
+            zonas_ids = {z.get("id") for z in parametros.get("zonas", [])}
+            if len(zonas_ids) >= 2:
+                # Muestreo ESTRATIFICADO: garantiza al menos una pieza de cada zona
+                # para que siempre haya decisión real (si no, podían salir todas de
+                # la misma zona y se acertaba sin discriminar).
+                por_zona: dict = {}
+                for p in piezas:
+                    por_zona.setdefault(p.get("zona_correcta"), []).append(p)
+                seleccion = [rng.choice(g) for g in por_zona.values()]
+                restantes = [p for p in piezas if p not in seleccion]
+                rng.shuffle(restantes)
+                while len(seleccion) < n and restantes:
+                    seleccion.append(restantes.pop())
+                seleccion = seleccion[:max(n, len(por_zona))]
+                rng.shuffle(seleccion)
+            else:
+                seleccion = rng.sample(piezas, n)
+        else:
+            seleccion = piezas
 
         return InstanciaEjercicio(
             plantilla=self.tipo,
             render={
-                "instruccion": parametros.get("instruccion", "Arrastra cada cosa a su sitio"),
+                "instruccion": parametros.get("instruccion", "Toca cada cosa y luego su sitio"),
                 "multiplicador": n,  # p.ej. comensales
                 "piezas": seleccion,
                 "zonas": parametros.get("zonas", []),
@@ -413,6 +492,16 @@ class PlantillaManejoCantidad(PlantillaBase):
         lo, hi = int(lo), int(hi)
         if hi < lo:
             hi = lo
+        # El nivel del paciente (texto) acota el TRAMO del importe: 'bajo' usa los
+        # importes bajos del rango, 'alto' los altos. Antes el nivel no tenía
+        # efecto en dinero (el importe era el mismo para bajo/medio/alto).
+        nivel_txt = nivel.strip().lower() if isinstance(nivel, str) else None
+        if nivel_txt in ("bajo", "medio", "alto") and hi > lo:
+            base, span = lo, hi - lo
+            desde, hasta = {"bajo": (0.0, 0.4), "medio": (0.3, 0.7),
+                            "alto": (0.6, 1.0)}[nivel_txt]
+            lo = int(round(base + span * desde))
+            hi = max(lo, int(round(base + span * hasta)))
         return lo, hi
 
     def _genera_importe_c(self, cfg: dict, nivel, denoms: list[int], rng) -> tuple[int, int]:
@@ -486,10 +575,21 @@ class PlantillaManejoCantidad(PlantillaBase):
     def _gen_dinero(self, cfg, nivel, denoms, denoms_render, modo, banda_id, rng):
         importe_c, _ = self._genera_importe_c(cfg, nivel, denoms, rng)
         desglose = _desglose_greedy(importe_c, denoms)
+        # Si hay billetes (>= 500 c) no decir "monedas"; se usa una redacción
+        # NEUTRA en género ("el dinero justo") para no chocar con "billetes".
+        hay_billetes = any(d >= 500 for d in denoms)
         if modo == "monedas_justas":
-            instruccion = f"Elige las monedas justas para pagar {_fmt_eur(importe_c)}"
+            instruccion = (
+                f"Elige el dinero justo para pagar {_fmt_eur(importe_c)}"
+                if hay_billetes
+                else f"Elige las monedas justas para pagar {_fmt_eur(importe_c)}"
+            )
         else:
-            instruccion = f"Reúne {_fmt_eur(importe_c)} con las monedas y billetes"
+            instruccion = (
+                f"Reúne {_fmt_eur(importe_c)} con el dinero"
+                if hay_billetes
+                else f"Reúne {_fmt_eur(importe_c)} con las monedas"
+            )
         return InstanciaEjercicio(
             plantilla=self.tipo,
             render={
@@ -524,9 +624,13 @@ class PlantillaManejoCantidad(PlantillaBase):
         return InstanciaEjercicio(
             plantilla=self.tipo,
             render={
-                "instruccion": f"Pagas {_fmt_eur(precio_c)} con {_fmt_eur(pago_c)}. "
-                               f"¿Cuánto te devuelven?",
+                "instruccion": f"Compras algo de {_fmt_eur(precio_c)} y pagas con "
+                               f"{_fmt_eur(pago_c)}. Prepara la vuelta con las monedas.",
                 "modo": "vuelta",
+                # Se muestra la vuelta como objetivo (importe_c/importe_texto): así
+                # el widget pinta la caja "Tienes que reunir" y es auto-verificable,
+                # sin obligar a la persona a restar y retener el número de memoria.
+                "importe_c": vuelta_c, "importe_texto": _fmt_eur(vuelta_c),
                 "precio_c": precio_c, "precio_texto": _fmt_eur(precio_c),
                 "pago_c": pago_c, "pago_texto": _fmt_eur(pago_c),
                 "denominaciones": denoms_render,
@@ -569,5 +673,53 @@ class PlantillaManejoCantidad(PlantillaBase):
                 "precio_c": precio_c, "disponible_c": disponible_c,
             },
             solucion={"llega": llega, "precio_c": precio_c, "disponible_c": disponible_c},
+            metricas=self.metricas,
+        )
+
+
+class PlantillaParejas(PlantillaBase):
+    """Juego de PAREJAS (memoria/concentración): las cartas se ven un momento,
+    luego se giran boca abajo y hay que destaparlas de dos en dos buscando las
+    iguales; si no casan, se vuelven a girar. Clásico muy querido por mayores."""
+
+    tipo = "parejas"
+    metricas = ["pares_encontrados", "errores", "tiempo_ms"]
+
+    def generar(self, parametros, nivel=None, rng=None):
+        rng = self._rng(rng)
+        banco = parametros.get("banco") or []
+        if len(banco) < 3:
+            raise ValueError("parejas requiere al menos 3 elementos en 'banco'")
+        # Pares por dificultad: pocos para el mayor con deterioro. bajo=3 (rejilla
+        # 2x3), medio=6 (3x4), alto=8 (4x4). No se usan las bandas genéricas.
+        _pares = {"bajo": 3, "medio": 6, "alto": 8}
+        nivel_txt = nivel.strip().lower() if isinstance(nivel, str) else None
+        if nivel_txt in _pares:
+            n = _pares[nivel_txt]
+        else:
+            n = int(self._nivel_val(nivel, "pares", parametros.get("pares", 6)))
+        n = max(2, min(n, len(banco)))
+        elegidos = rng.sample(banco, n)
+        cartas = []
+        for e in elegidos:
+            par_id = e.get("id", e) if isinstance(e, dict) else e
+            label = e.get("label", par_id) if isinstance(e, dict) else e
+            for k in (0, 1):
+                cartas.append({"carta": "%s_%d" % (par_id, k), "par": par_id, "label": label})
+        rng.shuffle(cartas)
+        total = len(cartas)
+        columnas = 3 if total <= 6 else (4 if total <= 16 else 5)
+        return InstanciaEjercicio(
+            plantilla=self.tipo,
+            render={
+                "instruccion": parametros.get("instruccion", "Encuentra las parejas iguales"),
+                "cartas": cartas,
+                "columnas": columnas,
+                "n_pares": n,
+                "segundos_preview": self._nivel_val(
+                    nivel, "segundos_preview", parametros.get("segundos_preview", 5)),
+            },
+            cantidad_objetivo={"n_pares": n, "n_cartas": total},
+            solucion={"n_pares": n},
             metricas=self.metricas,
         )

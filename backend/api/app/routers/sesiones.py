@@ -30,6 +30,7 @@ from app.schemas import (
     ParticipanteSesion,
     ResumenParticipante,
     ResumenSesionOut,
+    SalaActiva,
     SesionActivaOut,
     SesionConfigPut,
     SesionIn,
@@ -40,25 +41,40 @@ from app.schemas import (
 
 router = APIRouter(prefix="/sesiones", tags=["sesiones"])
 
-SEGUNDOS_ATASCADO = 30.0
+# Umbral de "atascado" (desde que empezó la actividad EN CURSO). 30s era muy
+# poco para el público objetivo: leer un reloj, componer un importe moneda a
+# moneda o memorizar (memoria tiene 60s de memorización) lleva su tiempo.
+SEGUNDOS_ATASCADO = 90.0
 # Una sala abierta más antigua que esto se considera "zombi" y ya no se sirve a
 # los kioscos (la maestra no la cerró; evita actividades sin supervisión).
 _HORAS_SALA_VIVA = 12
 
 
-def _config_json(nivel: str | None, lineas: list[LineaConfig]) -> dict | None:
-    """Normaliza la config por participante ({nivel, lineas}) o None.
+def _config_json(
+    nivel: str | None,
+    lineas: list[LineaConfig],
+    ejercicios: list[str] | None = None,
+) -> dict | None:
+    """Normaliza la config por participante ({nivel, lineas, ejercicios}) o None.
 
-    Requiere al menos una línea: una config con SOLO nivel dejaría la cola vacía
-    (la rama de config no cae al plan), así que en ese caso devolvemos None para
-    que el participante use su plan permanente.
+    - `lineas` = bloques (dominio) para la sesión.
+    - `ejercicios` = actividades CONCRETAS elegidas en vivo por la integradora (o
+      una propuesta de la app aceptada); van primero en la cola.
+
+    Requiere al menos una línea O un ejercicio concreto: una config con SOLO nivel
+    dejaría la cola vacía (la rama de config no cae al plan), así que en ese caso
+    devolvemos None para que el participante use su plan permanente.
     """
-    if not lineas:
+    ejercicios = [e for e in (ejercicios or []) if e]
+    if not lineas and not ejercicios:
         return None
-    return {
+    cfg: dict = {
         "nivel": nivel,
         "lineas": [{"bloque": ln.bloque, "n": ln.n} for ln in lineas],
     }
+    if ejercicios:
+        cfg["ejercicios"] = [{"ejercicio_id": e, "nivel": nivel} for e in ejercicios]
+    return cfg
 
 
 @router.get("/activa", response_model=SesionActivaOut)
@@ -67,22 +83,89 @@ async def sesion_activa(
     db: AsyncSession = Depends(get_db),
     acceso: Acceso = Depends(acceso_centro),
 ):
-    """Sesión abierta más reciente del centro + sus participantes.
+    """Salas abiertas del centro (puede haber varias) + sus participantes.
 
-    Es lo que consulta la tablet participante (kiosco) para mostrar la lista de
-    "¿quién eres?" y repartir por toque. Accesible por login de staff O por token
-    de dispositivo. Devuelve sesion_id=None si no hay ninguna.
+    Es lo que consulta la tablet participante (kiosco): si hay una sola sala va
+    directa a "¿quién eres?"; si hay varias (2 maestras, 2 grupos) muestra las
+    salas para que cada persona sepa a qué actividad unirse. Accesible por login
+    de staff O por token de dispositivo. `salas` vacío si no hay ninguna.
     """
     if centro_id != acceso.centro_id:
         raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
     # Solo salas RECIENTES: una sala que quedó "abierta" de un día anterior (la
     # maestra no la cerró) no debe seguir sirviendo actividades sin supervisión.
     limite = datetime.now(timezone.utc) - timedelta(hours=_HORAS_SALA_VIVA)
-    ses = (
+    sesiones = (
         await db.execute(
             select(Sesion)
             .where(
                 Sesion.centro_id == centro_id,
+                Sesion.cerrada.is_(False),
+                Sesion.abierta.is_(True),
+                Sesion.fecha >= limite,
+            )
+            .order_by(Sesion.fecha.desc())
+        )
+    ).scalars().all()
+    if not sesiones:
+        return SesionActivaOut()
+
+    # Participantes + alias de TODAS las salas en UNA consulta (sin N+1): el
+    # kiosco hace polling, así que evitar el bucle de gets importa.
+    ids = [s.id for s in sesiones]
+    filas = (await db.execute(
+        select(SesionParticipante.sesion_id,
+               SesionParticipante.usuario_final_id, UsuarioFinal.alias_interno)
+        .join(UsuarioFinal, UsuarioFinal.id == SesionParticipante.usuario_final_id)
+        .where(SesionParticipante.sesion_id.in_(ids))
+    )).all()
+    por_sala: dict[str, list[ParticipanteSesion]] = {i: [] for i in ids}
+    for sid, uid, alias in filas:
+        por_sala[sid].append(
+            ParticipanteSesion(usuario_final_id=uid, alias_interno=alias))
+    # Nombre de la responsable (maestra) de cada sala, para distinguir salas con
+    # el mismo texto cuando hay varias abiertas. Una sola consulta.
+    staff_ids = {s.staff_id for s in sesiones}
+    responsables = dict((await db.execute(
+        select(UsuarioStaff.id, UsuarioStaff.nombre)
+        .where(UsuarioStaff.id.in_(staff_ids))
+    )).all())
+    salas = [
+        SalaActiva(
+            sesion_id=s.id, nombre=s.nombre, modo=s.modo, iniciada=s.iniciada,
+            responsable=responsables.get(s.staff_id),
+            ejercicio_compartido_id=s.ejercicio_compartido_id,
+            participantes=por_sala.get(s.id, []),
+        )
+        for s in sesiones
+    ]
+    primera = salas[0]
+    return SesionActivaOut(
+        sesion_id=primera.sesion_id, nombre=primera.nombre, modo=primera.modo,
+        iniciada=primera.iniciada,
+        ejercicio_compartido_id=primera.ejercicio_compartido_id,
+        participantes=primera.participantes,
+        salas=salas,
+    )
+
+
+@router.get("/mia-abierta", response_model=SesionActivaOut)
+async def mi_sala_abierta(
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """La sala abierta reciente que abrió ESTA maestra (no la de otra compañera).
+
+    La usa la pantalla de la maestra al refrescar/reabrir para recuperar SU
+    monitor: con varias salas por centro, no vale coger 'la más reciente' porque
+    podría ser la de otra facilitadora."""
+    limite = datetime.now(timezone.utc) - timedelta(hours=_HORAS_SALA_VIVA)
+    ses = (
+        await db.execute(
+            select(Sesion)
+            .where(
+                Sesion.centro_id == staff.centro_id,
+                Sesion.staff_id == staff.id,
                 Sesion.cerrada.is_(False),
                 Sesion.abierta.is_(True),
                 Sesion.fecha >= limite,
@@ -93,23 +176,10 @@ async def sesion_activa(
     ).scalars().first()
     if ses is None:
         return SesionActivaOut()
-
-    # Participantes + alias en UNA consulta (sin N+1): la consulta el kiosco por
-    # polling, así que evitar el bucle de gets importa.
-    filas = (await db.execute(
-        select(SesionParticipante.usuario_final_id, UsuarioFinal.alias_interno)
-        .join(UsuarioFinal, UsuarioFinal.id == SesionParticipante.usuario_final_id)
-        .where(SesionParticipante.sesion_id == ses.id)
-    )).all()
-    participantes = [
-        ParticipanteSesion(usuario_final_id=uid, alias_interno=alias)
-        for uid, alias in filas
-    ]
     return SesionActivaOut(
         sesion_id=ses.id, nombre=ses.nombre, modo=ses.modo,
         iniciada=ses.iniciada,
         ejercicio_compartido_id=ses.ejercicio_compartido_id,
-        participantes=participantes,
     )
 
 
@@ -289,6 +359,11 @@ async def crear_sesion(
         abierta=not body.programar,
         programada_para=body.programada_para,
     )
+    # Un centro puede tener VARIAS salas en vivo a la vez (p.ej. 2 maestras, 2
+    # grupos). Lo único que no vale es que una misma persona esté en dos salas
+    # abiertas: en el kiosco aparecería en dos sitios y su medición se bifurcaría.
+    if ses.abierta:
+        await _rechazar_si_en_otra_sala(db, staff.centro_id, body.participantes)
     db.add(ses)
     await db.flush()
     # Config por participante (la maestra fija nivel/categorías/nº para la sesión).
@@ -302,6 +377,46 @@ async def crear_sesion(
     await db.commit()
     await db.refresh(ses)
     return ses
+
+
+async def _rechazar_si_en_otra_sala(
+    db: AsyncSession, centro_id: str, participantes: list[str],
+    excepto_id: str | None = None,
+) -> None:
+    """Una persona no puede estar en dos salas abiertas del mismo centro a la vez.
+
+    Antes había un invariante de 'una sola sala por centro' que cerraba las demás;
+    ahora se permiten varias salas simultáneas (2 maestras, 2 grupos) y el kiosco
+    muestra todas. El único conflicto real es que la MISMA persona aparezca en dos
+    salas: se rechaza con 409 indicando en cuál está ya."""
+    if not participantes:
+        return
+    # Solo salas VIVAS (misma ventana de frescura que el kiosco): una sala zombi
+    # de un día anterior no debe bloquear abrir una nueva hoy con esa persona.
+    limite = datetime.now(timezone.utc) - timedelta(hours=_HORAS_SALA_VIVA)
+    stmt = (
+        select(UsuarioFinal.alias_interno, Sesion.nombre)
+        .join(SesionParticipante,
+              SesionParticipante.usuario_final_id == UsuarioFinal.id)
+        .join(Sesion, Sesion.id == SesionParticipante.sesion_id)
+        .where(
+            Sesion.centro_id == centro_id,
+            Sesion.cerrada.is_(False),
+            Sesion.abierta.is_(True),
+            Sesion.fecha >= limite,
+            SesionParticipante.usuario_final_id.in_(participantes),
+        )
+    )
+    if excepto_id is not None:
+        stmt = stmt.where(Sesion.id != excepto_id)
+    fila = (await db.execute(stmt)).first()
+    if fila is not None:
+        alias, sala = fila
+        raise HTTPException(
+            status.HTTP_409_CONFLICT,
+            f"{alias} ya está en otra sala abierta ({sala or 'sin nombre'}). "
+            f"Ciérrala o quítalo de allí antes de ponerlo en esta.",
+        )
 
 
 async def _validar_participantes(
@@ -397,6 +512,13 @@ async def abrir_sesion(
         raise HTTPException(status.HTTP_403_FORBIDDEN, "No es tu centro")
     if ses.cerrada:
         raise HTTPException(status.HTTP_409_CONFLICT, "La sesión está cerrada")
+    # Varias salas por centro conviven; solo se impide que una misma persona
+    # quede en dos salas abiertas a la vez.
+    parts = (await db.execute(
+        select(SesionParticipante.usuario_final_id)
+        .where(SesionParticipante.sesion_id == ses.id)
+    )).scalars().all()
+    await _rechazar_si_en_otra_sala(db, ses.centro_id, list(parts), excepto_id=ses.id)
     ses.abierta = True
     ses.fecha = datetime.now(timezone.utc)
     await db.commit()
@@ -526,6 +648,7 @@ async def marcar_terminado(
     sp = await _get_participante(db, sesion_id, usuario_id, acceso.centro_id)
     sp.terminado = True
     sp.actividad_actual = None  # ya no está en ninguna actividad
+    sp.actividad_actual_en = None
     await db.commit()
     ses = await db.get(Sesion, sesion_id)
     return ParticipanteEstadoOut(
@@ -545,6 +668,10 @@ async def reportar_actividad_actual(
     """El kiosco reporta en qué actividad va AHORA la persona, para que el monitor
     de la maestra lo muestre en vivo (no solo el último intento enviado)."""
     sp = await _get_participante(db, sesion_id, usuario_id, acceso.centro_id)
+    # Marca el inicio de la actividad SOLO cuando cambia (un re-reporte de la
+    # misma no debe reiniciar el reloj de "atascado").
+    if sp.actividad_actual != body.actividad or sp.actividad_actual_en is None:
+        sp.actividad_actual_en = datetime.now(timezone.utc)
     sp.actividad_actual = body.actividad
     sp.pos_actual = body.pos
     sp.total_actual = body.total
@@ -595,8 +722,8 @@ async def enviar_mas(
     repite la que tuviera (o su plan).
     """
     sp = await _get_participante(db, sesion_id, usuario_id, staff.centro_id)
-    if body is not None and body.lineas:
-        sp.config_json = _config_json(body.nivel, body.lineas)
+    if body is not None and (body.lineas or body.ejercicios):
+        sp.config_json = _config_json(body.nivel, body.lineas, body.ejercicios)
     sp.ronda += 1
     sp.terminado = False
     await db.commit()
@@ -692,20 +819,34 @@ async def sesion_live(
         ultimo_con_ayuda = False
         segundos = None
         atascado = False
+        ref = None
         if ultimo is not None:
             ejercicio_actual = nombres_ej.get(ultimo.ejercicio_id)
             ultimo_estado = ultimo.resultado  # resultado autocorregido
             ultimo_con_ayuda = ultimo.con_ayuda
             ref = ultimo.timestamp_fin or ultimo.timestamp_inicio
-            if ref is not None:
-                if ref.tzinfo is None:
-                    ref = ref.replace(tzinfo=timezone.utc)
-                segundos = (ahora - ref).total_seconds()
-                atascado = (not ses.cerrada) and segundos >= SEGUNDOS_ATASCADO
+            if ref is not None and ref.tzinfo is None:
+                ref = ref.replace(tzinfo=timezone.utc)
 
         # En curso: si el kiosco reportó la actividad actual y no ha terminado,
         # eso es lo que la maestra debe ver (no el último intento enviado).
         en_curso = (not p.terminado) and p.actividad_actual is not None
+
+        # "Atascado" se mide desde el inicio de la actividad EN CURSO (no desde el
+        # último intento enviado, que daba falsas alarmas en actividades largas).
+        inicio_actual = p.actividad_actual_en if en_curso else None
+        if inicio_actual is not None and inicio_actual.tzinfo is None:
+            inicio_actual = inicio_actual.replace(tzinfo=timezone.utc)
+        ref_atascado = inicio_actual or ref
+        if ref_atascado is not None:
+            segundos = (ahora - ref_atascado).total_seconds()
+            # Quien ya TERMINÓ su tanda y espera al grupo NO está atascado (si no,
+            # el panel lo pintaba en rojo a los 90s de acabar).
+            atascado = (
+                (not ses.cerrada)
+                and (not p.terminado)
+                and segundos >= SEGUNDOS_ATASCADO
+            )
         fichas.append(FichaViva(
             usuario_final_id=p.usuario_final_id,
             alias_interno=alias.get(p.usuario_final_id, "?"),

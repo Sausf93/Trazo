@@ -23,18 +23,32 @@ import { labelEstado } from "../api/vocab";
 export interface PuntoChart {
   idx: number;
   fecha: string;
-  precision: number;
+  /** Desempeño autocorregido 0..1 (logrado=1, parcial=0.5, no_logrado=0). Es
+   * la MISMA señal que la cabecera y el motor de alertas: definida para las 8
+   * plantillas, no solo las que dan "precisión". */
+  desempeno: number;
+  /** Precisión fina (solo trazo/memoria/búsqueda). Informativa, para el tooltip. */
+  precision: number | null;
   estado: string;
   anomalo: boolean;
 }
 
+// Peso del resultado autocorregido, idéntico al backend (anomalias._PESO_RESULTADO).
+const PESO_DESEMPENO: Record<string, number> = {
+  logrado: 1,
+  parcial: 0.5,
+  no_logrado: 0,
+};
+
 export function construirSerie(puntos: PuntoEvolucion[]): PuntoChart[] {
-  const conPrecision = puntos.filter(
-    (p): p is PuntoEvolucion & { precision: number } => p.precision != null,
-  );
-  return conPrecision.map((p, i) => ({
+  // Se toman TODOS los intentos ya valorados (no solo los que tienen "precisión"):
+  // antes la gráfica y el informe quedaban vacíos con el 72% del catálogo pese a
+  // haber hecho muchas actividades. Los "sin_valorar" no puntúan aún, se omiten.
+  const valorados = puntos.filter((p) => p.estado in PESO_DESEMPENO);
+  return valorados.map((p, i) => ({
     idx: i,
     fecha: p.fecha,
+    desempeno: PESO_DESEMPENO[p.estado],
     precision: p.precision,
     estado: p.estado,
     anomalo: false, // la señal real de "fuera de patrón" la da el backend (alertas)
@@ -84,14 +98,18 @@ function ChartTooltip({ active, payload }: TooltipProps) {
         boxShadow: "0 8px 20px -10px rgba(43,58,50,0.4)",
       }}
     >
-      <div style={{ fontWeight: 600 }}>{fmtPorcentaje(p.precision)}</div>
+      <div style={{ fontWeight: 600 }}>{labelEstado(p.estado)}</div>
       <div style={{ color: colors.textFaint }} className="mono">
         {fmtFecha(p.fecha)}
       </div>
-      <div style={{ color: p.anomalo ? colors.coralDark : colors.textMuted, marginTop: 2 }}>
-        {labelEstado(p.estado)}
-        {p.anomalo ? " · fuera de patrón" : ""}
-      </div>
+      {p.precision != null && (
+        <div style={{ color: colors.textMuted, marginTop: 2 }}>
+          Precisión: {fmtPorcentaje(p.precision)}
+        </div>
+      )}
+      {p.anomalo && (
+        <div style={{ color: colors.coralDark, marginTop: 2 }}>fuera de patrón</div>
+      )}
     </div>
   );
 }
@@ -100,7 +118,7 @@ export function EvolucionChart({ data }: { data: PuntoChart[] }) {
   if (data.length === 0) {
     return (
       <div style={{ color: colors.textFaint, fontSize: 14, padding: "24px 0" }}>
-        No hay datos de precisión para mostrar en este bloque todavía.
+        Aún no hay actividades valoradas en este bloque para mostrar.
       </div>
     );
   }
@@ -132,7 +150,7 @@ export function EvolucionChart({ data }: { data: PuntoChart[] }) {
           <Tooltip content={<ChartTooltip />} />
           <Line
             type="monotone"
-            dataKey="precision"
+            dataKey="desempeno"
             stroke={colors.sage}
             strokeWidth={2.5}
             dot={<PuntoDot />}

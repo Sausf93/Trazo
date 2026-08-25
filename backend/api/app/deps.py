@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import datetime, timedelta, timezone
 
 import jwt
 from fastapi import Depends, Header, HTTPException, status
@@ -105,6 +106,18 @@ async def acceso_centro(
                 status.HTTP_401_UNAUTHORIZED, "Dispositivo no autorizado o revocado"
             )
         await _exigir_centro_activo(db, disp.centro_id)
+        # "Última vez activa" de la tablet (para saber si sigue en uso o se perdió).
+        # Con throttle (máx. 1 escritura cada 10 min) para no escribir en cada poll.
+        ahora = datetime.now(timezone.utc)
+        vp = disp.visto_en
+        if vp is not None and vp.tzinfo is None:
+            vp = vp.replace(tzinfo=timezone.utc)
+        if vp is None or (ahora - vp) > timedelta(minutes=10):
+            try:
+                disp.visto_en = ahora
+                await db.commit()
+            except Exception:  # pragma: no cover - no romper la petición por esto
+                await db.rollback()
         return Acceso(centro_id=disp.centro_id, dispositivo=disp)
     # 2) Login de staff (Bearer JWT).
     if authorization and authorization.lower().startswith("bearer "):

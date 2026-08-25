@@ -30,7 +30,9 @@ class _MaestraScreenState extends State<MaestraScreen> {
   /// solas ni obliga a abrir otra sala.
   Future<void> _recuperarSala() async {
     try {
-      final activa = await ApiClient.instance.sesionActiva();
+      // SU sala (no la de otra compañera): con varias salas por centro no vale
+      // coger 'la más reciente'.
+      final activa = await ApiClient.instance.miSalaAbierta();
       if (!mounted) return;
       if (activa.haySesion) {
         setState(() {
@@ -175,7 +177,13 @@ class _AbrirSala extends StatefulWidget {
 }
 
 class _AbrirSalaState extends State<_AbrirSala> {
-  final _nombre = TextEditingController(text: 'Grupo tarde');
+  // Se pre-rellena con el nombre de la maestra logueada: si dos maestras abren
+  // sala a la vez, el mayor las distingue ("Grupo de Lucía" vs "Grupo de
+  // Marta") en lugar de ver dos botones idénticos.
+  final _nombre = TextEditingController(
+      text: (ApiClient.instance.nombre?.trim().isNotEmpty ?? false)
+          ? 'Grupo de ${ApiClient.instance.nombre!.trim()}'
+          : 'Grupo tarde');
   List<UsuarioFinal> _usuarios = [];
   List<Ejercicio> _ejercicios = [];
   final Set<String> _seleccionados = {};
@@ -517,7 +525,7 @@ class _AbrirSalaState extends State<_AbrirSala> {
                 items: _ejercicios
                     .map((e) => DropdownMenuItem(
                         value: e,
-                        child: Text('${e.nombre}  ·  ${e.bloque}',
+                        child: Text('${e.nombre}  ·  ${etiquetaBloque(e.bloque)}',
                             overflow: TextOverflow.ellipsis)))
                     .toList(),
                 onChanged: (v) =>
@@ -531,23 +539,40 @@ class _AbrirSalaState extends State<_AbrirSala> {
                     fontWeight: FontWeight.w600,
                     color: TrazoColors.sageDark)),
             const SizedBox(height: 8),
-            Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: _usuarios.map((u) {
-                final sel = _seleccionados.contains(u.id);
-                return FilterChip(
-                  label: Text(u.aliasInterno,
-                      style: const TextStyle(fontSize: 18)),
-                  selected: sel,
-                  showCheckmark: true,
-                  selectedColor: TrazoColors.sage.withValues(alpha: 0.30),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 12, vertical: 10),
-                  onSelected: (v) => _toggleParticipante(u.id, v),
-                );
-              }).toList(),
-            ),
+            if (_usuarios.isEmpty)
+              // Centro recién creado: sin personas, seleccionar es imposible y el
+              // botón "Abrir sala" queda deshabilitado sin explicación. Se guía.
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: TrazoColors.sand.withValues(alpha: 0.35),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Text(
+                  'Aún no hay personas en el centro. Pídele a administración '
+                  'que las dé de alta en el panel (sección Personas); luego '
+                  'podrás seleccionarlas aquí y abrir la sala.',
+                  style: TextStyle(fontSize: 16, color: TrazoColors.ink),
+                ),
+              )
+            else
+              Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: _usuarios.map((u) {
+                  final sel = _seleccionados.contains(u.id);
+                  return FilterChip(
+                    label: Text(u.aliasInterno,
+                        style: const TextStyle(fontSize: 18)),
+                    selected: sel,
+                    showCheckmark: true,
+                    selectedColor: TrazoColors.sage.withValues(alpha: 0.30),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 10),
+                    onSelected: (v) => _toggleParticipante(u.id, v),
+                  );
+                }).toList(),
+              ),
             // PLAN ESTÁNDAR PARA TODOS: lo ágil. La integradora solo elige nivel
             // y número; la app arma actividades variadas y medibles de la
             // dificultad adecuada. No hace falta elegir actividades a mano.
@@ -630,7 +655,7 @@ class _AbrirSalaState extends State<_AbrirSala> {
                           FilledButton.icon(
                             onPressed: _aplicarEstandarTodos,
                             style: FilledButton.styleFrom(
-                                backgroundColor: TrazoColors.sage),
+                                backgroundColor: TrazoColors.sageDark),
                             icon: const Icon(Icons.auto_awesome, size: 18),
                             label: const Text('Aplicar a todos'),
                           ),
@@ -957,6 +982,10 @@ class _MonitorState extends State<_Monitor> {
   bool _iniciando = false;
   final Set<String> _marcando = {};
   final Set<String> _enviandoMas = {};
+  // Ticks de polling fallidos seguidos: a partir de 3 (~9s) se avisa a la
+  // facilitadora de que revise el WiFi (si no, cree que nadie avanza).
+  int _fallosSeguidos = 0;
+  bool get _sinConexion => _fallosSeguidos >= 3;
 
   @override
   void initState() {
@@ -976,13 +1005,21 @@ class _MonitorState extends State<_Monitor> {
     try {
       final f = await ApiClient.instance.sesionLive(widget.sesionId);
       if (!mounted) return;
+      // Orden SIEMPRE estable (alfabético): la rejilla NUNCA se reordena entre
+      // refrescos. Reordenar por "atención" hacía que una tarjeta se moviera
+      // bajo el dedo de la maestra justo al pulsar y el resultado clínico (o el
+      // "le ayudé") cayera en OTRA persona. La atención se señala con el borde
+      // coral y el aviso de "atascado", no moviendo las tarjetas.
+      f.sort((a, b) => a.aliasInterno.compareTo(b.aliasInterno));
       setState(() {
         _fichas = f;
         _cargando = false;
         _error = null;
+        _fallosSeguidos = 0;
       });
     } catch (err) {
       if (!mounted) return;
+      _fallosSeguidos++;
       if (!silencioso) setState(() => _error = err.toString());
       setState(() => _cargando = false);
     }
@@ -1001,17 +1038,29 @@ class _MonitorState extends State<_Monitor> {
   }
 
   Future<void> _cerrar() async {
+    // Aviso si alguien SIGUE trabajando (no ha terminado su tanda): evita cortar
+    // la actividad a media persona sin darse cuenta.
+    final trabajando =
+        _fichas.where((f) => !f.terminado && f.totalActual > 0).length;
+    final aviso = trabajando > 0
+        ? (trabajando == 1
+            ? 'Hay 1 persona todavía haciendo actividades. Si finalizas, se le cortará.'
+            : 'Hay $trabajando personas todavía haciendo actividades. Si finalizas, se les cortará.')
+        : '¿Terminamos la sesión de todos?';
     final ok = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
         title: const Text('Finalizar la sesión'),
-        content: const Text('¿Terminamos la sesión de todos?'),
+        content: Text(aviso, style: const TextStyle(fontSize: 18)),
         actions: [
           TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('No')),
+              child: Text(trabajando > 0 ? 'Esperar' : 'No')),
           ElevatedButton(
               onPressed: () => Navigator.pop(context, true),
+              style: trabajando > 0
+                  ? ElevatedButton.styleFrom(backgroundColor: TrazoColors.coralDark)
+                  : null,
               child: const Text('Sí, finalizar')),
         ],
       ),
@@ -1104,7 +1153,8 @@ class _MonitorState extends State<_Monitor> {
     // repite lo mismo. Así no se le manda otra vez casi lo mismo sin querer.
     final res = await showDialog<_MasResult>(
       context: context,
-      builder: (_) => _EnviarMasDialog(nombre: f.aliasInterno),
+      builder: (_) =>
+          _EnviarMasDialog(nombre: f.aliasInterno, usuarioFinalId: f.usuarioFinalId),
     );
     if (res == null) return;
     final uid = f.usuarioFinalId;
@@ -1112,6 +1162,9 @@ class _MonitorState extends State<_Monitor> {
     try {
       if (res.repetir) {
         await ApiClient.instance.enviarMas(widget.sesionId, uid);
+      } else if (res.ejercicios.isNotEmpty) {
+        await ApiClient.instance.enviarMas(widget.sesionId, uid,
+            nivel: res.nivel, ejercicios: res.ejercicios);
       } else {
         await ApiClient.instance.enviarMas(widget.sesionId, uid,
             nivel: res.nivel, lineas: res.lineas);
@@ -1135,6 +1188,27 @@ class _MonitorState extends State<_Monitor> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Aviso de WiFi caído: si el monitor deja de recibir datos, la
+        // facilitadora ve que debe revisar la conexión (no que nadie avanza).
+        if (_sinConexion)
+          Container(
+            width: double.infinity,
+            color: TrazoColors.coralDark,
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.wifi_off, color: Colors.white, size: 22),
+                SizedBox(width: 10),
+                Flexible(
+                  child: Text(
+                      'Sin conexión: revisa el WiFi. Los datos pueden estar sin actualizar.',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w600)),
+                ),
+              ],
+            ),
+          ),
         Expanded(
           child: _cargando
               ? const Center(child: CircularProgressIndicator())
@@ -1164,6 +1238,7 @@ class _MonitorState extends State<_Monitor> {
                           itemBuilder: (_, i) {
                             final f = _fichas[i];
                             return _FichaCard(
+                              key: ValueKey(f.usuarioFinalId),
                               ficha: f,
                               marcando: f.ultimoIntentoId != null &&
                                   _marcando.contains(f.ultimoIntentoId),
@@ -1194,18 +1269,30 @@ class _MasResult {
   final bool repetir;
   final String? nivel;
   final List<Map<String, dynamic>> lineas;
+  // Actividades CONCRETAS a mandar (elegidas por la maestra o propuestas por la
+  // app y aceptadas). Van primero en la cola de la persona (origen 'en_vivo').
+  final List<String> ejercicios;
   const _MasResult.repetir()
       : repetir = true,
         nivel = null,
+        lineas = const [],
+        ejercicios = const [];
+  const _MasResult.config(this.nivel, this.lineas)
+      : repetir = false,
+        ejercicios = const [];
+  const _MasResult.concretas(this.nivel, this.ejercicios)
+      : repetir = false,
         lineas = const [];
-  const _MasResult.config(this.nivel, this.lineas) : repetir = false;
 }
 
 /// Diálogo para elegir QUÉ mandar en la nueva tanda: categorías + nº + nivel,
 /// o repetir lo mismo. Evita mandar otra vez casi los mismos ejercicios.
+enum _ModoMas { areas, propone, elige }
+
 class _EnviarMasDialog extends StatefulWidget {
   final String nombre;
-  const _EnviarMasDialog({required this.nombre});
+  final String usuarioFinalId;
+  const _EnviarMasDialog({required this.nombre, required this.usuarioFinalId});
 
   @override
   State<_EnviarMasDialog> createState() => _EnviarMasDialogState();
@@ -1213,35 +1300,136 @@ class _EnviarMasDialog extends StatefulWidget {
 
 class _EnviarMasDialogState extends State<_EnviarMasDialog> {
   String _nivel = 'medio';
+  _ModoMas _modo = _ModoMas.areas;
+
+  // Modo "áreas": categorías + nº (comportamiento clásico).
   final Map<String, _ConfigBloque> _bloques = {
     for (final k in kBloques.keys) k: _ConfigBloque(incluido: false, n: 2),
   };
-
   List<Map<String, dynamic>> get _lineas => _bloques.entries
       .where((e) => e.value.incluido && e.value.n > 0)
       .map((e) => {'bloque': e.key, 'n': e.value.n})
       .toList();
 
+  // Modo "la app propone": actividades frescas que sugiere el motor.
+  List<ColaItem>? _propuestas;
+  bool _cargandoPropuesta = false;
+  String? _errorCarga;
+  final Set<String> _propMarcadas = {};
+
+  // Modo "elijo yo": buscador del catálogo.
+  List<Ejercicio>? _catalogo;
+  bool _cargandoCatalogo = false;
+  String _busqueda = '';
+  final Set<String> _eligMarcadas = {};
+
+  Future<void> _cargarPropuesta() async {
+    if (_propuestas != null || _cargandoPropuesta) return;
+    setState(() {
+      _cargandoPropuesta = true;
+      _errorCarga = null;
+    });
+    try {
+      final p = await ApiClient.instance.propuesta(widget.usuarioFinalId, n: 5);
+      if (!mounted) return;
+      setState(() {
+        _propuestas = p;
+        // Vienen pre-marcadas: aceptar tal cual es un toque, quitar es fácil.
+        _propMarcadas
+          ..clear()
+          ..addAll(p.map((e) => e.ejercicioId));
+      });
+    } catch (e) {
+      if (mounted) setState(() => _errorCarga = '$e');
+    } finally {
+      if (mounted) setState(() => _cargandoPropuesta = false);
+    }
+  }
+
+  Future<void> _cargarCatalogo() async {
+    if (_catalogo != null || _cargandoCatalogo) return;
+    setState(() => _cargandoCatalogo = true);
+    try {
+      final c = await ApiClient.instance.ejercicios();
+      if (!mounted) return;
+      c.sort((a, b) => a.nombre.toLowerCase().compareTo(b.nombre.toLowerCase()));
+      setState(() => _catalogo = c);
+    } catch (e) {
+      if (mounted) setState(() => _errorCarga = '$e');
+    } finally {
+      if (mounted) setState(() => _cargandoCatalogo = false);
+    }
+  }
+
+  void _cambiarModo(_ModoMas m) {
+    setState(() => _modo = m);
+    if (m == _ModoMas.propone) _cargarPropuesta();
+    if (m == _ModoMas.elige) _cargarCatalogo();
+  }
+
+  bool get _puedeEnviar {
+    switch (_modo) {
+      case _ModoMas.areas:
+        return _lineas.isNotEmpty;
+      case _ModoMas.propone:
+        return _propMarcadas.isNotEmpty;
+      case _ModoMas.elige:
+        return _eligMarcadas.isNotEmpty;
+    }
+  }
+
+  _MasResult _resultado() {
+    switch (_modo) {
+      case _ModoMas.areas:
+        return _MasResult.config(_nivel, _lineas);
+      case _ModoMas.propone:
+        final ids = (_propuestas ?? [])
+            .map((e) => e.ejercicioId)
+            .where(_propMarcadas.contains)
+            .toList();
+        return _MasResult.concretas(_nivel, ids);
+      case _ModoMas.elige:
+        return _MasResult.concretas(_nivel, _eligMarcadas.toList());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final hayCategorias = _lineas.isNotEmpty;
     return AlertDialog(
       title: Text('Enviar más a ${widget.nombre}'),
       content: SizedBox(
         width: 480,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text('Elige categorías y cuántas de cada una, o repite lo '
-                  'mismo de antes.',
-                  style: TextStyle(fontSize: 14, color: TrazoColors.sageDark)),
-              const SizedBox(height: 14),
+        height: 470,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // De dónde sale la nueva tanda: por áreas, que la proponga la app, o
+            // elegir yo una actividad concreta.
+            SegmentedButton<_ModoMas>(
+              segments: const [
+                ButtonSegment(
+                    value: _ModoMas.areas,
+                    label: Text('Áreas'),
+                    icon: Icon(Icons.category_outlined)),
+                ButtonSegment(
+                    value: _ModoMas.propone,
+                    label: Text('La app propone'),
+                    icon: Icon(Icons.auto_awesome)),
+                ButtonSegment(
+                    value: _ModoMas.elige,
+                    label: Text('Elijo yo'),
+                    icon: Icon(Icons.touch_app_outlined)),
+              ],
+              selected: {_modo},
+              showSelectedIcon: false,
+              onSelectionChanged: (s) => _cambiarModo(s.first),
+            ),
+            const SizedBox(height: 12),
+            Row(children: [
               const Text('Nivel',
                   style: TextStyle(
                       fontWeight: FontWeight.w600, color: TrazoColors.sageDark)),
-              const SizedBox(height: 8),
+              const SizedBox(width: 12),
               SegmentedButton<String>(
                 segments: const [
                   ButtonSegment(value: 'bajo', label: Text('Bajo')),
@@ -1252,18 +1440,10 @@ class _EnviarMasDialogState extends State<_EnviarMasDialog> {
                 showSelectedIcon: false,
                 onSelectionChanged: (s) => setState(() => _nivel = s.first),
               ),
-              const SizedBox(height: 16),
-              const Text('Categorías y nº de actividades',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600, color: TrazoColors.sageDark)),
-              const SizedBox(height: 8),
-              ...kBloques.entries.map((entry) => _FilaBloque(
-                    etiqueta: entry.value,
-                    cfg: _bloques[entry.key]!,
-                    onCambio: () => setState(() {}),
-                  )),
-            ],
-          ),
+            ]),
+            const SizedBox(height: 12),
+            Expanded(child: _cuerpo()),
+          ],
         ),
       ),
       actions: [
@@ -1275,13 +1455,149 @@ class _EnviarMasDialogState extends State<_EnviarMasDialog> {
                 Navigator.pop(context, const _MasResult.repetir()),
             child: const Text('Repetir lo mismo')),
         ElevatedButton.icon(
-          onPressed: hayCategorias
-              ? () => Navigator.pop(
-                  context, _MasResult.config(_nivel, _lineas))
-              : null,
+          onPressed:
+              _puedeEnviar ? () => Navigator.pop(context, _resultado()) : null,
           icon: const Icon(Icons.send, size: 18),
           label: const Text('Enviar'),
         ),
+      ],
+    );
+  }
+
+  Widget _cuerpo() {
+    switch (_modo) {
+      case _ModoMas.areas:
+        return _cuerpoAreas();
+      case _ModoMas.propone:
+        return _cuerpoPropone();
+      case _ModoMas.elige:
+        return _cuerpoElige();
+    }
+  }
+
+  Widget _cuerpoAreas() {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('Elige categorías y cuántas de cada una.',
+              style: TextStyle(fontSize: 14, color: TrazoColors.sageDark)),
+          const SizedBox(height: 8),
+          ...kBloques.entries.map((entry) => _FilaBloque(
+                etiqueta: entry.value,
+                cfg: _bloques[entry.key]!,
+                onCambio: () => setState(() {}),
+              )),
+        ],
+      ),
+    );
+  }
+
+  Widget _cuerpoPropone() {
+    if (_cargandoPropuesta) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    if (_errorCarga != null) {
+      return Center(
+          child: Text('No se pudo cargar la propuesta.\n$_errorCarga',
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: TrazoColors.ink)));
+    }
+    final props = _propuestas ?? [];
+    if (props.isEmpty) {
+      return const Center(
+          child: Text(
+              'La app no tiene actividades frescas que proponer ahora mismo. '
+              'Revisa el plan de la persona.',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: TrazoColors.ink)));
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('La app sugiere estas actividades frescas. Desmarca las que '
+            'no quieras.',
+            style: TextStyle(fontSize: 14, color: TrazoColors.sageDark)),
+        const SizedBox(height: 4),
+        Expanded(
+          child: ListView(
+            children: props
+                .map((it) => CheckboxListTile(
+                      value: _propMarcadas.contains(it.ejercicioId),
+                      onChanged: (v) => setState(() {
+                        if (v == true) {
+                          _propMarcadas.add(it.ejercicioId);
+                        } else {
+                          _propMarcadas.remove(it.ejercicioId);
+                        }
+                      }),
+                      title: Text(it.nombre),
+                      subtitle: Text(etiquetaBloque(it.bloque)),
+                      dense: true,
+                      activeColor: TrazoColors.sageDark,
+                    ))
+                .toList(),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _cuerpoElige() {
+    if (_cargandoCatalogo) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    final cat = _catalogo ?? [];
+    final q = _busqueda.trim().toLowerCase();
+    final filtrado = q.isEmpty
+        ? cat
+        : cat
+            .where((e) =>
+                e.nombre.toLowerCase().contains(q) ||
+                etiquetaBloque(e.bloque).toLowerCase().contains(q))
+            .toList();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextField(
+          decoration: const InputDecoration(
+            prefixIcon: Icon(Icons.search),
+            hintText: 'Busca una actividad…',
+            border: OutlineInputBorder(),
+            isDense: true,
+          ),
+          onChanged: (v) => setState(() => _busqueda = v),
+        ),
+        const SizedBox(height: 8),
+        Expanded(
+          child: filtrado.isEmpty
+              ? const Center(child: Text('Sin resultados.'))
+              : ListView(
+                  children: filtrado
+                      .map((e) => CheckboxListTile(
+                            value: _eligMarcadas.contains(e.id),
+                            onChanged: (v) => setState(() {
+                              if (v == true) {
+                                _eligMarcadas.add(e.id);
+                              } else {
+                                _eligMarcadas.remove(e.id);
+                              }
+                            }),
+                            title: Text(e.nombre),
+                            subtitle: Text(etiquetaBloque(e.bloque)),
+                            dense: true,
+                            activeColor: TrazoColors.sageDark,
+                          ))
+                      .toList(),
+                ),
+        ),
+        if (_eligMarcadas.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 4),
+            child: Text('${_eligMarcadas.length} elegida(s)',
+                style:
+                    const TextStyle(fontSize: 13, color: TrazoColors.sageDark)),
+          ),
       ],
     );
   }
@@ -1298,6 +1614,7 @@ class _FichaCard extends StatelessWidget {
   final VoidCallback onRevisar;            // revisar/marcar en lote las últimas
 
   const _FichaCard({
+    super.key,
     required this.ficha,
     required this.marcando,
     required this.puedeMarcar,
@@ -1482,7 +1799,7 @@ class _FichaCard extends StatelessWidget {
               child: ElevatedButton.icon(
                 onPressed: enviandoMas ? null : onEnviarMas,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: TrazoColors.sage,
+                  backgroundColor: TrazoColors.sageDark,
                   padding: const EdgeInsets.symmetric(vertical: 10),
                 ),
                 icon: enviandoMas
@@ -1944,7 +2261,7 @@ class _TarjetaProgramada extends StatelessWidget {
               child: ElevatedButton.icon(
                 onPressed: abriendo ? null : onAbrir,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: TrazoColors.sage,
+                  backgroundColor: TrazoColors.sageDark,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   textStyle: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w700),

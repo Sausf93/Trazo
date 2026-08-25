@@ -1,0 +1,972 @@
+[
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Los oficios de siempre",
+  "descripcion": "Reconocer el oficio que corresponde a cada trabajo de toda la vida.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "of1",
+     "instruccion": "¿Quién arregla los zapatos?",
+     "correcta": "El zapatero",
+     "distractores": [
+      "El panadero",
+      "El herrero",
+      "El sastre"
+     ]
+    },
+    {
+     "id": "of2",
+     "instruccion": "¿Quién hace el pan?",
+     "correcta": "El panadero",
+     "distractores": [
+      "El carpintero",
+      "El pescadero",
+      "El zapatero"
+     ]
+    },
+    {
+     "id": "of3",
+     "instruccion": "¿Quién cose los trajes a medida?",
+     "correcta": "El sastre",
+     "distractores": [
+      "El herrero",
+      "El panadero",
+      "El fontanero"
+     ]
+    },
+    {
+     "id": "of4",
+     "instruccion": "¿Quién trabaja la madera?",
+     "correcta": "El carpintero",
+     "distractores": [
+      "El pescadero",
+      "El sastre",
+      "El zapatero"
+     ]
+    },
+    {
+     "id": "of5",
+     "instruccion": "¿Quién trabaja el hierro en la fragua?",
+     "correcta": "El herrero",
+     "distractores": [
+      "El sastre",
+      "El panadero",
+      "El zapatero"
+     ]
+    },
+    {
+     "id": "of6",
+     "instruccion": "¿Quién vende el pescado?",
+     "correcta": "El pescadero",
+     "distractores": [
+      "El panadero",
+      "El herrero",
+      "El carpintero"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Las crías de los animales",
+  "descripcion": "Elegir el nombre de la cría de cada animal del campo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "cr1",
+     "instruccion": "La cría de la vaca es...",
+     "correcta": "El ternero",
+     "distractores": [
+      "El potro",
+      "El cordero",
+      "El cabrito"
+     ]
+    },
+    {
+     "id": "cr2",
+     "instruccion": "La cría de la oveja es...",
+     "correcta": "El cordero",
+     "distractores": [
+      "El ternero",
+      "El potro",
+      "El pollito"
+     ]
+    },
+    {
+     "id": "cr3",
+     "instruccion": "La cría del caballo es...",
+     "correcta": "El potro",
+     "distractores": [
+      "El cordero",
+      "El ternero",
+      "El cabrito"
+     ]
+    },
+    {
+     "id": "cr4",
+     "instruccion": "La cría de la gallina es...",
+     "correcta": "El pollito",
+     "distractores": [
+      "El cordero",
+      "El potro",
+      "El ternero"
+     ]
+    },
+    {
+     "id": "cr5",
+     "instruccion": "La cría de la cabra es...",
+     "correcta": "El cabrito",
+     "distractores": [
+      "El pollito",
+      "El potro",
+      "El ternero"
+     ]
+    },
+    {
+     "id": "cr6",
+     "instruccion": "La cría del perro es...",
+     "correcta": "El cachorro",
+     "distractores": [
+      "El potro",
+      "El cordero",
+      "El pollito"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El cuerpo y los sentidos",
+  "descripcion": "Relacionar cada sentido o acción con la parte del cuerpo correcta.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "cu1",
+     "instruccion": "¿Con qué parte del cuerpo oyes?",
+     "correcta": "Los oídos",
+     "distractores": [
+      "Los ojos",
+      "La nariz",
+      "Las manos"
+     ]
+    },
+    {
+     "id": "cu2",
+     "instruccion": "¿Con qué parte del cuerpo ves?",
+     "correcta": "Los ojos",
+     "distractores": [
+      "Los oídos",
+      "La boca",
+      "Los pies"
+     ]
+    },
+    {
+     "id": "cu3",
+     "instruccion": "¿Con qué parte del cuerpo hueles?",
+     "correcta": "La nariz",
+     "distractores": [
+      "Las orejas",
+      "Los ojos",
+      "Las manos"
+     ]
+    },
+    {
+     "id": "cu4",
+     "instruccion": "¿Con qué parte del cuerpo caminas?",
+     "correcta": "Los pies",
+     "distractores": [
+      "Las manos",
+      "Los ojos",
+      "La nariz"
+     ]
+    },
+    {
+     "id": "cu5",
+     "instruccion": "¿Con qué parte del cuerpo saboreas la comida?",
+     "correcta": "La lengua",
+     "distractores": [
+      "Los oídos",
+      "Los ojos",
+      "Los pies"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Los meses del año",
+  "descripcion": "Ordenar los meses recordando cuál va antes o después.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "me1",
+     "instruccion": "¿Qué mes va después de marzo?",
+     "correcta": "Abril",
+     "distractores": [
+      "Febrero",
+      "Mayo",
+      "Junio"
+     ]
+    },
+    {
+     "id": "me2",
+     "instruccion": "¿Qué mes va antes de agosto?",
+     "correcta": "Julio",
+     "distractores": [
+      "Septiembre",
+      "Junio",
+      "Octubre"
+     ]
+    },
+    {
+     "id": "me3",
+     "instruccion": "¿Con qué mes empieza el año?",
+     "correcta": "Enero",
+     "distractores": [
+      "Diciembre",
+      "Marzo",
+      "Febrero"
+     ]
+    },
+    {
+     "id": "me4",
+     "instruccion": "¿Con qué mes termina el año?",
+     "correcta": "Diciembre",
+     "distractores": [
+      "Noviembre",
+      "Enero",
+      "Octubre"
+     ]
+    },
+    {
+     "id": "me5",
+     "instruccion": "¿Qué mes va después de septiembre?",
+     "correcta": "Octubre",
+     "distractores": [
+      "Agosto",
+      "Noviembre",
+      "Julio"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Otra forma de decirlo",
+  "descripcion": "Elegir la palabra que significa lo mismo (sinónimo).",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "si1",
+     "instruccion": "Otra forma de decir 'contento' es...",
+     "correcta": "Alegre",
+     "distractores": [
+      "Triste",
+      "Cansado",
+      "Enfadado"
+     ]
+    },
+    {
+     "id": "si2",
+     "instruccion": "Otra forma de decir 'bonito' es...",
+     "correcta": "Hermoso",
+     "distractores": [
+      "Feo",
+      "Viejo",
+      "Roto"
+     ]
+    },
+    {
+     "id": "si3",
+     "instruccion": "Otra forma de decir 'rápido' es...",
+     "correcta": "Veloz",
+     "distractores": [
+      "Lento",
+      "Pesado",
+      "Quieto"
+     ]
+    },
+    {
+     "id": "si4",
+     "instruccion": "Otra forma de decir 'empezar' es...",
+     "correcta": "Comenzar",
+     "distractores": [
+      "Terminar",
+      "Acabar",
+      "Parar"
+     ]
+    },
+    {
+     "id": "si5",
+     "instruccion": "Otra forma de decir 'flaco' es...",
+     "correcta": "Delgado",
+     "distractores": [
+      "Gordo",
+      "Alto",
+      "Fuerte"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿A qué grupo pertenece?",
+  "descripcion": "Identificar qué elemento pertenece a la categoría que se pide.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "ca1",
+     "instruccion": "¿Cuál es un medio de transporte?",
+     "correcta": "El autobús",
+     "distractores": [
+      "La silla",
+      "El plato",
+      "La lámpara"
+     ]
+    },
+    {
+     "id": "ca2",
+     "instruccion": "¿Cuál es una fruta?",
+     "correcta": "La manzana",
+     "distractores": [
+      "La zanahoria",
+      "La cebolla",
+      "El pimiento"
+     ]
+    },
+    {
+     "id": "ca3",
+     "instruccion": "¿Cuál es un instrumento musical?",
+     "correcta": "La guitarra",
+     "distractores": [
+      "El martillo",
+      "La sartén",
+      "La escoba"
+     ]
+    },
+    {
+     "id": "ca4",
+     "instruccion": "¿Cuál es una prenda de vestir?",
+     "correcta": "La camisa",
+     "distractores": [
+      "El tenedor",
+      "La ventana",
+      "La silla"
+     ]
+    },
+    {
+     "id": "ca5",
+     "instruccion": "¿Cuál es un animal?",
+     "correcta": "El conejo",
+     "distractores": [
+      "La mesa",
+      "El zapato",
+      "El pan"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Las estaciones del año",
+  "descripcion": "Reconocer qué ocurre en la naturaleza en cada estación.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "es1",
+     "instruccion": "¿En qué estación caen las hojas de los árboles?",
+     "correcta": "El otoño",
+     "distractores": [
+      "La primavera",
+      "El verano",
+      "El invierno"
+     ]
+    },
+    {
+     "id": "es2",
+     "instruccion": "¿En qué estación hace más calor?",
+     "correcta": "El verano",
+     "distractores": [
+      "El invierno",
+      "El otoño",
+      "La primavera"
+     ]
+    },
+    {
+     "id": "es3",
+     "instruccion": "¿En qué estación suele nevar?",
+     "correcta": "El invierno",
+     "distractores": [
+      "El verano",
+      "La primavera",
+      "El otoño"
+     ]
+    },
+    {
+     "id": "es4",
+     "instruccion": "¿En qué estación florecen los campos?",
+     "correcta": "La primavera",
+     "distractores": [
+      "El invierno",
+      "El otoño",
+      "El verano"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Fiestas y tradiciones de España",
+  "descripcion": "Recordar cuándo y cómo se celebran las fiestas de siempre.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "fi1",
+     "instruccion": "¿En qué mes se celebra la Nochebuena?",
+     "correcta": "Diciembre",
+     "distractores": [
+      "Enero",
+      "Agosto",
+      "Marzo"
+     ]
+    },
+    {
+     "id": "fi2",
+     "instruccion": "En Nochevieja tomamos doce...",
+     "correcta": "Uvas",
+     "distractores": [
+      "Turrones",
+      "Mantecados",
+      "Polvorones"
+     ]
+    },
+    {
+     "id": "fi3",
+     "instruccion": "¿Quiénes traen los regalos el 6 de enero?",
+     "correcta": "Los Reyes Magos",
+     "distractores": [
+      "Los pastores",
+      "Los quintos",
+      "Los romeros"
+     ]
+    },
+    {
+     "id": "fi4",
+     "instruccion": "En Semana Santa salen a la calle las...",
+     "correcta": "Procesiones",
+     "distractores": [
+      "Cabalgatas",
+      "Verbenas",
+      "Corridas"
+     ]
+    },
+    {
+     "id": "fi5",
+     "instruccion": "La noche del 23 de junio se encienden hogueras en la fiesta de...",
+     "correcta": "San Juan",
+     "distractores": [
+      "San Isidro",
+      "Todos los Santos",
+      "La Candelaria"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "La huerta y el campo",
+  "descripcion": "Saber de dónde salen los alimentos de toda la vida.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "hu1",
+     "instruccion": "¿De qué planta se saca el vino?",
+     "correcta": "La vid",
+     "distractores": [
+      "El olivo",
+      "El trigo",
+      "El naranjo"
+     ]
+    },
+    {
+     "id": "hu2",
+     "instruccion": "¿De qué árbol se saca el aceite?",
+     "correcta": "El olivo",
+     "distractores": [
+      "La vid",
+      "El manzano",
+      "El almendro"
+     ]
+    },
+    {
+     "id": "hu3",
+     "instruccion": "¿Con qué cereal se hace el pan?",
+     "correcta": "El trigo",
+     "distractores": [
+      "El girasol",
+      "El olivo",
+      "La patata"
+     ]
+    },
+    {
+     "id": "hu4",
+     "instruccion": "¿Qué se recoge del olivo?",
+     "correcta": "Las aceitunas",
+     "distractores": [
+      "Las uvas",
+      "Las naranjas",
+      "Las almendras"
+     ]
+    },
+    {
+     "id": "hu5",
+     "instruccion": "¿Qué hortaliza crece bajo tierra?",
+     "correcta": "La patata",
+     "distractores": [
+      "El tomate",
+      "El pimiento",
+      "La lechuga"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El refranero del tiempo",
+  "descripcion": "Completar los refranes del campo y del tiempo.",
+  "parametros_json": {
+   "dificultad": "dificil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "rt1",
+     "instruccion": "Complete el refrán",
+     "enunciado": "Cielo empedrado, suelo...",
+     "correcta": "mojado",
+     "distractores": [
+      "seco",
+      "helado",
+      "despejado"
+     ]
+    },
+    {
+     "id": "rt2",
+     "instruccion": "Complete el refrán",
+     "enunciado": "Marzo ventoso y abril lluvioso sacan a mayo florido y...",
+     "correcta": "hermoso",
+     "distractores": [
+      "nublado",
+      "seco",
+      "frío"
+     ]
+    },
+    {
+     "id": "rt3",
+     "instruccion": "Complete el refrán",
+     "enunciado": "Año de nieves, año de...",
+     "correcta": "bienes",
+     "distractores": [
+      "males",
+      "penas",
+      "hambre"
+     ]
+    },
+    {
+     "id": "rt4",
+     "instruccion": "Complete el refrán",
+     "enunciado": "En abril, aguas...",
+     "correcta": "mil",
+     "distractores": [
+      "cien",
+      "pocas",
+      "secas"
+     ]
+    },
+    {
+     "id": "rt5",
+     "instruccion": "Complete el refrán",
+     "enunciado": "Hasta el cuarenta de mayo, no te quites el...",
+     "correcta": "sayo",
+     "distractores": [
+      "gorro",
+      "pañuelo",
+      "zapato"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "calculo",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Las cuentas del calendario",
+  "descripcion": "Recordar cuántos días, meses u horas hay en cada cosa.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "cl1",
+     "instruccion": "¿Cuántos días tiene una semana?",
+     "correcta": "Siete",
+     "distractores": [
+      "Cinco",
+      "Seis",
+      "Diez"
+     ]
+    },
+    {
+     "id": "cl2",
+     "instruccion": "¿Cuántos meses tiene un año?",
+     "correcta": "Doce",
+     "distractores": [
+      "Diez",
+      "Once",
+      "Trece"
+     ]
+    },
+    {
+     "id": "cl3",
+     "instruccion": "¿Cuántas estaciones tiene el año?",
+     "correcta": "Cuatro",
+     "distractores": [
+      "Dos",
+      "Tres",
+      "Cinco"
+     ]
+    },
+    {
+     "id": "cl4",
+     "instruccion": "¿Cuántas horas tiene un día?",
+     "correcta": "Veinticuatro",
+     "distractores": [
+      "Doce",
+      "Veinte",
+      "Treinta"
+     ]
+    },
+    {
+     "id": "cl5",
+     "instruccion": "¿Cuántos minutos tiene una hora?",
+     "correcta": "Sesenta",
+     "distractores": [
+      "Treinta",
+      "Cincuenta",
+      "Cien"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Dónde vive cada animal?",
+  "descripcion": "Relacionar cada animal con el sitio donde vive.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "dv1",
+     "instruccion": "¿Dónde vive el pez?",
+     "correcta": "En el agua",
+     "distractores": [
+      "En el árbol",
+      "Bajo tierra",
+      "En el aire"
+     ]
+    },
+    {
+     "id": "dv2",
+     "instruccion": "¿Dónde vive la abeja?",
+     "correcta": "En la colmena",
+     "distractores": [
+      "En el establo",
+      "En la madriguera",
+      "En el nido"
+     ]
+    },
+    {
+     "id": "dv3",
+     "instruccion": "¿Dónde vive el conejo del campo?",
+     "correcta": "En la madriguera",
+     "distractores": [
+      "En la colmena",
+      "En el corral",
+      "En el agua"
+     ]
+    },
+    {
+     "id": "dv4",
+     "instruccion": "¿Dónde hace su casa el pájaro?",
+     "correcta": "En el nido",
+     "distractores": [
+      "En la madriguera",
+      "Bajo el agua",
+      "En la colmena"
+     ]
+    },
+    {
+     "id": "dv5",
+     "instruccion": "¿Dónde guarda el pastor a las ovejas?",
+     "correcta": "En el redil",
+     "distractores": [
+      "En la colmena",
+      "En el nido",
+      "En la charca"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Los sonidos de los animales",
+  "descripcion": "Reconocer qué animal hace cada sonido.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "so1",
+     "instruccion": "¿Qué animal hace 'muu'?",
+     "correcta": "La vaca",
+     "distractores": [
+      "El gato",
+      "El perro",
+      "La oveja"
+     ]
+    },
+    {
+     "id": "so2",
+     "instruccion": "¿Qué animal ladra?",
+     "correcta": "El perro",
+     "distractores": [
+      "El gato",
+      "El caballo",
+      "La gallina"
+     ]
+    },
+    {
+     "id": "so3",
+     "instruccion": "¿Qué animal maúlla?",
+     "correcta": "El gato",
+     "distractores": [
+      "El perro",
+      "La vaca",
+      "El cerdo"
+     ]
+    },
+    {
+     "id": "so4",
+     "instruccion": "¿Qué animal relincha?",
+     "correcta": "El caballo",
+     "distractores": [
+      "La oveja",
+      "El gato",
+      "La gallina"
+     ]
+    },
+    {
+     "id": "so5",
+     "instruccion": "¿Qué animal bala?",
+     "correcta": "La oveja",
+     "distractores": [
+      "El gato",
+      "El caballo",
+      "El cerdo"
+     ]
+    },
+    {
+     "id": "so6",
+     "instruccion": "¿Qué animal cacarea?",
+     "correcta": "La gallina",
+     "distractores": [
+      "El perro",
+      "La vaca",
+      "El caballo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Los días de la semana",
+  "descripcion": "Ordenar los días recordando cuál va antes o después.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "di1",
+     "instruccion": "¿Qué día va después del lunes?",
+     "correcta": "Martes",
+     "distractores": [
+      "Domingo",
+      "Miércoles",
+      "Viernes"
+     ]
+    },
+    {
+     "id": "di2",
+     "instruccion": "¿Qué día va antes del sábado?",
+     "correcta": "Viernes",
+     "distractores": [
+      "Domingo",
+      "Jueves",
+      "Lunes"
+     ]
+    },
+    {
+     "id": "di3",
+     "instruccion": "¿Con qué día empieza la semana laboral?",
+     "correcta": "Lunes",
+     "distractores": [
+      "Domingo",
+      "Sábado",
+      "Miércoles"
+     ]
+    },
+    {
+     "id": "di4",
+     "instruccion": "¿Qué día va después del miércoles?",
+     "correcta": "Jueves",
+     "distractores": [
+      "Martes",
+      "Viernes",
+      "Lunes"
+     ]
+    },
+    {
+     "id": "di5",
+     "instruccion": "¿Qué día se descansa y se suele ir a misa?",
+     "correcta": "Domingo",
+     "distractores": [
+      "Martes",
+      "Jueves",
+      "Lunes"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Para qué sirve cada cosa?",
+  "descripcion": "Elegir el objeto adecuado para cada tarea de la casa.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "pq1",
+     "instruccion": "¿Qué usamos para peinarnos?",
+     "correcta": "El peine",
+     "distractores": [
+      "La cuchara",
+      "El martillo",
+      "Las tijeras"
+     ]
+    },
+    {
+     "id": "pq2",
+     "instruccion": "¿Qué usamos para abrir una puerta cerrada?",
+     "correcta": "La llave",
+     "distractores": [
+      "El tenedor",
+      "El peine",
+      "La aguja"
+     ]
+    },
+    {
+     "id": "pq3",
+     "instruccion": "¿Qué usamos para coser un botón?",
+     "correcta": "La aguja y el hilo",
+     "distractores": [
+      "El martillo",
+      "La llave",
+      "El peine"
+     ]
+    },
+    {
+     "id": "pq4",
+     "instruccion": "¿Qué usamos para barrer el suelo?",
+     "correcta": "La escoba",
+     "distractores": [
+      "La sartén",
+      "El peine",
+      "La llave"
+     ]
+    },
+    {
+     "id": "pq5",
+     "instruccion": "¿Qué usamos para saber la hora?",
+     "correcta": "El reloj",
+     "distractores": [
+      "La escoba",
+      "El peine",
+      "La cuchara"
+     ]
+    }
+   ]
+  }
+ }
+]

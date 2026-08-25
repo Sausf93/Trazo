@@ -85,8 +85,8 @@
           "label": "zapato"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "taza",
+          "label": "taza"
         },
         {
           "id": "libro",
@@ -115,12 +115,12 @@
           "label": "gafas"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
-          "id": "tijeras",
-          "label": "tijeras"
+          "id": "llave",
+          "label": "llave"
         },
         {
           "id": "cuchara",
@@ -131,8 +131,8 @@
           "label": "paraguas"
         },
         {
-          "id": "sombrero",
-          "label": "sombrero"
+          "id": "bufanda",
+          "label": "bufanda"
         },
         {
           "id": "maceta",
@@ -1427,8 +1427,8 @@
           "label": "taza"
         },
         {
-          "id": "tijeras",
-          "label": "tijeras"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "libro",
@@ -1461,22 +1461,6 @@
           "label": "llave"
         },
         {
-          "id": "boton",
-          "label": "botón"
-        },
-        {
-          "id": "moneda",
-          "label": "moneda"
-        },
-        {
-          "id": "peine",
-          "label": "peine"
-        },
-        {
-          "id": "tijeras",
-          "label": "tijeras"
-        },
-        {
           "id": "gafas",
           "label": "gafas"
         },
@@ -1487,6 +1471,18 @@
         {
           "id": "jabon",
           "label": "jabón"
+        },
+        {
+          "id": "taza",
+          "label": "taza"
+        },
+        {
+          "id": "reloj",
+          "label": "reloj"
+        },
+        {
+          "id": "telefono",
+          "label": "teléfono"
         }
       ]
     }
@@ -1511,8 +1507,8 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "uvas",
+          "label": "uvas"
         },
         {
           "id": "naranja",
@@ -1527,8 +1523,8 @@
           "label": "fresa"
         },
         {
-          "id": "melon",
-          "label": "melón"
+          "id": "sandia",
+          "label": "sandía"
         },
         {
           "id": "cereza",
@@ -1581,8 +1577,8 @@
           "label": "queso"
         },
         {
-          "id": "jamon",
-          "label": "jamón"
+          "id": "martillo",
+          "label": "martillo"
         }
       ]
     }
@@ -2030,8 +2026,8 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchillo",
@@ -2042,16 +2038,16 @@
           "label": "taza"
         },
         {
-          "id": "plato",
-          "label": "plato"
-        },
-        {
-          "id": "vaso",
-          "label": "vaso"
-        },
-        {
           "id": "bol",
-          "label": "bol"
+          "label": "cuenco"
+        },
+        {
+          "id": "botella",
+          "label": "botella"
+        },
+        {
+          "id": "destornillador",
+          "label": "destornillador"
         }
       ]
     }
@@ -2172,7 +2168,7 @@
       "cantidad_max": 6,
       "objetos": [
         "cuchara",
-        "tenedor",
+        "cuchara",
         "cuchillo"
       ]
     }
@@ -2889,8 +2885,8 @@
           "label": "martillo"
         },
         {
-          "id": "tijeras",
-          "label": "tijeras"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cuchara",
@@ -2909,8 +2905,8 @@
           "label": "lapiz"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
           "id": "libro",
@@ -2921,8 +2917,8 @@
           "label": "reloj"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         }
       ]
     }
@@ -2949,8 +2945,8 @@
           "label": "pantalon"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
+          "id": "bufanda",
+          "label": "bufanda"
         },
         {
           "id": "calcetin",
@@ -2961,8 +2957,8 @@
           "label": "guantes"
         },
         {
-          "id": "bufanda",
-          "label": "bufanda"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "gafas",
@@ -3005,8 +3001,8 @@
           "label": "limon"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "fresa",
@@ -3017,12 +3013,12 @@
           "label": "uvas"
         },
         {
-          "id": "melocoton",
-          "label": "melocoton"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
-          "id": "melon",
-          "label": "melon"
+          "id": "sandia",
+          "label": "sandía"
         }
       ]
     }
@@ -3348,16 +3344,16 @@
           "label": "olla"
         },
         {
-          "id": "plato",
-          "label": "plato"
-        },
-        {
-          "id": "vaso",
-          "label": "vaso"
-        },
-        {
           "id": "bol",
-          "label": "bol"
+          "label": "cuenco"
+        },
+        {
+          "id": "taza",
+          "label": "taza"
+        },
+        {
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "botella",
@@ -3388,20 +3384,20 @@
           "label": "olla"
         },
         {
-          "id": "plato",
-          "label": "plato"
-        },
-        {
-          "id": "vaso",
-          "label": "vaso"
-        },
-        {
           "id": "bol",
-          "label": "bol"
+          "label": "cuenco"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "martillo",
+          "label": "martillo"
+        },
+        {
+          "id": "destornillador",
+          "label": "destornillador"
+        },
+        {
+          "id": "cuchara",
+          "label": "cuchara"
         },
         {
           "id": "cuchillo",
@@ -3815,8 +3811,8 @@
           "label": "zapato"
         },
         {
-          "id": "sombrero",
-          "label": "sombrero"
+          "id": "guantes",
+          "label": "guantes"
         },
         {
           "id": "calcetin",
@@ -7981,16 +7977,16 @@
           "label": "espejo"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "cepillo_dientes",
           "label": "cepillo de dientes"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
           "id": "gafas",
@@ -8006,7 +8002,7 @@
   {
     "bloque": "atencion_memoria",
     "plantilla_tipo": "memoria_visual",
-    "nombre": "Formas y figuras",
+    "nombre": "Objetos variados",
     "descripcion": "Memoriza las figuras y encuéntralas entre otras.",
     "parametros_json": {
       "dificultad": "facil",
@@ -8061,20 +8057,20 @@
       "segundos": 60,
       "banco": [
         {
-          "id": "gato",
-          "label": "gato"
+          "id": "pajaro",
+          "label": "pájaro"
         },
         {
-          "id": "perro",
-          "label": "perro"
+          "id": "hierba",
+          "label": "hierba"
         },
         {
           "id": "nube",
           "label": "nube"
         },
         {
-          "id": "casa",
-          "label": "casa"
+          "id": "piedra",
+          "label": "piedra"
         },
         {
           "id": "arbol",
@@ -8261,8 +8257,8 @@
           "label": "lápiz"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "telefono",
@@ -8432,28 +8428,28 @@
           "label": "destornillador"
         },
         {
-          "id": "sierra",
-          "label": "sierra"
-        },
-        {
-          "id": "llave_inglesa",
-          "label": "llave inglesa"
-        },
-        {
-          "id": "tijeras",
-          "label": "tijeras"
-        },
-        {
-          "id": "pincel",
-          "label": "pincel"
-        },
-        {
           "id": "llave",
           "label": "llave"
         },
         {
+          "id": "cepillo",
+          "label": "cepillo"
+        },
+        {
           "id": "lapiz",
           "label": "lápiz"
+        },
+        {
+          "id": "libro",
+          "label": "libro"
+        },
+        {
+          "id": "gafas",
+          "label": "gafas"
+        },
+        {
+          "id": "reloj",
+          "label": "reloj"
         }
       ]
     }
@@ -8505,7 +8501,7 @@
       "cantidad_max": 6,
       "objetos": [
         "taza",
-        "vaso"
+        "bol"
       ]
     }
   },
@@ -8566,8 +8562,8 @@
       "dificultad": "media",
       "instruccion": "Toca todos los GORROS",
       "objetivo": {
-        "id": "gorro",
-        "label": "gorro"
+        "id": "gafas",
+        "label": "gafas"
       },
       "distractores": [
         {
@@ -8677,8 +8673,8 @@
           "label": "llave"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "libro",
@@ -8711,24 +8707,24 @@
       "segundos": 60,
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
           "id": "taza",
           "label": "taza"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchara",
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cuchillo",
@@ -9422,12 +9418,12 @@
           "label": "mesa"
         },
         {
-          "id": "cama",
-          "label": "cama"
-        },
-        {
           "id": "sofa",
           "label": "sofá"
+        },
+        {
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "lampara",
@@ -9461,21 +9457,21 @@
       "dificultad": "media",
       "instruccion": "Toca todos los VASOS",
       "objetivo": {
-        "id": "vaso",
-        "label": "vaso"
+        "id": "taza",
+        "label": "taza"
       },
       "distractores": [
         {
-          "id": "taza",
-          "label": "taza"
-        },
-        {
-          "id": "plato",
-          "label": "plato"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "bol",
-          "label": "bol"
+          "label": "cuenco"
+        },
+        {
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "olla",
@@ -9514,20 +9510,20 @@
       },
       "distractores": [
         {
-          "id": "vaso",
-          "label": "vaso"
-        },
-        {
           "id": "taza",
           "label": "taza"
         },
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "bol",
-          "label": "bol"
+          "label": "cuenco"
+        },
+        {
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "olla",
@@ -10620,8 +10616,8 @@
           "label": "queso"
         },
         {
-          "id": "jamon",
-          "label": "jamón"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "galleta",
@@ -10664,16 +10660,16 @@
           "label": "queso"
         },
         {
-          "id": "jamon",
-          "label": "jamón"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "galleta",
           "label": "galleta"
         },
         {
-          "id": "tarta",
-          "label": "tarta"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "leche",
@@ -10712,16 +10708,16 @@
           "label": "huevo"
         },
         {
-          "id": "jamon",
-          "label": "jamón"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "galleta",
           "label": "galleta"
         },
         {
-          "id": "tarta",
-          "label": "tarta"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "leche",
@@ -10810,8 +10806,8 @@
           "label": "naranja"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "uvas",
@@ -10822,8 +10818,8 @@
           "label": "sandía"
         },
         {
-          "id": "melon",
-          "label": "melón"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "limon",
@@ -10838,8 +10834,8 @@
           "label": "cereza"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "llave",
+          "label": "llave"
         }
       ]
     }
@@ -10868,8 +10864,8 @@
           "label": "naranja"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "uvas",
@@ -10880,8 +10876,8 @@
           "label": "sandía"
         },
         {
-          "id": "melon",
-          "label": "melón"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "limon",
@@ -10896,8 +10892,8 @@
           "label": "cereza"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "llave",
+          "label": "llave"
         }
       ]
     }
@@ -11024,32 +11020,32 @@
       "segundos": 45,
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
           "id": "cuchara",
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchillo",
           "label": "cuchillo"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
-        },
-        {
           "id": "taza",
           "label": "taza"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "destornillador",
+          "label": "destornillador"
+        },
+        {
+          "id": "llave",
+          "label": "llave"
         },
         {
           "id": "sarten",
@@ -11078,32 +11074,32 @@
       "segundos": 40,
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
           "id": "cuchara",
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchillo",
           "label": "cuchillo"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
-        },
-        {
           "id": "taza",
           "label": "taza"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "destornillador",
+          "label": "destornillador"
+        },
+        {
+          "id": "llave",
+          "label": "llave"
         },
         {
           "id": "sarten",
@@ -11156,16 +11152,16 @@
           "label": "pollo"
         },
         {
-          "id": "tarta",
-          "label": "tarta"
-        },
-        {
           "id": "galleta",
           "label": "galleta"
         },
         {
-          "id": "jamon",
-          "label": "jamón"
+          "id": "martillo",
+          "label": "martillo"
+        },
+        {
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cafe",
@@ -11210,16 +11206,16 @@
           "label": "pollo"
         },
         {
-          "id": "tarta",
-          "label": "tarta"
-        },
-        {
           "id": "galleta",
           "label": "galleta"
         },
         {
-          "id": "jamon",
-          "label": "jamón"
+          "id": "martillo",
+          "label": "martillo"
+        },
+        {
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cafe",
@@ -11260,12 +11256,12 @@
           "label": "chaqueta"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
-        },
-        {
           "id": "bufanda",
           "label": "bufanda"
+        },
+        {
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "gafas",
@@ -11318,12 +11314,12 @@
           "label": "chaqueta"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
-        },
-        {
           "id": "bufanda",
           "label": "bufanda"
+        },
+        {
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "gafas",
@@ -11364,12 +11360,12 @@
           "label": "mesa"
         },
         {
-          "id": "cama",
-          "label": "cama"
-        },
-        {
           "id": "sofa",
           "label": "sofá"
+        },
+        {
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "lampara",
@@ -11434,8 +11430,8 @@
           "label": "jabón"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         }
       ]
     }
@@ -11496,8 +11492,8 @@
           "label": "jabón"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         }
       ]
     }
@@ -11522,16 +11518,16 @@
           "label": "destornillador"
         },
         {
-          "id": "llave_inglesa",
-          "label": "llave inglesa"
+          "id": "llave",
+          "label": "llave"
         },
         {
-          "id": "sierra",
-          "label": "sierra"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
-          "id": "pincel",
-          "label": "pincel"
+          "id": "lapiz",
+          "label": "lápiz"
         }
       ]
     }
@@ -11715,7 +11711,7 @@
   {
     "bloque": "atencion_memoria",
     "plantilla_tipo": "memoria_visual",
-    "nombre": "Memoria: las figuras",
+    "nombre": "Memoria: objetos",
     "descripcion": "Memoriza unas figuras de las figuras y localízalas después.",
     "parametros_json": {
       "dificultad": "media",
@@ -11757,7 +11753,7 @@
   {
     "bloque": "atencion_memoria",
     "plantilla_tipo": "memoria_visual",
-    "nombre": "Memoria (más) : las figuras",
+    "nombre": "Memoria (más): objetos",
     "descripcion": "Versión con más figuras de las figuras.",
     "parametros_json": {
       "dificultad": "dificil",
@@ -11818,8 +11814,8 @@
           "label": "naranja"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "uvas",
@@ -11830,8 +11826,8 @@
           "label": "sandía"
         },
         {
-          "id": "melon",
-          "label": "melón"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "limon",
@@ -11846,8 +11842,8 @@
           "label": "cereza"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "llave",
+          "label": "llave"
         }
       ]
     }
@@ -11874,8 +11870,8 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "uvas",
@@ -11886,8 +11882,8 @@
           "label": "sandía"
         },
         {
-          "id": "melon",
-          "label": "melón"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "limon",
@@ -11902,8 +11898,8 @@
           "label": "cereza"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "llave",
+          "label": "llave"
         }
       ]
     }
@@ -12093,8 +12089,8 @@
       "dificultad": "media",
       "instruccion": "Busca plato",
       "objetivo": {
-        "id": "plato",
-        "label": "plato"
+        "id": "bol",
+        "label": "cuenco"
       },
       "distractores": [
         {
@@ -12102,24 +12098,24 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchillo",
           "label": "cuchillo"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
-        },
-        {
           "id": "taza",
           "label": "taza"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "destornillador",
+          "label": "destornillador"
+        },
+        {
+          "id": "llave",
+          "label": "llave"
         },
         {
           "id": "sarten",
@@ -12145,33 +12141,33 @@
       "dificultad": "dificil",
       "instruccion": "Busca tenedor",
       "objetivo": {
-        "id": "tenedor",
-        "label": "tenedor"
+        "id": "cuchara",
+        "label": "cuchara"
       },
       "distractores": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "cuchara",
-          "label": "cuchara"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchillo",
           "label": "cuchillo"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
-        },
-        {
           "id": "taza",
           "label": "taza"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "destornillador",
+          "label": "destornillador"
+        },
+        {
+          "id": "llave",
+          "label": "llave"
         },
         {
           "id": "sarten",
@@ -12222,16 +12218,16 @@
           "label": "pollo"
         },
         {
-          "id": "tarta",
-          "label": "tarta"
-        },
-        {
           "id": "galleta",
           "label": "galleta"
         },
         {
-          "id": "jamon",
-          "label": "jamón"
+          "id": "martillo",
+          "label": "martillo"
+        },
+        {
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cafe",
@@ -12274,16 +12270,16 @@
           "label": "pollo"
         },
         {
-          "id": "tarta",
-          "label": "tarta"
-        },
-        {
           "id": "galleta",
           "label": "galleta"
         },
         {
-          "id": "jamon",
-          "label": "jamón"
+          "id": "martillo",
+          "label": "martillo"
+        },
+        {
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cafe",
@@ -12322,12 +12318,12 @@
           "label": "chaqueta"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
-        },
-        {
           "id": "bufanda",
           "label": "bufanda"
+        },
+        {
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "gafas",
@@ -12378,12 +12374,12 @@
           "label": "chaqueta"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
-        },
-        {
           "id": "bufanda",
           "label": "bufanda"
+        },
+        {
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "gafas",
@@ -12422,12 +12418,12 @@
           "label": "mesa"
         },
         {
-          "id": "cama",
-          "label": "cama"
-        },
-        {
           "id": "sofa",
           "label": "sofá"
+        },
+        {
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "lampara",
@@ -12490,8 +12486,8 @@
           "label": "jabón"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         }
       ]
     }
@@ -12550,8 +12546,8 @@
           "label": "jabón"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         }
       ]
     }
@@ -12574,16 +12570,16 @@
           "label": "destornillador"
         },
         {
-          "id": "llave_inglesa",
-          "label": "llave inglesa"
+          "id": "llave",
+          "label": "llave"
         },
         {
-          "id": "sierra",
-          "label": "sierra"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
-          "id": "pincel",
-          "label": "pincel"
+          "id": "lapiz",
+          "label": "lápiz"
         }
       ]
     }
@@ -13099,7 +13095,7 @@
       "cantidad_min": 2,
       "cantidad_max": 6,
       "objetos": [
-        "plato"
+        "bol"
       ]
     }
   },
@@ -13114,7 +13110,7 @@
       "cantidad_min": 2,
       "cantidad_max": 7,
       "objetos": [
-        "plato",
+        "bol",
         "cuchara"
       ]
     }
@@ -13130,7 +13126,7 @@
       "cantidad_min": 2,
       "cantidad_max": 7,
       "objetos": [
-        "plato",
+        "bol",
         "cuchara"
       ]
     }
@@ -13146,7 +13142,7 @@
       "cantidad_min": 1,
       "cantidad_max": 5,
       "objetos": [
-        "plato",
+        "bol",
         "cuchara"
       ]
     }
@@ -13699,8 +13695,8 @@
           "label": "cebolla"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "uvas",
+          "label": "uvas"
         },
         {
           "id": "pimiento",
@@ -13753,8 +13749,8 @@
           "label": "cebolla"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "uvas",
+          "label": "uvas"
         },
         {
           "id": "pimiento",
@@ -13805,8 +13801,8 @@
           "label": "cebolla"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "uvas",
+          "label": "uvas"
         },
         {
           "id": "pimiento",
@@ -13857,8 +13853,8 @@
           "label": "cebolla"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "uvas",
+          "label": "uvas"
         },
         {
           "id": "pimiento",
@@ -13879,20 +13875,20 @@
       "segundos": 45,
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchara",
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cuchillo",
@@ -13925,20 +13921,20 @@
       "segundos": 40,
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchara",
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cuchillo",
@@ -13968,21 +13964,21 @@
       "dificultad": "media",
       "instruccion": "Busca plato",
       "objetivo": {
-        "id": "plato",
-        "label": "plato"
+        "id": "bol",
+        "label": "cuenco"
       },
       "distractores": [
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchara",
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cuchillo",
@@ -14012,21 +14008,21 @@
       "dificultad": "media",
       "instruccion": "Busca tenedor",
       "objetivo": {
-        "id": "tenedor",
-        "label": "tenedor"
+        "id": "cuchara",
+        "label": "cuchara"
       },
       "distractores": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
-          "id": "cuchara",
-          "label": "cuchara"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cuchillo",
@@ -14255,8 +14251,8 @@
           "label": "chaqueta"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
+          "id": "guantes",
+          "label": "guantes"
         },
         {
           "id": "bufanda",
@@ -14301,8 +14297,8 @@
           "label": "chaqueta"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
+          "id": "guantes",
+          "label": "guantes"
         },
         {
           "id": "bufanda",
@@ -14345,8 +14341,8 @@
           "label": "chaqueta"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
+          "id": "guantes",
+          "label": "guantes"
         },
         {
           "id": "bufanda",
@@ -14389,8 +14385,8 @@
           "label": "zapato"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
+          "id": "guantes",
+          "label": "guantes"
         },
         {
           "id": "bufanda",
@@ -16774,8 +16770,8 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "naranja",
@@ -16790,8 +16786,8 @@
           "label": "fresa"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "limon",
@@ -16820,8 +16816,8 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "naranja",
@@ -16836,8 +16832,8 @@
           "label": "fresa"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "limon",
@@ -16864,8 +16860,8 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "naranja",
@@ -16880,8 +16876,8 @@
           "label": "fresa"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "limon",
@@ -16912,8 +16908,8 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "naranja",
@@ -16924,8 +16920,8 @@
           "label": "fresa"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "limon",
@@ -16997,8 +16993,8 @@
           "label": "jabón"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "espejo",
@@ -17031,8 +17027,8 @@
           "label": "jabón"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "espejo",
@@ -17063,8 +17059,8 @@
       },
       "distractores": [
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "espejo",
@@ -17099,8 +17095,8 @@
           "label": "jabón"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "cepillo_dientes",
@@ -17140,7 +17136,7 @@
       "cantidad_max": 7,
       "objetos": [
         "jabon",
-        "peine"
+        "cepillo"
       ]
     }
   },
@@ -17156,7 +17152,7 @@
       "cantidad_max": 5,
       "objetos": [
         "jabon",
-        "peine"
+        "cepillo"
       ]
     }
   },
@@ -17184,16 +17180,16 @@
           "label": "llave"
         },
         {
-          "id": "llave_inglesa",
-          "label": "llave inglesa"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
-          "id": "pincel",
-          "label": "pincel"
+          "id": "lapiz",
+          "label": "lápiz"
         },
         {
-          "id": "sierra",
-          "label": "sierra"
+          "id": "libro",
+          "label": "libro"
         }
       ]
     }
@@ -17220,16 +17216,16 @@
           "label": "llave"
         },
         {
-          "id": "llave_inglesa",
-          "label": "llave inglesa"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
-          "id": "pincel",
-          "label": "pincel"
+          "id": "lapiz",
+          "label": "lápiz"
         },
         {
-          "id": "sierra",
-          "label": "sierra"
+          "id": "libro",
+          "label": "libro"
         }
       ]
     }
@@ -17243,8 +17239,8 @@
       "dificultad": "media",
       "instruccion": "Busca llave inglesa",
       "objetivo": {
-        "id": "llave_inglesa",
-        "label": "llave inglesa"
+        "id": "llave",
+        "label": "llave"
       },
       "distractores": [
         {
@@ -17256,16 +17252,16 @@
           "label": "destornillador"
         },
         {
-          "id": "llave",
-          "label": "llave"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
-          "id": "pincel",
-          "label": "pincel"
+          "id": "lapiz",
+          "label": "lápiz"
         },
         {
-          "id": "sierra",
-          "label": "sierra"
+          "id": "libro",
+          "label": "libro"
         }
       ]
     }
@@ -17669,24 +17665,24 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "cuchillo",
+          "label": "cuchillo"
         },
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "botella",
+          "label": "botella"
         },
         {
           "id": "taza",
           "label": "taza"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "martillo",
+          "label": "martillo"
         }
       ]
     }
@@ -17713,24 +17709,24 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "cuchillo",
+          "label": "cuchillo"
         },
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "botella",
+          "label": "botella"
         },
         {
           "id": "taza",
           "label": "taza"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "martillo",
+          "label": "martillo"
         }
       ]
     }
@@ -17744,8 +17740,8 @@
       "dificultad": "media",
       "instruccion": "Busca plato",
       "objetivo": {
-        "id": "plato",
-        "label": "plato"
+        "id": "bol",
+        "label": "cuenco"
       },
       "distractores": [
         {
@@ -17761,20 +17757,20 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "cuchillo",
+          "label": "cuchillo"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "botella",
+          "label": "botella"
         },
         {
           "id": "taza",
           "label": "taza"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "martillo",
+          "label": "martillo"
         }
       ]
     }
@@ -17858,8 +17854,8 @@
           "label": "calcetín"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
+          "id": "guantes",
+          "label": "guantes"
         },
         {
           "id": "bufanda",
@@ -17902,8 +17898,8 @@
           "label": "calcetín"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
+          "id": "guantes",
+          "label": "guantes"
         },
         {
           "id": "bufanda",
@@ -17946,8 +17942,8 @@
           "label": "vestido"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
+          "id": "guantes",
+          "label": "guantes"
         },
         {
           "id": "bufanda",
@@ -18395,8 +18391,8 @@
       "segundos": 45,
       "banco": [
         {
-          "id": "tarta",
-          "label": "tarta"
+          "id": "galleta",
+          "label": "galleta"
         },
         {
           "id": "fresa",
@@ -18415,8 +18411,8 @@
           "label": "uvas"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "naranja",
+          "label": "naranja"
         }
       ]
     }
@@ -18433,8 +18429,8 @@
       "segundos": 40,
       "banco": [
         {
-          "id": "tarta",
-          "label": "tarta"
+          "id": "galleta",
+          "label": "galleta"
         },
         {
           "id": "fresa",
@@ -18453,8 +18449,8 @@
           "label": "uvas"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "naranja",
+          "label": "naranja"
         }
       ]
     }
@@ -18468,8 +18464,8 @@
       "dificultad": "media",
       "instruccion": "Busca tarta",
       "objetivo": {
-        "id": "tarta",
-        "label": "tarta"
+        "id": "galleta",
+        "label": "galleta"
       },
       "distractores": [
         {
@@ -18489,8 +18485,8 @@
           "label": "uvas"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "naranja",
+          "label": "naranja"
         }
       ]
     }
@@ -18509,8 +18505,8 @@
       },
       "distractores": [
         {
-          "id": "tarta",
-          "label": "tarta"
+          "id": "galleta",
+          "label": "galleta"
         },
         {
           "id": "fresa",
@@ -18525,8 +18521,8 @@
           "label": "uvas"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "naranja",
+          "label": "naranja"
         }
       ]
     }
@@ -18542,7 +18538,7 @@
       "cantidad_min": 2,
       "cantidad_max": 6,
       "objetos": [
-        "tarta"
+        "galleta"
       ]
     }
   },
@@ -18557,7 +18553,7 @@
       "cantidad_min": 2,
       "cantidad_max": 7,
       "objetos": [
-        "tarta",
+        "galleta",
         "fresa"
       ]
     }
@@ -18573,7 +18569,7 @@
       "cantidad_min": 1,
       "cantidad_max": 5,
       "objetos": [
-        "tarta",
+        "galleta",
         "fresa"
       ]
     }
@@ -18825,8 +18821,8 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "naranja",
@@ -18837,8 +18833,8 @@
           "label": "limón"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "sandia",
@@ -18875,8 +18871,8 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "naranja",
@@ -18887,8 +18883,8 @@
           "label": "limón"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "sandia",
@@ -18923,8 +18919,8 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "naranja",
@@ -18935,8 +18931,8 @@
           "label": "limón"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "sandia",
@@ -18975,16 +18971,16 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "naranja",
           "label": "naranja"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "sandia",
@@ -19645,12 +19641,12 @@
       "segundos": 45,
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "botella",
+          "label": "botella"
         },
         {
           "id": "taza",
@@ -19661,16 +19657,16 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchillo",
           "label": "cuchillo"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "destornillador",
+          "label": "destornillador"
         }
       ]
     }
@@ -19687,12 +19683,12 @@
       "segundos": 40,
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "botella",
+          "label": "botella"
         },
         {
           "id": "taza",
@@ -19703,16 +19699,16 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchillo",
           "label": "cuchillo"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "destornillador",
+          "label": "destornillador"
         }
       ]
     }
@@ -19726,13 +19722,13 @@
       "dificultad": "media",
       "instruccion": "Busca plato",
       "objetivo": {
-        "id": "plato",
-        "label": "plato"
+        "id": "bol",
+        "label": "cuenco"
       },
       "distractores": [
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "botella",
+          "label": "botella"
         },
         {
           "id": "taza",
@@ -19743,16 +19739,16 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchillo",
           "label": "cuchillo"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "destornillador",
+          "label": "destornillador"
         }
       ]
     }
@@ -19771,28 +19767,28 @@
       },
       "distractores": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "botella",
+          "label": "botella"
         },
         {
           "id": "taza",
           "label": "taza"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchillo",
           "label": "cuchillo"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "destornillador",
+          "label": "destornillador"
         }
       ]
     }
@@ -19808,7 +19804,7 @@
       "cantidad_min": 2,
       "cantidad_max": 6,
       "objetos": [
-        "plato"
+        "bol"
       ]
     }
   },
@@ -19823,8 +19819,8 @@
       "cantidad_min": 2,
       "cantidad_max": 7,
       "objetos": [
-        "plato",
-        "vaso"
+        "bol",
+        "taza"
       ]
     }
   },
@@ -19839,8 +19835,8 @@
       "cantidad_min": 1,
       "cantidad_max": 5,
       "objetos": [
-        "plato",
-        "vaso"
+        "bol",
+        "taza"
       ]
     }
   },
@@ -20509,8 +20505,8 @@
           "label": "jabón"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "espejo",
@@ -20543,8 +20539,8 @@
           "label": "jabón"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "espejo",
@@ -20575,8 +20571,8 @@
       },
       "distractores": [
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "espejo",
@@ -20611,8 +20607,8 @@
           "label": "jabón"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "cepillo_dientes",
@@ -20652,7 +20648,7 @@
       "cantidad_max": 7,
       "objetos": [
         "jabon",
-        "peine"
+        "cepillo"
       ]
     }
   },
@@ -20668,7 +20664,7 @@
       "cantidad_max": 5,
       "objetos": [
         "jabon",
-        "peine"
+        "cepillo"
       ]
     }
   },
@@ -20899,8 +20895,8 @@
           "label": "zapato"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
+          "id": "bufanda",
+          "label": "bufanda"
         },
         {
           "id": "gafas",
@@ -20939,8 +20935,8 @@
           "label": "zapato"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
+          "id": "bufanda",
+          "label": "bufanda"
         },
         {
           "id": "gafas",
@@ -23542,8 +23538,8 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "naranja",
@@ -23558,8 +23554,8 @@
           "label": "fresa"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "limon",
+          "label": "limón"
         }
       ]
     }
@@ -23582,8 +23578,8 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "naranja",
@@ -23598,8 +23594,8 @@
           "label": "fresa"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "limon",
+          "label": "limón"
         }
       ]
     }
@@ -23636,12 +23632,12 @@
           "label": "sandía"
         },
         {
-          "id": "melon",
-          "label": "melón"
+          "id": "manzana",
+          "label": "manzana"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "naranja",
+          "label": "naranja"
         },
         {
           "id": "uvas",
@@ -23672,12 +23668,12 @@
       },
       "distractores": [
         {
-          "id": "melon",
-          "label": "melón"
+          "id": "manzana",
+          "label": "manzana"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "naranja",
+          "label": "naranja"
         },
         {
           "id": "uvas",
@@ -23706,7 +23702,7 @@
       "cantidad_max": 7,
       "objetos": [
         "sandia",
-        "melon"
+        "naranja"
       ]
     }
   },
@@ -23954,8 +23950,8 @@
           "label": "sofá"
         },
         {
-          "id": "cama",
-          "label": "cama"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "lampara",
@@ -23986,8 +23982,8 @@
           "label": "sofá"
         },
         {
-          "id": "cama",
-          "label": "cama"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "lampara",
@@ -24098,12 +24094,12 @@
       "segundos": 45,
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "taza",
@@ -24114,8 +24110,8 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cuchillo",
@@ -24133,13 +24129,13 @@
       "dificultad": "media",
       "instruccion": "Busca plato",
       "objetivo": {
-        "id": "plato",
-        "label": "plato"
+        "id": "bol",
+        "label": "cuenco"
       },
       "distractores": [
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "taza",
@@ -24150,8 +24146,8 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cuchillo",
@@ -24171,8 +24167,8 @@
       "cantidad_min": 2,
       "cantidad_max": 7,
       "objetos": [
-        "plato",
-        "vaso"
+        "bol",
+        "taza"
       ]
     }
   },
@@ -24196,12 +24192,12 @@
           "label": "sartén"
         },
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "taza",
@@ -24232,12 +24228,12 @@
           "label": "sartén"
         },
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "taza",
@@ -27418,16 +27414,16 @@
       "segundos": 45,
       "banco": [
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "manzana",
+          "label": "manzana"
         },
         {
           "id": "limon",
           "label": "limón"
         },
         {
-          "id": "melon",
-          "label": "melón"
+          "id": "sandia",
+          "label": "sandía"
         },
         {
           "id": "pera",
@@ -27445,8 +27441,8 @@
       "dificultad": "media",
       "instruccion": "Busca plátano",
       "objetivo": {
-        "id": "platano",
-        "label": "plátano"
+        "id": "manzana",
+        "label": "manzana"
       },
       "distractores": [
         {
@@ -27454,8 +27450,8 @@
           "label": "limón"
         },
         {
-          "id": "melon",
-          "label": "melón"
+          "id": "sandia",
+          "label": "sandía"
         },
         {
           "id": "pera",
@@ -27475,7 +27471,7 @@
       "cantidad_min": 2,
       "cantidad_max": 6,
       "objetos": [
-        "platano"
+        "pera"
       ]
     }
   },
@@ -27815,20 +27811,20 @@
       "segundos": 45,
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "botella",
+          "label": "botella"
         },
         {
           "id": "cuchara",
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchillo",
@@ -27839,8 +27835,8 @@
           "label": "taza"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "destornillador",
+          "label": "destornillador"
         }
       ]
     }
@@ -27854,21 +27850,21 @@
       "dificultad": "media",
       "instruccion": "Busca plato",
       "objetivo": {
-        "id": "plato",
-        "label": "plato"
+        "id": "bol",
+        "label": "cuenco"
       },
       "distractores": [
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "botella",
+          "label": "botella"
         },
         {
           "id": "cuchara",
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchillo",
@@ -27879,8 +27875,8 @@
           "label": "taza"
         },
         {
-          "id": "bol",
-          "label": "bol"
+          "id": "destornillador",
+          "label": "destornillador"
         }
       ]
     }
@@ -27896,7 +27892,7 @@
       "cantidad_min": 2,
       "cantidad_max": 6,
       "objetos": [
-        "plato"
+        "bol"
       ]
     }
   },
@@ -27924,16 +27920,16 @@
           "label": "llave"
         },
         {
-          "id": "pincel",
-          "label": "pincel"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
-          "id": "sierra",
-          "label": "sierra"
+          "id": "lapiz",
+          "label": "lápiz"
         },
         {
-          "id": "tijeras",
-          "label": "tijeras"
+          "id": "libro",
+          "label": "libro"
         }
       ]
     }
@@ -27960,16 +27956,16 @@
           "label": "llave"
         },
         {
-          "id": "pincel",
-          "label": "pincel"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
-          "id": "sierra",
-          "label": "sierra"
+          "id": "lapiz",
+          "label": "lápiz"
         },
         {
-          "id": "tijeras",
-          "label": "tijeras"
+          "id": "libro",
+          "label": "libro"
         }
       ]
     }
@@ -33405,8 +33401,8 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "naranja",
@@ -33425,8 +33421,8 @@
           "label": "limón"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "destornillador",
+          "label": "destornillador"
         }
       ]
     }
@@ -33444,12 +33440,12 @@
           "label": "sandía"
         },
         {
-          "id": "melon",
-          "label": "melón"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "manzana",
+          "label": "manzana"
         },
         {
           "id": "uvas",
@@ -33713,12 +33709,12 @@
       "dificultad": "media",
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "taza",
@@ -33729,8 +33725,8 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cuchillo",
@@ -33756,12 +33752,12 @@
       "dificultad": "media",
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "taza",
@@ -33772,8 +33768,8 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cuchillo",
@@ -33799,20 +33795,20 @@
           "label": "llave"
         },
         {
-          "id": "pincel",
-          "label": "pincel"
-        },
-        {
-          "id": "tijeras",
-          "label": "tijeras"
-        },
-        {
           "id": "destornillador",
           "label": "destornillador"
         },
         {
-          "id": "sierra",
-          "label": "sierra"
+          "id": "cepillo",
+          "label": "cepillo"
+        },
+        {
+          "id": "lapiz",
+          "label": "lápiz"
+        },
+        {
+          "id": "libro",
+          "label": "libro"
         }
       ]
     }
@@ -33838,8 +33834,8 @@
           "label": "sofá"
         },
         {
-          "id": "cama",
-          "label": "cama"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "lampara",
@@ -33873,8 +33869,8 @@
           "label": "zapato"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
+          "id": "guantes",
+          "label": "guantes"
         },
         {
           "id": "chaqueta",
@@ -33964,7 +33960,7 @@
   {
     "bloque": "atencion_memoria",
     "plantilla_tipo": "parejas",
-    "nombre": "Parejas de formas",
+    "nombre": "Parejas de objetos",
     "descripcion": "Encuentra las formas iguales.",
     "parametros_json": {
       "dificultad": "media",
@@ -34017,20 +34013,20 @@
           "label": "huevo"
         },
         {
-          "id": "jamon",
-          "label": "jamón"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
-          "id": "tarta",
-          "label": "tarta"
+          "id": "galleta",
+          "label": "galleta"
         },
         {
           "id": "manzana",
           "label": "manzana"
         },
         {
-          "id": "platano",
-          "label": "plátano"
+          "id": "pera",
+          "label": "pera"
         },
         {
           "id": "naranja",
@@ -34118,20 +34114,20 @@
       "dificultad": "media",
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "cuchara",
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "cuchillo",
+          "label": "cuchillo"
         },
         {
           "id": "pan",
@@ -34188,24 +34184,24 @@
           "label": "martillo"
         },
         {
-          "id": "pincel",
-          "label": "pincel"
-        },
-        {
-          "id": "tijeras",
-          "label": "tijeras"
-        },
-        {
           "id": "destornillador",
           "label": "destornillador"
         },
         {
-          "id": "sierra",
-          "label": "sierra"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
-          "id": "llave_inglesa",
-          "label": "llave inglesa"
+          "id": "llave",
+          "label": "llave"
+        },
+        {
+          "id": "lapiz",
+          "label": "lápiz"
+        },
+        {
+          "id": "libro",
+          "label": "libro"
         }
       ]
     }
@@ -34223,8 +34219,8 @@
           "label": "bufanda"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
+          "id": "gafas",
+          "label": "gafas"
         },
         {
           "id": "guantes",
@@ -34250,12 +34246,12 @@
       "dificultad": "media",
       "banco": [
         {
-          "id": "tarta",
-          "label": "tarta"
-        },
-        {
           "id": "galleta",
           "label": "galleta"
+        },
+        {
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "queso",
@@ -34270,8 +34266,8 @@
           "label": "huevo"
         },
         {
-          "id": "jamon",
-          "label": "jamón"
+          "id": "destornillador",
+          "label": "destornillador"
         }
       ]
     }
@@ -34289,8 +34285,8 @@
           "label": "jabón"
         },
         {
-          "id": "peine",
-          "label": "peine"
+          "id": "cepillo",
+          "label": "cepillo"
         },
         {
           "id": "cepillo_dientes",
@@ -34355,12 +34351,12 @@
       "dificultad": "media",
       "banco": [
         {
-          "id": "plato",
-          "label": "plato"
+          "id": "bol",
+          "label": "cuenco"
         },
         {
-          "id": "vaso",
-          "label": "vaso"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "taza",
@@ -34371,8 +34367,8 @@
           "label": "cuchara"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor"
+          "id": "destornillador",
+          "label": "destornillador"
         },
         {
           "id": "cuchillo",
@@ -34394,8 +34390,8 @@
       "dificultad": "media",
       "banco": [
         {
-          "id": "melon",
-          "label": "melón"
+          "id": "manzana",
+          "label": "manzana"
         },
         {
           "id": "sandia",
@@ -34406,8 +34402,8 @@
           "label": "cereza"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón"
+          "id": "naranja",
+          "label": "naranja"
         },
         {
           "id": "limon",
@@ -34511,8 +34507,8 @@
           "label": "sofá"
         },
         {
-          "id": "cama",
-          "label": "cama"
+          "id": "martillo",
+          "label": "martillo"
         },
         {
           "id": "lampara",
@@ -34616,20 +34612,8 @@
           "label": "margarita"
         },
         {
-          "id": "amapola",
-          "label": "amapola"
-        },
-        {
           "id": "tulipan",
           "label": "tulipán"
-        },
-        {
-          "id": "geranio",
-          "label": "geranio"
-        },
-        {
-          "id": "lirio",
-          "label": "lirio"
         }
       ]
     }

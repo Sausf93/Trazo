@@ -345,6 +345,97 @@ async def test_no_editar_ni_descartar_sesion_abierta(client):
 
 
 # --------------------------------------------------------------------------
+#  Invariante: UNA sola sala en vivo por centro
+# --------------------------------------------------------------------------
+
+@pytest.mark.asyncio
+async def test_varias_salas_conviven_por_centro(client):
+    """Un centro puede tener VARIAS salas en vivo a la vez (2 maestras, 2 grupos):
+    el kiosco las muestra todas para que cada persona sepa a cuál unirse. Lo único
+    que se impide es que una misma persona esté en dos salas abiertas."""
+    login, headers = await _login(client)
+    centro_id = login["centro_id"]
+    usuarios = await _usuarios(client, headers, centro_id)
+    paco, marisa = usuarios["Paco"], usuarios["Marisa"]
+
+    # 1ª sala en vivo con Paco.
+    r = await client.post(
+        "/sesiones", headers=headers,
+        json={"tipo": "individual", "participantes": [paco["id"]]})
+    assert r.status_code == 201, r.text
+    s1 = r.json()["id"]
+
+    # 2ª sala en vivo con Marisa -> AMBAS conviven abiertas.
+    r = await client.post(
+        "/sesiones", headers=headers,
+        json={"tipo": "individual", "participantes": [marisa["id"]]})
+    assert r.status_code == 201, r.text
+    s2 = r.json()["id"]
+
+    r = await client.get(f"/sesiones/activa?centro_id={centro_id}", headers=headers)
+    salas = {s["sesion_id"] for s in r.json()["salas"]}
+    assert salas == {s1, s2}, "el kiosco debe ver las dos salas"
+    r = await client.get(f"/sesiones?centro_id={centro_id}&estado=abierta", headers=headers)
+    abiertas = {s["id"] for s in r.json()}
+    assert {s1, s2} <= abiertas, "las dos salas siguen abiertas"
+
+    # Poner a Paco (ya en s1) en una 3ª sala -> 409 (no puede estar en dos).
+    r = await client.post(
+        "/sesiones", headers=headers,
+        json={"tipo": "individual", "participantes": [paco["id"]]})
+    assert r.status_code == 409, r.text
+
+
+async def test_mia_abierta_scoped_por_maestra(client, Session):
+    """Con dos maestras y dos salas en el mismo centro, /sesiones/mia-abierta
+    devuelve a cada una SU sala (no 'la más reciente' de la compañera)."""
+    login, headers = await _login(client)
+    centro_id = login["centro_id"]
+    usuarios = await _usuarios(client, headers, centro_id)
+    paco, marisa = usuarios["Paco"], usuarios["Marisa"]
+
+    # Segunda maestra en el MISMO centro.
+    async with Session() as db:
+        db.add(UsuarioStaff(
+            centro_id=centro_id, nombre="Maestra2", rol="integradora",
+            email="maestra2@trazo.local", password_hash=hash_password("trazo1234")))
+        await db.commit()
+    _, headers2 = await _login(client, email="maestra2@trazo.local", password="trazo1234")
+
+    r = await client.post("/sesiones", headers=headers,
+                          json={"tipo": "individual", "participantes": [paco["id"]]})
+    s1 = r.json()["id"]
+    r = await client.post("/sesiones", headers=headers2,
+                          json={"tipo": "individual", "participantes": [marisa["id"]]})
+    s2 = r.json()["id"]
+
+    r1 = await client.get("/sesiones/mia-abierta", headers=headers)
+    r2 = await client.get("/sesiones/mia-abierta", headers=headers2)
+    assert r1.json()["sesion_id"] == s1, "la 1ª maestra recupera su sala"
+    assert r2.json()["sesion_id"] == s2, "la 2ª maestra recupera la suya"
+
+
+async def test_persona_no_en_dos_salas_al_abrir_programada(client):
+    """Abrir una programada cuyo participante ya está en otra sala abierta -> 409."""
+    login, headers = await _login(client)
+    centro_id = login["centro_id"]
+    usuarios = await _usuarios(client, headers, centro_id)
+    paco = usuarios["Paco"]
+
+    r = await client.post(
+        "/sesiones", headers=headers,
+        json={"tipo": "individual", "participantes": [paco["id"]]})
+    assert r.status_code == 201, r.text
+
+    r = await client.post(
+        "/sesiones", headers=headers,
+        json={"tipo": "individual", "programar": True, "participantes": [paco["id"]]})
+    s_prog = r.json()["id"]
+    r = await client.patch(f"/sesiones/{s_prog}/abrir", headers=headers)
+    assert r.status_code == 409, r.text
+
+
+# --------------------------------------------------------------------------
 #  Cota de `n`
 # --------------------------------------------------------------------------
 

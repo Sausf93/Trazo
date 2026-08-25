@@ -51,6 +51,9 @@ async def test_dejar_de_participar_genera_alerta(client):
                                 "sesion_id": sid, "ejercicio_id": ej["id"],
                                 "estado": "sin_valorar",
                                 "valores_json": {"precision": 0.9, "puntos_capturados": puntos}})
+        # Cerrar la sala antes de la siguiente: una persona no puede estar en dos
+        # salas abiertas a la vez (aquí simulamos sesiones de días distintos).
+        await client.patch(f"/sesiones/{sid}/cerrar", headers=headers)
 
     # 4 sesiones participando (trazo amplio) + 2 en las que no toca nada.
     for _ in range(4):

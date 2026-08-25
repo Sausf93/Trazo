@@ -1,16 +1,18 @@
-// Prueba de humo: la app arranca en la pantalla de acceso del personal
-// (sin token guardado) sin lanzar excepciones.
+// Prueba de humo: una tablet SIN emparejar arranca en la pantalla de
+// emparejamiento (lo primero y obligatorio) sin lanzar excepciones ni
+// desbordar el layout.
 
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:trazo_tablet/main.dart';
 
 void main() {
-  testWidgets('Arranca en el acceso del personal', (WidgetTester tester) async {
+  testWidgets('Arranca en el emparejamiento', (WidgetTester tester) async {
     await tester.pumpWidget(const TrazoApp());
+    await tester.pump();
 
-    // La pantalla de login muestra el título y el botón de entrar.
-    expect(find.text('Trazo'), findsOneWidget);
-    expect(find.text('Entrar'), findsOneWidget);
+    // Tablet sin emparejar: se pide emparejar antes que nada.
+    expect(find.text('Primero, empareja esta tablet'), findsOneWidget);
+    expect(find.text('Emparejar esta tablet al centro'), findsOneWidget);
   });
 }

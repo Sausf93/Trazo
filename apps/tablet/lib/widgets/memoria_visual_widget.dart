@@ -2,9 +2,11 @@ import 'dart:async';
 import 'dart:math' show min;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../models.dart';
 import '../theme.dart';
+import '../tts.dart';
 import 'ilustracion.dart';
 
 /// Renderiza `memoria_visual`: muestra `a_recordar` durante `segundos_memorizar`
@@ -38,6 +40,9 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
   Timer? _timer;
   final Set<String> _seleccionadas = {};
   final DateTime _inicio = DateTime.now();
+  // Veces que la persona pidió "volver a mirar" las figuras. Se registra como
+  // apoyo usado (no falsea la medición: la integradora lo ve en el intento).
+  int _vecesMiradas = 0;
 
   @override
   void initState() {
@@ -46,12 +51,15 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
     _aRecordar = _comoLista(render['a_recordar']);
     _rejilla = _comoLista(render['rejilla_seleccion']);
     _idsCorrectos = _aRecordar.map((e) => _idDe(e)).toSet();
-    _restante =
-        (render['segundos_memorizar'] as num?)?.toInt() ?? 10;
+    _restante = (render['segundos_memorizar'] as num?)?.toInt() ?? 10;
     // Empieza memorizando: oculta el botón global "Siguiente" hasta que la
     // persona pase a la selección con "Ya lo recuerdo".
-    WidgetsBinding.instance.addPostFrameCallback(
-        (_) => widget.onListoParaAvanzar?.call(false));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.onListoParaAvanzar?.call(false);
+      // Voz: guía a quien no lee ("nunca aprendieron a leer", apunte de Laura).
+      Tts.instance.hablar('Mira estas figuras con calma. Cuando las recuerdes, '
+          'pulsa Ya lo recuerdo.');
+    });
     // La cuenta atrás es solo ORIENTATIVA: al llegar a 0 no se ocultan las
     // figuras (no penalizamos la lentitud, apunte de Laura). Solo avanza la
     // persona pulsando "Ya lo recuerdo".
@@ -97,12 +105,26 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
       'aciertos': aciertos,
       'fallos': fallos,
       'seleccionadas': _seleccionadas.toList(),
+      'veces_volvio_a_mirar': _vecesMiradas,
       'tiempo_ms': DateTime.now().difference(_inicio).inMilliseconds,
     });
   }
 
+  /// Deja volver a ver las figuras (reduce frustración; "nunca atrapado"). Se
+  /// conservan las selecciones ya hechas y se cuenta el apoyo.
+  void _volverAMirar() {
+    HapticFeedback.selectionClick();
+    Tts.instance.hablar('Míralas otra vez con calma.');
+    setState(() {
+      _memorizando = true;
+      _vecesMiradas++;
+    });
+    widget.onListoParaAvanzar?.call(false);
+  }
+
   void _terminarMemorizacion() {
     _timer?.cancel();
+    Tts.instance.hablar('Ahora toca las figuras que estaban antes.');
     setState(() {
       _memorizando = false;
       _restante = 0;
@@ -115,9 +137,7 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
   Widget build(BuildContext context) {
     final render = widget.instancia.render;
     final instruccion = render['instruccion'] as String? ?? 'Memoriza';
-    return _memorizando
-        ? _vistaMemorizar(instruccion)
-        : _vistaSeleccion();
+    return _memorizando ? _vistaMemorizar(instruccion) : _vistaSeleccion();
   }
 
   Widget _vistaMemorizar(String instruccion) {
@@ -132,7 +152,7 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 9),
           decoration: BoxDecoration(
-            color: TrazoColors.sage,
+            color: TrazoColors.sageDark,
             borderRadius: BorderRadius.circular(30),
           ),
           child: const Row(
@@ -154,9 +174,8 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
         FilledButton.icon(
           onPressed: _terminarMemorizacion,
           style: FilledButton.styleFrom(
-            backgroundColor: TrazoColors.sage,
-            padding:
-                const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
+            backgroundColor: TrazoColors.sageDark,
+            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
             textStyle:
                 const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
           ),
@@ -173,7 +192,17 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
         const Text('Toca las que estaban antes',
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 26, color: TrazoColors.ink)),
-        const SizedBox(height: 20),
+        const SizedBox(height: 12),
+        // "Volver a mirar": si no se acuerda, puede repasar en vez de quedarse
+        // bloqueada o rendirse. Digno y sin prisa.
+        TextButton.icon(
+          onPressed: _volverAMirar,
+          icon: const Icon(Icons.visibility, size: 24),
+          label: const Text('Volver a mirar',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+          style: TextButton.styleFrom(foregroundColor: TrazoColors.sageDark),
+        ),
+        const SizedBox(height: 8),
         Expanded(child: _rejillaTarjetas(_rejilla, seleccionable: true)),
       ],
     );
@@ -187,34 +216,47 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
     final n = items.length;
     return LayoutBuilder(
       builder: (context, c) {
-        final columnas = n <= 6 ? 3 : (n <= 12 ? 4 : 5);
+        // Responsive: en móvil vertical (estrecho) usamos menos columnas para que
+        // las tarjetas no se hagan diminutas y no se recorten las etiquetas.
+        final estrecho = c.maxWidth < 520;
+        final columnas = min(
+            estrecho ? (n <= 4 ? 2 : 3) : (n <= 6 ? 3 : (n <= 12 ? 4 : 5)), n);
         final filas = (n / columnas).ceil();
-        const gap = 14.0;
+        final gap = estrecho ? 12.0 : 22.0;
         final anchoCelda = (c.maxWidth - gap * (columnas - 1)) / columnas;
         final altoCelda = (c.maxHeight - gap * (filas - 1)) / filas;
-        // Celda cuadrada, acotada para que no se hagan recuadros gigantes.
-        final lado = min(min(anchoCelda, altoCelda), 230.0);
-        final imgSize = (lado * 0.62).clamp(56.0, 150.0);
+        // Celda cómoda: nunca por debajo de 104 (si no cabe, habrá scroll en vez
+        // de recortar) ni por encima de 230.
+        final lado = min(anchoCelda, altoCelda).clamp(104.0, 230.0);
+        final imgSize = (lado * 0.56).clamp(44.0, 150.0);
 
         final filasWidgets = <Widget>[];
         for (var f = 0; f < filas; f++) {
           final celdas = <Widget>[];
           for (var col = 0; col < columnas; col++) {
             final idx = f * columnas + col;
-            if (col > 0) celdas.add(const SizedBox(width: gap));
-            celdas.add(idx >= n
-                ? SizedBox(width: lado)
-                : _celdaMemoria(items[idx], lado, imgSize, seleccionable));
+            if (idx >= n) break; // sin celdas vacías: la última fila se centra
+            if (celdas.isNotEmpty) celdas.add(SizedBox(width: gap));
+            celdas.add(_celdaMemoria(items[idx], lado, imgSize, seleccionable));
           }
-          if (f > 0) filasWidgets.add(const SizedBox(height: gap));
+          if (f > 0) filasWidgets.add(SizedBox(height: gap));
           filasWidgets.add(Row(
               mainAxisAlignment: MainAxisAlignment.center, children: celdas));
         }
-        return Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: filasWidgets),
-        );
+        final grid = Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: filasWidgets);
+        final altoTotal = lado * filas + gap * (filas - 1);
+        // Si no cabe en alto (típico en móvil), permite SCROLL en vez de cortar.
+        if (altoTotal > c.maxHeight) {
+          return SingleChildScrollView(
+            child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Center(child: grid)),
+          );
+        }
+        return Center(child: grid);
       },
     );
   }
@@ -225,11 +267,13 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
     final sel = _seleccionadas.contains(id);
     final tieneDibujo = IlustracionResolver.tiene(id);
     return SizedBox(
+      key: ValueKey('mcelda_$id'),
       width: lado,
       height: lado,
       child: InkWell(
         onTap: seleccionable
             ? () {
+                HapticFeedback.selectionClick();
                 setState(() {
                   if (sel) {
                     _seleccionadas.remove(id);
@@ -243,7 +287,7 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
         borderRadius: BorderRadius.circular(16),
         child: Container(
           alignment: Alignment.center,
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
             color: sel ? const Color(0xFFFBEFE4) : TrazoColors.card,
             border: Border.all(
@@ -256,20 +300,26 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
             children: [
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   if (tieneDibujo) ...[
                     Ilustracion(id, size: imgSize),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 4),
                   ],
-                  Flexible(
-                    child: Text(_labelDe(it),
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: tieneDibujo ? 17 : 24,
-                            fontWeight: FontWeight.w600,
-                            color: TrazoColors.ink)),
+                  // Banda de altura fija para la etiqueta: así NUNCA se recorta el
+                  // texto por más pequeña que sea la tarjeta.
+                  SizedBox(
+                    height: tieneDibujo ? 22 : 30,
+                    child: Center(
+                      child: Text(_labelDe(it),
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: tieneDibujo ? 16 : 22,
+                              fontWeight: FontWeight.w600,
+                              color: TrazoColors.ink)),
+                    ),
                   ),
                 ],
               ),

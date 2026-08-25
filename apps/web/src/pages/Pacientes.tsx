@@ -9,6 +9,7 @@ import {
   darDeBajaUsuario,
   editarUsuario,
   listarUsuarios,
+  suprimirUsuario,
 } from "../api/endpoints";
 import type { UsuarioFinal } from "../api/types";
 import { useAuth } from "../auth/AuthContext";
@@ -52,7 +53,7 @@ export function PacientesPage() {
     <div>
       <PageHeader
         eyebrow="Panel del centro"
-        title="Pacientes"
+        title="Personas"
         subtitle="Da de alta, corrige un nombre o da de baja a las personas del centro."
       />
 
@@ -102,18 +103,47 @@ export function PacientesPage() {
 
       <div style={{ display: "grid", gap: 12 }}>
         {filtrados.map((u) => (
-          <FilaPaciente key={u.id} usuario={u} onCambio={() => usuarios.reload()} />
+          <FilaPaciente
+            key={u.id}
+            usuario={u}
+            esAdmin={session?.rol === "admin_centro"}
+            onCambio={() => usuarios.reload()}
+          />
         ))}
       </div>
     </div>
   );
 }
 
-function FilaPaciente({ usuario, onCambio }: { usuario: UsuarioFinal; onCambio: () => void }) {
+function FilaPaciente({ usuario, esAdmin, onCambio }: { usuario: UsuarioFinal; esAdmin: boolean; onCambio: () => void }) {
   const [editando, setEditando] = useState(false);
   const [alias, setAlias] = useState(usuario.alias_interno);
   const [ocupado, setOcupado] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  async function suprimir() {
+    // Acción irreversible: se pide teclear el alias exacto para confirmar.
+    const conf = window.prompt(
+      `SUPRIMIR (RGPD) a "${usuario.alias_interno}".\n\n` +
+        "Se borran su nombre real y consentimientos; se conserva su histórico ANONIMIZADO (estadística). Es IRREVERSIBLE.\n\n" +
+        `Para confirmar, escribe el nombre exacto: ${usuario.alias_interno}`,
+    );
+    if (conf == null) return;
+    if (conf.trim() !== usuario.alias_interno) {
+      setError("El nombre no coincide: no se ha suprimido nada.");
+      return;
+    }
+    setOcupado(true);
+    setError(null);
+    try {
+      await suprimirUsuario(usuario.id);
+      onCambio();
+    } catch {
+      setError("No se pudo suprimir. Inténtalo de nuevo.");
+    } finally {
+      setOcupado(false);
+    }
+  }
 
   async function guardar() {
     setOcupado(true);
@@ -182,6 +212,25 @@ function FilaPaciente({ usuario, onCambio }: { usuario: UsuarioFinal; onCambio: 
           <Button variant="ghost" onClick={() => setEditando(true)} disabled={ocupado}>Editar</Button>
         )}
         <Button variant="coral" onClick={baja} disabled={ocupado}>Baja</Button>
+        {esAdmin && (
+          <button
+            onClick={suprimir}
+            disabled={ocupado}
+            title="Derecho de supresión (RGPD): anonimiza a la persona"
+            style={{
+              padding: "9px 14px",
+              borderRadius: radius.sm,
+              border: `1.5px solid ${colors.coralDark}`,
+              background: "transparent",
+              color: colors.coralDark,
+              fontWeight: 600,
+              fontSize: 13.5,
+              cursor: ocupado ? "default" : "pointer",
+            }}
+          >
+            Suprimir (RGPD)
+          </button>
+        )}
       </div>
     </div>
   );

@@ -39,6 +39,7 @@ export const PLANTILLAS = [
   "arrastrar_posicion",
   "busqueda_visual",
   "manejo_cantidad",
+  "parejas",
 ] as const;
 
 export type Plantilla = (typeof PLANTILLAS)[number];
@@ -49,9 +50,10 @@ export const PLANTILLA_LABEL: Record<string, string> = {
   memoria_visual: "Memoria visual",
   secuencia_ordenar: "Secuencia / ordenar",
   conteo_comparacion: "Conteo / comparación",
-  arrastrar_posicion: "Arrastrar a posición",
+  arrastrar_posicion: "Colocar en su sitio",
   busqueda_visual: "Búsqueda visual",
   manejo_cantidad: "Manejo de cantidad",
+  parejas: "Parejas (memoria)",
 };
 
 export const NIVELES = ["bajo", "medio", "alto"] as const;
@@ -93,7 +95,7 @@ export const ESTADO_LABEL: Record<string, string> = {
 };
 
 export function labelBloque(b: string | null | undefined): string {
-  if (!b) return "Todos los bloques";
+  if (!b) return "Todas las áreas";
   return BLOQUE_LABEL[b] ?? b;
 }
 

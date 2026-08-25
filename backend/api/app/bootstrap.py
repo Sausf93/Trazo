@@ -34,6 +34,10 @@ async def alta_centro_admin(db, nombre_centro: str, email: str, password: str,
     Devuelve (mensaje, creado). No hace commit del engine global: opera sobre la
     sesión que le pasen, así vale tanto para el CLI como para el endpoint de
     plataforma (y es testeable sobre la BD de test)."""
+    # Normalizar el email igual que auth.login (que compara con strip().lower()).
+    # Sin esto, un alta por CLI con mayúsculas ('Admin@Centro.ES') crearía una
+    # cuenta que NUNCA podría iniciar sesión (el login busca en minúsculas).
+    email = email.strip().lower()
     existe = (await db.execute(
         select(UsuarioStaff).where(UsuarioStaff.email == email)
     )).scalars().first()

@@ -12,7 +12,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import get_db
 from app.deps import Acceso, acceso_centro, get_current_staff
 from app.models import ROLES_DISPOSITIVO, Dispositivo, UsuarioStaff
-from app.schemas import DispositivoIn, DispositivoOut, DispositivoYoOut
+from app.schemas import (
+    DispositivoIn,
+    DispositivoOut,
+    DispositivoResumenOut,
+    DispositivoYoOut,
+    StaffPickItem,
+)
 
 router = APIRouter(prefix="/dispositivos", tags=["dispositivos"])
 
@@ -31,6 +37,30 @@ async def dispositivo_actual(acceso: Acceso = Depends(acceso_centro)):
     return DispositivoYoOut(
         id=disp.id, centro_id=disp.centro_id, nombre=disp.nombre, rol=disp.rol
     )
+
+
+@router.get("/equipo", response_model=list[StaffPickItem])
+async def equipo_del_centro(
+    db: AsyncSession = Depends(get_db),
+    acceso: Acceso = Depends(acceso_centro),
+):
+    """Lista los profesionales activos del centro de ESTA tablet, para el selector
+    "¿quién eres?" al entrar como maestra. Accesible por token de dispositivo (la
+    tablet emparejada) o por login de staff. Solo nombre/rol/tiene_pin, sin email."""
+    filas = (await db.execute(
+        select(UsuarioStaff)
+        .where(UsuarioStaff.centro_id == acceso.centro_id,
+               UsuarioStaff.activo.is_(True),
+               # El admin NO sale en el selector de la tablet (entra con email +
+               # contraseña): una tablet perdida no debe dar acceso de administración.
+               UsuarioStaff.rol != "admin_centro")
+        .order_by(UsuarioStaff.nombre)
+    )).scalars().all()
+    return [
+        StaffPickItem(id=s.id, nombre=s.nombre, rol=s.rol,
+                      tiene_pin=s.pin_hash is not None)
+        for s in filas
+    ]
 
 
 @router.post("", response_model=DispositivoOut, status_code=status.HTTP_201_CREATED)
@@ -52,7 +82,7 @@ async def emparejar_dispositivo(
     return disp
 
 
-@router.get("", response_model=list[DispositivoOut])
+@router.get("", response_model=list[DispositivoResumenOut])
 async def listar_dispositivos(
     centro_id: str | None = Query(default=None),
     activo: bool | None = Query(default=None),

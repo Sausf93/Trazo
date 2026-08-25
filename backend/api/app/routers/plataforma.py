@@ -8,6 +8,7 @@ DESHABILITADO (responde 404) para no dejar una puerta abierta por descuido.
 from __future__ import annotations
 
 import secrets
+from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends, Header, HTTPException, status
 from sqlalchemy import Integer, cast, func, select
@@ -16,7 +17,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.bootstrap import alta_centro_admin
 from app.config import settings
 from app.database import get_db
-from app.models import Centro, UsuarioFinal, UsuarioStaff
+from app.models import Centro, Intento, UsuarioFinal, UsuarioStaff
 from app.schemas import (
     CentroEstadoIn,
     CentroInfoOut,
@@ -79,15 +80,35 @@ async def listar_centros(
     )).all():
         pac_tot[cid] = int(tot or 0)
 
-    return [
-        CentroInfoOut(
+    # Personas ACTIVAS del mes (con al menos 1 intento en 30 días) por centro:
+    # es la base del control de plan / facturación por excedente.
+    desde = datetime.now(timezone.utc) - timedelta(days=30)
+    activas: dict[str, int] = {}
+    for cid, n in (await db.execute(
+        select(UsuarioFinal.centro_id,
+               func.count(func.distinct(Intento.usuario_final_id)))
+        .join(Intento, Intento.usuario_final_id == UsuarioFinal.id)
+        .where(Intento.timestamp_inicio >= desde)
+        .group_by(UsuarioFinal.centro_id)
+    )).all():
+        activas[cid] = int(n or 0)
+
+    salida = []
+    for c in centros:
+        act = activas.get(c.id, 0)
+        tope = c.tope_personas or 0
+        extra = max(0, act - tope) if tope else 0
+        salida.append(CentroInfoOut(
             id=c.id, nombre=c.nombre, activo=c.activo, creado_en=c.creado_en,
             n_staff=staff_tot.get(c.id, 0),
             n_staff_activos=staff_act.get(c.id, 0),
             n_pacientes=pac_tot.get(c.id, 0),
-        )
-        for c in centros
-    ]
+            tope_personas=tope,
+            personas_activas=act,
+            sobre_tope=bool(tope) and act > tope,
+            personas_extra=extra,
+        ))
+    return salida
 
 
 @router.get("/centros/{centro_id}/staff", response_model=list[StaffOut])

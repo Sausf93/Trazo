@@ -334,6 +334,23 @@ class Instancia {
 }
 
 /// Un participante dentro de una sesión (lo que devuelve /sesiones/activa).
+/// Un profesional del centro, para el selector "¿quién eres?" de la maestra.
+class StaffPick {
+  final String id;
+  final String nombre;
+  final String rol;
+  final bool tienePin;
+
+  StaffPick({required this.id, required this.nombre, required this.rol, required this.tienePin});
+
+  factory StaffPick.fromJson(Map<String, dynamic> j) => StaffPick(
+        id: j['id'] as String,
+        nombre: (j['nombre'] ?? '') as String,
+        rol: (j['rol'] ?? '') as String,
+        tienePin: (j['tiene_pin'] ?? false) as bool,
+      );
+}
+
 class ParticipanteSesion {
   final String usuarioFinalId;
   final String aliasInterno;
@@ -347,13 +364,49 @@ class ParticipanteSesion {
       );
 }
 
-/// Estado de una sesión activa en el centro (kiosco del participante).
+/// Una sala (sesión) abierta del centro, con quién juega en ella.
+class SalaActiva {
+  final String sesionId;
+  final String nombre;
+  final bool iniciada;
+  final String modo;
+  final String? responsable; // maestra que abrió la sala (para distinguirlas)
+  final List<ParticipanteSesion> participantes;
+
+  SalaActiva({
+    required this.sesionId,
+    required this.nombre,
+    required this.iniciada,
+    required this.modo,
+    required this.participantes,
+    this.responsable,
+  });
+
+  factory SalaActiva.fromJson(Map<String, dynamic> j) => SalaActiva(
+        sesionId: j['sesion_id'] as String,
+        nombre: (j['nombre'] ?? '') as String,
+        iniciada: (j['iniciada'] ?? false) as bool,
+        modo: (j['modo'] ?? 'individual') as String,
+        responsable: j['responsable'] as String?,
+        participantes: ((j['participantes'] ?? []) as List)
+            .map((e) =>
+                ParticipanteSesion.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
+}
+
+/// Estado de las salas abiertas del centro (kiosco del participante).
+///
+/// Un centro puede tener VARIAS salas a la vez (2 maestras, 2 grupos). El
+/// kiosco muestra las salas para que cada persona elija a cuál unirse. Los
+/// campos "planos" (sesionId/participantes…) reflejan la 1ª sala por compat.
 class SesionActiva {
   final String? sesionId;
   final String nombre;
   final bool iniciada;
   final String modo;
   final List<ParticipanteSesion> participantes;
+  final List<SalaActiva> salas;
 
   SesionActiva({
     required this.sesionId,
@@ -361,20 +414,46 @@ class SesionActiva {
     required this.iniciada,
     required this.modo,
     required this.participantes,
+    this.salas = const [],
   });
 
-  bool get haySesion => sesionId != null;
+  bool get haySesion => salas.isNotEmpty || sesionId != null;
+  bool get variasSalas => salas.length > 1;
 
-  factory SesionActiva.fromJson(Map<String, dynamic> j) => SesionActiva(
-        sesionId: j['sesion_id'] as String?,
-        nombre: (j['nombre'] ?? '') as String,
-        iniciada: (j['iniciada'] ?? false) as bool,
-        modo: (j['modo'] ?? 'individual') as String,
-        participantes: ((j['participantes'] ?? []) as List)
-            .map((e) =>
-                ParticipanteSesion.fromJson(e as Map<String, dynamic>))
-            .toList(),
-      );
+  /// La sala con ese id entre las abiertas, o null si ya se cerró.
+  SalaActiva? salaConId(String sesionId) {
+    for (final s in salas) {
+      if (s.sesionId == sesionId) return s;
+    }
+    return null;
+  }
+
+  /// Busca la sala a la que pertenece una persona (por si el kiosco ya la tiene
+  /// elegida): devuelve null si ya no está en ninguna sala abierta.
+  SalaActiva? salaDe(String usuarioFinalId) {
+    for (final s in salas) {
+      if (s.participantes.any((p) => p.usuarioFinalId == usuarioFinalId)) {
+        return s;
+      }
+    }
+    return null;
+  }
+
+  factory SesionActiva.fromJson(Map<String, dynamic> j) {
+    final salas = ((j['salas'] ?? []) as List)
+        .map((e) => SalaActiva.fromJson(e as Map<String, dynamic>))
+        .toList();
+    return SesionActiva(
+      sesionId: j['sesion_id'] as String?,
+      nombre: (j['nombre'] ?? '') as String,
+      iniciada: (j['iniciada'] ?? false) as bool,
+      modo: (j['modo'] ?? 'individual') as String,
+      participantes: ((j['participantes'] ?? []) as List)
+          .map((e) => ParticipanteSesion.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      salas: salas,
+    );
+  }
 }
 
 /// Ficha de un participante en el monitor en vivo de la maestra.

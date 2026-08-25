@@ -1,7 +1,11 @@
+import 'dart:math' show min, max;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../models.dart';
 import '../theme.dart';
+import '../tts.dart';
 import 'ilustracion.dart';
 
 /// Renderiza `arrastrar_posicion`: piezas que se colocan en zonas.
@@ -52,6 +56,16 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
   String _labelDe(Map<String, dynamic> e) =>
       (e['label'] ?? e['nombre'] ?? e['id'] ?? '').toString();
 
+  /// Actividad ESPACIAL: todas las zonas traen `pos:[x,y]` (fracciones 0..1). Se
+  /// pintan en su sitio real (p. ej. "Poner la mesa": plato al centro, cubiertos
+  /// a los lados) en vez de tarjetas de texto sueltas -> más intuitivo y digno.
+  bool get _esEspacial =>
+      _zonas.isNotEmpty &&
+      _zonas.every((z) {
+        final p = z['pos'];
+        return p is List && p.length == 2 && p[0] is num && p[1] is num;
+      });
+
   void _emitir() {
     widget.onMetricas({
       'colocaciones': Map<String, String>.from(_colocaciones),
@@ -59,25 +73,52 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
     });
   }
 
+  /// Etiqueta legible de una pieza / zona por su id (para la voz). Cae al id.
+  String _labelPieza(String id) {
+    for (final p in _piezas) {
+      if (_idDe(p) == id) return (p['label'] ?? id).toString();
+    }
+    return id;
+  }
+
+  String _labelZona(String id) {
+    for (final z in _zonas) {
+      if ((z['id'] ?? '').toString() == id) {
+        return (z['label'] ?? id).toString();
+      }
+    }
+    return id;
+  }
+
   /// Toca una pieza disponible: la coge, o la suelta si ya estaba cogida.
   void _seleccionar(String piezaId) {
+    HapticFeedback.selectionClick(); // confirma "he cogido esto"
+    final yaEstaba = _seleccionada == piezaId;
     setState(() {
-      _seleccionada = _seleccionada == piezaId ? null : piezaId;
+      _seleccionada = yaEstaba ? null : piezaId;
     });
+    // Voz: quien depende del audio necesita oír que cogió algo y qué hacer.
+    Tts.instance.hablar(yaEstaba
+        ? 'Lo has soltado.'
+        : 'Has cogido: ${_labelPieza(piezaId)}. Ahora toca su sitio.');
   }
 
   /// Toca una zona: si hay una pieza cogida, la coloca ahí.
   void _colocarEnZona(String zonaId) {
     final pieza = _seleccionada;
     if (pieza == null) return;
+    HapticFeedback.mediumImpact(); // confirma "colocado"
     setState(() {
       _colocaciones[pieza] = zonaId;
       _seleccionada = null;
     });
+    Tts.instance
+        .hablar('${_labelPieza(pieza)}, colocado en ${_labelZona(zonaId)}.');
     _emitir();
   }
 
   void _quitar(String piezaId) {
+    HapticFeedback.selectionClick();
     setState(() => _colocaciones.remove(piezaId));
     _emitir();
   }
@@ -91,72 +132,159 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
     final sinColocar =
         _piezas.where((p) => !_colocaciones.containsKey(_idDe(p))).toList();
 
-    return Column(
-      children: [
-        Text(instruccion,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 26, color: TrazoColors.ink)),
-        const SizedBox(height: 6),
-        Text(
-            _seleccionada == null
-                ? 'Toca una cosa para cogerla'
-                : 'Ahora toca el sitio donde va',
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 18, color: TrazoColors.sageDark)),
-        const SizedBox(height: 14),
-        // Piezas disponibles.
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: TrazoColors.ivory,
-            border: Border.all(color: TrazoColors.sand),
-            borderRadius: BorderRadius.circular(14),
+    // Cabecera (enunciado + pista + panel de piezas): idéntica en tablet y móvil.
+    final encabezado = <Widget>[
+      Text(instruccion,
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 26, color: TrazoColors.ink)),
+      const SizedBox(height: 6),
+      Text(
+          _seleccionada == null
+              ? 'Toca una cosa para cogerla'
+              : 'Ahora toca el sitio donde va',
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 18, color: TrazoColors.sageDark)),
+      const SizedBox(height: 14),
+      _panelPiezas(sinColocar),
+      const SizedBox(height: 20),
+    ];
+
+    return LayoutBuilder(builder: (context, c) {
+      // Responsive: en móvil vertical (viewport estrecho o bajo) hacemos scroll de
+      // toda la pantalla y damos a la zona destino una altura cómoda FIJA, para
+      // que nada se recorte ni quede fuera. En tablet apaisada, layout idéntico.
+      final estrecho = c.maxWidth < 520 || c.maxHeight < 640;
+      if (estrecho) {
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              ...encabezado,
+              // Zona destino. El layout espacial es un Stack: necesita una altura
+              // acotada cómoda (scroll externo si no cabe). El de tarjetas fluye
+              // a su altura natural dentro del scroll (nada se recorta).
+              if (_esEspacial)
+                SizedBox(
+                  height: max(360.0, c.maxHeight * 0.75),
+                  child: _zonasEspaciales(),
+                )
+              else
+                _zonasWrap(),
+              const SizedBox(height: 8),
+            ],
           ),
-          child: Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            alignment: WrapAlignment.center,
-            children: sinColocar.isEmpty
-                ? [
-                    const Padding(
-                      padding: EdgeInsets.all(12),
-                      child: Text('Todas colocadas',
-                          style: TextStyle(
-                              fontSize: 18, color: TrazoColors.sageDark)),
-                    )
-                  ]
-                : sinColocar.map((p) {
-                    final id = _idDe(p);
-                    return InkWell(
-                      borderRadius: BorderRadius.circular(12),
-                      onTap: () => _seleccionar(id),
-                      child: _chipPieza(id, _labelDe(p),
-                          seleccionada: _seleccionada == id),
-                    );
-                  }).toList(),
+        );
+      }
+      return Column(
+        children: [
+          ...encabezado,
+          // Zonas destino: tarjetas de tamaño FIJO y centradas, que se reparten en
+          // filas. Antes se estiraban a toda la altura y quedaban cajas enormes
+          // vacías; ahora son compactas y ordenadas en cualquier pantalla.
+          Expanded(
+            child: _esEspacial
+                ? _zonasEspaciales()
+                : SingleChildScrollView(child: _zonasWrap()),
           ),
-        ),
-        const SizedBox(height: 20),
-        // Zonas destino: tarjetas de tamaño FIJO y centradas, que se reparten en
-        // filas. Antes se estiraban a toda la altura y quedaban cajas enormes
-        // vacías; ahora son compactas y ordenadas en cualquier pantalla.
-        Expanded(
-          child: SingleChildScrollView(
-            child: Center(
-              child: Wrap(
-                spacing: 14,
-                runSpacing: 14,
-                alignment: WrapAlignment.center,
-                children: _zonas
-                    .map((z) => SizedBox(width: 240, height: 150, child: _zona(z)))
-                    .toList(),
-              ),
-            ),
-          ),
-        ),
-      ],
+        ],
+      );
+    });
+  }
+
+  /// Panel de piezas disponibles (Wrap que fluye a varias filas solo).
+  Widget _panelPiezas(List<Map<String, dynamic>> sinColocar) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: TrazoColors.ivory,
+        border: Border.all(color: TrazoColors.sand),
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Wrap(
+        spacing: 12,
+        runSpacing: 12,
+        alignment: WrapAlignment.center,
+        children: sinColocar.isEmpty
+            ? [
+                const Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Text('Todas colocadas',
+                      style:
+                          TextStyle(fontSize: 18, color: TrazoColors.sageDark)),
+                )
+              ]
+            : sinColocar.map((p) {
+                final id = _idDe(p);
+                return InkWell(
+                  key: ValueKey('apieza|$id'),
+                  borderRadius: BorderRadius.circular(12),
+                  onTap: () => _seleccionar(id),
+                  child: _chipPieza(id, _labelDe(p),
+                      seleccionada: _seleccionada == id),
+                );
+              }).toList(),
+      ),
     );
+  }
+
+  /// Zonas destino no espaciales: tarjetas fijas centradas en un Wrap.
+  Widget _zonasWrap() {
+    return Center(
+      child: Wrap(
+        spacing: 14,
+        runSpacing: 14,
+        alignment: WrapAlignment.center,
+        children: _zonas
+            .map((z) => SizedBox(width: 240, height: 150, child: _zona(z)))
+            .toList(),
+      ),
+    );
+  }
+
+  /// Coloca las zonas en su posición real dentro del área disponible.
+  // Separación mínima real entre posiciones distintas de un eje (para dimensionar
+  // las zonas sin que se solapen, sea cual sea el nº de zonas y el ancho).
+  double _huecoMin(List<double> vs) {
+    final s = [...vs]..sort();
+    double m = 1.0;
+    for (var i = 1; i < s.length; i++) {
+      final d = s[i] - s[i - 1];
+      if (d > 0.001 && d < m) m = d;
+    }
+    return m;
+  }
+
+  Widget _zonasEspaciales() {
+    return LayoutBuilder(builder: (context, c) {
+      final w = c.maxWidth, h = c.maxHeight;
+      final xs = _zonas.map((z) => (z['pos'][0] as num).toDouble()).toList();
+      final ys = _zonas.map((z) => (z['pos'][1] as num).toDouble()).toList();
+      final gx = _huecoMin(xs), gy = _huecoMin(ys);
+      // Sin solape: las zonas se colocan por su esquina (left=fx*spanX), así que la
+      // separación entre columnas contiguas es gx*spanX = gx*(w-zw). Para que la
+      // caja no invada la de al lado: zw <= gx*(w-zw) -> zw <= gx*w/(1+gx). Igual
+      // en vertical. Se deja un pequeño margen (0.9) para que se vea el hueco.
+      final zwMax = gx > 0 ? gx / (1 + gx) * w * 0.90 : w;
+      final zhMax = gy > 0 ? gy / (1 + gy) * h * 0.90 : h;
+      final zw = min(min(w / 3.0, zwMax), 200.0).clamp(70.0, 200.0);
+      final zh = min(min(h / 3.6, zhMax), 130.0).clamp(60.0, 130.0);
+      final spanX = (w - zw).clamp(0.0, double.infinity);
+      final spanY = (h - zh).clamp(0.0, double.infinity);
+      return Stack(
+        children: _zonas.map((z) {
+          final pos = z['pos'] as List;
+          final fx = (pos[0] as num).toDouble().clamp(0.0, 1.0);
+          final fy = (pos[1] as num).toDouble().clamp(0.0, 1.0);
+          return Positioned(
+            left: fx * spanX,
+            top: fy * spanY,
+            width: zw,
+            height: zh,
+            child: _zona(z),
+          );
+        }).toList(),
+      );
+    });
   }
 
   Widget _chipPieza(String id, String label,
@@ -170,10 +298,10 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
       color: Colors.transparent,
       child: Container(
         width: ancho,
-        padding: EdgeInsets.symmetric(
-            horizontal: 8, vertical: compacto ? 8 : 12),
+        padding:
+            EdgeInsets.symmetric(horizontal: 8, vertical: compacto ? 8 : 12),
         decoration: BoxDecoration(
-          color: seleccionada ? TrazoColors.coral : TrazoColors.card,
+          color: seleccionada ? TrazoColors.coralDark : TrazoColors.card,
           border: Border.all(
               color: seleccionada ? TrazoColors.coralDark : TrazoColors.sand,
               width: seleccionada ? 4 : 2),
@@ -213,6 +341,7 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
     final resaltar = _seleccionada != null;
 
     return InkWell(
+      key: ValueKey('azona|$zonaId'),
       borderRadius: BorderRadius.circular(14),
       onTap: _seleccionada != null ? () => _colocarEnZona(zonaId) : null,
       child: Container(
@@ -240,8 +369,7 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
                   runSpacing: 8,
                   alignment: WrapAlignment.center,
                   children: piezasAqui.map((piezaId) {
-                    final pieza = _piezas.firstWhere(
-                        (p) => _idDe(p) == piezaId,
+                    final pieza = _piezas.firstWhere((p) => _idDe(p) == piezaId,
                         orElse: () => {'label': piezaId});
                     return _piezaColocada(pieza);
                   }).toList(),
@@ -271,14 +399,14 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
               customBorder: const CircleBorder(),
               onTap: () => _quitar(piezaId),
               child: Container(
-                width: 32,
-                height: 32,
+                width: 48,
+                height: 48,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: TrazoColors.coralDark,
                 ),
-                child: const Icon(Icons.close, size: 20, color: Colors.white),
+                child: const Icon(Icons.close, size: 26, color: Colors.white),
               ),
             ),
           ),

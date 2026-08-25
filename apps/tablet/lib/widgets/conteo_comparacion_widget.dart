@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../models.dart';
 import '../theme.dart';
@@ -48,32 +49,57 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
         .map((e) => Map<String, dynamic>.from(e as Map))
         .toList();
 
-    return Column(
+    final grupoRow = Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(instruccion,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 26, color: TrazoColors.ink)),
-        const SizedBox(height: 20),
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              for (int i = 0; i < grupos.length; i++)
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: _grupoCard(i, grupos[i],
-                        seleccionable: esComparacion),
-                  ),
-                ),
-            ],
+        for (int i = 0; i < grupos.length; i++)
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: _grupoCard(i, grupos[i], seleccionable: esComparacion),
+            ),
           ),
-        ),
-        if (!esComparacion) ...[
-          const SizedBox(height: 16),
-          _tecladoNumerico(),
-        ],
       ],
+    );
+    final titulo = Text(instruccion,
+        textAlign: TextAlign.center,
+        style: const TextStyle(fontSize: 26, color: TrazoColors.ink));
+
+    return LayoutBuilder(
+      builder: (context, c) {
+        final estrecho = c.maxWidth < 520 || c.maxHeight < 640;
+        // Móvil: todo en SCROLL, con las figuras en una altura fija cómoda y el
+        // teclado debajo (así no se solapan ni quedan fuera de pantalla).
+        if (estrecho) {
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(height: 4),
+                titulo,
+                const SizedBox(height: 16),
+                SizedBox(height: esComparacion ? 320 : 240, child: grupoRow),
+                if (!esComparacion) ...[
+                  const SizedBox(height: 16),
+                  _tecladoNumerico(),
+                  const SizedBox(height: 8),
+                ],
+              ],
+            ),
+          );
+        }
+        // Tablet: layout que llena la pantalla.
+        return Column(
+          children: [
+            titulo,
+            const SizedBox(height: 20),
+            Expanded(child: grupoRow),
+            if (!esComparacion) ...[
+              const SizedBox(height: 16),
+              _tecladoNumerico(),
+            ],
+          ],
+        );
+      },
     );
   }
 
@@ -84,8 +110,10 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
     final sel = _grupoElegido == i;
 
     return InkWell(
+      key: ValueKey('cgrupo|$objeto'),
       onTap: seleccionable
           ? () {
+              HapticFeedback.selectionClick();
               setState(() => _grupoElegido = i);
               _emitir({'grupo': i, 'objeto': objeto});
             }
@@ -159,8 +187,8 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
         ),
         const SizedBox(height: 10),
         Wrap(
-          spacing: 10,
-          runSpacing: 10,
+          spacing: 16, // más aire entre teclas (temblor)
+          runSpacing: 16,
           alignment: WrapAlignment.center,
           children: [
             for (final d in ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'])
@@ -182,10 +210,14 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
 
   Widget _tecla(String label, VoidCallback onTap) {
     return SizedBox(
+      key: ValueKey('tecla_$label'),
       width: 66,
       height: 62,
       child: OutlinedButton(
-        onPressed: onTap,
+        onPressed: () {
+          HapticFeedback.selectionClick(); // confirma el toque (temblor)
+          onTap();
+        },
         style: OutlinedButton.styleFrom(
           foregroundColor: TrazoColors.ink,
           side: const BorderSide(color: TrazoColors.sand),
@@ -201,10 +233,12 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
 /// (nunca ocultar objetos que hay que contar). Baja el tamaño hasta que caben.
 double _tamObjeto(double w, double h, int n, {double sp = 4}) {
   if (n <= 0 || w <= 0 || h <= 0) return 40;
-  for (double s = 62; s >= 18; s -= 2) {
+  // Suelo de 26px (antes 18): contar figuras diminutas es muy exigente para
+  // baja visión; se prioriza que lo contable se vea aun a costa de apretar.
+  for (double s = 62; s >= 26; s -= 2) {
     final cols = ((w + sp) / (s + sp)).floor().clamp(1, n);
     final rows = (n / cols).ceil();
     if (rows * (s + sp) <= h + sp) return s;
   }
-  return 18;
+  return 26;
 }

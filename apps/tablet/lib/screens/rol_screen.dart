@@ -6,61 +6,131 @@ import '../models.dart';
 import '../services/actualizacion.dart';
 import '../theme.dart';
 import '../widgets/trazo_logo.dart';
-import 'galeria_screen.dart';
-import 'login_screen.dart';
+import 'maestra_picker_screen.dart';
 import 'maestra_screen.dart';
 import 'participante_screen.dart';
 
-/// Selección del rol de la tablet: MAESTRA (control de la integradora) o
-/// PARTICIPANTE (kiosco para el usuario mayor).
-class RolScreen extends StatelessWidget {
+/// Pantalla de inicio de la tablet.
+///
+/// Flujo (modelo del centro): PRIMERO se empareja la tablet al centro (una sola
+/// vez, con el código del panel). SOLO cuando está emparejada aparece la
+/// elección de rol MAESTRA / PARTICIPANTE, que se decide en CADA uso (la misma
+/// tablet sirve para las dos cosas).
+class RolScreen extends StatefulWidget {
   const RolScreen({super.key});
 
-  Future<void> _salir(BuildContext context) async {
+  @override
+  State<RolScreen> createState() => _RolScreenState();
+}
+
+class _RolScreenState extends State<RolScreen> {
+  bool get _emparejado => ApiClient.instance.emparejado;
+
+  Future<void> _salir() async {
     await ApiClient.instance.logout();
-    if (!context.mounted) return;
+    if (!mounted) return;
     Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(builder: (_) => const RolScreen()),
       (_) => false,
     );
   }
 
-  /// MAESTRA: si aún no hay sesión iniciada, pide login; si ya la hay, entra.
-  void _irMaestra(BuildContext context) {
-    if (ApiClient.instance.autenticado) {
-      Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => const MaestraScreen()));
+  /// MAESTRA: exige identidad de STAFF (no basta el emparejamiento de la tablet).
+  /// - Si ya hay login de staff en esta tablet, entra directo.
+  /// - Si no, en una tablet emparejada muestra el selector "¿quién eres?" (elige
+  ///   tu nombre y entra; queda registrado quién dio la actividad).
+  void _irMaestra() {
+    if (ApiClient.instance.staffLogueado) {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (_) => const MaestraScreen()));
     } else {
-      Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => const LoginScreen()));
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (_) => const MaestraPickerScreen()));
     }
   }
 
-  /// PARTICIPANTE: NUNCA hace login. Funciona si la tablet está vinculada al
-  /// centro (emparejada) o si la responsable ya entró como maestra en esta
-  /// tablet. Si no, se explica en lugar de pedir credenciales.
-  void _irParticipante(BuildContext context) {
-    if (ApiClient.instance.autenticado || ApiClient.instance.emparejado) {
-      Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => const ParticipanteScreen()));
-    } else {
-      showDialog<void>(
-        context: context,
-        builder: (_) => AlertDialog(
-          title: const Text('Esta tablet aún no está lista'),
-          content: const Text(
-              'Para que esta tablet muestre las actividades, la responsable debe '
-              'vincularla al centro una vez (botón "Emparejar esta tablet"), o '
-              'entrar como MAESTRA en ella. Luego ya no hará falta.',
-              style: TextStyle(fontSize: 16, color: TrazoColors.sageDark)),
-          actions: [
-            TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Entendido')),
+  /// PARTICIPANTE: nunca hace login; funciona porque la tablet está emparejada.
+  void _irParticipante() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => const ParticipanteScreen()));
+  }
+
+  Future<void> _emparejar() async {
+    final ctrl = TextEditingController();
+    final code = await showDialog<String>(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('Emparejar esta tablet'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+                'Pega el código de emparejamiento que da la responsable desde '
+                'el panel, en la sección «Tablets».',
+                style: TextStyle(fontSize: 15, color: TrazoColors.sageDark)),
+            const SizedBox(height: 12),
+            TextField(
+              controller: ctrl,
+              autofocus: true,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(), hintText: 'código'),
+            ),
           ],
         ),
-      );
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancelar')),
+          ElevatedButton(
+              onPressed: () => Navigator.pop(context, ctrl.text.trim()),
+              child: const Text('Emparejar')),
+        ],
+      ),
+    );
+    if (code == null || code.isEmpty) return;
+    try {
+      final DispositivoYo yo =
+          await ApiClient.instance.emparejarDispositivo(code);
+      if (!mounted) return;
+      setState(() {}); // ahora ya aparece la elección de rol
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Tablet emparejada a su centro (${yo.nombre}).')));
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toString())));
     }
+  }
+
+  Future<void> _quitarEmparejamiento() async {
+    await ApiClient.instance.desemparejar();
+    if (!mounted) return;
+    setState(() {});
+  }
+
+  /// Desemparejar es destructivo (hay que volver a pedir el código del panel).
+  /// Se confirma para que un mayor confundido no deje la tablet sin vincular.
+  Future<void> _confirmarQuitar() async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('¿Desemparejar esta tablet?'),
+        content: const Text(
+            'La tablet dejará de estar vinculada al centro. Para volver a '
+            'usarla haría falta el código de emparejamiento del panel.'),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: const Text('Cancelar')),
+          FilledButton(
+              style: FilledButton.styleFrom(
+                  backgroundColor: TrazoColors.coralDark),
+              onPressed: () => Navigator.pop(ctx, true),
+              child: const Text('Sí, desemparejar')),
+        ],
+      ),
+    );
+    if (ok == true) await _quitarEmparejamiento();
   }
 
   @override
@@ -69,76 +139,37 @@ class RolScreen extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 720),
-                child: Padding(
-                  padding: const EdgeInsets.all(32),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const TrazoLogo(size: 84),
-                      const SizedBox(height: 16),
-                      const Text('Esta tablet es…',
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.w700,
-                              color: TrazoColors.ink)),
-                      const SizedBox(height: 40),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: _RolCard(
-                              icono: Icons.co_present,
-                              titulo: 'MAESTRA',
-                              subtitulo: 'Abrir sala y seguir al grupo',
-                              color: TrazoColors.sage,
-                              onTap: () => _irMaestra(context),
-                            ),
-                          ),
-                          const SizedBox(width: 24),
-                          Expanded(
-                            child: _RolCard(
-                              icono: Icons.emoji_people,
-                              titulo: 'PARTICIPANTE',
-                              subtitulo: 'Hacer los ejercicios',
-                              color: TrazoColors.coralDark,
-                              onTap: () => _irParticipante(context),
-                            ),
-                          ),
-                        ],
+            // Centrado cuando cabe; con scroll cuando la pantalla es baja
+            // (móvil en horizontal / ventanas cortas) para no recortar nada.
+            LayoutBuilder(
+              builder: (context, c) => SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: c.maxHeight),
+                  child: Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 720),
+                      child: Padding(
+                        padding: const EdgeInsets.all(32),
+                        child: _emparejado ? _vistaRoles() : _vistaEmparejar(),
                       ),
-                      const SizedBox(height: 28),
-                      const _EmparejarBar(),
-                      const SizedBox(height: 4),
-                      // Modo demo: probar las actividades sin login ni sala.
-                      TextButton.icon(
-                        onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (_) => const GaleriaScreen()),
-                        ),
-                        icon: const Icon(Icons.grid_view, size: 18),
-                        label: const Text('Ver actividades (demo)'),
-                        style: TextButton.styleFrom(
-                            foregroundColor: TrazoColors.sageDark),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
             ),
-            Positioned(
-              top: 8,
-              right: 8,
-              child: TextButton.icon(
-                onPressed: () => _salir(context),
-                icon: const Icon(Icons.logout, size: 18),
-                label: const Text('Cerrar acceso'),
-                style: TextButton.styleFrom(
-                    foregroundColor: TrazoColors.sageDark),
+            // Salir (cierra el login de la maestra) — solo si hay login de staff.
+            if (ApiClient.instance.staffLogueado)
+              Positioned(
+                top: 8,
+                right: 8,
+                child: TextButton.icon(
+                  onPressed: _salir,
+                  icon: const Icon(Icons.logout, size: 18),
+                  label: const Text('Cerrar acceso'),
+                  style: TextButton.styleFrom(
+                      foregroundColor: TrazoColors.sageDark),
+                ),
               ),
-            ),
-            // Aviso de nueva versión del APK (distribución sin Play Store).
             const Positioned(
               top: 0,
               left: 0,
@@ -148,6 +179,108 @@ class RolScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  /// Tablet SIN emparejar: puesta a punto. Es lo único que se ofrece.
+  Widget _vistaEmparejar() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const TrazoLogo(size: 84),
+        const SizedBox(height: 18),
+        const Text('Primero, empareja esta tablet',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w700,
+                color: TrazoColors.ink)),
+        const SizedBox(height: 12),
+        const Text(
+            'Vincula la tablet a tu centro una sola vez, con el código que da la '
+            'responsable desde el panel («Tablets»). Después, esta misma tablet '
+            'podrá usarse como maestra o como participante.',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 17, color: TrazoColors.sageDark)),
+        const SizedBox(height: 32),
+        ElevatedButton.icon(
+          onPressed: _emparejar,
+          icon: const Icon(Icons.link, size: 22),
+          label: const Text('Emparejar esta tablet al centro'),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: TrazoColors.sageDark,
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
+            textStyle:
+                const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Tablet YA emparejada: se elige el rol para este uso.
+  Widget _vistaRoles() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const TrazoLogo(size: 84),
+        const SizedBox(height: 16),
+        const Text('¿Cómo se usa ahora?',
+            style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w700,
+                color: TrazoColors.ink)),
+        const SizedBox(height: 8),
+        const Text(
+            'La misma tablet sirve para las dos cosas: cada vez eliges si es '
+            'maestra o participante.',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 16, color: TrazoColors.sageDark)),
+        const SizedBox(height: 32),
+        Row(
+          children: [
+            Expanded(
+              child: _RolCard(
+                icono: Icons.co_present,
+                titulo: 'MAESTRA',
+                subtitulo: 'Abrir sala y seguir al grupo',
+                color: TrazoColors.sageDark,
+                onTap: _irMaestra,
+              ),
+            ),
+            const SizedBox(width: 24),
+            Expanded(
+              child: _RolCard(
+                icono: Icons.emoji_people,
+                titulo: 'PARTICIPANTE',
+                subtitulo: 'Hacer los ejercicios',
+                color: TrazoColors.coralDark,
+                onTap: _irParticipante,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 26),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.check_circle,
+                size: 18, color: TrazoColors.sageDark),
+            const SizedBox(width: 8),
+            Text(
+                (ApiClient.instance.nombreDispositivo?.trim().isNotEmpty ??
+                        false)
+                    ? 'Esta tablet: «${ApiClient.instance.nombreDispositivo}»'
+                    : 'Tablet emparejada al centro',
+                style: const TextStyle(
+                    color: TrazoColors.sageDark, fontWeight: FontWeight.w600)),
+            const SizedBox(width: 12),
+            TextButton(
+                onPressed: _confirmarQuitar, child: const Text('Desemparejar')),
+          ],
+        ),
+      ],
     );
   }
 }
@@ -182,7 +315,7 @@ class _AvisoActualizacionState extends State<_AvisoActualizacion> {
     final upd = _upd;
     if (upd == null || _oculto) return const SizedBox.shrink();
     return Material(
-      color: TrazoColors.sage,
+      color: TrazoColors.sageDark,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Row(
@@ -202,7 +335,7 @@ class _AvisoActualizacionState extends State<_AvisoActualizacion> {
                   ),
                   SelectableText(
                     upd.apkUrl,
-                    style: const TextStyle(color: Colors.white70, fontSize: 12),
+                    style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ],
               ),
@@ -210,8 +343,8 @@ class _AvisoActualizacionState extends State<_AvisoActualizacion> {
             TextButton.icon(
               onPressed: () {
                 Clipboard.setData(ClipboardData(text: upd.apkUrl));
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text('Enlace copiado')));
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Enlace copiado')));
               },
               icon: const Icon(Icons.copy, size: 16, color: Colors.white),
               label: const Text('Copiar enlace',
@@ -225,100 +358,6 @@ class _AvisoActualizacionState extends State<_AvisoActualizacion> {
           ],
         ),
       ),
-    );
-  }
-}
-
-/// Barra opcional para EMPAREJAR esta tablet al centro con un código. Una vez
-/// emparejada, el rol PARTICIPANTE funciona sin login de la integradora.
-class _EmparejarBar extends StatefulWidget {
-  const _EmparejarBar();
-
-  @override
-  State<_EmparejarBar> createState() => _EmparejarBarState();
-}
-
-class _EmparejarBarState extends State<_EmparejarBar> {
-  bool get _emparejado => ApiClient.instance.emparejado;
-
-  Future<void> _emparejar() async {
-    final ctrl = TextEditingController();
-    final code = await showDialog<String>(
-      context: context,
-      builder: (_) => AlertDialog(
-        title: const Text('Emparejar esta tablet'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text(
-                'Pega el código de emparejamiento que te da la integradora '
-                'desde el panel (Dispositivos).',
-                style: TextStyle(fontSize: 15, color: TrazoColors.sageDark)),
-            const SizedBox(height: 12),
-            TextField(
-              controller: ctrl,
-              autofocus: true,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'código',
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Cancelar')),
-          ElevatedButton(
-              onPressed: () => Navigator.pop(context, ctrl.text.trim()),
-              child: const Text('Emparejar')),
-        ],
-      ),
-    );
-    if (code == null || code.isEmpty) return;
-    try {
-      final DispositivoYo yo =
-          await ApiClient.instance.emparejarDispositivo(code);
-      if (!mounted) return;
-      setState(() {});
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Tablet emparejada a su centro (${yo.nombre}).')));
-    } catch (e) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.toString())));
-    }
-  }
-
-  Future<void> _quitar() async {
-    await ApiClient.instance.desemparejar();
-    if (!mounted) return;
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (_emparejado) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(Icons.tablet_android, size: 18, color: TrazoColors.sageDark),
-          const SizedBox(width: 8),
-          const Text('Tablet emparejada al centro',
-              style: TextStyle(
-                  color: TrazoColors.sageDark, fontWeight: FontWeight.w600)),
-          const SizedBox(width: 12),
-          TextButton(
-              onPressed: _quitar,
-              child: const Text('Quitar')),
-        ],
-      );
-    }
-    return TextButton.icon(
-      onPressed: _emparejar,
-      icon: const Icon(Icons.link, size: 18),
-      label: const Text('Emparejar esta tablet (opcional)'),
-      style: TextButton.styleFrom(foregroundColor: TrazoColors.sageDark),
     );
   }
 }
@@ -361,9 +400,7 @@ class _RolCard extends StatelessWidget {
               const SizedBox(height: 16),
               Text(titulo,
                   style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w800,
-                      color: color)),
+                      fontSize: 26, fontWeight: FontWeight.w800, color: color)),
               const SizedBox(height: 8),
               Text(subtitulo,
                   textAlign: TextAlign.center,

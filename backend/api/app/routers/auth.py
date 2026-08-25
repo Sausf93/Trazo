@@ -7,18 +7,29 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
+from app.deps import Acceso, acceso_centro
 from app.models import Centro, UsuarioStaff
-from app.schemas import TokenOut
+from app.schemas import TabletLoginIn, TokenOut
 from app.security import create_access_token, verify_password
 from app.services.rate_limit import limitador_login
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 
+def _ip_cliente(request: Request) -> str:
+    """IP real del cliente. Tras el proxy de Cloud Run, `request.client.host` es una
+    IP interna (todos compartirían una) -> se toma la primera de X-Forwarded-For."""
+    xff = request.headers.get("x-forwarded-for")
+    if xff:
+        primera = xff.split(",")[0].strip()
+        if primera:
+            return primera
+    return request.client.host if request.client else "desconocida"
+
+
 def _clave_limite(request: Request, email: str) -> str:
     """Clave del rate-limit: IP del cliente + email (en minúsculas)."""
-    ip = request.client.host if request.client else "desconocida"
-    return f"{ip}:{email.strip().lower()}"
+    return f"{_ip_cliente(request)}:{email.strip().lower()}"
 
 
 @router.post("/login", response_model=TokenOut)
@@ -77,4 +88,60 @@ async def login(
         rol=staff.rol,
         nombre=staff.nombre,
         centro_id=staff.centro_id,
+        centro_nombre=centro.nombre,
+    )
+
+
+@router.post("/tablet", response_model=TokenOut)
+async def login_tablet(
+    request: Request,
+    body: TabletLoginIn,
+    db: AsyncSession = Depends(get_db),
+    acceso: Acceso = Depends(acceso_centro),
+):
+    """Login de la MAESTRA en la tablet EMPAREJADA: elige su nombre (staff_id) y
+    entra. Va por token de dispositivo (acota al centro de la tablet); solo vale
+    para staff de ESE centro. Mismo JWT que el login normal.
+
+    Por defecto NADIE tiene PIN → entra solo eligiendo su nombre. El PIN es un
+    extra OPCIONAL: si ese profesional tiene PIN puesto, se le pide (y se valida).
+    Rate-limit por IP+staff para el caso con PIN (frena la fuerza bruta)."""
+    clave = _clave_limite(request, f"tablet:{body.staff_id}")
+    espera = limitador_login.segundos_bloqueo(clave)
+    if espera > 0:
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
+            headers={"Retry-After": str(espera)},
+        )
+    staff = await db.get(UsuarioStaff, body.staff_id)
+    # Debe ser staff activo del centro de ESTA tablet.
+    if staff is None or staff.centro_id != acceso.centro_id or not staff.activo:
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "No autorizado")
+    # SEGURIDAD: el ADMIN del centro NO entra por nombre sin contraseña (una tablet
+    # perdida no debe dar acceso de administración: gestionar equipo, RGPD, export).
+    # El admin usa email+contraseña (en la tablet o en el panel).
+    if staff.rol == "admin_centro":
+        raise HTTPException(
+            status.HTTP_403_FORBIDDEN,
+            "La administración entra con email y contraseña.")
+    # Si tiene PIN (opcional), hay que acertarlo; si no, entra directo.
+    if staff.pin_hash is not None:
+        if body.pin is None or not verify_password(body.pin, staff.pin_hash):
+            limitador_login.registrar_fallo(clave)
+            raise HTTPException(status.HTTP_401_UNAUTHORIZED,
+                                "PIN incorrecto", headers={"X-Requiere-Pin": "1"})
+
+    centro = await db.get(Centro, staff.centro_id)
+    if centro is None or not centro.activo:
+        raise HTTPException(status.HTTP_403_FORBIDDEN,
+                            "Centro suspendido. Contacta con Trazo para reactivarlo.")
+    limitador_login.limpiar(clave)
+    token = create_access_token(
+        subject=staff.id,
+        extra={"rol": staff.rol, "centro_id": staff.centro_id},
+    )
+    return TokenOut(
+        access_token=token, id=staff.id, rol=staff.rol, nombre=staff.nombre,
+        centro_id=staff.centro_id, centro_nombre=centro.nombre,
     )

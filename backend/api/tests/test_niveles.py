@@ -28,30 +28,55 @@ def _banco(n):
 
 
 def test_memoria_bajo_medio_alto():
+    # Banda PROPIA y suave (la memoria de un mayor con deterioro ronda 3-4 ítems):
+    # bajo=3, medio=4, alto=5. NO las bandas genéricas (6-8/10-12), imposibles.
     p = PlantillaMemoriaVisual()
     params = {"banco": _banco(16)}
     assert p.generar(params, nivel="bajo", rng=RNG()).cantidad_objetivo["n_figuras"] == 3
-    n_medio = p.generar(params, nivel="medio", rng=RNG()).cantidad_objetivo["n_figuras"]
-    assert 6 <= n_medio <= 8
-    n_alto = p.generar(params, nivel="alto", rng=RNG()).cantidad_objetivo["n_figuras"]
-    assert 10 <= n_alto <= 12
+    assert p.generar(params, nivel="medio", rng=RNG()).cantidad_objetivo["n_figuras"] == 4
+    assert p.generar(params, nivel="alto", rng=RNG()).cantidad_objetivo["n_figuras"] == 5
 
 
-def test_memoria_alto_se_limita_al_banco():
-    # Banco pequeño: alto no puede superar el tamaño del banco (degradación elegante).
+def test_memoria_siempre_hay_distractores():
+    # La rejilla de selección NUNCA puede ser idéntica a lo memorizado (si no, se
+    # "gana" tocando todo). Siempre debe quedar al menos 1 distractor.
     p = PlantillaMemoriaVisual()
-    n = p.generar({"banco": _banco(6)}, nivel="alto", rng=RNG()).cantidad_objetivo["n_figuras"]
-    assert n <= 6
+    for banco_n in (8, 9, 12, 16):
+        for nivel in ("bajo", "medio", "alto"):
+            inst = p.generar({"banco": _banco(banco_n)}, nivel=nivel, rng=RNG())
+            n_rec = len(inst.render["a_recordar"])
+            n_rej = len(inst.render["rejilla_seleccion"])
+            assert n_rej - n_rec >= 1, (banco_n, nivel, n_rec, n_rej)
+
+
+def test_memoria_banco_pequeno_degrada_bien():
+    # Banco pequeño: se reduce lo memorizado para dejar sitio a distractores.
+    p = PlantillaMemoriaVisual()
+    inst = p.generar({"banco": _banco(6)}, nivel="alto", rng=RNG())
+    n_rec = inst.cantidad_objetivo["n_figuras"]
+    n_rej = len(inst.render["rejilla_seleccion"])
+    assert n_rec <= 5 and n_rej - n_rec >= 1
 
 
 def test_conteo_por_nivel():
-    # En modo "sumar" (o contar) las cantidades respetan la banda del nivel.
     p = PlantillaConteoComparacion()
-    params = {"objetos": ["manzana", "pera"], "modo": "sumar"}
+    # "contar" (un solo grupo) respeta la banda del nivel.
+    pc = {"objetos": ["manzana"], "modo": "contar"}
     for nivel, (lo, hi) in [("bajo", (3, 3)), ("medio", (6, 8)), ("alto", (10, 12))]:
-        inst = p.generar(params, nivel=nivel, rng=RNG())
-        for c in inst.cantidad_objetivo["cantidades"]:
-            assert lo <= c <= hi, f"{nivel}: {c} fuera de [{lo},{hi}]"
+        # Cuando lo==hi el generador ensancha en 1 (necesita rango); se admite hi+1.
+        tope = max(hi, lo + 1)
+        for s in range(30):
+            inst = p.generar(pc, nivel=nivel, rng=random.Random(s))
+            c = inst.cantidad_objetivo["cantidades"][0]
+            assert lo <= c <= tope, f"{nivel}: {c} fuera de [{lo},{tope}]"
+    # "sumar" acota el TOTAL a <=15 (no obliga a sumar decenas de objetos), y sube
+    # con el nivel dentro de ese tope.
+    ps = {"objetos": ["manzana", "pera"], "modo": "sumar"}
+    for nivel in ("bajo", "medio", "alto"):
+        for s in range(30):
+            inst = p.generar(ps, nivel=nivel, rng=random.Random(s))
+            total = sum(inst.cantidad_objetivo["cantidades"])
+            assert 0 < total <= 15, f"{nivel}: total {total} fuera de (0,15]"
 
 
 def test_conteo_comparacion_extremo_unico():

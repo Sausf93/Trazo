@@ -25,11 +25,64 @@ from app.models import (
     UsuarioFinal,
     UsuarioStaff,
 )
-from app.schemas import AyudaIntentoIn, IntentoIn, IntentoOut, ResultadoIntentoIn
+from app.schemas import (
+    AyudaIntentoIn,
+    IntentoIn,
+    IntentoOut,
+    PendienteRevisionOut,
+    ResultadoIntentoIn,
+)
 from app.services.alertas import evaluar_usuario_bloque
 from app.services.correccion import corregir
 
 router = APIRouter(tags=["intentos"])
+
+
+@router.get("/pendientes", response_model=list[PendienteRevisionOut])
+async def listar_pendientes(
+    usuario_final_id: str | None = None,
+    limit: int = 100,
+    db: AsyncSession = Depends(get_db),
+    staff: UsuarioStaff = Depends(get_current_staff),
+):
+    """Cola de revisión: intentos 'sin_valorar' del centro pendientes de que la
+    integradora los juzgue (respuesta oral, trazo dudoso, actividad no
+    autocorregible). Con el contexto para decidir. Filtra por persona si se pasa."""
+    limit = max(1, min(limit, 500))
+    stmt = (
+        select(Intento, UsuarioFinal.alias_interno,
+                EjercicioCatalogo.nombre, EjercicioCatalogo.bloque,
+                EjercicioCatalogo.plantilla_tipo)
+        .join(UsuarioFinal, UsuarioFinal.id == Intento.usuario_final_id)
+        .join(EjercicioCatalogo, EjercicioCatalogo.id == Intento.ejercicio_id)
+        .where(
+            UsuarioFinal.centro_id == staff.centro_id,
+            Intento.resultado == "sin_valorar",
+        )
+        .order_by(Intento.timestamp_inicio.desc())
+        .limit(limit)
+    )
+    if usuario_final_id is not None:
+        # Anti-IDOR: la persona debe ser del centro (usuario_del_centro lanza 403).
+        await usuario_del_centro(db, usuario_final_id, staff)
+        stmt = stmt.where(Intento.usuario_final_id == usuario_final_id)
+
+    filas = (await db.execute(stmt)).all()
+    return [
+        PendienteRevisionOut(
+            id=i.id,
+            usuario_final_id=i.usuario_final_id,
+            alias_interno=alias,
+            ejercicio_id=i.ejercicio_id,
+            ejercicio=nombre,
+            bloque=bloque,
+            plantilla_tipo=plantilla,
+            cuando=i.timestamp_inicio,
+            valores_json=i.valores_json or {},
+            cantidad_objetivo_json=i.cantidad_objetivo_json or {},
+        )
+        for (i, alias, nombre, bloque, plantilla) in filas
+    ]
 
 
 @router.post(
@@ -168,7 +221,9 @@ async def marcar_resultado(
     """Cola de revisión: la integradora fija el resultado de una actividad que la
     app no supo juzgar (sin_valorar) — p. ej. una respuesta oral o un trazo
     dudoso. Reevalúa alertas del bloque tras el cambio."""
-    if body.resultado not in ("logrado", "parcial", "no_logrado"):
+    # 'sin_valorar' permite DEVOLVER un intento a la cola (dejarlo para más tarde
+    # o deshacer un toque por error), no solo fijar los tres resultados.
+    if body.resultado not in ("logrado", "parcial", "no_logrado", "sin_valorar"):
         raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY,
                             f"resultado inválido: {body.resultado}")
     intento = await db.get(Intento, intento_id)

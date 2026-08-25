@@ -8,7 +8,7 @@
  */
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { listarSesiones, sesionLive } from "../api/endpoints";
+import { cerrarSesion, listarSesiones, marcarAyuda, sesionLive } from "../api/endpoints";
 import { ApiError } from "../api/client";
 import type { Live, SesionListItem } from "../api/types";
 import { EstadoBadge } from "../components/EstadoBadge";
@@ -56,7 +56,7 @@ function SelectorSesionesAbiertas() {
       )}
       {sesiones.data && sesiones.data.length === 0 && (
         <StateMessage title="No hay ninguna sesión en directo">
-          Cuando la tablet inicie una actividad en grupo, aparecerá aquí para seguirla en tiempo real.
+          Cuando la tablet abra una sala (individual o en grupo), aparecerá aquí para seguirla en tiempo real.
         </StateMessage>
       )}
       {sesiones.data && sesiones.data.length > 0 && (
@@ -102,7 +102,34 @@ function LiveMonitor({ sesionId, onSalir }: { sesionId: string; onSalir: () => v
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [ultimaAct, setUltimaAct] = useState<Date | null>(null);
+  const [cerrando, setCerrando] = useState(false);
+  // Override optimista del "con ayuda" por intento (hasta que el siguiente poll
+  // lo confirme): así el toque se ve al instante sin esperar 4s.
+  const [ayudaLocal, setAyudaLocal] = useState<Record<string, boolean>>({});
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  async function onAyuda(intentoId: string, actual: boolean) {
+    const nuevo = !actual;
+    setAyudaLocal((prev) => ({ ...prev, [intentoId]: nuevo }));
+    try {
+      await marcarAyuda(intentoId, nuevo);
+    } catch {
+      setAyudaLocal((prev) => ({ ...prev, [intentoId]: actual })); // revertir si falla
+    }
+  }
+
+  async function cerrarSala() {
+    if (cerrando) return;
+    if (!window.confirm("¿Cerrar la sala? Se finalizará la sesión para todas las tablets. Los resultados quedan guardados.")) return;
+    setCerrando(true);
+    try {
+      await cerrarSesion(sesionId);
+      onSalir();
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "No se pudo cerrar la sala.");
+      setCerrando(false);
+    }
+  }
 
   useEffect(() => {
     let cancelado = false;
@@ -113,6 +140,20 @@ function LiveMonitor({ sesionId, onSalir }: { sesionId: string; onSalir: () => v
         const data = await sesionLive(sesionId, controller.signal);
         if (cancelado) return;
         setLive(data);
+        // Reconciliar el override optimista: en cuanto el servidor confirma el
+        // mismo valor, se devuelve la autoridad al servidor (así un cambio hecho
+        // desde otra facilitadora/tablet vuelve a verse y no queda "pegado").
+        setAyudaLocal((prev) => {
+          let cambio = false;
+          const next = { ...prev };
+          for (const f of data.fichas) {
+            if (f.ultimo_intento_id && next[f.ultimo_intento_id] === f.ultimo_con_ayuda) {
+              delete next[f.ultimo_intento_id];
+              cambio = true;
+            }
+          }
+          return cambio ? next : prev;
+        });
         setError(null);
         setUltimaAct(new Date());
       } catch (err) {
@@ -144,15 +185,34 @@ function LiveMonitor({ sesionId, onSalir }: { sesionId: string; onSalir: () => v
           title="Sesión en directo"
           subtitle={
             live
-              ? `${live.fichas.length} participante${live.fichas.length === 1 ? "" : "s"} · sesión ${live.tipo}`
+              ? `${live.fichas.length} participante${live.fichas.length === 1 ? "" : "s"} · ${live.tipo === "grupo" ? "sesión en grupo" : "sesión individual"}`
               : undefined
           }
           actions={
-            <span className="mono" style={{ fontSize: 12, color: colors.textFaint, display: "inline-flex", alignItems: "center", gap: 8 }}>
-              <span aria-hidden style={{ width: 8, height: 8, borderRadius: "50%", background: colors.sage, display: "inline-block", animation: "trazo-pulse 1.6s ease-in-out infinite" }} />
-              Actualizando cada {INTERVALO_MS / 1000}s
-              <style>{`@keyframes trazo-pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`}</style>
-            </span>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 16 }}>
+              <span className="mono" style={{ fontSize: 12, color: colors.textFaint, display: "inline-flex", alignItems: "center", gap: 8 }}>
+                <span aria-hidden style={{ width: 8, height: 8, borderRadius: "50%", background: colors.sage, display: "inline-block", animation: "trazo-pulse 1.6s ease-in-out infinite" }} />
+                Actualizando cada {INTERVALO_MS / 1000}s
+                <style>{`@keyframes trazo-pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`}</style>
+              </span>
+              <button
+                onClick={cerrarSala}
+                disabled={cerrando}
+                style={{
+                  padding: "8px 14px",
+                  borderRadius: radius.sm,
+                  border: `1.5px solid ${colors.coral}`,
+                  background: "transparent",
+                  color: colors.coralDark,
+                  fontWeight: 600,
+                  fontSize: 13.5,
+                  cursor: cerrando ? "default" : "pointer",
+                  opacity: cerrando ? 0.6 : 1,
+                }}
+              >
+                {cerrando ? "Cerrando…" : "Cerrar sala"}
+              </button>
+            </div>
           }
         />
       </div>
@@ -177,34 +237,82 @@ function LiveMonitor({ sesionId, onSalir }: { sesionId: string; onSalir: () => v
 
       {live && live.fichas.length > 0 && (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 16 }}>
-          {live.fichas.map((f) => (
-            <div
-              key={f.usuario_final_id}
-              style={{
-                background: colors.white,
-                border: `${f.atascado ? 2 : 1}px solid ${f.atascado ? colors.coral : colors.sand}`,
-                borderRadius: radius.md,
-                padding: "18px 20px",
-              }}
-            >
-              {f.atascado && (
-                <div className="mono" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11.5, color: colors.coralDark, marginBottom: 8 }}>
-                  <span aria-hidden>🔊</span>
-                  Atascado {fmtSegundos(f.segundos_desde_ultimo_intento)}
+          {live.fichas.map((f) => {
+            // El panel cuenta la misma historia que la tablet: quién terminó y
+            // espera, por dónde va cada uno, su ronda y si se le ayudó.
+            const borde = f.terminado ? colors.sage : f.atascado ? colors.coral : colors.sand;
+            const enCurso = f.pos_actual > 0 && f.total_actual > 0;
+            return (
+              <div
+                key={f.usuario_final_id}
+                style={{
+                  background: colors.white,
+                  border: `${f.terminado || f.atascado ? 2 : 1}px solid ${borde}`,
+                  borderRadius: radius.md,
+                  padding: "18px 20px",
+                }}
+              >
+                {f.terminado ? (
+                  <div className="mono" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11.5, color: colors.sageDark, marginBottom: 8 }}>
+                    <span aria-hidden>✓</span>
+                    Terminó · esperando a los demás
+                  </div>
+                ) : f.atascado ? (
+                  <div className="mono" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11.5, color: colors.coralDark, marginBottom: 8 }}>
+                    <span aria-hidden>●</span>
+                    Necesita ayuda · {fmtSegundos(f.segundos_desde_ultimo_intento)}
+                  </div>
+                ) : null}
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                  <span style={{ fontFamily: fonts.serif, fontSize: 19 }}>{f.alias_interno}</span>
+                  {f.ronda > 1 && (
+                    <span className="mono" style={{ fontSize: 10.5, color: colors.sageDark, background: colors.ivory, border: `1px solid ${colors.sand}`, borderRadius: 6, padding: "1px 6px" }}>
+                      Ronda {f.ronda}
+                    </span>
+                  )}
                 </div>
-              )}
-              <div style={{ fontFamily: fonts.serif, fontSize: 19, marginBottom: 4 }}>{f.alias_interno}</div>
-              <div style={{ fontSize: 13, color: colors.textFaint, marginBottom: 14, minHeight: 18 }}>
-                {f.ejercicio_actual ?? "Sin ejercicio en curso"}
+                <div style={{ fontSize: 13, color: colors.textFaint, marginBottom: 14, minHeight: 18 }}>
+                  {f.terminado
+                    ? "Ha terminado su tanda"
+                    : f.ejercicio_actual
+                      ? `${f.ejercicio_actual}${enCurso ? ` · ${f.pos_actual} de ${f.total_actual}` : ""}`
+                      : "Aún no ha empezado"}
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                    {f.ultimo_estado ? <EstadoBadge estado={f.ultimo_estado} /> : <span style={{ fontSize: 13, color: colors.textFaint }}>—</span>}
+                  </span>
+                  <span className="mono" style={{ fontSize: 11.5, color: colors.textFaint }}>
+                    {fmtSegundos(f.segundos_desde_ultimo_intento)}
+                  </span>
+                </div>
+                {/* Marcar "le ayudé" en la última actividad, sin levantarse a la tablet. */}
+                {f.ultimo_intento_id && (() => {
+                  const conAyuda = ayudaLocal[f.ultimo_intento_id] ?? f.ultimo_con_ayuda;
+                  return (
+                    <button
+                      onClick={() => onAyuda(f.ultimo_intento_id!, conAyuda)}
+                      aria-pressed={conAyuda}
+                      style={{
+                        marginTop: 10,
+                        width: "100%",
+                        padding: "8px 10px",
+                        borderRadius: radius.sm,
+                        border: `1.5px solid ${conAyuda ? colors.sageDark : colors.sand}`,
+                        background: conAyuda ? colors.sageDark : "transparent",
+                        color: conAyuda ? colors.white : colors.textMuted,
+                        fontWeight: 600,
+                        fontSize: 13,
+                        cursor: "pointer",
+                      }}
+                    >
+                      {conAyuda ? "✓ Le ayudé" : "Le ayudé"}
+                    </button>
+                  );
+                })()}
               </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                {f.ultimo_estado ? <EstadoBadge estado={f.ultimo_estado} /> : <span style={{ fontSize: 13, color: colors.textFaint }}>—</span>}
-                <span className="mono" style={{ fontSize: 11.5, color: colors.textFaint }}>
-                  {fmtSegundos(f.segundos_desde_ultimo_intento)}
-                </span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
 

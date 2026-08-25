@@ -85,6 +85,33 @@ async def test_baja_de_integradora(client):
     assert r.status_code == 401
 
 
+@pytest.mark.asyncio
+async def test_admin_restablece_password_de_su_equipo(client):
+    _, admin_h = await _login(client, ADMIN)
+    r = await client.get("/staff", headers=admin_h)
+    integ_id = next(s["id"] for s in r.json() if s["email"] == INTEGRADORA[0])
+    # Restablece la contraseña de la integradora.
+    r = await client.post(f"/staff/{integ_id}/password", headers=admin_h,
+                          json={"password": "clave-nueva-9"})
+    assert r.status_code == 204, r.text
+    # La vieja ya no vale; la nueva sí.
+    r = await client.post("/auth/login",
+                          data={"username": INTEGRADORA[0], "password": INTEGRADORA[1]})
+    assert r.status_code == 401
+    _, _ = await _login(client, (INTEGRADORA[0], "clave-nueva-9"))
+
+
+@pytest.mark.asyncio
+async def test_integradora_no_restablece_password(client):
+    _, admin_h = await _login(client, ADMIN)
+    integ_id = next(s["id"] for s in (await client.get("/staff", headers=admin_h)).json()
+                    if s["email"] == INTEGRADORA[0])
+    _, integ_h = await _login(client, INTEGRADORA)
+    r = await client.post(f"/staff/{integ_id}/password", headers=integ_h,
+                          json={"password": "otra-clave-8"})
+    assert r.status_code == 403
+
+
 # ---- Plataforma (nivel 0) ----
 
 @pytest.mark.asyncio

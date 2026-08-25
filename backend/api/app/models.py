@@ -21,6 +21,7 @@ from sqlalchemy import (
     Boolean,
     Date,
     DateTime,
+    Float,
     ForeignKey,
     Integer,
     String,
@@ -46,7 +47,28 @@ def _now() -> datetime:
 #  para mantener portabilidad y poder añadir valores sin migración de tipo).
 # --------------------------------------------------------------------------
 
-ROLES_STAFF = ("integradora", "admin_centro", "familia")
+# El equipo del centro de día lo montan entre 3 perfiles reales: terapeuta
+# ocupacional, integradora social y psicología. `integradora` se mantiene por
+# compatibilidad (cuentas antiguas). `familia` solo consulta.
+ROLES_STAFF = (
+    "integradora",
+    "psicologa",
+    "admin_centro",
+    "familia",
+    "terapeuta_ocupacional",
+    "integradora_social",
+)
+
+# Roles del personal CLÍNICO que planifica y/o facilita en la tablet (no la
+# familia, que solo consulta). Todos pueden planificar y facilitar; el equipo lo
+# montan la terapeuta ocupacional, la integradora social y la psicología.
+ROLES_CLINICOS = (
+    "integradora",
+    "psicologa",
+    "admin_centro",
+    "terapeuta_ocupacional",
+    "integradora_social",
+)
 
 BLOQUES = (
     "atencion_memoria",
@@ -69,6 +91,7 @@ PLANTILLAS = (
     "arrastrar_posicion",
     "busqueda_visual",
     "manejo_cantidad",
+    "parejas",
 )
 
 TIPOS_SESION = ("individual", "grupo")
@@ -103,6 +126,9 @@ class Centro(Base):
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
     nombre: Mapped[str] = mapped_column(String(200), nullable=False)
     activo: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    # Personas activas incluidas en el plan del centro. Por encima de este tope
+    # se avisa (base de la facturación por excedente). 0/None = sin límite.
+    tope_personas: Mapped[int] = mapped_column(Integer, default=30, nullable=False)
     creado_en: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
     staff: Mapped[list[UsuarioStaff]] = relationship(back_populates="centro")
@@ -120,10 +146,17 @@ class UsuarioStaff(Base):
     rol: Mapped[str] = mapped_column(String(30), nullable=False)  # ver ROLES_STAFF
     email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
+    # PIN corto (hash) para entrar rápido en la tablet emparejada eligiendo el
+    # nombre (sin teclear email). Opcional: null = sin PIN (usa email+contraseña).
+    pin_hash: Mapped[str | None] = mapped_column(String(255), nullable=True)
     activo: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     creado_en: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
     centro: Mapped[Centro] = relationship(back_populates="staff")
+
+    @property
+    def tiene_pin(self) -> bool:
+        return self.pin_hash is not None
 
 
 class UsuarioFinal(Base):
@@ -244,10 +277,35 @@ class SesionParticipante(Base):
     # Actividad que está haciendo AHORA (la reporta el kiosco), para que el monitor
     # muestre en vivo en qué va cada persona (no solo el último intento enviado).
     actividad_actual: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    # Cuándo empezó la actividad en curso (la fija el kiosco al reportarla). Sirve
+    # para medir "atascado" desde el inicio de la actividad ACTUAL, no desde el
+    # último intento enviado (que daba falsas alarmas en actividades largas).
+    actividad_actual_en: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True)
     pos_actual: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     total_actual: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
 
     sesion: Mapped[Sesion] = relationship(back_populates="participantes")
+
+
+class ObjetivoPaciente(Base):
+    """Meta clínica que la integradora fija para una persona en un ÁREA (bloque):
+    un desempeño objetivo a alcanzar o mantener. El panel muestra 'objetivo vs
+    situación actual'. Es la pieza de 'plan de intervención' que diferencia de un
+    catálogo de ejercicios (NeuronUP) y justifica el gasto ante familia/inspección."""
+
+    __tablename__ = "objetivos_paciente"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    usuario_final_id: Mapped[str] = mapped_column(
+        ForeignKey("usuarios_finales.id"), nullable=False, index=True)
+    bloque: Mapped[str] = mapped_column(String(30), nullable=False)  # área (BLOQUES)
+    descripcion: Mapped[str | None] = mapped_column(String(300), nullable=True)
+    # Desempeño objetivo 0..1 (logrado=1 / parcial=0.5 / no_logrado=0).
+    objetivo_desempeno: Mapped[float] = mapped_column(Float, nullable=False, default=0.7)
+    activo: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    creado_en: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+    creado_por: Mapped[str | None] = mapped_column(String(36), nullable=True)
 
 
 class EjercicioCatalogo(Base):
@@ -384,6 +442,8 @@ class Dispositivo(Base):
     token: Mapped[str] = mapped_column(String(64), unique=True, nullable=False, default=_uuid)
     activo: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     emparejado_en: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+    # Última vez que la tablet usó su token (para saber si sigue activa o se perdió).
+    visto_en: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
 class RegistroAuditoria(Base):

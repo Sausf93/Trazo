@@ -7,13 +7,15 @@
  */
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { alertasUsuario, evolucionUsuario, listarUsuarios } from "../api/endpoints";
-import type { Alerta, Evolucion, UsuarioFinal } from "../api/types";
+import { alertasUsuario, descargarIntentosCsv, evolucionUsuario, listarObjetivos, listarUsuarios } from "../api/endpoints";
+import type { Alerta, Evolucion, Objetivo, UsuarioFinal } from "../api/types";
 import { BLOQUES, labelBloque } from "../api/vocab";
 import { AlertCard } from "../components/AlertCard";
 import { EstadoBadge } from "../components/EstadoBadge";
 import { EvolucionChart, construirSerie } from "../components/EvolucionChart";
 import { InformeFamilia } from "../components/InformeFamilia";
+import { ConsentimientoPaciente } from "../components/ConsentimientoPaciente";
+import { ObjetivosPaciente } from "../components/ObjetivosPaciente";
 import { SugerenciasNivel } from "../components/SugerenciasNivel";
 import { Card, PageHeader, Spinner, StateMessage } from "../components/ui";
 import { useAuth } from "../auth/AuthContext";
@@ -26,14 +28,24 @@ export function UsuarioEvolucionPage() {
   const { session } = useAuth();
   const centroId = session!.centro_id;
   const [bloque, setBloque] = useState<string>("");
+  const [meses, setMeses] = useState<string>(""); // "" = todo el histórico | "3"|"6"|"12"
   const [verDetalle, setVerDetalle] = useState(false);
+
+  // Periodo: desde hoy menos N meses (el backend ya filtra por 'desde').
+  const desde = useMemo(() => {
+    if (!meses) return undefined;
+    const d = new Date();
+    d.setMonth(d.getMonth() - Number(meses));
+    return d.toISOString().slice(0, 10);
+  }, [meses]);
 
   const usuarios = useAsync<UsuarioFinal[]>((s) => listarUsuarios(centroId, s), [centroId]);
   const evolucion = useAsync<Evolucion>(
-    (s) => evolucionUsuario(id, bloque ? { bloque } : {}, s),
-    [id, bloque],
+    (s) => evolucionUsuario(id, { ...(bloque ? { bloque } : {}), ...(desde ? { desde } : {}) }, s),
+    [id, bloque, desde],
   );
   const alertas = useAsync<Alerta[]>((s) => alertasUsuario(id, s), [id]);
+  const objetivos = useAsync<Objetivo[]>((s) => listarObjetivos(id, s), [id]);
 
   const alias = usuarios.data?.find((u) => u.id === id)?.alias_interno ?? id;
 
@@ -86,6 +98,29 @@ export function UsuarioEvolucionPage() {
                 }}
               >
                 Informe para la familia (PDF)
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  if (id && centroId) descargarIntentosCsv({ centro_id: centroId, usuario_final_id: id, incluir_nombre: true });
+                }}
+                disabled={!evolucion.data || evolucion.data.puntos.length === 0}
+                title="Descarga los datos (fecha, área, resultado…) para la historia clínica"
+                style={{
+                  fontFamily: fonts.sans,
+                  fontWeight: 600,
+                  fontSize: 15,
+                  padding: "11px 20px",
+                  borderRadius: radius.sm,
+                  border: `1.5px solid ${colors.sand}`,
+                  background: "transparent",
+                  color: colors.textMuted,
+                  opacity: !evolucion.data || evolucion.data.puntos.length === 0 ? 0.55 : 1,
+                  cursor:
+                    !evolucion.data || evolucion.data.puntos.length === 0 ? "not-allowed" : "pointer",
+                }}
+              >
+                Exportar datos (CSV)
               </button>
               <Link
                 to={`/usuarios/${id}/plan`}
@@ -195,6 +230,27 @@ export function UsuarioEvolucionPage() {
                 </option>
               ))}
             </select>
+            <label htmlFor="periodo" style={{ fontSize: 14, fontWeight: 600, color: colors.textMuted }}>
+              Periodo
+            </label>
+            <select
+              id="periodo"
+              value={meses}
+              onChange={(e) => setMeses(e.target.value)}
+              style={{
+                padding: "10px 13px",
+                borderRadius: radius.sm,
+                border: `1.5px solid ${colors.sand}`,
+                background: colors.white,
+                color: colors.ink,
+                minWidth: 180,
+              }}
+            >
+              <option value="">Todo el historial</option>
+              <option value="3">Últimos 3 meses</option>
+              <option value="6">Últimos 6 meses</option>
+              <option value="12">Último año</option>
+            </select>
           </div>
 
           {/* Resumen — etiquetas en lenguaje llano */}
@@ -300,6 +356,12 @@ export function UsuarioEvolucionPage() {
         </div>
       )}
 
+      {/* Objetivos de intervención (metas por área) con progreso vs objetivo. */}
+      {id && <ObjetivosPaciente usuarioId={id} />}
+
+      {/* Consentimiento RGPD: constancia de que la persona está en regla. */}
+      {id && <ConsentimientoPaciente usuarioId={id} />}
+
       {/* Informe imprimible para la familia: oculto en pantalla, visible al imprimir. */}
       {evolucion.data && evolucion.data.puntos.length > 0 && (
         <InformeFamilia
@@ -307,6 +369,8 @@ export function UsuarioEvolucionPage() {
           bloqueLabel={labelBloque(bloque)}
           evolucion={evolucion.data}
           serie={serie}
+          objetivos={objetivos.data ?? []}
+          centroNombre={session?.centro_nombre}
         />
       )}
     </div>

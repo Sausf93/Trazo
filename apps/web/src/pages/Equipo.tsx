@@ -1,10 +1,11 @@
 /**
- * Equipo del centro (solo admin del centro): da de alta y gestiona a las
- * maestras (integradoras). Ellas luego dan de alta pacientes y hacen sesiones.
+ * Equipo del centro (solo admin del centro): da de alta y gestiona al equipo
+ * (terapeutas ocupacionales, integradoras sociales y psicología). Ellas luego
+ * dan de alta personas y hacen sesiones.
  */
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
-import { actualizarStaff, crearStaff, listarStaff } from "../api/endpoints";
+import { actualizarStaff, crearStaff, listarStaff, restablecerPasswordStaff } from "../api/endpoints";
 import type { Staff } from "../api/types";
 import { useAuth } from "../auth/AuthContext";
 import { Button, Card, PageHeader, Spinner, StateMessage, inputStyle } from "../components/ui";
@@ -21,7 +22,7 @@ export function EquipoPage() {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rol, setRol] = useState("integradora");
+  const [rol, setRol] = useState("terapeuta_ocupacional");
   const [creando, setCreando] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [ok, setOk] = useState<string | null>(null);
@@ -47,7 +48,7 @@ export function EquipoPage() {
       setNombre("");
       setEmail("");
       setPassword("");
-      setRol("integradora");
+      setRol("terapeuta_ocupacional");
       equipo.reload();
     } catch (e) {
       setError(e instanceof Error ? e.message : "No se pudo crear la cuenta.");
@@ -61,7 +62,7 @@ export function EquipoPage() {
       <PageHeader
         eyebrow="Panel del centro"
         title="Equipo"
-        subtitle="Da de alta a las maestras del centro. Cada una entra con su email y contraseña, y desde ahí gestiona a sus pacientes."
+        subtitle="Da de alta al equipo del centro. Cada persona entra con su email y contraseña, y desde ahí gestiona a las personas del centro."
       />
 
       {/* Alta de una cuenta nueva */}
@@ -82,7 +83,9 @@ export function EquipoPage() {
           </Field>
           <Field label="Rol">
             <select style={inputStyle} value={rol} onChange={(e) => setRol(e.target.value)}>
-              <option value="integradora">Maestra (integradora)</option>
+              <option value="terapeuta_ocupacional">Terapeuta ocupacional</option>
+              <option value="integradora_social">Integradora social</option>
+              <option value="psicologa">Psicología</option>
               <option value="admin_centro">Administración del centro</option>
             </select>
           </Field>
@@ -117,6 +120,22 @@ export function EquipoPage() {
   );
 }
 
+/** Etiqueta legible del rol del staff (los 3 perfiles del equipo + admin + legado). */
+function etiquetaRol(rol: string): string {
+  switch (rol) {
+    case "admin_centro":
+      return "Administración";
+    case "psicologa":
+      return "Psicología";
+    case "terapeuta_ocupacional":
+      return "Terapeuta ocupacional";
+    case "integradora_social":
+      return "Integradora social";
+    default:
+      return "Integradora"; // cuentas antiguas con rol "integradora"
+  }
+}
+
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label style={{ display: "block" }}>
@@ -146,6 +165,28 @@ function FilaStaff({ miembro, esYo, onCambio }: { miembro: Staff; esYo: boolean;
     }
   }
 
+  async function restablecerClave() {
+    const clave = window.prompt(
+      `Nueva contraseña para "${miembro.nombre}" (mínimo 8 caracteres).\n` +
+        `Anótala y dásela; podrá cambiarla luego.`,
+    );
+    if (clave == null) return; // canceló
+    if (clave.length < 8) {
+      setError("La contraseña debe tener al menos 8 caracteres.");
+      return;
+    }
+    setOcupado(true);
+    setError(null);
+    try {
+      await restablecerPasswordStaff(miembro.id, clave);
+      window.alert(`Contraseña restablecida para "${miembro.nombre}".`);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "No se pudo restablecer.");
+    } finally {
+      setOcupado(false);
+    }
+  }
+
   return (
     <div
       style={{
@@ -164,7 +205,7 @@ function FilaStaff({ miembro, esYo, onCambio }: { miembro: Staff; esYo: boolean;
         <div style={{ fontFamily: "Fraunces, serif", fontSize: 18 }}>
           {miembro.nombre}{" "}
           <span style={{ fontFamily: "inherit", fontSize: 12.5, color: esAdmin ? colors.coralDeep : colors.sageDark, fontWeight: 600 }}>
-            · {esAdmin ? "Administración" : "Maestra"}
+            · {etiquetaRol(miembro.rol)}
           </span>
         </div>
         <div style={{ fontSize: 13.5, color: colors.textFaint }}>{miembro.email}</div>
@@ -172,13 +213,27 @@ function FilaStaff({ miembro, esYo, onCambio }: { miembro: Staff; esYo: boolean;
       {error && (
         <span role="alert" style={{ flexBasis: "100%", color: colors.coralDeep, fontSize: 13 }}>{error}</span>
       )}
-      <div style={{ display: "flex", gap: 8 }}>
+      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
         {esYo ? (
-          <span style={{ fontSize: 13, color: colors.textFaint, alignSelf: "center" }}>Tu cuenta</span>
-        ) : miembro.activo ? (
-          <Button variant="coral" onClick={cambiarActivo} disabled={ocupado}>Dar de baja</Button>
+          <>
+            <span style={{ fontSize: 13, color: colors.textFaint, alignSelf: "center" }}>Tu cuenta</span>
+            <Button variant="ghost" onClick={restablecerClave} disabled={ocupado}>
+              Cambiar mi contraseña
+            </Button>
+          </>
         ) : (
-          <Button variant="ghost" onClick={cambiarActivo} disabled={ocupado}>Reactivar</Button>
+          <>
+            {miembro.activo && (
+              <Button variant="ghost" onClick={restablecerClave} disabled={ocupado}>
+                Restablecer contraseña
+              </Button>
+            )}
+            {miembro.activo ? (
+              <Button variant="coral" onClick={cambiarActivo} disabled={ocupado}>Dar de baja</Button>
+            ) : (
+              <Button variant="ghost" onClick={cambiarActivo} disabled={ocupado}>Reactivar</Button>
+            )}
+          </>
         )}
       </div>
     </div>

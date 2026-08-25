@@ -4,26 +4,30 @@
  * para que el panel se sienta parte del mismo producto.
  */
 
+// Paleta oficial "Aqua Green" (elegida por Saulo). Nombres conservados.
 export const colors = {
-  ivory: "#FAF6EF",
-  card: "#F2ECDF",
-  ink: "#2B3A32",
-  sage: "#7C9885",
-  sageDark: "#5C7A66",
-  coral: "#E8A87C",
-  coralDark: "#C97B4A",
-  // Coral oscuro para texto/botones con texto blanco: cumple contraste WCAG AA
-  // (coralDark #C97B4A sobre blanco se queda en ~3.1:1, insuficiente).
-  coralDeep: "#9C4E24",
-  sand: "#C9BFA4",
+  ivory: "#F5FBFA",
+  card: "#E8F5F2",
+  ink: "#12312E",
+  sage: "#12A99B",
+  sageDark: "#1F7A70",
+  coral: "#F08A6B",
+  coralDark: "#C4553A",
+  // Coral profundo para texto/botones con texto blanco (contraste WCAG AA).
+  coralDeep: "#A8431F",
+  sand: "#D2E6E2",
   white: "#FFFEFB",
 
+  // Azul de acento (petición de Saulo para CTA/enlaces).
+  azul: "#2C7595",
+  azulDark: "#215A73",
+
   // Derivados usados en la presentación (texto secundario, fondos suaves).
-  text: "#2B3A32",
-  textMuted: "#4A5A50",
-  textFaint: "#6E6752",
-  alertBg: "#FBEFE4",
-  alertText: "#6B5A48",
+  text: "#12312E",
+  textMuted: "#5A716E",
+  textFaint: "#7E938F",
+  alertBg: "#FDEEE8",
+  alertText: "#7A4A3A",
 } as const;
 
 export const fonts = {
@@ -39,5 +43,5 @@ export const radius = {
 } as const;
 
 export const shadow = {
-  soft: "0 20px 40px -18px rgba(43, 58, 50, 0.35)",
+  soft: "0 20px 40px -18px rgba(18, 49, 46, 0.30)",
 } as const;

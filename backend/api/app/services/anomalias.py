@@ -183,6 +183,9 @@ _CLAVES_DIFICULTAD = frozenset({
     "nivel",  # el generador lo inyecta: segmenta por nivel en toda plantilla
     "n_opciones", "n_figuras", "n_rejilla", "n_pasos", "cantidad",
     "n_piezas", "objetivos", "total", "tolerancia_px",
+    # 'parejas': deterministas por nivel (3/6/8 pares). Sin esto, subir el nivel
+    # compara contra el baseline fácil y dispara una falsa alerta de declive.
+    "n_pares", "n_cartas",
 })
 
 

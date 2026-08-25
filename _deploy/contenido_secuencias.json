@@ -1,0 +1,325 @@
+[
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "En la cocina, paso a paso",
+  "descripcion": "Ordenar los pasos de pequeñas recetas de andar por casa: freír un huevo, hacer un bocadillo o cocer la pasta.",
+  "parametros_json": {
+   "dificultad": "media",
+   "pasos_min": 4,
+   "pasos_max": 4,
+   "tareas": [
+    {
+     "id": "huevo_frito",
+     "titulo": "Freír un huevo",
+     "instruccion": "Ordena los pasos de freír un huevo: lo primero arriba.",
+     "pasos": [
+      "Pon aceite en la sartén",
+      "Enciende el fuego para calentar el aceite",
+      "Casca el huevo dentro de la sartén",
+      "Sácalo con la espumadera cuando esté hecho"
+     ]
+    },
+    {
+     "id": "bocadillo",
+     "titulo": "Hacer un bocadillo",
+     "instruccion": "Ordena los pasos de hacer un bocadillo: lo primero arriba.",
+     "pasos": [
+      "Corta el pan por la mitad",
+      "Pon dentro el jamón",
+      "Cierra el bocadillo",
+      "Dale un bocado"
+     ]
+    },
+    {
+     "id": "cocer_pasta",
+     "titulo": "Cocer la pasta",
+     "instruccion": "Ordena los pasos de cocer la pasta: lo primero arriba.",
+     "pasos": [
+      "Llena una olla con agua",
+      "Ponla al fuego hasta que hierva",
+      "Echa la pasta en el agua hirviendo",
+      "Escúrrela cuando esté lista"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "El desayuno recién hecho",
+  "descripcion": "Ordenar los pasos de preparar bebidas sencillas del desayuno: un café con leche o un zumo de naranja.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "pasos_min": 4,
+   "pasos_max": 4,
+   "tareas": [
+    {
+     "id": "cafe_con_leche",
+     "titulo": "Un café con leche",
+     "instruccion": "Ordena los pasos de hacer un café con leche: lo primero arriba.",
+     "pasos": [
+      "Pon leche en un cazo",
+      "Caliéntala en el fuego",
+      "Viértela en la taza",
+      "Añade el café y remueve"
+     ]
+    },
+    {
+     "id": "zumo_naranja",
+     "titulo": "Un zumo de naranja",
+     "instruccion": "Ordena los pasos de hacer un zumo de naranja: lo primero arriba.",
+     "pasos": [
+      "Parte la naranja por la mitad",
+      "Exprímela en el exprimidor",
+      "Vierte el zumo en un vaso",
+      "Bébetelo mientras está fresco"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "El aseo de la mañana",
+  "descripcion": "Ordenar los pasos de pequeñas rutinas de aseo personal: lavarse los dientes, lavarse las manos o peinarse.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "pasos_min": 3,
+   "pasos_max": 4,
+   "tareas": [
+    {
+     "id": "lavarse_dientes",
+     "titulo": "Lavarse los dientes",
+     "instruccion": "Ordena los pasos de lavarse los dientes: lo primero arriba.",
+     "pasos": [
+      "Coge el cepillo de dientes",
+      "Pon la pasta en el cepillo",
+      "Cepíllate los dientes",
+      "Enjuágate la boca con agua"
+     ]
+    },
+    {
+     "id": "lavarse_manos",
+     "titulo": "Lavarse las manos",
+     "instruccion": "Ordena los pasos de lavarse las manos: lo primero arriba.",
+     "pasos": [
+      "Abre el grifo y mójate las manos",
+      "Échate jabón",
+      "Frótate bien las manos",
+      "Aclárate y sécate con la toalla"
+     ]
+    },
+    {
+     "id": "peinarse",
+     "titulo": "Peinarse",
+     "instruccion": "Ordena los pasos de peinarse: lo primero arriba.",
+     "pasos": [
+      "Coge el peine",
+      "Péinate el pelo",
+      "Déjalo bien colocado ante el espejo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "Recados por el barrio",
+  "descripcion": "Ordenar los pasos de gestiones fuera de casa: ir a por el pan, coger el autobús o hacer una llamada.",
+  "parametros_json": {
+   "dificultad": "media",
+   "pasos_min": 4,
+   "pasos_max": 4,
+   "tareas": [
+    {
+     "id": "comprar_pan",
+     "titulo": "Ir a por el pan",
+     "instruccion": "Ordena los pasos de ir a por el pan: lo primero arriba.",
+     "pasos": [
+      "Sal de casa hacia la panadería",
+      "Espera tu turno en la cola",
+      "Pide el pan y págalo",
+      "Vuelve a casa con el pan"
+     ]
+    },
+    {
+     "id": "coger_autobus",
+     "titulo": "Coger el autobús",
+     "instruccion": "Ordena los pasos de coger el autobús: lo primero arriba.",
+     "pasos": [
+      "Espera en la parada",
+      "Sube cuando llegue el autobús",
+      "Valida el billete",
+      "Bájate en tu parada"
+     ]
+    },
+    {
+     "id": "llamada_telefono",
+     "titulo": "Hacer una llamada",
+     "instruccion": "Ordena los pasos de hacer una llamada: lo primero arriba.",
+     "pasos": [
+      "Coge el teléfono",
+      "Marca el número",
+      "Habla con la persona",
+      "Cuelga al terminar"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "La mesa: poner y recoger",
+  "descripcion": "Ordenar los pasos de preparar la mesa para comer y de recogerla después.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "pasos_min": 4,
+   "pasos_max": 4,
+   "tareas": [
+    {
+     "id": "poner_mesa",
+     "titulo": "Poner la mesa",
+     "instruccion": "Ordena los pasos de poner la mesa: lo primero arriba.",
+     "pasos": [
+      "Pon el mantel en la mesa",
+      "Coloca los platos",
+      "Pon al lado los cubiertos",
+      "Sirve la comida"
+     ]
+    },
+    {
+     "id": "recoger_mesa",
+     "titulo": "Recoger la mesa",
+     "instruccion": "Ordena los pasos de recoger la mesa: lo primero arriba.",
+     "pasos": [
+      "Retira los platos sucios",
+      "Limpia las migas de la mesa",
+      "Dobla el mantel",
+      "Guárdalo todo en su sitio"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "Cuidar el hogar",
+  "descripcion": "Ordenar los pasos de tareas de casa habituales: hacer la cama, barrer el suelo o regar las plantas.",
+  "parametros_json": {
+   "dificultad": "media",
+   "pasos_min": 3,
+   "pasos_max": 4,
+   "tareas": [
+    {
+     "id": "hacer_cama",
+     "titulo": "Hacer la cama",
+     "instruccion": "Ordena los pasos de hacer la cama: lo primero arriba.",
+     "pasos": [
+      "Estira la sábana de abajo",
+      "Pon la sábana de arriba",
+      "Coloca la manta encima",
+      "Ahueca la almohada"
+     ]
+    },
+    {
+     "id": "barrer_suelo",
+     "titulo": "Barrer el suelo",
+     "instruccion": "Ordena los pasos de barrer el suelo: lo primero arriba.",
+     "pasos": [
+      "Coge la escoba",
+      "Junta la suciedad en un montón",
+      "Recógela con el recogedor",
+      "Tírala a la basura"
+     ]
+    },
+    {
+     "id": "regar_plantas",
+     "titulo": "Regar las plantas",
+     "instruccion": "Ordena los pasos de regar las plantas: lo primero arriba.",
+     "pasos": [
+      "Llena la regadera de agua",
+      "Riega cada maceta",
+      "Deja la regadera vacía en su sitio"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "Procesos con sentido",
+  "descripcion": "Ordenar de principio a fin procesos conocidos: del huevo a la gallina o del trigo al pan.",
+  "parametros_json": {
+   "dificultad": "media",
+   "pasos_min": 4,
+   "pasos_max": 4,
+   "tareas": [
+    {
+     "id": "huevo_gallina",
+     "titulo": "Del huevo a la gallina",
+     "instruccion": "Ordena las fases, desde el principio: lo primero arriba.",
+     "pasos": [
+      "La gallina pone un huevo",
+      "El huevo se incuba con el calor",
+      "Del huevo nace un pollito",
+      "El pollito crece y se hace gallina"
+     ]
+    },
+    {
+     "id": "trigo_pan",
+     "titulo": "Del trigo al pan",
+     "instruccion": "Ordena las fases, desde el principio: lo primero arriba.",
+     "pasos": [
+      "Se siembra el trigo en el campo",
+      "El trigo crece y se recoge",
+      "El grano se muele para hacer harina",
+      "Con la harina se hornea el pan"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "calculo",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "Ordenar por tamaño y por valor",
+  "descripcion": "Colocar cosas de menor a mayor: las tallas de la ropa o las monedas por su valor.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "pasos_min": 4,
+   "pasos_max": 5,
+   "tareas": [
+    {
+     "id": "tallas_ropa",
+     "titulo": "Tallas de ropa",
+     "instruccion": "Ordena las tallas de menor a mayor: la más pequeña arriba.",
+     "pasos": [
+      "Talla pequeña",
+      "Talla mediana",
+      "Talla grande",
+      "Talla extra grande"
+     ]
+    },
+    {
+     "id": "monedas_valor",
+     "titulo": "Monedas por su valor",
+     "instruccion": "Ordena las monedas de menor a mayor valor: la de menos valor arriba.",
+     "pasos": [
+      "Un céntimo",
+      "Diez céntimos",
+      "Cincuenta céntimos",
+      "Un euro",
+      "Dos euros"
+     ]
+    }
+   ]
+  }
+ }
+]

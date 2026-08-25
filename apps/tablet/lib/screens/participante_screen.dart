@@ -1,23 +1,38 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:uuid/uuid.dart';
 
 import '../api/client.dart';
 import '../models.dart';
 import '../sync_queue.dart';
 import '../theme.dart';
+import '../tts.dart';
 import '../widgets/arrastrar_posicion_widget.dart';
 import '../widgets/busqueda_visual_widget.dart';
 import '../widgets/conteo_comparacion_widget.dart';
 import '../widgets/generico_widget.dart';
 import '../widgets/manejo_cantidad_widget.dart';
+import '../widgets/memoria_parejas_widget.dart';
 import '../widgets/memoria_visual_widget.dart';
 import '../widgets/secuencia_ordenar_widget.dart';
 import '../widgets/seleccion_multiple_widget.dart';
 import '../widgets/trazo_widget.dart';
 
-enum _Fase { esperando, quienEres, esperandoInicio, ejercicio, terminado }
+enum _Fase {
+  esperando,
+  // Hay VARIAS salas abiertas en el centro: la persona elige primero a cuál
+  // unirse (qué actividad/grupo) y luego su nombre.
+  elegirSala,
+  quienEres,
+  esperandoInicio,
+  ejercicio,
+  terminado,
+  // La cola llegó vacía (p. ej. paciente aún sin plan): NO es "terminó", así que
+  // no se muestra la felicitación. Se avisa para que la responsable lo resuelva.
+  sinActividades,
+}
 
 /// Rol PARTICIPANTE (kiosco). Pantalla completa, sin menús, para usuarios
 /// mayores. El control de "ayuda" vive SOLO en la tablet de la maestra.
@@ -34,7 +49,14 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
 
   _Fase _fase = _Fase.esperando;
   SesionActiva? _sesion;
+  // Sala elegida (cuando hay varias) antes de elegir el nombre. Determina qué
+  // lista de personas se muestra y a qué sesión se liga la persona.
+  SalaActiva? _salaElegida;
   ParticipanteSesion? _yo;
+  // Sesión a la que este participante quedó ligado al elegir su identidad. Toda
+  // su medición va SIEMPRE a esta sesión, no a la "más reciente" del centro: si
+  // se abre otra sala a mitad de actividad, no se le reasigna en silencio.
+  String? _sesionIdActivo;
 
   List<ColaItem> _cola = [];
   int _idx = 0;
@@ -55,6 +77,38 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
   // el mayor no se queda con un "Esperando…" eterno sin saber que algo va mal.
   int _fallosSeguidos = 0;
   bool get _sinConexion => _fallosSeguidos >= 3;
+  // Guarda de reentrada: con WiFi lento el timeout (12s) supera el tick (3s) y
+  // se solaparían varios polls (banner errático, dos _empezarCola en carrera).
+  bool _polling = false;
+
+  // Overlay cálido y breve entre pasos (micro-refuerzo tras cada actividad y
+  // puente al recibir otra tanda): la persona no encadena pruebas "al vacío" ni
+  // recibe trabajo de golpe justo tras oír "has terminado".
+  String? _overlayMensaje;
+  String? _overlaySub;
+
+  Future<void> _mostrarPaso(String msg, {String? sub, int ms = 1000}) async {
+    if (!mounted) return;
+    setState(() {
+      _overlayMensaje = msg;
+      _overlaySub = sub;
+    });
+    HapticFeedback.lightImpact();
+    // Refuerzo/puente HABLADO: quien no lee bien también recibe el ánimo.
+    Tts.instance.hablar(sub == null ? msg : '$msg. $sub');
+    await Future.delayed(Duration(milliseconds: ms));
+    if (!mounted) return;
+    setState(() {
+      _overlayMensaje = null;
+      _overlaySub = null;
+    });
+  }
+
+  // Palabra cálida rotada para el refuerzo entre actividades (sobria, no infantil).
+  String _fraseRefuerzo() {
+    const frases = ['¡Muy bien!', 'Estupendo', '¡Vas muy bien!', 'Perfecto', '¡Bien hecho!'];
+    return frases[_idx % frases.length];
+  }
 
   @override
   void initState() {
@@ -66,12 +120,23 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
   @override
   void dispose() {
     _timer?.cancel();
+    Tts.instance.parar();
     super.dispose();
   }
 
   // --- Polling del estado de la sala --------------------------------------
 
   Future<void> _poll() async {
+    if (_polling) return; // no solapar con un poll aún en vuelo
+    _polling = true;
+    try {
+      await _pollImpl();
+    } finally {
+      _polling = false;
+    }
+  }
+
+  Future<void> _pollImpl() async {
     // Aprovecha cada tick para reenviar mediciones que quedaron pendientes por
     // un corte de WiFi (no se pierden). flush() es barato si no hay nada.
     SyncQueue.flush();
@@ -88,46 +153,88 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
     if (_fallosSeguidos != 0) _fallosSeguidos = 0; // recuperada la conexión
     _sesion = sesion;
 
-    // La sala se cerró: volver a la pantalla de espera.
+    // No hay ninguna sala abierta en el centro: volver a la pantalla de espera.
     if (!sesion.haySesion) {
-      if (_fase != _Fase.esperando) {
-        setState(() {
-          _fase = _Fase.esperando;
-          _yo = null;
-          _cola = [];
-          _instancia = null;
-        });
-      } else {
-        setState(() {});
+      _volverAEspera();
+      return;
+    }
+
+    // --- Persona YA ligada a una sala: todo gira en torno a SU sala ---------
+    final sid = _sesionIdActivo;
+    if (_yo != null && sid != null) {
+      final sala = sesion.salaConId(sid);
+      // Su sala se cerró (la maestra la finalizó): volver a espera. NO se le
+      // reasigna en silencio a otra sala aunque el centro tenga más abiertas.
+      if (sala == null) {
+        _volverAEspera();
+        return;
+      }
+      switch (_fase) {
+        case _Fase.esperandoInicio:
+          if (sala.iniciada) {
+            _empezarCola();
+          } else {
+            setState(() {});
+          }
+          break;
+        case _Fase.terminado:
+          await _comprobarNuevaTanda(sala);
+          break;
+        default:
+          setState(() {});
       }
       return;
     }
 
+    // --- Persona AÚN sin elegir: elegir sala (si hay varias) y luego nombre --
+    // Si su sala elegida desapareció (se cerró) mientras elegía, se recalcula.
+    if (_salaElegida != null &&
+        sesion.salaConId(_salaElegida!.sesionId) == null) {
+      _salaElegida = null;
+    }
+    if (!sesion.variasSalas) {
+      // Una sola sala: se salta el paso de elegir sala.
+      _salaElegida = sesion.salas.isNotEmpty ? sesion.salas.first : null;
+    } else {
+      // Refresca la sala elegida con su estado más reciente (participantes).
+      if (_salaElegida != null) {
+        _salaElegida = sesion.salaConId(_salaElegida!.sesionId);
+      }
+    }
+
     switch (_fase) {
       case _Fase.esperando:
-        setState(() => _fase = _Fase.quienEres);
+        setState(() =>
+            _fase = sesion.variasSalas ? _Fase.elegirSala : _Fase.quienEres);
         break;
-      case _Fase.esperandoInicio:
-        if (sesion.iniciada) {
-          _empezarCola();
-        } else {
-          setState(() {});
-        }
-        break;
-      case _Fase.terminado:
-        await _comprobarNuevaTanda(sesion);
+      case _Fase.elegirSala:
+        // Si dejó de haber varias (una se cerró), colapsa a "¿quién eres?".
+        setState(() {
+          if (!sesion.variasSalas) _fase = _Fase.quienEres;
+        });
         break;
       default:
         setState(() {});
     }
   }
 
+  void _volverAEspera() {
+    setState(() {
+      _fase = _Fase.esperando;
+      _yo = null;
+      _salaElegida = null;
+      _sesionIdActivo = null;
+      _cola = [];
+      _instancia = null;
+    });
+  }
+
   /// Mientras el participante espera tras terminar, comprueba si la maestra le
   /// ha mandado OTRA tanda (`ronda` sube / `terminado` vuelve a false).
-  Future<void> _comprobarNuevaTanda(SesionActiva sesion) async {
+  Future<void> _comprobarNuevaTanda(SalaActiva sala) async {
     final yo = _yo;
-    final sid = sesion.sesionId;
-    if (yo == null || sid == null) return;
+    final sid = sala.sesionId;
+    if (yo == null) return;
     EstadoParticipante est;
     try {
       est = await ApiClient.instance.estadoParticipante(sid, yo.usuarioFinalId);
@@ -135,10 +242,14 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
       return; // reintenta en el siguiente tick
     }
     if (!mounted || _fase != _Fase.terminado) return;
-    // Nueva tanda: la maestra subió la ronda (pulsó "Enviar más"). Volvemos a
-    // pedir la cola y continuamos donde estábamos.
+    // Nueva tanda: la maestra subió la ronda (pulsó "Enviar más"). Se muestra un
+    // puente sereno que reconecta con el "has terminado" que se le acaba de decir
+    // (si no, reaparece trabajo de golpe y desconcierta), y luego se pide la cola.
     if (est.ronda > _rondaBase) {
       _rondaBase = est.ronda;
+      await _mostrarPaso('¡Seguimos!',
+          sub: 'Tu responsable te ha preparado un poco más', ms: 2000);
+      if (!mounted) return;
       _empezarCola();
     }
   }
@@ -148,6 +259,8 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
   Future<void> _elegirse(ParticipanteSesion p) async {
     // Confirmación grande: si una persona con Alzheimer toca el nombre de al
     // lado, sus mediciones irían a OTRA ficha. Se confirma antes de empezar.
+    // Se dice EN VOZ ALTA para quien no lee bien (evita medir a otra persona).
+    Tts.instance.hablar('¿Eres tú, ${p.aliasInterno}?');
     final ok = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
@@ -172,7 +285,7 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
           ElevatedButton(
             onPressed: () => Navigator.pop(context, true),
             style: ElevatedButton.styleFrom(
-                backgroundColor: TrazoColors.sage,
+                backgroundColor: TrazoColors.sageDark,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
                 textStyle: const TextStyle(
@@ -183,9 +296,17 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
       ),
     );
     if (ok != true || !mounted) return;
-    setState(() => _yo = p);
-    final sesion = _sesion;
-    if (sesion != null && sesion.iniciada) {
+    // Queda ligado a SU sala (la elegida, o la única): su medición irá siempre
+    // ahí, no a "la más reciente" del centro (ver _sesionIdActivo).
+    final sala = _salaElegida ??
+        (_sesion?.salas.isNotEmpty ?? false ? _sesion!.salas.first : null);
+    if (sala == null) return;
+    setState(() {
+      _yo = p;
+      _salaElegida = sala;
+      _sesionIdActivo = sala.sesionId;
+    });
+    if (sala.iniciada) {
       _empezarCola();
     } else {
       setState(() => _fase = _Fase.esperandoInicio);
@@ -196,8 +317,8 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
 
   Future<void> _empezarCola() async {
     final yo = _yo;
-    final sesion = _sesion;
-    if (yo == null || sesion?.sesionId == null) return;
+    final sid = _sesionIdActivo;
+    if (yo == null || sid == null) return;
     setState(() {
       _fase = _Fase.ejercicio;
       _cargandoInstancia = true;
@@ -205,14 +326,14 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
     });
     try {
       final cola = await ApiClient.instance
-          .colaUsuario(yo.usuarioFinalId, sesion!.sesionId!);
+          .colaUsuario(yo.usuarioFinalId, sid);
       // La sala pudo cerrarse mientras se pedía la cola.
       if (!mounted || _fase == _Fase.esperando || _yo == null) return;
       _cola = cola;
       _idx = 0;
       if (_cola.isEmpty) {
         setState(() {
-          _fase = _Fase.terminado;
+          _fase = _Fase.sinActividades;
           _cargandoInstancia = false;
         });
         return;
@@ -250,8 +371,13 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
         _cargandoInstancia = false;
         _inicioEjercicio = DateTime.now();
       });
-      // Avisa al monitor de la maestra de en qué actividad va AHORA.
-      final sid = _sesion?.sesionId;
+      // Lee la consigna en voz alta (accesibilidad: mayores que no leen bien).
+      Tts.instance.hablar(_textoParaLeer(inst));
+      // Avisa al monitor de la maestra de en qué actividad va AHORA. Usa la sala
+      // a la que la persona quedó LIGADA (_sesionIdActivo), no el campo plano:
+      // con varias salas el plano es la más reciente y el reporte iría a la sala
+      // equivocada (el monitor perdería 'actividad en curso' y 'atascado').
+      final sid = _sesionIdActivo;
       if (sid != null) {
         ApiClient.instance.reportarActual(
             sid, yo.usuarioFinalId, inst.nombre, _idx + 1, _cola.length);
@@ -263,6 +389,18 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
         _cargandoInstancia = false;
       });
     }
+  }
+
+  /// Texto que se lee en voz alta: la consigna y, si la actividad trae un
+  /// enunciado distinto (p. ej. la serie o el refrán), también.
+  String _textoParaLeer(Instancia inst) {
+    final r = inst.render;
+    final instr = (r['instruccion'] ?? '').toString().trim();
+    final enun = (r['enunciado'] ?? '').toString().trim();
+    if (enun.isNotEmpty && enun != instr) {
+      return instr.isEmpty ? enun : '$instr. $enun';
+    }
+    return instr;
   }
 
   /// Reintento robusto: si la cola no llegó a cargarse, la reintenta; si ya
@@ -292,13 +430,13 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
 
   Future<void> _terminarEjercicioImpl() async {
     final yo = _yo;
-    final sesion = _sesion;
+    final sid = _sesionIdActivo; // SIEMPRE la sesión a la que quedó ligado
     final inst = _instancia;
-    if (yo != null && sesion?.sesionId != null && inst != null) {
+    if (yo != null && sid != null && inst != null) {
       final intento = Intento(
         id: _uuid.v4(), // UUID en cliente -> sync offline idempotente
         usuarioFinalId: yo.usuarioFinalId,
-        sesionId: sesion!.sesionId!,
+        sesionId: sid,
         ejercicioId: _cola[_idx].ejercicioId,
         // Nace SIN VALORAR: no cuenta como acierto hasta que la integradora diga
         // cómo fue (solo/con_ayuda/no_pudo). Así la medida no se infla sola.
@@ -314,10 +452,10 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
     if (_idx + 1 >= _cola.length) {
       // Terminó su tanda: avisar a la maestra y ESPERAR (no volver solo). El
       // polling detecta si la maestra manda otra tanda (la `ronda` sube).
-      if (yo != null && sesion?.sesionId != null) {
+      if (yo != null && sid != null) {
         try {
           final est = await ApiClient.instance
-              .marcarTerminadoParticipante(sesion!.sesionId!, yo.usuarioFinalId);
+              .marcarTerminadoParticipante(sid, yo.usuarioFinalId);
           _rondaBase = est.ronda;
         } catch (_) {
           // si falla el aviso, se queda en "terminado" igualmente
@@ -326,7 +464,11 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
       if (!mounted) return;
       setState(() => _fase = _Fase.terminado);
     } else {
+      // Micro-refuerzo digno antes de la siguiente actividad: reconoce el
+      // esfuerzo en vez de saltar en silencio de una prueba a otra.
       setState(() => _idx += 1);
+      await _mostrarPaso(_fraseRefuerzo(), ms: 1000);
+      if (!mounted) return;
       _cargarInstancia();
     }
   }
@@ -361,7 +503,7 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
               child: const Text('Cambiar de persona')),
           ElevatedButton(
               onPressed: () => Navigator.pop(context, 'salir'),
-              child: const Text('Salir del kiosco')),
+              child: const Text('Salir del modo actividades')),
         ],
       ),
     );
@@ -369,13 +511,20 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
     if (accion == 'salir') {
       Navigator.of(context).maybePop();
     } else if (accion == 'reasignar') {
+      // Al cambiar de persona se suelta la sala: si el centro tiene varias, se
+      // vuelve a elegir sala primero; si solo hay una, directo a "¿quién eres?".
       setState(() {
-        _fase = (_sesion?.haySesion ?? false)
-            ? _Fase.quienEres
-            : _Fase.esperando;
+        final ses = _sesion;
         _yo = null;
+        _salaElegida = null;
+        _sesionIdActivo = null;
         _cola = [];
         _instancia = null;
+        if (ses == null || !ses.haySesion) {
+          _fase = _Fase.esperando;
+        } else {
+          _fase = ses.variasSalas ? _Fase.elegirSala : _Fase.quienEres;
+        }
       });
     }
   }
@@ -396,6 +545,15 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
           onMetricas: onMetricas,
           // Durante "memorizar" no debe verse el botón global (evita saltarse la
           // fase de selección sin medir).
+          onListoParaAvanzar: (v) {
+            if (mounted) setState(() => _puedeAvanzar = v);
+          },
+        );
+      case 'parejas':
+        return MemoriaParejasWidget(
+          instancia: inst,
+          onMetricas: onMetricas,
+          // No mostrar "Siguiente" hasta completar el tablero (no saltarse el juego).
           onListoParaAvanzar: (v) {
             if (mounted) setState(() => _puedeAvanzar = v);
           },
@@ -426,6 +584,11 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
         child: Stack(
           children: [
             Positioned.fill(child: _contenido()),
+            // Refuerzo/puente cálido y breve por encima del contenido.
+            if (_overlayMensaje != null)
+              Positioned.fill(
+                child: _OverlayPaso(mensaje: _overlayMensaje!, sub: _overlaySub),
+              ),
             // Aviso de sin conexión: el mayor no se queda con un "Esperando…"
             // eterno; la integradora ve que debe revisar el WiFi.
             if (_sinConexion)
@@ -453,15 +616,32 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
     switch (_fase) {
       case _Fase.esperando:
         return const _Esperando();
+      case _Fase.elegirSala:
+        return _ElegirSala(
+          salas: _sesion?.salas ?? const [],
+          onElegir: (s) => setState(() {
+            _salaElegida = s;
+            _fase = _Fase.quienEres;
+          }),
+        );
       case _Fase.quienEres:
         return _QuienEres(
-          sesion: _sesion,
+          sala: _salaElegida,
+          // Si hay varias salas, un botón para volver a elegir sala.
+          onVolver: (_sesion?.variasSalas ?? false)
+              ? () => setState(() {
+                    _salaElegida = null;
+                    _fase = _Fase.elegirSala;
+                  })
+              : null,
           onElegir: _elegirse,
         );
       case _Fase.esperandoInicio:
         return _AhoraEmpezamos(nombre: _yo?.aliasInterno ?? '');
       case _Fase.terminado:
-        return const _Terminado();
+        return _Terminado(nombre: _yo?.aliasInterno);
+      case _Fase.sinActividades:
+        return const _SinActividades();
       case _Fase.ejercicio:
         return _VistaEjercicio(
           nombrePersona: _yo?.aliasInterno ?? '',
@@ -482,6 +662,9 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
                 ),
           onReintentar: _reintentar,
           onListo: _terminarEjercicio,
+          onLeer: _instancia == null
+              ? null
+              : () => Tts.instance.hablar(_textoParaLeer(_instancia!)),
           mostrarAvanzar: _puedeAvanzar,
         );
     }
@@ -553,15 +736,167 @@ class _Esperando extends StatelessWidget {
   }
 }
 
-class _QuienEres extends StatelessWidget {
-  final SesionActiva? sesion;
-  final ValueChanged<ParticipanteSesion> onElegir;
+/// Elegir grupo cuando el centro tiene varias salas abiertas (2 grupos a la
+/// vez): la persona toca su grupo y luego su nombre. Lee el título en voz alta
+/// al entrar (accesibilidad: mayores con baja visión).
+class _ElegirSala extends StatefulWidget {
+  final List<SalaActiva> salas;
+  final ValueChanged<SalaActiva> onElegir;
 
-  const _QuienEres({required this.sesion, required this.onElegir});
+  const _ElegirSala({required this.salas, required this.onElegir});
+
+  @override
+  State<_ElegirSala> createState() => _ElegirSalaState();
+}
+
+class _ElegirSalaState extends State<_ElegirSala> {
+  static const _titulo = '¿A qué grupo vienes?';
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _leer());
+  }
+
+  void _leer() => Tts.instance.hablar('$_titulo Toca tu grupo.');
+
+  String _subtitulo(SalaActiva s) {
+    final cuantos = s.participantes.length;
+    final personas = cuantos == 1 ? '1 persona' : '$cuantos personas';
+    final resp = s.responsable?.trim() ?? '';
+    return resp.isEmpty ? personas : 'Con $resp · $personas';
+  }
 
   @override
   Widget build(BuildContext context) {
-    final participantes = sesion?.participantes ?? [];
+    return Padding(
+      padding: const EdgeInsets.all(28),
+      child: Column(
+        children: [
+          const SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Flexible(
+                child: Text(_titulo,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 38,
+                        fontWeight: FontWeight.w800,
+                        color: TrazoColors.ink)),
+              ),
+              const SizedBox(width: 10),
+              IconButton(
+                onPressed: _leer,
+                iconSize: 34,
+                tooltip: 'Escuchar',
+                icon: const Icon(Icons.volume_up, color: TrazoColors.sageDark),
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          const Text('Toca tu grupo',
+              style: TextStyle(fontSize: 22, color: TrazoColors.sageDark)),
+          const SizedBox(height: 24),
+          Expanded(
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 440,
+                mainAxisExtent: 150,
+                crossAxisSpacing: 18,
+                mainAxisSpacing: 18,
+              ),
+              itemCount: widget.salas.length,
+              itemBuilder: (_, i) {
+                final s = widget.salas[i];
+                final nombre = s.nombre.trim().isEmpty ? 'Grupo' : s.nombre;
+                return _BotonSala(
+                  nombre: nombre,
+                  subtitulo: _subtitulo(s),
+                  onTap: () => widget.onElegir(s),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _BotonSala extends StatelessWidget {
+  final String nombre;
+  final String subtitulo;
+  final VoidCallback onTap;
+
+  const _BotonSala(
+      {required this.nombre, required this.subtitulo, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: TrazoColors.sageDark,
+      borderRadius: BorderRadius.circular(20),
+      elevation: 2,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(18),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Flexible(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(nombre,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      style: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white)),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(subtitulo,
+                  style: const TextStyle(fontSize: 18, color: Colors.white)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _QuienEres extends StatefulWidget {
+  final SalaActiva? sala;
+  final ValueChanged<ParticipanteSesion> onElegir;
+  final VoidCallback? onVolver;
+
+  const _QuienEres(
+      {required this.sala, required this.onElegir, this.onVolver});
+
+  @override
+  State<_QuienEres> createState() => _QuienEresState();
+}
+
+class _QuienEresState extends State<_QuienEres> {
+  @override
+  void initState() {
+    super.initState();
+    // Lee el título al entrar (baja visión): es el paso donde un error mandaría
+    // la medición a otra persona.
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => Tts.instance.hablar('¿Quién eres? Toca tu nombre.'));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final sala = widget.sala;
+    final onVolver = widget.onVolver;
+    final onElegir = widget.onElegir;
+    final participantes = sala?.participantes ?? [];
     return Padding(
       padding: const EdgeInsets.all(28),
       child: Column(
@@ -573,13 +908,28 @@ class _QuienEres extends StatelessWidget {
                   fontWeight: FontWeight.w800,
                   color: TrazoColors.ink)),
           const SizedBox(height: 8),
-          const Text('Toca tu nombre',
-              style: TextStyle(fontSize: 22, color: TrazoColors.sageDark)),
-          const SizedBox(height: 28),
+          Text(
+              onVolver != null && (sala?.nombre.trim().isNotEmpty ?? false)
+                  ? '${sala!.nombre} · Toca tu nombre'
+                  : 'Toca tu nombre',
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 22, color: TrazoColors.sageDark)),
+          if (onVolver != null) ...[
+            const SizedBox(height: 10),
+            TextButton.icon(
+              onPressed: onVolver,
+              icon: const Icon(Icons.arrow_back, size: 22),
+              label: const Text('Cambiar de actividad',
+                  style: TextStyle(fontSize: 18)),
+              style: TextButton.styleFrom(
+                  foregroundColor: TrazoColors.sageDark),
+            ),
+          ],
+          const SizedBox(height: 18),
           Expanded(
             child: participantes.isEmpty
                 ? const Center(
-                    child: Text('Todavía no hay nadie en la sala.',
+                    child: Text('Todavía no hay nadie en este grupo.',
                         style: TextStyle(
                             fontSize: 22, color: TrazoColors.sageDark)))
                 : GridView.builder(
@@ -613,7 +963,9 @@ class _BotonNombre extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: TrazoColors.sage,
+      // sageDark: el nombre en blanco sobre sage daba ~3.1:1 (falla AA). Leer
+      // mal el propio nombre haría que el mayor se midiera como otra persona.
+      color: TrazoColors.sageDark,
       borderRadius: BorderRadius.circular(20),
       elevation: 2,
       child: InkWell(
@@ -643,12 +995,25 @@ class _BotonNombre extends StatelessWidget {
   }
 }
 
-class _AhoraEmpezamos extends StatelessWidget {
+class _AhoraEmpezamos extends StatefulWidget {
   final String nombre;
   const _AhoraEmpezamos({required this.nombre});
 
   @override
+  State<_AhoraEmpezamos> createState() => _AhoraEmpezamosState();
+}
+
+class _AhoraEmpezamosState extends State<_AhoraEmpezamos> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => Tts.instance.hablar(
+        '¡Hola, ${widget.nombre}! Ahora empezamos.'));
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final nombre = widget.nombre;
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -675,36 +1040,129 @@ class _AhoraEmpezamos extends StatelessWidget {
   }
 }
 
-class _Terminado extends StatelessWidget {
-  const _Terminado();
+class _Terminado extends StatefulWidget {
+  final String? nombre;
+  const _Terminado({this.nombre});
+
+  @override
+  State<_Terminado> createState() => _TerminadoState();
+}
+
+class _TerminadoState extends State<_Terminado> {
+  @override
+  void initState() {
+    super.initState();
+    final n = widget.nombre?.trim() ?? '';
+    final saludo = n.isNotEmpty ? '¡Muy bien, $n!' : '¡Muy bien!';
+    // Felicitación HABLADA: el cierre del esfuerzo también llega a quien no lee.
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) => Tts.instance.hablar('$saludo Has terminado.'));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    final nombre = widget.nombre;
+    // Cierra con el nombre de la persona (la app ya lo usa en "¿Eres tú, X?"):
+    // más cercano y digno al final del esfuerzo.
+    final saludo = (nombre != null && nombre.trim().isNotEmpty)
+        ? '¡Muy bien, ${nombre.trim()}!'
+        : '¡Muy bien!';
+    return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.emoji_events, size: 120, color: TrazoColors.coral),
-          SizedBox(height: 24),
-          Text('¡Muy bien!',
+          const Icon(Icons.emoji_events, size: 120, color: TrazoColors.coral),
+          const SizedBox(height: 24),
+          Text(saludo,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 44,
                   fontWeight: FontWeight.w800,
                   color: TrazoColors.ink)),
-          SizedBox(height: 12),
-          Text('Has terminado. Espera un momento…',
+          const SizedBox(height: 12),
+          const Text('Has terminado. Espera un momento…',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 24, color: TrazoColors.ink)),
-          SizedBox(height: 28),
+          const SizedBox(height: 28),
           // Pulso suave: comunica "sigo contigo", no está colgada.
-          SizedBox(
+          const SizedBox(
             width: 34,
             height: 34,
             child: CircularProgressIndicator(
                 strokeWidth: 3, color: TrazoColors.sage),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// Pantalla-puente breve y cálida entre pasos: micro-refuerzo tras cada
+/// actividad y "seguimos" al recibir otra tanda. Sobria y digna, no infantil.
+class _OverlayPaso extends StatelessWidget {
+  final String mensaje;
+  final String? sub;
+  const _OverlayPaso({required this.mensaje, this.sub});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: TrazoColors.ivory,
+      alignment: Alignment.center,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.check_circle, size: 96, color: TrazoColors.sageDark),
+          const SizedBox(height: 20),
+          Text(mensaje,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.w800,
+                  color: TrazoColors.ink)),
+          if (sub != null && sub!.isNotEmpty) ...[
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: Text(sub!,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 22, color: TrazoColors.ink)),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// La cola llegó vacía: normalmente el paciente aún no tiene un plan asignado.
+/// Se muestra un aviso sereno (no la felicitación) para que el personal lo
+/// resuelva desde el panel, sin dejar al mayor pensando que ya "acabó".
+class _SinActividades extends StatelessWidget {
+  const _SinActividades();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.all(32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.hourglass_empty, size: 96, color: TrazoColors.sage),
+            SizedBox(height: 24),
+            Text('Todavía no hay actividades preparadas',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 34,
+                    fontWeight: FontWeight.w800,
+                    color: TrazoColors.ink)),
+            SizedBox(height: 14),
+            Text('Avisa a la responsable para que prepare tu plan.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22, color: TrazoColors.ink)),
+          ],
+        ),
       ),
     );
   }
@@ -720,6 +1178,7 @@ class _VistaEjercicio extends StatelessWidget {
   final Widget? render;
   final VoidCallback onReintentar;
   final VoidCallback onListo;
+  final VoidCallback? onLeer; // repetir la instrucción en voz alta
   final bool mostrarAvanzar;
 
   const _VistaEjercicio({
@@ -732,6 +1191,7 @@ class _VistaEjercicio extends StatelessWidget {
     required this.render,
     required this.onReintentar,
     required this.onListo,
+    this.onLeer,
     this.mostrarAvanzar = true,
   });
 
@@ -758,7 +1218,7 @@ class _VistaEjercicio extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.wifi_off, size: 72, color: TrazoColors.sand),
+            const Icon(Icons.wifi_off, size: 72, color: TrazoColors.coralDark),
             const SizedBox(height: 16),
             const Text('No se pudo cargar el ejercicio.',
                 style: TextStyle(fontSize: 22, color: TrazoColors.ink)),
@@ -791,6 +1251,23 @@ class _VistaEjercicio extends StatelessWidget {
                       color: TrazoColors.ink),
                 ),
               ),
+              if (onLeer != null)
+                Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: Material(
+                    color: TrazoColors.card,
+                    shape: const CircleBorder(),
+                    child: InkWell(
+                      customBorder: const CircleBorder(),
+                      onTap: onLeer,
+                      child: const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Icon(Icons.volume_up,
+                            size: 30, color: TrazoColors.sageDark),
+                      ),
+                    ),
+                  ),
+                ),
               Text('${indice + 1} de $total',
                   style: const TextStyle(
                       fontSize: 18,
@@ -817,6 +1294,7 @@ class _VistaEjercicio extends StatelessWidget {
                 // En el último, confirmar para que un toque accidental no cierre
                 // la tanda sin querer.
                 onPressed: () async {
+                  HapticFeedback.selectionClick(); // el botón más usado del kiosco
                   final esUltimo = indice + 1 >= total;
                   if (esUltimo) {
                     final ok = await _confirmarTerminar(context);
@@ -826,7 +1304,7 @@ class _VistaEjercicio extends StatelessWidget {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: TrazoColors.sage,
+                  backgroundColor: TrazoColors.sageDark,
                   padding: const EdgeInsets.symmetric(vertical: 24),
                   textStyle: const TextStyle(
                       fontSize: 28, fontWeight: FontWeight.w800),
@@ -859,7 +1337,7 @@ Future<bool> _confirmarTerminar(BuildContext context) async {
         ),
         ElevatedButton(
           onPressed: () => Navigator.pop(context, true),
-          style: ElevatedButton.styleFrom(backgroundColor: TrazoColors.sage),
+          style: ElevatedButton.styleFrom(backgroundColor: TrazoColors.sageDark),
           child: const Text('Sí, terminar'),
         ),
       ],

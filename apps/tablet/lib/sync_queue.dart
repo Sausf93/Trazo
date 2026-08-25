@@ -34,17 +34,21 @@ class SyncQueue {
     return completer.future;
   }
 
-  /// Intenta enviar; si falla, encola para reintento posterior.
+  /// Intenta enviar; si el fallo es transitorio, encola para reintento. Un error
+  /// permanente (4xx definitivo) se descarta: reintentarlo nunca funcionaría y
+  /// bloquearía la cola martilleando un WiFi ya inestable.
   static Future<void> enviarOEncolar(Intento intento) async {
-    bool ok = false;
+    EnvioIntento res;
     try {
-      ok = await ApiClient.instance.registrarIntento(intento) != null;
+      res = await ApiClient.instance.registrarIntento(intento);
     } catch (_) {
-      ok = false;
+      res = EnvioIntento.transitorio; // sin red / timeout -> reintentar luego
     }
-    if (ok) {
+    if (res == EnvioIntento.creado) {
       // Hay conexión: reenvía también lo que quedó pendiente de antes.
       await flush();
+    } else if (res == EnvioIntento.permanente) {
+      return; // definitivo: no encolar
     } else {
       await _sincronizado(() async {
         final prefs = await SharedPreferences.getInstance();
@@ -98,13 +102,15 @@ class SyncQueue {
       for (final raw in pend) {
         final intento = _decodifica(raw);
         if (intento == null) continue; // descarta la entrada corrupta
-        bool ok = false;
+        EnvioIntento res;
         try {
-          ok = await ApiClient.instance.registrarIntento(intento) != null;
+          res = await ApiClient.instance.registrarIntento(intento);
         } catch (_) {
-          ok = false;
+          res = EnvioIntento.transitorio;
         }
-        if (!ok) restantes.add(raw);
+        // Solo se conserva lo transitorio; 'creado' y 'permanente' salen de la
+        // cola (el permanente se descarta: nunca se enviaría con éxito).
+        if (res == EnvioIntento.transitorio) restantes.add(raw);
       }
       await prefs.setStringList(_key, restantes);
       return restantes.length;

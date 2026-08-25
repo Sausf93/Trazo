@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../models.dart';
 import '../theme.dart';
@@ -26,9 +27,12 @@ class ManejoCantidadWidget extends StatefulWidget {
 class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
   final DateTime _inicio = DateTime.now();
 
-  // dinero / vuelta
-  num _acumulado = 0;
-  final List<num> _monedasUsadas = [];
+  // dinero / vuelta — SIEMPRE en céntimos enteros (evita la basura de coma
+  // flotante al sumar euros como double: 0,10+0,20 = 0.30000000000000004).
+  int _acumuladoC = 0;
+  final List<int> _monedasUsadasC = [];
+  // Objetivo en céntimos, para confirmar cuándo la persona lo ha alcanzado.
+  int? _objetivoC;
 
   // reloj
   int _horaElegida = 12;
@@ -37,20 +41,23 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
   @override
   void initState() {
     super.initState();
-    // En modo reloj, registrar la hora por DEFECTO aunque la persona no toque
-    // ningún selector (antes solo se emitía al cambiar y quedaba sin registro).
-    final modo = widget.instancia.render['modo'] as String? ?? 'dinero';
-    if (modo == 'reloj') {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) _emitirReloj();
-      });
-    }
+    final render = widget.instancia.render;
+    // El reloj NO se auto-registra: si la persona no toca ningún selector, el
+    // intento debe quedar 'sin_valorar' (no tocó nada), no 'no_logrado' (12:00).
+    // Solo emite al mover un selector (_emitirReloj en onChanged).
+    final imp = render['importe_c'];
+    if (imp is num) _objetivoC = imp.toInt();
   }
 
+  bool get _objetivoAlcanzado =>
+      _objetivoC != null && _acumuladoC == _objetivoC;
+
   void _emitirDinero() {
+    // El contrato con el backend sigue siendo en EUROS (correccion.py acepta
+    // euros o céntimos); se deriva de los céntimos sin error de redondeo.
     widget.onMetricas({
-      'total_compuesto': _acumulado,
-      'monedas_usadas': List<num>.from(_monedasUsadas),
+      'total_compuesto': _acumuladoC / 100,
+      'monedas_usadas': _monedasUsadasC.map((c) => c / 100).toList(),
       'tiempo_ms': DateTime.now().difference(_inicio).inMilliseconds,
     });
   }
@@ -77,80 +84,158 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
     final denoms = _denominacionesC(render);
     final objetivoTexto = _objetivoTexto(render);
 
-    return Column(
-      children: [
-        Text(instruccion,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 26, color: TrazoColors.ink)),
-        if (objetivoTexto != null) ...[
-          const SizedBox(height: 16),
-          Container(
+    final tituloW = Text(instruccion,
+        textAlign: TextAlign.center,
+        style: const TextStyle(fontSize: 26, color: TrazoColors.ink));
+    final objetivoW = objetivoTexto == null
+        ? null
+        : Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             decoration: BoxDecoration(
-              color: TrazoColors.sage,
+              color: TrazoColors.sageDark,
               borderRadius: BorderRadius.circular(16),
             ),
             child: Column(
               children: [
                 const Text('Tienes que reunir',
-                    style: TextStyle(fontSize: 20, color: Colors.white)),
-                const SizedBox(height: 4),
+                    style: TextStyle(fontSize: 18, color: Colors.white)),
+                const SizedBox(height: 2),
                 Text(objetivoTexto,
                     style: const TextStyle(
-                        fontSize: 56,
+                        fontSize: 42,
                         fontWeight: FontWeight.bold,
                         color: Colors.white)),
               ],
             ),
-          ),
-        ],
-        const SizedBox(height: 20),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-          decoration: BoxDecoration(
-            color: TrazoColors.card,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: TrazoColors.sand, width: 1.5),
-          ),
-          child: Column(
+          );
+    final llevasW = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+      decoration: BoxDecoration(
+        color: _objetivoAlcanzado
+            ? TrazoColors.sage.withValues(alpha: 0.22)
+            : TrazoColors.card,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+            color: _objetivoAlcanzado ? TrazoColors.sageDark : TrazoColors.sand,
+            width: _objetivoAlcanzado ? 2.5 : 1.5),
+      ),
+      child: Column(
+        children: [
+          Text(_objetivoAlcanzado ? '¡Justo! Llevas' : 'Llevas',
+              style:
+                  const TextStyle(fontSize: 18, color: TrazoColors.sageDark)),
+          Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('Llevas',
-                  style: TextStyle(fontSize: 18, color: TrazoColors.sageDark)),
-              Text('${_formato(_acumulado)} €',
-                  style: const TextStyle(
-                      fontSize: 48,
+              if (_objetivoAlcanzado) ...[
+                const Icon(Icons.check_circle,
+                    color: TrazoColors.sageDark, size: 40),
+                const SizedBox(width: 8),
+              ],
+              Text('${_fmtEurC(_acumuladoC)} €',
+                  style: TextStyle(
+                      fontSize: 38,
                       fontWeight: FontWeight.bold,
-                      color: TrazoColors.coralDark)),
+                      color: _objetivoAlcanzado
+                          ? TrazoColors.sageDark
+                          : TrazoColors.coralDark)),
             ],
           ),
-        ),
-        const SizedBox(height: 24),
-        Expanded(
-          child: Center(
-            child: Wrap(
-              spacing: 16,
-              runSpacing: 16,
-              alignment: WrapAlignment.center,
-              children: denoms.map((c) => _pieza(c)).toList(),
-            ),
-          ),
-        ),
-        const SizedBox(height: 12),
+        ],
+      ),
+    );
+    final monedasW = Center(
+      child: Wrap(
+        spacing: 14,
+        runSpacing: 14,
+        alignment: WrapAlignment.center,
+        children: denoms.map((c) => _pieza(c)).toList(),
+      ),
+    );
+    final botonesW = Wrap(
+      spacing: 12,
+      runSpacing: 8,
+      alignment: WrapAlignment.center,
+      children: [
+        // Deshacer solo la última: un toque de más no obliga a rehacerlo todo.
         OutlinedButton.icon(
-          onPressed: _acumulado == 0
+          onPressed: _monedasUsadasC.isEmpty
               ? null
               : () {
+                  HapticFeedback.selectionClick();
                   setState(() {
-                    _acumulado = 0;
-                    _monedasUsadas.clear();
+                    final ultima = _monedasUsadasC.removeLast();
+                    _acumuladoC -= ultima;
+                    if (_acumuladoC < 0) _acumuladoC = 0;
+                  });
+                  _emitirDinero();
+                },
+          icon: const Icon(Icons.undo),
+          label: const Text('Quitar la última'),
+          style: _estiloBotonRescate(),
+        ),
+        OutlinedButton.icon(
+          onPressed: _acumuladoC == 0
+              ? null
+              : () {
+                  HapticFeedback.selectionClick();
+                  setState(() {
+                    _acumuladoC = 0;
+                    _monedasUsadasC.clear();
                   });
                   _emitirDinero();
                 },
           icon: const Icon(Icons.refresh),
           label: const Text('Empezar de nuevo'),
+          style: _estiloBotonRescate(),
         ),
       ],
+    );
+
+    return LayoutBuilder(
+      builder: (context, c) {
+        final estrecho = c.maxWidth < 520 || c.maxHeight < 640;
+        // Móvil: TODO en scroll de página (carteles + monedas + botones), para que
+        // las monedas nunca se queden fuera de pantalla bajo los carteles grandes.
+        if (estrecho) {
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(height: 4),
+                tituloW,
+                if (objetivoW != null) ...[
+                  const SizedBox(height: 16),
+                  objetivoW,
+                ],
+                const SizedBox(height: 16),
+                llevasW,
+                const SizedBox(height: 16),
+                monedasW,
+                const SizedBox(height: 16),
+                botonesW,
+                const SizedBox(height: 8),
+              ],
+            ),
+          );
+        }
+        // Tablet: carteles arriba, monedas ocupan el resto (con scroll interno).
+        return Column(
+          children: [
+            tituloW,
+            if (objetivoW != null) ...[
+              const SizedBox(height: 16),
+              objetivoW,
+            ],
+            const SizedBox(height: 20),
+            llevasW,
+            const SizedBox(height: 16),
+            Expanded(child: SingleChildScrollView(child: monedasW)),
+            const SizedBox(height: 12),
+            botonesW,
+          ],
+        );
+      },
     );
   }
 
@@ -187,15 +272,21 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
   /// Una pieza de dinero (moneda o billete) con su ilustración; al tocarla se
   /// suma su valor al acumulado.
   Widget _pieza(int valorC) {
-    final valorEuros = valorC / 100;
     final esBillete = valorC >= 500;
     final id = IlustracionResolver.dineroPorCentimos(valorC);
     return InkWell(
+      key: ValueKey('moneda|$valorC'),
       onTap: () {
         setState(() {
-          _acumulado += valorEuros;
-          _monedasUsadas.add(valorEuros);
+          _acumuladoC += valorC;
+          _monedasUsadasC.add(valorC);
         });
+        // Háptico distinto al ACERTAR el importe exacto (confirma "¡ya está!").
+        if (_objetivoAlcanzado) {
+          HapticFeedback.mediumImpact();
+        } else {
+          HapticFeedback.selectionClick();
+        }
         _emitirDinero();
       },
       borderRadius: BorderRadius.circular(12),
@@ -233,8 +324,19 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
     return '${c ~/ 100},${(c % 100).toString().padLeft(2, '0')} €';
   }
 
-  String _formato(num n) =>
-      n == n.roundToDouble() ? n.toInt().toString() : n.toString();
+  /// Formatea céntimos como euros con coma decimal española ('6,82'). Igual que
+  /// el backend (_fmt_eur): evita el 'punto' ajeno y la basura de coma flotante.
+  String _fmtEurC(int c) =>
+      '${c ~/ 100},${(c % 100).toString().padLeft(2, '0')}';
+
+  /// Botones de rescate del dinero grandes y con buen contraste (son la red de
+  /// seguridad ante un toque de más con temblor: deben leerse y acertarse).
+  ButtonStyle _estiloBotonRescate() => OutlinedButton.styleFrom(
+        foregroundColor: TrazoColors.sageDark,
+        side: const BorderSide(color: TrazoColors.sand, width: 1.5),
+        textStyle: const TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+      );
 
   /// Objetivo a reunir, bien visible. Usa el texto del backend
   /// (`importe_texto`) o, si no, formatea `importe_c` (céntimos).
@@ -273,18 +375,21 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
           ),
         ),
         const SizedBox(height: 12),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        // Wrap (no Row) para que en móvil estrecho los dos selectores bajen a
+        // una segunda línea en vez de desbordar la pantalla.
+        Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 24,
+          runSpacing: 12,
           children: [
             _selector('Hora', _horaElegida, 1, 12, (v) {
               setState(() => _horaElegida = v);
               _emitirReloj();
-            }),
-            const SizedBox(width: 24),
+            }, clave: 'hora'),
             _selector('Minutos', _minutoElegido, 0, 55, (v) {
               setState(() => _minutoElegido = v);
               _emitirReloj();
-            }, paso: 5),
+            }, paso: 5, clave: 'min'),
           ],
         ),
         const SizedBox(height: 12),
@@ -292,9 +397,9 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
     );
   }
 
-  Widget _selector(String label, int valor, int min, int max,
-      ValueChanged<int> onChanged,
-      {int paso = 1}) {
+  Widget _selector(
+      String label, int valor, int min, int max, ValueChanged<int> onChanged,
+      {int paso = 1, String? clave}) {
     return Column(
       children: [
         Text(label,
@@ -302,9 +407,10 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
         Row(
           children: [
             _btnRedondo(Icons.remove, () {
+              HapticFeedback.selectionClick();
               final v = valor - paso;
               onChanged(v < min ? max : v);
-            }),
+            }, clave: clave == null ? null : 'reloj|$clave|menos'),
             Container(
               width: 72,
               alignment: Alignment.center,
@@ -315,24 +421,26 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
                       color: TrazoColors.ink)),
             ),
             _btnRedondo(Icons.add, () {
+              HapticFeedback.selectionClick();
               final v = valor + paso;
               onChanged(v > max ? min : v);
-            }),
+            }, clave: clave == null ? null : 'reloj|$clave|mas'),
           ],
         ),
       ],
     );
   }
 
-  Widget _btnRedondo(IconData icon, VoidCallback onTap) {
+  Widget _btnRedondo(IconData icon, VoidCallback onTap, {String? clave}) {
     return SizedBox(
+      key: clave == null ? null : ValueKey(clave),
       width: 64,
       height: 64,
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
-          backgroundColor: TrazoColors.sage,
+          backgroundColor: TrazoColors.sageDark,
           padding: EdgeInsets.zero,
         ),
         child: Icon(icon, size: 32, color: Colors.white),
@@ -366,16 +474,16 @@ class _RelojPainter extends CustomPainter {
     final tp = TextPainter(textDirection: TextDirection.ltr);
     for (int i = 1; i <= 12; i++) {
       final angulo = (i / 12) * 2 * math.pi - math.pi / 2;
-      final marcaEx = centro +
-          Offset(math.cos(angulo), math.sin(angulo)) * radio;
-      final marcaIn = centro +
-          Offset(math.cos(angulo), math.sin(angulo)) * (radio - 14);
+      final marcaEx =
+          centro + Offset(math.cos(angulo), math.sin(angulo)) * radio;
+      final marcaIn =
+          centro + Offset(math.cos(angulo), math.sin(angulo)) * (radio - 14);
       canvas.drawLine(
           marcaIn,
           marcaEx,
           Paint()
-            ..strokeWidth = 3
-            ..color = TrazoColors.sand);
+            ..strokeWidth = 4
+            ..color = TrazoColors.sageDark);
 
       tp.text = TextSpan(
           text: '$i',
@@ -384,10 +492,9 @@ class _RelojPainter extends CustomPainter {
               fontWeight: FontWeight.bold,
               color: TrazoColors.ink));
       tp.layout();
-      final posNum = centro +
-          Offset(math.cos(angulo), math.sin(angulo)) * (radio - 36);
-      tp.paint(canvas,
-          posNum - Offset(tp.width / 2, tp.height / 2));
+      final posNum =
+          centro + Offset(math.cos(angulo), math.sin(angulo)) * (radio - 36);
+      tp.paint(canvas, posNum - Offset(tp.width / 2, tp.height / 2));
     }
 
     // Aguja de la hora.
@@ -395,7 +502,8 @@ class _RelojPainter extends CustomPainter {
         ((hora % 12) + minuto / 60) / 12 * 2 * math.pi - math.pi / 2;
     canvas.drawLine(
         centro,
-        centro + Offset(math.cos(anguloHora), math.sin(anguloHora)) * radio * 0.5,
+        centro +
+            Offset(math.cos(anguloHora), math.sin(anguloHora)) * radio * 0.5,
         Paint()
           ..strokeWidth = 8
           ..strokeCap = StrokeCap.round
@@ -405,7 +513,8 @@ class _RelojPainter extends CustomPainter {
     final anguloMin = (minuto / 60) * 2 * math.pi - math.pi / 2;
     canvas.drawLine(
         centro,
-        centro + Offset(math.cos(anguloMin), math.sin(anguloMin)) * radio * 0.78,
+        centro +
+            Offset(math.cos(anguloMin), math.sin(anguloMin)) * radio * 0.78,
         Paint()
           ..strokeWidth = 5
           ..strokeCap = StrokeCap.round

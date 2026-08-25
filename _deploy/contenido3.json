@@ -1,0 +1,1021 @@
+[
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivinanzas de siempre",
+  "descripcion": "Adivinanzas populares de solución clara. Escucha la pista y elige la respuesta.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "adiv_platano",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Oro parece, plata no es; el que no lo sepa, tonto es.",
+     "correcta": "el plátano",
+     "distractores": [
+      "el limón",
+      "el melón",
+      "la naranja"
+     ]
+    },
+    {
+     "id": "adiv_pera",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Blanca por dentro, verde por fuera; si quieres que te lo diga, espera.",
+     "correcta": "la pera",
+     "distractores": [
+      "la manzana",
+      "la sandía",
+      "el melón"
+     ]
+    },
+    {
+     "id": "adiv_huevo",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Una cajita blanca como la cal: todos la saben abrir, nadie la sabe cerrar.",
+     "correcta": "el huevo",
+     "distractores": [
+      "la nuez",
+      "la almeja",
+      "el caracol"
+     ]
+    },
+    {
+     "id": "adiv_reloj",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Tengo agujas y no sé coser, tengo números y no sé leer.",
+     "correcta": "el reloj",
+     "distractores": [
+      "el calendario",
+      "la regla",
+      "la brújula"
+     ]
+    },
+    {
+     "id": "adiv_escoba",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Salgo de la sala, voy a la cocina, meneando la cola como una gallina.",
+     "correcta": "la escoba",
+     "distractores": [
+      "el gato",
+      "la fregona",
+      "el perro"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivinanzas para pensar",
+  "descripcion": "Adivinanzas clásicas algo más difíciles, con una única solución.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "adiv_cebolla",
+     "instruccion": "¿Qué es?",
+     "enunciado": "En el campo me crié atada con verdes lazos; quien llora por mí me está partiendo en pedazos.",
+     "correcta": "la cebolla",
+     "distractores": [
+      "el ajo",
+      "la lechuga",
+      "el pimiento"
+     ]
+    },
+    {
+     "id": "adiv_navaja",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Lana sube, lana baja.",
+     "correcta": "la navaja",
+     "distractores": [
+      "la oveja",
+      "la cortina",
+      "la persiana"
+     ]
+    },
+    {
+     "id": "adiv_viento",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Vuela sin alas, silba sin boca, y no se ve ni se toca.",
+     "correcta": "el viento",
+     "distractores": [
+      "el humo",
+      "el eco",
+      "la sombra"
+     ]
+    },
+    {
+     "id": "adiv_aguacate",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Agua pasa por mi casa, cate de mi corazón.",
+     "correcta": "el aguacate",
+     "distractores": [
+      "el tomate",
+      "el melocotón",
+      "el higo"
+     ]
+    },
+    {
+     "id": "adiv_sandia",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Verde por fuera, roja por dentro y con pepitas en el centro.",
+     "correcta": "la sandía",
+     "distractores": [
+      "el melón",
+      "la manzana",
+      "la fresa"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivinanzas de ingenio",
+  "descripcion": "Adivinanzas tradicionales que piden un poco más de reflexión.",
+  "parametros_json": {
+   "dificultad": "dificil",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "adiv_campana",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Una vieja con un diente que llama a toda la gente.",
+     "correcta": "la campana",
+     "distractores": [
+      "el tambor",
+      "la puerta",
+      "el despertador"
+     ]
+    },
+    {
+     "id": "adiv_agua",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Adivina quién soy: cuanto más lavo, más sucia voy.",
+     "correcta": "el agua",
+     "distractores": [
+      "el jabón",
+      "la esponja",
+      "la toalla"
+     ]
+    },
+    {
+     "id": "adiv_queso",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Redondo como la luna, blanco como la cal; me hacen con leche pura, ¿a que no aciertas qué es?",
+     "correcta": "el queso",
+     "distractores": [
+      "el huevo",
+      "el yogur",
+      "la nata"
+     ]
+    },
+    {
+     "id": "adiv_oscuridad",
+     "instruccion": "¿Qué es?",
+     "enunciado": "Cuanto más grande es, menos se ve.",
+     "correcta": "la oscuridad",
+     "distractores": [
+      "el mar",
+      "la montaña",
+      "el cielo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué animal es? (granja)",
+  "descripcion": "Reconocer animales por su imagen y decir su nombre.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "an_caballo",
+     "instruccion": "¿Qué animal es?",
+     "imagen": "caballo",
+     "correcta": "un caballo",
+     "distractores": [
+      "una vaca",
+      "un burro",
+      "un perro"
+     ]
+    },
+    {
+     "id": "an_vaca",
+     "instruccion": "¿Qué animal es?",
+     "imagen": "vaca",
+     "correcta": "una vaca",
+     "distractores": [
+      "un caballo",
+      "una oveja",
+      "un toro"
+     ]
+    },
+    {
+     "id": "an_oveja",
+     "instruccion": "¿Qué animal es?",
+     "imagen": "oveja",
+     "correcta": "una oveja",
+     "distractores": [
+      "una cabra",
+      "un cerdo",
+      "un perro"
+     ]
+    },
+    {
+     "id": "an_cerdo",
+     "instruccion": "¿Qué animal es?",
+     "imagen": "cerdo",
+     "correcta": "un cerdo",
+     "distractores": [
+      "una vaca",
+      "un perro",
+      "una oveja"
+     ]
+    },
+    {
+     "id": "an_gallina",
+     "instruccion": "¿Qué animal es?",
+     "imagen": "gallina",
+     "correcta": "una gallina",
+     "distractores": [
+      "un pato",
+      "una paloma",
+      "un pavo"
+     ]
+    },
+    {
+     "id": "an_conejo",
+     "instruccion": "¿Qué animal es?",
+     "imagen": "conejo",
+     "correcta": "un conejo",
+     "distractores": [
+      "un gato",
+      "un ratón",
+      "una ardilla"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué animal es? (casa)",
+  "descripcion": "Reconocer animales cercanos por su imagen y decir su nombre.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "an_perro",
+     "instruccion": "¿Qué animal es?",
+     "imagen": "perro",
+     "correcta": "un perro",
+     "distractores": [
+      "un gato",
+      "un lobo",
+      "un zorro"
+     ]
+    },
+    {
+     "id": "an_gato",
+     "instruccion": "¿Qué animal es?",
+     "imagen": "gato",
+     "correcta": "un gato",
+     "distractores": [
+      "un perro",
+      "un conejo",
+      "un tigre"
+     ]
+    },
+    {
+     "id": "an_pajaro",
+     "instruccion": "¿Qué animal es?",
+     "imagen": "pajaro",
+     "correcta": "un pájaro",
+     "distractores": [
+      "una mariposa",
+      "un murciélago",
+      "un pez"
+     ]
+    },
+    {
+     "id": "an_pez",
+     "instruccion": "¿Qué animal es?",
+     "imagen": "pez",
+     "correcta": "un pez",
+     "distractores": [
+      "una rana",
+      "un delfín",
+      "un cangrejo"
+     ]
+    },
+    {
+     "id": "an_raton",
+     "instruccion": "¿Qué animal es?",
+     "imagen": "raton",
+     "correcta": "un ratón",
+     "distractores": [
+      "un conejo",
+      "una ardilla",
+      "un gato"
+     ]
+    },
+    {
+     "id": "an_pollo",
+     "instruccion": "¿Qué animal es?",
+     "imagen": "pollo",
+     "correcta": "un pollo",
+     "distractores": [
+      "un pato",
+      "un cerdo",
+      "un conejo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué medio de transporte es?",
+  "descripcion": "Reconocer vehículos por su imagen y decir su nombre.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "tr_coche",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "coche",
+     "correcta": "un coche",
+     "distractores": [
+      "un autobús",
+      "un camión",
+      "una moto"
+     ]
+    },
+    {
+     "id": "tr_autobus",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "autobus",
+     "correcta": "un autobús",
+     "distractores": [
+      "un coche",
+      "un camión",
+      "un tren"
+     ]
+    },
+    {
+     "id": "tr_bicicleta",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "bicicleta",
+     "correcta": "una bicicleta",
+     "distractores": [
+      "una moto",
+      "un patinete",
+      "un coche"
+     ]
+    },
+    {
+     "id": "tr_moto",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "moto",
+     "correcta": "una moto",
+     "distractores": [
+      "una bicicleta",
+      "un coche",
+      "un patinete"
+     ]
+    },
+    {
+     "id": "tr_barco",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "barco",
+     "correcta": "un barco",
+     "distractores": [
+      "un avión",
+      "un tren",
+      "un coche"
+     ]
+    },
+    {
+     "id": "tr_avion",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "avion",
+     "correcta": "un avión",
+     "distractores": [
+      "un barco",
+      "un helicóptero",
+      "un tren"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Muebles de casa",
+  "descripcion": "Reconocer muebles por su imagen y decir su nombre.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "mu_silla",
+     "instruccion": "¿Qué mueble es?",
+     "imagen": "silla",
+     "correcta": "una silla",
+     "distractores": [
+      "una mesa",
+      "un taburete",
+      "un banco"
+     ]
+    },
+    {
+     "id": "mu_mesa",
+     "instruccion": "¿Qué mueble es?",
+     "imagen": "mesa",
+     "correcta": "una mesa",
+     "distractores": [
+      "una silla",
+      "un armario",
+      "una cama"
+     ]
+    },
+    {
+     "id": "mu_cama",
+     "instruccion": "¿Qué mueble es?",
+     "imagen": "cama",
+     "correcta": "una cama",
+     "distractores": [
+      "un sofá",
+      "una silla",
+      "una mesa"
+     ]
+    },
+    {
+     "id": "mu_sofa",
+     "instruccion": "¿Qué mueble es?",
+     "imagen": "sofa",
+     "correcta": "un sofá",
+     "distractores": [
+      "una cama",
+      "una silla",
+      "una mesa"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Objetos de la casa",
+  "descripcion": "Reconocer objetos cotidianos del hogar por su imagen.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "ob_lampara",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "lampara",
+     "correcta": "una lámpara",
+     "distractores": [
+      "un reloj",
+      "un espejo",
+      "un cuadro"
+     ]
+    },
+    {
+     "id": "ob_espejo",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "espejo",
+     "correcta": "un espejo",
+     "distractores": [
+      "un cuadro",
+      "una ventana",
+      "una foto"
+     ]
+    },
+    {
+     "id": "ob_reloj",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "reloj",
+     "correcta": "un reloj",
+     "distractores": [
+      "un calendario",
+      "un plato",
+      "una moneda"
+     ]
+    },
+    {
+     "id": "ob_llave",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "llave",
+     "correcta": "una llave",
+     "distractores": [
+      "unas tijeras",
+      "un candado",
+      "un abrelatas"
+     ]
+    },
+    {
+     "id": "ob_tijeras",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "tijeras",
+     "correcta": "unas tijeras",
+     "distractores": [
+      "un cuchillo",
+      "una navaja",
+      "unas pinzas"
+     ]
+    },
+    {
+     "id": "ob_paraguas",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "paraguas",
+     "correcta": "un paraguas",
+     "distractores": [
+      "un bastón",
+      "un abanico",
+      "un sombrero"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué prenda es?",
+  "descripcion": "Reconocer prendas de ropa por su imagen y decir su nombre.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "ro_camisa",
+     "instruccion": "¿Qué prenda es?",
+     "imagen": "camisa",
+     "correcta": "una camisa",
+     "distractores": [
+      "un abrigo",
+      "un jersey",
+      "una chaqueta"
+     ]
+    },
+    {
+     "id": "ro_pantalon",
+     "instruccion": "¿Qué prenda es?",
+     "imagen": "pantalon",
+     "correcta": "un pantalón",
+     "distractores": [
+      "una falda",
+      "una camisa",
+      "un calcetín"
+     ]
+    },
+    {
+     "id": "ro_abrigo",
+     "instruccion": "¿Qué prenda es?",
+     "imagen": "abrigo",
+     "correcta": "un abrigo",
+     "distractores": [
+      "una camisa",
+      "un pantalón",
+      "un vestido"
+     ]
+    },
+    {
+     "id": "ro_zapato",
+     "instruccion": "¿Qué prenda es?",
+     "imagen": "zapato",
+     "correcta": "un zapato",
+     "distractores": [
+      "un calcetín",
+      "un guante",
+      "un sombrero"
+     ]
+    },
+    {
+     "id": "ro_sombrero",
+     "instruccion": "¿Qué prenda es?",
+     "imagen": "sombrero",
+     "correcta": "un sombrero",
+     "distractores": [
+      "un paraguas",
+      "un zapato",
+      "unas gafas"
+     ]
+    },
+    {
+     "id": "ro_bufanda",
+     "instruccion": "¿Qué prenda es?",
+     "imagen": "bufanda",
+     "correcta": "una bufanda",
+     "distractores": [
+      "unos guantes",
+      "un cinturón",
+      "una corbata"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué alimento es?",
+  "descripcion": "Reconocer alimentos básicos por su imagen y decir su nombre.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "al_pan",
+     "instruccion": "¿Qué alimento es?",
+     "imagen": "pan",
+     "correcta": "el pan",
+     "distractores": [
+      "el queso",
+      "la galleta",
+      "el bizcocho"
+     ]
+    },
+    {
+     "id": "al_leche",
+     "instruccion": "¿Qué alimento es?",
+     "imagen": "leche",
+     "correcta": "la leche",
+     "distractores": [
+      "el agua",
+      "el zumo",
+      "el vino"
+     ]
+    },
+    {
+     "id": "al_queso",
+     "instruccion": "¿Qué alimento es?",
+     "imagen": "queso",
+     "correcta": "el queso",
+     "distractores": [
+      "la mantequilla",
+      "el jamón",
+      "el huevo"
+     ]
+    },
+    {
+     "id": "al_huevo",
+     "instruccion": "¿Qué alimento es?",
+     "imagen": "huevo",
+     "correcta": "un huevo",
+     "distractores": [
+      "una cebolla",
+      "una patata",
+      "un limón"
+     ]
+    },
+    {
+     "id": "al_pescado",
+     "instruccion": "¿Qué alimento es?",
+     "imagen": "pescado",
+     "correcta": "el pescado",
+     "distractores": [
+      "el pollo",
+      "la carne",
+      "el jamón"
+     ]
+    },
+    {
+     "id": "al_jamon",
+     "instruccion": "¿Qué alimento es?",
+     "imagen": "jamon",
+     "correcta": "el jamón",
+     "distractores": [
+      "el queso",
+      "el chorizo",
+      "el pan"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "calculo",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Cuántos son",
+  "descripcion": "Unidades de conteo de toda la vida: docenas, decenas, pares.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "ca_docena",
+     "instruccion": "Una docena son...",
+     "correcta": "doce",
+     "distractores": [
+      "diez",
+      "seis",
+      "veinte"
+     ]
+    },
+    {
+     "id": "ca_mediadocena",
+     "instruccion": "Media docena son...",
+     "correcta": "seis",
+     "distractores": [
+      "doce",
+      "tres",
+      "cinco"
+     ]
+    },
+    {
+     "id": "ca_decena",
+     "instruccion": "Una decena son...",
+     "correcta": "diez",
+     "distractores": [
+      "doce",
+      "cien",
+      "cinco"
+     ]
+    },
+    {
+     "id": "ca_par",
+     "instruccion": "Un par son...",
+     "correcta": "dos",
+     "distractores": [
+      "tres",
+      "uno",
+      "cuatro"
+     ]
+    },
+    {
+     "id": "ca_cuartodocena",
+     "instruccion": "Un cuarto de docena son...",
+     "correcta": "tres",
+     "distractores": [
+      "cuatro",
+      "dos",
+      "seis"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué hace falta?",
+  "descripcion": "Elegir el objeto adecuado para cada tarea de la vida diaria.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "hf_lluvia",
+     "instruccion": "Para protegerse de la lluvia se usa...",
+     "correcta": "el paraguas",
+     "distractores": [
+      "el abanico",
+      "el bastón",
+      "el sombrero"
+     ]
+    },
+    {
+     "id": "hf_hora",
+     "instruccion": "Para saber la hora se mira...",
+     "correcta": "el reloj",
+     "distractores": [
+      "el calendario",
+      "el termómetro",
+      "la brújula"
+     ]
+    },
+    {
+     "id": "hf_puerta",
+     "instruccion": "Para abrir la puerta hace falta...",
+     "correcta": "la llave",
+     "distractores": [
+      "el peine",
+      "la cuchara",
+      "el mando"
+     ]
+    },
+    {
+     "id": "hf_barrer",
+     "instruccion": "Para barrer el suelo se usa...",
+     "correcta": "la escoba",
+     "distractores": [
+      "el trapo",
+      "la esponja",
+      "la toalla"
+     ]
+    },
+    {
+     "id": "hf_cortar",
+     "instruccion": "Para cortar el papel se usan...",
+     "correcta": "las tijeras",
+     "distractores": [
+      "el tenedor",
+      "la regla",
+      "el lápiz"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué va con qué?",
+  "descripcion": "Encontrar la pareja habitual de cada cosa.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "va_tostada",
+     "instruccion": "¿Con qué se unta la tostada?",
+     "correcta": "con mantequilla",
+     "distractores": [
+      "con jabón",
+      "con pegamento",
+      "con cera"
+     ]
+    },
+    {
+     "id": "va_cafe",
+     "instruccion": "¿Qué se le echa al café para endulzarlo?",
+     "correcta": "azúcar",
+     "distractores": [
+      "sal",
+      "vinagre",
+      "pimienta"
+     ]
+    },
+    {
+     "id": "va_aguja",
+     "instruccion": "La aguja va con...",
+     "correcta": "el hilo",
+     "distractores": [
+      "el clavo",
+      "el botón",
+      "la tela"
+     ]
+    },
+    {
+     "id": "va_cuchillo",
+     "instruccion": "El cuchillo va con...",
+     "correcta": "el tenedor",
+     "distractores": [
+      "la escoba",
+      "el peine",
+      "el martillo"
+     ]
+    },
+    {
+     "id": "va_pies",
+     "instruccion": "Los pies van con...",
+     "correcta": "los zapatos",
+     "distractores": [
+      "los guantes",
+      "el sombrero",
+      "las gafas"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿En qué habitación?",
+  "descripcion": "Relacionar cada actividad con la habitación de la casa donde se hace.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "ha_dormir",
+     "instruccion": "¿En qué habitación se duerme?",
+     "correcta": "el dormitorio",
+     "distractores": [
+      "la cocina",
+      "el cuarto de baño",
+      "el salón"
+     ]
+    },
+    {
+     "id": "ha_cocinar",
+     "instruccion": "¿En qué habitación se cocina?",
+     "correcta": "la cocina",
+     "distractores": [
+      "el dormitorio",
+      "el salón",
+      "el garaje"
+     ]
+    },
+    {
+     "id": "ha_asear",
+     "instruccion": "¿Dónde nos duchamos y nos aseamos?",
+     "correcta": "el cuarto de baño",
+     "distractores": [
+      "la cocina",
+      "el dormitorio",
+      "el trastero"
+     ]
+    },
+    {
+     "id": "ha_visitas",
+     "instruccion": "¿Dónde se recibe a las visitas y se ve la televisión?",
+     "correcta": "el salón",
+     "distractores": [
+      "la cocina",
+      "el cuarto de baño",
+      "el dormitorio"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Cosas del cielo",
+  "descripcion": "Preguntas sencillas sobre el sol, la luna y el cielo.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 4,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "ci_luna",
+     "instruccion": "¿Qué sale de noche y nos alumbra?",
+     "correcta": "la luna",
+     "distractores": [
+      "el sol",
+      "una nube",
+      "un árbol"
+     ]
+    },
+    {
+     "id": "ci_sol",
+     "instruccion": "¿Qué nos da luz y calor durante el día?",
+     "correcta": "el sol",
+     "distractores": [
+      "la luna",
+      "una estrella",
+      "la lluvia"
+     ]
+    },
+    {
+     "id": "ci_nubes",
+     "instruccion": "¿De dónde cae la lluvia?",
+     "correcta": "de las nubes",
+     "distractores": [
+      "del sol",
+      "de la luna",
+      "de las estrellas"
+     ]
+    },
+    {
+     "id": "ci_estrellas",
+     "instruccion": "En una noche despejada, ¿qué se ve brillar en el cielo?",
+     "correcta": "las estrellas",
+     "distractores": [
+      "el sol",
+      "el arcoíris",
+      "las flores"
+     ]
+    }
+   ]
+  }
+ }
+]

@@ -10,6 +10,7 @@ export interface TokenOut {
   rol: string;
   nombre: string;
   centro_id: string;
+  centro_nombre?: string | null;
 }
 
 export interface UsuarioFinal {
@@ -109,14 +110,83 @@ export interface FichaViva {
   alias_interno: string;
   ejercicio_actual: string | null;
   ultimo_estado: EstadoIntento | null;
+  ultimo_con_ayuda: boolean;
+  ultimo_intento_id: string | null;
   segundos_desde_ultimo_intento: number | null;
   atascado: boolean;
+  terminado: boolean;
+  ronda: number;
+  pos_actual: number;
+  total_actual: number;
 }
 
 export interface Live {
   sesion_id: string;
   tipo: string;
   fichas: FichaViva[];
+}
+
+export interface ResumenArea {
+  bloque: string;
+  n_personas: number;
+  desempeno_medio: number;
+  n_por_debajo: number;
+}
+
+export interface Consentimiento {
+  id: string;
+  usuario_final_id: string;
+  tipo: string;
+  fecha: string;
+  otorgado_por: string;
+  rol_otorgante: string;
+  documento_ref: string | null;
+}
+
+export interface PersonaInactiva {
+  usuario_final_id: string;
+  alias_interno: string;
+  dias_sin_actividad: number | null; // null = nunca ha participado
+}
+
+export interface ResumenUso {
+  personas_totales: number;
+  personas_activas_30d: number;
+  sesiones_7d: number;
+  sesiones_30d: number;
+  inactivas: PersonaInactiva[];
+}
+
+export interface Objetivo {
+  id: string;
+  usuario_final_id: string;
+  bloque: string;
+  descripcion: string | null;
+  objetivo_desempeno: number;
+  activo: boolean;
+  creado_en: string;
+  situacion_actual: number | null;
+  cumple: boolean | null;
+  n_valorados: number;
+}
+
+export interface ObjetivoIn {
+  bloque: string;
+  descripcion?: string | null;
+  objetivo_desempeno: number;
+}
+
+export interface PendienteRevision {
+  id: string;
+  usuario_final_id: string;
+  alias_interno: string;
+  ejercicio_id: string;
+  ejercicio: string;
+  bloque: string;
+  plantilla_tipo: string;
+  cuando: string;
+  valores_json: Record<string, unknown>;
+  cantidad_objetivo_json: Record<string, unknown>;
 }
 
 export type EstadoIntento = "logrado" | "parcial" | "no_logrado" | "sin_valorar";
@@ -225,6 +295,8 @@ export interface Dispositivo {
   rol: string;
   activo: boolean;
   fecha_alta?: string | null;
+  emparejado_en?: string | null;
+  visto_en?: string | null; // última vez que la tablet se conectó
 }
 
 export interface DispositivoIn {

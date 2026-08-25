@@ -13,6 +13,7 @@ export interface Session {
   rol: string;
   nombre: string;
   centro_id: string;
+  centro_nombre?: string | null;
 }
 
 export function saveSession(t: TokenOut): Session {
@@ -22,6 +23,7 @@ export function saveSession(t: TokenOut): Session {
     rol: t.rol,
     nombre: t.nombre,
     centro_id: t.centro_id,
+    centro_nombre: t.centro_nombre ?? null,
   };
   localStorage.setItem(KEY, JSON.stringify(s));
   return s;

@@ -1,0 +1,557 @@
+[
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "Animales y objetos",
+  "descripcion": "Separar seres vivos de objetos: toca cada dibujo y llévalo a Animales o a Objetos.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "instruccion": "Toca cada dibujo y ponlo en su sitio: los Animales a un lado y los Objetos al otro.",
+   "cantidad_min": 4,
+   "cantidad_max": 5,
+   "muestrear": true,
+   "piezas": [
+    {
+     "id": "perro",
+     "label": "perro",
+     "zona_correcta": "animal"
+    },
+    {
+     "id": "gato",
+     "label": "gato",
+     "zona_correcta": "animal"
+    },
+    {
+     "id": "caballo",
+     "label": "caballo",
+     "zona_correcta": "animal"
+    },
+    {
+     "id": "vaca",
+     "label": "vaca",
+     "zona_correcta": "animal"
+    },
+    {
+     "id": "pajaro",
+     "label": "pájaro",
+     "zona_correcta": "animal"
+    },
+    {
+     "id": "silla",
+     "label": "silla",
+     "zona_correcta": "objeto"
+    },
+    {
+     "id": "mesa",
+     "label": "mesa",
+     "zona_correcta": "objeto"
+    },
+    {
+     "id": "reloj",
+     "label": "reloj",
+     "zona_correcta": "objeto"
+    },
+    {
+     "id": "llave",
+     "label": "llave",
+     "zona_correcta": "objeto"
+    },
+    {
+     "id": "martillo",
+     "label": "martillo",
+     "zona_correcta": "objeto"
+    }
+   ],
+   "zonas": [
+    {
+     "id": "animal",
+     "label": "Animales"
+    },
+    {
+     "id": "objeto",
+     "label": "Objetos"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "En la granja o en casa",
+  "descripcion": "Distinguir animales de granja de las mascotas de casa.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca cada animal y llévalo a su sitio: los de la granja a un lado y las mascotas de casa al otro.",
+   "cantidad_min": 4,
+   "cantidad_max": 5,
+   "muestrear": true,
+   "piezas": [
+    {
+     "id": "vaca",
+     "label": "vaca",
+     "zona_correcta": "granja"
+    },
+    {
+     "id": "oveja",
+     "label": "oveja",
+     "zona_correcta": "granja"
+    },
+    {
+     "id": "cerdo",
+     "label": "cerdo",
+     "zona_correcta": "granja"
+    },
+    {
+     "id": "gallina",
+     "label": "gallina",
+     "zona_correcta": "granja"
+    },
+    {
+     "id": "caballo",
+     "label": "caballo",
+     "zona_correcta": "granja"
+    },
+    {
+     "id": "perro",
+     "label": "perro",
+     "zona_correcta": "casa"
+    },
+    {
+     "id": "gato",
+     "label": "gato",
+     "zona_correcta": "casa"
+    },
+    {
+     "id": "pez",
+     "label": "pez",
+     "zona_correcta": "casa"
+    },
+    {
+     "id": "pajaro",
+     "label": "pájaro",
+     "zona_correcta": "casa"
+    }
+   ],
+   "zonas": [
+    {
+     "id": "granja",
+     "label": "En la granja"
+    },
+    {
+     "id": "casa",
+     "label": "Mascotas de casa"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "A la nevera o a la despensa",
+  "descripcion": "Guardar cada alimento donde toca: en la nevera o en la despensa.",
+  "parametros_json": {
+   "dificultad": "dificil",
+   "instruccion": "Toca cada alimento y guárdalo: en la nevera lo que va frío, y en la despensa lo que se guarda fuera.",
+   "cantidad_min": 4,
+   "cantidad_max": 5,
+   "muestrear": true,
+   "piezas": [
+    {
+     "id": "leche",
+     "label": "leche",
+     "zona_correcta": "nevera"
+    },
+    {
+     "id": "queso",
+     "label": "queso",
+     "zona_correcta": "nevera"
+    },
+    {
+     "id": "huevo",
+     "label": "huevo",
+     "zona_correcta": "nevera"
+    },
+    {
+     "id": "pescado",
+     "label": "pescado",
+     "zona_correcta": "nevera"
+    },
+    {
+     "id": "pollo",
+     "label": "pollo",
+     "zona_correcta": "nevera"
+    },
+    {
+     "id": "pan",
+     "label": "pan",
+     "zona_correcta": "despensa"
+    },
+    {
+     "id": "galleta",
+     "label": "galletas",
+     "zona_correcta": "despensa"
+    },
+    {
+     "id": "patata",
+     "label": "patata",
+     "zona_correcta": "despensa"
+    },
+    {
+     "id": "cebolla",
+     "label": "cebolla",
+     "zona_correcta": "despensa"
+    }
+   ],
+   "zonas": [
+    {
+     "id": "nevera",
+     "label": "A la nevera"
+    },
+    {
+     "id": "despensa",
+     "label": "A la despensa"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "Cómo nos vestimos",
+  "descripcion": "Ordenar la ropa: prendas de la parte de arriba y prendas de la parte de abajo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca cada prenda y ponla en su sitio: la de la parte de arriba a un lado y la de la parte de abajo al otro.",
+   "cantidad_min": 4,
+   "cantidad_max": 5,
+   "muestrear": true,
+   "piezas": [
+    {
+     "id": "camisa",
+     "label": "camisa",
+     "zona_correcta": "arriba"
+    },
+    {
+     "id": "abrigo",
+     "label": "abrigo",
+     "zona_correcta": "arriba"
+    },
+    {
+     "id": "bufanda",
+     "label": "bufanda",
+     "zona_correcta": "arriba"
+    },
+    {
+     "id": "sombrero",
+     "label": "sombrero",
+     "zona_correcta": "arriba"
+    },
+    {
+     "id": "pantalon",
+     "label": "pantalón",
+     "zona_correcta": "abajo"
+    },
+    {
+     "id": "calcetin",
+     "label": "calcetín",
+     "zona_correcta": "abajo"
+    },
+    {
+     "id": "zapato",
+     "label": "zapato",
+     "zona_correcta": "abajo"
+    }
+   ],
+   "zonas": [
+    {
+     "id": "arriba",
+     "label": "Parte de arriba"
+    },
+    {
+     "id": "abajo",
+     "label": "Parte de abajo"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "Cocina o herramientas",
+  "descripcion": "Separar los utensilios de cocina de las herramientas de trabajo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca cada objeto y llévalo a su sitio: los de la cocina a un lado y las herramientas al otro.",
+   "cantidad_min": 4,
+   "cantidad_max": 5,
+   "muestrear": true,
+   "piezas": [
+    {
+     "id": "olla",
+     "label": "olla",
+     "zona_correcta": "cocina"
+    },
+    {
+     "id": "sarten",
+     "label": "sartén",
+     "zona_correcta": "cocina"
+    },
+    {
+     "id": "cuchara",
+     "label": "cuchara",
+     "zona_correcta": "cocina"
+    },
+    {
+     "id": "plato",
+     "label": "plato",
+     "zona_correcta": "cocina"
+    },
+    {
+     "id": "martillo",
+     "label": "martillo",
+     "zona_correcta": "herramienta"
+    },
+    {
+     "id": "destornillador",
+     "label": "destornillador",
+     "zona_correcta": "herramienta"
+    },
+    {
+     "id": "sierra",
+     "label": "sierra",
+     "zona_correcta": "herramienta"
+    },
+    {
+     "id": "pincel",
+     "label": "pincel",
+     "zona_correcta": "herramienta"
+    }
+   ],
+   "zonas": [
+    {
+     "id": "cocina",
+     "label": "De la cocina"
+    },
+    {
+     "id": "herramienta",
+     "label": "Herramientas"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "Se come o no se come",
+  "descripcion": "Distinguir los alimentos de las cosas que no se comen.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "instruccion": "Toca cada dibujo y ponlo en su sitio: lo que se come a un lado y lo que no se come al otro.",
+   "cantidad_min": 4,
+   "cantidad_max": 5,
+   "muestrear": true,
+   "piezas": [
+    {
+     "id": "manzana",
+     "label": "manzana",
+     "zona_correcta": "come"
+    },
+    {
+     "id": "pan",
+     "label": "pan",
+     "zona_correcta": "come"
+    },
+    {
+     "id": "queso",
+     "label": "queso",
+     "zona_correcta": "come"
+    },
+    {
+     "id": "huevo",
+     "label": "huevo",
+     "zona_correcta": "come"
+    },
+    {
+     "id": "platano",
+     "label": "plátano",
+     "zona_correcta": "come"
+    },
+    {
+     "id": "silla",
+     "label": "silla",
+     "zona_correcta": "nocome"
+    },
+    {
+     "id": "reloj",
+     "label": "reloj",
+     "zona_correcta": "nocome"
+    },
+    {
+     "id": "zapato",
+     "label": "zapato",
+     "zona_correcta": "nocome"
+    },
+    {
+     "id": "llave",
+     "label": "llave",
+     "zona_correcta": "nocome"
+    },
+    {
+     "id": "coche",
+     "label": "coche",
+     "zona_correcta": "nocome"
+    }
+   ],
+   "zonas": [
+    {
+     "id": "come",
+     "label": "Se come"
+    },
+    {
+     "id": "nocome",
+     "label": "No se come"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "En el baño o en la cocina",
+  "descripcion": "Colocar cada cosa en la habitación donde se usa: el baño o la cocina.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca cada objeto y llévalo a su sitio: lo del baño a un lado y lo de la cocina al otro.",
+   "cantidad_min": 4,
+   "cantidad_max": 5,
+   "muestrear": true,
+   "piezas": [
+    {
+     "id": "jabon",
+     "label": "jabón",
+     "zona_correcta": "bano"
+    },
+    {
+     "id": "toalla",
+     "label": "toalla",
+     "zona_correcta": "bano"
+    },
+    {
+     "id": "espejo",
+     "label": "espejo",
+     "zona_correcta": "bano"
+    },
+    {
+     "id": "peine",
+     "label": "peine",
+     "zona_correcta": "bano"
+    },
+    {
+     "id": "olla",
+     "label": "olla",
+     "zona_correcta": "cocina"
+    },
+    {
+     "id": "sarten",
+     "label": "sartén",
+     "zona_correcta": "cocina"
+    },
+    {
+     "id": "plato",
+     "label": "plato",
+     "zona_correcta": "cocina"
+    },
+    {
+     "id": "cuchara",
+     "label": "cuchara",
+     "zona_correcta": "cocina"
+    }
+   ],
+   "zonas": [
+    {
+     "id": "bano",
+     "label": "En el baño"
+    },
+    {
+     "id": "cocina",
+     "label": "En la cocina"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "Muebles o comida",
+  "descripcion": "Separar los muebles de casa de los alimentos.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "instruccion": "Toca cada dibujo y ponlo en su sitio: los muebles a un lado y la comida al otro.",
+   "cantidad_min": 4,
+   "cantidad_max": 5,
+   "muestrear": true,
+   "piezas": [
+    {
+     "id": "silla",
+     "label": "silla",
+     "zona_correcta": "mueble"
+    },
+    {
+     "id": "mesa",
+     "label": "mesa",
+     "zona_correcta": "mueble"
+    },
+    {
+     "id": "cama",
+     "label": "cama",
+     "zona_correcta": "mueble"
+    },
+    {
+     "id": "sofa",
+     "label": "sofá",
+     "zona_correcta": "mueble"
+    },
+    {
+     "id": "sillon",
+     "label": "sillón",
+     "zona_correcta": "mueble"
+    },
+    {
+     "id": "manzana",
+     "label": "manzana",
+     "zona_correcta": "comida"
+    },
+    {
+     "id": "pan",
+     "label": "pan",
+     "zona_correcta": "comida"
+    },
+    {
+     "id": "queso",
+     "label": "queso",
+     "zona_correcta": "comida"
+    },
+    {
+     "id": "platano",
+     "label": "plátano",
+     "zona_correcta": "comida"
+    },
+    {
+     "id": "galleta",
+     "label": "galletas",
+     "zona_correcta": "comida"
+    }
+   ],
+   "zonas": [
+    {
+     "id": "mueble",
+     "label": "Muebles"
+    },
+    {
+     "id": "comida",
+     "label": "Comida"
+    }
+   ]
+  }
+ }
+]

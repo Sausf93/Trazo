@@ -173,6 +173,36 @@ async def cola_usuario(
     return ColaOut(usuario_final_id=usuario_id, sesion_id=sesion_id, modo=modo, items=items)
 
 
+@router.get("/usuarios/{usuario_id}/propuesta", response_model=list[ItemCola])
+async def propuesta_sesion(
+    usuario_id: str,
+    n: int = Query(default=3, ge=1, le=20),
+    db: AsyncSession = Depends(get_db),
+    acceso: Acceso = Depends(acceso_centro),
+):
+    """La app PROPONE las próximas `n` actividades frescas para la persona.
+
+    Salen de su plan con rotación por FRESCURA (lo menos jugado primero) y sin
+    repetir ejercicio. La integradora la revisa y decide en el momento: NUNCA se
+    aplica sola (mismo principio que las sugerencias de nivel y que `sin_valorar`).
+    Se sirve por login de staff O por token de dispositivo (la tablet la ofrece).
+    """
+    uf = await usuario_del_centro_id(db, usuario_id, acceso.centro_id)
+    if not uf.activo:
+        raise HTTPException(status.HTTP_409_CONFLICT, "El usuario está dado de baja")
+    items_data = await construir_cola(db, usuario_id, None)
+    vistos: set[str] = set()
+    salida: list[ItemCola] = []
+    for it in items_data:
+        if it.ejercicio_id in vistos:
+            continue
+        vistos.add(it.ejercicio_id)
+        salida.append(ItemCola(**it.__dict__))
+        if len(salida) >= n:
+            break
+    return salida
+
+
 @router.get("/usuarios/{usuario_id}/sugerencias", response_model=list[SugerenciaNivelOut])
 async def sugerencias_nivel(
     usuario_id: str,

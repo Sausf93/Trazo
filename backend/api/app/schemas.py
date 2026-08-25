@@ -41,14 +41,45 @@ class StaffIn(BaseModel):
     @field_validator("rol")
     @classmethod
     def _rol_valido(cls, v: str) -> str:
-        if v not in ("integradora", "admin_centro"):
-            raise ValueError("rol debe ser 'integradora' o 'admin_centro'")
+        validos = (
+            "integradora",
+            "psicologa",
+            "admin_centro",
+            "terapeuta_ocupacional",
+            "integradora_social",
+        )
+        if v not in validos:
+            raise ValueError(f"rol debe ser uno de: {', '.join(validos)}")
         return v
 
 
 class StaffUpdate(BaseModel):
     nombre: str | None = Field(default=None, min_length=1, max_length=200)
     activo: bool | None = None
+
+
+class StaffPassword(BaseModel):
+    password: str = Field(min_length=8, max_length=128)
+
+
+class StaffPin(BaseModel):
+    # PIN corto para entrar en la tablet. 4 dígitos.
+    pin: str = Field(min_length=4, max_length=4, pattern=r"^\d{4}$")
+
+
+class StaffPickItem(BaseModel):
+    """Un profesional del centro, para el selector "¿quién eres?" de la tablet."""
+    id: str
+    nombre: str
+    rol: str
+    tiene_pin: bool
+
+
+class TabletLoginIn(BaseModel):
+    """Login de la maestra en la tablet emparejada: elige su nombre (staff_id). El
+    PIN solo hace falta si ese profesional lo tiene puesto (opcional)."""
+    staff_id: str
+    pin: str | None = Field(default=None, min_length=4, max_length=4, pattern=r"^\d{4}$")
 
 
 class StaffOut(BaseModel):
@@ -59,6 +90,7 @@ class StaffOut(BaseModel):
     email: str
     rol: str
     activo: bool
+    tiene_pin: bool = False
 
 
 # ---- Plataforma (nivel 0: alta de centros) ----
@@ -87,6 +119,12 @@ class CentroInfoOut(BaseModel):
     n_staff: int = 0
     n_staff_activos: int = 0
     n_pacientes: int = 0
+    # Facturación / control de plan: tope de personas del plan, personas activas
+    # en los últimos 30 días y si el centro se ha pasado del tope (aviso).
+    tope_personas: int = 30
+    personas_activas: int = 0
+    sobre_tope: bool = False
+    personas_extra: int = 0
 
 
 class CentroEstadoIn(BaseModel):
@@ -101,6 +139,7 @@ class TokenOut(BaseModel):
     rol: str
     nombre: str
     centro_id: str
+    centro_nombre: str | None = None  # para rotular informes con el nombre del centro
 
 
 # ---- Usuarios finales ----
@@ -132,9 +171,13 @@ class ConsentimientoOut(BaseModel):
 
 
 class UsuarioFinalUpdate(BaseModel):
-    """Editar un usuario final: alias y/o nivel base. Campos omitidos no cambian."""
+    """Editar un usuario final: alias, nivel base y/o nombre real. Campos omitidos
+    no cambian. `nombre_real` con "" (vacío) BORRA el nombre identificativo."""
     alias_interno: str | None = None
     nivel_base_json: dict[str, Any] | None = None
+    # RGPD art. 16 (rectificación): fijar/actualizar/vaciar el nombre real, que
+    # vive en la tabla separada de acceso restringido. None = no tocar.
+    nombre_real: str | None = None
 
 
 class UsuarioFinalOut(BaseModel):
@@ -245,9 +288,14 @@ class SesionConfigPut(BaseModel):
 
 
 class ParticipanteMasIn(BaseModel):
-    """Otra tanda para un participante que terminó (opcional, nueva config)."""
+    """Otra tanda para un participante que terminó (opcional, nueva config).
+
+    `ejercicios` = ids de actividades CONCRETAS que la integradora elige EN VIVO
+    (o una propuesta de la app aceptada); si viene, van primero en su cola.
+    """
     nivel: str | None = None
     lineas: list[LineaConfig] = Field(default_factory=list)
+    ejercicios: list[str] = Field(default_factory=list)
 
     _nivel_ok = field_validator("nivel")(_validar_nivel)
 
@@ -378,7 +426,7 @@ class ItemCola(BaseModel):
     bloque: str
     plantilla: str
     nivel: str | None = None
-    origen: str  # 'dominio' | 'ejercicio' | 'grupo'
+    origen: str  # 'dominio' | 'ejercicio' | 'grupo' | 'sesion' | 'en_vivo'
     plan_linea_id: str | None = None
 
 
@@ -397,15 +445,23 @@ class DispositivoIn(BaseModel):
     centro_id: str | None = None  # por defecto, el centro del staff
 
 
-class DispositivoOut(BaseModel):
+class DispositivoResumenOut(BaseModel):
+    """Ficha de una tablet SIN el token: es lo que ve el listado del panel. El
+    token es un bearer permanente de kiosco; exponerlo en cada GET permitiría
+    quedárselos todos. Solo se muestra UNA vez, al emparejar (DispositivoOut)."""
     model_config = ConfigDict(from_attributes=True)
     id: str
     centro_id: str
     nombre: str
     rol: str
-    token: str
     activo: bool
     emparejado_en: datetime
+    visto_en: datetime | None = None
+
+
+class DispositivoOut(DispositivoResumenOut):
+    """Respuesta del emparejado: incluye el token, que solo se ve esta vez."""
+    token: str
 
 
 class DispositivoYoOut(BaseModel):
@@ -440,13 +496,31 @@ class ParticipanteSesion(BaseModel):
     alias_interno: str
 
 
+class SalaActiva(BaseModel):
+    """Una sala (sesión) abierta del centro, con quién juega en ella.
+
+    Un centro puede tener VARIOS grupos a la vez (p.ej. 2 maestras, 2 salas). El
+    kiosco muestra las salas para que cada persona sepa a qué actividad unirse.
+    """
+    sesion_id: str
+    nombre: str | None = None
+    modo: str | None = None
+    iniciada: bool = False
+    responsable: str | None = None  # nombre de la maestra que abrió la sala
+    ejercicio_compartido_id: str | None = None
+    participantes: list[ParticipanteSesion] = Field(default_factory=list)
+
+
 class SesionActivaOut(BaseModel):
+    # Compat: refleja la PRIMERA sala (clientes viejos que aún leen estos campos).
     sesion_id: str | None = None
     nombre: str | None = None
     modo: str | None = None
     iniciada: bool = False
     ejercicio_compartido_id: str | None = None
     participantes: list[ParticipanteSesion] = Field(default_factory=list)
+    # Todas las salas abiertas del centro (el kiosco elige sala -> persona).
+    salas: list[SalaActiva] = Field(default_factory=list)
 
 
 # ---- Intentos ----
@@ -564,3 +638,74 @@ class IntentoRevisionOut(BaseModel):
     resultado: str
     con_ayuda: bool
     cuando: datetime
+
+
+class ResumenAreaOut(BaseModel):
+    """Panorámica del centro por área: cómo va cada dominio de media y a cuántas
+    personas conviene mirar (por debajo de un umbral). Para priorizar el día a día."""
+    bloque: str
+    n_personas: int
+    desempeno_medio: float
+    n_por_debajo: int
+
+
+class PersonaInactiva(BaseModel):
+    usuario_final_id: str
+    alias_interno: str
+    dias_sin_actividad: int | None  # None = nunca ha hecho ninguna actividad
+
+
+class ResumenUsoOut(BaseModel):
+    """Uso y adherencia del centro: evidencia de valor para dirección (renovación,
+    inspección, memorias). Todo scoped al centro."""
+    personas_totales: int
+    personas_activas_30d: int
+    sesiones_7d: int
+    sesiones_30d: int
+    inactivas: list[PersonaInactiva]
+
+
+class ObjetivoIn(BaseModel):
+    """Meta clínica para una persona en un área: descripción libre + desempeño
+    objetivo (0..1)."""
+    bloque: str
+    descripcion: str | None = None
+    objetivo_desempeno: float = 0.7
+
+
+class ObjetivoUpdate(BaseModel):
+    descripcion: str | None = None
+    objetivo_desempeno: float | None = None
+    activo: bool | None = None
+
+
+class ObjetivoOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: str
+    usuario_final_id: str
+    bloque: str
+    descripcion: str | None
+    objetivo_desempeno: float
+    activo: bool
+    creado_en: datetime
+    # Situación actual (media de desempeño del área) y si cumple el objetivo. Se
+    # calcula al vuelo; None si aún no hay intentos valorados en esa área.
+    situacion_actual: float | None = None
+    cumple: bool | None = None
+    n_valorados: int = 0
+
+
+class PendienteRevisionOut(BaseModel):
+    """Un intento 'sin_valorar' pendiente de que la integradora lo juzgue, con el
+    contexto necesario para decidir (quién, qué actividad, qué hizo). Cierra el
+    bucle: mientras no se revise, queda fuera de la evolución, alertas y medias."""
+    id: str
+    usuario_final_id: str
+    alias_interno: str
+    ejercicio_id: str
+    ejercicio: str
+    bloque: str
+    plantilla_tipo: str
+    cuando: datetime
+    valores_json: dict[str, Any]
+    cantidad_objetivo_json: dict[str, Any]

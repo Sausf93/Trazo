@@ -57,7 +57,9 @@ async function request<T>(path: string, opts: RequestOptions = {}): Promise<T> {
     );
   }
 
-  if (res.status === 401) {
+  // Un 401 en el propio login NO es sesión caducada: es email/contraseña mal.
+  // Solo expulsamos al /login cuando el 401 llega en cualquier OTRA llamada.
+  if (res.status === 401 && !path.startsWith("/auth/login")) {
     clearSession();
     // Fuerza la vuelta al login sin depender de React Router aquí.
     if (typeof window !== "undefined" && window.location.pathname !== "/login") {
@@ -71,10 +73,16 @@ async function request<T>(path: string, opts: RequestOptions = {}): Promise<T> {
     try {
       const data = await res.json();
       if (data?.detail) {
-        detail =
-          typeof data.detail === "string"
-            ? data.detail
-            : JSON.stringify(data.detail);
+        // Nunca mostrar JSON crudo al usuario. Si el detail es un texto, se usa;
+        // si es la lista de errores de validación de FastAPI (422), un mensaje
+        // humano; cualquier otra forma, un genérico.
+        if (typeof data.detail === "string") {
+          detail = data.detail;
+        } else if (Array.isArray(data.detail)) {
+          detail = "Revisa los datos: hay campos incompletos o con formato incorrecto.";
+        } else {
+          detail = "No se pudo completar la operación. Revisa los datos e inténtalo de nuevo.";
+        }
       }
     } catch {
       /* respuesta sin cuerpo JSON */
@@ -101,6 +109,7 @@ export const http = {
   post: <T>(path: string, json?: unknown) => request<T>(path, { method: "POST", json }),
   put: <T>(path: string, json?: unknown) => request<T>(path, { method: "PUT", json }),
   patch: <T>(path: string, json?: unknown) => request<T>(path, { method: "PATCH", json }),
+  del: <T>(path: string) => request<T>(path, { method: "DELETE" }),
   postForm: <T>(path: string, form: Record<string, string>) =>
     request<T>(path, { method: "POST", form }),
 };

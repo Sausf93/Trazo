@@ -9,7 +9,8 @@
  * RGPD: solo se muestra el alias interno, nunca el nombre real.
  */
 import { createPortal } from "react-dom";
-import type { Evolucion } from "../api/types";
+import type { Evolucion, Objetivo } from "../api/types";
+import { labelBloque } from "../api/vocab";
 import { EvolucionChart, type PuntoChart } from "./EvolucionChart";
 import { colors, fonts } from "../theme";
 import { fmtFecha, fmtPorcentaje } from "../utils/format";
@@ -18,10 +19,11 @@ type Tendencia = "mejora" | "estable" | "empeora" | "insuficiente";
 
 /**
  * Tendencia sencilla comparando la primera mitad de las sesiones con la última,
- * sobre el mismo criterio de precisión que muestra la gráfica.
+ * sobre el mismo criterio de desempeño que muestra la gráfica (definido para
+ * todas las plantillas, no solo las que dan "precisión").
  */
 function calcularTendencia(serie: PuntoChart[]): Tendencia {
-  const ys = serie.map((p) => p.precision);
+  const ys = serie.map((p) => p.desempeno);
   if (ys.length < 4) return "insuficiente";
   const mitad = Math.floor(ys.length / 2);
   const primeras = ys.slice(0, mitad);
@@ -61,11 +63,15 @@ export function InformeFamilia({
   bloqueLabel,
   evolucion,
   serie,
+  objetivos = [],
+  centroNombre,
 }: {
   alias: string;
   bloqueLabel: string;
   evolucion: Evolucion;
   serie: PuntoChart[];
+  objetivos?: Objetivo[];
+  centroNombre?: string | null;
 }) {
   const { puntos, resumen } = evolucion;
 
@@ -83,6 +89,23 @@ export function InformeFamilia({
 
   const tendencia = calcularTendencia(serie);
   const tTexto = TENDENCIA_TEXTO[tendencia];
+
+  // Desempeño por ÁREA (para la reunión con la familia: en qué anda mejor/peor).
+  const PESO: Record<string, number> = { logrado: 1, parcial: 0.5, no_logrado: 0 };
+  const porArea = new Map<string, { suma: number; n: number }>();
+  for (const p of puntos) {
+    if (!(p.estado in PESO)) continue;
+    const a = porArea.get(p.bloque) ?? { suma: 0, n: 0 };
+    a.suma += PESO[p.estado];
+    a.n += 1;
+    porArea.set(p.bloque, a);
+  }
+  const areas = [...porArea.entries()]
+    .map(([bloque, { suma, n }]) => ({ bloque, n, desempeno: n > 0 ? suma / n : null }))
+    // Al menos 2 actividades por área: un 0%/100% de una sola actividad daría una
+    // impresión desproporcionada a la familia.
+    .filter((a) => a.n >= 2)
+    .sort((a, b) => (b.desempeno ?? 0) - (a.desempeno ?? 0));
 
   const generado = new Date();
 
@@ -129,7 +152,7 @@ export function InformeFamilia({
                 marginBottom: 4,
               }}
             >
-              Trazo · Estimulación cognitiva
+              {centroNombre?.trim() || "Estimulación cognitiva"}
             </div>
             <h1 style={{ fontFamily: fonts.serif, fontSize: 26, color: colors.ink, lineHeight: 1.15 }}>
               Informe de evolución
@@ -162,7 +185,7 @@ export function InformeFamilia({
           Cómo ha ido en el tiempo
         </h2>
         <p style={{ fontSize: 12.5, color: colors.textMuted, marginBottom: 8 }}>
-          Cada punto es una sesión. La línea sube cuando acierta más y necesita menos ayuda.
+          Cada punto es una sesión. La línea sube cuando resuelve mejor las actividades.
           Siempre se compara a la persona consigo misma, nunca con otras.
         </p>
         <div
@@ -176,6 +199,42 @@ export function InformeFamilia({
           <EvolucionChart data={serie} />
         </div>
       </section>
+
+      {/* Objetivos de intervención: convierte el informe en un PLAN medible. */}
+      {objetivos.filter((o) => o.activo).length > 0 && (
+        <section style={{ marginBottom: 22, breakInside: "avoid" }}>
+          <h2 style={{ fontFamily: fonts.serif, fontSize: 18, marginBottom: 4, color: colors.ink }}>
+            Objetivos de trabajo
+          </h2>
+          <p style={{ fontSize: 12.5, color: colors.textMuted, marginBottom: 8 }}>
+            Metas que el equipo se ha marcado con {alias} en cada área, y cómo va respecto a ellas.
+          </p>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+            <thead>
+              <tr style={{ textAlign: "left", color: colors.textMuted }}>
+                <th style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.sand}` }}>Área</th>
+                <th style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.sand}` }}>Meta</th>
+                <th style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.sand}` }}>Objetivo</th>
+                <th style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.sand}` }}>Cómo va</th>
+              </tr>
+            </thead>
+            <tbody>
+              {objetivos.filter((o) => o.activo).map((o) => (
+                <tr key={o.id}>
+                  <td style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.card}` }}>{labelBloque(o.bloque)}</td>
+                  <td style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.card}` }}>{o.descripcion ?? "—"}</td>
+                  <td style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.card}` }}>{Math.round(o.objetivo_desempeno * 100)} %</td>
+                  <td style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.card}`, color: o.cumple ? colors.sageDark : colors.coralDark }}>
+                    {o.situacion_actual == null
+                      ? "aún sin datos"
+                      : `${Math.round(o.situacion_actual * 100)} %${o.cumple ? " · lo cumple" : " · por debajo"}`}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
 
       {/* Resumen en lenguaje llano */}
       <section style={{ marginBottom: 22, breakInside: "avoid" }}>
@@ -230,6 +289,38 @@ export function InformeFamilia({
           </ul>
         </div>
       </section>
+
+      {/* Cómo va cada área (si hay datos de más de un área en el periodo). */}
+      {areas.length > 1 && (
+        <section style={{ marginBottom: 22, breakInside: "avoid" }}>
+          <h2 style={{ fontFamily: fonts.serif, fontSize: 18, marginBottom: 4, color: colors.ink }}>
+            Cómo va cada área
+          </h2>
+          <p style={{ fontSize: 12.5, color: colors.textMuted, marginBottom: 8 }}>
+            Desempeño en cada tipo de actividad durante el periodo (100 % = lo resolvió siempre bien).
+          </p>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+            <thead>
+              <tr style={{ textAlign: "left", color: colors.textMuted }}>
+                <th style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.sand}` }}>Área</th>
+                <th style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.sand}` }}>Actividades</th>
+                <th style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.sand}` }}>Desempeño</th>
+              </tr>
+            </thead>
+            <tbody>
+              {areas.map((a) => (
+                <tr key={a.bloque}>
+                  <td style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.card}` }}>{labelBloque(a.bloque)}</td>
+                  <td style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.card}` }}>{a.n}</td>
+                  <td style={{ padding: "6px 8px", borderBottom: `1px solid ${colors.card}`, fontWeight: 600 }}>
+                    {a.desempeno == null ? "—" : `${Math.round(a.desempeno * 100)} %`}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
 
       {/* Nota orientativa */}
       <footer
