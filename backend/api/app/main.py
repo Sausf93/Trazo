@@ -19,6 +19,7 @@ from app.routers import (
     alertas,
     auth,
     dispositivos,
+    documentos,
     ejercicios,
     evolucion,
     intentos,
@@ -157,5 +158,6 @@ app.include_router(alertas.router)
 app.include_router(planes.router)
 app.include_router(objetivos.router)
 app.include_router(dispositivos.router)
+app.include_router(documentos.router)
 app.include_router(staff.router)
 app.include_router(plataforma.router)

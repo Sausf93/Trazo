@@ -309,3 +309,16 @@ export interface DispositivoIn {
 export interface DispositivoCreado extends Dispositivo {
   token: string;
 }
+
+/** Documento legal/RGPD guardado en la app (metadatos; el contenido se pide aparte). */
+export interface DocumentoLegal {
+  id: string;
+  tipo: string;
+  usuario_final_id: string | null;
+  version: string | null;
+  nombre_archivo: string;
+  mime: string;
+  tamano: number;
+  subido_por: string;
+  fecha: string;
+}

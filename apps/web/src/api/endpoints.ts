@@ -8,6 +8,7 @@ import type {
   Alerta,
   Cola,
   Dispositivo,
+  DocumentoLegal,
   DispositivoCreado,
   DispositivoIn,
   Ejercicio,
@@ -292,4 +293,33 @@ export function emparejarDispositivo(body: DispositivoIn): Promise<DispositivoCr
 
 export function revocarDispositivo(dispositivoId: string): Promise<Dispositivo> {
   return http.patch<Dispositivo>(`/dispositivos/${encodeURIComponent(dispositivoId)}/revocar`);
+}
+
+// ---- Documentos legales (consentimientos firmados, DPA, RAT, DPIA…) ----
+export function listarDocumentos(
+  params: { usuario_final_id?: string; solo_centro?: boolean },
+  signal?: AbortSignal,
+): Promise<DocumentoLegal[]> {
+  return http.get<DocumentoLegal[]>(`/documentos${buildQuery(params)}`, signal);
+}
+
+export function subirDocumento(body: {
+  tipo: string;
+  usuario_final_id?: string | null;
+  version?: string | null;
+  nombre_archivo: string;
+  mime: string;
+  contenido_b64: string;
+}): Promise<DocumentoLegal> {
+  return http.post<DocumentoLegal>("/documentos", body);
+}
+
+export function descargarDocumento(
+  id: string,
+): Promise<{ id: string; nombre_archivo: string; mime: string; contenido_b64: string }> {
+  return http.get(`/documentos/${id}/contenido`);
+}
+
+export function borrarDocumento(id: string): Promise<void> {
+  return http.del<void>(`/documentos/${id}`);
 }

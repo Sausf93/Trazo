@@ -14,6 +14,7 @@ import { Card, Spinner, StateMessage, Button } from "./ui";
 import { colors, radius } from "../theme";
 import { fmtFecha } from "../utils/format";
 import { ConsentimientoImprimible, VERSION_CONSENTIMIENTO } from "./ConsentimientoImprimible";
+import { DocumentosLegales } from "./DocumentosLegales";
 
 const ROLES: { value: string; label: string }[] = [
   { value: "titular", label: "La propia persona" },
@@ -106,6 +107,24 @@ export function ConsentimientoPaciente({ usuarioId, personaAlias }: { usuarioId:
           onHecho={() => setImprimirTipo(null)}
         />
       )}
+
+      <div style={{ marginBottom: 18 }}>
+        <h3 style={{ fontSize: 15, margin: "6px 0 4px", color: colors.ink }}>Documentos firmados guardados</h3>
+        <p style={{ fontSize: 13, color: colors.textMuted, marginBottom: 10 }}>
+          Sube aquí el consentimiento firmado (y el documento que acredite la representación, si aplica).
+          Queda en la app para una auditoría; no dependes del papel.
+        </p>
+        <DocumentosLegales
+          usuarioFinalId={usuarioId}
+          version={VERSION_CONSENTIMIENTO}
+          tipos={[
+            { value: "consentimiento_uso", label: "Consentimiento de uso" },
+            { value: "consentimiento_imagen", label: "Consentimiento de imagen" },
+            { value: "representacion", label: "Documento de representación" },
+            { value: "otro", label: "Otro" },
+          ]}
+        />
+      </div>
 
       {error && <div style={{ marginBottom: 12 }}><StateMessage tone="error">{error}</StateMessage></div>}
       {cons.error && (

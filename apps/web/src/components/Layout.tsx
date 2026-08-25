@@ -20,7 +20,10 @@ const NAV = [
 ];
 
 // "Equipo" (alta de maestras) solo lo ve el admin del centro.
-const NAV_ADMIN = [{ to: "/equipo", label: "Equipo", end: false }];
+const NAV_ADMIN = [
+  { to: "/equipo", label: "Equipo", end: false },
+  { to: "/cumplimiento", label: "Cumplimiento", end: false },
+];
 
 export function Layout({ children }: { children: ReactNode }) {
   const { session, signOut } = useAuth();

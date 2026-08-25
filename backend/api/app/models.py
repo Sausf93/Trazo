@@ -220,6 +220,43 @@ class Consentimiento(Base):
 
 ROLES_OTORGANTE = ("titular", "representante_legal", "tutor", "guardador_hecho")
 
+# Tipos de documento legal que se pueden guardar en la app (para auditorías).
+TIPOS_DOCUMENTO = (
+    "consentimiento_uso",
+    "consentimiento_imagen",
+    "dpa",            # contrato de encargo del tratamiento (Trazo <-> centro)
+    "rat",            # registro de actividades de tratamiento
+    "dpia",           # evaluación de impacto
+    "representacion",  # documento que acredita tutela/curatela/guarda de hecho
+    "otro",
+)
+
+
+class DocumentoLegal(Base):
+    """Documento legal/RGPD firmado y subido, guardado EN LA APP para tenerlo ante
+    una auditoría sin depender del papel. Scoped por centro; opcionalmente ligado a
+    una persona usuaria (consentimientos) o al centro (DPA/RAT/DPIA). El contenido
+    va en base64 en su propia tabla para no ensuchar las consultas normales; con
+    mucho volumen se movería a almacenamiento de objetos."""
+
+    __tablename__ = "documentos_legales"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    centro_id: Mapped[str] = mapped_column(
+        ForeignKey("centros.id"), nullable=False, index=True
+    )
+    usuario_final_id: Mapped[str | None] = mapped_column(
+        ForeignKey("usuarios_finales.id"), nullable=True, index=True
+    )
+    tipo: Mapped[str] = mapped_column(String(40), nullable=False)
+    version: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    nombre_archivo: Mapped[str] = mapped_column(String(255), nullable=False)
+    mime: Mapped[str] = mapped_column(String(120), nullable=False)
+    tamano: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    contenido_b64: Mapped[str] = mapped_column(Text, nullable=False)
+    subido_por: Mapped[str] = mapped_column(String(200), nullable=False)
+    fecha: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
 
 class Sesion(Base):
     __tablename__ = "sesiones"

@@ -709,3 +709,34 @@ class PendienteRevisionOut(BaseModel):
     cuando: datetime
     valores_json: dict[str, Any]
     cantidad_objetivo_json: dict[str, Any]
+
+
+# ---- Documentos legales (subida y descarga para auditorías) ----
+class DocumentoIn(BaseModel):
+    tipo: str
+    usuario_final_id: str | None = None
+    version: str | None = None
+    nombre_archivo: str
+    mime: str
+    contenido_b64: str
+
+
+class DocumentoOut(BaseModel):
+    id: str
+    tipo: str
+    usuario_final_id: str | None
+    version: str | None
+    nombre_archivo: str
+    mime: str
+    tamano: int
+    subido_por: str
+    fecha: datetime
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class DocumentoContenidoOut(BaseModel):
+    id: str
+    nombre_archivo: str
+    mime: str
+    contenido_b64: str

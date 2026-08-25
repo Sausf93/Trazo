@@ -4,6 +4,7 @@ import { AlertasPage } from "./pages/Alertas";
 import { DashboardPage } from "./pages/Dashboard";
 import { DispositivosPage } from "./pages/Dispositivos";
 import { EjerciciosPage } from "./pages/Ejercicios";
+import { CumplimientoPage } from "./pages/Cumplimiento";
 import { EquipoPage } from "./pages/Equipo";
 import { LoginPage } from "./pages/Login";
 import { PacientesPage } from "./pages/Pacientes";
@@ -39,6 +40,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <EquipoPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/cumplimiento"
+        element={
+          <ProtectedRoute>
+            <CumplimientoPage />
           </ProtectedRoute>
         }
       />
