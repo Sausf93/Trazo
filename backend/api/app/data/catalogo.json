@@ -220,17 +220,6 @@
           ]
         },
         {
-          "id": "tijeras",
-          "instruccion": "¿Cómo se llama esto?",
-          "imagen": "tijeras",
-          "correcta": "tijeras",
-          "distractores": [
-            "alicates",
-            "pinzas",
-            "cuchillo"
-          ]
-        },
-        {
           "id": "telefono",
           "instruccion": "¿Cómo se llama esto?",
           "imagen": "telefono",
@@ -561,17 +550,6 @@
             "un jarrón",
             "una lámpara",
             "un bolo"
-          ]
-        },
-        {
-          "id": "tijeras",
-          "instruccion": "¿Qué objeto es este?",
-          "imagen": "tijeras",
-          "correcta": "unas tijeras",
-          "distractores": [
-            "unas gafas",
-            "unas pinzas",
-            "una llave"
           ]
         },
         {
@@ -1930,8 +1908,8 @@
           "zona_correcta": "bano"
         },
         {
-          "id": "cama",
-          "label": "cama",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "dormitorio"
         },
         {
@@ -2249,8 +2227,8 @@
           "zona_correcta": "frutas"
         },
         {
-          "id": "platano",
-          "label": "plátano",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "frutas"
         },
         {
@@ -4686,17 +4664,6 @@
           ]
         },
         {
-          "id": "platano",
-          "instruccion": "¿Qué fruta es?",
-          "imagen": "platano",
-          "correcta": "un plátano",
-          "distractores": [
-            "un pepino",
-            "una zanahoria",
-            "un limón"
-          ]
-        },
-        {
           "id": "naranja",
           "instruccion": "¿Qué fruta es?",
           "imagen": "naranja",
@@ -4773,39 +4740,6 @@
             "un martillo",
             "un cuchillo",
             "un lápiz"
-          ]
-        },
-        {
-          "id": "sierra",
-          "instruccion": "¿Qué herramienta es?",
-          "imagen": "sierra",
-          "correcta": "una sierra",
-          "distractores": [
-            "un martillo",
-            "un peine",
-            "un cuchillo"
-          ]
-        },
-        {
-          "id": "pincel",
-          "instruccion": "¿Qué herramienta es?",
-          "imagen": "pincel",
-          "correcta": "un pincel",
-          "distractores": [
-            "un lápiz",
-            "una cuchara",
-            "un peine"
-          ]
-        },
-        {
-          "id": "tijeras",
-          "instruccion": "¿Qué herramienta es?",
-          "imagen": "tijeras",
-          "correcta": "unas tijeras",
-          "distractores": [
-            "unas gafas",
-            "unas llaves",
-            "un martillo"
           ]
         },
         {
@@ -6647,8 +6581,8 @@
           "zona_correcta": "cocina"
         },
         {
-          "id": "plato",
-          "label": "plato",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "cocina"
         },
         {
@@ -6662,13 +6596,13 @@
           "zona_correcta": "herramienta"
         },
         {
-          "id": "sierra",
-          "label": "sierra",
+          "id": "botella",
+          "label": "botella",
           "zona_correcta": "herramienta"
         },
         {
-          "id": "pincel",
-          "label": "pincel",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "herramienta"
         }
       ],
@@ -6717,8 +6651,8 @@
           "zona_correcta": "come"
         },
         {
-          "id": "platano",
-          "label": "plátano",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "come"
         },
         {
@@ -6787,8 +6721,8 @@
           "zona_correcta": "bano"
         },
         {
-          "id": "peine",
-          "label": "peine",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "bano"
         },
         {
@@ -6802,8 +6736,8 @@
           "zona_correcta": "cocina"
         },
         {
-          "id": "plato",
-          "label": "plato",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "cocina"
         },
         {
@@ -6847,8 +6781,8 @@
           "zona_correcta": "mueble"
         },
         {
-          "id": "cama",
-          "label": "cama",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "mueble"
         },
         {
@@ -6877,8 +6811,8 @@
           "zona_correcta": "comida"
         },
         {
-          "id": "platano",
-          "label": "plátano",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "comida"
         },
         {
@@ -7351,17 +7285,6 @@
           ]
         },
         {
-          "id": "mu_cama",
-          "instruccion": "¿Qué mueble es?",
-          "imagen": "cama",
-          "correcta": "una cama",
-          "distractores": [
-            "un sofá",
-            "una silla",
-            "una mesa"
-          ]
-        },
-        {
           "id": "mu_sofa",
           "instruccion": "¿Qué mueble es?",
           "imagen": "sofa",
@@ -7427,17 +7350,6 @@
             "unas tijeras",
             "un candado",
             "un abrelatas"
-          ]
-        },
-        {
-          "id": "ob_tijeras",
-          "instruccion": "¿Qué es esto?",
-          "imagen": "tijeras",
-          "correcta": "unas tijeras",
-          "distractores": [
-            "un cuchillo",
-            "una navaja",
-            "unas pinzas"
           ]
         },
         {
@@ -7596,17 +7508,6 @@
             "el pollo",
             "la carne",
             "el jamón"
-          ]
-        },
-        {
-          "id": "al_jamon",
-          "instruccion": "¿Qué alimento es?",
-          "imagen": "jamon",
-          "correcta": "el jamón",
-          "distractores": [
-            "el queso",
-            "el chorizo",
-            "el pan"
           ]
         }
       ]
@@ -28101,8 +28002,8 @@
           "zona_correcta": "fruta"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "fruta"
         },
         {
@@ -28155,8 +28056,8 @@
           "zona_correcta": "fruta"
         },
         {
-          "id": "melocoton",
-          "label": "melocotón",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "fruta"
         },
         {
@@ -28209,8 +28110,8 @@
           "zona_correcta": "fruta"
         },
         {
-          "id": "platano",
-          "label": "plátano",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "fruta"
         },
         {
@@ -28278,8 +28179,8 @@
           "zona_correcta": "objeto"
         },
         {
-          "id": "vaso",
-          "label": "vaso",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "objeto"
         },
         {
@@ -28332,8 +28233,8 @@
           "zona_correcta": "objeto"
         },
         {
-          "id": "vaso",
-          "label": "vaso",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "objeto"
         },
         {
@@ -28381,8 +28282,8 @@
           "zona_correcta": "animal"
         },
         {
-          "id": "vaso",
-          "label": "vaso",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "objeto"
         },
         {
@@ -28420,8 +28321,8 @@
       ],
       "piezas": [
         {
-          "id": "jamon",
-          "label": "jamón",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "comida"
         },
         {
@@ -28484,8 +28385,8 @@
           "zona_correcta": "comida"
         },
         {
-          "id": "jamon",
-          "label": "jamón",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "comida"
         },
         {
@@ -28582,8 +28483,8 @@
       ],
       "piezas": [
         {
-          "id": "tenedor",
-          "label": "tenedor",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "cocina"
         },
         {
@@ -28636,8 +28537,8 @@
       ],
       "piezas": [
         {
-          "id": "plato",
-          "label": "plato",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "cocina"
         },
         {
@@ -28646,8 +28547,8 @@
           "zona_correcta": "cocina"
         },
         {
-          "id": "tenedor",
-          "label": "tenedor",
+          "id": "botella",
+          "label": "botella",
           "zona_correcta": "cocina"
         },
         {
@@ -28661,8 +28562,8 @@
           "zona_correcta": "herramienta"
         },
         {
-          "id": "tijeras",
-          "label": "tijeras",
+          "id": "cuchara",
+          "label": "cuchara",
           "zona_correcta": "herramienta"
         }
       ]
@@ -28700,8 +28601,8 @@
           "zona_correcta": "cocina"
         },
         {
-          "id": "plato",
-          "label": "plato",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "cocina"
         },
         {
@@ -28710,13 +28611,13 @@
           "zona_correcta": "herramienta"
         },
         {
-          "id": "pincel",
-          "label": "pincel",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "herramienta"
         },
         {
-          "id": "tijeras",
-          "label": "tijeras",
+          "id": "botella",
+          "label": "botella",
           "zona_correcta": "herramienta"
         }
       ]
@@ -28973,8 +28874,8 @@
           "zona_correcta": "fruta"
         },
         {
-          "id": "platano",
-          "label": "plátano",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "fruta"
         },
         {
@@ -29084,8 +28985,8 @@
       ],
       "piezas": [
         {
-          "id": "tarta",
-          "label": "tarta",
+          "id": "botella",
+          "label": "botella",
           "zona_correcta": "comida"
         },
         {
@@ -29094,8 +28995,8 @@
           "zona_correcta": "comida"
         },
         {
-          "id": "gorro",
-          "label": "gorro",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "ropa"
         },
         {
@@ -29104,8 +29005,8 @@
           "zona_correcta": "ropa"
         },
         {
-          "id": "cama",
-          "label": "cama",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "mueble"
         },
         {
@@ -29205,13 +29106,13 @@
           "zona_correcta": "comida"
         },
         {
-          "id": "tarta",
-          "label": "tarta",
+          "id": "botella",
+          "label": "botella",
           "zona_correcta": "comida"
         },
         {
-          "id": "gorro",
-          "label": "gorro",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "ropa"
         },
         {
@@ -29220,8 +29121,8 @@
           "zona_correcta": "ropa"
         },
         {
-          "id": "cama",
-          "label": "cama",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "mueble"
         },
         {
@@ -31574,8 +31475,8 @@
           "zona_correcta": "pequeno"
         },
         {
-          "id": "peine",
-          "label": "peine",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "pequeno"
         },
         {
@@ -31878,8 +31779,8 @@
       ],
       "piezas": [
         {
-          "id": "platano",
-          "label": "plátano",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "dulce"
         },
         {
@@ -31888,13 +31789,13 @@
           "zona_correcta": "dulce"
         },
         {
-          "id": "tarta",
-          "label": "tarta",
+          "id": "botella",
+          "label": "botella",
           "zona_correcta": "dulce"
         },
         {
-          "id": "jamon",
-          "label": "jamón",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "salado"
         },
         {
@@ -31937,8 +31838,8 @@
           "zona_correcta": "dulce"
         },
         {
-          "id": "tarta",
-          "label": "tarta",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "dulce"
         },
         {
@@ -31947,8 +31848,8 @@
           "zona_correcta": "dulce"
         },
         {
-          "id": "jamon",
-          "label": "jamón",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "salado"
         },
         {
@@ -31986,8 +31887,8 @@
       ],
       "piezas": [
         {
-          "id": "tarta",
-          "label": "tarta",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "dulce"
         },
         {
@@ -31996,8 +31897,8 @@
           "zona_correcta": "dulce"
         },
         {
-          "id": "platano",
-          "label": "plátano",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "dulce"
         },
         {
@@ -32050,8 +31951,8 @@
           "zona_correcta": "dulce"
         },
         {
-          "id": "platano",
-          "label": "plátano",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "dulce"
         },
         {
@@ -32065,8 +31966,8 @@
           "zona_correcta": "salado"
         },
         {
-          "id": "jamon",
-          "label": "jamón",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "salado"
         }
       ]
@@ -32104,8 +32005,8 @@
           "zona_correcta": "cocina"
         },
         {
-          "id": "plato",
-          "label": "plato",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "cocina"
         },
         {
@@ -32148,8 +32049,8 @@
       ],
       "piezas": [
         {
-          "id": "vaso",
-          "label": "vaso",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "cocina"
         },
         {
@@ -32158,8 +32059,8 @@
           "zona_correcta": "cocina"
         },
         {
-          "id": "plato",
-          "label": "plato",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "cocina"
         },
         {
@@ -32202,8 +32103,8 @@
       ],
       "piezas": [
         {
-          "id": "plato",
-          "label": "plato",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "cocina"
         },
         {
@@ -32256,8 +32157,8 @@
       ],
       "piezas": [
         {
-          "id": "vaso",
-          "label": "vaso",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "cocina"
         },
         {
@@ -35484,8 +35385,8 @@
       ],
       "piezas": [
         {
-          "id": "tarta",
-          "label": "tarta",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "comida"
         },
         {
@@ -35543,8 +35444,8 @@
           "zona_correcta": "comida"
         },
         {
-          "id": "jamon",
-          "label": "jamón",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "comida"
         },
         {
@@ -35563,8 +35464,8 @@
           "zona_correcta": "ropa"
         },
         {
-          "id": "gorro",
-          "label": "gorro",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "ropa"
         }
       ]
@@ -35602,8 +35503,8 @@
           "zona_correcta": "comida"
         },
         {
-          "id": "jamon",
-          "label": "jamón",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "comida"
         },
         {
@@ -35617,8 +35518,8 @@
           "zona_correcta": "ropa"
         },
         {
-          "id": "gorro",
-          "label": "gorro",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "ropa"
         }
       ]
@@ -35656,23 +35557,23 @@
           "zona_correcta": "cocina"
         },
         {
-          "id": "plato",
-          "label": "plato",
+          "id": "botella",
+          "label": "botella",
           "zona_correcta": "cocina"
         },
         {
-          "id": "sierra",
-          "label": "sierra",
+          "id": "cuchillo",
+          "label": "cuchillo",
           "zona_correcta": "herramienta"
         },
         {
-          "id": "tijeras",
-          "label": "tijeras",
+          "id": "cuchara",
+          "label": "cuchara",
           "zona_correcta": "herramienta"
         },
         {
-          "id": "pincel",
-          "label": "pincel",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "herramienta"
         }
       ]
@@ -35700,8 +35601,8 @@
       ],
       "piezas": [
         {
-          "id": "vaso",
-          "label": "vaso",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "cocina"
         },
         {
@@ -35710,13 +35611,13 @@
           "zona_correcta": "cocina"
         },
         {
-          "id": "plato",
-          "label": "plato",
+          "id": "taza",
+          "label": "taza",
           "zona_correcta": "cocina"
         },
         {
-          "id": "sierra",
-          "label": "sierra",
+          "id": "botella",
+          "label": "botella",
           "zona_correcta": "herramienta"
         },
         {
@@ -35754,8 +35655,8 @@
       ],
       "piezas": [
         {
-          "id": "plato",
-          "label": "plato",
+          "id": "bol",
+          "label": "cuenco",
           "zona_correcta": "cocina"
         },
         {
@@ -35769,8 +35670,8 @@
           "zona_correcta": "cocina"
         },
         {
-          "id": "tijeras",
-          "label": "tijeras",
+          "id": "botella",
+          "label": "botella",
           "zona_correcta": "herramienta"
         },
         {
