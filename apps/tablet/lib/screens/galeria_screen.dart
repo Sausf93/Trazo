@@ -411,6 +411,9 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
     _cargar();
   }
 
+  // Veredictos ya guardados: para no volver a mostrar las actividades ya revisadas.
+  Map<String, Veredicto> _veredictos = {};
+
   Future<void> _cargar() async {
     try {
       final txt = await rootBundle.loadString('assets/demo_actividades.json');
@@ -418,9 +421,11 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
       final lista = (data['actividades'] as List? ?? const [])
           .map((e) => Instancia.fromJson(e as Map<String, dynamic>))
           .toList();
+      final ver = await BancoVeredictos.instance.todos();
       if (!mounted) return;
       setState(() {
         _todas = lista;
+        _veredictos = ver;
         _cargando = false;
       });
     } catch (_) {
@@ -429,13 +434,31 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
     }
   }
 
+  Future<void> _recargarVeredictos() async {
+    final ver = await BancoVeredictos.instance.todos();
+    if (!mounted) return;
+    setState(() => _veredictos = ver);
+  }
+
+  /// Cuántas de un bloque quedan SIN revisar (sin veredicto guardado).
+  int _pendientesDe(List<Instancia> delBloque) =>
+      delBloque.where((i) => !_veredictos.containsKey(i.nombre)).length;
+
   void _abrirBloque(List<Instancia> delBloque) {
+    // Solo las que aún no has revisado: las ya vistas/marcadas no reaparecen.
+    final pendientes =
+        delBloque.where((i) => !_veredictos.containsKey(i.nombre)).toList();
+    if (pendientes.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Ya revisaste todas las de este bloque 🎉')));
+      return;
+    }
     Navigator.of(context)
         .push(MaterialPageRoute(
           builder: (_) => _JugarDemo(
-              actividades: delBloque, indiceInicial: 0, mostrarProgreso: true),
+              actividades: pendientes, indiceInicial: 0, mostrarProgreso: true),
         ))
-        .then((_) => setState(() {})); // refresca el contador al volver
+        .then((_) => _recargarVeredictos()); // refresca contadores al volver
   }
 
   /// Resumen de lo que la especialista ha marcado, con la lista de "a revisar" y
@@ -449,16 +472,27 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
         .where((e) => e.value.estado == 'revisar')
         .toList()
       ..sort((a, b) => a.key.compareTo(b.key));
+    final otroGrupo = todos.entries
+        .where((e) => e.value.estado == 'otro_grupo')
+        .toList()
+      ..sort((a, b) => a.key.compareTo(b.key));
+    // Lista mostrada: lo que requiere acción (revisar + reclasificar).
+    final pendientes = [...revisar, ...otroGrupo];
 
     String textoExport() {
       final b = StringBuffer();
-      b.writeln('TRAZO — actividades a revisar (${revisar.length}):');
+      b.writeln('TRAZO — A REVISAR (${revisar.length}):');
       for (final e in revisar) {
         b.writeln(
             '• ${e.key}${e.value.nota.isNotEmpty ? ' — ${e.value.nota}' : ''}');
       }
+      b.writeln('\nTRAZO — CAMBIAR DE GRUPO (${otroGrupo.length}):');
+      for (final e in otroGrupo) {
+        b.writeln(
+            '• ${e.key}${e.value.nota.isNotEmpty ? ' — ${e.value.nota}' : ''}');
+      }
       b.writeln(
-          '\nValidadas: ${validas.length} · A revisar: ${revisar.length}');
+          '\nValidadas: ${validas.length} · A revisar: ${revisar.length} · Otro grupo: ${otroGrupo.length}');
       return b.toString();
     }
 
@@ -482,31 +516,40 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
                       color: TrazoColors.ink)),
               const SizedBox(height: 4),
               Text(
-                  '✅ Válidas: ${validas.length}    ⚠️ A revisar: ${revisar.length}',
+                  '✅ ${validas.length}   ⚠️ ${revisar.length}   🔀 ${otroGrupo.length} (otro grupo)',
                   style: const TextStyle(
                       fontSize: 15, color: TrazoColors.sageDark)),
               const SizedBox(height: 12),
-              if (revisar.isEmpty)
-                const Text('Aún no has marcado ninguna «a revisar».',
+              if (pendientes.isEmpty)
+                const Text(
+                    'Aún no has marcado nada para revisar o reclasificar.',
                     style: TextStyle(color: TrazoColors.sageDark))
               else
                 Expanded(
                   child: ListView(
                     controller: scroll,
                     children: [
-                      for (final e in revisar)
+                      for (final e in pendientes)
                         Card(
                           color: TrazoColors.white,
                           margin: const EdgeInsets.symmetric(vertical: 4),
                           child: ListTile(
-                            leading: const Icon(Icons.report_problem,
-                                color: TrazoColors.coralDark),
+                            leading: Icon(
+                                e.value.estado == 'otro_grupo'
+                                    ? Icons.swap_horiz
+                                    : Icons.report_problem,
+                                color: e.value.estado == 'otro_grupo'
+                                    ? TrazoColors.azul
+                                    : TrazoColors.coralDark),
                             title: Text(e.key,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w700)),
-                            subtitle: e.value.nota.isEmpty
-                                ? null
-                                : Text(e.value.nota),
+                            subtitle: Text((e.value.estado == 'otro_grupo'
+                                    ? 'Otro grupo'
+                                    : 'A revisar') +
+                                (e.value.nota.isEmpty
+                                    ? ''
+                                    : ' · ${e.value.nota}')),
                             trailing: IconButton(
                               icon: const Icon(Icons.delete_outline),
                               tooltip: 'Quitar de la lista',
@@ -525,7 +568,7 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
-                  onPressed: revisar.isEmpty
+                  onPressed: pendientes.isEmpty
                       ? null
                       : () async {
                           await Clipboard.setData(
@@ -591,31 +634,42 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
                 ),
                 const SizedBox(height: 16),
                 for (final clave in clavesOrdenadas)
-                  Card(
-                    color: TrazoColors.white,
-                    margin: const EdgeInsets.symmetric(vertical: 5),
-                    child: ListTile(
-                      onTap: () => _abrirBloque(porBloque[clave]!),
-                      leading: CircleAvatar(
-                        backgroundColor: TrazoColors.sageDark,
-                        foregroundColor: Colors.white,
-                        child: Text('${porBloque[clave]!.length}',
+                  Builder(builder: (_) {
+                    final total = porBloque[clave]!.length;
+                    final pend = _pendientesDe(porBloque[clave]!);
+                    final hecho = pend == 0;
+                    return Card(
+                      color: TrazoColors.white,
+                      margin: const EdgeInsets.symmetric(vertical: 5),
+                      child: ListTile(
+                        onTap: () => _abrirBloque(porBloque[clave]!),
+                        leading: CircleAvatar(
+                          backgroundColor:
+                              hecho ? TrazoColors.sage : TrazoColors.sageDark,
+                          foregroundColor: Colors.white,
+                          child: Text(hecho ? '✓' : '$pend',
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 15)),
+                        ),
+                        title: Text(_kBloques[clave] ?? clave,
                             style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15)),
+                                fontWeight: FontWeight.w800,
+                                color: TrazoColors.ink,
+                                fontSize: 17)),
+                        subtitle: Text(
+                            hecho
+                                ? 'Todas revisadas ($total)'
+                                : '$pend por revisar de $total',
+                            style: const TextStyle(
+                                color: TrazoColors.sageDark, fontSize: 13)),
+                        trailing: Icon(Icons.play_circle_fill,
+                            color: hecho
+                                ? TrazoColors.sand
+                                : TrazoColors.coralDark,
+                            size: 32),
                       ),
-                      title: Text(_kBloques[clave] ?? clave,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.w800,
-                              color: TrazoColors.ink,
-                              fontSize: 17)),
-                      subtitle: Text(
-                          '${porBloque[clave]!.length} actividades — tócalo para probarlas todas',
-                          style: const TextStyle(
-                              color: TrazoColors.sageDark, fontSize: 13)),
-                      trailing: const Icon(Icons.play_circle_fill,
-                          color: TrazoColors.coralDark, size: 32),
-                    ),
-                  ),
+                    );
+                  }),
               ],
             ),
     );
@@ -682,6 +736,11 @@ class _JugarDemoState extends State<_JugarDemo> {
   }
 
   void _siguiente() {
+    // En el banco: si la actividad actual no está marcada (ni a revisar ni otro
+    // grupo), se da por VÁLIDA sola al pasar. Así solo hay que marcar lo que falla.
+    if (widget.mostrarProgreso && _veredicto == null) {
+      BancoVeredictos.instance.guardar(_inst.nombre, 'valida', '');
+    }
     setState(() {
       final sig = _i + 1;
       if (sig >= widget.actividades.length) {
@@ -700,24 +759,26 @@ class _JugarDemoState extends State<_JugarDemo> {
   /// el mínimo espacio, para dejar casi toda la pantalla a la actividad.
   Widget _barraBanco() {
     final v = _veredicto;
-    Color fondo(String e) => v?.estado == e
-        ? (e == 'valida' ? TrazoColors.sageDark : TrazoColors.coralDark)
-        : TrazoColors.white;
+    Color colorDe(String e) => e == 'valida'
+        ? TrazoColors.sageDark
+        : e == 'revisar'
+            ? TrazoColors.coralDark
+            : TrazoColors.azul; // otro_grupo (mal clasificada)
+    Color fondo(String e) => v?.estado == e ? colorDe(e) : TrazoColors.white;
     Color texto(String e) => v?.estado == e ? Colors.white : TrazoColors.ink;
 
-    Widget chip(String estado, IconData ic, String etq, Color borde) =>
-        Expanded(
+    Widget chip(String estado, IconData ic, String etq) => Expanded(
           child: OutlinedButton.icon(
             onPressed: () => _marcar(estado),
             style: OutlinedButton.styleFrom(
               backgroundColor: fondo(estado),
               foregroundColor: texto(estado),
-              side: BorderSide(color: borde),
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              side: BorderSide(color: colorDe(estado)),
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
               visualDensity: VisualDensity.compact,
             ),
-            icon: Icon(ic, size: 18),
-            label: Text(etq, style: const TextStyle(fontSize: 14)),
+            icon: Icon(ic, size: 17),
+            label: Text(etq, style: const TextStyle(fontSize: 13)),
           ),
         );
 
@@ -751,15 +812,15 @@ class _JugarDemoState extends State<_JugarDemo> {
                 },
               ),
             ),
+          // Solo se marca lo que está MAL: si la juegas sin problema y pasas a
+          // Siguiente, se da por VÁLIDA sola (menos fricción). "Otro grupo" = la
+          // actividad está bien pero no pertenece a ese bloque.
           Row(
             children: [
-              chip(
-                  'valida', Icons.check_circle, 'Válida', TrazoColors.sageDark),
-              const SizedBox(width: 6),
-              chip('revisar', Icons.report_problem, 'Revisar',
-                  TrazoColors.coralDark),
-              const SizedBox(width: 6),
-              // Nota (plegable): el punto rojo indica que ya hay texto escrito.
+              chip('revisar', Icons.report_problem, 'A revisar'),
+              const SizedBox(width: 8),
+              chip('otro_grupo', Icons.swap_horiz, 'Otro grupo'),
+              const SizedBox(width: 8),
               IconButton(
                 onPressed: () => setState(() => _notaAbierta = !_notaAbierta),
                 tooltip: 'Nota',
@@ -769,13 +830,27 @@ class _JugarDemoState extends State<_JugarDemo> {
                         : Icons.sticky_note_2,
                     color: TrazoColors.sageDark),
               ),
-              const SizedBox(width: 2),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                    _veredicto == null
+                        ? 'Si está bien, no marques nada: pasa a Siguiente (se da por válida).'
+                        : (_veredicto!.estado == 'otro_grupo'
+                            ? 'Marcada: otro grupo.'
+                            : 'Marcada: a revisar.'),
+                    style: const TextStyle(
+                        fontSize: 12, color: TrazoColors.sageDark)),
+              ),
               ElevatedButton(
                 onPressed: _siguiente,
                 style: ElevatedButton.styleFrom(
                     backgroundColor: TrazoColors.sageDark,
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 12)),
+                        horizontal: 20, vertical: 12)),
                 child: const Text('Siguiente →'),
               ),
             ],

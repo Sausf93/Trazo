@@ -13,6 +13,8 @@ class TrazoColors {
   static const coralDark = Color(0xFFC4553A);
   static const sand = Color(0xFFD2E6E2);
   static const white = Color(0xFFFFFEFB);
+  static const azul =
+      Color(0xFF2C7595); // acento de marca (p. ej. "otro grupo")
 }
 
 ThemeData buildTrazoTheme() {
@@ -42,8 +44,7 @@ ThemeData buildTrazoTheme() {
         foregroundColor: Colors.white,
         textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
         padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 18),
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
       ),
     ),
   );
