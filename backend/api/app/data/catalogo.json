@@ -1493,8 +1493,8 @@
           "label": "naranja"
         },
         {
-          "id": "uva",
-          "label": "uva"
+          "id": "uvas",
+          "label": "uvas"
         },
         {
           "id": "fresa",
@@ -35911,6 +35911,453 @@
         {
           "id": "tapa",
           "path": "M28,30 L72,30 M50,30 L50,118 M150,28 L130,118 M150,28 L170,118 M138,82 L162,82 M232,118 L232,28 L258,28 C274,28 274,66 258,66 L232,66 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la letra S",
+    "descripcion": "Repasa la letra S con el dedo o el lápiz, siguiendo la flecha.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la letra S",
+      "tolerancia_px": 26,
+      "viewbox": "0 0 100 145",
+      "figuras": [
+        {
+          "id": "letra_s",
+          "path": "M68,44 C60,28 32,28 32,48 C32,66 68,72 68,96 C68,118 40,118 32,100"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la letra R",
+    "descripcion": "Repasa la letra R con el dedo o el lápiz, siguiendo la flecha.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la letra R",
+      "tolerancia_px": 26,
+      "viewbox": "0 0 100 145",
+      "figuras": [
+        {
+          "id": "letra_r",
+          "path": "M32,28 L32,118 M32,28 L56,28 C72,28 72,66 56,66 L32,66 M42,66 L68,118"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la letra B",
+    "descripcion": "Repasa la letra B con el dedo o el lápiz, siguiendo la flecha.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la letra B",
+      "tolerancia_px": 26,
+      "viewbox": "0 0 100 145",
+      "figuras": [
+        {
+          "id": "letra_b",
+          "path": "M32,28 L32,118 M32,28 L54,28 C70,28 70,64 54,64 L32,64 M32,64 L58,64 C76,64 76,118 56,118 L32,118"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la letra G",
+    "descripcion": "Repasa la letra G con el dedo o el lápiz, siguiendo la flecha.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la letra G",
+      "tolerancia_px": 26,
+      "viewbox": "0 0 100 145",
+      "figuras": [
+        {
+          "id": "letra_g",
+          "path": "M70,46 C58,28 30,30 30,73 C30,116 58,118 70,100 L70,74 L52,74"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la letra J",
+    "descripcion": "Repasa la letra J con el dedo o el lápiz, siguiendo la flecha.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la letra J",
+      "tolerancia_px": 26,
+      "viewbox": "0 0 100 145",
+      "figuras": [
+        {
+          "id": "letra_j",
+          "path": "M58,28 L58,98 C58,116 34,116 30,98"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la letra K",
+    "descripcion": "Repasa la letra K con el dedo o el lápiz, siguiendo la flecha.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la letra K",
+      "tolerancia_px": 26,
+      "viewbox": "0 0 100 145",
+      "figuras": [
+        {
+          "id": "letra_k",
+          "path": "M32,28 L32,118 M68,28 L34,72 M40,66 L68,118"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la letra Q",
+    "descripcion": "Repasa la letra Q con el dedo o el lápiz, siguiendo la flecha.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la letra Q",
+      "tolerancia_px": 26,
+      "viewbox": "0 0 100 145",
+      "figuras": [
+        {
+          "id": "letra_q",
+          "path": "M50,28 C33,28 28,50 28,73 C28,96 33,118 50,118 C67,118 72,96 72,73 C72,50 67,28 50,28 Z M54,96 L70,118"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la letra W",
+    "descripcion": "Repasa la letra W con el dedo o el lápiz, siguiendo la flecha.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la letra W",
+      "tolerancia_px": 26,
+      "viewbox": "0 0 100 145",
+      "figuras": [
+        {
+          "id": "letra_w",
+          "path": "M26,28 L38,118 L50,50 L62,118 L74,28"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la letra Ñ",
+    "descripcion": "Repasa la letra Ñ con el dedo o el lápiz, siguiendo la flecha.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la letra Ñ",
+      "tolerancia_px": 26,
+      "viewbox": "0 0 100 145",
+      "figuras": [
+        {
+          "id": "letra_ñ",
+          "path": "M32,118 L32,40 L68,118 L68,40 M34,32 C40,24 46,24 50,28 C54,32 60,32 66,26"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra SOL",
+    "descripcion": "Repasa la palabra SOL con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "instruccion": "Traza la palabra SOL",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 300 145",
+      "figuras": [
+        {
+          "id": "sol",
+          "path": "M68,44 C60,28 32,28 32,48 C32,66 68,72 68,96 C68,118 40,118 32,100 M150,28 C133,28 128,50 128,73 C128,96 133,118 150,118 C167,118 172,96 172,73 C172,50 167,28 150,28 Z M232,28 L232,118 L270,118"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra OSO",
+    "descripcion": "Repasa la palabra OSO con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "instruccion": "Traza la palabra OSO",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 300 145",
+      "figuras": [
+        {
+          "id": "oso",
+          "path": "M50,28 C33,28 28,50 28,73 C28,96 33,118 50,118 C67,118 72,96 72,73 C72,50 67,28 50,28 Z M168,44 C160,28 132,28 132,48 C132,66 168,72 168,96 C168,118 140,118 132,100 M250,28 C233,28 228,50 228,73 C228,96 233,118 250,118 C267,118 272,96 272,73 C272,50 267,28 250,28 Z"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra MAR",
+    "descripcion": "Repasa la palabra MAR con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "instruccion": "Traza la palabra MAR",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 300 145",
+      "figuras": [
+        {
+          "id": "mar",
+          "path": "M30,118 L30,28 L50,80 L70,28 L70,118 M150,28 L130,118 M150,28 L170,118 M138,82 L162,82 M232,28 L232,118 M232,28 L256,28 C272,28 272,66 256,66 L232,66 M242,66 L268,118"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra ANA",
+    "descripcion": "Repasa la palabra ANA con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "instruccion": "Traza la palabra ANA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 300 145",
+      "figuras": [
+        {
+          "id": "ana",
+          "path": "M50,28 L30,118 M50,28 L70,118 M38,82 L62,82 M132,118 L132,28 L172,118 L172,28 M250,28 L230,118 M250,28 L270,118 M238,82 L262,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra ROSA",
+    "descripcion": "Repasa la palabra ROSA con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra ROSA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "rosa",
+          "path": "M32,28 L32,118 M32,28 L56,28 C72,28 72,66 56,66 L32,66 M42,66 L68,118 M150,28 C133,28 128,50 128,73 C128,96 133,118 150,118 C167,118 172,96 172,73 C172,50 167,28 150,28 Z M268,44 C260,28 232,28 232,48 C232,66 268,72 268,96 C268,118 240,118 232,100 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra CASA",
+    "descripcion": "Repasa la palabra CASA con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra CASA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "casa",
+          "path": "M70,46 C58,28 30,30 30,73 C30,116 58,118 70,100 M150,28 L130,118 M150,28 L170,118 M138,82 L162,82 M268,44 C260,28 232,28 232,48 C232,66 268,72 268,96 C268,118 240,118 232,100 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra MESA",
+    "descripcion": "Repasa la palabra MESA con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra MESA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "mesa",
+          "path": "M30,118 L30,28 L50,80 L70,28 L70,118 M130,28 L130,118 M130,28 L170,28 M130,72 L162,72 M130,118 L170,118 M268,44 C260,28 232,28 232,48 C232,66 268,72 268,96 C268,118 240,118 232,100 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra SOPA",
+    "descripcion": "Repasa la palabra SOPA con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra SOPA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "sopa",
+          "path": "M68,44 C60,28 32,28 32,48 C32,66 68,72 68,96 C68,118 40,118 32,100 M150,28 C133,28 128,50 128,73 C128,96 133,118 150,118 C167,118 172,96 172,73 C172,50 167,28 150,28 Z M232,118 L232,28 L258,28 C274,28 274,66 258,66 L232,66 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra GATO",
+    "descripcion": "Repasa la palabra GATO con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra GATO",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "gato",
+          "path": "M70,46 C58,28 30,30 30,73 C30,116 58,118 70,100 L70,74 L52,74 M150,28 L130,118 M150,28 L170,118 M138,82 L162,82 M228,30 L272,30 M250,30 L250,118 M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra BESO",
+    "descripcion": "Repasa la palabra BESO con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra BESO",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "beso",
+          "path": "M32,28 L32,118 M32,28 L54,28 C70,28 70,64 54,64 L32,64 M32,64 L58,64 C76,64 76,118 56,118 L32,118 M130,28 L130,118 M130,28 L170,28 M130,72 L162,72 M130,118 L170,118 M268,44 C260,28 232,28 232,48 C232,66 268,72 268,96 C268,118 240,118 232,100 M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra RISA",
+    "descripcion": "Repasa la palabra RISA con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra RISA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "risa",
+          "path": "M32,28 L32,118 M32,28 L56,28 C72,28 72,66 56,66 L32,66 M42,66 L68,118 M150,28 L150,118 M268,44 C260,28 232,28 232,48 C232,66 268,72 268,96 C268,118 240,118 232,100 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra PERA",
+    "descripcion": "Repasa la palabra PERA con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra PERA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "pera",
+          "path": "M32,118 L32,28 L58,28 C74,28 74,66 58,66 L32,66 M130,28 L130,118 M130,28 L170,28 M130,72 L162,72 M130,118 L170,118 M232,28 L232,118 M232,28 L256,28 C272,28 272,66 256,66 L232,66 M242,66 L268,118 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra SARA",
+    "descripcion": "Repasa la palabra SARA con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra SARA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "sara",
+          "path": "M68,44 C60,28 32,28 32,48 C32,66 68,72 68,96 C68,118 40,118 32,100 M150,28 L130,118 M150,28 L170,118 M138,82 L162,82 M232,28 L232,118 M232,28 L256,28 C272,28 272,66 256,66 L232,66 M242,66 L268,118 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra JUAN",
+    "descripcion": "Repasa la palabra JUAN con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra JUAN",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "juan",
+          "path": "M58,28 L58,98 C58,116 34,116 30,98 M130,28 L130,92 C130,112 170,112 170,92 L170,28 M250,28 L230,118 M250,28 L270,118 M238,82 L262,82 M332,118 L332,28 L372,118 L372,28"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "praxias",
+    "plantilla_tipo": "trazo",
+    "nombre": "Traza la palabra PIÑA",
+    "descripcion": "Repasa la palabra PIÑA con el dedo o el lápiz.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Traza la palabra PIÑA",
+      "tolerancia_px": 26,
+      "tolerancia_ref_w": 100,
+      "viewbox": "0 0 400 145",
+      "figuras": [
+        {
+          "id": "piña",
+          "path": "M32,118 L32,28 L58,28 C74,28 74,66 58,66 L32,66 M150,28 L150,118 M232,118 L232,40 L268,118 L268,40 M234,32 C240,24 246,24 250,28 C254,32 260,32 266,26 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
         }
       ]
     }
