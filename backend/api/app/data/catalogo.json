@@ -824,17 +824,6 @@
             "árbol",
             "trébol"
           ]
-        },
-        {
-          "id": "figura",
-          "instruccion": "¿Qué figura es?",
-          "imagen": "estrella",
-          "correcta": "estrella",
-          "distractores": [
-            "círculo",
-            "cuadrado",
-            "corazón"
-          ]
         }
       ]
     }
@@ -1531,7 +1520,7 @@
           "label": "leche"
         },
         {
-          "id": "huevos",
+          "id": "huevo",
           "label": "huevos"
         },
         {
@@ -2224,11 +2213,6 @@
         {
           "id": "pera",
           "label": "pera",
-          "zona_correcta": "frutas"
-        },
-        {
-          "id": "taza",
-          "label": "taza",
           "zona_correcta": "frutas"
         },
         {
@@ -3781,8 +3765,8 @@
           "label": "pantalón"
         },
         {
-          "id": "abrigo",
-          "label": "abrigo"
+          "id": "chaqueta",
+          "label": "chaqueta"
         },
         {
           "id": "zapato",
@@ -7399,17 +7383,6 @@
           ]
         },
         {
-          "id": "ro_abrigo",
-          "instruccion": "¿Qué prenda es?",
-          "imagen": "abrigo",
-          "correcta": "un abrigo",
-          "distractores": [
-            "una camisa",
-            "un pantalón",
-            "un vestido"
-          ]
-        },
-        {
           "id": "ro_zapato",
           "instruccion": "¿Qué prenda es?",
           "imagen": "zapato",
@@ -7418,17 +7391,6 @@
             "un calcetín",
             "un guante",
             "un sombrero"
-          ]
-        },
-        {
-          "id": "ro_sombrero",
-          "instruccion": "¿Qué prenda es?",
-          "imagen": "sombrero",
-          "correcta": "un sombrero",
-          "distractores": [
-            "un paraguas",
-            "un zapato",
-            "unas gafas"
           ]
         },
         {
@@ -28002,11 +27964,6 @@
           "zona_correcta": "fruta"
         },
         {
-          "id": "taza",
-          "label": "taza",
-          "zona_correcta": "fruta"
-        },
-        {
           "id": "naranja",
           "label": "naranja",
           "zona_correcta": "fruta"
@@ -28056,11 +28013,6 @@
           "zona_correcta": "fruta"
         },
         {
-          "id": "taza",
-          "label": "taza",
-          "zona_correcta": "fruta"
-        },
-        {
           "id": "limon",
           "label": "limón",
           "zona_correcta": "fruta"
@@ -28107,11 +28059,6 @@
         {
           "id": "naranja",
           "label": "naranja",
-          "zona_correcta": "fruta"
-        },
-        {
-          "id": "taza",
-          "label": "taza",
           "zona_correcta": "fruta"
         },
         {
@@ -28724,7 +28671,7 @@
           "zona_correcta": "mueble"
         },
         {
-          "id": "sofa",
+          "id": "television",
           "label": "televisión",
           "zona_correcta": "mueble"
         }
@@ -28778,7 +28725,7 @@
           "zona_correcta": "mueble"
         },
         {
-          "id": "mesa",
+          "id": "television",
           "label": "televisión",
           "zona_correcta": "mueble"
         }
@@ -28871,11 +28818,6 @@
         {
           "id": "pera",
           "label": "pera",
-          "zona_correcta": "fruta"
-        },
-        {
-          "id": "taza",
-          "label": "taza",
           "zona_correcta": "fruta"
         },
         {
@@ -29000,7 +28942,7 @@
           "zona_correcta": "ropa"
         },
         {
-          "id": "bufanda",
+          "id": "gafas",
           "label": "gafas",
           "zona_correcta": "ropa"
         },
@@ -31578,7 +31520,7 @@
           "zona_correcta": "rueda"
         },
         {
-          "id": "pez",
+          "id": "avion",
           "label": "avión",
           "zona_correcta": "sinrueda"
         },
@@ -31632,7 +31574,7 @@
           "zona_correcta": "rueda"
         },
         {
-          "id": "pez",
+          "id": "avion",
           "label": "avión",
           "zona_correcta": "sinrueda"
         },
@@ -31779,28 +31721,13 @@
       ],
       "piezas": [
         {
-          "id": "taza",
-          "label": "taza",
-          "zona_correcta": "dulce"
-        },
-        {
           "id": "uvas",
           "label": "uvas",
           "zona_correcta": "dulce"
         },
         {
-          "id": "botella",
-          "label": "botella",
-          "zona_correcta": "dulce"
-        },
-        {
-          "id": "bol",
-          "label": "cuenco",
-          "zona_correcta": "salado"
-        },
-        {
           "id": "queso",
-          "label": "tomate",
+          "label": "queso",
           "zona_correcta": "salado"
         },
         {
@@ -31838,19 +31765,9 @@
           "zona_correcta": "dulce"
         },
         {
-          "id": "bol",
-          "label": "cuenco",
-          "zona_correcta": "dulce"
-        },
-        {
           "id": "uvas",
           "label": "uvas",
           "zona_correcta": "dulce"
-        },
-        {
-          "id": "taza",
-          "label": "taza",
-          "zona_correcta": "salado"
         },
         {
           "id": "pan",
@@ -31887,23 +31804,13 @@
       ],
       "piezas": [
         {
-          "id": "bol",
-          "label": "cuenco",
-          "zona_correcta": "dulce"
-        },
-        {
           "id": "uvas",
           "label": "uvas",
           "zona_correcta": "dulce"
         },
         {
-          "id": "taza",
-          "label": "taza",
-          "zona_correcta": "dulce"
-        },
-        {
           "id": "queso",
-          "label": "tomate",
+          "label": "queso",
           "zona_correcta": "salado"
         },
         {
@@ -31951,23 +31858,13 @@
           "zona_correcta": "dulce"
         },
         {
-          "id": "taza",
-          "label": "taza",
-          "zona_correcta": "dulce"
-        },
-        {
           "id": "patata",
-          "label": "tomate",
+          "label": "patata",
           "zona_correcta": "salado"
         },
         {
           "id": "queso",
           "label": "queso",
-          "zona_correcta": "salado"
-        },
-        {
-          "id": "bol",
-          "label": "cuenco",
           "zona_correcta": "salado"
         }
       ]
@@ -36358,6 +36255,774 @@
         {
           "id": "piña",
           "path": "M32,118 L32,28 L58,28 C74,28 74,66 58,66 L32,66 M150,28 L150,118 M232,118 L232,40 L268,118 L268,40 M234,32 C240,24 246,24 250,28 C254,32 260,32 266,26 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "nombre": "Memoria: la cesta de frutas",
+    "descripcion": "Memoria: la cesta de frutas",
+    "parametros_json": {
+      "dificultad": "facil",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "naranja",
+          "label": "naranja"
+        },
+        {
+          "id": "uvas",
+          "label": "uvas"
+        },
+        {
+          "id": "fresa",
+          "label": "fresa"
+        },
+        {
+          "id": "sandia",
+          "label": "sandía"
+        },
+        {
+          "id": "limon",
+          "label": "limón"
+        },
+        {
+          "id": "pera",
+          "label": "pera"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "nombre": "Memoria: animales de la granja",
+    "descripcion": "Memoria: animales de la granja",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 5,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "vaca",
+          "label": "vaca"
+        },
+        {
+          "id": "caballo",
+          "label": "caballo"
+        },
+        {
+          "id": "cerdo",
+          "label": "cerdo"
+        },
+        {
+          "id": "oveja",
+          "label": "oveja"
+        },
+        {
+          "id": "gallina",
+          "label": "gallina"
+        },
+        {
+          "id": "conejo",
+          "label": "conejo"
+        },
+        {
+          "id": "pollo",
+          "label": "pollo"
+        },
+        {
+          "id": "pez",
+          "label": "pez"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "nombre": "Memoria: cosas de la cocina",
+    "descripcion": "Memoria: cosas de la cocina",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "taza",
+          "label": "taza"
+        },
+        {
+          "id": "cuchara",
+          "label": "cuchara"
+        },
+        {
+          "id": "olla",
+          "label": "olla"
+        },
+        {
+          "id": "sarten",
+          "label": "sartén"
+        },
+        {
+          "id": "botella",
+          "label": "botella"
+        },
+        {
+          "id": "cuchillo",
+          "label": "cuchillo"
+        },
+        {
+          "id": "bol",
+          "label": "cuenco"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "nombre": "Memoria: las flores del jardín",
+    "descripcion": "Memoria: las flores del jardín",
+    "parametros_json": {
+      "dificultad": "facil",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "rosa",
+          "label": "rosa"
+        },
+        {
+          "id": "girasol",
+          "label": "girasol"
+        },
+        {
+          "id": "tulipan",
+          "label": "tulipán"
+        },
+        {
+          "id": "clavel",
+          "label": "clavel"
+        },
+        {
+          "id": "margarita",
+          "label": "margarita"
+        },
+        {
+          "id": "maceta",
+          "label": "maceta"
+        },
+        {
+          "id": "hoja",
+          "label": "hoja"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "nombre": "Busca todas las manzanas",
+    "descripcion": "Busca todas las manzanas",
+    "parametros_json": {
+      "dificultad": "facil",
+      "instruccion": "Toca todas las MANZANAS",
+      "objetivo": {
+        "id": "manzana",
+        "label": "manzana"
+      },
+      "distractores": [
+        {
+          "id": "pera",
+          "label": "pera"
+        },
+        {
+          "id": "naranja",
+          "label": "naranja"
+        },
+        {
+          "id": "uvas",
+          "label": "uvas"
+        },
+        {
+          "id": "limon",
+          "label": "limón"
+        },
+        {
+          "id": "queso",
+          "label": "queso"
+        },
+        {
+          "id": "taza",
+          "label": "taza"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "nombre": "Busca todos los perros",
+    "descripcion": "Busca todos los perros",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todos los PERROS",
+      "objetivo": {
+        "id": "perro",
+        "label": "perro"
+      },
+      "distractores": [
+        {
+          "id": "gato",
+          "label": "gato"
+        },
+        {
+          "id": "vaca",
+          "label": "vaca"
+        },
+        {
+          "id": "caballo",
+          "label": "caballo"
+        },
+        {
+          "id": "oveja",
+          "label": "oveja"
+        },
+        {
+          "id": "conejo",
+          "label": "conejo"
+        },
+        {
+          "id": "pajaro",
+          "label": "pájaro"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "nombre": "Busca todos los zapatos",
+    "descripcion": "Busca todos los zapatos",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todos los ZAPATOS",
+      "objetivo": {
+        "id": "zapato",
+        "label": "zapato"
+      },
+      "distractores": [
+        {
+          "id": "camisa",
+          "label": "camisa"
+        },
+        {
+          "id": "pantalon",
+          "label": "pantalón"
+        },
+        {
+          "id": "calcetin",
+          "label": "calcetín"
+        },
+        {
+          "id": "bufanda",
+          "label": "bufanda"
+        },
+        {
+          "id": "guantes",
+          "label": "guantes"
+        },
+        {
+          "id": "chaqueta",
+          "label": "chaqueta"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "nombre": "Busca todos los coches",
+    "descripcion": "Busca todos los coches",
+    "parametros_json": {
+      "dificultad": "facil",
+      "instruccion": "Toca todos los COCHES",
+      "objetivo": {
+        "id": "coche",
+        "label": "coche"
+      },
+      "distractores": [
+        {
+          "id": "autobus",
+          "label": "autobús"
+        },
+        {
+          "id": "bicicleta",
+          "label": "bicicleta"
+        },
+        {
+          "id": "tren",
+          "label": "tren"
+        },
+        {
+          "id": "moto",
+          "label": "moto"
+        },
+        {
+          "id": "camion",
+          "label": "camión"
+        },
+        {
+          "id": "barco",
+          "label": "barco"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "nombre": "Busca todas las tazas",
+    "descripcion": "Busca todas las tazas",
+    "parametros_json": {
+      "dificultad": "facil",
+      "instruccion": "Toca todas las TAZAS",
+      "objetivo": {
+        "id": "taza",
+        "label": "taza"
+      },
+      "distractores": [
+        {
+          "id": "cuchara",
+          "label": "cuchara"
+        },
+        {
+          "id": "botella",
+          "label": "botella"
+        },
+        {
+          "id": "olla",
+          "label": "olla"
+        },
+        {
+          "id": "bol",
+          "label": "cuenco"
+        },
+        {
+          "id": "cafe",
+          "label": "café"
+        },
+        {
+          "id": "leche",
+          "label": "leche"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Contar naranjas y peras",
+    "descripcion": "Contar naranjas y peras",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "sumar",
+      "cantidad_min": 1,
+      "cantidad_max": 5,
+      "objetos": [
+        "naranja",
+        "pera"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Contar huevos y galletas",
+    "descripcion": "Contar huevos y galletas",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "sumar",
+      "cantidad_min": 1,
+      "cantidad_max": 5,
+      "objetos": [
+        "huevo",
+        "galleta"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuántas gallinas hay?",
+    "descripcion": "¿Cuántas gallinas hay?",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "cantidad_min": 1,
+      "cantidad_max": 6,
+      "objetos": [
+        "gallina"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos: manzanas o limones?",
+    "descripcion": "¿Cuál tiene menos: manzanas o limones?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 1,
+      "cantidad_max": 6,
+      "objetos": [
+        "manzana",
+        "limon"
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: frutas del mercado",
+    "descripcion": "Parejas: frutas del mercado",
+    "parametros_json": {
+      "dificultad": "facil",
+      "banco": [
+        {
+          "id": "naranja",
+          "label": "naranja"
+        },
+        {
+          "id": "uvas",
+          "label": "uvas"
+        },
+        {
+          "id": "fresa",
+          "label": "fresa"
+        },
+        {
+          "id": "limon",
+          "label": "limón"
+        },
+        {
+          "id": "pera",
+          "label": "pera"
+        },
+        {
+          "id": "sandia",
+          "label": "sandía"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: la ropa",
+    "descripcion": "Parejas: la ropa",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "camisa",
+          "label": "camisa"
+        },
+        {
+          "id": "pantalon",
+          "label": "pantalón"
+        },
+        {
+          "id": "zapato",
+          "label": "zapato"
+        },
+        {
+          "id": "calcetin",
+          "label": "calcetín"
+        },
+        {
+          "id": "bufanda",
+          "label": "bufanda"
+        },
+        {
+          "id": "guantes",
+          "label": "guantes"
+        },
+        {
+          "id": "chaqueta",
+          "label": "chaqueta"
+        },
+        {
+          "id": "gafas",
+          "label": "gafas"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: en la cocina",
+    "descripcion": "Parejas: en la cocina",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "taza",
+          "label": "taza"
+        },
+        {
+          "id": "cuchara",
+          "label": "cuchara"
+        },
+        {
+          "id": "olla",
+          "label": "olla"
+        },
+        {
+          "id": "sarten",
+          "label": "sartén"
+        },
+        {
+          "id": "botella",
+          "label": "botella"
+        },
+        {
+          "id": "pan",
+          "label": "pan"
+        },
+        {
+          "id": "queso",
+          "label": "queso"
+        },
+        {
+          "id": "huevo",
+          "label": "huevo"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: vehículos",
+    "descripcion": "Parejas: vehículos",
+    "parametros_json": {
+      "dificultad": "facil",
+      "banco": [
+        {
+          "id": "coche",
+          "label": "coche"
+        },
+        {
+          "id": "autobus",
+          "label": "autobús"
+        },
+        {
+          "id": "tren",
+          "label": "tren"
+        },
+        {
+          "id": "bicicleta",
+          "label": "bicicleta"
+        },
+        {
+          "id": "moto",
+          "label": "moto"
+        },
+        {
+          "id": "barco",
+          "label": "barco"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "funcion_ejecutiva",
+    "plantilla_tipo": "arrastrar_posicion",
+    "nombre": "Clasifica: animales de la granja y vehículos",
+    "descripcion": "Clasifica: animales de la granja y vehículos",
+    "parametros_json": {
+      "dificultad": "media",
+      "cantidad_min": 4,
+      "cantidad_max": 6,
+      "muestrear": true,
+      "zonas": [
+        {
+          "id": "animal",
+          "label": "Animales"
+        },
+        {
+          "id": "vehiculo",
+          "label": "Vehículos"
+        }
+      ],
+      "piezas": [
+        {
+          "id": "vaca",
+          "label": "vaca",
+          "zona_correcta": "animal"
+        },
+        {
+          "id": "oveja",
+          "label": "oveja",
+          "zona_correcta": "animal"
+        },
+        {
+          "id": "cerdo",
+          "label": "cerdo",
+          "zona_correcta": "animal"
+        },
+        {
+          "id": "coche",
+          "label": "coche",
+          "zona_correcta": "vehiculo"
+        },
+        {
+          "id": "tren",
+          "label": "tren",
+          "zona_correcta": "vehiculo"
+        },
+        {
+          "id": "autobus",
+          "label": "autobús",
+          "zona_correcta": "vehiculo"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "funcion_ejecutiva",
+    "plantilla_tipo": "arrastrar_posicion",
+    "nombre": "Clasifica: la mesa y el armario",
+    "descripcion": "Clasifica: la mesa y el armario",
+    "parametros_json": {
+      "dificultad": "media",
+      "cantidad_min": 4,
+      "cantidad_max": 6,
+      "muestrear": true,
+      "zonas": [
+        {
+          "id": "mesa",
+          "label": "Para comer"
+        },
+        {
+          "id": "ropa",
+          "label": "Para vestir"
+        }
+      ],
+      "piezas": [
+        {
+          "id": "taza",
+          "label": "taza",
+          "zona_correcta": "mesa"
+        },
+        {
+          "id": "cuchara",
+          "label": "cuchara",
+          "zona_correcta": "mesa"
+        },
+        {
+          "id": "pan",
+          "label": "pan",
+          "zona_correcta": "mesa"
+        },
+        {
+          "id": "camisa",
+          "label": "camisa",
+          "zona_correcta": "ropa"
+        },
+        {
+          "id": "zapato",
+          "label": "zapato",
+          "zona_correcta": "ropa"
+        },
+        {
+          "id": "bufanda",
+          "label": "bufanda",
+          "zona_correcta": "ropa"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "funcion_ejecutiva",
+    "plantilla_tipo": "arrastrar_posicion",
+    "nombre": "Clasifica el jardín: flores, animales y transporte",
+    "descripcion": "Clasifica el jardín: flores, animales y transporte",
+    "parametros_json": {
+      "dificultad": "dificil",
+      "cantidad_min": 6,
+      "cantidad_max": 9,
+      "muestrear": true,
+      "zonas": [
+        {
+          "id": "flor",
+          "label": "Flores"
+        },
+        {
+          "id": "animal",
+          "label": "Animales"
+        },
+        {
+          "id": "vehiculo",
+          "label": "Vehículos"
+        }
+      ],
+      "piezas": [
+        {
+          "id": "rosa",
+          "label": "rosa",
+          "zona_correcta": "flor"
+        },
+        {
+          "id": "girasol",
+          "label": "girasol",
+          "zona_correcta": "flor"
+        },
+        {
+          "id": "tulipan",
+          "label": "tulipán",
+          "zona_correcta": "flor"
+        },
+        {
+          "id": "perro",
+          "label": "perro",
+          "zona_correcta": "animal"
+        },
+        {
+          "id": "gato",
+          "label": "gato",
+          "zona_correcta": "animal"
+        },
+        {
+          "id": "pajaro",
+          "label": "pájaro",
+          "zona_correcta": "animal"
+        },
+        {
+          "id": "coche",
+          "label": "coche",
+          "zona_correcta": "vehiculo"
+        },
+        {
+          "id": "bicicleta",
+          "label": "bicicleta",
+          "zona_correcta": "vehiculo"
+        },
+        {
+          "id": "barco",
+          "label": "barco",
+          "zona_correcta": "vehiculo"
         }
       ]
     }
