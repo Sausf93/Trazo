@@ -1,0 +1,413 @@
+<title>Trazo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F5FBFA; --card:#E8F5F2; --sand:#D2E6E2; --white:#FFFEFB;
+    --sage:#12A99B; --sage-dark:#1F7A70;
+    --ink:#12312E; --muted:#5A716E; --faint:#8AA09C;
+    --coral:#F08A6B; --coral-dark:#C4553A; --azul:#2C7595; --azul-dark:#215A73;
+    --bg:var(--ivory); --surface:var(--white); --surface-2:var(--card);
+    --line:var(--sand); --text:var(--ink); --text-2:var(--muted); --text-3:var(--faint);
+    --accent:var(--sage-dark); --accent-soft:rgba(18,169,155,.12);
+    --shadow:0 18px 40px -28px rgba(18,49,46,.45);
+    --radius:16px; --maxw:74ch;
+  }
+  :root:not([data-theme="light"]){ }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0C1A18; --surface:#12211F; --surface-2:#16302C; --line:#20423C;
+      --text:#EAF4F1; --text-2:#A7C1BB; --text-3:#7C9791;
+      --sage:#3FD0C0; --sage-dark:#7FE0D2; --accent:#5FD8C8; --accent-soft:rgba(63,208,192,.14);
+      --coral:#F3A184; --coral-dark:#F0876B; --azul:#7FB6D2; --azul-dark:#A9D0E2;
+      --white:#12211F; --card:#16302C; --ivory:#0C1A18; --sand:#20423C;
+      --shadow:0 18px 40px -24px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0C1A18; --surface:#12211F; --surface-2:#16302C; --line:#20423C;
+    --text:#EAF4F1; --text-2:#A7C1BB; --text-3:#7C9791;
+    --sage:#3FD0C0; --sage-dark:#7FE0D2; --accent:#5FD8C8; --accent-soft:rgba(63,208,192,.14);
+    --coral:#F3A184; --coral-dark:#F0876B; --azul:#7FB6D2; --azul-dark:#A9D0E2;
+    --white:#12211F; --card:#16302C; --ivory:#0C1A18; --sand:#20423C;
+    --shadow:0 18px 40px -24px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Inter',system-ui,sans-serif; line-height:1.65;
+    -webkit-font-smoothing:antialiased; font-size:16.5px;
+  }
+  .doc{ display:grid; grid-template-columns:1fr; }
+  @media (min-width:1000px){
+    .doc{ grid-template-columns:264px minmax(0,1fr); align-items:start; max-width:1200px; margin:0 auto; }
+  }
+
+  /* --- Sidebar / TOC --- */
+  aside{ padding:28px clamp(20px,4vw,28px); }
+  @media (min-width:1000px){
+    aside{ position:sticky; top:0; height:100vh; overflow-y:auto; border-right:1px solid var(--line); }
+  }
+  .brand{ display:flex; align-items:center; gap:12px; margin-bottom:6px; }
+  .brand svg{ width:40px; height:40px; flex:none; }
+  .brand .n{ font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:var(--text); letter-spacing:-.01em; }
+  .brand .k{ font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+  nav{ margin-top:22px; display:flex; flex-direction:column; gap:1px; }
+  nav a{
+    font-size:14px; color:var(--text-2); text-decoration:none; padding:7px 10px;
+    border-radius:9px; display:flex; gap:10px; align-items:baseline; transition:background .15s,color .15s;
+  }
+  nav a:hover{ background:var(--accent-soft); color:var(--text); }
+  nav a .num{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-3); font-variant-numeric:tabular-nums; }
+  nav a:hover .num{ color:var(--accent); }
+
+  /* --- Main --- */
+  main{ padding:clamp(28px,5vw,64px) clamp(20px,5vw,72px); max-width:calc(var(--maxw) + 120px); }
+  .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); display:inline-flex; gap:10px; align-items:center; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(34px,6vw,52px); line-height:1.04; letter-spacing:-.02em; margin:14px 0 0; color:var(--text); text-wrap:balance; }
+  .lede{ font-size:clamp(17px,2.2vw,20px); color:var(--text-2); max-width:var(--maxw); margin:18px 0 0; }
+  .meta{ margin-top:22px; display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{ font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.04em; color:var(--accent); background:var(--accent-soft); border:1px solid var(--line); padding:5px 11px; border-radius:999px; }
+
+  section{ padding-top:56px; max-width:var(--maxw); scroll-margin-top:24px; }
+  section > .eyebrow{ margin-bottom:8px; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(25px,3.6vw,34px); line-height:1.12; letter-spacing:-.015em; margin:0 0 6px; color:var(--text); text-wrap:balance; }
+  h3{ font-family:'Fraunces',serif; font-weight:600; font-size:20px; margin:34px 0 6px; color:var(--text); }
+  h4{ font-family:'Inter',sans-serif; font-weight:700; font-size:15px; letter-spacing:.01em; margin:22px 0 4px; color:var(--text); }
+  p{ margin:12px 0; color:var(--text); }
+  section p{ color:var(--text); }
+  strong{ color:var(--text); font-weight:600; }
+  em{ color:var(--text-2); }
+  a.inline{ color:var(--azul-dark); }
+  ul{ margin:12px 0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:9px; }
+  ul li{ position:relative; padding-left:22px; color:var(--text); }
+  ul li::before{ content:""; position:absolute; left:4px; top:.62em; width:7px; height:7px; border-radius:2px; background:var(--sage); transform:rotate(45deg); }
+  code{ font-family:'JetBrains Mono',monospace; font-size:.86em; background:var(--surface-2); padding:2px 6px; border-radius:6px; color:var(--accent); }
+
+  .callout{ background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; margin:20px 0; }
+  .callout .eyebrow{ margin-bottom:8px; }
+
+  /* pillars */
+  .pillars{ display:grid; gap:14px; margin:20px 0; }
+  @media (min-width:620px){ .pillars{ grid-template-columns:repeat(3,1fr); } }
+  .pillar{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); }
+  .pillar .p-n{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--coral-dark); }
+  .pillar h4{ margin:6px 0 6px; font-size:16px; }
+  .pillar p{ font-size:14.5px; color:var(--text-2); margin:0; }
+
+  /* tables */
+  .tw{ overflow-x:auto; margin:18px 0; border:1px solid var(--line); border-radius:var(--radius); }
+  table{ border-collapse:collapse; width:100%; font-size:14.5px; min-width:520px; }
+  th,td{ text-align:left; padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+  thead th{ background:var(--surface-2); font-family:'Inter',sans-serif; font-weight:700; font-size:12.5px; letter-spacing:.03em; text-transform:uppercase; color:var(--text-2); }
+  tbody tr:last-child td{ border-bottom:none; }
+  td strong{ color:var(--text); }
+
+  /* palette swatches */
+  .swatches{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; margin:18px 0; }
+  .sw{ border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface); }
+  .sw .chip{ height:64px; }
+  .sw .info{ padding:9px 11px; }
+  .sw .info .nm{ font-size:13px; font-weight:600; color:var(--text); }
+  .sw .info .hx{ font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--text-2); text-transform:uppercase; }
+
+  /* steps */
+  .steps{ display:flex; flex-direction:column; gap:2px; margin:18px 0; counter-reset:s; }
+  .step{ display:flex; gap:14px; padding:12px 0; border-bottom:1px solid var(--line); }
+  .step:last-child{ border-bottom:none; }
+  .step .sn{ counter-increment:s; font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--white); background:var(--sage-dark); width:28px; height:28px; border-radius:50%; display:grid; place-items:center; flex:none; }
+  .step .sn::before{ content:counter(s); }
+  .step .st{ font-size:15px; }
+  .step .st b{ color:var(--text); }
+
+  footer{ margin-top:64px; padding-top:22px; border-top:1px solid var(--line); color:var(--text-3); font-size:13px; font-family:'JetBrains Mono',monospace; letter-spacing:.03em; }
+
+  .themetoggle{ position:fixed; top:14px; right:14px; z-index:20; background:var(--surface); border:1px solid var(--line); color:var(--text-2); border-radius:999px; padding:7px 13px; font-size:12.5px; font-family:'JetBrains Mono',monospace; cursor:pointer; box-shadow:var(--shadow); }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+</style>
+
+<button class="themetoggle" id="tt" aria-label="Cambiar tema">tema</button>
+
+<div class="doc">
+  <aside>
+    <div class="brand">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#12A99B"/><path d="M7 26 C11 14 15 30 20 22 C24 16 27 24 33 15" fill="none" stroke="#FFFEFB" stroke-width="3" stroke-linecap="round"/><circle cx="33" cy="15" r="2.6" fill="#F08A6B"/></svg>
+      <div>
+        <div class="n">Trazo</div>
+        <div class="k">Documento de proyecto</div>
+      </div>
+    </div>
+    <nav aria-label="Índice">
+      <a href="#resumen"><span class="num">00</span> Resumen</a>
+      <a href="#vision"><span class="num">01</span> Visión y producto</a>
+      <a href="#clinica"><span class="num">02</span> Principios clínicos</a>
+      <a href="#diseno"><span class="num">03</span> Sistema de diseño</a>
+      <a href="#arquitectura"><span class="num">04</span> Arquitectura</a>
+      <a href="#negocio"><span class="num">05</span> Negocio y mercado</a>
+      <a href="#estado"><span class="num">06</span> Estado actual</a>
+    </nav>
+  </aside>
+
+  <main>
+    <header id="resumen">
+      <span class="eyebrow">Estimulación cognitiva · centros de día y residencias</span>
+      <h1>Se planifica en minutos y se mide sola</h1>
+      <p class="lede">Trazo es una plataforma de estimulación cognitiva para centros de día y residencias de mayores, en producción. La persona usuaria juega actividades en una tablet —sin saber leer y sin miedo a equivocarse—, el equipo del centro mide su desempeño de forma honesta y lo sigue en un panel web. Su diseño parte de la persona más frágil y de una medición que registra desempeño, nunca deterioro.</p>
+      <div class="meta">
+        <span class="tag">API · FastAPI</span>
+        <span class="tag">Panel · React</span>
+        <span class="tag">Tablet · Flutter</span>
+        <span class="tag">Catálogo creciente</span>
+        <span class="tag">Multi-tenant</span>
+      </div>
+    </header>
+
+    <section id="vision">
+      <span class="eyebrow">01 — Visión y producto</span>
+      <h2>Qué es Trazo y para quién</h2>
+      <p><strong>Trazo es una plataforma de estimulación cognitiva para centros de día y residencias de mayores: la persona usuaria juega actividades en una tablet, el equipo del centro mide su desempeño y lo sigue en un panel web.</strong></p>
+
+      <h3>Un plus al trabajo del equipo, no un sustituto</h3>
+      <p>El equipo del centro ya hace este trabajo: planifica las sesiones, acompaña a cada persona y <strong>sigue su evolución a mano</strong>, coordinándose para adaptar las actividades. Trazo no viene a reemplazar eso, sino a <strong>sumar</strong>. Aporta tres cosas concretas:</p>
+      <ul>
+        <li><strong>Seguimiento a distancia.</strong> Te acuerdas de lo que hiciste esta semana, pero a un mes ya no recuerdas qué mejoró o empeoró. Trazo lo mide de forma gráfica y sostenida en el tiempo —comparando a cada persona consigo misma— para que el cambio a medio plazo se vea sin estar pendiente de todo.</li>
+        <li><strong>Sesión de digitalización útil.</strong> La actividad se hace en tablet: además de estimular, la persona usa tecnología, que también le viene bien. Encaja con las sesiones de digitalización del centro.</li>
+        <li><strong>Libera atención.</strong> La maestra no puede estar pendiente de todo a la vez; la autocorrección y el panel le quitan carga de registro y le dan una vista de grupo.</li>
+      </ul>
+      <p>Y todo esto sin pedirle a la persona mayor que sepa leer ni manejar una tablet, y con una medida de desempeño honesta, nunca lenguaje diagnóstico.</p>
+
+      <h3>Para quién</h3>
+      <ul>
+        <li><strong>Persona usuaria</strong> (participante mayor, a veces con Alzheimer, baja visión o temblor): el usuario más frágil y el centro de todo. Juega en un modo protegido del que no puede quedarse atrapada; todo se entiende sin leer.</li>
+        <li><strong>Equipo del centro</strong> (terapeutas ocupacionales, integradoras sociales, psicología): abren la sala, acompañan la sesión en la tablet y revisan el desempeño en el panel. Perfil no técnico.</li>
+        <li><strong>Admin del centro</strong>: gestiona el equipo y las personas usuarias del centro desde el panel web.</li>
+        <li><strong>Plataforma</strong>: da de alta y administra los centros; garantiza el aislamiento entre ellos.</li>
+      </ul>
+
+      <h3>Tres pilares</h3>
+      <div class="pillars">
+        <div class="pillar"><div class="p-n">01</div><h4>Dignidad y accesibilidad primero</h4><p>Todo se entiende sin leer: objetivos táctiles grandes, contraste alto, háptico en cada toque, sin cronómetros y sin callejones sin salida. La persona nunca se queda bloqueada.</p></div>
+        <div class="pillar"><div class="p-n">02</div><h4>Medición honesta, no diagnóstico</h4><p>Se mide desempeño, nunca «deterioro». El intento nace <em>sin valorar</em> —no tocar nada no es fallar— y solo puntúa cuando el equipo lo revisa. Las alertas comparan a cada persona con su propia base.</p></div>
+        <div class="pillar"><div class="p-n">03</div><h4>Un plus para el equipo</h4><p>Autocorrección en las 8 plantillas, panel claro, informe a familia y evolución listos sin trabajo manual. El equipo acompaña; la herramienta registra.</p></div>
+      </div>
+
+      <h3>Las 8 plantillas de ejercicios</h3>
+      <p>Un motor <em>data-driven</em> reparte un catálogo amplio y creciente de el contenido sobre 8 plantillas:</p>
+      <div class="tw"><table>
+        <thead><tr><th>Plantilla</th><th>Qué hace la persona</th><th>Qué entrena</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Trazo</strong></td><td>Seguir un recorrido con el dedo o el lápiz</td><td>Grafomotricidad, control del gesto</td></tr>
+          <tr><td><strong>Selección múltiple</strong></td><td>Elegir la opción correcta entre varias</td><td>Reconocimiento y categorización</td></tr>
+          <tr><td><strong>Memoria visual</strong></td><td>Recordar qué figuras había</td><td>Memoria a corto plazo</td></tr>
+          <tr><td><strong>Búsqueda visual</strong></td><td>Encontrar una figura entre muchas</td><td>Atención y rastreo visual</td></tr>
+          <tr><td><strong>Secuencia / ordenar</strong></td><td>Poner los pasos en su orden</td><td>Razonamiento y secuenciación</td></tr>
+          <tr><td><strong>Arrastrar a su sitio</strong> (por toque)</td><td>Colocar cada cosa en su lugar</td><td>Orientación espacial</td></tr>
+          <tr><td><strong>Conteo y comparación</strong></td><td>Contar y decidir cuál tiene más</td><td>Noción numérica</td></tr>
+          <tr><td><strong>Manejo de cantidad</strong> (dinero/reloj)</td><td>Usar monedas y leer la hora</td><td>Habilidades de la vida diaria</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>El flujo de uso</h3>
+      <div class="steps">
+        <div class="step"><div class="sn"></div><div class="st"><b>Emparejar la tablet</b> con el centro mediante un código de emparejamiento (paso obligatorio y primero de todo).</div></div>
+        <div class="step"><div class="sn"></div><div class="st"><b>Elegir rol en cada uso</b>: la misma tablet sirve para el equipo (maestra) o para la persona usuaria (modo protegido).</div></div>
+        <div class="step"><div class="sn"></div><div class="st"><b>Jugar</b>: la persona elige su sala y realiza las actividades de su plan.</div></div>
+        <div class="step"><div class="sn"></div><div class="st"><b>Medir</b>: cada partida se autocorrige y queda registrada como desempeño, sin puntuar hasta que el equipo la revise.</div></div>
+        <div class="step"><div class="sn"></div><div class="st"><b>Panel</b>: el equipo sigue la evolución, revisa intentos y genera el informe a familia.</div></div>
+      </div>
+      <p>Un mismo centro puede tener <strong>varias salas abiertas a la vez</strong> —dos profesionales con dos grupos—. Cada persona queda ligada a <em>su</em> sala y no puede estar en dos a la vez, así que el centro trabaja en paralelo sin que se mezclen los datos.</p>
+    </section>
+
+    <section id="clinica">
+      <span class="eyebrow">02 — Principios clínicos y de medición</span>
+      <h2>Se mide desempeño, no deterioro</h2>
+      <p>Trazo mide <strong>desempeño observable en actividades</strong>, no deterioro ni diagnóstico. Estos principios están grabados en el motor de medición y <strong>no se revierten</strong>: cualquier cambio que los contradiga se considera un error, no una mejora.</p>
+
+      <h4>1 · El intento nace «sin_valorar»</h4>
+      <p>Cuando una persona termina (o no) una actividad, el intento se registra como <code>sin_valorar</code>: no puntúa ni dispara alertas hasta que un profesional lo revisa. <strong><code>sin_valorar</code> ≠ <code>no_logrado</code></strong>: no tocar nada, dudar o dejar algo a medias no es fallar. Confundirlos falsearía la señal a la baja y penalizaría a la persona más frágil.</p>
+
+      <h4>2 · Nunca lenguaje diagnóstico</h4>
+      <p>Se describe qué hace la persona hoy en la tarea, no su estado clínico. No se habla de «deterioro», «declive», «Alzheimer» ni gravedad. La lectura es siempre en positivo.</p>
+
+      <h4>3 · La señal principal es el resultado autocorregido</h4>
+      <p>La medida troncal, homogénea para las 8 plantillas, es el resultado autocorregido —y no <code>precision</code>, que solo existe en 3 plantillas—. Alimenta la gráfica de evolución y el informe a familia.</p>
+      <div class="tw"><table>
+        <thead><tr><th>Resultado</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td><code>logrado</code></td><td>1</td></tr>
+          <tr><td><code>parcial</code></td><td>0,5</td></tr>
+          <tr><td><code>no_logrado</code></td><td>0</td></tr>
+        </tbody>
+      </table></div>
+
+      <h4>4 · Cada persona se compara consigo misma</h4>
+      <p>No hay rankings ni normas poblacionales. La referencia es la <strong>propia base</strong> de la persona, segmentada por dificultad. Las alertas se generan por <strong>cambio sostenido</strong> respecto a esa base —no por un mal día— para acompañar sin alarmar.</p>
+
+      <div class="callout">
+        <span class="eyebrow">No es producto sanitario</span>
+        <p style="margin:0">Trazo es una herramienta de estimulación cognitiva y registro de desempeño para el trabajo del equipo del centro. <strong>No es un producto sanitario, no diagnostica y no sustituye el criterio profesional.</strong> Las medidas son apoyo a la observación, nunca una etiqueta clínica.</p>
+      </div>
+
+      <h4>6 · Protección de datos (RGPD)</h4>
+      <p>El desempeño constituye <strong>dato de categoría especial (salud)</strong>. El <strong>centro es responsable del tratamiento y Trazo actúa como encargado</strong>. Pseudonimización y aislamiento multi-tenant estricto: todo va acotado por centro, con revalidación de acceso en cada operación; ningún centro ve datos de otro. Se recoge lo mínimo necesario.</p>
+    </section>
+
+    <section id="diseno">
+      <span class="eyebrow">03 — Sistema de diseño y marca</span>
+      <h2>Una paleta, tres superficies</h2>
+      <p>Sistema de diseño verificado contra <code>theme.ts</code>, <code>theme.dart</code> y el CSS de la landing. La persona usuaria más frágil define cada decisión: si algo no funciona para ella, no entra. Verde agua sereno como color de marca, coral cálido para lo humano, y una familia de fondos crema que evita el blanco puro deslumbrante.</p>
+
+      <h3>Marca y acentos</h3>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#12A99B"></div><div class="info"><div class="nm">Sage</div><div class="hx">#12A99B</div></div></div>
+        <div class="sw"><div class="chip" style="background:#1F7A70"></div><div class="info"><div class="nm">Sage-dark</div><div class="hx">#1F7A70</div></div></div>
+        <div class="sw"><div class="chip" style="background:#F08A6B"></div><div class="info"><div class="nm">Coral</div><div class="hx">#F08A6B</div></div></div>
+        <div class="sw"><div class="chip" style="background:#C4553A"></div><div class="info"><div class="nm">Coral oscuro</div><div class="hx">#C4553A</div></div></div>
+        <div class="sw"><div class="chip" style="background:#2C7595"></div><div class="info"><div class="nm">Azul acento</div><div class="hx">#2C7595</div></div></div>
+        <div class="sw"><div class="chip" style="background:#12312E"></div><div class="info"><div class="nm">Tinta</div><div class="hx">#12312E</div></div></div>
+      </div>
+      <h3>Fondos (de claro a más saturado)</h3>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#FFFEFB;border-bottom:1px solid var(--line)"></div><div class="info"><div class="nm">Blanco cálido</div><div class="hx">#FFFEFB</div></div></div>
+        <div class="sw"><div class="chip" style="background:#F5FBFA;border-bottom:1px solid var(--line)"></div><div class="info"><div class="nm">Ivory</div><div class="hx">#F5FBFA</div></div></div>
+        <div class="sw"><div class="chip" style="background:#E8F5F2;border-bottom:1px solid var(--line)"></div><div class="info"><div class="nm">Card</div><div class="hx">#E8F5F2</div></div></div>
+        <div class="sw"><div class="chip" style="background:#D2E6E2;border-bottom:1px solid var(--line)"></div><div class="info"><div class="nm">Sand</div><div class="hx">#D2E6E2</div></div></div>
+      </div>
+
+      <div class="callout">
+        <span class="eyebrow">Regla de accesibilidad · obligatoria</span>
+        <p style="margin:0">Para <strong>texto blanco</strong>, usar siempre <strong>sage-dark <code>#1F7A70</code></strong>, nunca sage <code>#12A99B</code> (no alcanza el contraste <strong>AA 4.5:1</strong> con blanco). Regla general para todo texto e icono con significado: <strong>contraste ≥ 4.5:1</strong>. Igual con los acentos: coral y azul tienen su variante oscura para cuando van sobre claro o llevan texto blanco.</p>
+      </div>
+
+      <h3>Tipografía</h3>
+      <div class="tw"><table>
+        <thead><tr><th>Familia</th><th>Rol</th><th>Dónde</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:'Fraunces',serif;font-size:16px"><strong>Fraunces</strong> · serif</td><td>Títulos y encabezados</td><td>Titulares, nombres de actividad</td></tr>
+          <tr><td style="font-family:'Inter',sans-serif"><strong>Inter</strong> · sans</td><td>Cuerpo e interfaz</td><td>Texto, botones, formularios, tablas</td></tr>
+          <tr><td style="font-family:'JetBrains Mono',monospace;font-size:13px"><strong>JetBrains&nbsp;Mono</strong></td><td>Etiquetas y códigos</td><td>Código de emparejamiento, estados</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Accesibilidad de la persona usuaria</h3>
+      <ul>
+        <li><strong>Objetivos táctiles grandes</strong> y bien separados: imposible fallar el toque o pulsar dos cosas a la vez.</li>
+        <li><strong>Háptico en cada selección</strong>: vibración sutil que confirma el toque para quien no ve bien.</li>
+        <li><strong>Lectura en voz alta (TTS)</strong>: no hace falta saber leer para jugar.</li>
+        <li><strong>Sin menús</strong>: flujo lineal y guiado, una cosa a la vez.</li>
+        <li><strong>Nada que atrape</strong>: nunca se queda encerrada en una pantalla sin salida.</li>
+        <li><strong>Sin prisa</strong>: sin temporizadores ni presión; el ritmo lo pone la persona.</li>
+        <li><strong>Sin conexión</strong>: la tablet funciona sin internet; los intentos se encolan y sincronizan después.</li>
+      </ul>
+
+      <h3>Tono de voz y vocabulario digno</h3>
+      <p>La voz es cálida, clara y respetuosa; nunca clínica-fría. Cada palabra en pantalla debería poder leerse en voz alta delante de la persona usuaria y su familia sin que nadie se sienta disminuido.</p>
+      <div class="tw"><table>
+        <thead><tr><th>Se dice</th><th>No se dice</th></tr></thead>
+        <tbody>
+          <tr><td><strong>persona usuaria</strong></td><td>persona mayor, paciente, anciano</td></tr>
+          <tr><td><strong>el equipo del centro</strong>: terapeutas ocupacionales, integradoras sociales, psicología</td><td>trabajadora social, cuidador</td></tr>
+          <tr><td><strong>Tablets</strong></td><td>dispositivos</td></tr>
+          <tr><td><strong>código de emparejamiento</strong></td><td>token, kiosco, login</td></tr>
+          <tr><td><strong>sin valorar</strong> (≠ no logrado)</td><td>pendiente, fallido</td></tr>
+          <tr><td><strong>desempeño</strong></td><td>deterioro, rendimiento cognitivo</td></tr>
+          <tr><td><strong>plataformas del sector</strong></td><td>(nombre de la competencia)</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="arquitectura">
+      <span class="eyebrow">04 — Arquitectura técnica</span>
+      <h2>Un monorepo, cuatro superficies</h2>
+      <p>Trazo es un <strong>monorepo</strong> con cuatro superficies de cliente sobre una única API. Cada pieza está pensada para un actor distinto del centro, pero todas comparten el mismo modelo de datos multi-tenant y el mismo motor de ejercicios.</p>
+      <div class="tw"><table>
+        <thead><tr><th>Pieza</th><th>Carpeta</th><th>Stack</th><th>Para quién</th></tr></thead>
+        <tbody>
+          <tr><td><strong>API</strong></td><td><code>backend/api</code></td><td>FastAPI · SQLAlchemy 2.0 async · Pydantic v2 · PyJWT · bcrypt</td><td>Núcleo: datos, medición, auth</td></tr>
+          <tr><td><strong>Panel del centro</strong></td><td><code>apps/web</code></td><td>React · Vite · TypeScript</td><td>Equipo y admin del centro</td></tr>
+          <tr><td><strong>Tablet</strong></td><td><code>apps/tablet</code></td><td>Flutter</td><td>Persona usuaria y equipo</td></tr>
+          <tr><td><strong>Super-admin</strong></td><td><code>apps/superadmin</code></td><td>HTML estático (token de plataforma)</td><td>Alta y bloqueo de centros</td></tr>
+          <tr><td><strong>Landing + vitrina</strong></td><td><code>apps/landing</code></td><td>HTML + build de la tablet en <code>/demo</code></td><td>Difusión y prueba sin emparejar</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Multi-tenant con aislamiento por centro</h3>
+      <p>Todo el dato vive <strong>scoped por <code>centro_id</code></strong>. El aislamiento no es una convención suelta, sino defensa activa contra IDOR: cada endpoint resuelve el recurso a través del centro activo de la sesión (revalidando el centro en cada petición), de modo que un identificador de otro centro no devuelve datos ajenos aunque se adivine.</p>
+
+      <h3>Motor de ejercicios data-driven</h3>
+      <p>El contenido no está cableado en código: es <strong>datos</strong>. El catálogo (<code>app/data/catalogo.json</code>) declara las actividades sobre las 8 plantillas. Sobre esa base, tres capas separadas:</p>
+      <ul>
+        <li><strong>Generadores</strong> (<code>app/templates/tipos.py</code>): construyen cada intento a partir de la plantilla y sus parámetros.</li>
+        <li><strong>Autocorrección</strong> (<code>app/services/correccion.py</code>): la señal principal, <code>logrado</code>/<code>parcial</code>/<code>no_logrado</code> para las 8 plantillas.</li>
+        <li>El intento <strong>nace <code>sin_valorar</code></strong>: la máquina propone, el equipo dispone.</li>
+      </ul>
+      <p>Añadir contenido es un cambio de datos con validación (inequívoco, ilustraciones que existen, autocorrección que puntúa como se espera), no una release de código de cliente.</p>
+
+      <h3>Base de datos idempotente al arrancar</h3>
+      <p>No hay scripts de migración manuales. En el arranque de la API se ejecuta, de forma idempotente y portable entre SQLite (local/tests) y Postgres (producción): <code>create_all</code> de tablas nuevas, migraciones <strong>siempre aditivas</strong> de columnas e índices, y re-sincronización del catálogo. Consecuencia: el contenido nuevo solo exige <strong>redesplegar el backend</strong>.</p>
+
+      <h3>Despliegue</h3>
+      <ul>
+        <li><strong>API → Google Cloud Run</strong> (Cloud Build, región <code>europe-southwest1</code>).</li>
+        <li><strong>Datos → Aiven Postgres</strong> (SSL gestionado).</li>
+        <li><strong>Frontends → Cloudflare Pages</strong> (Wrangler): panel, tablet y vitrina, cada uno en su proyecto, rama <code>main</code>.</li>
+      </ul>
+    </section>
+
+    <section id="negocio">
+      <span class="eyebrow">05 — Negocio y salida al mercado</span>
+      <h2>Precio claro, equipo sin límite</h2>
+      <p>Precios sencillos, en euros, sin letra pequeña y sin permanencia.</p>
+      <div class="tw"><table>
+        <thead><tr><th>Plan</th><th>Precio</th><th>Qué incluye</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Piloto</strong></td><td><strong>0 €</strong></td><td>Prueba con personas usuarias reales, instalación y formación, sin compromiso.</td></tr>
+          <tr><td><strong>Centro</strong> <em>(lanzamiento)</em></td><td><strong>Desde 125 €/mes</strong> por centro</td><td>Todo el equipo incluido, sin límite de profesionales. Hasta 30 personas activas; cada una de más, <strong>+3 €/mes</strong>. Instalación y formación incluidas.</td></tr>
+          <tr><td><strong>Red</strong></td><td><strong>A medida</strong></td><td>Precio por volumen para grupos y redes de centros.</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li><strong>Se cobra por centro, no por profesional.</strong> Terapeutas ocupacionales, integradoras sociales y psicología entran todas, sin coste por asiento. El límite es el uso real (personas activas).</li>
+        <li><strong>Coste marginal predecible:</strong> +3 €/mes por persona activa por encima de 30. El centro sabe de antemano qué pagará si crece.</li>
+        <li><strong>Sin permanencia</strong> y precio de socio fundador para los primeros centros.</li>
+      </ul>
+
+      <h3>Posicionamiento</h3>
+      <p>Frente a las plataformas del sector, Trazo compite en dos ejes concretos: <strong>más económico y sin barrera por profesional</strong> (el equipo entra completo por un precio fijo por centro), y <strong>pensado para la sesión real del centro</strong>, no para el ejercicio suelto (varias salas simultáneas, una sola pantalla para ver al grupo, medición que se hace sola comparando a cada persona consigo misma). El mensaje no ataca a nadie por nombre: se apoya en precio claro, equipo sin límite y dignidad de la persona usuaria.</p>
+
+      <h3>Cliente ancla</h3>
+      <p>El primer cliente de referencia es una <strong>red de 5 centros</strong>: valida el producto en operación diaria, prueba el plan Red y genera el primer caso demostrable con el que abrir conversaciones con otros grupos del sector.</p>
+
+      <h3>Ideas de crecimiento <em>(exploración)</em></h3>
+      <ul>
+        <li><strong>Kit digital / subvenciones</strong>: empaquetar Trazo dentro de las ayudas de digitalización del centro para rebajar la barrera de entrada.</li>
+        <li><strong>Crecimiento vía red ancla</strong>: usar la red de 5 centros como puerta a otros grupos del mismo tejido.</li>
+        <li><strong>Expansión por uso, no por descuento</strong>: el modelo +3 €/persona hace crecer el ingreso con la actividad del centro.</li>
+      </ul>
+    </section>
+
+    <section id="estado">
+      <span class="eyebrow">06 — Estado actual</span>
+      <h2>En producción</h2>
+      <p>La API corre en <strong>Google Cloud Run</strong> (región <code>europe-southwest1</code>) con datos en <strong>Aiven Postgres</strong>, y los tres frontends —panel, tablet y vitrina— se sirven desde <strong>Cloudflare Pages</strong>. El arranque idempotente y la re-sincronización automática del catálogo mantienen esquema y contenido al día con solo redesplegar el backend, lo que hace del ciclo de publicación una operación de bajo riesgo y sin pasos manuales sobre la base de datos.</p>
+    </section>
+
+    <footer>Trazo · Documento de proyecto · en producción</footer>
+  </main>
+</div>
+
+<script>
+  (function(){
+    var tt=document.getElementById('tt');
+    var root=document.documentElement;
+    tt.addEventListener('click',function(){
+      var cur=root.getAttribute('data-theme');
+      var dark=cur? cur==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      root.setAttribute('data-theme', dark?'light':'dark');
+    });
+  })();
+</script>

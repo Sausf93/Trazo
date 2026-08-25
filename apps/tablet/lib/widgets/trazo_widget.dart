@@ -29,10 +29,10 @@ class _TrazoWidgetState extends State<TrazoWidget> {
   late final double _vbH;
   late final double _tolerancia;
 
-  // Guía de dirección (grafomotricidad): dónde EMPIEZA el trazo y hacia dónde va.
-  // Imprescindible para mayores que nunca aprendieron a escribir (apunte de Laura).
-  late final Offset _inicioGuia;
-  late final List<(Offset, double)> _flechas; // posición + ángulo del trazo
+  // Guía tipo cuadernillo: cada sub-trazo se numera en su orden de escritura y
+  // una flecha corta marca por dónde arranca. Imprescindible para mayores que
+  // nunca aprendieron a escribir (apunte de Laura): siguen los números 1, 2, 3…
+  late final List<(Offset, double)> _inicios; // por sub-trazo: posición + ángulo inicial
 
   final List<Offset> _puntosUsuario = []; // en coords del viewBox
   final DateTime _inicio = DateTime.now();
@@ -49,20 +49,23 @@ class _TrazoWidgetState extends State<TrazoWidget> {
     _vbW = (vb.length > 2 ? double.tryParse(vb[2]) : null) ?? 300;
     _vbH = (vb.length > 3 ? double.tryParse(vb[3]) : null) ?? 140;
     _muestrasGuia = _muestrear(_guia, paso: 3.0);
-    _inicioGuia = _muestrasGuia.isNotEmpty ? _muestrasGuia.first : Offset.zero;
-    _flechas = _calcularFlechas(_guia);
+    _inicios = _iniciosTrazos(_guia);
   }
 
-  /// Flechas de dirección a lo largo de cada sub-trazo de la guía.
-  List<(Offset, double)> _calcularFlechas(Path path) {
-    final flechas = <(Offset, double)>[];
+  /// Inicio y dirección inicial de cada sub-trazo, EN ORDEN de escritura (1, 2,
+  /// 3…). Estilo cuadernillo: el badge numerado se coloca un poco DENTRO del
+  /// trazo (no en el vértice exacto) para que dos trazos que arrancan del mismo
+  /// punto —p. ej. el palo y la barra alta de la E— no se solapen.
+  List<(Offset, double)> _iniciosTrazos(Path path) {
+    final res = <(Offset, double)>[];
     for (final metric in path.computeMetrics()) {
-      for (final frac in const [0.22, 0.55, 0.88]) {
-        final t = metric.getTangentForOffset(metric.length * frac);
-        if (t != null) flechas.add((t.position, t.angle));
-      }
+      final len = metric.length;
+      if (len < 4) continue; // tramo insignificante
+      final o = math.min(14.0, len * 0.3);
+      final t = metric.getTangentForOffset(o) ?? metric.getTangentForOffset(0);
+      if (t != null) res.add((t.position, t.angle));
     }
-    return flechas;
+    return res;
   }
 
   List<Offset> _muestrear(Path path, {double paso = 3.0}) {
@@ -127,14 +130,29 @@ class _TrazoWidgetState extends State<TrazoWidget> {
 
   @override
   Widget build(BuildContext context) {
+    // Móvil vertical (viewport estrecho/bajo): el lienzo es a pantalla completa
+    // y se auto-escala, así que NUNCA se recorta ni se sale. Aquí solo aliviamos
+    // la tipografía del enunciado para que no coma la altura del área de dibujo
+    // (ni se corte al envolver). NO se envuelve en scroll: robaría los gestos de
+    // trazo. El aspecto en tablet (ancho) queda idéntico.
+    return LayoutBuilder(
+      builder: (context, c) {
+        final estrecho = c.maxWidth < 520 || c.maxHeight < 640;
+        return _contenido(estrecho);
+      },
+    );
+  }
+
+  Widget _contenido(bool estrecho) {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(bottom: 12),
+          padding: EdgeInsets.only(bottom: estrecho ? 8 : 12),
           child: Text(
             widget.instancia.render['instruccion'] as String? ??
-                'Sigue la línea con el dedo',
-            style: const TextStyle(fontSize: 26, color: TrazoColors.ink),
+                'Sigue la línea con el dedo o el lápiz',
+            style: TextStyle(
+                fontSize: estrecho ? 20 : 26, color: TrazoColors.ink),
           ),
         ),
         Expanded(
@@ -143,6 +161,7 @@ class _TrazoWidgetState extends State<TrazoWidget> {
               final size =
                   Size(constraints.maxWidth, constraints.maxHeight);
               return GestureDetector(
+                key: const ValueKey('trazo-lienzo'),
                 onPanStart: (d) => setState(
                     () => _puntosUsuario.add(_aViewBox(d.localPosition, size))),
                 onPanUpdate: (d) => setState(
@@ -158,8 +177,7 @@ class _TrazoWidgetState extends State<TrazoWidget> {
                     painter: _TrazoPainter(
                       guia: _guia,
                       puntosUsuario: _puntosUsuario,
-                      inicioGuia: _inicioGuia,
-                      flechas: _flechas,
+                      inicios: _inicios,
                       vbW: _vbW,
                       vbH: _vbH,
                     ),
@@ -174,7 +192,7 @@ class _TrazoWidgetState extends State<TrazoWidget> {
         // Objetivo táctil amplio y centrado: es la acción de rescate, justo para
         // manos que tiemblan, así que tiene que ser fácil de acertar y de ver.
         Padding(
-          padding: const EdgeInsets.only(top: 12),
+          padding: EdgeInsets.only(top: estrecho ? 8 : 12),
           child: Center(
             child: OutlinedButton.icon(
               onPressed: _puntosUsuario.isEmpty ? null : _limpiar,
@@ -199,19 +217,31 @@ class _TrazoWidgetState extends State<TrazoWidget> {
 class _TrazoPainter extends CustomPainter {
   final Path guia;
   final List<Offset> puntosUsuario;
-  final Offset inicioGuia;
-  final List<(Offset, double)> flechas;
+  final List<(Offset, double)> inicios; // por sub-trazo, en orden de escritura
   final double vbW;
   final double vbH;
 
   _TrazoPainter({
     required this.guia,
     required this.puntosUsuario,
-    required this.inicioGuia,
-    required this.flechas,
+    required this.inicios,
     required this.vbW,
     required this.vbH,
   });
+
+  /// La guía en PUNTITOS (como un cuadernillo de caligrafía) para repasar encima.
+  Path _puntitos(Path fuente, {double punto = 2.5, double hueco = 11}) {
+    final dest = Path();
+    for (final m in fuente.computeMetrics()) {
+      double d = 0;
+      while (d < m.length) {
+        final fin = math.min(d + punto, m.length);
+        dest.addPath(m.extractPath(d, fin), Offset.zero);
+        d += punto + hueco;
+      }
+    }
+    return dest;
+  }
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -223,71 +253,75 @@ class _TrazoPainter extends CustomPainter {
     canvas.translate(dx, dy);
     canvas.scale(escala);
 
-    // Guía
-    final guiaPaint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 10
-      ..strokeCap = StrokeCap.round
-      ..color = const Color(0xFFDCD3BE);
-    canvas.drawPath(guia, guiaPaint);
+    // Guía en PUNTITOS (cuadernillo de caligrafía): el mayor repasa encima de
+    // los puntos. Se dibuja primero un trazo continuo muy tenue (para no perder
+    // el recorrido) y encima los puntos, más marcados, en 'sand' con contraste.
+    canvas.drawPath(
+      guia,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 16
+        ..strokeCap = StrokeCap.round
+        ..color = TrazoColors.sand.withValues(alpha: 0.18),
+    );
+    canvas.drawPath(
+      _puntitos(guia),
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 9
+        ..strokeCap = StrokeCap.round
+        ..color = TrazoColors.sand,
+    );
 
-    // Flechas de dirección a lo largo de la guía (hacia dónde trazar). Grandes y
-    // visibles: para un mayor, la dirección tiene que "saltar a la vista".
+    // Por cada sub-trazo, EN ORDEN de escritura: una flecha corta que sale del
+    // inicio (el sentido) y un badge numerado (1, 2, 3…) como en el cuadernillo.
     final flechaPaint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 4
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round
       ..color = TrazoColors.coralDark;
-    for (final (pos, ang) in flechas) {
+    for (var i = 0; i < inicios.length; i++) {
+      final (pos, ang) = inicios[i];
       final dir = Offset(math.cos(ang), math.sin(ang));
       final perp = Offset(-dir.dy, dir.dx);
-      final tip = pos + dir * 8;
-      final a = tip - dir * 13 + perp * 7.5;
-      final b = tip - dir * 13 - perp * 7.5;
+      // Flecha que arranca del badge y apunta hacia donde va el trazo.
+      final tip = pos + dir * 20;
+      final a = tip - dir * 11 + perp * 6.5;
+      final b = tip - dir * 11 - perp * 6.5;
       canvas.drawPath(
         Path()
+          ..moveTo(pos.dx + dir.dx * 9, pos.dy + dir.dy * 9)
+          ..lineTo(tip.dx, tip.dy)
           ..moveTo(a.dx, a.dy)
           ..lineTo(tip.dx, tip.dy)
           ..lineTo(b.dx, b.dy),
         flechaPaint,
       );
+      // Badge numerado: disco verde con halo blanco y el número del trazo.
+      canvas.drawCircle(
+          pos, 12, Paint()..color = Colors.white.withValues(alpha: 0.95));
+      canvas.drawCircle(pos, 10, Paint()..color = TrazoColors.sage);
+      canvas.drawCircle(
+        pos,
+        10,
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2.5
+          ..color = TrazoColors.sageDark,
+      );
+      final tp = TextPainter(
+        text: TextSpan(
+          text: '${i + 1}',
+          style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w900,
+              color: Colors.white),
+        ),
+        textDirection: TextDirection.ltr,
+      )..layout();
+      tp.paint(canvas, Offset(pos.dx - tp.width / 2, pos.dy - tp.height / 2));
     }
-
-    // Punto de inicio: "EMPIEZA AQUÍ". Es lo primero que debe ver quien nunca
-    // aprendió a escribir. Disco verde grande con halo blanco + etiqueta.
-    canvas.drawCircle(
-        inicioGuia, 15, Paint()..color = Colors.white.withValues(alpha: 0.9));
-    canvas.drawCircle(inicioGuia, 11, Paint()..color = TrazoColors.sage);
-    canvas.drawCircle(
-      inicioGuia,
-      11,
-      Paint()
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 3
-        ..color = TrazoColors.sageDark,
-    );
-    final tp = TextPainter(
-      text: const TextSpan(
-        text: 'Empieza',
-        style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w800,
-            color: TrazoColors.sageDark),
-      ),
-      textDirection: TextDirection.ltr,
-    )..layout();
-    // Etiqueta debajo del punto, centrada y sin salirse del viewBox.
-    final lx = (inicioGuia.dx - tp.width / 2).clamp(0.0, vbW - tp.width);
-    final ly = (inicioGuia.dy + 15).clamp(0.0, vbH - tp.height);
-    // Fondo claro para que el texto se lea sobre la guía.
-    canvas.drawRRect(
-      RRect.fromRectAndRadius(
-          Rect.fromLTWH(lx - 3, ly - 1, tp.width + 6, tp.height + 2),
-          const Radius.circular(4)),
-      Paint()..color = Colors.white.withValues(alpha: 0.85),
-    );
-    tp.paint(canvas, Offset(lx, ly));
 
     // Trazo del usuario
     if (puntosUsuario.length > 1) {
