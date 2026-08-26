@@ -37361,5 +37361,422 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Cambia de criterio",
+  "descripcion": "Dejar una categoría y saltar a otra: flexibilidad mental (función ejecutiva).",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "a",
+     "instruccion": "Cambia de tema y elige bien",
+     "enunciado": "Veníamos diciendo FRUTAS. Ahora cambia y di un ANIMAL:",
+     "correcta": "el perro",
+     "distractores": [
+      "la pera",
+      "la manzana",
+      "el plátano"
+     ]
+    },
+    {
+     "id": "b",
+     "instruccion": "Cambia de tema y elige bien",
+     "enunciado": "Ya no digas COLORES. Ahora di un NÚMERO:",
+     "correcta": "el siete",
+     "distractores": [
+      "el rojo",
+      "el azul",
+      "el verde"
+     ]
+    },
+    {
+     "id": "c",
+     "instruccion": "Cambia de tema y elige bien",
+     "enunciado": "Deja los ANIMALES. Di una PRENDA de vestir:",
+     "correcta": "la camisa",
+     "distractores": [
+      "el gato",
+      "el perro",
+      "la vaca"
+     ]
+    },
+    {
+     "id": "d",
+     "instruccion": "Cambia de tema y elige bien",
+     "enunciado": "Cambia: ya no digas COMIDA, di un MUEBLE:",
+     "correcta": "la silla",
+     "distractores": [
+      "el pan",
+      "el queso",
+      "la sopa"
+     ]
+    },
+    {
+     "id": "e",
+     "instruccion": "Cambia de tema y elige bien",
+     "enunciado": "Deja los TRANSPORTES. Di una FLOR:",
+     "correcta": "la rosa",
+     "distractores": [
+      "el coche",
+      "el tren",
+      "el barco"
+     ]
+    },
+    {
+     "id": "f",
+     "instruccion": "Cambia de tema y elige bien",
+     "enunciado": "Ya no digas cosas de la COCINA. Di algo del BAÑO:",
+     "correcta": "la toalla",
+     "distractores": [
+      "la olla",
+      "la sartén",
+      "el plato"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Piensa antes de actuar (2)",
+  "descripcion": "Frenar el impulso y elegir lo más sensato: control (función ejecutiva).",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "cruzar",
+     "instruccion": "Piensa y elige",
+     "enunciado": "Vas a cruzar la calle. ¿Qué haces ANTES?",
+     "correcta": "miro a los dos lados",
+     "distractores": [
+      "cruzo corriendo",
+      "cierro los ojos",
+      "cruzo sin mirar"
+     ]
+    },
+    {
+     "id": "plato",
+     "instruccion": "Piensa y elige",
+     "enunciado": "El plato sale muy caliente del horno. ¿Cómo lo coges?",
+     "correcta": "con una manopla",
+     "distractores": [
+      "con la mano",
+      "soplando y con la mano",
+      "con una servilleta fina"
+     ]
+    },
+    {
+     "id": "medicina",
+     "instruccion": "Piensa y elige",
+     "enunciado": "Vas a tomar una medicina. ¿Qué haces primero?",
+     "correcta": "leer la etiqueta",
+     "distractores": [
+      "tomar dos por si acaso",
+      "tomarla deprisa",
+      "no mirar nada"
+     ]
+    },
+    {
+     "id": "cristal",
+     "instruccion": "Piensa y elige",
+     "enunciado": "Se rompe un vaso de cristal en el suelo. ¿Qué haces?",
+     "correcta": "recogerlo con cuidado",
+     "distractores": [
+      "pisarlo",
+      "recogerlo deprisa con la mano",
+      "dejarlo tirado"
+     ]
+    },
+    {
+     "id": "frio",
+     "instruccion": "Piensa y elige",
+     "enunciado": "Hace mucho frío y vas a salir. ¿Qué haces antes?",
+     "correcta": "abrigarme bien",
+     "distractores": [
+      "salir en manga corta",
+      "salir corriendo",
+      "no coger abrigo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "No lo toques",
+  "descripcion": "Aguantar sin responder a una categoría concreta: inhibición (función ejecutiva).",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "animal",
+     "instruccion": "¿Cuál NO tocas?",
+     "enunciado": "Hay que tocar todo MENOS los animales. ¿Cuál te SALTAS?",
+     "correcta": "el gato",
+     "distractores": [
+      "la silla",
+      "la taza",
+      "el libro"
+     ]
+    },
+    {
+     "id": "comer",
+     "instruccion": "¿Cuál NO tocas?",
+     "enunciado": "Toca todo MENOS lo que se come. ¿Cuál te SALTAS?",
+     "correcta": "el pan",
+     "distractores": [
+      "la llave",
+      "el reloj",
+      "el zapato"
+     ]
+    },
+    {
+     "id": "rojo",
+     "instruccion": "¿Cuál NO tocas?",
+     "enunciado": "Toca todo MENOS lo de color rojo. El tomate es rojo. ¿Cuál te SALTAS?",
+     "correcta": "el tomate",
+     "distractores": [
+      "la pera",
+      "el plátano",
+      "la lechuga"
+     ]
+    },
+    {
+     "id": "ropa",
+     "instruccion": "¿Cuál NO tocas?",
+     "enunciado": "Toca todo MENOS la ropa. ¿Cuál te SALTAS?",
+     "correcta": "la camisa",
+     "distractores": [
+      "la mesa",
+      "el vaso",
+      "la puerta"
+     ]
+    },
+    {
+     "id": "flor",
+     "instruccion": "¿Cuál NO tocas?",
+     "enunciado": "Toca todo MENOS las flores. ¿Cuál te SALTAS?",
+     "correcta": "la rosa",
+     "distractores": [
+      "el perro",
+      "la casa",
+      "el coche"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El sonido de cada animal",
+  "descripcion": "Elegir el verbo del sonido que hace cada animal. Lenguaje.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "perro",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El perro…",
+     "correcta": "ladra",
+     "distractores": [
+      "maúlla",
+      "muge",
+      "canta"
+     ]
+    },
+    {
+     "id": "gato",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El gato…",
+     "correcta": "maúlla",
+     "distractores": [
+      "ladra",
+      "relincha",
+      "grazna"
+     ]
+    },
+    {
+     "id": "vaca",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "La vaca…",
+     "correcta": "muge",
+     "distractores": [
+      "ladra",
+      "bala",
+      "canta"
+     ]
+    },
+    {
+     "id": "gallo",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El gallo…",
+     "correcta": "canta",
+     "distractores": [
+      "ladra",
+      "muge",
+      "maúlla"
+     ]
+    },
+    {
+     "id": "oveja",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "La oveja…",
+     "correcta": "bala",
+     "distractores": [
+      "muge",
+      "ladra",
+      "relincha"
+     ]
+    },
+    {
+     "id": "caballo",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El caballo…",
+     "correcta": "relincha",
+     "distractores": [
+      "ladra",
+      "maúlla",
+      "muge"
+     ]
+    },
+    {
+     "id": "leon",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El león…",
+     "correcta": "ruge",
+     "distractores": [
+      "bala",
+      "grazna",
+      "canta"
+     ]
+    },
+    {
+     "id": "pato",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El pato…",
+     "correcta": "grazna",
+     "distractores": [
+      "ladra",
+      "relincha",
+      "muge"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El masculino y el femenino",
+  "descripcion": "Elegir el femenino de cada palabra. Lenguaje.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "toro",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El femenino de TORO es…",
+     "correcta": "vaca",
+     "distractores": [
+      "yegua",
+      "oveja",
+      "gallina"
+     ]
+    },
+    {
+     "id": "caballo",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El femenino de CABALLO es…",
+     "correcta": "yegua",
+     "distractores": [
+      "vaca",
+      "burra",
+      "cerda"
+     ]
+    },
+    {
+     "id": "gallo",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El femenino de GALLO es…",
+     "correcta": "gallina",
+     "distractores": [
+      "pata",
+      "oveja",
+      "vaca"
+     ]
+    },
+    {
+     "id": "hombre",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El femenino de HOMBRE es…",
+     "correcta": "mujer",
+     "distractores": [
+      "niña",
+      "señora",
+      "madre"
+     ]
+    },
+    {
+     "id": "rey",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El femenino de REY es…",
+     "correcta": "reina",
+     "distractores": [
+      "princesa",
+      "dama",
+      "señora"
+     ]
+    },
+    {
+     "id": "padre",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El femenino de PADRE es…",
+     "correcta": "madre",
+     "distractores": [
+      "hija",
+      "abuela",
+      "tía"
+     ]
+    },
+    {
+     "id": "actor",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El femenino de ACTOR es…",
+     "correcta": "actriz",
+     "distractores": [
+      "cantante",
+      "bailarina",
+      "artista"
+     ]
+    },
+    {
+     "id": "yerno",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El femenino de YERNO es…",
+     "correcta": "nuera",
+     "distractores": [
+      "suegra",
+      "cuñada",
+      "sobrina"
+     ]
+    }
+   ]
+  }
  }
 ]

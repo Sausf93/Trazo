@@ -48864,6 +48864,146 @@
     "tiempo_ms",
     "num_toques"
    ]
+  },
+  {
+   "ejercicio_id": "Cambia de criterio",
+   "nombre": "Cambia de criterio",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Cambia de tema y elige bien",
+    "enunciado": "Cambia: ya no digas COMIDA, di un MUEBLE:",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "la silla",
+     "la sopa",
+     "el queso",
+     "el pan"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "d",
+    "correcta": "la silla"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Piensa antes de actuar (2)",
+   "nombre": "Piensa antes de actuar (2)",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Piensa y elige",
+    "enunciado": "Se rompe un vaso de cristal en el suelo. ¿Qué haces?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "recogerlo con cuidado",
+     "dejarlo tirado",
+     "recogerlo deprisa con la mano",
+     "pisarlo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "cristal",
+    "correcta": "recogerlo con cuidado"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "No lo toques",
+   "nombre": "No lo toques",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "¿Cuál NO tocas?",
+    "enunciado": "Toca todo MENOS la ropa. ¿Cuál te SALTAS?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "la camisa",
+     "la puerta",
+     "el vaso",
+     "la mesa"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "ropa",
+    "correcta": "la camisa"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El sonido de cada animal",
+   "nombre": "El sonido de cada animal",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El león…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "ruge",
+     "canta",
+     "grazna",
+     "bala"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "leon",
+    "correcta": "ruge"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El masculino y el femenino",
+   "nombre": "El masculino y el femenino",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El femenino de ACTOR es…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "actriz",
+     "artista",
+     "bailarina",
+     "cantante"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "actor",
+    "correcta": "actriz"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
   }
  ]
 }
