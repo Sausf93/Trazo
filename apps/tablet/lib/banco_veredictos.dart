@@ -80,6 +80,39 @@ class BancoVeredictos {
     }
   }
 
+  /// Baja del servidor los veredictos de ESTE revisor y los hace fuente de la
+  /// verdad en el dispositivo. Así, si el equipo BORRA una marca en el servidor
+  /// (porque ya corrigió esa actividad), al reabrir el banco vuelve a salir.
+  Future<void> descargarDeServidor(String nombre) async {
+    if (nombre.trim().isEmpty) return;
+    try {
+      final base = Uri.parse(Config.apiUrl);
+      final url = Uri(
+          scheme: base.scheme,
+          host: base.host,
+          port: base.hasPort ? base.port : null,
+          path: '/banco/veredictos');
+      final resp = await http.get(url, headers: {
+        'X-Lab-Token': _tokenBanco
+      }).timeout(const Duration(seconds: 8));
+      if (resp.statusCode != 200) return;
+      final lista = jsonDecode(resp.body) as List<dynamic>;
+      final mios = <String, Veredicto>{};
+      for (final e in lista) {
+        final m = e as Map<String, dynamic>;
+        if ((m['marcado_por'] ?? '').toString() == nombre.trim()) {
+          mios[(m['actividad'] ?? '').toString()] = Veredicto(
+              (m['estado'] ?? '').toString(), (m['nota'] ?? '').toString());
+        }
+      }
+      await _cargar();
+      _cache = mios; // servidor manda: refleja exactamente lo suyo del servidor
+      await _persistir();
+    } catch (_) {
+      // Sin red: se queda lo que haya en el dispositivo.
+    }
+  }
+
   Future<void> _cargar() async {
     if (_cargado) return;
     _cargado = true;

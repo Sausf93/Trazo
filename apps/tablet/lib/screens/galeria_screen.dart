@@ -438,6 +438,11 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
         _cargando = false;
       });
       await _asegurarNombre();
+      // Sincroniza con el servidor: si el equipo borró una marca (actividad ya
+      // corregida), aquí desaparece y la actividad vuelve a salir.
+      final quien = await BancoVeredictos.instance.nombreMarcador();
+      await BancoVeredictos.instance.descargarDeServidor(quien);
+      await _recargarVeredictos();
     } catch (_) {
       if (!mounted) return;
       setState(() => _cargando = false);
