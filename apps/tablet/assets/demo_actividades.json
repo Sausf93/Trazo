@@ -72820,6 +72820,1070 @@
     "tiempo_ms",
     "num_toques"
    ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra SALUD",
+   "nombre": "Traza la palabra SALUD",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra SALUD",
+    "guide_path": "M330,28 L330,92 C330,112 370,112 370,92 L370,28",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_U_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra AMOR",
+   "nombre": "Traza la palabra AMOR",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra AMOR",
+    "guide_path": "M332,28 L332,118 M332,28 L356,28 C372,28 372,66 356,66 L332,66 M342,66 L368,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 400 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_R_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra PAZ",
+   "nombre": "Traza la palabra PAZ",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra PAZ",
+    "guide_path": "M150,28 L130,118 M150,28 L170,118 M138,82 L162,82",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 300 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_A_1",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra LUZ",
+   "nombre": "Traza la palabra LUZ",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra LUZ",
+    "guide_path": "M130,28 L130,92 C130,112 170,112 170,92 L170,28",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 300 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_U_1",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra CIELO",
+   "nombre": "Traza la palabra CIELO",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra CIELO",
+    "guide_path": "M332,28 L332,118 L370,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_L_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra MARES",
+   "nombre": "Traza la palabra MARES",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra MARES",
+    "guide_path": "M330,28 L330,118 M330,28 L370,28 M330,72 L362,72 M330,118 L370,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_E_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra RIOS",
+   "nombre": "Traza la palabra RIOS",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra RIOS",
+    "guide_path": "M368,44 C360,28 332,28 332,48 C332,66 368,72 368,96 C368,118 340,118 332,100",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 400 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_S_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra NIEVE",
+   "nombre": "Traza la palabra NIEVE",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra NIEVE",
+    "guide_path": "M330,28 L350,118 L370,28",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_V_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra LLUVIA",
+   "nombre": "Traza la palabra LLUVIA",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra LLUVIA",
+    "guide_path": "M330,28 L350,118 L370,28",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 600 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_V_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra VIENTO",
+   "nombre": "Traza la palabra VIENTO",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra VIENTO",
+    "guide_path": "M330,118 L330,28 L370,118 L370,28",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 600 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_N_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra TIERRA",
+   "nombre": "Traza la palabra TIERRA",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra TIERRA",
+    "guide_path": "M332,28 L332,118 M332,28 L356,28 C372,28 372,66 356,66 L332,66 M342,66 L368,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 600 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_R_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra FUENTE",
+   "nombre": "Traza la palabra FUENTE",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra FUENTE",
+    "guide_path": "M330,118 L330,28 L370,118 L370,28",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 600 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_N_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra PUENTE",
+   "nombre": "Traza la palabra PUENTE",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra PUENTE",
+    "guide_path": "M330,118 L330,28 L370,118 L370,28",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 600 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_N_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra CALLE",
+   "nombre": "Traza la palabra CALLE",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra CALLE",
+    "guide_path": "M332,28 L332,118 L370,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_L_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra PLAZA",
+   "nombre": "Traza la palabra PLAZA",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra PLAZA",
+    "guide_path": "M330,28 L370,28 L330,118 L370,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_Z_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra TIENDA",
+   "nombre": "Traza la palabra TIENDA",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra TIENDA",
+    "guide_path": "M330,118 L330,28 L370,118 L370,28",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 600 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_N_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra MERCADO",
+   "nombre": "Traza la palabra MERCADO",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra MERCADO",
+    "guide_path": "M650,28 C633,28 628,50 628,73 C628,96 633,118 650,118 C667,118 672,96 672,73 C672,50 667,28 650,28 Z",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 700 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_O_6",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra CAMPO",
+   "nombre": "Traza la palabra CAMPO",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra CAMPO",
+    "guide_path": "M332,118 L332,28 L358,28 C374,28 374,66 358,66 L332,66",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_P_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra HUERTO",
+   "nombre": "Traza la palabra HUERTO",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra HUERTO",
+    "guide_path": "M332,28 L332,118 M332,28 L356,28 C372,28 372,66 356,66 L332,66 M342,66 L368,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 600 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_R_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra JARDIN",
+   "nombre": "Traza la palabra JARDIN",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra JARDIN",
+    "guide_path": "M332,28 L332,118 M332,28 L352,28 C374,28 374,118 352,118 L332,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 600 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_D_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra BOSQUE",
+   "nombre": "Traza la palabra BOSQUE",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra BOSQUE",
+    "guide_path": "M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z M354,96 L370,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 600 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_Q_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra PLAYA",
+   "nombre": "Traza la palabra PLAYA",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra PLAYA",
+    "guide_path": "M330,28 L350,72 L370,28 M350,72 L350,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_Y_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra MONTE",
+   "nombre": "Traza la palabra MONTE",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra MONTE",
+    "guide_path": "M328,30 L372,30 M350,30 L350,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_T_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra VALLE",
+   "nombre": "Traza la palabra VALLE",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra VALLE",
+    "guide_path": "M332,28 L332,118 L370,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_L_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra ISLA",
+   "nombre": "Traza la palabra ISLA",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra ISLA",
+    "guide_path": "M350,28 L330,118 M350,28 L370,118 M338,82 L362,82",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 400 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_A_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra FARO",
+   "nombre": "Traza la palabra FARO",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra FARO",
+    "guide_path": "M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 400 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_O_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra BARCA",
+   "nombre": "Traza la palabra BARCA",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra BARCA",
+    "guide_path": "M370,46 C358,28 330,30 330,73 C330,116 358,118 370,100",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_C_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra VELERO",
+   "nombre": "Traza la palabra VELERO",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra VELERO",
+    "guide_path": "M330,28 L330,118 M330,28 L370,28 M330,72 L362,72 M330,118 L370,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 600 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_E_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra ANCLA",
+   "nombre": "Traza la palabra ANCLA",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra ANCLA",
+    "guide_path": "M332,28 L332,118 L370,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_L_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra TIMON",
+   "nombre": "Traza la palabra TIMON",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra TIMON",
+    "guide_path": "M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_O_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra REMOS",
+   "nombre": "Traza la palabra REMOS",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra REMOS",
+    "guide_path": "M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_O_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Traza la palabra PERLA",
+   "nombre": "Traza la palabra PERLA",
+   "bloque": "praxias",
+   "plantilla": "trazo",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Traza la palabra PERLA",
+    "guide_path": "M332,28 L332,118 L370,118",
+    "tolerancia_px": 9.3,
+    "viewbox": "0 0 500 145"
+   },
+   "cantidad_objetivo": {
+    "figura_id": "letra_L_3",
+    "tolerancia_px": 9.3
+   },
+   "metricas": [
+    "precision",
+    "tiempo_ms",
+    "desviacion_media",
+    "longitud_recorrida"
+   ]
+  },
+  {
+   "ejercicio_id": "Memoria: cosas de la playa (2)",
+   "nombre": "Memoria: cosas de la playa (2)",
+   "bloque": "atencion_memoria",
+   "plantilla": "memoria_visual",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Memoriza estas figuras",
+    "segundos_memorizar": 60,
+    "a_recordar": [
+     {
+      "id": "paraguas",
+      "label": "paraguas"
+     },
+     {
+      "id": "pez",
+      "label": "pez"
+     },
+     {
+      "id": "maleta",
+      "label": "maleta"
+     }
+    ],
+    "rejilla_seleccion": [
+     {
+      "id": "pez",
+      "label": "pez"
+     },
+     {
+      "id": "paraguas",
+      "label": "paraguas"
+     },
+     {
+      "id": "delfin",
+      "label": "delfín"
+     },
+     {
+      "id": "barco",
+      "label": "barco"
+     },
+     {
+      "id": "faro",
+      "label": "faro"
+     },
+     {
+      "id": "maleta",
+      "label": "maleta"
+     },
+     {
+      "id": "estrella",
+      "label": "estrella"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_figuras": 3,
+    "n_rejilla": 7
+   },
+   "metricas": [
+    "aciertos",
+    "fallos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Memoria: cocinar y guisar",
+   "nombre": "Memoria: cocinar y guisar",
+   "bloque": "atencion_memoria",
+   "plantilla": "memoria_visual",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Memoriza estas figuras",
+    "segundos_memorizar": 60,
+    "a_recordar": [
+     {
+      "id": "botella",
+      "label": "botella"
+     },
+     {
+      "id": "cuchillo",
+      "label": "cuchillo"
+     },
+     {
+      "id": "bol",
+      "label": "bol"
+     }
+    ],
+    "rejilla_seleccion": [
+     {
+      "id": "cuchillo",
+      "label": "cuchillo"
+     },
+     {
+      "id": "botella",
+      "label": "botella"
+     },
+     {
+      "id": "sarten",
+      "label": "sarten"
+     },
+     {
+      "id": "cuchara",
+      "label": "cuchara"
+     },
+     {
+      "id": "olla",
+      "label": "olla"
+     },
+     {
+      "id": "bol",
+      "label": "bol"
+     },
+     {
+      "id": "taza",
+      "label": "taza"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_figuras": 3,
+    "n_rejilla": 7
+   },
+   "metricas": [
+    "aciertos",
+    "fallos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Memoria: frutas del verano",
+   "nombre": "Memoria: frutas del verano",
+   "bloque": "atencion_memoria",
+   "plantilla": "memoria_visual",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Memoriza estas figuras",
+    "segundos_memorizar": 60,
+    "a_recordar": [
+     {
+      "id": "manzana",
+      "label": "manzana"
+     },
+     {
+      "id": "pera",
+      "label": "pera"
+     },
+     {
+      "id": "uvas",
+      "label": "uvas"
+     },
+     {
+      "id": "sandia",
+      "label": "sandía"
+     }
+    ],
+    "rejilla_seleccion": [
+     {
+      "id": "fresa",
+      "label": "fresa"
+     },
+     {
+      "id": "manzana",
+      "label": "manzana"
+     },
+     {
+      "id": "naranja",
+      "label": "naranja"
+     },
+     {
+      "id": "pera",
+      "label": "pera"
+     },
+     {
+      "id": "cereza",
+      "label": "cereza"
+     },
+     {
+      "id": "uvas",
+      "label": "uvas"
+     },
+     {
+      "id": "sandia",
+      "label": "sandía"
+     },
+     {
+      "id": "limon",
+      "label": "limón"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_figuras": 4,
+    "n_rejilla": 8
+   },
+   "metricas": [
+    "aciertos",
+    "fallos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Memoria: animales de compañía",
+   "nombre": "Memoria: animales de compañía",
+   "bloque": "atencion_memoria",
+   "plantilla": "memoria_visual",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Memoriza estas figuras",
+    "segundos_memorizar": 60,
+    "a_recordar": [
+     {
+      "id": "pajaro",
+      "label": "pajaro"
+     },
+     {
+      "id": "pez",
+      "label": "pez"
+     }
+    ],
+    "rejilla_seleccion": [
+     {
+      "id": "pez",
+      "label": "pez"
+     },
+     {
+      "id": "pajaro",
+      "label": "pajaro"
+     },
+     {
+      "id": "conejo",
+      "label": "conejo"
+     },
+     {
+      "id": "raton",
+      "label": "raton"
+     },
+     {
+      "id": "perro",
+      "label": "perro"
+     },
+     {
+      "id": "gato",
+      "label": "gato"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_figuras": 2,
+    "n_rejilla": 6
+   },
+   "metricas": [
+    "aciertos",
+    "fallos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Memoria: para vestirse",
+   "nombre": "Memoria: para vestirse",
+   "bloque": "atencion_memoria",
+   "plantilla": "memoria_visual",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Memoriza estas figuras",
+    "segundos_memorizar": 60,
+    "a_recordar": [
+     {
+      "id": "bufanda",
+      "label": "bufanda"
+     },
+     {
+      "id": "guantes",
+      "label": "guantes"
+     },
+     {
+      "id": "vestido",
+      "label": "vestido"
+     },
+     {
+      "id": "camisa",
+      "label": "camisa"
+     }
+    ],
+    "rejilla_seleccion": [
+     {
+      "id": "chaqueta",
+      "label": "chaqueta"
+     },
+     {
+      "id": "bufanda",
+      "label": "bufanda"
+     },
+     {
+      "id": "calcetin",
+      "label": "calcetín"
+     },
+     {
+      "id": "guantes",
+      "label": "guantes"
+     },
+     {
+      "id": "pantalon",
+      "label": "pantalón"
+     },
+     {
+      "id": "vestido",
+      "label": "vestido"
+     },
+     {
+      "id": "camisa",
+      "label": "camisa"
+     },
+     {
+      "id": "zapato",
+      "label": "zapato"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_figuras": 4,
+    "n_rejilla": 8
+   },
+   "metricas": [
+    "aciertos",
+    "fallos",
+    "tiempo_ms"
+   ]
   }
  ]
 }

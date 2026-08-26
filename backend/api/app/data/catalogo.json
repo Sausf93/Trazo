@@ -110203,5 +110203,1355 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra SALUD",
+  "descripcion": "Trazar la palabra SALUD con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra SALUD",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_S_0",
+     "path": "M68,44 C60,28 32,28 32,48 C32,66 68,72 68,96 C68,118 40,118 32,100"
+    },
+    {
+     "id": "letra_A_1",
+     "path": "M150,28 L130,118 M150,28 L170,118 M138,82 L162,82"
+    },
+    {
+     "id": "letra_L_2",
+     "path": "M232,28 L232,118 L270,118"
+    },
+    {
+     "id": "letra_U_3",
+     "path": "M330,28 L330,92 C330,112 370,112 370,92 L370,28"
+    },
+    {
+     "id": "letra_D_4",
+     "path": "M432,28 L432,118 M432,28 L452,28 C474,28 474,118 452,118 L432,118"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra AMOR",
+  "descripcion": "Trazar la palabra AMOR con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra AMOR",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 400 145",
+   "figuras": [
+    {
+     "id": "letra_A_0",
+     "path": "M50,28 L30,118 M50,28 L70,118 M38,82 L62,82"
+    },
+    {
+     "id": "letra_M_1",
+     "path": "M130,118 L130,28 L150,80 L170,28 L170,118"
+    },
+    {
+     "id": "letra_O_2",
+     "path": "M250,28 C233,28 228,50 228,73 C228,96 233,118 250,118 C267,118 272,96 272,73 C272,50 267,28 250,28 Z"
+    },
+    {
+     "id": "letra_R_3",
+     "path": "M332,28 L332,118 M332,28 L356,28 C372,28 372,66 356,66 L332,66 M342,66 L368,118"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra PAZ",
+  "descripcion": "Trazar la palabra PAZ con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra PAZ",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 300 145",
+   "figuras": [
+    {
+     "id": "letra_P_0",
+     "path": "M32,118 L32,28 L58,28 C74,28 74,66 58,66 L32,66"
+    },
+    {
+     "id": "letra_A_1",
+     "path": "M150,28 L130,118 M150,28 L170,118 M138,82 L162,82"
+    },
+    {
+     "id": "letra_Z_2",
+     "path": "M230,28 L270,28 L230,118 L270,118"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra LUZ",
+  "descripcion": "Trazar la palabra LUZ con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra LUZ",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 300 145",
+   "figuras": [
+    {
+     "id": "letra_L_0",
+     "path": "M32,28 L32,118 L70,118"
+    },
+    {
+     "id": "letra_U_1",
+     "path": "M130,28 L130,92 C130,112 170,112 170,92 L170,28"
+    },
+    {
+     "id": "letra_Z_2",
+     "path": "M230,28 L270,28 L230,118 L270,118"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra CIELO",
+  "descripcion": "Trazar la palabra CIELO con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra CIELO",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_C_0",
+     "path": "M70,46 C58,28 30,30 30,73 C30,116 58,118 70,100"
+    },
+    {
+     "id": "letra_I_1",
+     "path": "M150,28 L150,118"
+    },
+    {
+     "id": "letra_E_2",
+     "path": "M230,28 L230,118 M230,28 L270,28 M230,72 L262,72 M230,118 L270,118"
+    },
+    {
+     "id": "letra_L_3",
+     "path": "M332,28 L332,118 L370,118"
+    },
+    {
+     "id": "letra_O_4",
+     "path": "M450,28 C433,28 428,50 428,73 C428,96 433,118 450,118 C467,118 472,96 472,73 C472,50 467,28 450,28 Z"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra MARES",
+  "descripcion": "Trazar la palabra MARES con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra MARES",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_M_0",
+     "path": "M30,118 L30,28 L50,80 L70,28 L70,118"
+    },
+    {
+     "id": "letra_A_1",
+     "path": "M150,28 L130,118 M150,28 L170,118 M138,82 L162,82"
+    },
+    {
+     "id": "letra_R_2",
+     "path": "M232,28 L232,118 M232,28 L256,28 C272,28 272,66 256,66 L232,66 M242,66 L268,118"
+    },
+    {
+     "id": "letra_E_3",
+     "path": "M330,28 L330,118 M330,28 L370,28 M330,72 L362,72 M330,118 L370,118"
+    },
+    {
+     "id": "letra_S_4",
+     "path": "M468,44 C460,28 432,28 432,48 C432,66 468,72 468,96 C468,118 440,118 432,100"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra RIOS",
+  "descripcion": "Trazar la palabra RIOS con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra RIOS",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 400 145",
+   "figuras": [
+    {
+     "id": "letra_R_0",
+     "path": "M32,28 L32,118 M32,28 L56,28 C72,28 72,66 56,66 L32,66 M42,66 L68,118"
+    },
+    {
+     "id": "letra_I_1",
+     "path": "M150,28 L150,118"
+    },
+    {
+     "id": "letra_O_2",
+     "path": "M250,28 C233,28 228,50 228,73 C228,96 233,118 250,118 C267,118 272,96 272,73 C272,50 267,28 250,28 Z"
+    },
+    {
+     "id": "letra_S_3",
+     "path": "M368,44 C360,28 332,28 332,48 C332,66 368,72 368,96 C368,118 340,118 332,100"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra NIEVE",
+  "descripcion": "Trazar la palabra NIEVE con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra NIEVE",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_N_0",
+     "path": "M30,118 L30,28 L70,118 L70,28"
+    },
+    {
+     "id": "letra_I_1",
+     "path": "M150,28 L150,118"
+    },
+    {
+     "id": "letra_E_2",
+     "path": "M230,28 L230,118 M230,28 L270,28 M230,72 L262,72 M230,118 L270,118"
+    },
+    {
+     "id": "letra_V_3",
+     "path": "M330,28 L350,118 L370,28"
+    },
+    {
+     "id": "letra_E_4",
+     "path": "M430,28 L430,118 M430,28 L470,28 M430,72 L462,72 M430,118 L470,118"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra LLUVIA",
+  "descripcion": "Trazar la palabra LLUVIA con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra LLUVIA",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 600 145",
+   "figuras": [
+    {
+     "id": "letra_L_0",
+     "path": "M32,28 L32,118 L70,118"
+    },
+    {
+     "id": "letra_L_1",
+     "path": "M132,28 L132,118 L170,118"
+    },
+    {
+     "id": "letra_U_2",
+     "path": "M230,28 L230,92 C230,112 270,112 270,92 L270,28"
+    },
+    {
+     "id": "letra_V_3",
+     "path": "M330,28 L350,118 L370,28"
+    },
+    {
+     "id": "letra_I_4",
+     "path": "M450,28 L450,118"
+    },
+    {
+     "id": "letra_A_5",
+     "path": "M550,28 L530,118 M550,28 L570,118 M538,82 L562,82"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra VIENTO",
+  "descripcion": "Trazar la palabra VIENTO con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra VIENTO",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 600 145",
+   "figuras": [
+    {
+     "id": "letra_V_0",
+     "path": "M30,28 L50,118 L70,28"
+    },
+    {
+     "id": "letra_I_1",
+     "path": "M150,28 L150,118"
+    },
+    {
+     "id": "letra_E_2",
+     "path": "M230,28 L230,118 M230,28 L270,28 M230,72 L262,72 M230,118 L270,118"
+    },
+    {
+     "id": "letra_N_3",
+     "path": "M330,118 L330,28 L370,118 L370,28"
+    },
+    {
+     "id": "letra_T_4",
+     "path": "M428,30 L472,30 M450,30 L450,118"
+    },
+    {
+     "id": "letra_O_5",
+     "path": "M550,28 C533,28 528,50 528,73 C528,96 533,118 550,118 C567,118 572,96 572,73 C572,50 567,28 550,28 Z"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra TIERRA",
+  "descripcion": "Trazar la palabra TIERRA con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra TIERRA",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 600 145",
+   "figuras": [
+    {
+     "id": "letra_T_0",
+     "path": "M28,30 L72,30 M50,30 L50,118"
+    },
+    {
+     "id": "letra_I_1",
+     "path": "M150,28 L150,118"
+    },
+    {
+     "id": "letra_E_2",
+     "path": "M230,28 L230,118 M230,28 L270,28 M230,72 L262,72 M230,118 L270,118"
+    },
+    {
+     "id": "letra_R_3",
+     "path": "M332,28 L332,118 M332,28 L356,28 C372,28 372,66 356,66 L332,66 M342,66 L368,118"
+    },
+    {
+     "id": "letra_R_4",
+     "path": "M432,28 L432,118 M432,28 L456,28 C472,28 472,66 456,66 L432,66 M442,66 L468,118"
+    },
+    {
+     "id": "letra_A_5",
+     "path": "M550,28 L530,118 M550,28 L570,118 M538,82 L562,82"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra FUENTE",
+  "descripcion": "Trazar la palabra FUENTE con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra FUENTE",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 600 145",
+   "figuras": [
+    {
+     "id": "letra_F_0",
+     "path": "M32,28 L32,118 M32,28 L68,28 M32,72 L60,72"
+    },
+    {
+     "id": "letra_U_1",
+     "path": "M130,28 L130,92 C130,112 170,112 170,92 L170,28"
+    },
+    {
+     "id": "letra_E_2",
+     "path": "M230,28 L230,118 M230,28 L270,28 M230,72 L262,72 M230,118 L270,118"
+    },
+    {
+     "id": "letra_N_3",
+     "path": "M330,118 L330,28 L370,118 L370,28"
+    },
+    {
+     "id": "letra_T_4",
+     "path": "M428,30 L472,30 M450,30 L450,118"
+    },
+    {
+     "id": "letra_E_5",
+     "path": "M530,28 L530,118 M530,28 L570,28 M530,72 L562,72 M530,118 L570,118"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra PUENTE",
+  "descripcion": "Trazar la palabra PUENTE con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra PUENTE",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 600 145",
+   "figuras": [
+    {
+     "id": "letra_P_0",
+     "path": "M32,118 L32,28 L58,28 C74,28 74,66 58,66 L32,66"
+    },
+    {
+     "id": "letra_U_1",
+     "path": "M130,28 L130,92 C130,112 170,112 170,92 L170,28"
+    },
+    {
+     "id": "letra_E_2",
+     "path": "M230,28 L230,118 M230,28 L270,28 M230,72 L262,72 M230,118 L270,118"
+    },
+    {
+     "id": "letra_N_3",
+     "path": "M330,118 L330,28 L370,118 L370,28"
+    },
+    {
+     "id": "letra_T_4",
+     "path": "M428,30 L472,30 M450,30 L450,118"
+    },
+    {
+     "id": "letra_E_5",
+     "path": "M530,28 L530,118 M530,28 L570,28 M530,72 L562,72 M530,118 L570,118"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra CALLE",
+  "descripcion": "Trazar la palabra CALLE con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra CALLE",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_C_0",
+     "path": "M70,46 C58,28 30,30 30,73 C30,116 58,118 70,100"
+    },
+    {
+     "id": "letra_A_1",
+     "path": "M150,28 L130,118 M150,28 L170,118 M138,82 L162,82"
+    },
+    {
+     "id": "letra_L_2",
+     "path": "M232,28 L232,118 L270,118"
+    },
+    {
+     "id": "letra_L_3",
+     "path": "M332,28 L332,118 L370,118"
+    },
+    {
+     "id": "letra_E_4",
+     "path": "M430,28 L430,118 M430,28 L470,28 M430,72 L462,72 M430,118 L470,118"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra PLAZA",
+  "descripcion": "Trazar la palabra PLAZA con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra PLAZA",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_P_0",
+     "path": "M32,118 L32,28 L58,28 C74,28 74,66 58,66 L32,66"
+    },
+    {
+     "id": "letra_L_1",
+     "path": "M132,28 L132,118 L170,118"
+    },
+    {
+     "id": "letra_A_2",
+     "path": "M250,28 L230,118 M250,28 L270,118 M238,82 L262,82"
+    },
+    {
+     "id": "letra_Z_3",
+     "path": "M330,28 L370,28 L330,118 L370,118"
+    },
+    {
+     "id": "letra_A_4",
+     "path": "M450,28 L430,118 M450,28 L470,118 M438,82 L462,82"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra TIENDA",
+  "descripcion": "Trazar la palabra TIENDA con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra TIENDA",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 600 145",
+   "figuras": [
+    {
+     "id": "letra_T_0",
+     "path": "M28,30 L72,30 M50,30 L50,118"
+    },
+    {
+     "id": "letra_I_1",
+     "path": "M150,28 L150,118"
+    },
+    {
+     "id": "letra_E_2",
+     "path": "M230,28 L230,118 M230,28 L270,28 M230,72 L262,72 M230,118 L270,118"
+    },
+    {
+     "id": "letra_N_3",
+     "path": "M330,118 L330,28 L370,118 L370,28"
+    },
+    {
+     "id": "letra_D_4",
+     "path": "M432,28 L432,118 M432,28 L452,28 C474,28 474,118 452,118 L432,118"
+    },
+    {
+     "id": "letra_A_5",
+     "path": "M550,28 L530,118 M550,28 L570,118 M538,82 L562,82"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra MERCADO",
+  "descripcion": "Trazar la palabra MERCADO con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra MERCADO",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 700 145",
+   "figuras": [
+    {
+     "id": "letra_M_0",
+     "path": "M30,118 L30,28 L50,80 L70,28 L70,118"
+    },
+    {
+     "id": "letra_E_1",
+     "path": "M130,28 L130,118 M130,28 L170,28 M130,72 L162,72 M130,118 L170,118"
+    },
+    {
+     "id": "letra_R_2",
+     "path": "M232,28 L232,118 M232,28 L256,28 C272,28 272,66 256,66 L232,66 M242,66 L268,118"
+    },
+    {
+     "id": "letra_C_3",
+     "path": "M370,46 C358,28 330,30 330,73 C330,116 358,118 370,100"
+    },
+    {
+     "id": "letra_A_4",
+     "path": "M450,28 L430,118 M450,28 L470,118 M438,82 L462,82"
+    },
+    {
+     "id": "letra_D_5",
+     "path": "M532,28 L532,118 M532,28 L552,28 C574,28 574,118 552,118 L532,118"
+    },
+    {
+     "id": "letra_O_6",
+     "path": "M650,28 C633,28 628,50 628,73 C628,96 633,118 650,118 C667,118 672,96 672,73 C672,50 667,28 650,28 Z"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra CAMPO",
+  "descripcion": "Trazar la palabra CAMPO con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra CAMPO",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_C_0",
+     "path": "M70,46 C58,28 30,30 30,73 C30,116 58,118 70,100"
+    },
+    {
+     "id": "letra_A_1",
+     "path": "M150,28 L130,118 M150,28 L170,118 M138,82 L162,82"
+    },
+    {
+     "id": "letra_M_2",
+     "path": "M230,118 L230,28 L250,80 L270,28 L270,118"
+    },
+    {
+     "id": "letra_P_3",
+     "path": "M332,118 L332,28 L358,28 C374,28 374,66 358,66 L332,66"
+    },
+    {
+     "id": "letra_O_4",
+     "path": "M450,28 C433,28 428,50 428,73 C428,96 433,118 450,118 C467,118 472,96 472,73 C472,50 467,28 450,28 Z"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra HUERTO",
+  "descripcion": "Trazar la palabra HUERTO con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra HUERTO",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 600 145",
+   "figuras": [
+    {
+     "id": "letra_H_0",
+     "path": "M32,28 L32,118 M68,28 L68,118 M32,73 L68,73"
+    },
+    {
+     "id": "letra_U_1",
+     "path": "M130,28 L130,92 C130,112 170,112 170,92 L170,28"
+    },
+    {
+     "id": "letra_E_2",
+     "path": "M230,28 L230,118 M230,28 L270,28 M230,72 L262,72 M230,118 L270,118"
+    },
+    {
+     "id": "letra_R_3",
+     "path": "M332,28 L332,118 M332,28 L356,28 C372,28 372,66 356,66 L332,66 M342,66 L368,118"
+    },
+    {
+     "id": "letra_T_4",
+     "path": "M428,30 L472,30 M450,30 L450,118"
+    },
+    {
+     "id": "letra_O_5",
+     "path": "M550,28 C533,28 528,50 528,73 C528,96 533,118 550,118 C567,118 572,96 572,73 C572,50 567,28 550,28 Z"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra JARDIN",
+  "descripcion": "Trazar la palabra JARDIN con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra JARDIN",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 600 145",
+   "figuras": [
+    {
+     "id": "letra_J_0",
+     "path": "M58,28 L58,98 C58,116 34,116 30,98"
+    },
+    {
+     "id": "letra_A_1",
+     "path": "M150,28 L130,118 M150,28 L170,118 M138,82 L162,82"
+    },
+    {
+     "id": "letra_R_2",
+     "path": "M232,28 L232,118 M232,28 L256,28 C272,28 272,66 256,66 L232,66 M242,66 L268,118"
+    },
+    {
+     "id": "letra_D_3",
+     "path": "M332,28 L332,118 M332,28 L352,28 C374,28 374,118 352,118 L332,118"
+    },
+    {
+     "id": "letra_I_4",
+     "path": "M450,28 L450,118"
+    },
+    {
+     "id": "letra_N_5",
+     "path": "M530,118 L530,28 L570,118 L570,28"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra BOSQUE",
+  "descripcion": "Trazar la palabra BOSQUE con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra BOSQUE",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 600 145",
+   "figuras": [
+    {
+     "id": "letra_B_0",
+     "path": "M32,28 L32,118 M32,28 L54,28 C70,28 70,64 54,64 L32,64 M32,64 L58,64 C76,64 76,118 56,118 L32,118"
+    },
+    {
+     "id": "letra_O_1",
+     "path": "M150,28 C133,28 128,50 128,73 C128,96 133,118 150,118 C167,118 172,96 172,73 C172,50 167,28 150,28 Z"
+    },
+    {
+     "id": "letra_S_2",
+     "path": "M268,44 C260,28 232,28 232,48 C232,66 268,72 268,96 C268,118 240,118 232,100"
+    },
+    {
+     "id": "letra_Q_3",
+     "path": "M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z M354,96 L370,118"
+    },
+    {
+     "id": "letra_U_4",
+     "path": "M430,28 L430,92 C430,112 470,112 470,92 L470,28"
+    },
+    {
+     "id": "letra_E_5",
+     "path": "M530,28 L530,118 M530,28 L570,28 M530,72 L562,72 M530,118 L570,118"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra PLAYA",
+  "descripcion": "Trazar la palabra PLAYA con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra PLAYA",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_P_0",
+     "path": "M32,118 L32,28 L58,28 C74,28 74,66 58,66 L32,66"
+    },
+    {
+     "id": "letra_L_1",
+     "path": "M132,28 L132,118 L170,118"
+    },
+    {
+     "id": "letra_A_2",
+     "path": "M250,28 L230,118 M250,28 L270,118 M238,82 L262,82"
+    },
+    {
+     "id": "letra_Y_3",
+     "path": "M330,28 L350,72 L370,28 M350,72 L350,118"
+    },
+    {
+     "id": "letra_A_4",
+     "path": "M450,28 L430,118 M450,28 L470,118 M438,82 L462,82"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra MONTE",
+  "descripcion": "Trazar la palabra MONTE con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra MONTE",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_M_0",
+     "path": "M30,118 L30,28 L50,80 L70,28 L70,118"
+    },
+    {
+     "id": "letra_O_1",
+     "path": "M150,28 C133,28 128,50 128,73 C128,96 133,118 150,118 C167,118 172,96 172,73 C172,50 167,28 150,28 Z"
+    },
+    {
+     "id": "letra_N_2",
+     "path": "M230,118 L230,28 L270,118 L270,28"
+    },
+    {
+     "id": "letra_T_3",
+     "path": "M328,30 L372,30 M350,30 L350,118"
+    },
+    {
+     "id": "letra_E_4",
+     "path": "M430,28 L430,118 M430,28 L470,28 M430,72 L462,72 M430,118 L470,118"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra VALLE",
+  "descripcion": "Trazar la palabra VALLE con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra VALLE",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_V_0",
+     "path": "M30,28 L50,118 L70,28"
+    },
+    {
+     "id": "letra_A_1",
+     "path": "M150,28 L130,118 M150,28 L170,118 M138,82 L162,82"
+    },
+    {
+     "id": "letra_L_2",
+     "path": "M232,28 L232,118 L270,118"
+    },
+    {
+     "id": "letra_L_3",
+     "path": "M332,28 L332,118 L370,118"
+    },
+    {
+     "id": "letra_E_4",
+     "path": "M430,28 L430,118 M430,28 L470,28 M430,72 L462,72 M430,118 L470,118"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra ISLA",
+  "descripcion": "Trazar la palabra ISLA con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra ISLA",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 400 145",
+   "figuras": [
+    {
+     "id": "letra_I_0",
+     "path": "M50,28 L50,118"
+    },
+    {
+     "id": "letra_S_1",
+     "path": "M168,44 C160,28 132,28 132,48 C132,66 168,72 168,96 C168,118 140,118 132,100"
+    },
+    {
+     "id": "letra_L_2",
+     "path": "M232,28 L232,118 L270,118"
+    },
+    {
+     "id": "letra_A_3",
+     "path": "M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra FARO",
+  "descripcion": "Trazar la palabra FARO con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra FARO",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 400 145",
+   "figuras": [
+    {
+     "id": "letra_F_0",
+     "path": "M32,28 L32,118 M32,28 L68,28 M32,72 L60,72"
+    },
+    {
+     "id": "letra_A_1",
+     "path": "M150,28 L130,118 M150,28 L170,118 M138,82 L162,82"
+    },
+    {
+     "id": "letra_R_2",
+     "path": "M232,28 L232,118 M232,28 L256,28 C272,28 272,66 256,66 L232,66 M242,66 L268,118"
+    },
+    {
+     "id": "letra_O_3",
+     "path": "M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra BARCA",
+  "descripcion": "Trazar la palabra BARCA con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra BARCA",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_B_0",
+     "path": "M32,28 L32,118 M32,28 L54,28 C70,28 70,64 54,64 L32,64 M32,64 L58,64 C76,64 76,118 56,118 L32,118"
+    },
+    {
+     "id": "letra_A_1",
+     "path": "M150,28 L130,118 M150,28 L170,118 M138,82 L162,82"
+    },
+    {
+     "id": "letra_R_2",
+     "path": "M232,28 L232,118 M232,28 L256,28 C272,28 272,66 256,66 L232,66 M242,66 L268,118"
+    },
+    {
+     "id": "letra_C_3",
+     "path": "M370,46 C358,28 330,30 330,73 C330,116 358,118 370,100"
+    },
+    {
+     "id": "letra_A_4",
+     "path": "M450,28 L430,118 M450,28 L470,118 M438,82 L462,82"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra VELERO",
+  "descripcion": "Trazar la palabra VELERO con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra VELERO",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 600 145",
+   "figuras": [
+    {
+     "id": "letra_V_0",
+     "path": "M30,28 L50,118 L70,28"
+    },
+    {
+     "id": "letra_E_1",
+     "path": "M130,28 L130,118 M130,28 L170,28 M130,72 L162,72 M130,118 L170,118"
+    },
+    {
+     "id": "letra_L_2",
+     "path": "M232,28 L232,118 L270,118"
+    },
+    {
+     "id": "letra_E_3",
+     "path": "M330,28 L330,118 M330,28 L370,28 M330,72 L362,72 M330,118 L370,118"
+    },
+    {
+     "id": "letra_R_4",
+     "path": "M432,28 L432,118 M432,28 L456,28 C472,28 472,66 456,66 L432,66 M442,66 L468,118"
+    },
+    {
+     "id": "letra_O_5",
+     "path": "M550,28 C533,28 528,50 528,73 C528,96 533,118 550,118 C567,118 572,96 572,73 C572,50 567,28 550,28 Z"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra ANCLA",
+  "descripcion": "Trazar la palabra ANCLA con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra ANCLA",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_A_0",
+     "path": "M50,28 L30,118 M50,28 L70,118 M38,82 L62,82"
+    },
+    {
+     "id": "letra_N_1",
+     "path": "M130,118 L130,28 L170,118 L170,28"
+    },
+    {
+     "id": "letra_C_2",
+     "path": "M270,46 C258,28 230,30 230,73 C230,116 258,118 270,100"
+    },
+    {
+     "id": "letra_L_3",
+     "path": "M332,28 L332,118 L370,118"
+    },
+    {
+     "id": "letra_A_4",
+     "path": "M450,28 L430,118 M450,28 L470,118 M438,82 L462,82"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra TIMON",
+  "descripcion": "Trazar la palabra TIMON con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra TIMON",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_T_0",
+     "path": "M28,30 L72,30 M50,30 L50,118"
+    },
+    {
+     "id": "letra_I_1",
+     "path": "M150,28 L150,118"
+    },
+    {
+     "id": "letra_M_2",
+     "path": "M230,118 L230,28 L250,80 L270,28 L270,118"
+    },
+    {
+     "id": "letra_O_3",
+     "path": "M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z"
+    },
+    {
+     "id": "letra_N_4",
+     "path": "M430,118 L430,28 L470,118 L470,28"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra REMOS",
+  "descripcion": "Trazar la palabra REMOS con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra REMOS",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_R_0",
+     "path": "M32,28 L32,118 M32,28 L56,28 C72,28 72,66 56,66 L32,66 M42,66 L68,118"
+    },
+    {
+     "id": "letra_E_1",
+     "path": "M130,28 L130,118 M130,28 L170,28 M130,72 L162,72 M130,118 L170,118"
+    },
+    {
+     "id": "letra_M_2",
+     "path": "M230,118 L230,28 L250,80 L270,28 L270,118"
+    },
+    {
+     "id": "letra_O_3",
+     "path": "M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z"
+    },
+    {
+     "id": "letra_S_4",
+     "path": "M468,44 C460,28 432,28 432,48 C432,66 468,72 468,96 C468,118 440,118 432,100"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "praxias",
+  "plantilla_tipo": "trazo",
+  "nombre": "Traza la palabra PERLA",
+  "descripcion": "Trazar la palabra PERLA con el dedo o el lápiz. Grafomotricidad.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Traza la palabra PERLA",
+   "tolerancia_px": 26,
+   "tolerancia_ref_w": 100,
+   "viewbox": "0 0 500 145",
+   "figuras": [
+    {
+     "id": "letra_P_0",
+     "path": "M32,118 L32,28 L58,28 C74,28 74,66 58,66 L32,66"
+    },
+    {
+     "id": "letra_E_1",
+     "path": "M130,28 L130,118 M130,28 L170,28 M130,72 L162,72 M130,118 L170,118"
+    },
+    {
+     "id": "letra_R_2",
+     "path": "M232,28 L232,118 M232,28 L256,28 C272,28 272,66 256,66 L232,66 M242,66 L268,118"
+    },
+    {
+     "id": "letra_L_3",
+     "path": "M332,28 L332,118 L370,118"
+    },
+    {
+     "id": "letra_A_4",
+     "path": "M450,28 L430,118 M450,28 L470,118 M438,82 L462,82"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cosas de la playa (2)",
+  "descripcion": "Recordar cosas de la playa (2) tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "faro",
+     "label": "faro"
+    },
+    {
+     "id": "delfin",
+     "label": "delfín"
+    },
+    {
+     "id": "barco",
+     "label": "barco"
+    },
+    {
+     "id": "pez",
+     "label": "pez"
+    },
+    {
+     "id": "estrella",
+     "label": "estrella"
+    },
+    {
+     "id": "maleta",
+     "label": "maleta"
+    },
+    {
+     "id": "paraguas",
+     "label": "paraguas"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cocinar y guisar",
+  "descripcion": "Recordar cocinar y guisar tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "olla",
+     "label": "olla"
+    },
+    {
+     "id": "sarten",
+     "label": "sarten"
+    },
+    {
+     "id": "cuchara",
+     "label": "cuchara"
+    },
+    {
+     "id": "cuchillo",
+     "label": "cuchillo"
+    },
+    {
+     "id": "taza",
+     "label": "taza"
+    },
+    {
+     "id": "bol",
+     "label": "bol"
+    },
+    {
+     "id": "botella",
+     "label": "botella"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: frutas del verano",
+  "descripcion": "Recordar frutas del verano tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "sandia",
+     "label": "sandía"
+    },
+    {
+     "id": "cereza",
+     "label": "cereza"
+    },
+    {
+     "id": "fresa",
+     "label": "fresa"
+    },
+    {
+     "id": "uvas",
+     "label": "uvas"
+    },
+    {
+     "id": "limon",
+     "label": "limón"
+    },
+    {
+     "id": "naranja",
+     "label": "naranja"
+    },
+    {
+     "id": "manzana",
+     "label": "manzana"
+    },
+    {
+     "id": "pera",
+     "label": "pera"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: animales de compañía",
+  "descripcion": "Recordar animales de compañía tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "gato",
+     "label": "gato"
+    },
+    {
+     "id": "perro",
+     "label": "perro"
+    },
+    {
+     "id": "conejo",
+     "label": "conejo"
+    },
+    {
+     "id": "pajaro",
+     "label": "pajaro"
+    },
+    {
+     "id": "raton",
+     "label": "raton"
+    },
+    {
+     "id": "pez",
+     "label": "pez"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: para vestirse",
+  "descripcion": "Recordar para vestirse tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "camisa",
+     "label": "camisa"
+    },
+    {
+     "id": "pantalon",
+     "label": "pantalón"
+    },
+    {
+     "id": "chaqueta",
+     "label": "chaqueta"
+    },
+    {
+     "id": "vestido",
+     "label": "vestido"
+    },
+    {
+     "id": "zapato",
+     "label": "zapato"
+    },
+    {
+     "id": "calcetin",
+     "label": "calcetín"
+    },
+    {
+     "id": "bufanda",
+     "label": "bufanda"
+    },
+    {
+     "id": "guantes",
+     "label": "guantes"
+    }
+   ]
+  }
  }
 ]
