@@ -23,8 +23,23 @@ bool get _esVitrina =>
 /// por bloque para revisarlas desde el móvil. Se entra por una URL secreta
 /// (`?laboratorio=<token>`); no muestra datos reales, solo la muestra del catálogo.
 const String _kTokenLaboratorio = 'trazo-saulo-lab-2026';
+
+/// Carrusel de PENDIENTES de valorar: solo las actividades que el revisor aún NO
+/// ha marcado. Entra por `?laboratorio=<token>` o por la ruta
+/// `/actividades-pendientes-valoracion`.
 bool get _esLaboratorio =>
-    kIsWeb && Uri.base.queryParameters['laboratorio'] == _kTokenLaboratorio;
+    kIsWeb &&
+    (Uri.base.queryParameters['laboratorio'] == _kTokenLaboratorio ||
+        Uri.base.path.contains('pendientes-valoracion'));
+
+/// Vitrina de APROBADAS: solo las ya validadas, para el filtro final (jugarlas
+/// todas cuando esté perfecto). Entra por `?aprobadas=<token>` o por `/actividades`.
+bool get _esAprobadas =>
+    kIsWeb &&
+    !_esLaboratorio &&
+    (Uri.base.queryParameters['aprobadas'] == _kTokenLaboratorio ||
+        (Uri.base.path.contains('/actividades') &&
+            !Uri.base.path.contains('pendientes')));
 
 /// Para poder navegar al login desde fuera del árbol de widgets (p. ej. cuando
 /// la API responde 401 por token caducado).
@@ -75,9 +90,11 @@ class TrazoApp extends StatelessWidget {
       // participante nunca hace login).
       home: _esLaboratorio
           ? const BancoPruebasScreen()
-          : _esVitrina
-              ? const GaleriaScreen(vitrina: true)
-              : const RolScreen(),
+          : _esAprobadas
+              ? const BancoPruebasScreen(modoAprobadas: true)
+              : _esVitrina
+                  ? const GaleriaScreen(vitrina: true)
+                  : const RolScreen(),
     );
   }
 }

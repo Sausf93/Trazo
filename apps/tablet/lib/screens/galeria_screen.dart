@@ -32,6 +32,7 @@ const _kBloques = {
   'calculo': 'Cálculo',
   'funcion_ejecutiva': 'Función ejecutiva',
   'vida_cotidiana': 'Vida cotidiana',
+  'percepcion': 'Percepción',
 };
 
 /// Traduce el Map de métricas a un resumen legible (esta pantalla también
@@ -404,7 +405,11 @@ class _FilaActividad extends StatelessWidget {
 /// actividades una a una, para revisar que se ven bien, tienen sentido y no
 /// tienen dibujos rotos. No guarda nada. Se entra por URL secreta (ver main.dart).
 class BancoPruebasScreen extends StatefulWidget {
-  const BancoPruebasScreen({super.key});
+  /// `false` = carrusel de PENDIENTES de valorar (se marca; salen solo las no
+  /// clasificadas). `true` = vitrina de APROBADAS (solo validadas; solo se
+  /// juegan, sin marcar) para el filtro final.
+  final bool modoAprobadas;
+  const BancoPruebasScreen({super.key, this.modoAprobadas = false});
 
   @override
   State<BancoPruebasScreen> createState() => _BancoPruebasScreenState();
@@ -427,9 +432,25 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
     try {
       final txt = await rootBundle.loadString('assets/demo_actividades.json');
       final data = jsonDecode(txt) as Map<String, dynamic>;
-      final lista = (data['actividades'] as List? ?? const [])
+      var lista = (data['actividades'] as List? ?? const [])
           .map((e) => Instancia.fromJson(e as Map<String, dynamic>))
           .toList();
+      // En modo APROBADAS solo se muestran las validadas (las que ya pasaron el
+      // filtro). El estado viaja en el asset.
+      if (widget.modoAprobadas) {
+        final aprobadas = <String>{
+          for (final e in (data['actividades'] as List? ?? const []))
+            if ((e as Map<String, dynamic>)['estado'] == 'validada')
+              (e['nombre'] ?? '').toString(),
+        };
+        lista = lista.where((i) => aprobadas.contains(i.nombre)).toList();
+        if (!mounted) return;
+        setState(() {
+          _todas = lista;
+          _cargando = false;
+        });
+        return; // sin nombre, sin sincronizar marcas, sin marcar
+      }
       final ver = await BancoVeredictos.instance.todos();
       if (!mounted) return;
       setState(() {
@@ -501,14 +522,16 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
     setState(() => _veredictos = ver);
   }
 
-  /// Cuántas de un bloque quedan SIN revisar (sin veredicto guardado).
-  int _pendientesDe(List<Instancia> delBloque) =>
-      delBloque.where((i) => !_veredictos.containsKey(i.nombre)).length;
+  /// En PENDIENTES: cuántas quedan sin marcar. En APROBADAS: todas las del bloque.
+  int _pendientesDe(List<Instancia> delBloque) => widget.modoAprobadas
+      ? delBloque.length
+      : delBloque.where((i) => !_veredictos.containsKey(i.nombre)).length;
 
   void _abrirBloque(List<Instancia> delBloque) {
-    // Solo las que aún no has revisado: las ya vistas/marcadas no reaparecen.
-    final pendientes =
-        delBloque.where((i) => !_veredictos.containsKey(i.nombre)).toList();
+    // Aprobadas: se juegan TODAS (sin marcar). Pendientes: solo las no marcadas.
+    final pendientes = widget.modoAprobadas
+        ? delBloque.toList()
+        : delBloque.where((i) => !_veredictos.containsKey(i.nombre)).toList();
     if (pendientes.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
@@ -518,7 +541,9 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
     Navigator.of(context)
         .push(MaterialPageRoute(
           builder: (_) => _JugarDemo(
-              actividades: pendientes, indiceInicial: 0, mostrarProgreso: true),
+              actividades: pendientes,
+              indiceInicial: 0,
+              mostrarProgreso: !widget.modoAprobadas),
         ))
         .then((_) => _recargarVeredictos()); // refresca contadores al volver
   }
@@ -680,17 +705,21 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
     return Scaffold(
       backgroundColor: TrazoColors.ivory,
       appBar: AppBar(
-        title: const Text('Banco de pruebas · por bloque'),
+        title: Text(widget.modoAprobadas
+            ? 'Actividades aprobadas · por bloque'
+            : 'Pendientes de valorar · por bloque'),
         backgroundColor: TrazoColors.white,
         foregroundColor: TrazoColors.ink,
         actions: [
-          TextButton.icon(
-            onPressed: _verMarcadas,
-            icon: const Icon(Icons.fact_check, color: TrazoColors.sageDark),
-            label: const Text('Lo marcado',
-                style: TextStyle(
-                    color: TrazoColors.sageDark, fontWeight: FontWeight.w700)),
-          ),
+          if (!widget.modoAprobadas)
+            TextButton.icon(
+              onPressed: _verMarcadas,
+              icon: const Icon(Icons.fact_check, color: TrazoColors.sageDark),
+              label: const Text('Lo marcado',
+                  style: TextStyle(
+                      color: TrazoColors.sageDark,
+                      fontWeight: FontWeight.w700)),
+            ),
         ],
       ),
       body: _cargando
@@ -699,9 +728,12 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
               padding: const EdgeInsets.all(16),
               children: [
                 Text(
-                  'Elige un bloque y recórrelo entero: revisa que cada actividad '
-                  'se ve bien, tiene sentido y no le faltan dibujos. '
-                  '${_todas.length} actividades en total. No guarda nada.',
+                  widget.modoAprobadas
+                      ? 'Actividades ya aprobadas (${_todas.length}). Juégalas '
+                          'para el filtro final, cuando todo esté perfecto.'
+                      : 'Elige un bloque y recórrelo entero: revisa que cada '
+                          'actividad se ve bien y tiene sentido. Solo salen las '
+                          'que aún NO has valorado (${_todas.length} en total).',
                   style: const TextStyle(
                       color: TrazoColors.sageDark, fontSize: 15),
                 ),
@@ -729,9 +761,11 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
                                 color: TrazoColors.ink,
                                 fontSize: 17)),
                         subtitle: Text(
-                            marcadas > 0
-                                ? '$total actividades · $marcadas marcadas (no salen)'
-                                : '$total actividades — tócalo para jugarlas',
+                            widget.modoAprobadas
+                                ? '$total aprobadas — tócalo para jugarlas'
+                                : marcadas > 0
+                                    ? '$total · $marcadas ya valoradas (no salen)'
+                                    : '$total actividades — tócalo para jugarlas',
                             style: const TextStyle(
                                 color: TrazoColors.sageDark, fontSize: 13)),
                         trailing: const Icon(Icons.play_circle_fill,

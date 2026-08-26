@@ -414,6 +414,8 @@ class IlustracionResolver {
   static const Map<String, String> _fotos = {
     'abanico': 'assets/fotos/abanico.png',
     'arbol': 'assets/fotos/arbol.png',
+    'elefante': 'assets/fotos/elefante.png',
+    'tambor': 'assets/fotos/tambor.png',
     'guitarra': 'assets/fotos/guitarra.png',
     'mariposa': 'assets/fotos/mariposa.png',
     'pato': 'assets/fotos/pato.png',
