@@ -726,10 +726,57 @@ class _JugarDemoState extends State<_JugarDemo> {
   }
 
   Future<void> _marcar(String estado) async {
-    await BancoVeredictos.instance
-        .guardar(_inst.nombre, estado, _notaCtrl.text.trim());
+    // Al marcar SIEMPRE se pide el motivo (para poder revisarla después).
+    final esOtro = estado == 'otro_grupo';
+    final ctrl = TextEditingController(text: _notaCtrl.text.trim());
+    final motivo = await showDialog<String>(
+      context: context,
+      builder: (ctx) {
+        var texto = ctrl.text.trim();
+        return StatefulBuilder(
+          builder: (ctx, setD) => AlertDialog(
+            title: Text(esOtro ? '🔀 Otro grupo' : '⚠️ A revisar'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(esOtro
+                    ? '¿A qué grupo debería ir? (y por qué)'
+                    : '¿Qué falla o qué habría que cambiar?'),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: ctrl,
+                  autofocus: true,
+                  minLines: 2,
+                  maxLines: 4,
+                  onChanged: (t) => setD(() => texto = t.trim()),
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Escríbelo aquí…',
+                  ),
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () => Navigator.pop(ctx),
+                  child: const Text('Cancelar')),
+              FilledButton(
+                onPressed:
+                    texto.isEmpty ? null : () => Navigator.pop(ctx, texto),
+                child: const Text('Guardar'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+    ctrl.dispose();
+    if (motivo == null || motivo.isEmpty) return; // canceló o vacío
+    _notaCtrl.text = motivo;
+    await BancoVeredictos.instance.guardar(_inst.nombre, estado, motivo);
     if (!mounted) return;
-    setState(() => _veredicto = Veredicto(estado, _notaCtrl.text.trim()));
+    setState(() => _veredicto = Veredicto(estado, motivo));
   }
 
   void _siguiente() {
