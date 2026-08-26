@@ -66576,6 +66576,6250 @@
     "fallos",
     "tiempo_ms"
    ]
+  },
+  {
+   "ejercicio_id": "Refranes de la salud",
+   "nombre": "Refranes de la salud",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El que tiene salud, es rico y no lo...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "cuenta",
+     "gasta",
+     "sabe"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "sabe"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes del trabajo",
+   "nombre": "Refranes del trabajo",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Quien mucho abarca, poco...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "come",
+     "gana",
+     "aprieta"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "aprieta"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes de la amistad",
+   "nombre": "Refranes de la amistad",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Dime con quién andas y te diré quién...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "comes",
+     "vives",
+     "eres"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "eres"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes de la paciencia",
+   "nombre": "Refranes de la paciencia",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El que espera,...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "duerme",
+     "gana",
+     "desespera"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "desespera"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes del hogar",
+   "nombre": "Refranes del hogar",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El casado, casa...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "vende",
+     "compra",
+     "quiere"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "quiere"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes de cada mes",
+   "nombre": "Refranes de cada mes",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En enero, cada oveja con su...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "campo",
+     "cordero",
+     "pareja"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "pareja"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes de la vejez y la experiencia",
+   "nombre": "Refranes de la vejez y la experiencia",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "La experiencia es la madre de la...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "prisa",
+     "vida",
+     "ciencia"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "ciencia"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes de la lengua y el hablar",
+   "nombre": "Refranes de la lengua y el hablar",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "A palabras necias, oídos...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "abiertos",
+     "atentos",
+     "sordos"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "sordos"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes de la constancia",
+   "nombre": "Refranes de la constancia",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Muchos pocos hacen un...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "nada",
+     "poco",
+     "mucho"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "mucho"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes de la prudencia",
+   "nombre": "Refranes de la prudencia",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Piensa mal y...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "perderás",
+     "fallarás",
+     "acertarás"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "acertarás"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes de la fortuna y la suerte",
+   "nombre": "Refranes de la fortuna y la suerte",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Cada uno es hijo de sus...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "sueños",
+     "padres",
+     "obras"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "obras"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes de la siembra y la cosecha",
+   "nombre": "Refranes de la siembra y la cosecha",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Agua de mayo, pan para todo el...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "mes",
+     "día",
+     "año"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "año"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes del santoral y las fiestas",
+   "nombre": "Refranes del santoral y las fiestas",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Por los Reyes, lo conocen los...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "jueces",
+     "reyes",
+     "bueyes"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "bueyes"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El pasado de los verbos",
+   "nombre": "El pasado de los verbos",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Ayer yo ___ un buen regalo. (tener)",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "tuvo",
+     "tení",
+     "tuve"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "tuve"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Verbos irregulares del día a día",
+   "nombre": "Verbos irregulares del día a día",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Yo ___ la verdad. (decir)",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "dizo",
+     "dico",
+     "digo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "digo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El verbo bien dicho",
+   "nombre": "El verbo bien dicho",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El presente de 'caber' (yo no ___ aquí) es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "cabio",
+     "cabo",
+     "quepo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "quepo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El participio de cada verbo",
+   "nombre": "El participio de cada verbo",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El participio de 'poner' es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "posado",
+     "ponido",
+     "puesto"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "puesto"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Verbos: hoy y mañana",
+   "nombre": "Verbos: hoy y mañana",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Mañana yo ___ el cuadro en la pared. (poner)",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "pusiré",
+     "poneré",
+     "pondré"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "pondré"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La palabra de cortesía",
+   "nombre": "La palabra de cortesía",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Al entrar por la mañana, saludas con...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Adiós",
+     "Buenas noches",
+     "Buenos días"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Buenos días"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Saludos según la hora",
+   "nombre": "Saludos según la hora",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Al despertarte por la mañana dices...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Hasta luego",
+     "Buenas noches",
+     "Buenos días"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Buenos días"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué se dice en cada ocasión?",
+   "nombre": "¿Qué se dice en cada ocasión?",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Antes de empezar a comer, dices...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "¡Buenas noches!",
+     "¡Enhorabuena!",
+     "¡Que aproveche!"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "¡Que aproveche!"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Don y doña: el trato respetuoso",
+   "nombre": "Don y doña: el trato respetuoso",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "A un juez, con respeto, le llamas...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Majestad",
+     "Alteza",
+     "Señoría"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Señoría"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Palabras para pedir perdón",
+   "nombre": "Palabras para pedir perdón",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Para pasar entre la gente, dices...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Felicidades",
+     "Que aproveche",
+     "Con permiso"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Con permiso"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Saber decir adiós",
+   "nombre": "Saber decir adiós",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Al colgar el teléfono, te despides con...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Que aproveche",
+     "Encantado",
+     "Hasta luego"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Hasta luego"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cómo se pide con educación",
+   "nombre": "Cómo se pide con educación",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "'Muchas gracias, es usted muy ___.'",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "tacaño",
+     "pesado",
+     "amable"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "amable"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Suena igual, se escribe distinto",
+   "nombre": "Suena igual, se escribe distinto",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Al entrar, saludó con un '___'.",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "cola",
+     "ola",
+     "hola"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "hola"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Coser o cocer: la palabra justa",
+   "nombre": "Coser o cocer: la palabra justa",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El cura los va a ___ en la iglesia.",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "cansar",
+     "cazar",
+     "casar"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "casar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El nombre cariñoso de siempre",
+   "nombre": "El nombre cariñoso de siempre",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "A los Manuel se les llama...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Paco",
+     "Pepe",
+     "Manolo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Manolo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El plural de cada palabra",
+   "nombre": "El plural de cada palabra",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El plural de 'canción' es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "canciónes",
+     "cancions",
+     "canciones"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "canciones"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Palabras que van en pareja",
+   "nombre": "Palabras que van en pareja",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Ir y...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "saltar",
+     "correr",
+     "venir"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "venir"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué exclamamos?",
+   "nombre": "¿Qué exclamamos?",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Cuando algo te sorprende mucho, dices...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "¡Brr!",
+     "¡Puaj!",
+     "¡Vaya!"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "¡Vaya!"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Si todos lo tienen, este también",
+   "nombre": "Si todos lo tienen, este también",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Todos los relojes dan la hora. Esto es un reloj. Entonces...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "no sirve para nada",
+     "da la hora",
+     "da la temperatura"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i6",
+    "correcta": "da la hora"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Si ninguno puede, este tampoco",
+   "nombre": "Si ninguno puede, este tampoco",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Ningún árbol camina. El roble es un árbol. Entonces el roble...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "corre mucho",
+     "camina despacio",
+     "no camina"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "no camina"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "De la clase a lo concreto",
+   "nombre": "De la clase a lo concreto",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Todas las truchas son peces. Esto es una trucha. Entonces es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "un insecto",
+     "un pez",
+     "un ave"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i6",
+    "correcta": "un pez"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué es más probable?",
+   "nombre": "¿Qué es más probable?",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En un río de montaña, ¿qué es más probable encontrar?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "olas del mar",
+     "agua",
+     "arena del desierto"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i6",
+    "correcta": "agua"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Lo más probable según el mes",
+   "nombre": "Lo más probable según el mes",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En Nochebuena, lo más probable es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "sembrar tomates",
+     "ir a la playa a tomar el sol",
+     "cenar en familia"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "cenar en familia"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué es casi seguro?",
+   "nombre": "¿Qué es casi seguro?",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Al encender una cerilla, es casi seguro que...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "salga hielo",
+     "salga agua",
+     "salga fuego"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "salga fuego"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Lo raro y lo corriente",
+   "nombre": "Lo raro y lo corriente",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál sería muy raro?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "un gato bebiendo leche",
+     "un gato durmiendo",
+     "un gato conduciendo un coche"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "un gato conduciendo un coche"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué se inventó antes?",
+   "nombre": "¿Qué se inventó antes?",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué es más antiguo como transporte?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "el tren de alta velocidad",
+     "el caballo",
+     "la moto"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i6",
+    "correcta": "el caballo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Analogías: cada uno en su lugar",
+   "nombre": "Analogías: cada uno en su lugar",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El peluquero es a la peluquería como el farmacéutico es a...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "el campo",
+     "la carnicería",
+     "la farmacia"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "la farmacia"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Analogías: el alimento y su origen",
+   "nombre": "Analogías: el alimento y su origen",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El pan es al trigo como el zumo es a...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "la madera",
+     "la patata",
+     "la naranja"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "la naranja"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Analogías: la herramienta y quien la usa",
+   "nombre": "Analogías: la herramienta y quien la usa",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "La red es al pescador como el arado es a...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "el barbero",
+     "el músico",
+     "el labrador"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "el labrador"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La regla de la serie de palabras",
+   "nombre": "La regla de la serie de palabras",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Primavera, verano, otoño... ¿qué son?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "comidas del día",
+     "estaciones del año",
+     "días de la semana"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i6",
+    "correcta": "estaciones del año"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Quién es el más alto?",
+   "nombre": "¿Quién es el más alto?",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "La torre es más alta que la casa. La casa es más alta que la caseta. ¿Cuál es la más baja?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "la casa",
+     "la torre",
+     "la caseta"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "la caseta"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Quién es el mayor?",
+   "nombre": "¿Quién es el mayor?",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "María tiene más años que Ana. Ana tiene más años que Sara. ¿Quién tiene menos años?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Ana",
+     "María",
+     "Sara"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Sara"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Quién llegó primero?",
+   "nombre": "¿Quién llegó primero?",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "La primavera llega antes que el verano. El verano llega antes que el otoño. ¿Cuál llega primero?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "el verano",
+     "el otoño",
+     "la primavera"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "la primavera"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Quién tiene más?",
+   "nombre": "¿Quién tiene más?",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Marta ahorró más que Sara. Sara ahorró más que Elena. ¿Quién ahorró menos?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Sara",
+     "Marta",
+     "Elena"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Elena"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Cuál cuesta más?",
+   "nombre": "¿Cuál cuesta más?",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "La bicicleta cuesta menos que la moto. La moto cuesta menos que el coche. ¿Qué es lo más caro?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "la moto",
+     "la bicicleta",
+     "el coche"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "el coche"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Quién pesa más?",
+   "nombre": "¿Quién pesa más?",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El armario pesa más que la silla. La silla pesa más que el cojín. ¿Qué pesa más?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "la silla",
+     "el cojín",
+     "el armario"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "el armario"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El del medio",
+   "nombre": "El del medio",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El coche cuesta más que la bici pero menos que el camión. ¿Cuál está en medio de precio?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "la bici",
+     "el camión",
+     "el coche"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "el coche"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Deduce quién hace cada oficio",
+   "nombre": "Deduce quién hace cada oficio",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En el pueblo hay un herrero y un zapatero. El que arregla zapatos es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "el alcalde",
+     "el herrero",
+     "el zapatero"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "el zapatero"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Ni el primero ni el último",
+   "nombre": "Ni el primero ni el último",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En la calle están la casa de Juan, la de Luis y la de Pedro. La de Juan es la primera, la de Pedro la última. ¿Cuál está en medio?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "la de Pedro",
+     "la de Juan",
+     "la de Luis"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "la de Luis"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Descarta y acierta",
+   "nombre": "Descarta y acierta",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Pienso en un mueble. No es la mesa ni la silla. ¿Cuál es?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "la silla",
+     "la mesa",
+     "el armario"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "el armario"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Seguro, posible o imposible",
+   "nombre": "Seguro, posible o imposible",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Que un gato ponga huevos es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "frecuente",
+     "imposible",
+     "seguro"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i6",
+    "correcta": "imposible"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Lo imposible de la lista",
+   "nombre": "Lo imposible de la lista",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es imposible?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "que una piedra sea dura",
+     "que una piedra pese",
+     "que una piedra hable"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "que una piedra hable"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La pista que lo resuelve",
+   "nombre": "La pista que lo resuelve",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Tiene agujas y sirve para saber la hora. ¿Qué es?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "la brújula",
+     "el calendario",
+     "el reloj"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "el reloj"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Dos cosas no pueden ser a la vez",
+   "nombre": "Dos cosas no pueden ser a la vez",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué no puede ser a la vez?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "ser de noche y oscuro",
+     "ser de día y soleado",
+     "ser de día y de noche"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "ser de día y de noche"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Si esto es verdad, ¿qué más lo es?",
+   "nombre": "Si esto es verdad, ¿qué más lo es?",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si el frutero solo vende fruta, lo que compres allí será...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "pan",
+     "carne",
+     "fruta"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "fruta"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Analogías: el sonido de cada uno",
+   "nombre": "Analogías: el sonido de cada uno",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El caballo es a relinchar como el cerdo es a...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "cantar",
+     "maullar",
+     "gruñir"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "gruñir"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Analogías: la parte y su todo",
+   "nombre": "Analogías: la parte y su todo",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El diente es a la boca como la tecla es a...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "el zapato",
+     "la sopa",
+     "el piano"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "el piano"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Siempre, a veces o nunca",
+   "nombre": "Siempre, a veces o nunca",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Llueve en primavera?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "jamás en la vida",
+     "nunca",
+     "a veces"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "a veces"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Deduce el parentesco",
+   "nombre": "Deduce el parentesco",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "La mujer de mi hijo es mi...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "cuñada",
+     "hija",
+     "nuera"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "nuera"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena por antigüedad: cosas de casa",
+   "nombre": "Ordena por antigüedad: cosas de casa",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué se usó antes para coser?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "la máquina de coser de motor",
+     "la máquina de coser eléctrica",
+     "la aguja y el hilo a mano"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "la aguja y el hilo a mano"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Sonidos de la casa",
+   "nombre": "Sonidos de la casa",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué zumba mientras mantiene fríos los alimentos?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El ventilador",
+     "La plancha",
+     "La nevera"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La nevera"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Ruidos de la calle",
+   "nombre": "Ruidos de la calle",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué ruge cuando arranca una moto?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La acera",
+     "El árbol",
+     "El motor"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El motor"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El sonido del agua",
+   "nombre": "El sonido del agua",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué corre y suena entre las piedras del monte?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El sendero",
+     "El árbol",
+     "El arroyo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El arroyo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Qué suena en la cocina",
+   "nombre": "Qué suena en la cocina",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué zumba al batir un huevo?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La servilleta",
+     "El plato",
+     "La batidora"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La batidora"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Ruidos que nos avisan",
+   "nombre": "Ruidos que nos avisan",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué suena en el paso a nivel cuando va a pasar el tren?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El buzón",
+     "El columpio",
+     "La campana del paso a nivel"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La campana del paso a nivel"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce por el olor",
+   "nombre": "Reconoce por el olor",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué huele muy bien al florecer en primavera?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El clavo",
+     "La piedra",
+     "La flor"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La flor"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "A qué huele cada cuarto",
+   "nombre": "A qué huele cada cuarto",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿A qué huele la panadería del barrio?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "A pintura",
+     "A pescado crudo",
+     "A pan recién hecho"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "A pan recién hecho"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El olor de la cocina",
+   "nombre": "El olor de la cocina",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué huele a hierba fresca al picarlo para el guiso?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La cuchara",
+     "El tornillo",
+     "El perejil"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El perejil"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Olores del campo",
+   "nombre": "Olores del campo",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué flor del naranjo huele dulce en primavera?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El barro",
+     "El humo",
+     "El azahar"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El azahar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El olor que avisa de un peligro",
+   "nombre": "El olor que avisa de un peligro",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿A qué huele el fuego cuando hay un incendio?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "A menta",
+     "A colonia",
+     "A humo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "A humo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El sabor de cada alimento",
+   "nombre": "El sabor de cada alimento",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué sabor tiene el café solo, sin azúcar?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Salado",
+     "Dulce",
+     "Amargo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Amargo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Dulce, salado, ácido o amargo",
+   "nombre": "Dulce, salado, ácido o amargo",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El café sin azúcar es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Salado",
+     "Dulce",
+     "Amargo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Amargo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Sabores fuertes de la mesa",
+   "nombre": "Sabores fuertes de la mesa",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué es muy salado?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El bizcocho",
+     "La manzana",
+     "El bacalao en salazón"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El bacalao en salazón"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Adivina por el tacto",
+   "nombre": "Adivina por el tacto",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué raspa como una lija?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El algodón",
+     "La seda",
+     "El papel de lija"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El papel de lija"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Suave o áspero al tocar",
+   "nombre": "Suave o áspero al tocar",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "La corteza del árbol es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Sedosa",
+     "Suave",
+     "Áspera"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Áspera"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Telas por su tacto",
+   "nombre": "Telas por su tacto",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué material es basto y rasposo, como una soga vieja?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La gasa",
+     "El terciopelo",
+     "El esparto"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El esparto"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El material por su tacto",
+   "nombre": "El material por su tacto",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué es blando y flexible, como una goma de borrar?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El hierro",
+     "El mármol",
+     "La goma"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La goma"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Personajes de cuento de siempre",
+   "nombre": "Personajes de cuento de siempre",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿A quién le crecía la nariz cuando mentía?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Aladino",
+     "Peter Pan",
+     "Pinocho"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Pinocho"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Símbolos de España",
+   "nombre": "Símbolos de España",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué se toca con las manos para acompañar el flamenco?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La trompeta",
+     "El violín",
+     "Las castañuelas"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Las castañuelas"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Grandes personajes muy conocidos",
+   "nombre": "Grandes personajes muy conocidos",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Quién trae los regalos la noche del 5 de enero?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El cartero",
+     "El ratoncito Pérez",
+     "Los Reyes Magos"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Los Reyes Magos"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Los Reyes Magos y las fiestas",
+   "nombre": "Los Reyes Magos y las fiestas",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué reciben los niños que se han portado mal?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Una muñeca",
+     "Un coche",
+     "Carbón"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Carbón"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Símbolos de la Navidad",
+   "nombre": "Símbolos de la Navidad",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué se canta por las calles en Navidad?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Las coplas de feria",
+     "El himno",
+     "Los villancicos"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Los villancicos"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La bandera de España y otras",
+   "nombre": "La bandera de España y otras",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿De qué país es la bandera con una hoja roja en el centro?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Francia",
+     "España",
+     "Canadá"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Canadá"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Banderas del mundo",
+   "nombre": "Banderas del mundo",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Una bandera roja y amarilla con un escudo es de...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Alemania",
+     "Francia",
+     "España"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "España"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El monumento y su ciudad",
+   "nombre": "El monumento y su ciudad",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿En qué ciudad está el Acueducto romano?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Murcia",
+     "Cádiz",
+     "Segovia"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Segovia"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Monumentos famosos de España",
+   "nombre": "Monumentos famosos de España",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué torre junto al río Guadalquivir hay en Sevilla?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La Alhambra",
+     "El Acueducto",
+     "La Torre del Oro"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La Torre del Oro"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿En qué ciudad está?",
+   "nombre": "¿En qué ciudad está?",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿En qué ciudad está la Estatua de la Libertad?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "París",
+     "Roma",
+     "Nueva York"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Nueva York"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El olor de las flores y plantas",
+   "nombre": "El olor de las flores y plantas",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué hierba huele muy bien y se echa en el guiso?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El cardo",
+     "La ortiga",
+     "El romero"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El romero"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Objetos por el ruido que hacen",
+   "nombre": "Objetos por el ruido que hacen",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué suena al pasar las hojas de un libro?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La cuchara",
+     "El vaso",
+     "El papel"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El papel"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El sonido de la fiesta",
+   "nombre": "El sonido de la fiesta",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué se toca con la mano al bailar sevillanas?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La plancha",
+     "El teléfono",
+     "Las castañuelas"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Las castañuelas"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce el sabor de la fruta",
+   "nombre": "Reconoce el sabor de la fruta",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué fruta refresca en verano, muy jugosa y dulce?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La cebolla",
+     "El limón",
+     "La sandía"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La sandía"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce lo que quema y lo que hiela",
+   "nombre": "Reconoce lo que quema y lo que hiela",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué está frío al tocarlo en invierno?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La estufa",
+     "La taza de café caliente",
+     "El cristal de la ventana"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El cristal de la ventana"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué hago primero de los dos?",
+   "nombre": "¿Qué hago primero de los dos?",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Te digo: primero coge el vaso y luego llénalo de agua. ¿Qué haces antes?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Fregar el vaso",
+     "Llenarlo de agua",
+     "Coger el vaso"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Coger el vaso"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Y luego qué hago?",
+   "nombre": "¿Y luego qué hago?",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Te digo: primero llena la regadera y después riega las plantas. ¿Qué haces en segundo lugar?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Vaciar la regadera",
+     "Llenar la regadera",
+     "Regar las plantas"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Regar las plantas"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Lo último de las tres órdenes",
+   "nombre": "Lo último de las tres órdenes",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Te digo: abre el armario, saca el plato y ciérralo. ¿Qué es lo último?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Sacar el plato",
+     "Abrir el armario",
+     "Cerrar el armario"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Cerrar el armario"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "En medio de las tres órdenes",
+   "nombre": "En medio de las tres órdenes",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Te digo: siéntate a la mesa, cómete la sopa y recoge el plato. ¿Qué haces en medio?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Recoger el plato",
+     "Sentarte a la mesa",
+     "Comerte la sopa"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Comerte la sopa"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuando diga 'cambia'",
+   "nombre": "Cuando diga 'cambia'",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Vas contando en voz alta. Al oír 'cambia' te quedas callado. Oyes 'cambia': ¿qué haces?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Contar más alto",
+     "Contar más deprisa",
+     "Quedarte callado"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Quedarte callado"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Ahora hazlo al revés",
+   "nombre": "Ahora hazlo al revés",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Estabas nombrando lo dulce. Ahora te piden lo salado: ¿el jamón, la miel o la mermelada?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La mermelada",
+     "La miel",
+     "El jamón"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El jamón"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cambia de cuenta a media",
+   "nombre": "Cambia de cuenta a media",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Ibas diciendo los meses hacia delante: enero, febrero... Te piden cambiar y decir el mes anterior a marzo. ¿Cuál es?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Mayo",
+     "Abril",
+     "Febrero"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Febrero"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cambia lo que buscas",
+   "nombre": "Cambia lo que buscas",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Buscabas el color. Ahora cambia y busca el número: ¿el ocho, el azul o el verde?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El verde",
+     "El azul",
+     "El ocho"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El ocho"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Escucha y cambia de grupo",
+   "nombre": "Escucha y cambia de grupo",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Ibas señalando frutas. Te avisan de cambiar a bebidas. ¿Cuál señalas: la naranja, el agua o el plátano?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El plátano",
+     "La naranja",
+     "El agua"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El agua"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El orden de los recados",
+   "nombre": "El orden de los recados",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Tienes cita en el médico a las 5 y quieres pasear. Son las 4:45. ¿Qué haces antes?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Volver a casa a descansar",
+     "Ir a pasear",
+     "Ir a la cita del médico"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Ir a la cita del médico"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué me llevo a cada sitio?",
+   "nombre": "¿Qué me llevo a cada sitio?",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Vas a la iglesia a misa. ¿Qué te llevas?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Las herramientas del taller",
+     "El bañador",
+     "Ropa arreglada y de abrigo si hace frío"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Ropa arreglada y de abrigo si hace frío"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Coger el tren, paso a paso",
+   "nombre": "Coger el tren, paso a paso",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Antes de sacar el billete, ¿qué te conviene saber?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El color del tren",
+     "El nombre del maquinista",
+     "A qué ciudad vas"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "A qué ciudad vas"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Preparar la salida al médico",
+   "nombre": "Preparar la salida al médico",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El médico te da una receta. ¿Qué haces después?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Pides otra cita para lo mismo",
+     "Tiras la receta a la basura",
+     "Vas a la farmacia a por la medicina"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Vas a la farmacia a por la medicina"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Un día con tres recados",
+   "nombre": "Un día con tres recados",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Recados por el mismo camino: la farmacia está de ida y la floristería de vuelta. ¿Cuál haces primero?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Ninguna, mejor otro día",
+     "La floristería, que está de vuelta",
+     "La farmacia, que está de ida"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La farmacia, que está de ida"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Antes de salir, la última comprobación",
+   "nombre": "Antes de salir, la última comprobación",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Antes de irte, ¿qué compruebas en las ventanas?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Que tienen buenas vistas",
+     "Que están recién pintadas",
+     "Que quedan cerradas"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Que quedan cerradas"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Eso puede esperar",
+   "nombre": "Eso puede esperar",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Llaman a la puerta y querías ordenar los libros. ¿Qué puede esperar?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Abrir la puerta",
+     "Ver quién llama",
+     "Ordenar los libros"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Ordenar los libros"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué dejo para luego?",
+   "nombre": "¿Qué dejo para luego?",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Se hace tarde para el autobús y quieres barrer el balcón. ¿Qué dejas para luego?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Coger las llaves",
+     "Salir a coger el autobús",
+     "Barrer el balcón"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Barrer el balcón"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Lo que no corre prisa",
+   "nombre": "Lo que no corre prisa",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El pan se está tostando de más y tienes cartas por leer. ¿Qué no corre prisa?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Apagar la tostadora",
+     "Sacar el pan de la tostadora",
+     "Leer las cartas"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Leer las cartas"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Guárdalo para mañana",
+   "nombre": "Guárdalo para mañana",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Estás a punto de acostarte. ¿Qué dejas para mañana?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Dejar preparadas las llaves",
+     "Apagar el fuego de la cocina",
+     "Escribir una carta larga"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Escribir una carta larga"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Ahora no, más tarde",
+   "nombre": "Ahora no, más tarde",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El médico te espera a la hora en punto y querías tejer un rato. ¿Qué haces más tarde?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Salir con tiempo de casa",
+     "Ir a la hora a la consulta",
+     "Tejer un rato"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Tejer un rato"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El paso equivocado en la cocina",
+   "nombre": "El paso equivocado en la cocina",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Para cocer patatas: llenas la olla de agua, echas las patatas y... ¿cuál está mal?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Esperas a que hiervan",
+     "Pones la olla al fuego",
+     "Enciendes la nevera"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Enciendes la nevera"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El fallo en la faena de casa",
+   "nombre": "El fallo en la faena de casa",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Para barrer el suelo: coges la escoba, juntas la basura y... ¿cuál está mal?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La tiras al cubo",
+     "La recoges con el recogedor",
+     "La escondes debajo de la cama"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La escondes debajo de la cama"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El error que estropea el plan",
+   "nombre": "El error que estropea el plan",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Para ahorrar en la compra: haces una lista, comparas precios y... ¿cuál lo estropea?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Aprovechas las ofertas",
+     "Compras solo lo de la lista",
+     "Compras todo lo que ves sin mirar"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Compras todo lo que ves sin mirar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Eso sobra en el plan",
+   "nombre": "Eso sobra en el plan",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Para lavar la fruta: abres el grifo, mojas la fruta y... ¿cuál sobra?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La secas con un paño",
+     "La frotas con la mano",
+     "Enciendes la radio a todo volumen"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Enciendes la radio a todo volumen"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El paso que no viene a cuento",
+   "nombre": "El paso que no viene a cuento",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Vas a peinarte: coges el peine, te miras al espejo y... ¿cuál no viene a cuento?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Te haces la raya",
+     "Te peinas el pelo",
+     "Enciendes la televisión"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Enciendes la televisión"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Dónde está el despiste?",
+   "nombre": "¿Dónde está el despiste?",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Plan para pagar en la tienda: coges la cartera, eliges lo que compras y... ¿dónde está el despiste?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Guardas el cambio",
+     "Pagas en la caja",
+     "Te vas sin pagar"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Te vas sin pagar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Ante el imprevisto, ¿qué haces?",
+   "nombre": "Ante el imprevisto, ¿qué haces?",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si se te olvida a qué ibas a la tienda, ¿qué haces?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Te vuelves sin nada, enfadado",
+     "Compras cualquier cosa",
+     "Miras la lista de la compra"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Miras la lista de la compra"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Si suena, si llaman, si avisan",
+   "nombre": "Si suena, si llaman, si avisan",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si suena el despertador por la mañana, ¿qué haces?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Cierras las cortinas y sigues durmiendo",
+     "Lo tiras a la basura",
+     "Te levantas para empezar el día"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Te levantas para empezar el día"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Si te falta algo a media faena",
+   "nombre": "Si te falta algo a media faena",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si escribiendo una carta se te gasta el bolígrafo, ¿qué haces?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Escribes con el dedo mojado",
+     "Sigues aunque no se vea nada",
+     "Coges otro bolígrafo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Coges otro bolígrafo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Si cambia el tiempo de repente",
+   "nombre": "Si cambia el tiempo de repente",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si empieza a nevar y vas a salir, ¿qué haces?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Coges el abanico",
+     "Sales en manga corta",
+     "Te abrigas bien y calzas botas"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Te abrigas bien y calzas botas"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Si algo va mal, párate y piensa",
+   "nombre": "Si algo va mal, párate y piensa",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si un plato se rompe en el suelo, ¿qué haces?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Los dejas por el suelo",
+     "Andas descalzo entre los trozos",
+     "Recoges los trozos con cuidado"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Recoges los trozos con cuidado"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cada aviso, su respuesta",
+   "nombre": "Cada aviso, su respuesta",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si el médico dice de tomar la pastilla en ayunas, ¿cuándo la tomas?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Con el postre",
+     "Después de una gran comida",
+     "Antes de desayunar"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Antes de desayunar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Parejas del mismo color",
+   "nombre": "Parejas del mismo color",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué dos son del mismo color?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El plátano y el tomate",
+     "La nieve y el cuervo",
+     "La hierba y la rana"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La hierba y la rana"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Parejas de la misma forma",
+   "nombre": "Parejas de la misma forma",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál pareja tiene forma cuadrada?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El plátano y el pepino",
+     "El huevo y la pelota",
+     "El azulejo y la baldosa"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El azulejo y la baldosa"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Parejas del mismo tamaño",
+   "nombre": "Parejas del mismo tamaño",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál pareja son las dos grandes?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La aguja y el alfiler",
+     "El garbanzo y el arroz",
+     "La casa y la montaña"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La casa y la montaña"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El distinto por su color",
+   "nombre": "El distinto por su color",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Cielo azul, mar azul y tomate. ¿Cuál desentona por el color?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El mar",
+     "El cielo",
+     "El tomate"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El tomate"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El distinto por su forma",
+   "nombre": "El distinto por su forma",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Botón, rueda y libro. ¿Cuál no es redondo?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La rueda",
+     "El botón",
+     "El libro"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El libro"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué le falta al dibujo?",
+   "nombre": "¿Qué le falta al dibujo?",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Un reloj con esfera y números, pero sin agujas. ¿Qué le falta?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El asa",
+     "Las ruedas",
+     "Las agujas"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Las agujas"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El distinto por su tamaño",
+   "nombre": "El distinto por su tamaño",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Mosca, hormiga y vaca. ¿Cuál es mucho más grande?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La hormiga",
+     "La mosca",
+     "La vaca"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La vaca"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué falta para la pareja?",
+   "nombre": "¿Qué falta para la pareja?",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Tengo un calcetín. ¿Qué falta para el par?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Un gorro",
+     "Una zapatilla",
+     "El otro calcetín"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El otro calcetín"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Encima o debajo?",
+   "nombre": "¿Encima o debajo?",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "La lámpara cuelga encima de la mesa y el plato está debajo. ¿Qué está debajo?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El techo",
+     "La lámpara",
+     "El plato"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El plato"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Delante o detrás?",
+   "nombre": "¿Delante o detrás?",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El caballo tira delante y el carro va detrás. ¿Qué va detrás?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El camino",
+     "El caballo",
+     "El carro"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El carro"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿A la derecha o a la izquierda?",
+   "nombre": "¿A la derecha o a la izquierda?",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En la carretera, el árbol queda a la izquierda y la casa a la derecha. ¿Qué queda a la derecha?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El asfalto",
+     "El árbol",
+     "La casa"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La casa"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Dentro o fuera?",
+   "nombre": "¿Dentro o fuera?",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Las flores están dentro del jarrón y la mesa fuera. ¿Qué está dentro?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El salón",
+     "La mesa",
+     "Las flores"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Las flores"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El primero y el último de la fila",
+   "nombre": "El primero y el último de la fila",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En la cola: un señor, una señora y un niño. ¿Quién va el último?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La señora",
+     "El señor",
+     "El niño"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El niño"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Quién va en medio?",
+   "nombre": "¿Quién va en medio?",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En la balda: el vaso, el plato y la taza. ¿Cuál está en medio?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La taza",
+     "El vaso",
+     "El plato"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El plato"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Sigue el patrón de colores",
+   "nombre": "Sigue el patrón de colores",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Rojo, rojo, azul, rojo, rojo, azul, rojo, rojo... ¿qué sigue?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Verde",
+     "Rojo",
+     "Azul"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Azul"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Sigue el patrón de tamaños",
+   "nombre": "Sigue el patrón de tamaños",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Largo, corto, largo, corto, largo... ¿qué sigue?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Mediano",
+     "Largo",
+     "Corto"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Corto"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Continúa la serie de figuras",
+   "nombre": "Continúa la serie de figuras",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Corazón, corazón, estrella, corazón, corazón, estrella... ¿qué sigue?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Luna",
+     "Estrella",
+     "Corazón"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Corazón"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué viene después en el patrón?",
+   "nombre": "¿Qué viene después en el patrón?",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Azul, rojo, blanco, azul, rojo, blanco, azul, rojo... ¿qué sigue?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Rojo",
+     "Azul",
+     "Blanco"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Blanco"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué está más cerca?",
+   "nombre": "¿Qué está más cerca?",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Estás en la cocina. ¿Qué tienes más cerca: el grifo, el mercado o la playa?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La playa",
+     "El mercado",
+     "El grifo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El grifo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué está más lejos?",
+   "nombre": "¿Qué está más lejos?",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En la mesa. ¿Qué está más lejos: tu taza, la ventana o la montaña?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La ventana",
+     "Tu taza",
+     "La montaña"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La montaña"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Igual que el modelo",
+   "nombre": "Igual que el modelo",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El modelo es un triángulo verde. ¿Cuál es igual?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Un círculo verde",
+     "Un triángulo rojo",
+     "Un triángulo verde"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Un triángulo verde"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El rasgo que comparten",
+   "nombre": "El rasgo que comparten",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El lápiz y la regla, ¿qué comparten?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El peso",
+     "El color",
+     "La forma alargada"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La forma alargada"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "En la foto sobra una cosa",
+   "nombre": "En la foto sobra una cosa",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En la foto del jardín: flores, césped, un árbol y una lavadora. ¿Qué sobra?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El árbol",
+     "Las flores",
+     "La lavadora"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La lavadora"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué falta en la escena?",
+   "nombre": "¿Qué falta en la escena?",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En la baraja hay oros, copas y espadas; para los cuatro palos falta...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Las fichas",
+     "Los dados",
+     "Los bastos"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Los bastos"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El calcetín que hace pareja",
+   "nombre": "El calcetín que hace pareja",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Un pañuelo con flores. ¿Cuál hace pareja?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Uno con rayas",
+     "Uno con lunares",
+     "Otro pañuelo con flores"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Otro pañuelo con flores"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Sigue el collar de cuentas",
+   "nombre": "Sigue el collar de cuentas",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Grande, pequeña, grande, pequeña, grande... ¿qué cuenta sigue?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Mediana",
+     "Grande",
+     "Pequeña"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Pequeña"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cerca, lejos y más lejos",
+   "nombre": "Cerca, lejos y más lejos",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En el cielo, ¿qué está más lejos: un pájaro, una nube o el Sol?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Una nube",
+     "Un pájaro",
+     "El Sol"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El Sol"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Encima, debajo o al lado",
+   "nombre": "Encima, debajo o al lado",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El frutero está encima de la mesa, el felpudo debajo y la ventana al lado. ¿Qué está encima?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La ventana",
+     "El felpudo",
+     "El frutero"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El frutero"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Dos dibujos casi iguales",
+   "nombre": "Dos dibujos casi iguales",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Dibujo 1: una flor con cinco pétalos. Dibujo 2: una flor con seis pétalos. ¿En qué se diferencian?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "En el tallo",
+     "En el color",
+     "En el número de pétalos"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "En el número de pétalos"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La pareja idéntica",
+   "nombre": "La pareja idéntica",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué pareja es idéntica?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Una flor roja y una blanca",
+     "Una flor grande y una pequeña",
+     "Dos flores rojas iguales"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Dos flores rojas iguales"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Sigue el patrón de la cenefa",
+   "nombre": "Sigue el patrón de la cenefa",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Rombo, estrella, rombo, estrella, rombo... ¿qué sigue?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Círculo",
+     "Rombo",
+     "Estrella"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Estrella"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Lo que sobra por su forma",
+   "nombre": "Lo que sobra por su forma",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Rueda, moneda, botón y regla. Todos son redondos menos uno. ¿Cuál sobra?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El botón",
+     "La rueda",
+     "La regla"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La regla"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Primeros auxilios en casa",
+   "nombre": "Primeros auxilios en casa",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En un botiquín no debe faltar",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Unas pilas",
+     "Un martillo",
+     "Vendas y tiritas"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Vendas y tiritas"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Qué hacer ante una herida",
+   "nombre": "Qué hacer ante una herida",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si la herida es grande y profunda",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Ponerle sal",
+     "Esperar unos días",
+     "Ir al médico"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Ir al médico"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Si alguien se atraganta",
+   "nombre": "Si alguien se atraganta",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si el atragantamiento es grave, se llama al",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Un número inventado",
+     "Teléfono del bar",
+     "112"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "112"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Ante un mareo o desmayo",
+   "nombre": "Ante un mareo o desmayo",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Al levantarse de la cama conviene hacerlo",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Corriendo al baño",
+     "De un salto",
+     "Despacio"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Despacio"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Una quemadura leve",
+   "nombre": "Una quemadura leve",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El sol fuerte del verano puede",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Dar frío",
+     "Curar quemaduras",
+     "Quemar la piel"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Quemar la piel"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El teléfono de emergencias",
+   "nombre": "El teléfono de emergencias",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Llamar al 112 es",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Solo de día",
+     "Muy caro",
+     "Gratis"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Gratis"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Ante una caída",
+   "nombre": "Ante una caída",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Al levantarse del suelo hay que hacerlo",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Con mucha prisa",
+     "De un salto",
+     "Despacio y con apoyo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Despacio y con apoyo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Leer el prospecto de una medicina",
+   "nombre": "Leer el prospecto de una medicina",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si un medicamento ha caducado",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Se guarda para siempre",
+     "Se toma el doble",
+     "No se debe tomar"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "No se debe tomar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La etiqueta de la ropa",
+   "nombre": "La etiqueta de la ropa",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "La talla de una prenda puede ser",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El martes",
+     "El rojo",
+     "La M o la L"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La M o la L"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La fecha de caducidad",
+   "nombre": "La fecha de caducidad",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Un bote de conservas abombado",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Se guarda años",
+     "Está mejor",
+     "No se debe comer"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "No se debe comer"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La etiqueta de los alimentos",
+   "nombre": "La etiqueta de los alimentos",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El peso del producto viene indicado en",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Colores",
+     "Horas",
+     "Gramos o kilos"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Gramos o kilos"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Instrucciones del envase",
+   "nombre": "Instrucciones del envase",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "\"Modo de empleo\" explica",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El precio de la luz",
+     "Quién lo hizo",
+     "Cómo se usa"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Cómo se usa"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Apuntar las citas",
+   "nombre": "Apuntar las citas",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si tengo cita el martes",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "No voy nunca",
+     "Voy el domingo",
+     "Me preparo para el martes"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Me preparo para el martes"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Semanas y días del mes",
+   "nombre": "Semanas y días del mes",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El fin de semana son",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Miércoles y jueves",
+     "Lunes y martes",
+     "Sábado y domingo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Sábado y domingo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Contar los días que faltan",
+   "nombre": "Contar los días que faltan",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si la cita es dentro de una semana y hoy es lunes, será el",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Hoy mismo",
+     "Mañana",
+     "Lunes que viene"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Lunes que viene"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La cita con el médico",
+   "nombre": "La cita con el médico",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si me dan hora a las diez",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Voy por la tarde",
+     "Voy a las doce",
+     "Voy a las diez"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Voy a las diez"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Marcar un número de teléfono",
+   "nombre": "Marcar un número de teléfono",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Los teléfonos móviles suelen empezar por",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Cero",
+     "Uno",
+     "Seis o siete"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Seis o siete"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Contestar el teléfono",
+   "nombre": "Contestar el teléfono",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si es una llamada equivocada",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "No cuelgo nunca",
+     "Insulto a quien llama",
+     "Lo digo con educación y cuelgo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Lo digo con educación y cuelgo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Un mensaje al móvil",
+   "nombre": "Un mensaje al móvil",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Para responder un mensaje",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Apago el móvil",
+     "Lo borro siempre",
+     "Escribo y lo envío"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Escribo y lo envío"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La agenda del teléfono",
+   "nombre": "La agenda del teléfono",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Si tengo un número repetido",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Borro toda la agenda",
+     "Los dejo los dos igual",
+     "Borro el que sobra"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Borro el que sobra"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Las señales de la calle",
+   "nombre": "Las señales de la calle",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El paso de cebra sirve para",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Merendar",
+     "Aparcar",
+     "Cruzar la calle"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Cruzar la calle"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El semáforo del peatón",
+   "nombre": "El semáforo del peatón",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Antes de cruzar conviene",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Correr sin mirar",
+     "Cerrar los ojos",
+     "Mirar a los dos lados"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Mirar a los dos lados"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El paso de cebra",
+   "nombre": "El paso de cebra",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Se cruza mejor",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Saltando una valla",
+     "Por detrás de un coche",
+     "Por el paso de cebra"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Por el paso de cebra"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "En el autobús y el metro",
+   "nombre": "En el autobús y el metro",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "En el metro se espera el tren",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Corriendo por el andén",
+     "En las vías",
+     "Detrás de la línea de seguridad"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Detrás de la línea de seguridad"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El billete de transporte",
+   "nombre": "El billete de transporte",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Conviene guardar el billete",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Comérselo",
+     "Tirarlo al subir",
+     "Hasta terminar el viaje"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Hasta terminar el viaje"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La lista de la compra",
+   "nombre": "La lista de la compra",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Hacer la lista ayuda a",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Confundirse más",
+     "Perder el tiempo",
+     "No olvidar nada"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "No olvidar nada"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El presupuesto de la semana",
+   "nombre": "El presupuesto de la semana",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Lo primero que conviene comprar es",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Lo que no uso",
+     "Lo más caprichoso",
+     "Lo necesario, como la comida"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Lo necesario, como la comida"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Comparar precios",
+   "nombre": "Comparar precios",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Comparar precios ayuda a",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Perder dinero",
+     "Gastar más",
+     "Ahorrar"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Ahorrar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Lo necesario y lo caprichoso",
+   "nombre": "Lo necesario y lo caprichoso",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Las medicinas que necesito son",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Un juego",
+     "Un lujo",
+     "Necesarias"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Necesarias"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "En la caja del supermercado",
+   "nombre": "En la caja del supermercado",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El tique de la compra sirve para",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "No sirve para nada",
+     "Cocinar",
+     "Ver lo que he pagado"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Ver lo que he pagado"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La compra de la semana",
+   "nombre": "La compra de la semana",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Comprar de más de lo fresco",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Nunca pasa nada",
+     "Siempre es mejor",
+     "Puede echarse a perder"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Puede echarse a perder"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Pagar con tarjeta",
+   "nombre": "Pagar con tarjeta",
+   "bloque": "vida_cotidiana",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "La tarjeta sirve para",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Peinarse",
+     "Abrir latas",
+     "Pagar y sacar dinero"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Pagar y sacar dinero"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El doble de cada número",
+   "nombre": "El doble de cada número",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El doble de 5 es…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "12",
+     "8",
+     "10"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "10"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La mitad de cada número",
+   "nombre": "La mitad de cada número",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "La mitad de 10 es…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "6",
+     "4",
+     "5"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "5"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El doble de una decena",
+   "nombre": "El doble de una decena",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El doble de 25 es…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "60",
+     "40",
+     "50"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "50"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La mitad de una decena",
+   "nombre": "La mitad de una decena",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "La mitad de 100 es…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "75",
+     "25",
+     "50"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "50"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Reparte a la mitad",
+   "nombre": "Reparte a la mitad",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "6 mandarinas entre 2, a cada una le tocan…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "4",
+     "2",
+     "3"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "3"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El doble en la cocina",
+   "nombre": "El doble en la cocina",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Una paella lleva 4 tazas de arroz; para dos paellas…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "10",
+     "6",
+     "8"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "8"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuenta de 10 en 10 hasta 100",
+   "nombre": "Cuenta de 10 en 10 hasta 100",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "70, 80, 90, ¿qué sigue?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "110",
+     "95",
+     "100"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "100"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuenta de 5 en 5 hasta 50",
+   "nombre": "Cuenta de 5 en 5 hasta 50",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "15, 20, 25, ¿qué sigue?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "35",
+     "28",
+     "30"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "30"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuenta de 2 en 2 hacia atrás",
+   "nombre": "Cuenta de 2 en 2 hacia atrás",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "20, 18, 16, ¿qué sigue?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "13",
+     "15",
+     "14"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "14"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuenta de 5 en 5 hacia atrás",
+   "nombre": "Cuenta de 5 en 5 hacia atrás",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "20, 15, 10, ¿qué sigue?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "8",
+     "0",
+     "5"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "5"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuenta de 10 en 10 hacia atrás",
+   "nombre": "Cuenta de 10 en 10 hacia atrás",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "30, 20, 10, ¿qué sigue?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "15",
+     "5",
+     "0"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "0"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Cuántos euros hay?",
+   "nombre": "¿Cuántos euros hay?",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Un billete de 5 € y una moneda de 2 €",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "5 €",
+     "6 €",
+     "7 €"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "7 €"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuenta los céntimos",
+   "nombre": "Cuenta los céntimos",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Una de 50 y una de 20 céntimos",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "50 céntimos",
+     "60 céntimos",
+     "70 céntimos"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "70 céntimos"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La vuelta de un billete de 5 €",
+   "nombre": "La vuelta de un billete de 5 €",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Las pilas cuestan 4 €; pagas con 5 €, te devuelven…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "0 €",
+     "2 €",
+     "1 €"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "1 €"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Cuánto me queda?",
+   "nombre": "¿Cuánto me queda?",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Tenía 15 € y gasto 10 €; me quedan…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "8 €",
+     "3 €",
+     "5 €"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "5 €"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuentas del mercado",
+   "nombre": "Cuentas del mercado",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Queso 4 € y jamón 5 €; en total…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "10 €",
+     "8 €",
+     "9 €"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "9 €"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuenta las monedas del monedero",
+   "nombre": "Cuenta las monedas del monedero",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Tres monedas de 2 €",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "5 €",
+     "4 €",
+     "6 €"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "6 €"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Los minutos de la hora",
+   "nombre": "Los minutos de la hora",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuántos minutos son tres cuartos de hora?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "50",
+     "30",
+     "45"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "45"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué hora será dentro de una hora?",
+   "nombre": "¿Qué hora será dentro de una hora?",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Son las 11; dentro de una hora serán las…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "las 10",
+     "la 1",
+     "las 12"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "las 12"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué hora era hace una hora?",
+   "nombre": "¿Qué hora era hace una hora?",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Es la 1; hace una hora eran las…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "las 2",
+     "las 11",
+     "las 12"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "las 12"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Faltan para la hora en punto",
+   "nombre": "Faltan para la hora en punto",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Son las 2 y media; ¿cuántos minutos faltan para las 3?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "45",
+     "20",
+     "30"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "30"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Sumar de dos en dos",
+   "nombre": "Sumar de dos en dos",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Cuatro pares de pendientes, ¿cuántos pendientes hay?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "10",
+     "6",
+     "8"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "8"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Contar de cinco en cinco con los dedos",
+   "nombre": "Contar de cinco en cinco con los dedos",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Cuatro manos, ¿cuántos dedos hay?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "25",
+     "15",
+     "20"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "20"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El número que va entre los dos",
+   "nombre": "El número que va entre los dos",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué número va entre el 9 y el 11?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "12",
+     "8",
+     "10"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "10"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El número anterior",
+   "nombre": "El número anterior",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué número va antes del 3?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "1",
+     "4",
+     "2"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "2"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuenta las patas de los animales",
+   "nombre": "Cuenta las patas de los animales",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuántas patas tienen dos vacas?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "10",
+     "6",
+     "8"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "8"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Docenas y medias docenas",
+   "nombre": "Docenas y medias docenas",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Media docena de rosas, ¿cuántas rosas son?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "12",
+     "5",
+     "6"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "6"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Pares y nones",
+   "nombre": "Pares y nones",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "De 10, 11 y 13, ¿cuál es par?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "13",
+     "11",
+     "10"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "10"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El más barato",
+   "nombre": "El más barato",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál cuesta menos: 12 €, 8 € o 20 €?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "20 €",
+     "12 €",
+     "8 €"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "8 €"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El más caro",
+   "nombre": "El más caro",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más caro: 20 €, 15 € o 9 €?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "9 €",
+     "15 €",
+     "20 €"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "20 €"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Suma tres cosas",
+   "nombre": "Suma tres cosas",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "2 sellos, 3 sobres y 1 postal: ¿cuántas cosas en total?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "4",
+     "5",
+     "6"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "6"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La cuenta del bar",
+   "nombre": "La cuenta del bar",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Dos cafés a 1 € cada uno: ¿cuánto es?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "4 €",
+     "3 €",
+     "2 €"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "2 €"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
   }
  ]
 }
