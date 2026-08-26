@@ -92338,5 +92338,1561 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca: cactus",
+  "descripcion": "Localizar cactus entre otras figuras. Atención y rastreo visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todas las figuras de cactus",
+   "objetivo": {
+    "id": "cactus",
+    "label": "cactus"
+   },
+   "distractores": [
+    {
+     "id": "jamon",
+     "label": "jamón"
+    },
+    {
+     "id": "espejo",
+     "label": "espejo"
+    },
+    {
+     "id": "cuchillo",
+     "label": "cuchillo"
+    },
+    {
+     "id": "nevera",
+     "label": "nevera"
+    },
+    {
+     "id": "manzana_verde",
+     "label": "manzana verde"
+    },
+    {
+     "id": "leche",
+     "label": "leche"
+    },
+    {
+     "id": "pollo",
+     "label": "pollo"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca: campana",
+  "descripcion": "Localizar campana entre otras figuras. Atención y rastreo visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todas las figuras de campana",
+   "objetivo": {
+    "id": "campana",
+    "label": "campana"
+   },
+   "distractores": [
+    {
+     "id": "chaqueta",
+     "label": "chaqueta"
+    },
+    {
+     "id": "manzana_verde",
+     "label": "manzana verde"
+    },
+    {
+     "id": "delfin",
+     "label": "delfín"
+    },
+    {
+     "id": "guitarra",
+     "label": "guitarra"
+    },
+    {
+     "id": "maleta",
+     "label": "maleta"
+    },
+    {
+     "id": "jamon",
+     "label": "jamón"
+    },
+    {
+     "id": "limon",
+     "label": "limón"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca: candado",
+  "descripcion": "Localizar candado entre otras figuras. Atención y rastreo visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todas las figuras de candado",
+   "objetivo": {
+    "id": "candado",
+    "label": "candado"
+   },
+   "distractores": [
+    {
+     "id": "patata",
+     "label": "patata"
+    },
+    {
+     "id": "tomate",
+     "label": "tomate"
+    },
+    {
+     "id": "destornillador",
+     "label": "destornillador"
+    },
+    {
+     "id": "vaca",
+     "label": "vaca"
+    },
+    {
+     "id": "queso",
+     "label": "queso"
+    },
+    {
+     "id": "uvas",
+     "label": "uvas"
+    },
+    {
+     "id": "mesa",
+     "label": "mesa"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca: delfín",
+  "descripcion": "Localizar delfín entre otras figuras. Atención y rastreo visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todas las figuras de delfín",
+   "objetivo": {
+    "id": "delfin",
+    "label": "delfín"
+   },
+   "distractores": [
+    {
+     "id": "gallina",
+     "label": "gallina"
+    },
+    {
+     "id": "cepillo",
+     "label": "cepillo de pelo"
+    },
+    {
+     "id": "mesa",
+     "label": "mesa"
+    },
+    {
+     "id": "cafe",
+     "label": "café"
+    },
+    {
+     "id": "libro",
+     "label": "libro"
+    },
+    {
+     "id": "queso",
+     "label": "queso"
+    },
+    {
+     "id": "taza",
+     "label": "taza"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca: estrella",
+  "descripcion": "Localizar estrella entre otras figuras. Atención y rastreo visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todas las figuras de estrella",
+   "objetivo": {
+    "id": "estrella",
+    "label": "estrella"
+   },
+   "distractores": [
+    {
+     "id": "toalla",
+     "label": "toalla"
+    },
+    {
+     "id": "girasol",
+     "label": "girasol"
+    },
+    {
+     "id": "zapato",
+     "label": "zapato"
+    },
+    {
+     "id": "avion",
+     "label": "avión"
+    },
+    {
+     "id": "candado",
+     "label": "candado"
+    },
+    {
+     "id": "globo_verde",
+     "label": "globo verde"
+    },
+    {
+     "id": "lechuga",
+     "label": "lechuga"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca: faro",
+  "descripcion": "Localizar faro entre otras figuras. Atención y rastreo visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todas las figuras de faro",
+   "objetivo": {
+    "id": "faro",
+    "label": "faro"
+   },
+   "distractores": [
+    {
+     "id": "manzana_verde",
+     "label": "manzana verde"
+    },
+    {
+     "id": "raton",
+     "label": "ratón"
+    },
+    {
+     "id": "piedra",
+     "label": "piedra"
+    },
+    {
+     "id": "tren",
+     "label": "tren"
+    },
+    {
+     "id": "globo_rojo",
+     "label": "globo rojo"
+    },
+    {
+     "id": "zanahoria",
+     "label": "zanahoria"
+    },
+    {
+     "id": "television",
+     "label": "televisión"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca: jamón",
+  "descripcion": "Localizar jamón entre otras figuras. Atención y rastreo visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todas las figuras de jamón",
+   "objetivo": {
+    "id": "jamon",
+    "label": "jamón"
+   },
+   "distractores": [
+    {
+     "id": "tulipan",
+     "label": "tulipán"
+    },
+    {
+     "id": "television",
+     "label": "televisión"
+    },
+    {
+     "id": "mesa",
+     "label": "mesa"
+    },
+    {
+     "id": "pato",
+     "label": "pato"
+    },
+    {
+     "id": "elefante",
+     "label": "elefante"
+    },
+    {
+     "id": "pan",
+     "label": "pan"
+    },
+    {
+     "id": "cebolla",
+     "label": "cebolla"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Busca: maleta",
+  "descripcion": "Localizar maleta entre otras figuras. Atención y rastreo visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todas las figuras de maleta",
+   "objetivo": {
+    "id": "maleta",
+    "label": "maleta"
+   },
+   "distractores": [
+    {
+     "id": "coche",
+     "label": "coche"
+    },
+    {
+     "id": "barco",
+     "label": "barco"
+    },
+    {
+     "id": "cerdo",
+     "label": "cerdo"
+    },
+    {
+     "id": "globo_azul",
+     "label": "globo azul"
+    },
+    {
+     "id": "servilleta",
+     "label": "servilleta"
+    },
+    {
+     "id": "cuchara",
+     "label": "cuchara"
+    },
+    {
+     "id": "tambor",
+     "label": "tambor"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cosas rojas",
+  "descripcion": "Recordar cosas rojas tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "tomate",
+     "label": "tomate"
+    },
+    {
+     "id": "fresa",
+     "label": "fresa"
+    },
+    {
+     "id": "manzana",
+     "label": "manzana"
+    },
+    {
+     "id": "rosa",
+     "label": "rosa"
+    },
+    {
+     "id": "clavel",
+     "label": "clavel"
+    },
+    {
+     "id": "globo_rojo",
+     "label": "globo rojo"
+    },
+    {
+     "id": "cereza",
+     "label": "cereza"
+    },
+    {
+     "id": "pimiento",
+     "label": "pimiento"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cosas amarillas",
+  "descripcion": "Recordar cosas amarillas tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "limon",
+     "label": "limón"
+    },
+    {
+     "id": "girasol",
+     "label": "girasol"
+    },
+    {
+     "id": "estrella",
+     "label": "estrella"
+    },
+    {
+     "id": "queso",
+     "label": "queso"
+    },
+    {
+     "id": "pollo",
+     "label": "pollo"
+    },
+    {
+     "id": "flor",
+     "label": "flor"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cosas verdes",
+  "descripcion": "Recordar cosas verdes tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "lechuga",
+     "label": "lechuga"
+    },
+    {
+     "id": "hierba",
+     "label": "hierba"
+    },
+    {
+     "id": "hoja",
+     "label": "hoja"
+    },
+    {
+     "id": "manzana_verde",
+     "label": "manzana verde"
+    },
+    {
+     "id": "globo_verde",
+     "label": "globo verde"
+    },
+    {
+     "id": "pimiento",
+     "label": "pimiento"
+    },
+    {
+     "id": "cactus",
+     "label": "cactus"
+    },
+    {
+     "id": "arbol",
+     "label": "árbol"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cosas redondas",
+  "descripcion": "Recordar cosas redondas tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "reloj",
+     "label": "reloj"
+    },
+    {
+     "id": "naranja",
+     "label": "naranja"
+    },
+    {
+     "id": "manzana",
+     "label": "manzana"
+    },
+    {
+     "id": "globo_rojo",
+     "label": "globo rojo"
+    },
+    {
+     "id": "tomate",
+     "label": "tomate"
+    },
+    {
+     "id": "bol",
+     "label": "cuenco"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: música y fiesta",
+  "descripcion": "Recordar música y fiesta tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "guitarra",
+     "label": "guitarra"
+    },
+    {
+     "id": "tambor",
+     "label": "tambor"
+    },
+    {
+     "id": "campana",
+     "label": "campana"
+    },
+    {
+     "id": "estrella",
+     "label": "estrella"
+    },
+    {
+     "id": "globo_rojo",
+     "label": "globo rojo"
+    },
+    {
+     "id": "globo_azul",
+     "label": "globo azul"
+    },
+    {
+     "id": "abanico",
+     "label": "abanico"
+    },
+    {
+     "id": "globo_verde",
+     "label": "globo verde"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: animales del agua",
+  "descripcion": "Recordar animales del agua tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "delfin",
+     "label": "delfín"
+    },
+    {
+     "id": "pez",
+     "label": "pez"
+    },
+    {
+     "id": "pescado",
+     "label": "pescado"
+    },
+    {
+     "id": "pato",
+     "label": "pato"
+    },
+    {
+     "id": "barco",
+     "label": "barco"
+    },
+    {
+     "id": "faro",
+     "label": "faro"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: en la playa",
+  "descripcion": "Recordar en la playa tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "faro",
+     "label": "faro"
+    },
+    {
+     "id": "delfin",
+     "label": "delfín"
+    },
+    {
+     "id": "barco",
+     "label": "barco"
+    },
+    {
+     "id": "pez",
+     "label": "pez"
+    },
+    {
+     "id": "estrella",
+     "label": "estrella"
+    },
+    {
+     "id": "maleta",
+     "label": "maleta"
+    },
+    {
+     "id": "paraguas",
+     "label": "paraguas"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: objetos de viaje",
+  "descripcion": "Recordar objetos de viaje tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "maleta",
+     "label": "maleta"
+    },
+    {
+     "id": "paraguas",
+     "label": "paraguas"
+    },
+    {
+     "id": "gafas",
+     "label": "gafas"
+    },
+    {
+     "id": "reloj",
+     "label": "reloj"
+    },
+    {
+     "id": "libro",
+     "label": "libro"
+    },
+    {
+     "id": "abanico",
+     "label": "abanico"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cosas del campo seco",
+  "descripcion": "Recordar cosas del campo seco tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "cactus",
+     "label": "cactus"
+    },
+    {
+     "id": "piedra",
+     "label": "piedra"
+    },
+    {
+     "id": "arbol",
+     "label": "árbol"
+    },
+    {
+     "id": "montana",
+     "label": "montaña"
+    },
+    {
+     "id": "hierba",
+     "label": "hierba"
+    },
+    {
+     "id": "hoja",
+     "label": "hoja"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: bebidas y desayuno",
+  "descripcion": "Recordar bebidas y desayuno tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "cafe",
+     "label": "café"
+    },
+    {
+     "id": "leche",
+     "label": "leche"
+    },
+    {
+     "id": "pan",
+     "label": "pan"
+    },
+    {
+     "id": "galleta",
+     "label": "galleta"
+    },
+    {
+     "id": "huevo",
+     "label": "huevo"
+    },
+    {
+     "id": "queso",
+     "label": "queso"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: la despensa",
+  "descripcion": "Recordar la despensa tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "pan",
+     "label": "pan"
+    },
+    {
+     "id": "queso",
+     "label": "queso"
+    },
+    {
+     "id": "huevo",
+     "label": "huevo"
+    },
+    {
+     "id": "leche",
+     "label": "leche"
+    },
+    {
+     "id": "patata",
+     "label": "patata"
+    },
+    {
+     "id": "cebolla",
+     "label": "cebolla"
+    },
+    {
+     "id": "jamon",
+     "label": "jamón"
+    },
+    {
+     "id": "galleta",
+     "label": "galleta"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: bichos y jardín",
+  "descripcion": "Recordar bichos y jardín tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "mariposa",
+     "label": "mariposa"
+    },
+    {
+     "id": "hormiga",
+     "label": "hormiga"
+    },
+    {
+     "id": "flor",
+     "label": "flor"
+    },
+    {
+     "id": "hierba",
+     "label": "hierba"
+    },
+    {
+     "id": "hoja",
+     "label": "hoja"
+    },
+    {
+     "id": "maceta",
+     "label": "maceta"
+    },
+    {
+     "id": "arbol",
+     "label": "árbol"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: seguridad y cierres",
+  "descripcion": "Recordar seguridad y cierres tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "candado",
+     "label": "candado"
+    },
+    {
+     "id": "llave",
+     "label": "llave"
+    },
+    {
+     "id": "puerta",
+     "label": "puerta"
+    },
+    {
+     "id": "ventana",
+     "label": "ventana"
+    },
+    {
+     "id": "reloj",
+     "label": "reloj"
+    },
+    {
+     "id": "maleta",
+     "label": "maleta"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cosas de metal",
+  "descripcion": "Recordar cosas de metal tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "llave",
+     "label": "llave"
+    },
+    {
+     "id": "candado",
+     "label": "candado"
+    },
+    {
+     "id": "martillo",
+     "label": "martillo"
+    },
+    {
+     "id": "destornillador",
+     "label": "destornillador"
+    },
+    {
+     "id": "campana",
+     "label": "campana"
+    },
+    {
+     "id": "olla",
+     "label": "olla"
+    },
+    {
+     "id": "sarten",
+     "label": "sartén"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: los cítricos y frutas",
+  "descripcion": "Recordar los cítricos y frutas tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "limon",
+     "label": "limón"
+    },
+    {
+     "id": "naranja",
+     "label": "naranja"
+    },
+    {
+     "id": "manzana",
+     "label": "manzana"
+    },
+    {
+     "id": "pera",
+     "label": "pera"
+    },
+    {
+     "id": "uvas",
+     "label": "uvas"
+    },
+    {
+     "id": "fresa",
+     "label": "fresa"
+    },
+    {
+     "id": "sandia",
+     "label": "sandía"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: el corral",
+  "descripcion": "Recordar el corral tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "gallina",
+     "label": "gallina"
+    },
+    {
+     "id": "pollo",
+     "label": "pollo"
+    },
+    {
+     "id": "pato",
+     "label": "pato"
+    },
+    {
+     "id": "cerdo",
+     "label": "cerdo"
+    },
+    {
+     "id": "conejo",
+     "label": "conejo"
+    },
+    {
+     "id": "vaca",
+     "label": "vaca"
+    },
+    {
+     "id": "oveja",
+     "label": "oveja"
+    },
+    {
+     "id": "caballo",
+     "label": "caballo"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cacharros de cocina",
+  "descripcion": "Recordar cacharros de cocina tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "olla",
+     "label": "olla"
+    },
+    {
+     "id": "sarten",
+     "label": "sartén"
+    },
+    {
+     "id": "cuchara",
+     "label": "cuchara"
+    },
+    {
+     "id": "cuchillo",
+     "label": "cuchillo"
+    },
+    {
+     "id": "taza",
+     "label": "taza"
+    },
+    {
+     "id": "bol",
+     "label": "cuenco"
+    },
+    {
+     "id": "botella",
+     "label": "botella"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cosas que ruedan",
+  "descripcion": "Recordar cosas que ruedan tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "coche",
+     "label": "coche"
+    },
+    {
+     "id": "moto",
+     "label": "moto"
+    },
+    {
+     "id": "bicicleta",
+     "label": "bicicleta"
+    },
+    {
+     "id": "camion",
+     "label": "camión"
+    },
+    {
+     "id": "autobus",
+     "label": "autobús"
+    },
+    {
+     "id": "tren",
+     "label": "tren"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: muebles y lámparas",
+  "descripcion": "Recordar muebles y lámparas tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "silla",
+     "label": "silla"
+    },
+    {
+     "id": "sofa",
+     "label": "sofá"
+    },
+    {
+     "id": "mesa",
+     "label": "mesa"
+    },
+    {
+     "id": "lampara",
+     "label": "lámpara"
+    },
+    {
+     "id": "espejo",
+     "label": "espejo"
+    },
+    {
+     "id": "nevera",
+     "label": "nevera"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: flores del ramo",
+  "descripcion": "Recordar flores del ramo tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "rosa",
+     "label": "rosa"
+    },
+    {
+     "id": "clavel",
+     "label": "clavel"
+    },
+    {
+     "id": "girasol",
+     "label": "girasol"
+    },
+    {
+     "id": "margarita",
+     "label": "margarita"
+    },
+    {
+     "id": "tulipan",
+     "label": "tulipán"
+    },
+    {
+     "id": "flor",
+     "label": "flor"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: el bocadillo",
+  "descripcion": "Recordar el bocadillo tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "pan",
+     "label": "pan"
+    },
+    {
+     "id": "queso",
+     "label": "queso"
+    },
+    {
+     "id": "jamon",
+     "label": "jamón"
+    },
+    {
+     "id": "tomate",
+     "label": "tomate"
+    },
+    {
+     "id": "lechuga",
+     "label": "lechuga"
+    },
+    {
+     "id": "huevo",
+     "label": "huevo"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: lo que se enchufa",
+  "descripcion": "Recordar lo que se enchufa tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "television",
+     "label": "televisión"
+    },
+    {
+     "id": "lampara",
+     "label": "lampara"
+    },
+    {
+     "id": "nevera",
+     "label": "nevera"
+    },
+    {
+     "id": "telefono",
+     "label": "telefono"
+    },
+    {
+     "id": "reloj",
+     "label": "reloj"
+    },
+    {
+     "id": "espejo",
+     "label": "espejo"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cosas que se abren",
+  "descripcion": "Recordar cosas que se abren tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "puerta",
+     "label": "puerta"
+    },
+    {
+     "id": "ventana",
+     "label": "ventana"
+    },
+    {
+     "id": "libro",
+     "label": "libro"
+    },
+    {
+     "id": "candado",
+     "label": "candado"
+    },
+    {
+     "id": "paraguas",
+     "label": "paraguas"
+    },
+    {
+     "id": "botella",
+     "label": "botella"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: transportes por tierra",
+  "descripcion": "Recordar transportes por tierra tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "coche",
+     "label": "coche"
+    },
+    {
+     "id": "moto",
+     "label": "moto"
+    },
+    {
+     "id": "bicicleta",
+     "label": "bicicleta"
+    },
+    {
+     "id": "camion",
+     "label": "camion"
+    },
+    {
+     "id": "autobus",
+     "label": "autobus"
+    },
+    {
+     "id": "tren",
+     "label": "tren"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: la mascota y su mundo",
+  "descripcion": "Recordar la mascota y su mundo tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "gato",
+     "label": "gato"
+    },
+    {
+     "id": "perro",
+     "label": "perro"
+    },
+    {
+     "id": "conejo",
+     "label": "conejo"
+    },
+    {
+     "id": "pajaro",
+     "label": "pajaro"
+    },
+    {
+     "id": "raton",
+     "label": "raton"
+    },
+    {
+     "id": "pez",
+     "label": "pez"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: la verdulería",
+  "descripcion": "Recordar la verdulería tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "tomate",
+     "label": "tomate"
+    },
+    {
+     "id": "cebolla",
+     "label": "cebolla"
+    },
+    {
+     "id": "lechuga",
+     "label": "lechuga"
+    },
+    {
+     "id": "pimiento",
+     "label": "pimiento"
+    },
+    {
+     "id": "patata",
+     "label": "patata"
+    },
+    {
+     "id": "zanahoria",
+     "label": "zanahoria"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cosas duras",
+  "descripcion": "Recordar cosas duras tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "piedra",
+     "label": "piedra"
+    },
+    {
+     "id": "llave",
+     "label": "llave"
+    },
+    {
+     "id": "candado",
+     "label": "candado"
+    },
+    {
+     "id": "martillo",
+     "label": "martillo"
+    },
+    {
+     "id": "campana",
+     "label": "campana"
+    },
+    {
+     "id": "olla",
+     "label": "olla"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cosas de tela",
+  "descripcion": "Recordar cosas de tela tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "toalla",
+     "label": "toalla"
+    },
+    {
+     "id": "servilleta",
+     "label": "servilleta"
+    },
+    {
+     "id": "bufanda",
+     "label": "bufanda"
+    },
+    {
+     "id": "camisa",
+     "label": "camisa"
+    },
+    {
+     "id": "pantalon",
+     "label": "pantalon"
+    },
+    {
+     "id": "vestido",
+     "label": "vestido"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: la merienda dulce",
+  "descripcion": "Recordar la merienda dulce tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "galleta",
+     "label": "galleta"
+    },
+    {
+     "id": "leche",
+     "label": "leche"
+    },
+    {
+     "id": "pan",
+     "label": "pan"
+    },
+    {
+     "id": "queso",
+     "label": "queso"
+    },
+    {
+     "id": "cafe",
+     "label": "cafe"
+    },
+    {
+     "id": "huevo",
+     "label": "huevo"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "memoria_visual",
+  "nombre": "Memoria: cosas del jardín (2)",
+  "descripcion": "Recordar cosas del jardín (2) tras ocultarlas. Memoria visual.",
+  "parametros_json": {
+   "dificultad": "media",
+   "recordar_min": 2,
+   "recordar_max": 4,
+   "segundos": 60,
+   "banco": [
+    {
+     "id": "maceta",
+     "label": "maceta"
+    },
+    {
+     "id": "flor",
+     "label": "flor"
+    },
+    {
+     "id": "rosa",
+     "label": "rosa"
+    },
+    {
+     "id": "girasol",
+     "label": "girasol"
+    },
+    {
+     "id": "hierba",
+     "label": "hierba"
+    },
+    {
+     "id": "arbol",
+     "label": "arbol"
+    },
+    {
+     "id": "margarita",
+     "label": "margarita"
+    }
+   ]
+  }
  }
 ]
