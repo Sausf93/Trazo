@@ -740,3 +740,22 @@ class DocumentoContenidoOut(BaseModel):
     nombre_archivo: str
     mime: str
     contenido_b64: str
+
+
+# ---- Banco de pruebas (veredictos de revisión interna) ----
+class BancoVeredictoIn(BaseModel):
+    actividad: str
+    estado: str  # revisar | otro_grupo
+    nota: str = ""
+    marcado_por: str = ""
+
+
+class BancoVeredictoOut(BaseModel):
+    id: str
+    actividad: str
+    estado: str
+    nota: str
+    marcado_por: str
+    fecha: datetime
+
+    model_config = ConfigDict(from_attributes=True)

@@ -258,6 +258,24 @@ class DocumentoLegal(Base):
     fecha: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
 
+class BancoVeredicto(Base):
+    """Veredicto del BANCO DE PRUEBAS (revisión interna de actividades por Saulo /
+    Laura). NO contiene datos de personas: solo el nombre de la actividad, el
+    veredicto (revisar/otro_grupo), la nota (el porqué) y quién la marcó. Vive
+    aparte del modelo clínico; se accede con un token compartido (no login de
+    centro). Sirve para que quien revisa marque y el equipo lo consolide."""
+
+    __tablename__ = "banco_veredictos"
+    __table_args__ = (UniqueConstraint("actividad", "marcado_por", name="uq_banco_act_persona"),)
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    actividad: Mapped[str] = mapped_column(String(200), nullable=False, index=True)
+    estado: Mapped[str] = mapped_column(String(20), nullable=False)  # revisar | otro_grupo
+    nota: Mapped[str] = mapped_column(Text, nullable=False, default="")
+    marcado_por: Mapped[str] = mapped_column(String(80), nullable=False, default="")
+    fecha: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
 class Sesion(Base):
     __tablename__ = "sesiones"
 

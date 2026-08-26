@@ -428,9 +428,56 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
         _veredictos = ver;
         _cargando = false;
       });
+      await _asegurarNombre();
     } catch (_) {
       if (!mounted) return;
       setState(() => _cargando = false);
+    }
+  }
+
+  /// Pregunta UNA vez quién está revisando (Saulo, Laura…) para que sus marcas
+  /// viajen con su nombre al servidor y el equipo sepa quién dijo qué.
+  Future<void> _asegurarNombre() async {
+    final actual = await BancoVeredictos.instance.nombreMarcador();
+    if (actual.isNotEmpty || !mounted) return;
+    final ctrl = TextEditingController();
+    final nombre = await showDialog<String>(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) {
+        var t = '';
+        return StatefulBuilder(
+          builder: (ctx, setD) => AlertDialog(
+            title: const Text('¿Quién va a revisar?'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                    'Tu nombre acompaña a cada marca (p. ej. Saulo, Laura).'),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: ctrl,
+                  autofocus: true,
+                  onChanged: (v) => setD(() => t = v.trim()),
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(), hintText: 'Tu nombre'),
+                ),
+              ],
+            ),
+            actions: [
+              FilledButton(
+                onPressed: t.isEmpty ? null : () => Navigator.pop(ctx, t),
+                child: const Text('Empezar'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+    ctrl.dispose();
+    if (nombre != null && nombre.isNotEmpty) {
+      await BancoVeredictos.instance.fijarNombre(nombre);
     }
   }
 

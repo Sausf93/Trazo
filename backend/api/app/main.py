@@ -18,6 +18,7 @@ from app import models  # noqa: F401
 from app.routers import (
     alertas,
     auth,
+    banco,
     dispositivos,
     documentos,
     ejercicios,
@@ -159,5 +160,6 @@ app.include_router(planes.router)
 app.include_router(objetivos.router)
 app.include_router(dispositivos.router)
 app.include_router(documentos.router)
+app.include_router(banco.router)
 app.include_router(staff.router)
 app.include_router(plataforma.router)
