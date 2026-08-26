@@ -171,7 +171,7 @@ class _MemoriaParejasWidgetState extends State<MemoriaParejasWidget> {
       final pa = _primera!;
       _primera = null;
       _timer?.cancel();
-      _timer = Timer(const Duration(milliseconds: 2000), () {
+      _timer = Timer(const Duration(milliseconds: 1100), () {
         if (!mounted) return;
         setState(() {
           _cartas[pa].estado = _Estado.abajo;

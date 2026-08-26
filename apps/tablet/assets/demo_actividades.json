@@ -8113,7 +8113,7 @@
    "plantilla": "busqueda_visual",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Busca plato",
+    "instruccion": "Toca todas las figuras de cuenco",
     "objetivo": {
      "id": "bol",
      "label": "cuenco"
@@ -43211,93 +43211,6 @@
    ]
   },
   {
-   "ejercicio_id": "Coplas con rima",
-   "nombre": "Coplas con rima",
-   "bloque": "lenguaje",
-   "plantilla": "seleccion_multiple",
-   "estado": "en_pruebas",
-   "render": {
-    "instruccion": "Elige la respuesta",
-    "enunciado": "Tengo una muñeca vestida de...",
-    "imagen": null,
-    "audio": null,
-    "opciones": [
-     "azul",
-     "rosa",
-     "verde",
-     "rojo"
-    ]
-   },
-   "cantidad_objetivo": {
-    "n_opciones": 4,
-    "item_id": "i3",
-    "correcta": "azul"
-   },
-   "metricas": [
-    "correcto",
-    "tiempo_ms",
-    "num_toques"
-   ]
-  },
-  {
-   "ejercicio_id": "El aumentativo",
-   "nombre": "El aumentativo",
-   "bloque": "lenguaje",
-   "plantilla": "seleccion_multiple",
-   "estado": "en_pruebas",
-   "render": {
-    "instruccion": "Elige la respuesta",
-    "enunciado": "El aumentativo de SILLA es...",
-    "imagen": null,
-    "audio": null,
-    "opciones": [
-     "sillón",
-     "silletín",
-     "silleta",
-     "sillita"
-    ]
-   },
-   "cantidad_objetivo": {
-    "n_opciones": 4,
-    "item_id": "i3",
-    "correcta": "sillón"
-   },
-   "metricas": [
-    "correcto",
-    "tiempo_ms",
-    "num_toques"
-   ]
-  },
-  {
-   "ejercicio_id": "Aumentativos de siempre",
-   "nombre": "Aumentativos de siempre",
-   "bloque": "lenguaje",
-   "plantilla": "seleccion_multiple",
-   "estado": "en_pruebas",
-   "render": {
-    "instruccion": "Elige la respuesta",
-    "enunciado": "El aumentativo de COCHE es...",
-    "imagen": null,
-    "audio": null,
-    "opciones": [
-     "cochazo",
-     "carricoche",
-     "cochera",
-     "cochecito"
-    ]
-   },
-   "cantidad_objetivo": {
-    "n_opciones": 4,
-    "item_id": "i3",
-    "correcta": "cochazo"
-   },
-   "metricas": [
-    "correcto",
-    "tiempo_ms",
-    "num_toques"
-   ]
-  },
-  {
    "ejercicio_id": "El diminutivo",
    "nombre": "El diminutivo",
    "bloque": "lenguaje",
@@ -43396,7 +43309,7 @@
     "imagen": null,
     "audio": null,
     "opciones": [
-     "chsss",
+     "shhh",
      "aúpa",
      "muá",
      "achís"
@@ -43405,7 +43318,7 @@
    "cantidad_objetivo": {
     "n_opciones": 4,
     "item_id": "i3",
-    "correcta": "chsss"
+    "correcta": "shhh"
    },
    "metricas": [
     "correcto",
