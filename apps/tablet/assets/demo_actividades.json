@@ -5535,7 +5535,7 @@
      },
      {
       "id": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      },
      {
       "id": "gafas",
@@ -5565,7 +5565,7 @@
      },
      {
       "id": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      },
      {
       "id": "gafas",
@@ -7228,7 +7228,7 @@
      },
      {
       "id": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      },
      {
       "id": "puerta",
@@ -7262,7 +7262,7 @@
      },
      {
       "id": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      },
      {
       "id": "jabon",
@@ -7295,13 +7295,13 @@
     "a_recordar": [
      {
       "id": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      }
     ],
     "rejilla_seleccion": [
      {
       "id": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      },
      {
       "id": "llave",
@@ -8299,7 +8299,7 @@
     "celdas": [
      {
       "id": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      },
      {
       "id": "martillo",
@@ -13903,7 +13903,7 @@
      },
      {
       "id": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      }
     ]
    },
@@ -13944,7 +13944,7 @@
      },
      {
       "id": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      },
      {
       "id": "jabon",
@@ -32161,12 +32161,12 @@
      {
       "carta": "cepillo_0",
       "par": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      },
      {
       "carta": "cepillo_1",
       "par": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      },
      {
       "carta": "lapiz_0",
@@ -32966,7 +32966,7 @@
      {
       "carta": "cepillo_0",
       "par": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      },
      {
       "carta": "toalla_0",
@@ -33001,7 +33001,7 @@
      {
       "carta": "cepillo_1",
       "par": "cepillo",
-      "label": "cepillo"
+      "label": "cepillo de pelo"
      },
      {
       "carta": "jabon_0",
@@ -41608,6 +41608,1314 @@
     "n_opciones": 4,
     "item_id": "i3",
     "correcta": "Unas gafas"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La avenida más ancha",
+   "nombre": "La avenida más ancha",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más ancho?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La escalera",
+     "El callejón",
+     "El paseo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El paseo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Estrecho como una rendija",
+   "nombre": "Estrecho como una rendija",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más estrecha?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La avenida",
+     "La carretera",
+     "La vereda"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La vereda"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El paso más ancho de la casa",
+   "nombre": "El paso más ancho de la casa",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más ancho?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La rendija",
+     "El hueco de la escalera",
+     "El pasillo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El pasillo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El muro más grueso",
+   "nombre": "El muro más grueso",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más gruesa?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La varilla",
+     "El palo",
+     "La columna"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La columna"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Sogas gruesas, hilos finos",
+   "nombre": "Sogas gruesas, hilos finos",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más gruesa?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El cordón",
+     "La cadenita del reloj",
+     "La cadena del ancla"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La cadena del ancla"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La rebanada más gruesa",
+   "nombre": "La rebanada más gruesa",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más grueso?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La tira fina",
+     "La loncha de tocino",
+     "El corte grueso de tocino"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El corte grueso de tocino"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La tabla más fina",
+   "nombre": "La tabla más fina",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más fino?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El bastón",
+     "El palo de escoba",
+     "El palillo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El palillo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El pozo más hondo",
+   "nombre": "El pozo más hondo",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más profundo?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El vado",
+     "La orilla",
+     "El fondo del mar"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El fondo del mar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El plato más hondo",
+   "nombre": "El plato más hondo",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más honda?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La plancha",
+     "La sartén",
+     "La cazuela"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La cazuela"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La piscina más honda",
+   "nombre": "La piscina más honda",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más hondo?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El abrevadero",
+     "La alberca",
+     "El embalse"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El embalse"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El barranco más profundo",
+   "nombre": "El barranco más profundo",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más hondo?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El repecho",
+     "La cuesta",
+     "El precipicio"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El precipicio"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Liso como un espejo",
+   "nombre": "Liso como un espejo",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más lisa?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La arpillera",
+     "La lana rústica",
+     "La seda"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La seda"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Áspero al tacto",
+   "nombre": "Áspero al tacto",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más rugosa?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El azulejo",
+     "El canto rodado",
+     "La piedra pómez"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La piedra pómez"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El suelo más liso",
+   "nombre": "El suelo más liso",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más lisa?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El terreno pedregoso",
+     "La calzada adoquinada",
+     "La pista pulida"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La pista pulida"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Rugoso como la corteza",
+   "nombre": "Rugoso como la corteza",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más rugoso?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La seta lisa",
+     "El champiñón",
+     "El tronco viejo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El tronco viejo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Recto como una regla",
+   "nombre": "Recto como una regla",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más recta?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La ese",
+     "El círculo",
+     "La raya de la regla"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La raya de la regla"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La carretera con más curvas",
+   "nombre": "La carretera con más curvas",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más curva?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La pista de aterrizaje",
+     "La vía del tren recta",
+     "La carretera de la costa"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La carretera de la costa"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Curvo como una hoz",
+   "nombre": "Curvo como una hoz",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál es más curva?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El listón",
+     "La varilla recta",
+     "La herradura"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La herradura"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Palabras que riman",
+   "nombre": "Palabras que riman",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál rima con CAMPANA?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "manzana",
+     "fruta",
+     "torre",
+     "iglesia"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "i3",
+    "correcta": "manzana"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Busca la rima",
+   "nombre": "Busca la rima",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Cuál rima con NARANJA?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "zumo",
+     "árbol",
+     "fruta",
+     "granja"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "i6",
+    "correcta": "granja"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Coplas con rima",
+   "nombre": "Coplas con rima",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Tengo una muñeca vestida de...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "azul",
+     "rosa",
+     "verde",
+     "rojo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "i3",
+    "correcta": "azul"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El aumentativo",
+   "nombre": "El aumentativo",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El aumentativo de SILLA es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "sillón",
+     "silletín",
+     "silleta",
+     "sillita"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "i3",
+    "correcta": "sillón"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Aumentativos de siempre",
+   "nombre": "Aumentativos de siempre",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El aumentativo de COCHE es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "cochazo",
+     "carricoche",
+     "cochera",
+     "cochecito"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "i3",
+    "correcta": "cochazo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El diminutivo",
+   "nombre": "El diminutivo",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El diminutivo de FLOR es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "florecita",
+     "florero",
+     "floristería",
+     "florón"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "i3",
+    "correcta": "florecita"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Diminutivos cariñosos",
+   "nombre": "Diminutivos cariñosos",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "El diminutivo de POBRE es...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "pobrecito",
+     "pobretería",
+     "pobreza",
+     "pobretón"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "i3",
+    "correcta": "pobrecito"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Onomatopeyas de las cosas",
+   "nombre": "Onomatopeyas de las cosas",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué sonido hace el TELÉFONO antiguo?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "ring",
+     "cuac",
+     "tic-tac",
+     "muu"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "i3",
+    "correcta": "ring"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Sonidos que hacemos",
+   "nombre": "Sonidos que hacemos",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué decimos para pedir silencio?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "chsss",
+     "aúpa",
+     "muá",
+     "achís"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "i3",
+    "correcta": "chsss"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Comparaciones populares",
+   "nombre": "Comparaciones populares",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Más fuerte que un...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "roble",
+     "papel",
+     "hilo",
+     "junco"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "i3",
+    "correcta": "roble"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Tan claro como el agua",
+   "nombre": "Tan claro como el agua",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Tan feliz como una...",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "perdiz",
+     "rana",
+     "lechuza",
+     "sardina"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "i3",
+    "correcta": "perdiz"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La palabra que sobra",
+   "nombre": "La palabra que sobra",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "lunes, martes, enero, jueves. ¿Cuál sobra?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "enero",
+     "jueves",
+     "martes",
+     "lunes"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "i3",
+    "correcta": "enero"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Partes de la casa por fuera",
+   "nombre": "Partes de la casa por fuera",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Por ella entramos y salimos de la casa",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La chimenea",
+     "El tejado",
+     "La puerta"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La puerta"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Partes de la casa por dentro",
+   "nombre": "Partes de la casa por dentro",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Cuartito fresco donde se guardan los alimentos",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La buhardilla",
+     "El garaje",
+     "La despensa"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La despensa"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Partes del coche",
+   "nombre": "Partes del coche",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Se pisa para detener el coche",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El espejo",
+     "El faro",
+     "El freno"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El freno"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Partes de la bicicleta",
+   "nombre": "Partes de la bicicleta",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Suena 'rin rin' para avisar por la calle",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La cadena",
+     "El sillin",
+     "El timbre"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El timbre"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Partes del barco",
+   "nombre": "Partes del barco",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Se echa al fondo para que el barco no se mueva",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La proa",
+     "La vela",
+     "El ancla"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El ancla"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "En la estacion de tren",
+   "nombre": "En la estacion de tren",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Va delante y tira de todo el tren",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El anden",
+     "El vagon",
+     "La locomotora"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "La locomotora"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Partes del avion",
+   "nombre": "Partes del avion",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Sirven para despegar y aterrizar en la pista",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La cabina",
+     "La cola",
+     "Las ruedas"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Las ruedas"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El oficio y su lugar de trabajo",
+   "nombre": "El oficio y su lugar de trabajo",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Ensena a los ninos en la escuela",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El pescador",
+     "El cocinero",
+     "El maestro"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El maestro"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Vehiculos de servicio y emergencia",
+   "nombre": "Vehiculos de servicio y emergencia",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Recoge la basura por las calles",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La ambulancia",
+     "El taxi",
+     "El camion de la basura"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El camion de la basura"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Platos tipicos de Espana",
+   "nombre": "Platos tipicos de Espana",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Guiso de garbanzos con carne y verduras",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El flan",
+     "La paella",
+     "El cocido"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El cocido"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Embutidos y fiambres",
+   "nombre": "Embutidos y fiambres",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Embutido grande con pintas de grasa, en lonchas",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El chorizo",
+     "La morcilla",
+     "El salchichon"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "El salchichon"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Rojo y que se coma",
+   "nombre": "Rojo y que se coma",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Rojo y que se come:",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Zanahoria",
+     "Semáforo",
+     "Pimiento rojo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Pimiento rojo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Blanco y que se beba",
+   "nombre": "Blanco y que se beba",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Blanco y que se bebe:",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Refresco de cola",
+     "Algodón",
+     "Batido de vainilla"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Batido de vainilla"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Grande y con ruedas",
+   "nombre": "Grande y con ruedas",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Grande y con ruedas:",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Bicicleta",
+     "Elefante",
+     "Autocar"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Autocar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Amarillo y que se coma",
+   "nombre": "Amarillo y que se coma",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Amarillo y que se come:",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Pan integral",
+     "Chubasquero amarillo",
+     "Queso curado"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Queso curado"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Verde y que se coma",
+   "nombre": "Verde y que se coma",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Verde y que se come:",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Fresa",
+     "Pino",
+     "Guisantes"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Guisantes"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Redondo y que se coma",
+   "nombre": "Redondo y que se coma",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Redondo y que se come:",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Judía verde",
+     "Reloj de pared",
+     "Melocotón"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Melocotón"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Lo que tienen en común",
+   "nombre": "Lo que tienen en común",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "¿Qué tienen en común la silla y la mesa?",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Que son animales",
+     "Que son alimentos",
+     "Que son muebles"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "Que son muebles"
    },
    "metricas": [
     "correcto",

@@ -2334,7 +2334,7 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     }
    ]
   }
@@ -7015,7 +7015,7 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     },
     {
      "id": "telefono",
@@ -7303,7 +7303,7 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     },
     {
      "id": "libro",
@@ -9373,7 +9373,7 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     }
    ]
   }
@@ -9403,7 +9403,7 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     },
     {
      "id": "lapiz",
@@ -10045,7 +10045,7 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     }
    ]
   }
@@ -10105,7 +10105,7 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     }
    ]
   }
@@ -10133,7 +10133,7 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     },
     {
      "id": "lapiz",
@@ -13261,7 +13261,7 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     },
     {
      "id": "espejo",
@@ -13293,7 +13293,7 @@
    "distractores": [
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     },
     {
      "id": "espejo",
@@ -13329,7 +13329,7 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     },
     {
      "id": "cepillo_dientes",
@@ -25332,7 +25332,7 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     },
     {
      "id": "lapiz",
@@ -25674,7 +25674,7 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo"
+     "label": "cepillo de pelo"
     },
     {
      "id": "cepillo_dientes",
@@ -44529,6 +44529,3363 @@
       "Una nevera",
       "Una barca",
       "Una farola"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "La avenida más ancha",
+  "descripcion": "En cada pareja de calles y caminos, elige lo más ancho.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más ancha?",
+     "correcta": "La avenida",
+     "distractores": [
+      "El callejón",
+      "La acera"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más ancha?",
+     "correcta": "La autopista",
+     "distractores": [
+      "El sendero",
+      "La vereda"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más ancha?",
+     "correcta": "La carretera",
+     "distractores": [
+      "El camino de tierra",
+      "El atajo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más ancho?",
+     "correcta": "El paseo",
+     "distractores": [
+      "El callejón",
+      "La escalera"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más ancha?",
+     "correcta": "La calle mayor",
+     "distractores": [
+      "El callejón",
+      "El portal"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Estrecho como una rendija",
+  "descripcion": "En cada grupo, señala lo más estrecho.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más estrecho?",
+     "correcta": "El callejón",
+     "distractores": [
+      "La avenida",
+      "La plaza"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más estrecha?",
+     "correcta": "La rendija",
+     "distractores": [
+      "La puerta",
+      "El portón"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más estrecho?",
+     "correcta": "El pasillo",
+     "distractores": [
+      "El salón",
+      "La cocina"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más estrecha?",
+     "correcta": "La vereda",
+     "distractores": [
+      "La carretera",
+      "La avenida"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más estrecha?",
+     "correcta": "La ranura",
+     "distractores": [
+      "La ventana",
+      "La puerta"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El paso más ancho de la casa",
+  "descripcion": "Compara puertas y huecos de la casa y di cuál es más ancho.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más ancha?",
+     "correcta": "La puerta del salón",
+     "distractores": [
+      "La puerta del armario",
+      "La gatera"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más ancho?",
+     "correcta": "El portón del garaje",
+     "distractores": [
+      "La puerta de casa",
+      "La ventana"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más ancha?",
+     "correcta": "La entrada principal",
+     "distractores": [
+      "La rendija del buzón",
+      "La mirilla"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más ancho?",
+     "correcta": "El pasillo",
+     "distractores": [
+      "El hueco de la escalera",
+      "La rendija"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más ancha?",
+     "correcta": "La cristalera",
+     "distractores": [
+      "El ventanuco",
+      "La rendija"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El muro más grueso",
+  "descripcion": "Señala lo más grueso en cada pareja de la construcción.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más grueso?",
+     "correcta": "El muro del castillo",
+     "distractores": [
+      "El tabique",
+      "La mampara"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más gruesa?",
+     "correcta": "La muralla",
+     "distractores": [
+      "La valla",
+      "La verja"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más grueso?",
+     "correcta": "El pilar de piedra",
+     "distractores": [
+      "La caña",
+      "El listón"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más gruesa?",
+     "correcta": "La columna",
+     "distractores": [
+      "El palo",
+      "La varilla"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más gruesa?",
+     "correcta": "La losa",
+     "distractores": [
+      "La baldosa",
+      "La chapa"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Sogas gruesas, hilos finos",
+  "descripcion": "En cada grupo, elige lo más grueso.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más gruesa?",
+     "correcta": "La maroma del barco",
+     "distractores": [
+      "El hilo de coser",
+      "El bramante"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más gruesa?",
+     "correcta": "La soga",
+     "distractores": [
+      "La cuerda de tender",
+      "El cordel"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más grueso?",
+     "correcta": "El cable",
+     "distractores": [
+      "El alambre",
+      "El hilo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más gruesa?",
+     "correcta": "La cadena del ancla",
+     "distractores": [
+      "La cadenita del reloj",
+      "El cordón"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más grueso?",
+     "correcta": "El cabo",
+     "distractores": [
+      "El sedal",
+      "La hebra"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "La rebanada más gruesa",
+  "descripcion": "Compara y di qué está cortado más grueso.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más grueso, cortado a lo bruto?",
+     "correcta": "El taco de queso",
+     "distractores": [
+      "La loncha de queso",
+      "La lámina de queso"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más gruesa?",
+     "correcta": "La rodaja gorda de chorizo",
+     "distractores": [
+      "La rodaja fina",
+      "La lonchita"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más gruesa?",
+     "correcta": "La rebanada gruesa de pan",
+     "distractores": [
+      "La rebanada fina",
+      "La tostada delgada"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más grueso?",
+     "correcta": "El corte grueso de tocino",
+     "distractores": [
+      "La loncha de tocino",
+      "La tira fina"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más grueso?",
+     "correcta": "El trozo de bizcocho",
+     "distractores": [
+      "La galleta",
+      "La oblea"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "La tabla más fina",
+  "descripcion": "Elige lo más fino o delgado en cada pareja de madera.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más fina?",
+     "correcta": "La chapa de madera",
+     "distractores": [
+      "El tablón",
+      "La viga"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más fino?",
+     "correcta": "El listón",
+     "distractores": [
+      "La viga",
+      "El madero"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más fina?",
+     "correcta": "La lámina de contrachapado",
+     "distractores": [
+      "La tabla gruesa",
+      "El poste"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más fino?",
+     "correcta": "El palillo",
+     "distractores": [
+      "El palo de escoba",
+      "El bastón"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más fina?",
+     "correcta": "La varilla",
+     "distractores": [
+      "El poste",
+      "La columna"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El pozo más hondo",
+  "descripcion": "Señala lo más hondo o profundo en cada pareja.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más hondo?",
+     "correcta": "El pozo",
+     "distractores": [
+      "El charco",
+      "El bache"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más honda?",
+     "correcta": "La sima",
+     "distractores": [
+      "La zanja",
+      "El surco"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más hondo?",
+     "correcta": "El aljibe",
+     "distractores": [
+      "La palangana",
+      "El cubo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más profundo?",
+     "correcta": "El fondo del mar",
+     "distractores": [
+      "La orilla",
+      "El vado"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más hondo?",
+     "correcta": "El pozo de la mina",
+     "distractores": [
+      "La acequia",
+      "La cuneta"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El plato más hondo",
+  "descripcion": "Compara la vajilla y di cuál es más honda.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más hondo?",
+     "correcta": "El plato sopero",
+     "distractores": [
+      "El plato llano",
+      "La bandeja"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más honda?",
+     "correcta": "La sopera",
+     "distractores": [
+      "La fuente plana",
+      "El plato de postre"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más hondo?",
+     "correcta": "El cuenco",
+     "distractores": [
+      "El platito",
+      "La tapa"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más honda?",
+     "correcta": "La cazuela",
+     "distractores": [
+      "La sartén",
+      "La plancha"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más hondo?",
+     "correcta": "El tazón",
+     "distractores": [
+      "El plato llano",
+      "El posavasos"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "La piscina más honda",
+  "descripcion": "Elige lo más profundo en cada pareja de agua.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Dónde cubre más el agua?",
+     "correcta": "La parte honda de la piscina",
+     "distractores": [
+      "La parte de los niños",
+      "El chapoteadero"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más honda?",
+     "correcta": "La piscina de saltos",
+     "distractores": [
+      "La piscina infantil",
+      "La piscina hinchable"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más profundo?",
+     "correcta": "El lago",
+     "distractores": [
+      "El estanque",
+      "La fuente"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más hondo?",
+     "correcta": "El embalse",
+     "distractores": [
+      "La alberca",
+      "El abrevadero"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más honda?",
+     "correcta": "La bañera llena",
+     "distractores": [
+      "El barreño",
+      "La jofaina"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El barranco más profundo",
+  "descripcion": "Señala el accidente del terreno más hondo.",
+  "parametros_json": {
+   "dificultad": "dificil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más profundo?",
+     "correcta": "El cañón del río",
+     "distractores": [
+      "La vaguada",
+      "El hoyo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más hondo?",
+     "correcta": "El barranco",
+     "distractores": [
+      "El arroyo",
+      "La rambla"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más profunda?",
+     "correcta": "La garganta de la montaña",
+     "distractores": [
+      "La ladera",
+      "El llano"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más hondo?",
+     "correcta": "El precipicio",
+     "distractores": [
+      "La cuesta",
+      "El repecho"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más profundo?",
+     "correcta": "El valle encajonado",
+     "distractores": [
+      "La colina",
+      "La loma"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Liso como un espejo",
+  "descripcion": "En cada pareja, elige lo más liso y suave al tacto.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más liso?",
+     "correcta": "El cristal",
+     "distractores": [
+      "La lija",
+      "El ladrillo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más liso?",
+     "correcta": "El mármol pulido",
+     "distractores": [
+      "La piedra tosca",
+      "El corcho"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más liso?",
+     "correcta": "El espejo",
+     "distractores": [
+      "La pared de gotelé",
+      "El estropajo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más lisa?",
+     "correcta": "La seda",
+     "distractores": [
+      "La lana rústica",
+      "La arpillera"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más liso?",
+     "correcta": "El hielo",
+     "distractores": [
+      "La grava",
+      "La corteza"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Áspero al tacto",
+  "descripcion": "En cada pareja, elige lo más áspero o rugoso.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más áspera?",
+     "correcta": "La lija",
+     "distractores": [
+      "El cristal",
+      "El papel satinado"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más rugosa?",
+     "correcta": "La corteza del árbol",
+     "distractores": [
+      "La hoja lisa",
+      "El pétalo"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más áspero?",
+     "correcta": "El estropajo",
+     "distractores": [
+      "La esponja suave",
+      "El algodón"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más rugosa?",
+     "correcta": "La piedra pómez",
+     "distractores": [
+      "El canto rodado",
+      "El azulejo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más áspera?",
+     "correcta": "La lengua del gato",
+     "distractores": [
+      "La seda",
+      "El terciopelo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El suelo más liso",
+  "descripcion": "Compara suelos y caminos y di cuál es más liso.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más liso para andar?",
+     "correcta": "El suelo de baldosas",
+     "distractores": [
+      "El camino de piedras",
+      "El sendero de tierra"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más liso?",
+     "correcta": "La carretera asfaltada",
+     "distractores": [
+      "El camino de guijarros",
+      "La vereda con raíces"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más liso?",
+     "correcta": "El parqué",
+     "distractores": [
+      "El empedrado",
+      "La grava"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más lisa?",
+     "correcta": "La pista pulida",
+     "distractores": [
+      "La calzada adoquinada",
+      "El terreno pedregoso"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más liso?",
+     "correcta": "El mármol del portal",
+     "distractores": [
+      "El felpudo",
+      "La rejilla"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Rugoso como la corteza",
+  "descripcion": "Elige lo más rugoso de la naturaleza.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más rugosa?",
+     "correcta": "La corteza del pino",
+     "distractores": [
+      "El pétalo de la rosa",
+      "La hoja tierna"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más rugosa?",
+     "correcta": "La cáscara de la nuez",
+     "distractores": [
+      "La piel de la uva",
+      "La cáscara del huevo"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más rugosa?",
+     "correcta": "La piña del pino",
+     "distractores": [
+      "La cereza",
+      "La guinda"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más rugoso?",
+     "correcta": "El tronco viejo",
+     "distractores": [
+      "El champiñón",
+      "La seta lisa"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más rugosa?",
+     "correcta": "La piel del melón cantalupo",
+     "distractores": [
+      "La piel de la manzana",
+      "La piel de la ciruela"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Recto como una regla",
+  "descripcion": "En cada pareja, elige lo más recto, sin curvas.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más recto?",
+     "correcta": "La regla",
+     "distractores": [
+      "El aro",
+      "La herradura"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más recta?",
+     "correcta": "La flecha",
+     "distractores": [
+      "El anzuelo",
+      "El garfio"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más recto?",
+     "correcta": "El poste",
+     "distractores": [
+      "El bastón curvado",
+      "El gancho"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más recta?",
+     "correcta": "La raya de la regla",
+     "distractores": [
+      "El círculo",
+      "La ese"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más recto?",
+     "correcta": "El palo de la escoba",
+     "distractores": [
+      "El bastón de puño curvo",
+      "La hoz"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "La carretera con más curvas",
+  "descripcion": "Elige el camino o la cosa con más curvas.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál tiene más curvas?",
+     "correcta": "La carretera de montaña",
+     "distractores": [
+      "La recta de la llanura",
+      "La autopista recta"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más curvo?",
+     "correcta": "El río que serpentea",
+     "distractores": [
+      "El canal recto",
+      "La acequia recta"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál tiene más curvas?",
+     "correcta": "El puerto de montaña",
+     "distractores": [
+      "El paseo recto",
+      "La avenida recta"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más curva?",
+     "correcta": "La carretera de la costa",
+     "distractores": [
+      "La vía del tren recta",
+      "La pista de aterrizaje"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más curvo?",
+     "correcta": "El sendero en zigzag",
+     "distractores": [
+      "La escalera recta",
+      "El pasillo recto"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Curvo como una hoz",
+  "descripcion": "En cada pareja de herramientas, elige la más curva.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más curva?",
+     "correcta": "La hoz",
+     "distractores": [
+      "El destornillador",
+      "La lima"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más curvo?",
+     "correcta": "El gancho",
+     "distractores": [
+      "El clavo",
+      "La escarpia recta"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más curva?",
+     "correcta": "La guadaña",
+     "distractores": [
+      "El rastrillo recto",
+      "La pala"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más curva?",
+     "correcta": "La herradura",
+     "distractores": [
+      "La varilla recta",
+      "El listón"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál es más curvo?",
+     "correcta": "El garfio",
+     "distractores": [
+      "El clavo",
+      "El punzón"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Palabras que riman",
+  "descripcion": "Elige la palabra que rima con la que se indica.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con GATO?",
+     "correcta": "pato",
+     "distractores": [
+      "perro",
+      "mesa",
+      "sol"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con FLOR?",
+     "correcta": "amor",
+     "distractores": [
+      "rosa",
+      "hoja",
+      "tallo"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con LUNA?",
+     "correcta": "cuna",
+     "distractores": [
+      "sol",
+      "cielo",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con CAMPANA?",
+     "correcta": "manzana",
+     "distractores": [
+      "iglesia",
+      "torre",
+      "fruta"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con ROSA?",
+     "correcta": "mariposa",
+     "distractores": [
+      "flor",
+      "jardín",
+      "espina"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con SILLA?",
+     "correcta": "orilla",
+     "distractores": [
+      "mesa",
+      "mueble",
+      "cocina"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Busca la rima",
+  "descripcion": "Encuentra entre las opciones la que suena igual al final.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con CORAZÓN?",
+     "correcta": "canción",
+     "distractores": [
+      "amor",
+      "pecho",
+      "latido"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con VENTANA?",
+     "correcta": "mañana",
+     "distractores": [
+      "cristal",
+      "casa",
+      "puerta"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con ZAPATO?",
+     "correcta": "gato",
+     "distractores": [
+      "pie",
+      "bota",
+      "calcetín"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con CABALLO?",
+     "correcta": "gallo",
+     "distractores": [
+      "yegua",
+      "establo",
+      "montura"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con ESTRELLA?",
+     "correcta": "botella",
+     "distractores": [
+      "cielo",
+      "luna",
+      "brillo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con MOLINO?",
+     "correcta": "camino",
+     "distractores": [
+      "viento",
+      "harina",
+      "aspas"
+     ]
+    },
+    {
+     "id": "i6",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cuál rima con NARANJA?",
+     "correcta": "granja",
+     "distractores": [
+      "fruta",
+      "zumo",
+      "árbol"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Coplas con rima",
+  "descripcion": "Completa el verso de la canción con la palabra que rima.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Debajo de un botón, ton, ton, había un...",
+     "correcta": "ratón",
+     "distractores": [
+      "gato",
+      "perro",
+      "pájaro"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Que llueva, que llueva, la Virgen de la...",
+     "correcta": "Cueva",
+     "distractores": [
+      "iglesia",
+      "montaña",
+      "ermita"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Aserrín, aserrán, los maderos de San...",
+     "correcta": "Juan",
+     "distractores": [
+      "Pedro",
+      "José",
+      "Antonio"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Tengo una muñeca vestida de...",
+     "correcta": "azul",
+     "distractores": [
+      "rojo",
+      "verde",
+      "rosa"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Pin pon es un muñeco de trapo y de...",
+     "correcta": "cartón",
+     "distractores": [
+      "madera",
+      "plástico",
+      "tela"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Estaba el señor Don Gato sentadito en su...",
+     "correcta": "tejado",
+     "distractores": [
+      "sillón",
+      "jardín",
+      "muro"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El aumentativo",
+  "descripcion": "Di cómo se llama esa cosa cuando es muy grande.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El aumentativo de CASA es...",
+     "correcta": "casona",
+     "distractores": [
+      "casita",
+      "casilla",
+      "caseta"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El aumentativo de HOMBRE es...",
+     "correcta": "hombrón",
+     "distractores": [
+      "hombrecito",
+      "hombrecillo",
+      "hombrera"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El aumentativo de PERRO es...",
+     "correcta": "perrazo",
+     "distractores": [
+      "perrito",
+      "perrera",
+      "perrillo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El aumentativo de SILLA es...",
+     "correcta": "sillón",
+     "distractores": [
+      "sillita",
+      "silleta",
+      "silletín"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El aumentativo de PUERTA es...",
+     "correcta": "portón",
+     "distractores": [
+      "puertecita",
+      "portillo",
+      "portezuela"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El aumentativo de TAZA es...",
+     "correcta": "tazón",
+     "distractores": [
+      "tacita",
+      "platillo",
+      "tazuela"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Aumentativos de siempre",
+  "descripcion": "Elige el aumentativo correcto de cada palabra.",
+  "parametros_json": {
+   "dificultad": "dificil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El aumentativo de CUCHARA es...",
+     "correcta": "cucharón",
+     "distractores": [
+      "cucharilla",
+      "cucharita",
+      "cucharadita"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El aumentativo de CAJA es...",
+     "correcta": "cajón",
+     "distractores": [
+      "cajita",
+      "cajetilla",
+      "casillero"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El aumentativo de LIBRO es...",
+     "correcta": "librote",
+     "distractores": [
+      "librito",
+      "libreta",
+      "librillo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El aumentativo de COCHE es...",
+     "correcta": "cochazo",
+     "distractores": [
+      "cochecito",
+      "cochera",
+      "carricoche"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El aumentativo de MUJER es...",
+     "correcta": "mujerona",
+     "distractores": [
+      "mujercita",
+      "mocita",
+      "doncella"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El aumentativo de NARIZ es...",
+     "correcta": "narizota",
+     "distractores": [
+      "naricilla",
+      "naricita",
+      "nariguera"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El diminutivo",
+  "descripcion": "Di cómo se llama esa cosa cuando es pequeña.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El diminutivo de PERRO es...",
+     "correcta": "perrito",
+     "distractores": [
+      "perrazo",
+      "perrera",
+      "perrote"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El diminutivo de GATO es...",
+     "correcta": "gatito",
+     "distractores": [
+      "gatazo",
+      "gatera",
+      "gatuno"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El diminutivo de CASA es...",
+     "correcta": "casita",
+     "distractores": [
+      "casona",
+      "caserón",
+      "casucha"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El diminutivo de FLOR es...",
+     "correcta": "florecita",
+     "distractores": [
+      "florón",
+      "floristería",
+      "florero"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El diminutivo de PAN es...",
+     "correcta": "panecillo",
+     "distractores": [
+      "panadería",
+      "panzón",
+      "panera"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El diminutivo de ÁRBOL es...",
+     "correcta": "arbolito",
+     "distractores": [
+      "arboleda",
+      "arbolón",
+      "arbusto"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Diminutivos cariñosos",
+  "descripcion": "Elige la forma pequeña y cariñosa de cada palabra.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El diminutivo de ABUELO es...",
+     "correcta": "abuelito",
+     "distractores": [
+      "abuelazo",
+      "abuelastro",
+      "abolengo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El diminutivo de MANO es...",
+     "correcta": "manita",
+     "distractores": [
+      "manaza",
+      "manopla",
+      "manazas"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El diminutivo de NIÑO es...",
+     "correcta": "niñito",
+     "distractores": [
+      "niñato",
+      "niñera",
+      "niñería"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El diminutivo de POBRE es...",
+     "correcta": "pobrecito",
+     "distractores": [
+      "pobretón",
+      "pobreza",
+      "pobretería"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El diminutivo de VIEJO es...",
+     "correcta": "viejecito",
+     "distractores": [
+      "vejestorio",
+      "vejez",
+      "viejales"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "El diminutivo de PÁJARO es...",
+     "correcta": "pajarito",
+     "distractores": [
+      "pajarraco",
+      "pajarera",
+      "pajarón"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Onomatopeyas de las cosas",
+  "descripcion": "Elige el sonido que hace cada objeto.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué sonido hace el RELOJ?",
+     "correcta": "tic-tac",
+     "distractores": [
+      "din-don",
+      "pío-pío",
+      "muá"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué sonido hace la CAMPANA?",
+     "correcta": "din-don",
+     "distractores": [
+      "tic-tac",
+      "cataplún",
+      "ris-ras"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué sonido hace un GLOBO al explotar?",
+     "correcta": "pum",
+     "distractores": [
+      "tilín",
+      "tic-tac",
+      "chas"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué sonido hace el TELÉFONO antiguo?",
+     "correcta": "ring",
+     "distractores": [
+      "muu",
+      "tic-tac",
+      "cuac"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué sonido hace un TAMBOR?",
+     "correcta": "pom-pom",
+     "distractores": [
+      "tilín",
+      "pío-pío",
+      "ris-ras"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué sonido hace una CAMPANILLA?",
+     "correcta": "tilín",
+     "distractores": [
+      "pum",
+      "muu",
+      "guau"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Sonidos que hacemos",
+  "descripcion": "Elige el sonido que hacen las personas en cada caso.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué decimos al estornudar?",
+     "correcta": "achís",
+     "distractores": [
+      "muá",
+      "aúpa",
+      "chsss"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cómo suena la risa?",
+     "correcta": "ja, ja, ja",
+     "distractores": [
+      "buá, buá",
+      "achís",
+      "chsss"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Cómo suena el llanto de un bebé?",
+     "correcta": "buá, buá",
+     "distractores": [
+      "ja, ja, ja",
+      "achís",
+      "tilín"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué decimos para pedir silencio?",
+     "correcta": "chsss",
+     "distractores": [
+      "achís",
+      "muá",
+      "aúpa"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué sonido hace un beso?",
+     "correcta": "muá",
+     "distractores": [
+      "achís",
+      "ja, ja, ja",
+      "chsss"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué decimos al alzar algo pesado?",
+     "correcta": "aúpa",
+     "distractores": [
+      "chsss",
+      "muá",
+      "achís"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Comparaciones populares",
+  "descripcion": "Completa el dicho de siempre: más... que...",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Más terco que una...",
+     "correcta": "mula",
+     "distractores": [
+      "gallina",
+      "paloma",
+      "abeja"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Más lento que una...",
+     "correcta": "tortuga",
+     "distractores": [
+      "liebre",
+      "gacela",
+      "flecha"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Más listo que el...",
+     "correcta": "hambre",
+     "distractores": [
+      "sueño",
+      "cansancio",
+      "frío"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Más fuerte que un...",
+     "correcta": "roble",
+     "distractores": [
+      "junco",
+      "hilo",
+      "papel"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Más blanco que la...",
+     "correcta": "nieve",
+     "distractores": [
+      "noche",
+      "tierra",
+      "brasa"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Más sordo que una...",
+     "correcta": "tapia",
+     "distractores": [
+      "ventana",
+      "puerta",
+      "mesa"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Tan claro como el agua",
+  "descripcion": "Completa la comparación de siempre: tan... como...",
+  "parametros_json": {
+   "dificultad": "dificil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Tan claro como el...",
+     "correcta": "agua",
+     "distractores": [
+      "barro",
+      "humo",
+      "carbón"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Tan bueno como el...",
+     "correcta": "pan",
+     "distractores": [
+      "vinagre",
+      "ajo",
+      "limón"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Tan fresco como una...",
+     "correcta": "lechuga",
+     "distractores": [
+      "brasa",
+      "sartén",
+      "tostada"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Tan feliz como una...",
+     "correcta": "perdiz",
+     "distractores": [
+      "sardina",
+      "lechuza",
+      "rana"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Tan negro como el...",
+     "correcta": "carbón",
+     "distractores": [
+      "algodón",
+      "papel",
+      "azúcar"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Tan dulce como la...",
+     "correcta": "miel",
+     "distractores": [
+      "sal",
+      "pimienta",
+      "mostaza"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "La palabra que sobra",
+  "descripcion": "Señala la palabra que no pega con las demás.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "manzana, pera, plátano, martillo. ¿Cuál sobra?",
+     "correcta": "martillo",
+     "distractores": [
+      "manzana",
+      "pera",
+      "plátano"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "rosa, clavel, margarita, silla. ¿Cuál sobra?",
+     "correcta": "silla",
+     "distractores": [
+      "rosa",
+      "clavel",
+      "margarita"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "perro, gato, caballo, mesa. ¿Cuál sobra?",
+     "correcta": "mesa",
+     "distractores": [
+      "perro",
+      "gato",
+      "caballo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "lunes, martes, enero, jueves. ¿Cuál sobra?",
+     "correcta": "enero",
+     "distractores": [
+      "lunes",
+      "martes",
+      "jueves"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "azul, verde, rojo, pan. ¿Cuál sobra?",
+     "correcta": "pan",
+     "distractores": [
+      "azul",
+      "verde",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "médico, panadero, cartero, zanahoria. ¿Cuál sobra?",
+     "correcta": "zanahoria",
+     "distractores": [
+      "médico",
+      "panadero",
+      "cartero"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Partes de la casa por fuera",
+  "descripcion": "Reconoce las partes exteriores de una casa por su descripcion.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Cubre la casa por arriba y por el resbala la lluvia",
+     "correcta": "El tejado",
+     "distractores": [
+      "La puerta",
+      "El suelo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Conducto por donde sale el humo del hogar",
+     "correcta": "La chimenea",
+     "distractores": [
+      "La ventana",
+      "El balcon"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Hueco con cristales por donde entra la luz del sol",
+     "correcta": "La ventana",
+     "distractores": [
+      "El tejado",
+      "La chimenea"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Por ella entramos y salimos de la casa",
+     "correcta": "La puerta",
+     "distractores": [
+      "El tejado",
+      "La chimenea"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Saliente con barandilla asomado a la calle",
+     "correcta": "El balcon",
+     "distractores": [
+      "La escalera",
+      "El tejado"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "La cara de la casa que da a la calle",
+     "correcta": "La fachada",
+     "distractores": [
+      "El suelo",
+      "La chimenea"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Partes de la casa por dentro",
+  "descripcion": "Identifica las partes interiores de la vivienda por lo que son.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Escalones para subir de un piso a otro",
+     "correcta": "La escalera",
+     "distractores": [
+      "El techo",
+      "La pared"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Lo que pisamos, bajo nuestros pies",
+     "correcta": "El suelo",
+     "distractores": [
+      "El techo",
+      "La ventana"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "La parte de arriba, sobre nuestra cabeza",
+     "correcta": "El techo",
+     "distractores": [
+      "El suelo",
+      "La puerta"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Cuartito fresco donde se guardan los alimentos",
+     "correcta": "La despensa",
+     "distractores": [
+      "El garaje",
+      "La buhardilla"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Bajo el tejado, guardamos alli los trastos viejos",
+     "correcta": "La buhardilla",
+     "distractores": [
+      "El sotano",
+      "La cocina"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Pasillo largo que une las habitaciones",
+     "correcta": "El corredor",
+     "distractores": [
+      "El balcon",
+      "La chimenea"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Partes del coche",
+  "descripcion": "Reconoce las partes del coche por su funcion.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Con el se conduce y se gira el coche",
+     "correcta": "El volante",
+     "distractores": [
+      "El faro",
+      "El maletero"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Ruedan por el suelo y llevan el coche",
+     "correcta": "Las ruedas",
+     "distractores": [
+      "El volante",
+      "El espejo"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Dan luz de noche por delante",
+     "correcta": "Los faros",
+     "distractores": [
+      "El maletero",
+      "El volante"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Se pisa para detener el coche",
+     "correcta": "El freno",
+     "distractores": [
+      "El faro",
+      "El espejo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Detras, alli se mete el equipaje",
+     "correcta": "El maletero",
+     "distractores": [
+      "El volante",
+      "El faro"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Sirve para ver los coches de atras",
+     "correcta": "El espejo",
+     "distractores": [
+      "El freno",
+      "El maletero"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Partes de la bicicleta",
+  "descripcion": "Identifica las partes de una bicicleta por su descripcion.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Se agarra con las manos para dirigir",
+     "correcta": "El manillar",
+     "distractores": [
+      "El pedal",
+      "El sillin"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Se pisan con los pies para avanzar",
+     "correcta": "Los pedales",
+     "distractores": [
+      "El manillar",
+      "El timbre"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Asiento donde va sentado el ciclista",
+     "correcta": "El sillin",
+     "distractores": [
+      "El pedal",
+      "El timbre"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Suena 'rin rin' para avisar por la calle",
+     "correcta": "El timbre",
+     "distractores": [
+      "El sillin",
+      "La cadena"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Une los pedales con la rueda y da vueltas",
+     "correcta": "La cadena",
+     "distractores": [
+      "El manillar",
+      "El sillin"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Redonda, gira y toca el suelo",
+     "correcta": "La rueda",
+     "distractores": [
+      "El timbre",
+      "El sillin"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Partes del barco",
+  "descripcion": "Reconoce las partes de un barco por su descripcion.",
+  "parametros_json": {
+   "dificultad": "dificil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "La parte de delante del barco",
+     "correcta": "La proa",
+     "distractores": [
+      "La popa",
+      "El ancla"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "La parte de atras del barco",
+     "correcta": "La popa",
+     "distractores": [
+      "La proa",
+      "La vela"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Tela grande que el viento empuja",
+     "correcta": "La vela",
+     "distractores": [
+      "El ancla",
+      "El timon"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Se echa al fondo para que el barco no se mueva",
+     "correcta": "El ancla",
+     "distractores": [
+      "La vela",
+      "La proa"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Con el se dirige el rumbo del barco",
+     "correcta": "El timon",
+     "distractores": [
+      "La proa",
+      "La popa"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Palo alto donde se sujeta la vela",
+     "correcta": "El mastil",
+     "distractores": [
+      "El ancla",
+      "La popa"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "En la estacion de tren",
+  "descripcion": "Identifica las partes del tren y de la estacion por su descripcion.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Suelo alto junto a las vias donde se espera el tren",
+     "correcta": "El anden",
+     "distractores": [
+      "El tunel",
+      "El vagon"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Los railes de hierro por donde va el tren",
+     "correcta": "La via",
+     "distractores": [
+      "El anden",
+      "El vagon"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Cada coche donde viajan sentados los pasajeros",
+     "correcta": "El vagon",
+     "distractores": [
+      "La via",
+      "El anden"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Va delante y tira de todo el tren",
+     "correcta": "La locomotora",
+     "distractores": [
+      "El vagon",
+      "El anden"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Agujero en la montana por donde pasa el tren",
+     "correcta": "El tunel",
+     "distractores": [
+      "El anden",
+      "La via"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Papel que se compra para poder viajar",
+     "correcta": "El billete",
+     "distractores": [
+      "El tunel",
+      "El vagon"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Partes del avion",
+  "descripcion": "Reconoce las partes de un avion por su descripcion.",
+  "parametros_json": {
+   "dificultad": "dificil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "A los lados, lo sostienen en el aire",
+     "correcta": "Las alas",
+     "distractores": [
+      "La cola",
+      "La cabina"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Delante van sentados los pilotos",
+     "correcta": "La cabina",
+     "distractores": [
+      "La cola",
+      "Las ruedas"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "La parte trasera del todo",
+     "correcta": "La cola",
+     "distractores": [
+      "La cabina",
+      "Las ruedas"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Sirven para despegar y aterrizar en la pista",
+     "correcta": "Las ruedas",
+     "distractores": [
+      "La cola",
+      "La cabina"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Empujan el avion y hacen mucho ruido",
+     "correcta": "Los motores",
+     "distractores": [
+      "Las ruedas",
+      "La cola"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Pequenas y redondas, para mirar afuera",
+     "correcta": "Las ventanillas",
+     "distractores": [
+      "Los motores",
+      "La cola"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El oficio y su lugar de trabajo",
+  "descripcion": "Adivina el oficio segun el sitio donde trabaja.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Trabaja en la panaderia y hace el pan",
+     "correcta": "El panadero",
+     "distractores": [
+      "El medico",
+      "El pescador"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Atiende a los enfermos en el hospital",
+     "correcta": "El medico",
+     "distractores": [
+      "El panadero",
+      "El albanil"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Corta y vende la carne en la carniceria",
+     "correcta": "El carnicero",
+     "distractores": [
+      "El marinero",
+      "El maestro"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Ensena a los ninos en la escuela",
+     "correcta": "El maestro",
+     "distractores": [
+      "El cocinero",
+      "El pescador"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Guisa los platos en la cocina del restaurante",
+     "correcta": "El cocinero",
+     "distractores": [
+      "El medico",
+      "El carnicero"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Levanta paredes y casas en la obra",
+     "correcta": "El albanil",
+     "distractores": [
+      "El panadero",
+      "El maestro"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Vehiculos de servicio y emergencia",
+  "descripcion": "Reconoce el vehiculo por el trabajo que hace en la calle.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Corre con sirena y lleva a los enfermos al hospital",
+     "correcta": "La ambulancia",
+     "distractores": [
+      "El autobus",
+      "El tractor"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Rojo, con manguera, apaga los incendios",
+     "correcta": "El camion de bomberos",
+     "distractores": [
+      "La ambulancia",
+      "El taxi"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Con luces azules, la usa la policia",
+     "correcta": "El coche de policia",
+     "distractores": [
+      "El tractor",
+      "La ambulancia"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Recoge la basura por las calles",
+     "correcta": "El camion de la basura",
+     "distractores": [
+      "El taxi",
+      "La ambulancia"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Lo paras en la calle y pagas por el viaje",
+     "correcta": "El taxi",
+     "distractores": [
+      "El camion de bomberos",
+      "El tractor"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Reparte las cartas y los paquetes",
+     "correcta": "La furgoneta de correos",
+     "distractores": [
+      "La ambulancia",
+      "El coche de policia"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Platos tipicos de Espana",
+  "descripcion": "Reconoce el plato tipico espanol por su descripcion.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Arroz amarillo con pollo, marisco y verduras, de Valencia",
+     "correcta": "La paella",
+     "distractores": [
+      "El gazpacho",
+      "El flan"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Sopa fria de tomate que se toma en verano",
+     "correcta": "El gazpacho",
+     "distractores": [
+      "La paella",
+      "El cocido"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "De patata y huevo, cuajada en la sarten",
+     "correcta": "La tortilla de patatas",
+     "distractores": [
+      "El gazpacho",
+      "El turron"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Guiso de garbanzos con carne y verduras",
+     "correcta": "El cocido",
+     "distractores": [
+      "La paella",
+      "El flan"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Judias blancas con chorizo y morcilla, de Asturias",
+     "correcta": "La fabada",
+     "distractores": [
+      "El gazpacho",
+      "La tortilla"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Pan tostado con tomate y aceite",
+     "correcta": "El pan con tomate",
+     "distractores": [
+      "El cocido",
+      "La paella"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Embutidos y fiambres",
+  "descripcion": "Identifica el embutido tipico por su descripcion.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Se corta en lonchas finas, curado de la pata del cerdo",
+     "correcta": "El jamon",
+     "distractores": [
+      "El queso",
+      "El pan"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Rojo, embutido con pimenton, picante o dulce",
+     "correcta": "El chorizo",
+     "distractores": [
+      "El jamon",
+      "La aceituna"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Negra, hecha con sangre y arroz o cebolla",
+     "correcta": "La morcilla",
+     "distractores": [
+      "El jamon",
+      "El queso"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Embutido grande con pintas de grasa, en lonchas",
+     "correcta": "El salchichon",
+     "distractores": [
+      "La morcilla",
+      "El chorizo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Lomo de cerdo curado, en lonchas",
+     "correcta": "El lomo",
+     "distractores": [
+      "La morcilla",
+      "El chorizo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Fiambre rosado con puntitos, gusta a los ninos",
+     "correcta": "La mortadela",
+     "distractores": [
+      "El jamon",
+      "El chorizo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Rojo y que se coma",
+  "descripcion": "Elige lo que cumple las dos cosas a la vez: que sea rojo y que se pueda comer.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Rojo y que se come:",
+     "correcta": "Tomate",
+     "distractores": [
+      "Coche de bomberos",
+      "Plátano"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Rojo y que se come:",
+     "correcta": "Fresa",
+     "distractores": [
+      "Buzón de correos",
+      "Pan"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Rojo y que se come:",
+     "correcta": "Cereza",
+     "distractores": [
+      "Amapola",
+      "Lechuga"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Rojo y que se come:",
+     "correcta": "Pimiento rojo",
+     "distractores": [
+      "Semáforo",
+      "Zanahoria"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Rojo y que se come:",
+     "correcta": "Manzana roja",
+     "distractores": [
+      "Ladrillo",
+      "Uva blanca"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Rojo y que se come:",
+     "correcta": "Guindilla",
+     "distractores": [
+      "Rosa roja",
+      "Queso"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Blanco y que se beba",
+  "descripcion": "Mantén las dos reglas a la vez: que sea blanco y que se beba.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Blanco y que se bebe:",
+     "correcta": "Leche",
+     "distractores": [
+      "Folio de papel",
+      "Café solo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Blanco y que se bebe:",
+     "correcta": "Horchata",
+     "distractores": [
+      "Nube del cielo",
+      "Vino tinto"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Blanco y que se bebe:",
+     "correcta": "Leche merengada",
+     "distractores": [
+      "Sábana blanca",
+      "Zumo de naranja"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Blanco y que se bebe:",
+     "correcta": "Batido de vainilla",
+     "distractores": [
+      "Algodón",
+      "Refresco de cola"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Blanco y que se bebe:",
+     "correcta": "Yogur para beber",
+     "distractores": [
+      "Pared blanca",
+      "Gaseosa"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Grande y con ruedas",
+  "descripcion": "Dos condiciones juntas: que sea grande y que tenga ruedas.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Grande y con ruedas:",
+     "correcta": "Autobús",
+     "distractores": [
+      "Ballena",
+      "Patines"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Grande y con ruedas:",
+     "correcta": "Camión",
+     "distractores": [
+      "Montaña",
+      "Monopatín"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Grande y con ruedas:",
+     "correcta": "Tractor",
+     "distractores": [
+      "Armario grande",
+      "Cochecito de muñecas"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Grande y con ruedas:",
+     "correcta": "Autocar",
+     "distractores": [
+      "Elefante",
+      "Bicicleta"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Grande y con ruedas:",
+     "correcta": "Excavadora",
+     "distractores": [
+      "Roca enorme",
+      "Silla de ruedas"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Amarillo y que se coma",
+  "descripcion": "Elige lo que es amarillo y además se puede comer.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Amarillo y que se come:",
+     "correcta": "Plátano",
+     "distractores": [
+      "Taxi",
+      "Berenjena"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Amarillo y que se come:",
+     "correcta": "Limón",
+     "distractores": [
+      "Patito de goma",
+      "Cereza"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Amarillo y que se come:",
+     "correcta": "Maíz",
+     "distractores": [
+      "Sol dibujado",
+      "Espinaca"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Amarillo y que se come:",
+     "correcta": "Queso curado",
+     "distractores": [
+      "Chubasquero amarillo",
+      "Pan integral"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Amarillo y que se come:",
+     "correcta": "Pimiento amarillo",
+     "distractores": [
+      "Girasol",
+      "Lechuga"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Verde y que se coma",
+  "descripcion": "Mantén las dos reglas: que sea verde y que se pueda comer.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Verde y que se come:",
+     "correcta": "Lechuga",
+     "distractores": [
+      "Rana",
+      "Naranja"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Verde y que se come:",
+     "correcta": "Pepino",
+     "distractores": [
+      "Semáforo en verde",
+      "Jamón"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Verde y que se come:",
+     "correcta": "Judías verdes",
+     "distractores": [
+      "Loro verde",
+      "Pan"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Verde y que se come:",
+     "correcta": "Guisantes",
+     "distractores": [
+      "Pino",
+      "Fresa"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Verde y que se come:",
+     "correcta": "Acelga",
+     "distractores": [
+      "Camiseta verde",
+      "Chorizo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "funcion_ejecutiva",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Redondo y que se coma",
+  "descripcion": "Elige lo que es redondo y además se come.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Redondo y que se come:",
+     "correcta": "Naranja",
+     "distractores": [
+      "Balón de fútbol",
+      "Plátano"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Redondo y que se come:",
+     "correcta": "Manzana",
+     "distractores": [
+      "Rueda",
+      "Espárrago"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Redondo y que se come:",
+     "correcta": "Tomate",
+     "distractores": [
+      "Moneda",
+      "Zanahoria"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Redondo y que se come:",
+     "correcta": "Melocotón",
+     "distractores": [
+      "Reloj de pared",
+      "Judía verde"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Redondo y que se come:",
+     "correcta": "Cebolla",
+     "distractores": [
+      "Pelota de tenis",
+      "Puerro"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Lo que tienen en común",
+  "descripcion": "Descubre qué comparten dos cosas distintas.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué tienen en común la nieve y la leche?",
+     "correcta": "Que son blancas",
+     "distractores": [
+      "Que son dulces",
+      "Que dan calor"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué tienen en común el limón y la naranja?",
+     "correcta": "Que son frutas",
+     "distractores": [
+      "Que son verduras",
+      "Que son flores"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué tienen en común el perro y el gato?",
+     "correcta": "Que son animales",
+     "distractores": [
+      "Que son plantas",
+      "Que son muebles"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué tienen en común la silla y la mesa?",
+     "correcta": "Que son muebles",
+     "distractores": [
+      "Que son alimentos",
+      "Que son animales"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué tienen en común el sol y el fuego?",
+     "correcta": "Que dan calor",
+     "distractores": [
+      "Que dan frío",
+      "Que son azules"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "¿Qué tienen en común la rosa y el clavel?",
+     "correcta": "Que son flores",
+     "distractores": [
+      "Que son frutas",
+      "Que son aves"
      ]
     }
    ]
