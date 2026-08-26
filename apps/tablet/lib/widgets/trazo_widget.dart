@@ -23,18 +23,20 @@ class TrazoWidget extends StatefulWidget {
   State<TrazoWidget> createState() => _TrazoWidgetState();
 }
 
-class _TrazoWidgetState extends State<TrazoWidget> {
+class _TrazoWidgetState extends State<TrazoWidget>
+    with SingleTickerProviderStateMixin {
   late final Path _guia;
   late final List<Offset> _muestrasGuia; // en coords del viewBox
   late final double _vbW;
   late final double _vbH;
   late final double _tolerancia;
 
-  // Guía tipo cuadernillo: cada sub-trazo se numera en su orden de escritura y
-  // una flecha corta marca por dónde arranca. Imprescindible para mayores que
-  // nunca aprendieron a escribir (apunte de Laura): siguen los números 1, 2, 3…
-  late final List<(Offset, double)>
-      _inicios; // por sub-trazo: posición + ángulo inicial
+  // Guía DINÁMICA: un punto animado recorre la figura EN ORDEN de escritura, así
+  // se ve de un vistazo por dónde empezar y hacia dónde ir (más intuitivo que
+  // una flecha estática). Los números 1, 2, 3… se mantienen para el orden de los
+  // sub-trazos (apunte de Laura: mayores que nunca aprendieron a escribir).
+  late final List<(Offset, double)> _inicios; // por sub-trazo: posición inicial
+  late final AnimationController _anim;
 
   final List<Offset> _puntosUsuario = []; // en coords del viewBox
   final DateTime _inicio = DateTime.now();
@@ -52,6 +54,19 @@ class _TrazoWidgetState extends State<TrazoWidget> {
     _vbH = (vb.length > 3 ? double.tryParse(vb[3]) : null) ?? 140;
     _muestrasGuia = _muestrear(_guia, paso: 3.0);
     _inicios = _iniciosTrazos(_guia);
+    // Duración proporcional al recorrido (letras/palabras largas, más lento) con
+    // una pausa al final del bucle para que se entienda dónde reempieza.
+    final segs = (2.0 + _muestrasGuia.length / 90).clamp(2.0, 6.0);
+    _anim = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: (segs * 1000).round()),
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    _anim.dispose();
+    super.dispose();
   }
 
   /// Inicio y dirección inicial de cada sub-trazo, EN ORDEN de escritura (1, 2,
@@ -184,6 +199,8 @@ class _TrazoWidgetState extends State<TrazoWidget> {
                       guia: _guia,
                       puntosUsuario: _puntosUsuario,
                       inicios: _inicios,
+                      recorrido: _muestrasGuia,
+                      t: _anim,
                       vbW: _vbW,
                       vbH: _vbH,
                     ),
@@ -225,6 +242,8 @@ class _TrazoPainter extends CustomPainter {
   final Path guia;
   final List<Offset> puntosUsuario;
   final List<(Offset, double)> inicios; // por sub-trazo, en orden de escritura
+  final List<Offset> recorrido; // toda la guía muestreada EN ORDEN de escritura
+  final Animation<double> t; // 0..1 en bucle, mueve el punto guía
   final double vbW;
   final double vbH;
 
@@ -232,9 +251,11 @@ class _TrazoPainter extends CustomPainter {
     required this.guia,
     required this.puntosUsuario,
     required this.inicios,
+    required this.recorrido,
+    required this.t,
     required this.vbW,
     required this.vbH,
-  });
+  }) : super(repaint: t);
 
   /// La guía en PUNTITOS (como un cuadernillo de caligrafía) para repasar encima.
   Path _puntitos(Path fuente, {double punto = 2.5, double hueco = 11}) {
@@ -280,31 +301,41 @@ class _TrazoPainter extends CustomPainter {
         ..color = TrazoColors.sand,
     );
 
-    // Por cada sub-trazo, EN ORDEN de escritura: una flecha corta que sale del
-    // inicio (el sentido) y un badge numerado (1, 2, 3…) como en el cuadernillo.
-    final flechaPaint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 4
-      ..strokeCap = StrokeCap.round
-      ..strokeJoin = StrokeJoin.round
-      ..color = TrazoColors.coralDark;
+    // GUÍA DINÁMICA: un punto recorre toda la figura EN ORDEN de escritura,
+    // dejando una estela que se desvanece. Así se ve por dónde empezar y hacia
+    // dónde ir, como si alguien lo escribiera delante (más claro que una flecha).
+    if (recorrido.length > 3) {
+      final n = recorrido.length;
+      final cabeza = (t.value * (n - 1)).floor().clamp(0, n - 1);
+      // Estela: los ~26 puntos anteriores, cada vez más tenues.
+      const largoEstela = 26;
+      for (var k = 0; k < largoEstela; k++) {
+        final idx = cabeza - k;
+        if (idx < 0) break;
+        final alpha = (1 - k / largoEstela) * 0.9;
+        canvas.drawCircle(recorrido[idx], 6.5 - k * 0.14,
+            Paint()..color = TrazoColors.coralDark.withValues(alpha: alpha));
+      }
+      // Cabeza: punto grande con halo blanco (el "lápiz" que escribe).
+      final head = recorrido[cabeza];
+      canvas.drawCircle(
+          head, 12, Paint()..color = Colors.white.withValues(alpha: 0.9));
+      canvas.drawCircle(head, 9, Paint()..color = TrazoColors.coralDark);
+    }
+
+    // Arranque que LATE en verde ("empieza aquí") sobre el primer sub-trazo, y un
+    // badge numerado por sub-trazo para el orden. Sin flechas.
+    final pulso = 0.5 + 0.5 * math.sin(t.value * 2 * math.pi * 2);
     for (var i = 0; i < inicios.length; i++) {
-      final (pos, ang) = inicios[i];
-      final dir = Offset(math.cos(ang), math.sin(ang));
-      final perp = Offset(-dir.dy, dir.dx);
-      // Flecha que arranca del badge y apunta hacia donde va el trazo.
-      final tip = pos + dir * 20;
-      final a = tip - dir * 11 + perp * 6.5;
-      final b = tip - dir * 11 - perp * 6.5;
-      canvas.drawPath(
-        Path()
-          ..moveTo(pos.dx + dir.dx * 9, pos.dy + dir.dy * 9)
-          ..lineTo(tip.dx, tip.dy)
-          ..moveTo(a.dx, a.dy)
-          ..lineTo(tip.dx, tip.dy)
-          ..lineTo(b.dx, b.dy),
-        flechaPaint,
-      );
+      final (pos, _) = inicios[i];
+      if (i == 0) {
+        canvas.drawCircle(
+            pos,
+            15 + pulso * 6,
+            Paint()
+              ..color =
+                  TrazoColors.sageDark.withValues(alpha: 0.25 * (1 - pulso)));
+      }
       // Badge numerado: disco verde con halo blanco y el número del trazo.
       canvas.drawCircle(
           pos, 12, Paint()..color = Colors.white.withValues(alpha: 0.95));
