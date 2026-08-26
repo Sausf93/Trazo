@@ -50118,6 +50118,202 @@
     "tiempo_ms",
     "num_toques"
    ]
+  },
+  {
+   "ejercicio_id": "En el cuarto de baño",
+   "nombre": "En el cuarto de baño",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "¿Qué es esto?",
+    "enunciado": null,
+    "imagen": "cepillo_dientes",
+    "audio": null,
+    "opciones": [
+     "un cepillo de dientes",
+     "una cuchara",
+     "un pincel",
+     "un peine"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "cepillo_dientes",
+    "correcta": "un cepillo de dientes"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Poner la mesa",
+   "nombre": "Poner la mesa",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "¿Qué es esto?",
+    "enunciado": null,
+    "imagen": "servilleta",
+    "audio": null,
+    "opciones": [
+     "una servilleta",
+     "una toalla",
+     "un pañuelo",
+     "un mantel"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "servilleta",
+    "correcta": "una servilleta"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué medio de transporte es? (más)",
+   "nombre": "¿Qué medio de transporte es? (más)",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "¿Qué es esto?",
+    "enunciado": null,
+    "imagen": "tren",
+    "audio": null,
+    "opciones": [
+     "un tren",
+     "un tranvía",
+     "un metro",
+     "un autobús"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "tren",
+    "correcta": "un tren"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué prenda es? (más)",
+   "nombre": "¿Qué prenda es? (más)",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "¿Qué es esto?",
+    "enunciado": null,
+    "imagen": "calcetin",
+    "audio": null,
+    "opciones": [
+     "un calcetín",
+     "una bufanda",
+     "un guante",
+     "un zapato"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "calcetin",
+    "correcta": "un calcetín"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce por la descripción",
+   "nombre": "Reconoce por la descripción",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "¿De qué se trata?",
+    "enunciado": "Fruta amarilla y alargada que se pela.",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "el plátano",
+     "la naranja",
+     "la pera",
+     "la manzana"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "platano",
+    "correcta": "el plátano"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Sinónimos de siempre",
+   "nombre": "Sinónimos de siempre",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "Elige la respuesta",
+    "enunciado": "Otra forma de decir MIRAR es…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "tocar",
+     "oler",
+     "oír",
+     "observar"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "mirar",
+    "correcta": "observar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Refranes de toda la vida (2)",
+   "nombre": "Refranes de toda la vida (2)",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "render": {
+    "instruccion": "¿Cómo sigue el refrán?",
+    "enunciado": "Aunque la mona se vista de seda…",
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "seda se queda",
+     "nadie la ve",
+     "guapa se pone",
+     "mona se queda"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 4,
+    "item_id": "mona",
+    "correcta": "mona se queda"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
   }
  ]
 }

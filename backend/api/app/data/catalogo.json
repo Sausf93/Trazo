@@ -37781,5 +37781,547 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "En el cuarto de baño",
+  "descripcion": "Reconocer objetos del aseo por la fotografía. Reconocimiento visual.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "espejo",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "espejo",
+     "correcta": "un espejo",
+     "distractores": [
+      "una ventana",
+      "un cuadro",
+      "una puerta"
+     ]
+    },
+    {
+     "id": "jabon",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "jabon",
+     "correcta": "el jabón",
+     "distractores": [
+      "una esponja",
+      "una vela",
+      "una goma"
+     ]
+    },
+    {
+     "id": "toalla",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "toalla",
+     "correcta": "una toalla",
+     "distractores": [
+      "una manta",
+      "una sábana",
+      "un mantel"
+     ]
+    },
+    {
+     "id": "cepillo_dientes",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "cepillo_dientes",
+     "correcta": "un cepillo de dientes",
+     "distractores": [
+      "un peine",
+      "un pincel",
+      "una cuchara"
+     ]
+    },
+    {
+     "id": "servilleta",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "servilleta",
+     "correcta": "una servilleta",
+     "distractores": [
+      "un mantel",
+      "un pañuelo",
+      "una cortina"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Poner la mesa",
+  "descripcion": "Reconocer objetos de la mesa por la fotografía. Reconocimiento visual.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "taza",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "taza",
+     "correcta": "una taza",
+     "distractores": [
+      "un vaso",
+      "un plato",
+      "una jarra"
+     ]
+    },
+    {
+     "id": "cuchara",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "cuchara",
+     "correcta": "una cuchara",
+     "distractores": [
+      "un tenedor",
+      "un cuchillo",
+      "un cucharón"
+     ]
+    },
+    {
+     "id": "cuchillo",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "cuchillo",
+     "correcta": "un cuchillo",
+     "distractores": [
+      "una cuchara",
+      "un tenedor",
+      "unas tijeras"
+     ]
+    },
+    {
+     "id": "servilleta",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "servilleta",
+     "correcta": "una servilleta",
+     "distractores": [
+      "un mantel",
+      "un pañuelo",
+      "una toalla"
+     ]
+    },
+    {
+     "id": "botella",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "botella",
+     "correcta": "una botella",
+     "distractores": [
+      "un vaso",
+      "una jarra",
+      "un bote"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué medio de transporte es? (más)",
+  "descripcion": "Reconocer medios de transporte por la fotografía. Reconocimiento visual.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "autobus",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "autobus",
+     "correcta": "un autobús",
+     "distractores": [
+      "un camión",
+      "un tren",
+      "un coche"
+     ]
+    },
+    {
+     "id": "camion",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "camion",
+     "correcta": "un camión",
+     "distractores": [
+      "un autobús",
+      "un coche",
+      "un tractor"
+     ]
+    },
+    {
+     "id": "moto",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "moto",
+     "correcta": "una moto",
+     "distractores": [
+      "una bicicleta",
+      "un coche",
+      "un patinete"
+     ]
+    },
+    {
+     "id": "tren",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "tren",
+     "correcta": "un tren",
+     "distractores": [
+      "un autobús",
+      "un metro",
+      "un tranvía"
+     ]
+    },
+    {
+     "id": "avion",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "avion",
+     "correcta": "un avión",
+     "distractores": [
+      "un pájaro",
+      "un barco",
+      "un coche"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué prenda es? (más)",
+  "descripcion": "Reconocer prendas de vestir por la fotografía. Reconocimiento visual.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "camisa",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "camisa",
+     "correcta": "una camisa",
+     "distractores": [
+      "una chaqueta",
+      "un jersey",
+      "un pantalón"
+     ]
+    },
+    {
+     "id": "pantalon",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "pantalon",
+     "correcta": "un pantalón",
+     "distractores": [
+      "una falda",
+      "una camisa",
+      "un vestido"
+     ]
+    },
+    {
+     "id": "chaqueta",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "chaqueta",
+     "correcta": "una chaqueta",
+     "distractores": [
+      "una camisa",
+      "un pantalón",
+      "un vestido"
+     ]
+    },
+    {
+     "id": "calcetin",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "calcetin",
+     "correcta": "un calcetín",
+     "distractores": [
+      "un zapato",
+      "un guante",
+      "una bufanda"
+     ]
+    },
+    {
+     "id": "bufanda",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "bufanda",
+     "correcta": "una bufanda",
+     "distractores": [
+      "un gorro",
+      "unos guantes",
+      "un cinturón"
+     ]
+    },
+    {
+     "id": "guantes",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "guantes",
+     "correcta": "unos guantes",
+     "distractores": [
+      "unos calcetines",
+      "una bufanda",
+      "unos zapatos"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Reconoce por la descripción",
+  "descripcion": "Reconocer algo por una descripción sencilla. Reconocimiento y lenguaje.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "perro",
+     "instruccion": "¿De qué se trata?",
+     "enunciado": "Animal que ladra y guarda la casa.",
+     "correcta": "el perro",
+     "distractores": [
+      "el gato",
+      "el caballo",
+      "la vaca"
+     ]
+    },
+    {
+     "id": "vaca",
+     "instruccion": "¿De qué se trata?",
+     "enunciado": "Animal grande que da leche y hace «muu».",
+     "correcta": "la vaca",
+     "distractores": [
+      "la oveja",
+      "el caballo",
+      "la cabra"
+     ]
+    },
+    {
+     "id": "gallina",
+     "instruccion": "¿De qué se trata?",
+     "enunciado": "Ave de corral que pone huevos.",
+     "correcta": "la gallina",
+     "distractores": [
+      "el pato",
+      "la paloma",
+      "el pavo"
+     ]
+    },
+    {
+     "id": "platano",
+     "instruccion": "¿De qué se trata?",
+     "enunciado": "Fruta amarilla y alargada que se pela.",
+     "correcta": "el plátano",
+     "distractores": [
+      "la manzana",
+      "la pera",
+      "la naranja"
+     ]
+    },
+    {
+     "id": "abeja",
+     "instruccion": "¿De qué se trata?",
+     "enunciado": "Insecto que hace la miel.",
+     "correcta": "la abeja",
+     "distractores": [
+      "la mosca",
+      "la hormiga",
+      "la araña"
+     ]
+    },
+    {
+     "id": "sol",
+     "instruccion": "¿De qué se trata?",
+     "enunciado": "Astro que nos da luz y calor de día.",
+     "correcta": "el sol",
+     "distractores": [
+      "la luna",
+      "una estrella",
+      "una nube"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Sinónimos de siempre",
+  "descripcion": "Elegir otra palabra que significa lo mismo. Lenguaje.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "contento",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Otra forma de decir CONTENTO es…",
+     "correcta": "alegre",
+     "distractores": [
+      "triste",
+      "cansado",
+      "enfadado"
+     ]
+    },
+    {
+     "id": "bonito",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Otra forma de decir BONITO es…",
+     "correcta": "hermoso",
+     "distractores": [
+      "feo",
+      "viejo",
+      "roto"
+     ]
+    },
+    {
+     "id": "empezar",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Otra forma de decir EMPEZAR es…",
+     "correcta": "comenzar",
+     "distractores": [
+      "terminar",
+      "acabar",
+      "parar"
+     ]
+    },
+    {
+     "id": "rapido",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Otra forma de decir RÁPIDO es…",
+     "correcta": "veloz",
+     "distractores": [
+      "lento",
+      "quieto",
+      "pesado"
+     ]
+    },
+    {
+     "id": "hablar",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Otra forma de decir HABLAR es…",
+     "correcta": "conversar",
+     "distractores": [
+      "callar",
+      "escuchar",
+      "dormir"
+     ]
+    },
+    {
+     "id": "enfadado",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Otra forma de decir ENFADADO es…",
+     "correcta": "enojado",
+     "distractores": [
+      "contento",
+      "tranquilo",
+      "alegre"
+     ]
+    },
+    {
+     "id": "mirar",
+     "instruccion": "Elige la respuesta",
+     "enunciado": "Otra forma de decir MIRAR es…",
+     "correcta": "observar",
+     "distractores": [
+      "oír",
+      "tocar",
+      "oler"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Refranes de toda la vida (2)",
+  "descripcion": "Completar refranes muy conocidos. Memoria verbal muy conservada.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "maltiempo",
+     "instruccion": "¿Cómo sigue el refrán?",
+     "enunciado": "Al mal tiempo…",
+     "correcta": "buena cara",
+     "distractores": [
+      "mejor irse",
+      "malas noticias",
+      "poca paciencia"
+     ]
+    },
+    {
+     "id": "cuervos",
+     "instruccion": "¿Cómo sigue el refrán?",
+     "enunciado": "Cría cuervos…",
+     "correcta": "y te sacarán los ojos",
+     "distractores": [
+      "y tendrás compañía",
+      "y volarán lejos",
+      "y te darán suerte"
+     ]
+    },
+    {
+     "id": "quiere",
+     "instruccion": "¿Cómo sigue el refrán?",
+     "enunciado": "El que algo quiere…",
+     "correcta": "algo le cuesta",
+     "distractores": [
+      "algo consigue",
+      "nada pierde",
+      "todo lo tiene"
+     ]
+    },
+    {
+     "id": "prevenir",
+     "instruccion": "¿Cómo sigue el refrán?",
+     "enunciado": "Más vale prevenir…",
+     "correcta": "que curar",
+     "distractores": [
+      "que olvidar",
+      "que llorar",
+      "que esperar"
+     ]
+    },
+    {
+     "id": "vientos",
+     "instruccion": "¿Cómo sigue el refrán?",
+     "enunciado": "Quien siembra vientos…",
+     "correcta": "recoge tempestades",
+     "distractores": [
+      "recoge flores",
+      "cosecha trigo",
+      "pierde el tiempo"
+     ]
+    },
+    {
+     "id": "oveja",
+     "instruccion": "¿Cómo sigue el refrán?",
+     "enunciado": "Cada oveja…",
+     "correcta": "con su pareja",
+     "distractores": [
+      "con su rebaño",
+      "en su campo",
+      "por su lado"
+     ]
+    },
+    {
+     "id": "mona",
+     "instruccion": "¿Cómo sigue el refrán?",
+     "enunciado": "Aunque la mona se vista de seda…",
+     "correcta": "mona se queda",
+     "distractores": [
+      "guapa se pone",
+      "seda se queda",
+      "nadie la ve"
+     ]
+    }
+   ]
+  }
  }
 ]
