@@ -458,70 +458,73 @@ class _RelojPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final centro = Offset(size.width / 2, size.height / 2);
-    final radio = math.min(size.width, size.height) / 2 - 8;
+    final radio = math.min(size.width, size.height) / 2 - 10;
 
-    final esfera = Paint()
-      ..style = PaintingStyle.fill
-      ..color = TrazoColors.white;
-    final borde = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 6
-      ..color = TrazoColors.ink;
-    canvas.drawCircle(centro, radio, esfera);
-    canvas.drawCircle(centro, radio, borde);
+    // Esfera blanca con borde grueso (todo escalado al radio para verse bien a
+    // cualquier tamaño). Reloj analógico CLÁSICO: las dos agujas oscuras (la de
+    // la hora gruesa y corta, la del minuto fina y larga), como un reloj de pared.
+    canvas.drawCircle(centro, radio,
+        Paint()..color = TrazoColors.white);
+    canvas.drawCircle(
+        centro,
+        radio,
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = radio * 0.05
+          ..color = TrazoColors.ink);
 
-    // Marcas y números.
-    final tp = TextPainter(textDirection: TextDirection.ltr);
-    for (int i = 1; i <= 12; i++) {
-      final angulo = (i / 12) * 2 * math.pi - math.pi / 2;
-      final marcaEx =
-          centro + Offset(math.cos(angulo), math.sin(angulo)) * radio;
-      final marcaIn =
-          centro + Offset(math.cos(angulo), math.sin(angulo)) * (radio - 14);
+    // Marcas: 60 rayitas; las de las horas gruesas y oscuras, las de los minutos
+    // finas y suaves.
+    for (int i = 0; i < 60; i++) {
+      final a = (i / 60) * 2 * math.pi - math.pi / 2;
+      final esHora = i % 5 == 0;
+      final ini = radio * (esHora ? 0.90 : 0.95);
       canvas.drawLine(
-          marcaIn,
-          marcaEx,
+          centro + Offset(math.cos(a), math.sin(a)) * ini,
+          centro + Offset(math.cos(a), math.sin(a)) * (radio * 0.98),
           Paint()
-            ..strokeWidth = 4
-            ..color = TrazoColors.sageDark);
-
-      tp.text = TextSpan(
-          text: '$i',
-          style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: TrazoColors.ink));
-      tp.layout();
-      final posNum =
-          centro + Offset(math.cos(angulo), math.sin(angulo)) * (radio - 36);
-      tp.paint(canvas, posNum - Offset(tp.width / 2, tp.height / 2));
+            ..strokeWidth = esHora ? radio * 0.03 : radio * 0.012
+            ..color = esHora ? TrazoColors.ink : TrazoColors.sage);
     }
 
-    // Aguja de la hora.
+    // Números grandes (1..12).
+    final tp = TextPainter(textDirection: TextDirection.ltr);
+    for (int i = 1; i <= 12; i++) {
+      final a = (i / 12) * 2 * math.pi - math.pi / 2;
+      tp.text = TextSpan(
+          text: '$i',
+          style: TextStyle(
+              fontSize: radio * 0.17,
+              fontWeight: FontWeight.w800,
+              color: TrazoColors.ink));
+      tp.layout();
+      final pos = centro + Offset(math.cos(a), math.sin(a)) * (radio * 0.78);
+      tp.paint(canvas, pos - Offset(tp.width / 2, tp.height / 2));
+    }
+
+    // Aguja de la hora: gruesa y corta.
     final anguloHora =
         ((hora % 12) + minuto / 60) / 12 * 2 * math.pi - math.pi / 2;
     canvas.drawLine(
         centro,
-        centro +
-            Offset(math.cos(anguloHora), math.sin(anguloHora)) * radio * 0.5,
+        centro + Offset(math.cos(anguloHora), math.sin(anguloHora)) * radio * 0.52,
         Paint()
-          ..strokeWidth = 8
+          ..strokeWidth = radio * 0.055
           ..strokeCap = StrokeCap.round
           ..color = TrazoColors.ink);
 
-    // Aguja de los minutos.
+    // Aguja de los minutos: fina y larga.
     final anguloMin = (minuto / 60) * 2 * math.pi - math.pi / 2;
     canvas.drawLine(
         centro,
-        centro +
-            Offset(math.cos(anguloMin), math.sin(anguloMin)) * radio * 0.78,
+        centro + Offset(math.cos(anguloMin), math.sin(anguloMin)) * radio * 0.80,
         Paint()
-          ..strokeWidth = 5
+          ..strokeWidth = radio * 0.03
           ..strokeCap = StrokeCap.round
-          ..color = TrazoColors.coralDark);
+          ..color = TrazoColors.ink);
 
-    canvas.drawCircle(centro, 8, Paint()..color = TrazoColors.ink);
-    canvas.drawCircle(centro, 4, Paint()..color = TrazoColors.coralDark);
+    canvas.drawCircle(centro, radio * 0.05, Paint()..color = TrazoColors.ink);
+    canvas.drawCircle(centro, radio * 0.022, Paint()..color = TrazoColors.coralDark);
   }
 
   @override
