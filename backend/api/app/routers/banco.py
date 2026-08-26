@@ -33,7 +33,7 @@ async def guardar_veredicto(
     _t: None = Depends(_exigir_token),
 ):
     """Guarda (o actualiza) el veredicto de una persona sobre una actividad."""
-    if body.estado not in ("revisar", "otro_grupo", "valida"):
+    if body.estado not in ("revisar", "otro_grupo", "valida", "descartar"):
         raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, "estado no válido")
     existente = (
         await db.execute(

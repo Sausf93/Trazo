@@ -46,9 +46,9 @@ async def _setup_basico(db: AsyncSession):
     db.add_all([staff, uf])
     await db.flush()
     # Dos ejercicios de praxias (para probar rotación) + uno de lenguaje.
-    p1 = EjercicioCatalogo(bloque="praxias", plantilla_tipo="trazo", nombre="A-linea")
-    p2 = EjercicioCatalogo(bloque="praxias", plantilla_tipo="trazo", nombre="B-arco")
-    l1 = EjercicioCatalogo(bloque="lenguaje", plantilla_tipo="seleccion_multiple", nombre="Palabras")
+    p1 = EjercicioCatalogo(bloque="praxias", plantilla_tipo="trazo", nombre="A-linea", estado="validada")
+    p2 = EjercicioCatalogo(bloque="praxias", plantilla_tipo="trazo", nombre="B-arco", estado="validada")
+    l1 = EjercicioCatalogo(bloque="lenguaje", plantilla_tipo="seleccion_multiple", nombre="Palabras", estado="validada")
     db.add_all([p1, p2, l1])
     await db.flush()
     return centro, staff, uf, p1, p2, l1
@@ -66,6 +66,21 @@ async def test_dominio_resuelve_n_por_sesion_con_rotacion(db):
     assert all(i.bloque == "praxias" and i.nivel == "bajo" for i in cola)
     nombres = [i.nombre for i in cola]
     assert nombres == ["A-linea", "B-arco", "A-linea"]
+
+
+@pytest.mark.asyncio
+async def test_compuerta_en_pruebas_no_llega_a_la_cola(db):
+    # Una actividad "en_pruebas" (por revisar en el banco) NUNCA debe servirse en
+    # una sesión real: solo cuentan las validadas.
+    _, staff, uf, p1, p2, l1 = await _setup_basico(db)
+    p1.estado = "en_pruebas"  # A-linea pasa a pruebas
+    await db.flush()
+    db.add(PlanPacienteLinea(usuario_final_id=uf.id, tipo="dominio",
+                             bloque="praxias", nivel="bajo", n_por_sesion=3, orden=0))
+    await db.flush()
+    cola = await construir_cola(db, uf.id)
+    # Solo queda B-arco (validada); A-linea (en_pruebas) no aparece.
+    assert {i.nombre for i in cola} == {"B-arco"}
 
 
 @pytest.mark.asyncio

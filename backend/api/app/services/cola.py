@@ -151,6 +151,8 @@ async def _ejercicios_de_bloque(
             .where(
                 EjercicioCatalogo.bloque == bloque,
                 EjercicioCatalogo.activo.is_(True),
+                # Compuerta: solo actividades VALIDADAS llegan a sesiones reales.
+                EjercicioCatalogo.estado == "validada",
             )
             .order_by(EjercicioCatalogo.nombre, EjercicioCatalogo.id)
         )

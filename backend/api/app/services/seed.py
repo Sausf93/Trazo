@@ -79,6 +79,9 @@ async def sincronizar_catalogo(db: AsyncSession) -> int:
             ej.descripcion = cfg.get("descripcion")
             ej.parametros_json = cfg.get("parametros_json", {})
             ej.activo = True
+            # El JSON manda también sobre la compuerta: sin campo -> "en_pruebas".
+            # Al validar una actividad se le pone "estado":"validada" en el JSON.
+            ej.estado = cfg.get("estado", "en_pruebas")
     # Las actividades que ya NO están en el JSON se DESACTIVAN (no se borran, para
     # conservar el histórico y no romper referencias).
     for nombre, ej in por_nombre.items():
@@ -88,12 +91,25 @@ async def sincronizar_catalogo(db: AsyncSession) -> int:
     return nuevas
 
 
+async def _abrir_compuerta_demo(db: AsyncSession) -> None:
+    """En DEMO/dev (y en tests) marca TODAS las actividades como validadas.
+
+    Así el motor completo se puede ejercitar en local y en los tests. En
+    PRODUCCIÓN `sembrar` no se ejecuta, de modo que las actividades permanecen
+    "en_pruebas" (solo visibles en el banco) hasta que el equipo las valida."""
+    from sqlalchemy import update
+
+    await db.execute(update(EjercicioCatalogo).values(estado="validada"))
+    await db.commit()
+
+
 async def sembrar(db: AsyncSession) -> None:
     existe = (await db.execute(select(Centro).limit(1))).scalars().first()
     if existe is not None:
         # Ya hay datos: no re-sembramos la demo, pero SÍ sincronizamos el catálogo
         # por si se añadieron actividades nuevas al JSON.
         await sincronizar_catalogo(db)
+        await _abrir_compuerta_demo(db)
         return
 
     ahora = datetime.now(timezone.utc)
@@ -227,3 +243,5 @@ async def sembrar(db: AsyncSession) -> None:
         await evaluar_usuario_bloque(db, uf.id, "praxias")
 
     await db.commit()
+    # DEMO/dev/tests: abrir la compuerta para que todo el motor sea jugable.
+    await _abrir_compuerta_demo(db)

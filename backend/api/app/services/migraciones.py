@@ -49,6 +49,14 @@ _COLUMNAS = [
         },
     ),
     (
+        # Compuerta de calidad del catálogo: filas existentes quedan "en_pruebas"
+        # (se revisan en el banco antes de llegar a las personas usuarias).
+        "ejercicios_catalogo",
+        "estado",
+        {"sqlite": "VARCHAR(20) NOT NULL DEFAULT 'en_pruebas'",
+         "postgresql": "VARCHAR(20) NOT NULL DEFAULT 'en_pruebas'"},
+    ),
+    (
         "sesion_participantes",
         "actividad_actual",
         {"sqlite": "VARCHAR(200)", "postgresql": "VARCHAR(200)"},

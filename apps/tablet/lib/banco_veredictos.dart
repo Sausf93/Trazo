@@ -113,10 +113,9 @@ class BancoVeredictos {
     await _cargar();
     _cache[nombre] = Veredicto(estado, nota);
     await _persistir();
-    // Envía al servidor en segundo plano (solo las marcas reales, no distrae).
-    if (estado == 'revisar' || estado == 'otro_grupo') {
-      unawaited(_sincronizar(nombre, estado, nota));
-    }
+    // Envía TODOS los veredictos al servidor (incluida "válida"): el equipo ve
+    // en un solo sitio qué promocionar, qué arreglar y qué eliminar.
+    unawaited(_sincronizar(nombre, estado, nota));
   }
 
   Future<void> borrar(String nombre) async {

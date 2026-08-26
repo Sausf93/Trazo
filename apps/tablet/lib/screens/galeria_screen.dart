@@ -56,6 +56,15 @@ String _resumenMetricas(Map<String, dynamic> m) {
   return partes.isEmpty ? 'actividad completada.' : partes.join('  ·  ');
 }
 
+/// Etiqueta legible del veredicto del banco.
+String _etqEstado(String e) => e == 'valida'
+    ? 'válida'
+    : e == 'revisar'
+        ? 'dudosa'
+        : e == 'descartar'
+            ? 'no válida'
+            : 'otro grupo';
+
 /// Construye el widget de la actividad (mismo repertorio que el kiosco real).
 Widget renderActividadDemo(
     Instancia inst, ValueChanged<Map<String, dynamic>> onMetricas) {
@@ -520,17 +529,26 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
         .where((e) => e.value.estado == 'revisar')
         .toList()
       ..sort((a, b) => a.key.compareTo(b.key));
+    final descartar = todos.entries
+        .where((e) => e.value.estado == 'descartar')
+        .toList()
+      ..sort((a, b) => a.key.compareTo(b.key));
     final otroGrupo = todos.entries
         .where((e) => e.value.estado == 'otro_grupo')
         .toList()
       ..sort((a, b) => a.key.compareTo(b.key));
-    // Lista mostrada: lo que requiere acción (revisar + reclasificar).
-    final pendientes = [...revisar, ...otroGrupo];
+    // Lista mostrada: lo que requiere acción (dudosa + no válida + reclasificar).
+    final pendientes = [...revisar, ...descartar, ...otroGrupo];
 
     String textoExport() {
       final b = StringBuffer();
-      b.writeln('TRAZO — A REVISAR (${revisar.length}):');
+      b.writeln('TRAZO — DUDOSAS / A ARREGLAR (${revisar.length}):');
       for (final e in revisar) {
+        b.writeln(
+            '• ${e.key}${e.value.nota.isNotEmpty ? ' — ${e.value.nota}' : ''}');
+      }
+      b.writeln('\nTRAZO — NO VÁLIDAS / ELIMINAR (${descartar.length}):');
+      for (final e in descartar) {
         b.writeln(
             '• ${e.key}${e.value.nota.isNotEmpty ? ' — ${e.value.nota}' : ''}');
       }
@@ -540,7 +558,7 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
             '• ${e.key}${e.value.nota.isNotEmpty ? ' — ${e.value.nota}' : ''}');
       }
       b.writeln(
-          '\nValidadas: ${validas.length} · A revisar: ${revisar.length} · Otro grupo: ${otroGrupo.length}');
+          '\nVálidas: ${validas.length} · Dudosas: ${revisar.length} · No válidas: ${descartar.length} · Otro grupo: ${otroGrupo.length}');
       return b.toString();
     }
 
@@ -564,7 +582,7 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
                       color: TrazoColors.ink)),
               const SizedBox(height: 4),
               Text(
-                  '✅ ${validas.length}   ⚠️ ${revisar.length}   🔀 ${otroGrupo.length} (otro grupo)',
+                  '✅ ${validas.length}   ⚠️ ${revisar.length}   🚫 ${descartar.length}   🔀 ${otroGrupo.length}',
                   style: const TextStyle(
                       fontSize: 15, color: TrazoColors.sageDark)),
               const SizedBox(height: 12),
@@ -585,16 +603,18 @@ class _BancoPruebasScreenState extends State<BancoPruebasScreen> {
                             leading: Icon(
                                 e.value.estado == 'otro_grupo'
                                     ? Icons.swap_horiz
-                                    : Icons.report_problem,
+                                    : e.value.estado == 'descartar'
+                                        ? Icons.block
+                                        : Icons.report_problem,
                                 color: e.value.estado == 'otro_grupo'
                                     ? TrazoColors.azul
-                                    : TrazoColors.coralDark),
+                                    : e.value.estado == 'descartar'
+                                        ? const Color(0xFFB3261E)
+                                        : TrazoColors.coralDark),
                             title: Text(e.key,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w700)),
-                            subtitle: Text((e.value.estado == 'otro_grupo'
-                                    ? 'Otro grupo'
-                                    : 'A revisar') +
+                            subtitle: Text(_etqEstado(e.value.estado) +
                                 (e.value.nota.isEmpty
                                     ? ''
                                     : ' · ${e.value.nota}')),
@@ -773,8 +793,28 @@ class _JugarDemoState extends State<_JugarDemo> {
   }
 
   Future<void> _marcar(String estado) async {
-    // Al marcar SIEMPRE se pide el motivo (para poder revisarla después).
-    final esOtro = estado == 'otro_grupo';
+    // VÁLIDA: no exige motivo (el comentario es opcional vía la nota). Al marcarla
+    // queda revisada -> no vuelve a salir, y viaja al servidor para que el equipo
+    // la promocione a la app.
+    if (estado == 'valida') {
+      final nota = _notaCtrl.text.trim();
+      await BancoVeredictos.instance.guardar(_inst.nombre, 'valida', nota);
+      if (!mounted) return;
+      setState(() => _veredicto = Veredicto('valida', nota));
+      return;
+    }
+    // DUDOSA / NO VÁLIDA / OTRO GRUPO: el motivo es OBLIGATORIO (para poder
+    // revisarla o arreglarla después).
+    final titulo = estado == 'otro_grupo'
+        ? '🔀 Otro grupo'
+        : estado == 'descartar'
+            ? '🚫 No válida'
+            : '⚠️ Dudosa';
+    final pregunta = estado == 'otro_grupo'
+        ? '¿A qué grupo debería ir? (y por qué)'
+        : estado == 'descartar'
+            ? '¿Por qué no vale? (la vamos a eliminar)'
+            : '¿Qué falla o qué habría que cambiar?';
     final ctrl = TextEditingController(text: _notaCtrl.text.trim());
     final motivo = await showDialog<String>(
       context: context,
@@ -782,14 +822,12 @@ class _JugarDemoState extends State<_JugarDemo> {
         var texto = ctrl.text.trim();
         return StatefulBuilder(
           builder: (ctx, setD) => AlertDialog(
-            title: Text(esOtro ? '🔀 Otro grupo' : '⚠️ A revisar'),
+            title: Text(titulo),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(esOtro
-                    ? '¿A qué grupo debería ir? (y por qué)'
-                    : '¿Qué falla o qué habría que cambiar?'),
+                Text(pregunta),
                 const SizedBox(height: 10),
                 TextField(
                   controller: ctrl,
@@ -827,9 +865,16 @@ class _JugarDemoState extends State<_JugarDemo> {
   }
 
   void _siguiente() {
-    // En el banco NO se marca nada al pasar: las actividades siguen en el bucle y
-    // se pueden repetir una y otra vez. Solo desaparecen las que marcas como
-    // "a revisar" u "otro grupo" (se excluyen la próxima vez que abras el bloque).
+    // COMPUERTA DE CALIDAD: marcar es OBLIGATORIO. No se puede pasar a la
+    // siguiente sin dar un veredicto (válida / dudosa / no válida / otro grupo).
+    if (widget.mostrarProgreso && _veredicto == null) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Marca la actividad antes de pasar: '
+            'válida, dudosa, no válida u otro grupo.'),
+        duration: Duration(seconds: 3),
+      ));
+      return;
+    }
     setState(() {
       final sig = _i + 1;
       if (sig >= widget.actividades.length) {
@@ -852,7 +897,9 @@ class _JugarDemoState extends State<_JugarDemo> {
         ? TrazoColors.sageDark
         : e == 'revisar'
             ? TrazoColors.coralDark
-            : TrazoColors.azul; // otro_grupo (mal clasificada)
+            : e == 'descartar'
+                ? const Color(0xFFB3261E) // no válida (se elimina)
+                : TrazoColors.azul; // otro_grupo (mal clasificada)
     Color fondo(String e) => v?.estado == e ? colorDe(e) : TrazoColors.white;
     Color texto(String e) => v?.estado == e ? Colors.white : TrazoColors.ink;
 
@@ -901,12 +948,21 @@ class _JugarDemoState extends State<_JugarDemo> {
                 },
               ),
             ),
-          // Solo se marca lo que está MAL: si la juegas sin problema y pasas a
-          // Siguiente, se da por VÁLIDA sola (menos fricción). "Otro grupo" = la
-          // actividad está bien pero no pertenece a ese bloque.
+          // COMPUERTA: hay que dar un veredicto para poder pasar. Válida =
+          // promociona a la app; Dudosa = a arreglar; No válida = se elimina;
+          // Otro grupo = está bien pero va a otro bloque. Las tres últimas piden
+          // motivo obligatorio.
           Row(
             children: [
-              chip('revisar', Icons.report_problem, 'A revisar'),
+              chip('valida', Icons.check_circle, 'Válida'),
+              const SizedBox(width: 8),
+              chip('revisar', Icons.report_problem, 'Dudosa'),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              chip('descartar', Icons.block, 'No válida'),
               const SizedBox(width: 8),
               chip('otro_grupo', Icons.swap_horiz, 'Otro grupo'),
               const SizedBox(width: 8),
@@ -927,10 +983,8 @@ class _JugarDemoState extends State<_JugarDemo> {
               Expanded(
                 child: Text(
                     _veredicto == null
-                        ? 'Puedes repetirla. Marca solo si es dudosa o no vale.'
-                        : (_veredicto!.estado == 'otro_grupo'
-                            ? 'Marcada: otro grupo (no volverá a salir).'
-                            : 'Marcada: a revisar (no volverá a salir).'),
+                        ? 'Marca la actividad para continuar (obligatorio).'
+                        : 'Marcada: ${_etqEstado(_veredicto!.estado)} · no vuelve a salir.',
                     style: const TextStyle(
                         fontSize: 12, color: TrazoColors.sageDark)),
               ),

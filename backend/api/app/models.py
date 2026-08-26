@@ -380,6 +380,12 @@ class EjercicioCatalogo(Base):
     # Parámetros que consume la plantilla (imágenes, rangos de dificultad, etc.).
     parametros_json: Mapped[dict] = mapped_column(JSON, default=dict)
     activo: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    # Compuerta de calidad: una actividad nace "en_pruebas" (solo aparece en el
+    # BANCO DE PRUEBAS, nunca en sesiones reales) y pasa a "validada" cuando el
+    # equipo la revisa y aprueba. El generador de sesiones solo sirve validadas.
+    estado: Mapped[str] = mapped_column(
+        String(20), default="en_pruebas", server_default="en_pruebas", nullable=False
+    )
     creado_en: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
 
