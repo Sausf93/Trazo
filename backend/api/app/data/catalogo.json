@@ -459,7 +459,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta y suma sin decir suma",
   "descripcion": "Cuenta los objetos de un grupo, luego los de otro, y di cuántos hay en total. Es una suma presentada como conteo.",
@@ -773,7 +773,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "¿Cuál tiene más?",
   "descripcion": "Dos grupos de objetos; señalar cuál tiene más.",
@@ -789,7 +789,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta cuántos hay",
   "descripcion": "Una escena con varias fresas; contar cuántas hay. Cantidad cambiante.",
@@ -805,7 +805,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "gnosias",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "¿Qué es esto?",
   "descripcion": "Mira el dibujo y elige la respuesta.",
@@ -1585,7 +1585,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Vestirse en orden",
   "descripcion": "Ordenar los pasos de vestirse por la mañana — planificación de una rutina cotidiana.",
@@ -1618,7 +1618,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "El día en orden",
   "descripcion": "Ordenar los momentos del día, de la mañana a la noche — orientación temporal y secuenciación.",
@@ -1652,7 +1652,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ir a la compra paso a paso",
   "descripcion": "Ordenar los pasos de hacer la compra — función ejecutiva aplicada a la vida diaria.",
@@ -1686,7 +1686,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los números",
   "descripcion": "Colocar varios números de menor a mayor — razonamiento y orden numérico.",
@@ -1735,7 +1735,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "¿Cuál tiene menos?",
   "descripcion": "Dos grupos de objetos; señalar cuál tiene menos. Cantidades cambiantes.",
@@ -1752,7 +1752,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta las monedas",
   "descripcion": "Contar cuántas monedas de euro hay sobre la mesa. Cantidad cambiante.",
@@ -1768,7 +1768,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta y suma la fruta",
   "descripcion": "Contar la fruta de cada cesto y decir cuánta hay en total — una suma presentada como conteo.",
@@ -1785,7 +1785,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta los animales",
   "descripcion": "Una escena con animales de la granja; contar cuántos hay o cuál grupo tiene más. Tarea variable cada vez.",
@@ -2077,7 +2077,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "La higiene en orden",
   "descripcion": "Ordenar los pasos de una rutina de aseo personal — planificación de tareas de la vida diaria.",
@@ -2120,7 +2120,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta los cubiertos",
   "descripcion": "Contar cuántos cubiertos hay del que se pide, o cuál grupo tiene más. Tarea variable cada vez.",
@@ -2194,7 +2194,7 @@
   }
  },
  {
-  "bloque": "vida_cotidiana",
+  "bloque": "lenguaje",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "¿Fruta o verdura?",
   "descripcion": "Llevar cada alimento a su cesto: las frutas con las frutas y las verduras con las verduras — clasificación por categoría.",
@@ -2727,7 +2727,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "El número que sigue",
   "descripcion": "Elegir qué número viene después. Orientación numérica y secuencia.",
@@ -2830,7 +2830,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca la llave",
   "descripcion": "Toca todas las llaves entre otros objetos. Atención sostenida.",
@@ -2886,7 +2886,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca el zapato",
   "descripcion": "Toca todos los zapatos entre otras prendas.",
@@ -2938,7 +2938,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca la manzana",
   "descripcion": "Toca todas las manzanas entre otras frutas.",
@@ -2986,7 +2986,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Sumas sencillas",
   "descripcion": "Una suma corta y elegir el resultado correcto entre varias opciones. Cálculo mental básico.",
@@ -3099,7 +3099,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Restas sencillas",
   "descripcion": "Una resta corta y elegir el resultado correcto entre varias opciones. Cálculo mental básico.",
@@ -3192,7 +3192,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "El número mayor",
   "descripcion": "Se muestran varios números y hay que elegir cuál es el mayor. Noción de cantidad y comparación.",
@@ -3285,7 +3285,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca la cuchara",
   "descripcion": "Toca todas las cucharas entre otros objetos de la cocina. Atención sostenida.",
@@ -3325,7 +3325,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca las tazas",
   "descripcion": "Toca todas las tazas entre otros objetos de la cocina. Atención sostenida.",
@@ -3579,7 +3579,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "El calendario en orden",
   "descripcion": "Colocar en su orden los dias de la semana, las estaciones del ano o los primeros meses. Orientacion temporal y secuenciacion.",
@@ -3627,7 +3627,7 @@
   }
  },
  {
-  "bloque": "gnosias",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Las partes del cuerpo",
   "descripcion": "Se dice para que sirve una parte del cuerpo y hay que elegir cual es. Comprension de ordenes sencillas y esquema corporal.",
@@ -3695,7 +3695,7 @@
   }
  },
  {
-  "bloque": "atencion_memoria",
+  "bloque": "percepcion",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca los árboles (2)",
   "descripcion": "Tocar todos los corazones entre unas pocas figuras geometricas distintas. Rejilla pequena y objetivo muy diferenciado.",
@@ -4010,7 +4010,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "razonamiento",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Del principio al final",
   "descripcion": "Ordenar de principio a fin procesos naturales que todos conocen: las etapas de la vida, el crecimiento de una planta o el de una mariposa.",
@@ -4491,7 +4491,7 @@
   }
  },
  {
-  "bloque": "calculo",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Cuentas de la compra",
   "descripcion": "Pequeños problemas de la vida diaria resueltos de cabeza; elegir el resultado. Cálculo con sentido.",
@@ -4564,7 +4564,7 @@
   }
  },
  {
-  "bloque": "calculo",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "El cambio justo",
   "descripcion": "Situaciones de pago corrientes en las que hay que decir cuánto devuelven. Cálculo con dinero.",
@@ -4940,7 +4940,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "¿De qué color es?",
   "descripcion": "Se nombra una cosa conocida y hay que decir de qué color es. Percepción del color y conocimiento cotidiano.",
@@ -5013,7 +5013,7 @@
   }
  },
  {
-  "bloque": "atencion_memoria",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Geografía de España",
   "descripcion": "Ciudades, capitales y lugares conocidos de España. Memoria de siempre (semántica).",
@@ -5149,7 +5149,7 @@
   }
  },
  {
-  "bloque": "vida_cotidiana",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Los oficios de siempre",
   "descripcion": "Reconocer el oficio que corresponde a cada trabajo de toda la vida.",
@@ -5295,7 +5295,7 @@
   }
  },
  {
-  "bloque": "gnosias",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "El cuerpo y los sentidos",
   "descripcion": "Relacionar cada sentido o acción con la parte del cuerpo correcta.",
@@ -5358,7 +5358,7 @@
   }
  },
  {
-  "bloque": "atencion_memoria",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Los meses del año",
   "descripcion": "Ordenar los meses recordando cuál va antes o después.",
@@ -5537,7 +5537,7 @@
   }
  },
  {
-  "bloque": "atencion_memoria",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Fiestas y tradiciones de España",
   "descripcion": "Recordar cuándo y cómo se celebran las fiestas de siempre.",
@@ -5857,7 +5857,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "gnosias",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Los sonidos de los animales",
   "descripcion": "Reconocer qué animal hace cada sonido.",
@@ -5930,7 +5930,7 @@
   }
  },
  {
-  "bloque": "atencion_memoria",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Los días de la semana",
   "descripcion": "Ordenar los días recordando cuál va antes o después.",
@@ -6136,7 +6136,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Recados por el barrio",
   "descripcion": "Ordenar los pasos de gestiones fuera de casa: ir a por el pan, coger el autobús o hacer una llamada.",
@@ -6217,7 +6217,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuidar el hogar",
   "descripcion": "Ordenar los pasos de tareas de casa habituales: hacer la cama, barrer el suelo o regar las plantas.",
@@ -7408,7 +7408,7 @@
   }
  },
  {
-  "bloque": "vida_cotidiana",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "¿Qué alimento es?",
   "descripcion": "Reconocer alimentos básicos por su imagen y decir su nombre.",
@@ -7718,7 +7718,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Cosas del cielo",
   "descripcion": "Preguntas sencillas sobre el sol, la luna y el cielo.",
@@ -7955,7 +7955,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca los gatos",
   "descripcion": "Toca todos los gatos entre otros animales.",
@@ -8003,7 +8003,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca las casas",
   "descripcion": "Toca todas las estrellas entre otras figuras.",
@@ -8051,7 +8051,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca los coches",
   "descripcion": "Toca todos los coches entre otros transportes.",
@@ -8095,7 +8095,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca los relojes",
   "descripcion": "Toca todos los relojes entre otros objetos.",
@@ -8143,7 +8143,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca los árboles",
   "descripcion": "Toca todos los árboles en el paisaje.",
@@ -8191,7 +8191,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta las flores",
   "descripcion": "Cuenta cuántas flores hay.",
@@ -8207,7 +8207,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta los coches",
   "descripcion": "Cuenta cuántos coches hay.",
@@ -8223,7 +8223,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta las tazas",
   "descripcion": "Cuenta cuántas tazas hay.",
@@ -8239,7 +8239,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta los pájaros",
   "descripcion": "Cuenta cuántos pájaros hay.",
@@ -8318,7 +8318,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "¿Cuál tiene más, peras o manzanas?",
   "descripcion": "Mira los dos grupos y di cuál tiene más.",
@@ -8335,7 +8335,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "¿Cuál tiene menos, ovejas o vacas?",
   "descripcion": "Mira los dos grupos y di cuál tiene menos.",
@@ -8352,7 +8352,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "¿Cuál tiene más, tazas o vasos?",
   "descripcion": "Mira los dos grupos y di cuál tiene más.",
@@ -8369,7 +8369,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca los peces",
   "descripcion": "Toca todos los peces entre otros animales.",
@@ -8417,7 +8417,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca los gorros",
   "descripcion": "Toca todos los gorros entre otras prendas.",
@@ -8465,7 +8465,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca las manzanas",
   "descripcion": "Toca todas las lunas entre otras figuras.",
@@ -8605,7 +8605,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Colores de siempre",
   "descripcion": "Diga el color habitual de cada elemento.",
@@ -8923,7 +8923,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "El más grande",
   "descripcion": "Elija cuál es el más grande.",
@@ -8972,7 +8972,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "El más pequeño",
   "descripcion": "Elija cuál es el más pequeño.",
@@ -9167,7 +9167,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Más y menos",
   "descripcion": "Compare cantidades y tamaños sencillos.",
@@ -9216,7 +9216,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca los pájaros",
   "descripcion": "Toca todos los pájaros entre otros animales.",
@@ -9264,7 +9264,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca las sillas",
   "descripcion": "Toca todas las sillas entre otros muebles.",
@@ -9312,7 +9312,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca los vasos",
   "descripcion": "Toca todos los vasos entre otras cosas de la mesa.",
@@ -9360,7 +9360,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca las botellas",
   "descripcion": "Toca todas las botellas entre otras cosas.",
@@ -9440,7 +9440,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "¿Cuál tiene más, coches o motos?",
   "descripcion": "Mira los dos grupos y di cuál tiene más.",
@@ -9457,7 +9457,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "¿Cuál tiene menos, gatos o perros?",
   "descripcion": "Mira los dos grupos y di cuál tiene menos.",
@@ -9861,7 +9861,7 @@
   }
  },
  {
-  "bloque": "atencion_memoria",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Meses y días",
   "descripcion": "Responda sobre los meses y los días del año.",
@@ -10403,7 +10403,7 @@
   }
  },
  {
-  "bloque": "vida_cotidiana",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "El oficio por lo que hace",
   "descripcion": "Reconoce el oficio por la tarea que realiza.",
@@ -10502,7 +10502,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca los huevos",
   "descripcion": "Toca todos los huevos entre otros alimentos.",
@@ -10550,7 +10550,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca los quesos",
   "descripcion": "Toca todos los quesos entre otros alimentos.",
@@ -11656,7 +11656,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: manzana entre frutas",
   "descripcion": "Encuentra manzana entre otras figuras de frutas.",
@@ -11712,7 +11712,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: naranja entre frutas",
   "descripcion": "Encuentra naranja entre otras figuras de frutas.",
@@ -11768,7 +11768,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: tomate entre verduras",
   "descripcion": "Encuentra tomate entre otras figuras de verduras.",
@@ -11804,7 +11804,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: cebolla entre verduras",
   "descripcion": "Encuentra cebolla entre otras figuras de verduras.",
@@ -11840,7 +11840,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: vaca entre la granja",
   "descripcion": "Encuentra vaca entre otras figuras de la granja.",
@@ -11872,7 +11872,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: perro entre animales de casa",
   "descripcion": "Encuentra perro entre otras figuras de animales de casa.",
@@ -11908,7 +11908,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: conejo entre animales de casa",
   "descripcion": "Encuentra conejo entre otras figuras de animales de casa.",
@@ -11944,7 +11944,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: plato entre la cocina",
   "descripcion": "Encuentra plato entre otras figuras de la cocina.",
@@ -11996,7 +11996,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: tenedor entre la cocina",
   "descripcion": "Encuentra tenedor entre otras figuras de la cocina.",
@@ -12048,7 +12048,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: pan entre la comida",
   "descripcion": "Encuentra pan entre otras figuras de la comida.",
@@ -12100,7 +12100,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: huevo entre la comida",
   "descripcion": "Encuentra huevo entre otras figuras de la comida.",
@@ -12152,7 +12152,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: camisa entre la ropa",
   "descripcion": "Encuentra camisa entre otras figuras de la ropa.",
@@ -12208,7 +12208,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: calcetín entre la ropa",
   "descripcion": "Encuentra calcetín entre otras figuras de la ropa.",
@@ -12264,7 +12264,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: silla entre los muebles",
   "descripcion": "Encuentra silla entre otras figuras de los muebles.",
@@ -12296,7 +12296,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: puerta entre la casa",
   "descripcion": "Encuentra puerta entre otras figuras de la casa.",
@@ -12356,7 +12356,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: teléfono entre la casa",
   "descripcion": "Encuentra teléfono entre otras figuras de la casa.",
@@ -12416,7 +12416,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: martillo entre las herramientas",
   "descripcion": "Encuentra martillo entre otras figuras de las herramientas.",
@@ -12448,7 +12448,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: coche entre los transportes",
   "descripcion": "Encuentra coche entre otras figuras de los transportes.",
@@ -12492,7 +12492,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: bicicleta entre los transportes",
   "descripcion": "Encuentra bicicleta entre otras figuras de los transportes.",
@@ -12536,7 +12536,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: nube entre la naturaleza",
   "descripcion": "Encuentra nube entre otras figuras de la naturaleza.",
@@ -12576,7 +12576,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca: montaña entre la naturaleza",
   "descripcion": "Encuentra montaña entre otras figuras de la naturaleza.",
@@ -12616,7 +12616,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca las casas (2)",
   "descripcion": "Encuentra estrella entre otras figuras de las figuras.",
@@ -12656,7 +12656,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca las flores (2)",
   "descripcion": "Encuentra círculo entre otras figuras de las figuras.",
@@ -13623,7 +13623,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca manzana en el mercado",
   "descripcion": "Encuentra manzana entre cosas de el mercado.",
@@ -13675,7 +13675,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca tomate en el mercado",
   "descripcion": "Encuentra tomate entre cosas de el mercado.",
@@ -13819,7 +13819,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca plato en la mesa puesta",
   "descripcion": "Encuentra plato entre cosas de la mesa puesta.",
@@ -13863,7 +13863,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca tenedor en la mesa puesta",
   "descripcion": "Encuentra tenedor entre cosas de la mesa puesta.",
@@ -13999,7 +13999,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca silla en el salón",
   "descripcion": "Encuentra silla entre cosas de el salón.",
@@ -14043,7 +14043,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca lámpara en el salón",
   "descripcion": "Encuentra lámpara entre cosas de el salón.",
@@ -14179,7 +14179,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca camisa en el armario",
   "descripcion": "Encuentra camisa entre cosas de el armario.",
@@ -14223,7 +14223,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca chaqueta en el armario",
   "descripcion": "Encuentra chaqueta entre cosas de el armario.",
@@ -14359,7 +14359,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca coche en la calle",
   "descripcion": "Encuentra coche entre cosas de la calle.",
@@ -14403,7 +14403,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca moto en la calle",
   "descripcion": "Encuentra moto entre cosas de la calle.",
@@ -14539,7 +14539,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca vaca en el campo",
   "descripcion": "Encuentra vaca entre cosas de el campo.",
@@ -14583,7 +14583,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca gallina en el campo",
   "descripcion": "Encuentra gallina entre cosas de el campo.",
@@ -14719,7 +14719,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca perro en la casa de campo",
   "descripcion": "Encuentra perro entre cosas de la casa de campo.",
@@ -14763,7 +14763,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca gallina en la casa de campo",
   "descripcion": "Encuentra gallina entre cosas de la casa de campo.",
@@ -14807,7 +14807,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los números del 1 al 5",
   "descripcion": "Coloca los números del 1 al 5 en orden.",
@@ -14832,7 +14832,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los números del 2 al 6",
   "descripcion": "Coloca los números del 2 al 6 en orden.",
@@ -14857,7 +14857,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los números del 3 al 7",
   "descripcion": "Coloca los números del 3 al 7 en orden.",
@@ -14882,7 +14882,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los números del 4 al 8",
   "descripcion": "Coloca los números del 4 al 8 en orden.",
@@ -14907,7 +14907,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los números del 5 al 9",
   "descripcion": "Coloca los números del 5 al 9 en orden.",
@@ -14932,7 +14932,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los números del 6 al 10",
   "descripcion": "Coloca los números del 6 al 10 en orden.",
@@ -14957,7 +14957,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los números del 0 al 4",
   "descripcion": "Coloca los números del 0 al 4 en orden.",
@@ -14982,7 +14982,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los números del 1 al 6",
   "descripcion": "Coloca los números del 1 al 6 en orden.",
@@ -15008,7 +15008,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los números del 3 al 8",
   "descripcion": "Coloca los números del 3 al 8 en orden.",
@@ -15034,7 +15034,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los números del 5 al 10",
   "descripcion": "Coloca los números del 5 al 10 en orden.",
@@ -15060,7 +15060,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena de 10 en 10",
   "descripcion": "Cuenta de diez en diez y ordénalos.",
@@ -15085,7 +15085,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena de 5 en 5",
   "descripcion": "Cuenta de cinco en cinco y ordénalos.",
@@ -15110,7 +15110,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena de 2 en 2",
   "descripcion": "Cuenta de dos en dos y ordénalos.",
@@ -15135,7 +15135,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta atrás del 5 al 1",
   "descripcion": "Ordena la cuenta atrás.",
@@ -15160,7 +15160,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta atrás del 10 al 6",
   "descripcion": "Ordena la cuenta atrás.",
@@ -15185,7 +15185,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las letras: A a la E",
   "descripcion": "Coloca las primeras letras en orden.",
@@ -15210,7 +15210,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las letras: F a la J",
   "descripcion": "Ordena estas letras del abecedario.",
@@ -15235,7 +15235,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las vocales",
   "descripcion": "Coloca las vocales en su orden.",
@@ -15260,7 +15260,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los meses: enero a mayo",
   "descripcion": "Coloca los primeros meses del año.",
@@ -15285,7 +15285,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los meses: junio a octubre",
   "descripcion": "Coloca estos meses del año.",
@@ -15310,7 +15310,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los meses de frío",
   "descripcion": "Del otoño al invierno.",
@@ -15334,7 +15334,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los días laborables",
   "descripcion": "De lunes a viernes.",
@@ -15359,7 +15359,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena el fin de semana y más",
   "descripcion": "Del viernes al lunes.",
@@ -15383,7 +15383,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las estaciones desde primavera",
   "descripcion": "El ciclo del año.",
@@ -15407,7 +15407,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los momentos del día",
   "descripcion": "De la mañana a la noche.",
@@ -15431,7 +15431,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las comidas del día",
   "descripcion": "En el orden en que se comen.",
@@ -15455,7 +15455,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "razonamiento",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las etapas de la vida",
   "descripcion": "Del bebé al anciano.",
@@ -15480,7 +15480,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los puestos de una carrera",
   "descripcion": "Del primero al quinto.",
@@ -16479,7 +16479,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca leche en la nevera",
   "descripcion": "Encuentra leche entre cosas de la nevera.",
@@ -16523,7 +16523,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca lechuga en la nevera",
   "descripcion": "Encuentra lechuga entre cosas de la nevera.",
@@ -16706,7 +16706,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca manzana en el frutero",
   "descripcion": "Encuentra manzana entre cosas de el frutero.",
@@ -16750,7 +16750,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca uvas en el frutero",
   "descripcion": "Encuentra uvas entre cosas de el frutero.",
@@ -16909,7 +16909,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca jabón en el cuarto de baño",
   "descripcion": "Encuentra jabón entre cosas de el cuarto de baño.",
@@ -16941,7 +16941,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca espejo en el cuarto de baño",
   "descripcion": "Encuentra espejo entre cosas de el cuarto de baño.",
@@ -17058,7 +17058,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca martillo en las herramientas",
   "descripcion": "Encuentra martillo entre cosas de las herramientas.",
@@ -17094,7 +17094,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca llave inglesa en las herramientas",
   "descripcion": "Encuentra llave inglesa entre cosas de las herramientas.",
@@ -17362,7 +17362,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca perro en los animales",
   "descripcion": "Encuentra perro entre cosas de los animales.",
@@ -17410,7 +17410,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca cerdo en los animales",
   "descripcion": "Encuentra cerdo entre cosas de los animales.",
@@ -17551,7 +17551,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca olla en la cocina",
   "descripcion": "Encuentra olla entre cosas de la cocina.",
@@ -17595,7 +17595,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca plato en la cocina",
   "descripcion": "Encuentra plato entre cosas de la cocina.",
@@ -17732,7 +17732,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca camisa en la ropa",
   "descripcion": "Encuentra camisa entre cosas de la ropa.",
@@ -17776,7 +17776,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca calcetín en la ropa",
   "descripcion": "Encuentra calcetín entre cosas de la ropa.",
@@ -17913,7 +17913,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca sofá en el salón",
   "descripcion": "Encuentra sofá entre cosas de el salón.",
@@ -17957,7 +17957,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca televisión en el salón",
   "descripcion": "Encuentra televisión entre cosas de el salón.",
@@ -18124,7 +18124,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca tomate en la huerta",
   "descripcion": "Encuentra tomate entre cosas de la huerta.",
@@ -18160,7 +18160,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca pimiento en la huerta",
   "descripcion": "Encuentra pimiento entre cosas de la huerta.",
@@ -18319,7 +18319,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca tarta en los postres",
   "descripcion": "Encuentra tarta entre cosas de los postres.",
@@ -18355,7 +18355,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca pera en los postres",
   "descripcion": "Encuentra pera entre cosas de los postres.",
@@ -18530,7 +18530,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca coche en el transporte",
   "descripcion": "Encuentra coche entre cosas de el transporte.",
@@ -18574,7 +18574,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca barco en el transporte",
   "descripcion": "Encuentra barco entre cosas de el transporte.",
@@ -18765,7 +18765,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca manzana en la frutería",
   "descripcion": "Encuentra manzana entre cosas de la frutería.",
@@ -18813,7 +18813,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca limón en la frutería",
   "descripcion": "Encuentra limón entre cosas de la frutería.",
@@ -18984,7 +18984,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca pan en el desayuno",
   "descripcion": "Encuentra pan entre cosas de el desayuno.",
@@ -19020,7 +19020,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca huevo en el desayuno",
   "descripcion": "Encuentra huevo entre cosas de el desayuno.",
@@ -19179,7 +19179,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca vaca en los animales de granja",
   "descripcion": "Encuentra vaca entre cosas de los animales de granja.",
@@ -19215,7 +19215,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca oveja en los animales de granja",
   "descripcion": "Encuentra oveja entre cosas de los animales de granja.",
@@ -19374,7 +19374,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca perro en las mascotas",
   "descripcion": "Encuentra perro entre cosas de las mascotas.",
@@ -19410,7 +19410,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca pez en las mascotas",
   "descripcion": "Encuentra pez entre cosas de las mascotas.",
@@ -19577,7 +19577,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca plato en poner la mesa",
   "descripcion": "Encuentra plato entre cosas de poner la mesa.",
@@ -19617,7 +19617,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca cuchara en poner la mesa",
   "descripcion": "Encuentra cuchara entre cosas de poner la mesa.",
@@ -19780,7 +19780,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca tomate en el mercado de verduras",
   "descripcion": "Encuentra tomate entre cosas de el mercado de verduras.",
@@ -19816,7 +19816,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca pimiento en el mercado de verduras",
   "descripcion": "Encuentra pimiento entre cosas de el mercado de verduras.",
@@ -19991,7 +19991,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca coche en los vehículos",
   "descripcion": "Encuentra coche entre cosas de los vehículos.",
@@ -20035,7 +20035,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca bicicleta en los vehículos",
   "descripcion": "Encuentra bicicleta entre cosas de los vehículos.",
@@ -20218,7 +20218,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca sofá en la sala de estar",
   "descripcion": "Encuentra sofá entre cosas de la sala de estar.",
@@ -20262,7 +20262,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca televisión en la sala de estar",
   "descripcion": "Encuentra televisión entre cosas de la sala de estar.",
@@ -20421,7 +20421,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca jabón en el aseo",
   "descripcion": "Encuentra jabón entre cosas de el aseo.",
@@ -20453,7 +20453,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca espejo en el aseo",
   "descripcion": "Encuentra espejo entre cosas de el aseo.",
@@ -20608,7 +20608,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca las casas (3)",
   "descripcion": "Encuentra sol entre cosas de el cielo y el campo.",
@@ -20644,7 +20644,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca flor en el cielo y el campo",
   "descripcion": "Encuentra flor entre cosas de el cielo y el campo.",
@@ -20769,7 +20769,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca vestido en el armario",
   "descripcion": "Encuentra vestido entre cosas de el armario.",
@@ -20903,7 +20903,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 2 al 7",
   "descripcion": "Coloca los números del 2 al 7.",
@@ -20929,7 +20929,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 4 al 9",
   "descripcion": "Coloca los números del 4 al 9.",
@@ -20955,7 +20955,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 6 al 11",
   "descripcion": "Coloca los números del 6 al 11.",
@@ -20981,7 +20981,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 1 al 7",
   "descripcion": "Coloca los números del 1 al 7.",
@@ -21008,7 +21008,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 3 al 9",
   "descripcion": "Coloca los números del 3 al 9.",
@@ -21035,7 +21035,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 0 al 5",
   "descripcion": "Coloca los números del 0 al 5.",
@@ -21061,7 +21061,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 5 al 11",
   "descripcion": "Coloca los números del 5 al 11.",
@@ -21088,7 +21088,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 7 al 12",
   "descripcion": "Coloca los números del 7 al 12.",
@@ -21114,7 +21114,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena de 3 en 3",
   "descripcion": "Cuenta de tres en tres.",
@@ -21139,7 +21139,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las letras: K a la O",
   "descripcion": "Coloca estas letras.",
@@ -21164,7 +21164,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "razonamiento",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las tallas",
   "descripcion": "De la más pequeña a la más grande.",
@@ -21188,7 +21188,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 0 al 4",
   "descripcion": "Coloca los números del 0 al 4.",
@@ -21213,7 +21213,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 0 al 6",
   "descripcion": "Coloca los números del 0 al 6.",
@@ -21240,7 +21240,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 1 al 5",
   "descripcion": "Coloca los números del 1 al 5.",
@@ -21265,7 +21265,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 1 al 6",
   "descripcion": "Coloca los números del 1 al 6.",
@@ -21291,7 +21291,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 2 al 6",
   "descripcion": "Coloca los números del 2 al 6.",
@@ -21316,7 +21316,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 2 al 8",
   "descripcion": "Coloca los números del 2 al 8.",
@@ -21343,7 +21343,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 3 al 7",
   "descripcion": "Coloca los números del 3 al 7.",
@@ -21368,7 +21368,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 3 al 8",
   "descripcion": "Coloca los números del 3 al 8.",
@@ -21394,7 +21394,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 4 al 8",
   "descripcion": "Coloca los números del 4 al 8.",
@@ -21419,7 +21419,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 4 al 10",
   "descripcion": "Coloca los números del 4 al 10.",
@@ -21446,7 +21446,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 5 al 9",
   "descripcion": "Coloca los números del 5 al 9.",
@@ -21471,7 +21471,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 5 al 10",
   "descripcion": "Coloca los números del 5 al 10.",
@@ -21497,7 +21497,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 6 al 10",
   "descripcion": "Coloca los números del 6 al 10.",
@@ -21522,7 +21522,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 6 al 12",
   "descripcion": "Coloca los números del 6 al 12.",
@@ -21549,7 +21549,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 7 al 11",
   "descripcion": "Coloca los números del 7 al 11.",
@@ -21574,7 +21574,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 7 al 13",
   "descripcion": "Coloca los números del 7 al 13.",
@@ -21601,7 +21601,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 8 al 12",
   "descripcion": "Coloca los números del 8 al 12.",
@@ -21626,7 +21626,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 8 al 13",
   "descripcion": "Coloca los números del 8 al 13.",
@@ -21652,7 +21652,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 8 al 14",
   "descripcion": "Coloca los números del 8 al 14.",
@@ -21679,7 +21679,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 9 al 13",
   "descripcion": "Coloca los números del 9 al 13.",
@@ -21704,7 +21704,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 9 al 14",
   "descripcion": "Coloca los números del 9 al 14.",
@@ -21730,7 +21730,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 9 al 15",
   "descripcion": "Coloca los números del 9 al 15.",
@@ -21757,7 +21757,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 10 al 14",
   "descripcion": "Coloca los números del 10 al 14.",
@@ -21782,7 +21782,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 10 al 15",
   "descripcion": "Coloca los números del 10 al 15.",
@@ -21808,7 +21808,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 10 al 16",
   "descripcion": "Coloca los números del 10 al 16.",
@@ -21835,7 +21835,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 11 al 15",
   "descripcion": "Coloca los números del 11 al 15.",
@@ -21860,7 +21860,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 11 al 16",
   "descripcion": "Coloca los números del 11 al 16.",
@@ -21886,7 +21886,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 11 al 17",
   "descripcion": "Coloca los números del 11 al 17.",
@@ -21913,7 +21913,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 12 al 16",
   "descripcion": "Coloca los números del 12 al 16.",
@@ -21938,7 +21938,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 12 al 17",
   "descripcion": "Coloca los números del 12 al 17.",
@@ -21964,7 +21964,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 12 al 18",
   "descripcion": "Coloca los números del 12 al 18.",
@@ -21991,7 +21991,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 13 al 17",
   "descripcion": "Coloca los números del 13 al 17.",
@@ -22016,7 +22016,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 13 al 18",
   "descripcion": "Coloca los números del 13 al 18.",
@@ -22042,7 +22042,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 13 al 19",
   "descripcion": "Coloca los números del 13 al 19.",
@@ -22069,7 +22069,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 14 al 18",
   "descripcion": "Coloca los números del 14 al 18.",
@@ -22094,7 +22094,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 14 al 19",
   "descripcion": "Coloca los números del 14 al 19.",
@@ -22120,7 +22120,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 14 al 20",
   "descripcion": "Coloca los números del 14 al 20.",
@@ -22147,7 +22147,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta de 2 en 2: 2 a 10",
   "descripcion": "Ordena de menor a mayor.",
@@ -22172,7 +22172,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta de 2 en 2: 2 a 12",
   "descripcion": "Ordena de menor a mayor.",
@@ -22198,7 +22198,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta de 3 en 3: 3 a 15",
   "descripcion": "Ordena de menor a mayor.",
@@ -22223,7 +22223,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta de 5 en 5: 5 a 25",
   "descripcion": "Ordena de menor a mayor.",
@@ -22248,7 +22248,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta de 10 en 10: 10 a 50",
   "descripcion": "Ordena de menor a mayor.",
@@ -22273,7 +22273,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena 1-9",
   "descripcion": "Ordena de menor a mayor.",
@@ -22302,7 +22302,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena 0-10",
   "descripcion": "Ordena de menor a mayor.",
@@ -22333,7 +22333,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las letras: D a la H",
   "descripcion": "Coloca las letras en orden.",
@@ -22358,7 +22358,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las letras: G a la K",
   "descripcion": "Coloca las letras en orden.",
@@ -22383,7 +22383,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las letras: J a la N",
   "descripcion": "Coloca las letras en orden.",
@@ -22408,7 +22408,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las letras: M a la Q",
   "descripcion": "Coloca las letras en orden.",
@@ -22433,7 +22433,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las letras: P a la T",
   "descripcion": "Coloca las letras en orden.",
@@ -22458,7 +22458,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las letras: S a la W",
   "descripcion": "Coloca las letras en orden.",
@@ -22483,7 +22483,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena las letras: V a la Z",
   "descripcion": "Coloca las letras en orden.",
@@ -22508,7 +22508,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los meses: Enero a Abril",
   "descripcion": "Coloca los meses en orden.",
@@ -22532,7 +22532,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los meses: Marzo a Junio",
   "descripcion": "Coloca los meses en orden.",
@@ -22556,7 +22556,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los meses: Mayo a Agosto",
   "descripcion": "Coloca los meses en orden.",
@@ -22580,7 +22580,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los meses: Julio a Octubre",
   "descripcion": "Coloca los meses en orden.",
@@ -22604,7 +22604,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "vida_cotidiana",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena los meses: Septiembre a Diciembre",
   "descripcion": "Coloca los meses en orden.",
@@ -22628,7 +22628,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "razonamiento",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena: las tallas (S-XXL)",
   "descripcion": "Coloca en orden.",
@@ -22653,7 +22653,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "razonamiento",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena: los tamaños de vaso",
   "descripcion": "Coloca en orden.",
@@ -22677,7 +22677,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "razonamiento",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena: la vida de la mariposa",
   "descripcion": "Coloca en orden.",
@@ -22701,7 +22701,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "razonamiento",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena: la vida de la rana",
   "descripcion": "Coloca en orden.",
@@ -22725,7 +22725,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "razonamiento",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena: crecer una planta",
   "descripcion": "Coloca en orden.",
@@ -23100,56 +23100,6 @@
  {
   "bloque": "vida_cotidiana",
   "plantilla_tipo": "manejo_cantidad",
-  "nombre": "Calcula la vuelta (pagas con 20 €)",
-  "descripcion": "Calcula la vuelta de la compra.",
-  "parametros_json": {
-   "dificultad": "dificil",
-   "modo": "vuelta",
-   "con_centimos": false,
-   "denominaciones_c": [
-    100,
-    200,
-    500,
-    1000,
-    2000,
-    5000
-   ],
-   "paga_con_c": [
-    2000
-   ],
-   "importe_min_c": 200,
-   "importe_max_c": 1900,
-   "paso_c": 100
-  }
- },
- {
-  "bloque": "vida_cotidiana",
-  "plantilla_tipo": "manejo_cantidad",
-  "nombre": "Calcula la vuelta (pagas con 50 €)",
-  "descripcion": "Calcula la vuelta de la compra.",
-  "parametros_json": {
-   "dificultad": "dificil",
-   "modo": "vuelta",
-   "con_centimos": false,
-   "denominaciones_c": [
-    100,
-    200,
-    500,
-    1000,
-    2000,
-    5000
-   ],
-   "paga_con_c": [
-    5000
-   ],
-   "importe_min_c": 2000,
-   "importe_max_c": 4500,
-   "paso_c": 100
-  }
- },
- {
-  "bloque": "vida_cotidiana",
-  "plantilla_tipo": "manejo_cantidad",
   "nombre": "¿Qué hora es? (cada diez minutos)",
   "descripcion": "Lee la hora: cada diez minutos.",
   "parametros_json": {
@@ -23424,7 +23374,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca manzana en frutas dulces",
   "descripcion": "Encuentra manzana.",
@@ -23518,7 +23468,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca sandía en frutas de verano",
   "descripcion": "Encuentra sandía.",
@@ -23628,7 +23578,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca perro en animales con cuatro patas",
   "descripcion": "Encuentra perro.",
@@ -23730,7 +23680,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca coche en medios de transporte",
   "descripcion": "Encuentra coche.",
@@ -23824,7 +23774,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca silla en muebles de casa",
   "descripcion": "Encuentra silla.",
@@ -23902,7 +23852,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca televisión en aparatos de casa",
   "descripcion": "Encuentra televisión.",
@@ -23984,7 +23934,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca plato en cubiertos y vajilla",
   "descripcion": "Encuentra plato.",
@@ -24074,7 +24024,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca olla en cacharros de cocina",
   "descripcion": "Encuentra olla.",
@@ -24600,7 +24550,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (3 piezas) #1",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -24643,7 +24593,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (3 piezas) #2",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -24686,7 +24636,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (3 piezas) #3",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -24729,7 +24679,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (4 piezas) #4",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -24781,7 +24731,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (4 piezas) #5",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -24833,7 +24783,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (4 piezas) #6",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -24885,7 +24835,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (5 piezas) #7",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -24946,7 +24896,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (5 piezas) #8",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -26246,7 +26196,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Ordena del 15 al 20",
   "descripcion": "Del 15 al 20 en orden.",
@@ -26272,7 +26222,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta atrás del 10 al 1",
   "descripcion": "Ordena la cuenta atrás (el mayor arriba).",
@@ -26302,7 +26252,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta atrás del 15 al 10",
   "descripcion": "Ordena la cuenta atrás (el mayor arriba).",
@@ -26328,7 +26278,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta atrás del 20 al 15",
   "descripcion": "Ordena la cuenta atrás (el mayor arriba).",
@@ -26354,7 +26304,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta atrás del 9 al 4",
   "descripcion": "Ordena la cuenta atrás (el mayor arriba).",
@@ -26380,7 +26330,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta atrás del 12 al 7",
   "descripcion": "Ordena la cuenta atrás (el mayor arriba).",
@@ -26406,7 +26356,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta atrás del 8 al 2",
   "descripcion": "Ordena la cuenta atrás (el mayor arriba).",
@@ -26433,7 +26383,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta de 4 en 4 (del 4 al 24)",
   "descripcion": "De menor a mayor.",
@@ -26459,7 +26409,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta de 6 en 6 (del 6 al 36)",
   "descripcion": "De menor a mayor.",
@@ -26485,7 +26435,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta de 7 en 7 (del 7 al 42)",
   "descripcion": "De menor a mayor.",
@@ -26511,7 +26461,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "calculo",
   "plantilla_tipo": "secuencia_ordenar",
   "nombre": "Cuenta de 2 en 2 (del 20 al 30)",
   "descripcion": "De menor a mayor.",
@@ -26537,7 +26487,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado estrella corazon luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -26589,7 +26539,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -26641,7 +26591,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado corazon",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -26736,7 +26686,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: estrella corazon luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -26779,7 +26729,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo triangulo estrella corazon",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -26883,7 +26833,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: triangulo estrella luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -27021,7 +26971,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado triangulo corazon",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -27064,7 +27014,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: triangulo corazon luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -27150,7 +27100,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado estrella",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -27223,7 +27173,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca manzana (frutas rojas)",
   "descripcion": "Encuentra manzana.",
@@ -27296,7 +27246,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca plátano (frutas amarillas)",
   "descripcion": "Encuentra plátano.",
@@ -27377,7 +27327,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca gato (animales pequeños)",
   "descripcion": "Encuentra gato.",
@@ -27462,7 +27412,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca vaca (animales grandes)",
   "descripcion": "Encuentra vaca.",
@@ -27539,7 +27489,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca avión (por el aire)",
   "descripcion": "Encuentra avión.",
@@ -27616,7 +27566,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca coche (por la carretera)",
   "descripcion": "Encuentra coche.",
@@ -27705,7 +27655,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca plato (para comer)",
   "descripcion": "Encuentra plato.",
@@ -27798,7 +27748,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca martillo (la caja de herramientas)",
   "descripcion": "Encuentra martillo.",
@@ -27887,7 +27837,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca las casas (4)",
   "descripcion": "Encuentra sol.",
@@ -29076,7 +29026,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29119,7 +29069,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29205,7 +29155,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo triangulo luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29248,7 +29198,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo estrella corazon",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29291,7 +29241,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo estrella luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29334,7 +29284,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo corazon luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29420,7 +29370,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado estrella corazon",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29549,7 +29499,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: triangulo estrella corazon",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29592,7 +29542,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo estrella",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29644,7 +29594,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo corazon",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29696,7 +29646,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado estrella luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29748,7 +29698,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado corazon luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29852,7 +29802,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo triangulo corazon luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29904,7 +29854,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado triangulo estrella corazon",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -29956,7 +29906,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado triangulo estrella luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -30008,7 +29958,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: triangulo estrella corazon luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -30060,7 +30010,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo estrella corazon",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -30121,7 +30071,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo estrella luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -30182,7 +30132,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo corazon luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -30243,7 +30193,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado estrella corazon luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -30304,7 +30254,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo triangulo estrella corazon luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -30365,7 +30315,7 @@
   }
  },
  {
-  "bloque": "razonamiento",
+  "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado triangulo estrella corazon luna",
   "descripcion": "Toca cada pieza y llévala a su hueco.",
@@ -32567,286 +32517,6 @@
   }
  },
  {
-  "bloque": "vida_cotidiana",
-  "plantilla_tipo": "manejo_cantidad",
-  "nombre": "La vuelta (50 €) v1",
-  "descripcion": "Calcula la vuelta.",
-  "parametros_json": {
-   "dificultad": "dificil",
-   "modo": "vuelta",
-   "con_centimos": false,
-   "denominaciones_c": [
-    100,
-    200,
-    500,
-    1000,
-    2000,
-    5000
-   ],
-   "paga_con_c": [
-    5000
-   ],
-   "importe_min_c": 1500,
-   "importe_max_c": 4800,
-   "paso_c": 100
-  }
- },
- {
-  "bloque": "vida_cotidiana",
-  "plantilla_tipo": "manejo_cantidad",
-  "nombre": "La vuelta (50 €) v2",
-  "descripcion": "Calcula la vuelta.",
-  "parametros_json": {
-   "dificultad": "dificil",
-   "modo": "vuelta",
-   "con_centimos": false,
-   "denominaciones_c": [
-    100,
-    200,
-    500,
-    1000,
-    2000,
-    5000
-   ],
-   "paga_con_c": [
-    5000
-   ],
-   "importe_min_c": 1500,
-   "importe_max_c": 4800,
-   "paso_c": 100
-  }
- },
- {
-  "bloque": "vida_cotidiana",
-  "plantilla_tipo": "manejo_cantidad",
-  "nombre": "La vuelta (20 €) v1",
-  "descripcion": "Calcula la vuelta.",
-  "parametros_json": {
-   "dificultad": "dificil",
-   "modo": "vuelta",
-   "con_centimos": false,
-   "denominaciones_c": [
-    100,
-    200,
-    500,
-    1000,
-    2000,
-    5000
-   ],
-   "paga_con_c": [
-    2000
-   ],
-   "importe_min_c": 600,
-   "importe_max_c": 1900,
-   "paso_c": 100
-  }
- },
- {
-  "bloque": "vida_cotidiana",
-  "plantilla_tipo": "manejo_cantidad",
-  "nombre": "La vuelta (20 €) v2",
-  "descripcion": "Calcula la vuelta.",
-  "parametros_json": {
-   "dificultad": "dificil",
-   "modo": "vuelta",
-   "con_centimos": false,
-   "denominaciones_c": [
-    100,
-    200,
-    500,
-    1000,
-    2000,
-    5000
-   ],
-   "paga_con_c": [
-    2000
-   ],
-   "importe_min_c": 600,
-   "importe_max_c": 1900,
-   "paso_c": 100
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Repasa el número 0",
-  "descripcion": "Traza el número 0 siguiendo la flecha.",
-  "parametros_json": {
-   "dificultad": "media",
-   "instruccion": "Traza el 0",
-   "tolerancia_px": 22,
-   "viewbox": "0 0 100 145",
-   "figuras": [
-    {
-     "id": "num0",
-     "path": "M55,26 C34,26 30,54 30,73 C30,100 42,118 55,118 C70,118 72,96 72,73 C72,50 72,26 55,26"
-    }
-   ]
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Repasa el número 1",
-  "descripcion": "Traza el número 1 siguiendo la flecha.",
-  "parametros_json": {
-   "dificultad": "media",
-   "instruccion": "Traza el 1",
-   "tolerancia_px": 22,
-   "viewbox": "0 0 100 145",
-   "figuras": [
-    {
-     "id": "num1",
-     "path": "M40,44 L56,30 L56,118"
-    }
-   ]
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Repasa el número 2",
-  "descripcion": "Traza el número 2 siguiendo la flecha.",
-  "parametros_json": {
-   "dificultad": "media",
-   "instruccion": "Traza el 2",
-   "tolerancia_px": 22,
-   "viewbox": "0 0 100 145",
-   "figuras": [
-    {
-     "id": "num2",
-     "path": "M32,48 C32,26 70,26 70,50 C70,70 36,92 30,116 L74,116"
-    }
-   ]
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Repasa el número 3",
-  "descripcion": "Traza el número 3 siguiendo la flecha.",
-  "parametros_json": {
-   "dificultad": "media",
-   "instruccion": "Traza el 3",
-   "tolerancia_px": 22,
-   "viewbox": "0 0 100 145",
-   "figuras": [
-    {
-     "id": "num3",
-     "path": "M32,44 C34,26 68,26 66,48 C65,62 48,64 48,64 C48,64 72,66 70,92 C68,116 34,116 30,96"
-    }
-   ]
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Repasa el número 4",
-  "descripcion": "Traza el número 4 siguiendo la flecha.",
-  "parametros_json": {
-   "dificultad": "media",
-   "instruccion": "Traza el 4",
-   "tolerancia_px": 22,
-   "viewbox": "0 0 100 145",
-   "figuras": [
-    {
-     "id": "num4",
-     "path": "M62,26 L28,92 L78,92 M62,52 L62,118"
-    }
-   ]
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Repasa el número 5",
-  "descripcion": "Traza el número 5 siguiendo la flecha.",
-  "parametros_json": {
-   "dificultad": "media",
-   "instruccion": "Traza el 5",
-   "tolerancia_px": 22,
-   "viewbox": "0 0 100 145",
-   "figuras": [
-    {
-     "id": "num5",
-     "path": "M70,28 L38,28 L34,66 C46,58 72,58 72,90 C72,116 40,120 30,100"
-    }
-   ]
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Repasa el número 6",
-  "descripcion": "Traza el número 6 siguiendo la flecha.",
-  "parametros_json": {
-   "dificultad": "media",
-   "instruccion": "Traza el 6",
-   "tolerancia_px": 22,
-   "viewbox": "0 0 100 145",
-   "figuras": [
-    {
-     "id": "num6",
-     "path": "M66,30 C46,30 32,56 32,82 C32,106 46,118 55,118 C70,118 72,98 72,88 C72,72 52,68 40,80"
-    }
-   ]
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Repasa el número 7",
-  "descripcion": "Traza el número 7 siguiendo la flecha.",
-  "parametros_json": {
-   "dificultad": "media",
-   "instruccion": "Traza el 7",
-   "tolerancia_px": 22,
-   "viewbox": "0 0 100 145",
-   "figuras": [
-    {
-     "id": "num7",
-     "path": "M28,30 L74,30 L44,118 M38,76 L60,76"
-    }
-   ]
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Repasa el número 8",
-  "descripcion": "Traza el número 8 siguiendo la flecha.",
-  "parametros_json": {
-   "dificultad": "media",
-   "instruccion": "Traza el 8",
-   "tolerancia_px": 22,
-   "viewbox": "0 0 100 145",
-   "figuras": [
-    {
-     "id": "num8",
-     "path": "M53,70 C31,70 31,28 53,28 C75,28 75,70 53,70 C29,70 27,118 53,118 C79,118 75,70 53,70"
-    }
-   ]
-  }
- },
- {
-  "bloque": "praxias",
-  "plantilla_tipo": "trazo",
-  "nombre": "Repasa el número 9",
-  "descripcion": "Traza el número 9 siguiendo la flecha.",
-  "parametros_json": {
-   "dificultad": "media",
-   "instruccion": "Traza el 9",
-   "tolerancia_px": 22,
-   "viewbox": "0 0 100 145",
-   "figuras": [
-    {
-     "id": "num9",
-     "path": "M70,54 C70,34 52,28 43,32 C32,37 30,54 39,62 C50,72 68,66 70,54 L58,118"
-    }
-   ]
-  }
- },
- {
   "bloque": "praxias",
   "plantilla_tipo": "trazo",
   "nombre": "Traza: línea larga",
@@ -34385,7 +34055,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca el girasol",
   "descripcion": "Encuentra el girasol entre las flores.",
@@ -34635,472 +34305,6 @@
  {
   "bloque": "razonamiento",
   "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Encaja formas: circulo triangulo estrella",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
-  "parametros_json": {
-   "dificultad": "facil",
-   "cantidad_min": 3,
-   "cantidad_max": 3,
-   "muestrear": false,
-   "zonas": [
-    {
-     "id": "hueco_circulo",
-     "label": "hueco redonda"
-    },
-    {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
-    },
-    {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
-    },
-    {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
-    },
-    {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Encaja formas: cuadrado corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
-  "parametros_json": {
-   "dificultad": "facil",
-   "cantidad_min": 3,
-   "cantidad_max": 3,
-   "muestrear": false,
-   "zonas": [
-    {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrada"
-    },
-    {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
-    },
-    {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
-    },
-    {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
-    },
-    {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Encaja formas: circulo estrella corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
-  "parametros_json": {
-   "dificultad": "media",
-   "cantidad_min": 4,
-   "cantidad_max": 4,
-   "muestrear": false,
-   "zonas": [
-    {
-     "id": "hueco_circulo",
-     "label": "hueco redonda"
-    },
-    {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
-    },
-    {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
-    },
-    {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
-    },
-    {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
-    },
-    {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
-    },
-    {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Encaja formas: circulo triangulo corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
-  "parametros_json": {
-   "dificultad": "facil",
-   "cantidad_min": 3,
-   "cantidad_max": 3,
-   "muestrear": false,
-   "zonas": [
-    {
-     "id": "hueco_circulo",
-     "label": "hueco redonda"
-    },
-    {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
-    },
-    {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
-    },
-    {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
-    },
-    {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Encaja formas: circulo cuadrado estrella corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
-  "parametros_json": {
-   "dificultad": "media",
-   "cantidad_min": 4,
-   "cantidad_max": 4,
-   "muestrear": false,
-   "zonas": [
-    {
-     "id": "hueco_circulo",
-     "label": "hueco redonda"
-    },
-    {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrada"
-    },
-    {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
-    },
-    {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
-    },
-    {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
-    },
-    {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
-    },
-    {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Encaja formas: cuadrado triangulo estrella",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
-  "parametros_json": {
-   "dificultad": "facil",
-   "cantidad_min": 3,
-   "cantidad_max": 3,
-   "muestrear": false,
-   "zonas": [
-    {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrada"
-    },
-    {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
-    },
-    {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
-    },
-    {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
-    },
-    {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Encaja formas: cuadrado estrella luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
-  "parametros_json": {
-   "dificultad": "facil",
-   "cantidad_min": 3,
-   "cantidad_max": 3,
-   "muestrear": false,
-   "zonas": [
-    {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrada"
-    },
-    {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
-    },
-    {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
-    },
-    {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
-    },
-    {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Encaja formas: cuadrado triangulo corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
-  "parametros_json": {
-   "dificultad": "media",
-   "cantidad_min": 4,
-   "cantidad_max": 4,
-   "muestrear": false,
-   "zonas": [
-    {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrada"
-    },
-    {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
-    },
-    {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
-    },
-    {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
-    },
-    {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
-    },
-    {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
-    },
-    {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Encaja formas: cuadrado triangulo luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
-  "parametros_json": {
-   "dificultad": "facil",
-   "cantidad_min": 3,
-   "cantidad_max": 3,
-   "muestrear": false,
-   "zonas": [
-    {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrada"
-    },
-    {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
-    },
-    {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
-    },
-    {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
-    },
-    {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Encaja formas: circulo triangulo estrella luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
-  "parametros_json": {
-   "dificultad": "media",
-   "cantidad_min": 4,
-   "cantidad_max": 4,
-   "muestrear": false,
-   "zonas": [
-    {
-     "id": "hueco_circulo",
-     "label": "hueco redonda"
-    },
-    {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
-    },
-    {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
-    },
-    {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
-    },
-    {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
-    },
-    {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
-    },
-    {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Clasifica: Frutas y Animales #1",
   "descripcion": "Lleva cada cosa a su grupo (frutas o animales).",
   "parametros_json": {
@@ -35256,330 +34460,6 @@
      "id": "caballo",
      "label": "caballo",
      "zona_correcta": "animal"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Clasifica: Comida y Ropa #1",
-  "descripcion": "Lleva cada cosa a su grupo (comida o ropa).",
-  "parametros_json": {
-   "dificultad": "media",
-   "cantidad_min": 4,
-   "cantidad_max": 6,
-   "muestrear": true,
-   "zonas": [
-    {
-     "id": "comida",
-     "label": "Comida"
-    },
-    {
-     "id": "ropa",
-     "label": "Ropa"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "taza",
-     "label": "taza",
-     "zona_correcta": "comida"
-    },
-    {
-     "id": "galleta",
-     "label": "galleta",
-     "zona_correcta": "comida"
-    },
-    {
-     "id": "pan",
-     "label": "pan",
-     "zona_correcta": "comida"
-    },
-    {
-     "id": "chaqueta",
-     "label": "chaqueta",
-     "zona_correcta": "ropa"
-    },
-    {
-     "id": "zapato",
-     "label": "zapato",
-     "zona_correcta": "ropa"
-    },
-    {
-     "id": "bufanda",
-     "label": "bufanda",
-     "zona_correcta": "ropa"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Clasifica: Comida y Ropa #2",
-  "descripcion": "Lleva cada cosa a su grupo (comida o ropa).",
-  "parametros_json": {
-   "dificultad": "media",
-   "cantidad_min": 4,
-   "cantidad_max": 6,
-   "muestrear": true,
-   "zonas": [
-    {
-     "id": "comida",
-     "label": "Comida"
-    },
-    {
-     "id": "ropa",
-     "label": "Ropa"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "queso",
-     "label": "queso",
-     "zona_correcta": "comida"
-    },
-    {
-     "id": "taza",
-     "label": "taza",
-     "zona_correcta": "comida"
-    },
-    {
-     "id": "pan",
-     "label": "pan",
-     "zona_correcta": "comida"
-    },
-    {
-     "id": "chaqueta",
-     "label": "chaqueta",
-     "zona_correcta": "ropa"
-    },
-    {
-     "id": "camisa",
-     "label": "camisa",
-     "zona_correcta": "ropa"
-    },
-    {
-     "id": "bol",
-     "label": "cuenco",
-     "zona_correcta": "ropa"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Clasifica: Comida y Ropa #3",
-  "descripcion": "Lleva cada cosa a su grupo (comida o ropa).",
-  "parametros_json": {
-   "dificultad": "media",
-   "cantidad_min": 4,
-   "cantidad_max": 6,
-   "muestrear": true,
-   "zonas": [
-    {
-     "id": "comida",
-     "label": "Comida"
-    },
-    {
-     "id": "ropa",
-     "label": "Ropa"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "pan",
-     "label": "pan",
-     "zona_correcta": "comida"
-    },
-    {
-     "id": "galleta",
-     "label": "galleta",
-     "zona_correcta": "comida"
-    },
-    {
-     "id": "taza",
-     "label": "taza",
-     "zona_correcta": "comida"
-    },
-    {
-     "id": "zapato",
-     "label": "zapato",
-     "zona_correcta": "ropa"
-    },
-    {
-     "id": "pantalon",
-     "label": "pantalón",
-     "zona_correcta": "ropa"
-    },
-    {
-     "id": "bol",
-     "label": "cuenco",
-     "zona_correcta": "ropa"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Clasifica: De cocina y Herramientas #1",
-  "descripcion": "Lleva cada cosa a su grupo (de cocina o herramientas).",
-  "parametros_json": {
-   "dificultad": "media",
-   "cantidad_min": 4,
-   "cantidad_max": 6,
-   "muestrear": true,
-   "zonas": [
-    {
-     "id": "cocina",
-     "label": "De cocina"
-    },
-    {
-     "id": "herramienta",
-     "label": "Herramientas"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "olla",
-     "label": "olla",
-     "zona_correcta": "cocina"
-    },
-    {
-     "id": "taza",
-     "label": "taza",
-     "zona_correcta": "cocina"
-    },
-    {
-     "id": "botella",
-     "label": "botella",
-     "zona_correcta": "cocina"
-    },
-    {
-     "id": "cuchillo",
-     "label": "cuchillo",
-     "zona_correcta": "herramienta"
-    },
-    {
-     "id": "cuchara",
-     "label": "cuchara",
-     "zona_correcta": "herramienta"
-    },
-    {
-     "id": "bol",
-     "label": "cuenco",
-     "zona_correcta": "herramienta"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Clasifica: De cocina y Herramientas #2",
-  "descripcion": "Lleva cada cosa a su grupo (de cocina o herramientas).",
-  "parametros_json": {
-   "dificultad": "media",
-   "cantidad_min": 4,
-   "cantidad_max": 6,
-   "muestrear": true,
-   "zonas": [
-    {
-     "id": "cocina",
-     "label": "De cocina"
-    },
-    {
-     "id": "herramienta",
-     "label": "Herramientas"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "bol",
-     "label": "cuenco",
-     "zona_correcta": "cocina"
-    },
-    {
-     "id": "sarten",
-     "label": "sartén",
-     "zona_correcta": "cocina"
-    },
-    {
-     "id": "taza",
-     "label": "taza",
-     "zona_correcta": "cocina"
-    },
-    {
-     "id": "botella",
-     "label": "botella",
-     "zona_correcta": "herramienta"
-    },
-    {
-     "id": "martillo",
-     "label": "martillo",
-     "zona_correcta": "herramienta"
-    },
-    {
-     "id": "destornillador",
-     "label": "destornillador",
-     "zona_correcta": "herramienta"
-    }
-   ]
-  }
- },
- {
-  "bloque": "razonamiento",
-  "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Clasifica: De cocina y Herramientas #3",
-  "descripcion": "Lleva cada cosa a su grupo (de cocina o herramientas).",
-  "parametros_json": {
-   "dificultad": "media",
-   "cantidad_min": 4,
-   "cantidad_max": 6,
-   "muestrear": true,
-   "zonas": [
-    {
-     "id": "cocina",
-     "label": "De cocina"
-    },
-    {
-     "id": "herramienta",
-     "label": "Herramientas"
-    }
-   ],
-   "piezas": [
-    {
-     "id": "bol",
-     "label": "cuenco",
-     "zona_correcta": "cocina"
-    },
-    {
-     "id": "taza",
-     "label": "taza",
-     "zona_correcta": "cocina"
-    },
-    {
-     "id": "sarten",
-     "label": "sartén",
-     "zona_correcta": "cocina"
-    },
-    {
-     "id": "botella",
-     "label": "botella",
-     "zona_correcta": "herramienta"
-    },
-    {
-     "id": "llave",
-     "label": "llave",
-     "zona_correcta": "herramienta"
-    },
-    {
-     "id": "destornillador",
-     "label": "destornillador",
-     "zona_correcta": "herramienta"
     }
    ]
   }
@@ -36428,7 +35308,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca todas las manzanas",
   "descripcion": "Busca todas las manzanas",
@@ -36468,7 +35348,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca todos los perros",
   "descripcion": "Busca todos los perros",
@@ -36508,7 +35388,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca todos los zapatos",
   "descripcion": "Busca todos los zapatos",
@@ -36548,7 +35428,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca todos los coches",
   "descripcion": "Busca todos los coches",
@@ -36588,7 +35468,7 @@
   }
  },
  {
-  "bloque": "percepcion",
+  "bloque": "atencion_memoria",
   "plantilla_tipo": "busqueda_visual",
   "nombre": "Busca todas las tazas",
   "descripcion": "Busca todas las tazas",
@@ -36847,7 +35727,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Clasifica: animales de la granja y vehículos",
   "descripcion": "Clasifica: animales de la granja y vehículos",
@@ -36955,7 +35835,7 @@
   }
  },
  {
-  "bloque": "funcion_ejecutiva",
+  "bloque": "lenguaje",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Clasifica el jardín: flores, animales y transporte",
   "descripcion": "Clasifica el jardín: flores, animales y transporte",
@@ -37333,7 +36213,7 @@
   }
  },
  {
-  "bloque": "gnosias",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Los cinco sentidos",
   "descripcion": "Relacionar cada sentido con su función. Reconocimiento del propio cuerpo.",
@@ -38066,7 +36946,7 @@
   }
  },
  {
-  "bloque": "gnosias",
+  "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "Reconoce por la descripción",
   "descripcion": "Reconocer algo por una descripción sencilla. Reconocimiento y lenguaje.",
@@ -38319,6 +37199,164 @@
       "guapa se pone",
       "seda se queda",
       "nadie la ve"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Objetos de siempre",
+  "descripcion": "Reconocer objetos cotidianos y de ocio por la fotografía. Reconocimiento visual.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "abanico",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "abanico",
+     "correcta": "un abanico",
+     "distractores": [
+      "un peine",
+      "una pala",
+      "un cuchillo"
+     ]
+    },
+    {
+     "id": "guitarra",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "guitarra",
+     "correcta": "una guitarra",
+     "distractores": [
+      "un violín",
+      "una raqueta",
+      "un remo"
+     ]
+    },
+    {
+     "id": "paraguas",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "paraguas",
+     "correcta": "un paraguas",
+     "distractores": [
+      "un bastón",
+      "una escoba",
+      "un palo"
+     ]
+    },
+    {
+     "id": "reloj",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "reloj",
+     "correcta": "un reloj",
+     "distractores": [
+      "un plato",
+      "una moneda",
+      "un espejo"
+     ]
+    },
+    {
+     "id": "gafas",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "gafas",
+     "correcta": "unas gafas",
+     "distractores": [
+      "un antifaz",
+      "una lupa",
+      "un espejo"
+     ]
+    },
+    {
+     "id": "libro",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "libro",
+     "correcta": "un libro",
+     "distractores": [
+      "una caja",
+      "una maleta",
+      "una tabla"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Animales y bichos",
+  "descripcion": "Reconocer animales e insectos por la fotografía. Reconocimiento visual.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "pato",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "pato",
+     "correcta": "un pato",
+     "distractores": [
+      "una gallina",
+      "un pollo",
+      "un pájaro"
+     ]
+    },
+    {
+     "id": "mariposa",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "mariposa",
+     "correcta": "una mariposa",
+     "distractores": [
+      "una hormiga",
+      "una mosca",
+      "una flor"
+     ]
+    },
+    {
+     "id": "pajaro",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "pajaro",
+     "correcta": "un pájaro",
+     "distractores": [
+      "un pato",
+      "una gallina",
+      "un ratón"
+     ]
+    },
+    {
+     "id": "hormiga",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "hormiga",
+     "correcta": "una hormiga",
+     "distractores": [
+      "una mosca",
+      "una araña",
+      "una mariposa"
+     ]
+    },
+    {
+     "id": "gato",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "gato",
+     "correcta": "un gato",
+     "distractores": [
+      "un perro",
+      "un conejo",
+      "un ratón"
+     ]
+    },
+    {
+     "id": "pez",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "pez",
+     "correcta": "un pez",
+     "distractores": [
+      "un pato",
+      "un pájaro",
+      "un gato"
      ]
     }
    ]

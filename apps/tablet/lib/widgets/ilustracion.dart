@@ -412,7 +412,11 @@ class IlustracionResolver {
   /// fotos poco a poco. Vacío = por ahora solo dibujos. Ejemplo:
   ///   'perro': 'assets/fotos/perro.png',
   static const Map<String, String> _fotos = {
+    'abanico': 'assets/fotos/abanico.png',
     'arbol': 'assets/fotos/arbol.png',
+    'guitarra': 'assets/fotos/guitarra.png',
+    'mariposa': 'assets/fotos/mariposa.png',
+    'pato': 'assets/fotos/pato.png',
     'autobus': 'assets/fotos/autobus.png',
     'barco': 'assets/fotos/barco.png',
     'bicicleta': 'assets/fotos/bicicleta.png',
