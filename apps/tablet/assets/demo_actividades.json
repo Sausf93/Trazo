@@ -79713,6 +79713,288 @@
     "tiempo_ms",
     "num_toques"
    ]
+  },
+  {
+   "ejercicio_id": "Sigue la serie de figuras (1)",
+   "nombre": "Sigue la serie de figuras (1)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué figura va ahora?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "corazón",
+     "rombo",
+     "estrella"
+    ],
+    "serie": [
+     "rombo",
+     "estrella",
+     "rombo",
+     "estrella",
+     "rombo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "estrella"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Sigue la serie de figuras (2)",
+   "nombre": "Sigue la serie de figuras (2)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué figura va ahora?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "círculo",
+     "rombo",
+     "corazón"
+    ],
+    "serie": [
+     "cuadrado",
+     "corazón",
+     "cuadrado",
+     "corazón",
+     "cuadrado"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "corazón"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de tres figuras (1)",
+   "nombre": "Serie de tres figuras (1)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué figura va ahora?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "rombo",
+     "triángulo",
+     "cuadrado"
+    ],
+    "serie": [
+     "cuadrado",
+     "círculo",
+     "corazón",
+     "cuadrado",
+     "círculo",
+     "corazón"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "cuadrado"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de tres figuras (2)",
+   "nombre": "Serie de tres figuras (2)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué figura va ahora?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "estrella",
+     "cuadrado",
+     "círculo"
+    ],
+    "serie": [
+     "rombo",
+     "corazón",
+     "círculo",
+     "rombo",
+     "corazón"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "círculo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Figuras de dos en dos",
+   "nombre": "Figuras de dos en dos",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué figura va ahora?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "corazón",
+     "cuadrado",
+     "estrella"
+    ],
+    "serie": [
+     "estrella",
+     "estrella",
+     "cuadrado",
+     "cuadrado"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "estrella"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El patrón de dos figuras y una",
+   "nombre": "El patrón de dos figuras y una",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué figura va ahora?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "círculo",
+     "cuadrado",
+     "estrella"
+    ],
+    "serie": [
+     "estrella",
+     "estrella",
+     "triángulo",
+     "estrella",
+     "estrella",
+     "triángulo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "estrella"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "La cenefa de figuras",
+   "nombre": "La cenefa de figuras",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué figura va ahora?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "estrella",
+     "cuadrado",
+     "rombo"
+    ],
+    "serie": [
+     "círculo",
+     "rombo",
+     "círculo",
+     "rombo",
+     "círculo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "rombo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "El bordado de figuras",
+   "nombre": "El bordado de figuras",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué figura va ahora?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "corazón",
+     "círculo",
+     "rombo"
+    ],
+    "serie": [
+     "rombo",
+     "círculo",
+     "cuadrado",
+     "rombo",
+     "círculo",
+     "cuadrado"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "i3",
+    "correcta": "rombo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
   }
  ]
 }

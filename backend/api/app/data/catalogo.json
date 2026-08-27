@@ -122003,5 +122003,883 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Sigue la serie de figuras (1)",
+  "descripcion": "Mira las figuras y elige la que sigue.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "corazón",
+      "estrella",
+      "corazón",
+      "estrella"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "estrella",
+      "círculo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "corazón",
+      "triángulo",
+      "corazón",
+      "triángulo",
+      "corazón"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "cuadrado",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "estrella",
+      "rombo",
+      "estrella",
+      "rombo",
+      "estrella"
+     ],
+     "correcta": "rombo",
+     "distractores": [
+      "cuadrado",
+      "corazón"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "rombo",
+      "estrella",
+      "rombo",
+      "estrella",
+      "rombo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "rombo",
+      "corazón"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "estrella",
+      "triángulo",
+      "estrella",
+      "triángulo",
+      "estrella"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "cuadrado",
+      "círculo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "cuadrado",
+      "rombo",
+      "cuadrado",
+      "rombo"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "triángulo",
+      "círculo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Sigue la serie de figuras (2)",
+  "descripcion": "Continúa la fila de figuras.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "estrella",
+      "triángulo",
+      "estrella",
+      "triángulo",
+      "estrella"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "estrella",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "rombo",
+      "triángulo",
+      "rombo",
+      "triángulo",
+      "rombo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "rombo",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "círculo",
+      "triángulo",
+      "círculo",
+      "triángulo"
+     ],
+     "correcta": "círculo",
+     "distractores": [
+      "corazón",
+      "rombo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "cuadrado",
+      "corazón",
+      "cuadrado",
+      "corazón",
+      "cuadrado"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "rombo",
+      "círculo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "corazón",
+      "círculo",
+      "corazón",
+      "círculo"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "cuadrado",
+      "rombo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "triángulo",
+      "corazón",
+      "triángulo",
+      "corazón"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "estrella",
+      "círculo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de tres figuras (1)",
+  "descripcion": "Tres figuras que se repiten: ¿cuál sigue?",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "corazón",
+      "triángulo",
+      "rombo",
+      "corazón",
+      "triángulo",
+      "rombo",
+      "corazón"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "círculo",
+      "rombo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "triángulo",
+      "cuadrado",
+      "rombo",
+      "triángulo",
+      "cuadrado",
+      "rombo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "cuadrado",
+      "corazón"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "cuadrado",
+      "rombo",
+      "círculo",
+      "cuadrado",
+      "rombo",
+      "círculo"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "rombo",
+      "círculo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "cuadrado",
+      "círculo",
+      "corazón",
+      "cuadrado",
+      "círculo",
+      "corazón"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "triángulo",
+      "rombo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "corazón",
+      "triángulo",
+      "círculo",
+      "corazón",
+      "triángulo",
+      "círculo",
+      "corazón"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "rombo",
+      "círculo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "círculo",
+      "rombo",
+      "cuadrado",
+      "círculo",
+      "rombo",
+      "cuadrado",
+      "círculo"
+     ],
+     "correcta": "rombo",
+     "distractores": [
+      "corazón",
+      "círculo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de tres figuras (2)",
+  "descripcion": "Sigue el patrón de tres figuras.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "cuadrado",
+      "rombo",
+      "triángulo",
+      "cuadrado",
+      "rombo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "rombo",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "corazón",
+      "rombo",
+      "estrella",
+      "corazón",
+      "rombo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "rombo",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "estrella",
+      "corazón",
+      "cuadrado",
+      "estrella",
+      "corazón",
+      "cuadrado"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "triángulo",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "rombo",
+      "corazón",
+      "círculo",
+      "rombo",
+      "corazón"
+     ],
+     "correcta": "círculo",
+     "distractores": [
+      "cuadrado",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "círculo",
+      "rombo",
+      "estrella",
+      "círculo",
+      "rombo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "rombo",
+      "triángulo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "corazón",
+      "rombo",
+      "cuadrado",
+      "corazón",
+      "rombo"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "estrella",
+      "círculo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Figuras de dos en dos",
+  "descripcion": "Van de dos en dos: elige la que sigue.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "triángulo",
+      "triángulo",
+      "cuadrado",
+      "cuadrado",
+      "triángulo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "rombo",
+      "corazón"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "cuadrado",
+      "cuadrado",
+      "triángulo",
+      "triángulo",
+      "cuadrado"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "estrella",
+      "círculo"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "triángulo",
+      "triángulo",
+      "círculo",
+      "círculo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "corazón",
+      "círculo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "estrella",
+      "estrella",
+      "cuadrado",
+      "cuadrado"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "cuadrado",
+      "corazón"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "triángulo",
+      "triángulo",
+      "estrella",
+      "estrella",
+      "triángulo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "corazón",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "estrella",
+      "estrella",
+      "triángulo",
+      "triángulo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "rombo",
+      "círculo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El patrón de dos figuras y una",
+  "descripcion": "Dos iguales y una distinta: ¿qué sigue?",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "rombo",
+      "rombo",
+      "triángulo",
+      "rombo"
+     ],
+     "correcta": "rombo",
+     "distractores": [
+      "estrella",
+      "corazón"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "rombo",
+      "rombo",
+      "cuadrado",
+      "rombo",
+      "rombo"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "corazón",
+      "rombo"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "cuadrado",
+      "cuadrado",
+      "rombo",
+      "cuadrado",
+      "cuadrado"
+     ],
+     "correcta": "rombo",
+     "distractores": [
+      "triángulo",
+      "corazón"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "estrella",
+      "estrella",
+      "triángulo",
+      "estrella",
+      "estrella",
+      "triángulo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "cuadrado",
+      "círculo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "círculo",
+      "círculo",
+      "triángulo",
+      "círculo",
+      "círculo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "círculo",
+      "rombo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "triángulo",
+      "triángulo",
+      "rombo",
+      "triángulo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "círculo",
+      "rombo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "La cenefa de figuras",
+  "descripcion": "Sigue la cenefa de figuras.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "corazón",
+      "cuadrado",
+      "corazón",
+      "cuadrado",
+      "corazón"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "estrella",
+      "triángulo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "estrella",
+      "rombo",
+      "estrella",
+      "rombo",
+      "estrella"
+     ],
+     "correcta": "rombo",
+     "distractores": [
+      "corazón",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "cuadrado",
+      "rombo",
+      "cuadrado",
+      "rombo",
+      "cuadrado"
+     ],
+     "correcta": "rombo",
+     "distractores": [
+      "círculo",
+      "triángulo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "círculo",
+      "rombo",
+      "círculo",
+      "rombo",
+      "círculo"
+     ],
+     "correcta": "rombo",
+     "distractores": [
+      "cuadrado",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "estrella",
+      "corazón",
+      "estrella",
+      "corazón",
+      "estrella"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "cuadrado",
+      "rombo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "estrella",
+      "triángulo",
+      "estrella",
+      "triángulo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "corazón",
+      "cuadrado"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El bordado de figuras",
+  "descripcion": "Continúa el bordado de figuras.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "triángulo",
+      "estrella",
+      "cuadrado",
+      "triángulo",
+      "estrella",
+      "cuadrado",
+      "triángulo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "cuadrado",
+      "triángulo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "estrella",
+      "rombo",
+      "corazón",
+      "estrella",
+      "rombo"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "triángulo",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "corazón",
+      "cuadrado",
+      "círculo",
+      "corazón",
+      "cuadrado"
+     ],
+     "correcta": "círculo",
+     "distractores": [
+      "cuadrado",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "rombo",
+      "círculo",
+      "cuadrado",
+      "rombo",
+      "círculo",
+      "cuadrado"
+     ],
+     "correcta": "rombo",
+     "distractores": [
+      "círculo",
+      "corazón"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "corazón",
+      "triángulo",
+      "estrella",
+      "corazón",
+      "triángulo",
+      "estrella"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "rombo",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué figura va ahora?",
+     "serie": [
+      "triángulo",
+      "círculo",
+      "corazón",
+      "triángulo",
+      "círculo",
+      "corazón",
+      "triángulo"
+     ],
+     "correcta": "círculo",
+     "distractores": [
+      "cuadrado",
+      "estrella"
+     ]
+    }
+   ]
+  }
  }
 ]

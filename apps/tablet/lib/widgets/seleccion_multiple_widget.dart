@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -56,6 +58,120 @@ Color? _colorDe(String s) {
       return const Color(0xFF9AA0A6);
   }
   return null;
+}
+
+/// Nombres de figura que se pintan como dibujo (series/opciones VISUALES).
+const _kFiguras = {
+  'círculo',
+  'circulo',
+  'cuadrado',
+  'triángulo',
+  'triangulo',
+  'estrella',
+  'corazón',
+  'corazon',
+  'rombo',
+  'óvalo',
+  'ovalo',
+  'rectángulo',
+  'rectangulo'
+};
+bool _esFigura(String s) => _kFiguras.contains(s.trim().toLowerCase());
+
+/// Dibuja una figura geométrica sencilla por su nombre (para las series y
+/// opciones visuales). Grande y con buen contraste para el móvil.
+class _FiguraMini extends StatelessWidget {
+  final String nombre;
+  final double size;
+  const _FiguraMini(this.nombre, {this.size = 54});
+  @override
+  Widget build(BuildContext context) =>
+      CustomPaint(size: Size(size, size), painter: _FiguraPainter(nombre));
+}
+
+class _FiguraPainter extends CustomPainter {
+  final String nombre;
+  _FiguraPainter(this.nombre);
+  @override
+  void paint(Canvas canvas, Size size) {
+    final p = Paint()
+      ..color = TrazoColors.sageDark
+      ..style = PaintingStyle.fill;
+    final w = size.width, h = size.height, cx = w / 2, cy = h / 2;
+    final r = math.min(w, h) / 2;
+    switch (nombre.trim().toLowerCase()) {
+      case 'círculo':
+      case 'circulo':
+        canvas.drawCircle(Offset(cx, cy), r, p);
+        break;
+      case 'óvalo':
+      case 'ovalo':
+        canvas.drawOval(
+            Rect.fromCenter(center: Offset(cx, cy), width: w, height: h * 0.7),
+            p);
+        break;
+      case 'cuadrado':
+        canvas.drawRRect(
+            RRect.fromRectAndRadius(
+                Rect.fromCenter(
+                    center: Offset(cx, cy), width: w * 0.92, height: h * 0.92),
+                const Radius.circular(4)),
+            p);
+        break;
+      case 'rectángulo':
+      case 'rectangulo':
+        canvas.drawRRect(
+            RRect.fromRectAndRadius(
+                Rect.fromCenter(
+                    center: Offset(cx, cy), width: w, height: h * 0.62),
+                const Radius.circular(4)),
+            p);
+        break;
+      case 'triángulo':
+      case 'triangulo':
+        canvas.drawPath(
+            Path()
+              ..moveTo(cx, cy - r)
+              ..lineTo(cx + r, cy + r)
+              ..lineTo(cx - r, cy + r)
+              ..close(),
+            p);
+        break;
+      case 'rombo':
+        canvas.drawPath(
+            Path()
+              ..moveTo(cx, cy - r)
+              ..lineTo(cx + r, cy)
+              ..lineTo(cx, cy + r)
+              ..lineTo(cx - r, cy)
+              ..close(),
+            p);
+        break;
+      case 'corazón':
+      case 'corazon':
+        final path = Path()..moveTo(cx, cy + r * 0.75);
+        path.cubicTo(cx - r * 1.4, cy - r * 0.2, cx - r * 0.5, cy - r, cx,
+            cy - r * 0.35);
+        path.cubicTo(cx + r * 0.5, cy - r, cx + r * 1.4, cy - r * 0.2, cx,
+            cy + r * 0.75);
+        canvas.drawPath(path, p);
+        break;
+      case 'estrella':
+        final path = Path();
+        for (var i = 0; i < 10; i++) {
+          final rr = i.isEven ? r : r * 0.42;
+          final a = -math.pi / 2 + i * math.pi / 5;
+          final pt = Offset(cx + math.cos(a) * rr, cy + math.sin(a) * rr);
+          i == 0 ? path.moveTo(pt.dx, pt.dy) : path.lineTo(pt.dx, pt.dy);
+        }
+        path.close();
+        canvas.drawPath(path, p);
+        break;
+    }
+  }
+
+  @override
+  bool shouldRepaint(_FiguraPainter old) => old.nombre != nombre;
 }
 
 class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
@@ -156,11 +272,13 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
         for (final s in serie)
           _colorDe(s) != null
               ? ficha(_colorDe(s)!)
-              : Text(s,
-                  style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                      color: TrazoColors.ink)),
+              : _esFigura(s)
+                  ? _FiguraMini(s, size: 54)
+                  : Text(s,
+                      style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                          color: TrazoColors.ink)),
         Container(
           width: 54,
           height: 54,
@@ -243,6 +361,9 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
                               width: 2),
                         ),
                       ),
+                      const SizedBox(width: 14),
+                    ] else if (_esFigura(op)) ...[
+                      _FiguraMini(op, size: 42),
                       const SizedBox(width: 14),
                     ],
                     Flexible(
