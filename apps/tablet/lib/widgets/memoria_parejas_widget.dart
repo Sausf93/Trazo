@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import '../models.dart';
 import '../theme.dart';
 import '../tts.dart';
+import 'figura_geometrica.dart';
 import 'ilustracion.dart';
 
 /// Renderiza `parejas` (el clásico juego de memoria/concentración): primero se
@@ -314,7 +315,10 @@ class _MemoriaParejasWidgetState extends State<MemoriaParejasWidget> {
     final c = _cartas[i];
     final destapada = c.estado != _Estado.abajo;
     final emparejada = c.estado == _Estado.emparejada;
-    final tieneDibujo = IlustracionResolver.tiene(c.par);
+    // Parejas de COLOR ("une cada color con su igual"): la carta es un círculo de
+    // color, SIN texto (se empareja por el color, no leyendo el nombre).
+    final colorCarta = colorPorNombre(c.par);
+    final tieneDibujo = colorCarta == null && IlustracionResolver.tiene(c.par);
 
     final cara = destapada
         ? Container(
@@ -331,6 +335,19 @@ class _MemoriaParejasWidgetState extends State<MemoriaParejasWidget> {
             child: Stack(
               alignment: Alignment.center,
               children: [
+                if (colorCarta != null)
+                  Container(
+                    width: imgSize * 1.15,
+                    height: imgSize * 1.15,
+                    decoration: BoxDecoration(
+                      color: colorCarta,
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                          color: TrazoColors.ink.withValues(alpha: 0.25),
+                          width: 2),
+                    ),
+                  )
+                else
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,

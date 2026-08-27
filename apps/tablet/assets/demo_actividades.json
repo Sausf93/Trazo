@@ -96644,6 +96644,640 @@
     "tiempo_ms",
     "num_toques"
    ]
+  },
+  {
+   "ejercicio_id": "Toca todos los círculos",
+   "nombre": "Toca todos los círculos",
+   "bloque": "atencion_memoria",
+   "plantilla": "busqueda_visual",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca todos los CÍRCULOS",
+    "objetivo": {
+     "id": "circulo",
+     "label": "círculo"
+    },
+    "objetivo_label": "círculo",
+    "celdas": [
+     {
+      "id": "circulo",
+      "label": "círculo"
+     },
+     {
+      "id": "cuadrado",
+      "label": "cuadrado"
+     },
+     {
+      "id": "circulo",
+      "label": "círculo"
+     },
+     {
+      "id": "triangulo",
+      "label": "triángulo"
+     },
+     {
+      "id": "corazon",
+      "label": "corazón"
+     },
+     {
+      "id": "estrella",
+      "label": "estrella"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "objetivos": 2,
+    "total": 6,
+    "objetivo_id": "circulo"
+   },
+   "metricas": [
+    "aciertos",
+    "fallos",
+    "objetivos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Toca todos los cuadrados",
+   "nombre": "Toca todos los cuadrados",
+   "bloque": "atencion_memoria",
+   "plantilla": "busqueda_visual",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca todos los CUADRADOS",
+    "objetivo": {
+     "id": "cuadrado",
+     "label": "cuadrado"
+    },
+    "objetivo_label": "cuadrado",
+    "celdas": [
+     {
+      "id": "cuadrado",
+      "label": "cuadrado"
+     },
+     {
+      "id": "rombo",
+      "label": "rombo"
+     },
+     {
+      "id": "circulo",
+      "label": "círculo"
+     },
+     {
+      "id": "rombo",
+      "label": "rombo"
+     },
+     {
+      "id": "rectangulo",
+      "label": "rectángulo"
+     },
+     {
+      "id": "cuadrado",
+      "label": "cuadrado"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "objetivos": 2,
+    "total": 6,
+    "objetivo_id": "cuadrado"
+   },
+   "metricas": [
+    "aciertos",
+    "fallos",
+    "objetivos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Toca todos los triángulos",
+   "nombre": "Toca todos los triángulos",
+   "bloque": "atencion_memoria",
+   "plantilla": "busqueda_visual",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca todos los TRIÁNGULOS",
+    "objetivo": {
+     "id": "triangulo",
+     "label": "triángulo"
+    },
+    "objetivo_label": "triángulo",
+    "celdas": [
+     {
+      "id": "triangulo",
+      "label": "triángulo"
+     },
+     {
+      "id": "cuadrado",
+      "label": "cuadrado"
+     },
+     {
+      "id": "rectangulo",
+      "label": "rectángulo"
+     },
+     {
+      "id": "triangulo",
+      "label": "triángulo"
+     },
+     {
+      "id": "corazon",
+      "label": "corazón"
+     },
+     {
+      "id": "cuadrado",
+      "label": "cuadrado"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "objetivos": 2,
+    "total": 6,
+    "objetivo_id": "triangulo"
+   },
+   "metricas": [
+    "aciertos",
+    "fallos",
+    "objetivos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Toca todos los rectángulos",
+   "nombre": "Toca todos los rectángulos",
+   "bloque": "atencion_memoria",
+   "plantilla": "busqueda_visual",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca todos los RECTÁNGULOS",
+    "objetivo": {
+     "id": "rectangulo",
+     "label": "rectángulo"
+    },
+    "objetivo_label": "rectángulo",
+    "celdas": [
+     {
+      "id": "estrella",
+      "label": "estrella"
+     },
+     {
+      "id": "rectangulo",
+      "label": "rectángulo"
+     },
+     {
+      "id": "corazon",
+      "label": "corazón"
+     },
+     {
+      "id": "estrella",
+      "label": "estrella"
+     },
+     {
+      "id": "estrella",
+      "label": "estrella"
+     },
+     {
+      "id": "rectangulo",
+      "label": "rectángulo"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "objetivos": 2,
+    "total": 6,
+    "objetivo_id": "rectangulo"
+   },
+   "metricas": [
+    "aciertos",
+    "fallos",
+    "objetivos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Toca todos los estrellas",
+   "nombre": "Toca todos los estrellas",
+   "bloque": "atencion_memoria",
+   "plantilla": "busqueda_visual",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca todos los ESTRELLAS",
+    "objetivo": {
+     "id": "estrella",
+     "label": "estrella"
+    },
+    "objetivo_label": "estrella",
+    "celdas": [
+     {
+      "id": "estrella",
+      "label": "estrella"
+     },
+     {
+      "id": "rectangulo",
+      "label": "rectángulo"
+     },
+     {
+      "id": "circulo",
+      "label": "círculo"
+     },
+     {
+      "id": "triangulo",
+      "label": "triángulo"
+     },
+     {
+      "id": "triangulo",
+      "label": "triángulo"
+     },
+     {
+      "id": "estrella",
+      "label": "estrella"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "objetivos": 2,
+    "total": 6,
+    "objetivo_id": "estrella"
+   },
+   "metricas": [
+    "aciertos",
+    "fallos",
+    "objetivos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Toca todos los rombos",
+   "nombre": "Toca todos los rombos",
+   "bloque": "atencion_memoria",
+   "plantilla": "busqueda_visual",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca todos los ROMBOS",
+    "objetivo": {
+     "id": "rombo",
+     "label": "rombo"
+    },
+    "objetivo_label": "rombo",
+    "celdas": [
+     {
+      "id": "rectangulo",
+      "label": "rectángulo"
+     },
+     {
+      "id": "rombo",
+      "label": "rombo"
+     },
+     {
+      "id": "triangulo",
+      "label": "triángulo"
+     },
+     {
+      "id": "rombo",
+      "label": "rombo"
+     },
+     {
+      "id": "estrella",
+      "label": "estrella"
+     },
+     {
+      "id": "circulo",
+      "label": "círculo"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "objetivos": 2,
+    "total": 6,
+    "objetivo_id": "rombo"
+   },
+   "metricas": [
+    "aciertos",
+    "fallos",
+    "objetivos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Toca todos los corazones",
+   "nombre": "Toca todos los corazones",
+   "bloque": "atencion_memoria",
+   "plantilla": "busqueda_visual",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca todos los CORAZONES",
+    "objetivo": {
+     "id": "corazon",
+     "label": "corazón"
+    },
+    "objetivo_label": "corazón",
+    "celdas": [
+     {
+      "id": "estrella",
+      "label": "estrella"
+     },
+     {
+      "id": "rectangulo",
+      "label": "rectángulo"
+     },
+     {
+      "id": "corazon",
+      "label": "corazón"
+     },
+     {
+      "id": "corazon",
+      "label": "corazón"
+     },
+     {
+      "id": "circulo",
+      "label": "círculo"
+     },
+     {
+      "id": "rombo",
+      "label": "rombo"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "objetivos": 2,
+    "total": 6,
+    "objetivo_id": "corazon"
+   },
+   "metricas": [
+    "aciertos",
+    "fallos",
+    "objetivos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Parejas de colores (1)",
+   "nombre": "Parejas de colores (1)",
+   "bloque": "atencion_memoria",
+   "plantilla": "parejas",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Encuentra las parejas del mismo color",
+    "cartas": [
+     {
+      "carta": "verde_1",
+      "par": "verde",
+      "label": "verde"
+     },
+     {
+      "carta": "verde_0",
+      "par": "verde",
+      "label": "verde"
+     },
+     {
+      "carta": "amarillo_0",
+      "par": "amarillo",
+      "label": "amarillo"
+     },
+     {
+      "carta": "rojo_1",
+      "par": "rojo",
+      "label": "rojo"
+     },
+     {
+      "carta": "rojo_0",
+      "par": "rojo",
+      "label": "rojo"
+     },
+     {
+      "carta": "amarillo_1",
+      "par": "amarillo",
+      "label": "amarillo"
+     }
+    ],
+    "columnas": 3,
+    "n_pares": 3,
+    "segundos_preview": 5
+   },
+   "cantidad_objetivo": {
+    "n_pares": 3,
+    "n_cartas": 6
+   },
+   "metricas": [
+    "pares_encontrados",
+    "errores",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Parejas de colores (2)",
+   "nombre": "Parejas de colores (2)",
+   "bloque": "atencion_memoria",
+   "plantilla": "parejas",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Encuentra las parejas del mismo color",
+    "cartas": [
+     {
+      "carta": "morado_0",
+      "par": "morado",
+      "label": "morado"
+     },
+     {
+      "carta": "azul_1",
+      "par": "azul",
+      "label": "azul"
+     },
+     {
+      "carta": "morado_1",
+      "par": "morado",
+      "label": "morado"
+     },
+     {
+      "carta": "naranja_0",
+      "par": "naranja",
+      "label": "naranja"
+     },
+     {
+      "carta": "azul_0",
+      "par": "azul",
+      "label": "azul"
+     },
+     {
+      "carta": "naranja_1",
+      "par": "naranja",
+      "label": "naranja"
+     }
+    ],
+    "columnas": 3,
+    "n_pares": 3,
+    "segundos_preview": 5
+   },
+   "cantidad_objetivo": {
+    "n_pares": 3,
+    "n_cartas": 6
+   },
+   "metricas": [
+    "pares_encontrados",
+    "errores",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Parejas de colores (3)",
+   "nombre": "Parejas de colores (3)",
+   "bloque": "atencion_memoria",
+   "plantilla": "parejas",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Encuentra las parejas del mismo color",
+    "cartas": [
+     {
+      "carta": "naranja_1",
+      "par": "naranja",
+      "label": "naranja"
+     },
+     {
+      "carta": "amarillo_0",
+      "par": "amarillo",
+      "label": "amarillo"
+     },
+     {
+      "carta": "amarillo_1",
+      "par": "amarillo",
+      "label": "amarillo"
+     },
+     {
+      "carta": "rosa_1",
+      "par": "rosa",
+      "label": "rosa"
+     },
+     {
+      "carta": "rosa_0",
+      "par": "rosa",
+      "label": "rosa"
+     },
+     {
+      "carta": "naranja_0",
+      "par": "naranja",
+      "label": "naranja"
+     }
+    ],
+    "columnas": 3,
+    "n_pares": 3,
+    "segundos_preview": 5
+   },
+   "cantidad_objetivo": {
+    "n_pares": 3,
+    "n_cartas": 6
+   },
+   "metricas": [
+    "pares_encontrados",
+    "errores",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Une cada color con su igual (1)",
+   "nombre": "Une cada color con su igual (1)",
+   "bloque": "atencion_memoria",
+   "plantilla": "parejas",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Encuentra las parejas del mismo color",
+    "cartas": [
+     {
+      "carta": "morado_1",
+      "par": "morado",
+      "label": "morado"
+     },
+     {
+      "carta": "morado_0",
+      "par": "morado",
+      "label": "morado"
+     },
+     {
+      "carta": "naranja_0",
+      "par": "naranja",
+      "label": "naranja"
+     },
+     {
+      "carta": "verde_1",
+      "par": "verde",
+      "label": "verde"
+     },
+     {
+      "carta": "naranja_1",
+      "par": "naranja",
+      "label": "naranja"
+     },
+     {
+      "carta": "verde_0",
+      "par": "verde",
+      "label": "verde"
+     }
+    ],
+    "columnas": 3,
+    "n_pares": 3,
+    "segundos_preview": 5
+   },
+   "cantidad_objetivo": {
+    "n_pares": 3,
+    "n_cartas": 6
+   },
+   "metricas": [
+    "pares_encontrados",
+    "errores",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Une cada color con su igual (2)",
+   "nombre": "Une cada color con su igual (2)",
+   "bloque": "atencion_memoria",
+   "plantilla": "parejas",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Encuentra las parejas del mismo color",
+    "cartas": [
+     {
+      "carta": "azul_0",
+      "par": "azul",
+      "label": "azul"
+     },
+     {
+      "carta": "azul_1",
+      "par": "azul",
+      "label": "azul"
+     },
+     {
+      "carta": "rosa_1",
+      "par": "rosa",
+      "label": "rosa"
+     },
+     {
+      "carta": "rojo_0",
+      "par": "rojo",
+      "label": "rojo"
+     },
+     {
+      "carta": "rojo_1",
+      "par": "rojo",
+      "label": "rojo"
+     },
+     {
+      "carta": "rosa_0",
+      "par": "rosa",
+      "label": "rosa"
+     }
+    ],
+    "columnas": 3,
+    "n_pares": 3,
+    "segundos_preview": 5
+   },
+   "cantidad_objetivo": {
+    "n_pares": 3,
+    "n_cartas": 6
+   },
+   "metricas": [
+    "pares_encontrados",
+    "errores",
+    "tiempo_ms"
+   ]
   }
  ]
 }

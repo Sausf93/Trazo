@@ -146225,5 +146225,461 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Toca todos los círculos",
+  "descripcion": "Atención: encuentra y toca todas las figuras que son círculos.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todos los CÍRCULOS",
+   "objetivo": {
+    "id": "circulo",
+    "label": "círculo"
+   },
+   "distractores": [
+    {
+     "id": "cuadrado",
+     "label": "cuadrado"
+    },
+    {
+     "id": "triangulo",
+     "label": "triángulo"
+    },
+    {
+     "id": "rectangulo",
+     "label": "rectángulo"
+    },
+    {
+     "id": "estrella",
+     "label": "estrella"
+    },
+    {
+     "id": "rombo",
+     "label": "rombo"
+    },
+    {
+     "id": "corazon",
+     "label": "corazón"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Toca todos los cuadrados",
+  "descripcion": "Atención: encuentra y toca todas las figuras que son cuadrados.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todos los CUADRADOS",
+   "objetivo": {
+    "id": "cuadrado",
+    "label": "cuadrado"
+   },
+   "distractores": [
+    {
+     "id": "circulo",
+     "label": "círculo"
+    },
+    {
+     "id": "triangulo",
+     "label": "triángulo"
+    },
+    {
+     "id": "rectangulo",
+     "label": "rectángulo"
+    },
+    {
+     "id": "estrella",
+     "label": "estrella"
+    },
+    {
+     "id": "rombo",
+     "label": "rombo"
+    },
+    {
+     "id": "corazon",
+     "label": "corazón"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Toca todos los triángulos",
+  "descripcion": "Atención: encuentra y toca todas las figuras que son triángulos.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todos los TRIÁNGULOS",
+   "objetivo": {
+    "id": "triangulo",
+    "label": "triángulo"
+   },
+   "distractores": [
+    {
+     "id": "circulo",
+     "label": "círculo"
+    },
+    {
+     "id": "cuadrado",
+     "label": "cuadrado"
+    },
+    {
+     "id": "rectangulo",
+     "label": "rectángulo"
+    },
+    {
+     "id": "estrella",
+     "label": "estrella"
+    },
+    {
+     "id": "rombo",
+     "label": "rombo"
+    },
+    {
+     "id": "corazon",
+     "label": "corazón"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Toca todos los rectángulos",
+  "descripcion": "Atención: encuentra y toca todas las figuras que son rectángulos.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todos los RECTÁNGULOS",
+   "objetivo": {
+    "id": "rectangulo",
+    "label": "rectángulo"
+   },
+   "distractores": [
+    {
+     "id": "circulo",
+     "label": "círculo"
+    },
+    {
+     "id": "cuadrado",
+     "label": "cuadrado"
+    },
+    {
+     "id": "triangulo",
+     "label": "triángulo"
+    },
+    {
+     "id": "estrella",
+     "label": "estrella"
+    },
+    {
+     "id": "rombo",
+     "label": "rombo"
+    },
+    {
+     "id": "corazon",
+     "label": "corazón"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Toca todos los estrellas",
+  "descripcion": "Atención: encuentra y toca todas las figuras que son estrellas.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todos los ESTRELLAS",
+   "objetivo": {
+    "id": "estrella",
+    "label": "estrella"
+   },
+   "distractores": [
+    {
+     "id": "circulo",
+     "label": "círculo"
+    },
+    {
+     "id": "cuadrado",
+     "label": "cuadrado"
+    },
+    {
+     "id": "triangulo",
+     "label": "triángulo"
+    },
+    {
+     "id": "rectangulo",
+     "label": "rectángulo"
+    },
+    {
+     "id": "rombo",
+     "label": "rombo"
+    },
+    {
+     "id": "corazon",
+     "label": "corazón"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Toca todos los rombos",
+  "descripcion": "Atención: encuentra y toca todas las figuras que son rombos.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todos los ROMBOS",
+   "objetivo": {
+    "id": "rombo",
+    "label": "rombo"
+   },
+   "distractores": [
+    {
+     "id": "circulo",
+     "label": "círculo"
+    },
+    {
+     "id": "cuadrado",
+     "label": "cuadrado"
+    },
+    {
+     "id": "triangulo",
+     "label": "triángulo"
+    },
+    {
+     "id": "rectangulo",
+     "label": "rectángulo"
+    },
+    {
+     "id": "estrella",
+     "label": "estrella"
+    },
+    {
+     "id": "corazon",
+     "label": "corazón"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "busqueda_visual",
+  "nombre": "Toca todos los corazones",
+  "descripcion": "Atención: encuentra y toca todas las figuras que son corazones.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Toca todos los CORAZONES",
+   "objetivo": {
+    "id": "corazon",
+    "label": "corazón"
+   },
+   "distractores": [
+    {
+     "id": "circulo",
+     "label": "círculo"
+    },
+    {
+     "id": "cuadrado",
+     "label": "cuadrado"
+    },
+    {
+     "id": "triangulo",
+     "label": "triángulo"
+    },
+    {
+     "id": "rectangulo",
+     "label": "rectángulo"
+    },
+    {
+     "id": "estrella",
+     "label": "estrella"
+    },
+    {
+     "id": "rombo",
+     "label": "rombo"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "parejas",
+  "nombre": "Parejas de colores (1)",
+  "descripcion": "Une cada color con su igual: encuentra las parejas del mismo color.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "instruccion": "Encuentra las parejas del mismo color",
+   "banco": [
+    {
+     "id": "rojo",
+     "label": "rojo"
+    },
+    {
+     "id": "azul",
+     "label": "azul"
+    },
+    {
+     "id": "verde",
+     "label": "verde"
+    },
+    {
+     "id": "amarillo",
+     "label": "amarillo"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "parejas",
+  "nombre": "Parejas de colores (2)",
+  "descripcion": "Une cada color con su igual: encuentra las parejas del mismo color.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Encuentra las parejas del mismo color",
+   "banco": [
+    {
+     "id": "rojo",
+     "label": "rojo"
+    },
+    {
+     "id": "azul",
+     "label": "azul"
+    },
+    {
+     "id": "verde",
+     "label": "verde"
+    },
+    {
+     "id": "amarillo",
+     "label": "amarillo"
+    },
+    {
+     "id": "naranja",
+     "label": "naranja"
+    },
+    {
+     "id": "morado",
+     "label": "morado"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "parejas",
+  "nombre": "Parejas de colores (3)",
+  "descripcion": "Une cada color con su igual: encuentra las parejas del mismo color.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Encuentra las parejas del mismo color",
+   "banco": [
+    {
+     "id": "rojo",
+     "label": "rojo"
+    },
+    {
+     "id": "azul",
+     "label": "azul"
+    },
+    {
+     "id": "verde",
+     "label": "verde"
+    },
+    {
+     "id": "amarillo",
+     "label": "amarillo"
+    },
+    {
+     "id": "naranja",
+     "label": "naranja"
+    },
+    {
+     "id": "morado",
+     "label": "morado"
+    },
+    {
+     "id": "rosa",
+     "label": "rosa"
+    },
+    {
+     "id": "gris",
+     "label": "gris"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "parejas",
+  "nombre": "Une cada color con su igual (1)",
+  "descripcion": "Une cada color con su igual: encuentra las parejas del mismo color.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Encuentra las parejas del mismo color",
+   "banco": [
+    {
+     "id": "rojo",
+     "label": "rojo"
+    },
+    {
+     "id": "verde",
+     "label": "verde"
+    },
+    {
+     "id": "azul",
+     "label": "azul"
+    },
+    {
+     "id": "naranja",
+     "label": "naranja"
+    },
+    {
+     "id": "morado",
+     "label": "morado"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "atencion_memoria",
+  "plantilla_tipo": "parejas",
+  "nombre": "Une cada color con su igual (2)",
+  "descripcion": "Une cada color con su igual: encuentra las parejas del mismo color.",
+  "parametros_json": {
+   "dificultad": "media",
+   "instruccion": "Encuentra las parejas del mismo color",
+   "banco": [
+    {
+     "id": "rosa",
+     "label": "rosa"
+    },
+    {
+     "id": "gris",
+     "label": "gris"
+    },
+    {
+     "id": "amarillo",
+     "label": "amarillo"
+    },
+    {
+     "id": "verde",
+     "label": "verde"
+    },
+    {
+     "id": "azul",
+     "label": "azul"
+    },
+    {
+     "id": "rojo",
+     "label": "rojo"
+    }
+   ]
+  }
  }
 ]

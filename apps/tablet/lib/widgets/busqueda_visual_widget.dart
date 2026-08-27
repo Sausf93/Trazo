@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import '../models.dart';
 import '../theme.dart';
+import 'figura_geometrica.dart';
 import 'ilustracion.dart';
 
 /// Renderiza `busqueda_visual`: se muestra un OBJETIVO y una rejilla de dibujos
@@ -191,7 +192,26 @@ class _BusquedaVisualWidgetState extends State<BusquedaVisualWidget> {
   /// Pinta la figura por su id; si NO tiene ilustración (p. ej. los dígitos de
   /// "Busca el número 5"), muestra el propio texto GRANDE y legible en vez del
   /// círculo con inicial fina (baja visión), igual que hace memoria_visual.
+  // Color fijo por tipo de figura (como en la lámina: todos los círculos de un
+  // color, los triángulos de otro…). Ayuda a distinguirlas sin depender del texto.
+  static const _colorForma = {
+    'circulo': 'rojo',
+    'triangulo': 'verde',
+    'rectangulo': 'azul',
+    'cuadrado': 'morado',
+    'estrella': 'amarillo',
+    'rombo': 'naranja',
+    'corazon': 'rosa',
+    'ovalo': 'gris',
+  };
+
   Widget _figura(String id, double size) {
+    // Figuras geométricas ("Toca todos los círculos"): se pintan dibujadas y con
+    // su color fijo, no como texto.
+    if (esFiguraGeom(id)) {
+      final c = colorPorNombre(_colorForma[id.toLowerCase()] ?? '');
+      return FiguraGeometrica(id, size: size, color: c);
+    }
     if (IlustracionResolver.tiene(id)) return Ilustracion(id, size: size);
     return SizedBox(
       width: size,
