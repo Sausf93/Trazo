@@ -95191,6 +95191,949 @@
     "colocados_incorrectos",
     "tiempo_ms"
    ]
+  },
+  {
+   "ejercicio_id": "Serie de colores (1)",
+   "nombre": "Serie de colores (1)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "rojo",
+     "verde",
+     "rosa"
+    ],
+    "serie": [
+     "morado",
+     "verde",
+     "morado",
+     "verde",
+     "morado"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "c1_0",
+    "correcta": "verde"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de colores (2)",
+   "nombre": "Serie de colores (2)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "verde",
+     "rojo",
+     "azul"
+    ],
+    "serie": [
+     "azul",
+     "rojo",
+     "verde",
+     "azul",
+     "rojo"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "c2_1",
+    "correcta": "verde"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de colores (3)",
+   "nombre": "Serie de colores (3)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "azul",
+     "verde",
+     "amarillo"
+    ],
+    "serie": [
+     "rojo",
+     "verde",
+     "rojo",
+     "verde",
+     "rojo"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "c3_0",
+    "correcta": "verde"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de colores (4)",
+   "nombre": "Serie de colores (4)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "rojo",
+     "amarillo",
+     "azul"
+    ],
+    "serie": [
+     "verde",
+     "amarillo",
+     "verde",
+     "amarillo",
+     "verde"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "c4_4",
+    "correcta": "amarillo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de colores (5)",
+   "nombre": "Serie de colores (5)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "amarillo",
+     "azul",
+     "verde"
+    ],
+    "serie": [
+     "amarillo",
+     "amarillo",
+     "verde",
+     "verde",
+     "amarillo",
+     "amarillo"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "c5_3",
+    "correcta": "verde"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de figuras (1)",
+   "nombre": "Serie de figuras (1)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "rombo",
+     "triángulo",
+     "corazón"
+    ],
+    "serie": [
+     "cuadrado",
+     "triángulo",
+     "cuadrado",
+     "triángulo",
+     "cuadrado"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "f1_4",
+    "correcta": "triángulo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de figuras (2)",
+   "nombre": "Serie de figuras (2)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "triángulo",
+     "cuadrado",
+     "rombo"
+    ],
+    "serie": [
+     "rombo",
+     "corazón",
+     "triángulo",
+     "rombo",
+     "corazón"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "f2_5",
+    "correcta": "triángulo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de figuras (3)",
+   "nombre": "Serie de figuras (3)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "círculo",
+     "cuadrado",
+     "corazón"
+    ],
+    "serie": [
+     "triángulo",
+     "triángulo",
+     "corazón",
+     "corazón",
+     "triángulo",
+     "triángulo"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "f3_3",
+    "correcta": "corazón"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de figuras (4)",
+   "nombre": "Serie de figuras (4)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "estrella",
+     "rombo",
+     "triángulo"
+    ],
+    "serie": [
+     "rombo",
+     "triángulo",
+     "rombo",
+     "triángulo",
+     "rombo"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "f4_0",
+    "correcta": "triángulo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de figuras (5)",
+   "nombre": "Serie de figuras (5)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "círculo",
+     "cuadrado",
+     "rombo"
+    ],
+    "serie": [
+     "rombo",
+     "rombo",
+     "cuadrado",
+     "cuadrado",
+     "rombo",
+     "rombo"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "f5_3",
+    "correcta": "cuadrado"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de figuras con color (1)",
+   "nombre": "Serie de figuras con color (1)",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "círculo rosa",
+     "círculo morado",
+     "cuadrado rosa"
+    ],
+    "serie": [
+     "cuadrado rosa",
+     "círculo rosa",
+     "círculo morado",
+     "cuadrado rosa",
+     "círculo rosa"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "k1_1",
+    "correcta": "círculo morado"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de figuras con color (2)",
+   "nombre": "Serie de figuras con color (2)",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "cuadrado rosa",
+     "rombo morado",
+     "estrella azul"
+    ],
+    "serie": [
+     "cuadrado rosa",
+     "cuadrado rosa",
+     "rombo morado",
+     "cuadrado rosa",
+     "cuadrado rosa"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "k2_2",
+    "correcta": "rombo morado"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de figuras con color (3)",
+   "nombre": "Serie de figuras con color (3)",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "círculo naranja",
+     "corazón rojo",
+     "corazón verde"
+    ],
+    "serie": [
+     "círculo naranja",
+     "corazón verde",
+     "círculo naranja",
+     "corazón verde",
+     "círculo naranja"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "k3_3",
+    "correcta": "corazón verde"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de figuras con color (4)",
+   "nombre": "Serie de figuras con color (4)",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "cuadrado amarillo",
+     "corazón rojo",
+     "círculo rosa"
+    ],
+    "serie": [
+     "corazón rojo",
+     "cuadrado amarillo",
+     "círculo rosa",
+     "corazón rojo",
+     "cuadrado amarillo"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "k4_4",
+    "correcta": "círculo rosa"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Serie de figuras con color (5)",
+   "nombre": "Serie de figuras con color (5)",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué sigue en la serie?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "cuadrado rojo",
+     "cuadrado verde",
+     "círculo morado"
+    ],
+    "serie": [
+     "cuadrado verde",
+     "círculo morado",
+     "cuadrado rojo",
+     "cuadrado verde",
+     "círculo morado"
+    ],
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "k5_4",
+    "correcta": "cuadrado rojo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Igual al modelo (1)",
+   "nombre": "Igual al modelo (1)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Cuál es igual al modelo?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "círculo morado",
+     "estrella rojo",
+     "círculo rojo"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": "círculo rojo",
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "m1_3",
+    "correcta": "círculo rojo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Igual al modelo (2)",
+   "nombre": "Igual al modelo (2)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Cuál es igual al modelo?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "cuadrado rojo",
+     "estrella rosa",
+     "cuadrado rosa"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": "cuadrado rosa",
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "m2_1",
+    "correcta": "cuadrado rosa"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Igual al modelo (3)",
+   "nombre": "Igual al modelo (3)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Cuál es igual al modelo?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "rombo verde",
+     "rombo morado",
+     "cuadrado verde"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": "rombo verde",
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "m3_2",
+    "correcta": "rombo verde"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Igual al modelo (4)",
+   "nombre": "Igual al modelo (4)",
+   "bloque": "percepcion",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Cuál es igual al modelo?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "rombo amarillo",
+     "corazón azul",
+     "rombo azul"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": "rombo azul",
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "m4_5",
+    "correcta": "rombo azul"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Adivina por la silueta (6)",
+   "nombre": "Adivina por la silueta (6)",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué objeto es?",
+    "enunciado": null,
+    "imagen": "reloj",
+    "audio": null,
+    "opciones": [
+     "un avión",
+     "un reloj",
+     "una campana"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": "silueta",
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "reloj",
+    "correcta": "un reloj"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Adivina por la silueta (7)",
+   "nombre": "Adivina por la silueta (7)",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué objeto es?",
+    "enunciado": null,
+    "imagen": "zapato",
+    "audio": null,
+    "opciones": [
+     "un zapato",
+     "una estrella",
+     "un teléfono"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": "silueta",
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "zapato",
+    "correcta": "un zapato"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Adivina por la silueta (8)",
+   "nombre": "Adivina por la silueta (8)",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué objeto es?",
+    "enunciado": null,
+    "imagen": "caballo",
+    "audio": null,
+    "opciones": [
+     "un tren",
+     "un caballo",
+     "un elefante"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": "silueta",
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "caballo",
+    "correcta": "un caballo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Adivina por la silueta (9)",
+   "nombre": "Adivina por la silueta (9)",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué objeto es?",
+    "enunciado": null,
+    "imagen": "llave",
+    "audio": null,
+    "opciones": [
+     "una cuchara",
+     "una llave",
+     "una maceta"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": "silueta",
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "llave",
+    "correcta": "una llave"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Adivina por la silueta (10)",
+   "nombre": "Adivina por la silueta (10)",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué objeto es?",
+    "enunciado": null,
+    "imagen": "maceta",
+    "audio": null,
+    "opciones": [
+     "una bicicleta",
+     "una mariposa",
+     "una maceta"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": "silueta",
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "maceta",
+    "correcta": "una maceta"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Adivina por la silueta (11)",
+   "nombre": "Adivina por la silueta (11)",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué objeto es?",
+    "enunciado": null,
+    "imagen": "pez",
+    "audio": null,
+    "opciones": [
+     "un pez",
+     "un avión",
+     "una gafas"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": "silueta",
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "pez",
+    "correcta": "un pez"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
   }
  ]
 }

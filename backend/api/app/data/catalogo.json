@@ -143017,5 +143017,2416 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de colores (1)",
+  "descripcion": "¿Qué color sigue en la serie?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "c1_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "morado",
+      "verde",
+      "morado",
+      "verde",
+      "morado"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "rojo",
+      "rosa"
+     ]
+    },
+    {
+     "id": "c1_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "amarillo",
+      "rojo",
+      "morado",
+      "amarillo",
+      "rojo"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "verde",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "c1_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rosa",
+      "rosa",
+      "naranja",
+      "rosa",
+      "rosa"
+     ],
+     "correcta": "naranja",
+     "distractores": [
+      "azul",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "c1_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "naranja",
+      "naranja",
+      "azul",
+      "azul",
+      "naranja",
+      "naranja"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "naranja",
+      "rosa"
+     ]
+    },
+    {
+     "id": "c1_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "naranja",
+      "azul",
+      "naranja",
+      "azul",
+      "naranja"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "rojo",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "c1_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "amarillo",
+      "naranja",
+      "morado",
+      "amarillo",
+      "naranja"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "rojo",
+      "amarillo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de colores (2)",
+  "descripcion": "¿Qué color sigue en la serie?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "c2_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rosa",
+      "rojo",
+      "rosa",
+      "rojo",
+      "rosa"
+     ],
+     "correcta": "rojo",
+     "distractores": [
+      "amarillo",
+      "verde"
+     ]
+    },
+    {
+     "id": "c2_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "azul",
+      "rojo",
+      "verde",
+      "azul",
+      "rojo"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "azul",
+      "rojo"
+     ]
+    },
+    {
+     "id": "c2_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rosa",
+      "rosa",
+      "azul",
+      "rosa",
+      "rosa"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "naranja",
+      "rosa"
+     ]
+    },
+    {
+     "id": "c2_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "morado",
+      "morado",
+      "verde",
+      "verde",
+      "morado",
+      "morado"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "azul",
+      "rosa"
+     ]
+    },
+    {
+     "id": "c2_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rosa",
+      "amarillo",
+      "rosa",
+      "amarillo",
+      "rosa"
+     ],
+     "correcta": "amarillo",
+     "distractores": [
+      "rojo",
+      "rosa"
+     ]
+    },
+    {
+     "id": "c2_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "naranja",
+      "amarillo",
+      "rojo",
+      "naranja",
+      "amarillo"
+     ],
+     "correcta": "rojo",
+     "distractores": [
+      "naranja",
+      "morado"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de colores (3)",
+  "descripcion": "¿Qué color sigue en la serie?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "c3_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rojo",
+      "verde",
+      "rojo",
+      "verde",
+      "rojo"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "amarillo",
+      "azul"
+     ]
+    },
+    {
+     "id": "c3_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "azul",
+      "amarillo",
+      "rosa",
+      "azul",
+      "amarillo"
+     ],
+     "correcta": "rosa",
+     "distractores": [
+      "rojo",
+      "azul"
+     ]
+    },
+    {
+     "id": "c3_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "amarillo",
+      "amarillo",
+      "rojo",
+      "amarillo",
+      "amarillo"
+     ],
+     "correcta": "rojo",
+     "distractores": [
+      "verde",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "c3_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "verde",
+      "verde",
+      "rojo",
+      "rojo",
+      "verde",
+      "verde"
+     ],
+     "correcta": "rojo",
+     "distractores": [
+      "verde",
+      "azul"
+     ]
+    },
+    {
+     "id": "c3_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rojo",
+      "naranja",
+      "rojo",
+      "naranja",
+      "rojo"
+     ],
+     "correcta": "naranja",
+     "distractores": [
+      "rojo",
+      "morado"
+     ]
+    },
+    {
+     "id": "c3_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "amarillo",
+      "azul",
+      "naranja",
+      "amarillo",
+      "azul"
+     ],
+     "correcta": "naranja",
+     "distractores": [
+      "verde",
+      "morado"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de colores (4)",
+  "descripcion": "¿Qué color sigue en la serie?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "c4_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rosa",
+      "naranja",
+      "rosa",
+      "naranja",
+      "rosa"
+     ],
+     "correcta": "naranja",
+     "distractores": [
+      "amarillo",
+      "rosa"
+     ]
+    },
+    {
+     "id": "c4_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "verde",
+      "morado",
+      "naranja",
+      "verde",
+      "morado"
+     ],
+     "correcta": "naranja",
+     "distractores": [
+      "morado",
+      "azul"
+     ]
+    },
+    {
+     "id": "c4_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "verde",
+      "verde",
+      "amarillo",
+      "verde",
+      "verde"
+     ],
+     "correcta": "amarillo",
+     "distractores": [
+      "naranja",
+      "azul"
+     ]
+    },
+    {
+     "id": "c4_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "amarillo",
+      "amarillo",
+      "azul",
+      "azul",
+      "amarillo",
+      "amarillo"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "amarillo",
+      "verde"
+     ]
+    },
+    {
+     "id": "c4_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "verde",
+      "amarillo",
+      "verde",
+      "amarillo",
+      "verde"
+     ],
+     "correcta": "amarillo",
+     "distractores": [
+      "azul",
+      "rojo"
+     ]
+    },
+    {
+     "id": "c4_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "verde",
+      "azul",
+      "morado",
+      "verde",
+      "azul"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "azul",
+      "naranja"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de colores (5)",
+  "descripcion": "¿Qué color sigue en la serie?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "c5_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rosa",
+      "verde",
+      "rosa",
+      "verde",
+      "rosa"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "rosa",
+      "rojo"
+     ]
+    },
+    {
+     "id": "c5_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rojo",
+      "verde",
+      "morado",
+      "rojo",
+      "verde"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "amarillo",
+      "rojo"
+     ]
+    },
+    {
+     "id": "c5_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "morado",
+      "morado",
+      "amarillo",
+      "morado",
+      "morado"
+     ],
+     "correcta": "amarillo",
+     "distractores": [
+      "verde",
+      "azul"
+     ]
+    },
+    {
+     "id": "c5_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "amarillo",
+      "amarillo",
+      "verde",
+      "verde",
+      "amarillo",
+      "amarillo"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "amarillo",
+      "azul"
+     ]
+    },
+    {
+     "id": "c5_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "azul",
+      "naranja",
+      "azul",
+      "naranja",
+      "azul"
+     ],
+     "correcta": "naranja",
+     "distractores": [
+      "morado",
+      "verde"
+     ]
+    },
+    {
+     "id": "c5_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "morado",
+      "rosa",
+      "rojo",
+      "morado",
+      "rosa"
+     ],
+     "correcta": "rojo",
+     "distractores": [
+      "naranja",
+      "morado"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de figuras (1)",
+  "descripcion": "¿Qué figura sigue en la serie?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "f1_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado",
+      "estrella",
+      "cuadrado",
+      "estrella",
+      "cuadrado"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "triángulo",
+      "rombo"
+     ]
+    },
+    {
+     "id": "f1_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado",
+      "triángulo",
+      "estrella",
+      "cuadrado",
+      "triángulo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "corazón",
+      "círculo"
+     ]
+    },
+    {
+     "id": "f1_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rombo",
+      "rombo",
+      "estrella",
+      "rombo",
+      "rombo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "cuadrado",
+      "círculo"
+     ]
+    },
+    {
+     "id": "f1_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "corazón",
+      "corazón",
+      "estrella",
+      "estrella",
+      "corazón",
+      "corazón"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "rombo",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "f1_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado",
+      "triángulo",
+      "cuadrado",
+      "triángulo",
+      "cuadrado"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "rombo",
+      "corazón"
+     ]
+    },
+    {
+     "id": "f1_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado",
+      "triángulo",
+      "círculo",
+      "cuadrado",
+      "triángulo"
+     ],
+     "correcta": "círculo",
+     "distractores": [
+      "corazón",
+      "estrella"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de figuras (2)",
+  "descripcion": "¿Qué figura sigue en la serie?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "f2_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "corazón",
+      "cuadrado",
+      "corazón",
+      "cuadrado",
+      "corazón"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "círculo",
+      "estrella"
+     ]
+    },
+    {
+     "id": "f2_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado",
+      "triángulo",
+      "estrella",
+      "cuadrado",
+      "triángulo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "triángulo",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "f2_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "triángulo",
+      "triángulo",
+      "cuadrado",
+      "triángulo",
+      "triángulo"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "corazón",
+      "círculo"
+     ]
+    },
+    {
+     "id": "f2_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "triángulo",
+      "triángulo",
+      "cuadrado",
+      "cuadrado",
+      "triángulo",
+      "triángulo"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "círculo",
+      "corazón"
+     ]
+    },
+    {
+     "id": "f2_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rombo",
+      "corazón",
+      "rombo",
+      "corazón",
+      "rombo"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "triángulo",
+      "rombo"
+     ]
+    },
+    {
+     "id": "f2_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rombo",
+      "corazón",
+      "triángulo",
+      "rombo",
+      "corazón"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "cuadrado",
+      "rombo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de figuras (3)",
+  "descripcion": "¿Qué figura sigue en la serie?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "f3_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "corazón",
+      "cuadrado",
+      "corazón",
+      "cuadrado",
+      "corazón"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "triángulo",
+      "estrella"
+     ]
+    },
+    {
+     "id": "f3_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado",
+      "triángulo",
+      "rombo",
+      "cuadrado",
+      "triángulo"
+     ],
+     "correcta": "rombo",
+     "distractores": [
+      "estrella",
+      "corazón"
+     ]
+    },
+    {
+     "id": "f3_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rombo",
+      "rombo",
+      "triángulo",
+      "rombo",
+      "rombo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "círculo",
+      "estrella"
+     ]
+    },
+    {
+     "id": "f3_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "triángulo",
+      "triángulo",
+      "corazón",
+      "corazón",
+      "triángulo",
+      "triángulo"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "cuadrado",
+      "círculo"
+     ]
+    },
+    {
+     "id": "f3_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado",
+      "estrella",
+      "cuadrado",
+      "estrella",
+      "cuadrado"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "rombo",
+      "corazón"
+     ]
+    },
+    {
+     "id": "f3_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "círculo",
+      "estrella",
+      "corazón",
+      "círculo",
+      "estrella"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "triángulo",
+      "círculo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de figuras (4)",
+  "descripcion": "¿Qué figura sigue en la serie?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "f4_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rombo",
+      "triángulo",
+      "rombo",
+      "triángulo",
+      "rombo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "rombo",
+      "estrella"
+     ]
+    },
+    {
+     "id": "f4_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "círculo",
+      "rombo",
+      "triángulo",
+      "círculo",
+      "rombo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "corazón",
+      "círculo"
+     ]
+    },
+    {
+     "id": "f4_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado",
+      "cuadrado",
+      "estrella",
+      "cuadrado",
+      "cuadrado"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "corazón",
+      "círculo"
+     ]
+    },
+    {
+     "id": "f4_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "triángulo",
+      "triángulo",
+      "círculo",
+      "círculo",
+      "triángulo",
+      "triángulo"
+     ],
+     "correcta": "círculo",
+     "distractores": [
+      "corazón",
+      "estrella"
+     ]
+    },
+    {
+     "id": "f4_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado",
+      "corazón",
+      "cuadrado",
+      "corazón",
+      "cuadrado"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "círculo",
+      "rombo"
+     ]
+    },
+    {
+     "id": "f4_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "estrella",
+      "triángulo",
+      "corazón",
+      "estrella",
+      "triángulo"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "estrella",
+      "círculo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de figuras (5)",
+  "descripcion": "¿Qué figura sigue en la serie?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "f5_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "círculo",
+      "estrella",
+      "círculo",
+      "estrella",
+      "círculo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "círculo",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "f5_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "círculo",
+      "rombo",
+      "triángulo",
+      "círculo",
+      "rombo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "corazón",
+      "estrella"
+     ]
+    },
+    {
+     "id": "f5_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "corazón",
+      "corazón",
+      "cuadrado",
+      "corazón",
+      "corazón"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "corazón",
+      "triángulo"
+     ]
+    },
+    {
+     "id": "f5_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rombo",
+      "rombo",
+      "cuadrado",
+      "cuadrado",
+      "rombo",
+      "rombo"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "círculo",
+      "rombo"
+     ]
+    },
+    {
+     "id": "f5_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "triángulo",
+      "cuadrado",
+      "triángulo",
+      "cuadrado",
+      "triángulo"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "estrella",
+      "rombo"
+     ]
+    },
+    {
+     "id": "f5_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "estrella",
+      "rombo",
+      "círculo",
+      "estrella",
+      "rombo"
+     ],
+     "correcta": "círculo",
+     "distractores": [
+      "rombo",
+      "estrella"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de figuras con color (1)",
+  "descripcion": "Sigue el patrón: ¿qué ficha viene ahora?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "k1_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "corazón morado",
+      "círculo azul",
+      "corazón morado",
+      "círculo azul",
+      "corazón morado"
+     ],
+     "correcta": "círculo azul",
+     "distractores": [
+      "triángulo rojo",
+      "corazón morado"
+     ]
+    },
+    {
+     "id": "k1_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado rosa",
+      "círculo rosa",
+      "círculo morado",
+      "cuadrado rosa",
+      "círculo rosa"
+     ],
+     "correcta": "círculo morado",
+     "distractores": [
+      "círculo rosa",
+      "cuadrado rosa"
+     ]
+    },
+    {
+     "id": "k1_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado morado",
+      "cuadrado morado",
+      "cuadrado azul",
+      "cuadrado morado",
+      "cuadrado morado"
+     ],
+     "correcta": "cuadrado azul",
+     "distractores": [
+      "corazón verde",
+      "cuadrado morado"
+     ]
+    },
+    {
+     "id": "k1_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "corazón azul",
+      "triángulo rosa",
+      "corazón azul",
+      "triángulo rosa",
+      "corazón azul"
+     ],
+     "correcta": "triángulo rosa",
+     "distractores": [
+      "corazón azul",
+      "rombo naranja"
+     ]
+    },
+    {
+     "id": "k1_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado morado",
+      "triángulo morado",
+      "estrella rojo",
+      "cuadrado morado",
+      "triángulo morado"
+     ],
+     "correcta": "estrella rojo",
+     "distractores": [
+      "cuadrado morado",
+      "triángulo morado"
+     ]
+    },
+    {
+     "id": "k1_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "estrella naranja",
+      "estrella naranja",
+      "estrella morado",
+      "estrella naranja",
+      "estrella naranja"
+     ],
+     "correcta": "estrella morado",
+     "distractores": [
+      "círculo verde",
+      "estrella naranja"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de figuras con color (2)",
+  "descripcion": "Sigue el patrón: ¿qué ficha viene ahora?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "k2_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado azul",
+      "estrella morado",
+      "cuadrado azul",
+      "estrella morado",
+      "cuadrado azul"
+     ],
+     "correcta": "estrella morado",
+     "distractores": [
+      "triángulo morado",
+      "cuadrado azul"
+     ]
+    },
+    {
+     "id": "k2_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rombo morado",
+      "círculo amarillo",
+      "estrella rosa",
+      "rombo morado",
+      "círculo amarillo"
+     ],
+     "correcta": "estrella rosa",
+     "distractores": [
+      "rombo morado",
+      "círculo amarillo"
+     ]
+    },
+    {
+     "id": "k2_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado rosa",
+      "cuadrado rosa",
+      "rombo morado",
+      "cuadrado rosa",
+      "cuadrado rosa"
+     ],
+     "correcta": "rombo morado",
+     "distractores": [
+      "estrella azul",
+      "cuadrado rosa"
+     ]
+    },
+    {
+     "id": "k2_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "estrella morado",
+      "triángulo morado",
+      "estrella morado",
+      "triángulo morado",
+      "estrella morado"
+     ],
+     "correcta": "triángulo morado",
+     "distractores": [
+      "triángulo amarillo",
+      "estrella morado"
+     ]
+    },
+    {
+     "id": "k2_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado amarillo",
+      "corazón rosa",
+      "triángulo verde",
+      "cuadrado amarillo",
+      "corazón rosa"
+     ],
+     "correcta": "triángulo verde",
+     "distractores": [
+      "cuadrado amarillo",
+      "corazón rosa"
+     ]
+    },
+    {
+     "id": "k2_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "triángulo rojo",
+      "triángulo rojo",
+      "corazón rosa",
+      "triángulo rojo",
+      "triángulo rojo"
+     ],
+     "correcta": "corazón rosa",
+     "distractores": [
+      "triángulo morado",
+      "triángulo rojo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de figuras con color (3)",
+  "descripcion": "Sigue el patrón: ¿qué ficha viene ahora?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "k3_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "triángulo naranja",
+      "rombo verde",
+      "triángulo naranja",
+      "rombo verde",
+      "triángulo naranja"
+     ],
+     "correcta": "rombo verde",
+     "distractores": [
+      "triángulo naranja",
+      "círculo verde"
+     ]
+    },
+    {
+     "id": "k3_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "triángulo morado",
+      "triángulo azul",
+      "estrella rojo",
+      "triángulo morado",
+      "triángulo azul"
+     ],
+     "correcta": "estrella rojo",
+     "distractores": [
+      "triángulo azul",
+      "triángulo morado"
+     ]
+    },
+    {
+     "id": "k3_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "triángulo naranja",
+      "triángulo naranja",
+      "círculo morado",
+      "triángulo naranja",
+      "triángulo naranja"
+     ],
+     "correcta": "círculo morado",
+     "distractores": [
+      "círculo naranja",
+      "triángulo naranja"
+     ]
+    },
+    {
+     "id": "k3_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "círculo naranja",
+      "corazón verde",
+      "círculo naranja",
+      "corazón verde",
+      "círculo naranja"
+     ],
+     "correcta": "corazón verde",
+     "distractores": [
+      "círculo naranja",
+      "corazón rojo"
+     ]
+    },
+    {
+     "id": "k3_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "triángulo naranja",
+      "rombo verde",
+      "estrella rosa",
+      "triángulo naranja",
+      "rombo verde"
+     ],
+     "correcta": "estrella rosa",
+     "distractores": [
+      "rombo verde",
+      "triángulo naranja"
+     ]
+    },
+    {
+     "id": "k3_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "corazón verde",
+      "corazón verde",
+      "corazón rojo",
+      "corazón verde",
+      "corazón verde"
+     ],
+     "correcta": "corazón rojo",
+     "distractores": [
+      "corazón verde",
+      "cuadrado rojo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de figuras con color (4)",
+  "descripcion": "Sigue el patrón: ¿qué ficha viene ahora?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "k4_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "estrella rojo",
+      "triángulo morado",
+      "estrella rojo",
+      "triángulo morado",
+      "estrella rojo"
+     ],
+     "correcta": "triángulo morado",
+     "distractores": [
+      "corazón rosa",
+      "estrella rojo"
+     ]
+    },
+    {
+     "id": "k4_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "triángulo rosa",
+      "estrella azul",
+      "triángulo verde",
+      "triángulo rosa",
+      "estrella azul"
+     ],
+     "correcta": "triángulo verde",
+     "distractores": [
+      "estrella azul",
+      "triángulo rosa"
+     ]
+    },
+    {
+     "id": "k4_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado rojo",
+      "cuadrado rojo",
+      "triángulo rosa",
+      "cuadrado rojo",
+      "cuadrado rojo"
+     ],
+     "correcta": "triángulo rosa",
+     "distractores": [
+      "cuadrado azul",
+      "cuadrado rojo"
+     ]
+    },
+    {
+     "id": "k4_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "estrella naranja",
+      "corazón rojo",
+      "estrella naranja",
+      "corazón rojo",
+      "estrella naranja"
+     ],
+     "correcta": "corazón rojo",
+     "distractores": [
+      "estrella naranja",
+      "corazón naranja"
+     ]
+    },
+    {
+     "id": "k4_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "corazón rojo",
+      "cuadrado amarillo",
+      "círculo rosa",
+      "corazón rojo",
+      "cuadrado amarillo"
+     ],
+     "correcta": "círculo rosa",
+     "distractores": [
+      "corazón rojo",
+      "cuadrado amarillo"
+     ]
+    },
+    {
+     "id": "k4_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "corazón morado",
+      "corazón morado",
+      "triángulo verde",
+      "corazón morado",
+      "corazón morado"
+     ],
+     "correcta": "triángulo verde",
+     "distractores": [
+      "círculo verde",
+      "corazón morado"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de figuras con color (5)",
+  "descripcion": "Sigue el patrón: ¿qué ficha viene ahora?",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "k5_0",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "triángulo rojo",
+      "estrella verde",
+      "triángulo rojo",
+      "estrella verde",
+      "triángulo rojo"
+     ],
+     "correcta": "estrella verde",
+     "distractores": [
+      "triángulo rojo",
+      "rombo rojo"
+     ]
+    },
+    {
+     "id": "k5_1",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "estrella rosa",
+      "estrella naranja",
+      "corazón rosa",
+      "estrella rosa",
+      "estrella naranja"
+     ],
+     "correcta": "corazón rosa",
+     "distractores": [
+      "estrella naranja",
+      "estrella rosa"
+     ]
+    },
+    {
+     "id": "k5_2",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "círculo verde",
+      "círculo verde",
+      "triángulo naranja",
+      "círculo verde",
+      "círculo verde"
+     ],
+     "correcta": "triángulo naranja",
+     "distractores": [
+      "corazón morado",
+      "círculo verde"
+     ]
+    },
+    {
+     "id": "k5_3",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado azul",
+      "triángulo rosa",
+      "cuadrado azul",
+      "triángulo rosa",
+      "cuadrado azul"
+     ],
+     "correcta": "triángulo rosa",
+     "distractores": [
+      "cuadrado azul",
+      "cuadrado verde"
+     ]
+    },
+    {
+     "id": "k5_4",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "cuadrado verde",
+      "círculo morado",
+      "cuadrado rojo",
+      "cuadrado verde",
+      "círculo morado"
+     ],
+     "correcta": "cuadrado rojo",
+     "distractores": [
+      "círculo morado",
+      "cuadrado verde"
+     ]
+    },
+    {
+     "id": "k5_5",
+     "instruccion": "¿Qué sigue en la serie?",
+     "serie": [
+      "rombo morado",
+      "rombo morado",
+      "triángulo verde",
+      "rombo morado",
+      "rombo morado"
+     ],
+     "correcta": "triángulo verde",
+     "distractores": [
+      "rombo morado",
+      "estrella morado"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Igual al modelo (1)",
+  "descripcion": "Mira el modelo y elige la ficha idéntica.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "m1_0",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "cuadrado naranja",
+     "correcta": "cuadrado naranja",
+     "distractores": [
+      "cuadrado rosa",
+      "triángulo naranja"
+     ]
+    },
+    {
+     "id": "m1_1",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "corazón verde",
+     "correcta": "corazón verde",
+     "distractores": [
+      "corazón morado",
+      "triángulo verde"
+     ]
+    },
+    {
+     "id": "m1_2",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "círculo naranja",
+     "correcta": "círculo naranja",
+     "distractores": [
+      "círculo verde",
+      "triángulo naranja"
+     ]
+    },
+    {
+     "id": "m1_3",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "círculo rojo",
+     "correcta": "círculo rojo",
+     "distractores": [
+      "círculo morado",
+      "estrella rojo"
+     ]
+    },
+    {
+     "id": "m1_4",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "rombo amarillo",
+     "correcta": "rombo amarillo",
+     "distractores": [
+      "rombo azul",
+      "estrella amarillo"
+     ]
+    },
+    {
+     "id": "m1_5",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "corazón azul",
+     "correcta": "corazón azul",
+     "distractores": [
+      "corazón amarillo",
+      "círculo azul"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Igual al modelo (2)",
+  "descripcion": "Mira el modelo y elige la ficha idéntica.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "m2_0",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "rombo verde",
+     "correcta": "rombo verde",
+     "distractores": [
+      "rombo azul",
+      "estrella verde"
+     ]
+    },
+    {
+     "id": "m2_1",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "cuadrado rosa",
+     "correcta": "cuadrado rosa",
+     "distractores": [
+      "cuadrado rojo",
+      "estrella rosa"
+     ]
+    },
+    {
+     "id": "m2_2",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "cuadrado morado",
+     "correcta": "cuadrado morado",
+     "distractores": [
+      "cuadrado azul",
+      "círculo morado"
+     ]
+    },
+    {
+     "id": "m2_3",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "cuadrado morado",
+     "correcta": "cuadrado morado",
+     "distractores": [
+      "cuadrado rojo",
+      "círculo morado"
+     ]
+    },
+    {
+     "id": "m2_4",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "cuadrado morado",
+     "correcta": "cuadrado morado",
+     "distractores": [
+      "cuadrado rojo",
+      "triángulo morado"
+     ]
+    },
+    {
+     "id": "m2_5",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "rombo naranja",
+     "correcta": "rombo naranja",
+     "distractores": [
+      "rombo verde",
+      "círculo naranja"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Igual al modelo (3)",
+  "descripcion": "Mira el modelo y elige la ficha idéntica.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "m3_0",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "corazón rojo",
+     "correcta": "corazón rojo",
+     "distractores": [
+      "corazón naranja",
+      "círculo rojo"
+     ]
+    },
+    {
+     "id": "m3_1",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "círculo rosa",
+     "correcta": "círculo rosa",
+     "distractores": [
+      "círculo naranja",
+      "cuadrado rosa"
+     ]
+    },
+    {
+     "id": "m3_2",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "rombo verde",
+     "correcta": "rombo verde",
+     "distractores": [
+      "rombo morado",
+      "cuadrado verde"
+     ]
+    },
+    {
+     "id": "m3_3",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "rombo morado",
+     "correcta": "rombo morado",
+     "distractores": [
+      "rombo rosa",
+      "corazón morado"
+     ]
+    },
+    {
+     "id": "m3_4",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "cuadrado naranja",
+     "correcta": "cuadrado naranja",
+     "distractores": [
+      "cuadrado verde",
+      "estrella naranja"
+     ]
+    },
+    {
+     "id": "m3_5",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "estrella amarillo",
+     "correcta": "estrella amarillo",
+     "distractores": [
+      "estrella rojo",
+      "rombo amarillo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Igual al modelo (4)",
+  "descripcion": "Mira el modelo y elige la ficha idéntica.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "m4_0",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "rombo azul",
+     "correcta": "rombo azul",
+     "distractores": [
+      "rombo rojo",
+      "estrella azul"
+     ]
+    },
+    {
+     "id": "m4_1",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "rombo naranja",
+     "correcta": "rombo naranja",
+     "distractores": [
+      "rombo amarillo",
+      "corazón naranja"
+     ]
+    },
+    {
+     "id": "m4_2",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "cuadrado azul",
+     "correcta": "cuadrado azul",
+     "distractores": [
+      "cuadrado amarillo",
+      "círculo azul"
+     ]
+    },
+    {
+     "id": "m4_3",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "cuadrado rosa",
+     "correcta": "cuadrado rosa",
+     "distractores": [
+      "cuadrado amarillo",
+      "estrella rosa"
+     ]
+    },
+    {
+     "id": "m4_4",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "estrella rojo",
+     "correcta": "estrella rojo",
+     "distractores": [
+      "estrella rosa",
+      "triángulo rojo"
+     ]
+    },
+    {
+     "id": "m4_5",
+     "instruccion": "¿Cuál es igual al modelo?",
+     "modelo": "rombo azul",
+     "correcta": "rombo azul",
+     "distractores": [
+      "rombo amarillo",
+      "corazón azul"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivina por la silueta (6)",
+  "descripcion": "Reconocer el objeto por su silueta.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "martillo",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "martillo",
+     "degradado": "silueta",
+     "correcta": "un martillo",
+     "distractores": [
+      "un pez",
+      "un candado"
+     ]
+    },
+    {
+     "id": "cuchillo",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "cuchillo",
+     "degradado": "silueta",
+     "correcta": "un cuchillo",
+     "distractores": [
+      "una gafas",
+      "un teléfono"
+     ]
+    },
+    {
+     "id": "cuchara",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "cuchara",
+     "degradado": "silueta",
+     "correcta": "una cuchara",
+     "distractores": [
+      "un tren",
+      "una mariposa"
+     ]
+    },
+    {
+     "id": "botella",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "botella",
+     "degradado": "silueta",
+     "correcta": "una botella",
+     "distractores": [
+      "un reloj",
+      "una estrella"
+     ]
+    },
+    {
+     "id": "taza",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "taza",
+     "degradado": "silueta",
+     "correcta": "una taza",
+     "distractores": [
+      "un martillo",
+      "un tambor"
+     ]
+    },
+    {
+     "id": "reloj",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "reloj",
+     "degradado": "silueta",
+     "correcta": "un reloj",
+     "distractores": [
+      "una campana",
+      "un avión"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivina por la silueta (7)",
+  "descripcion": "Reconocer el objeto por su silueta.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "zapato",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "zapato",
+     "degradado": "silueta",
+     "correcta": "un zapato",
+     "distractores": [
+      "un teléfono",
+      "una estrella"
+     ]
+    },
+    {
+     "id": "guitarra",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "guitarra",
+     "degradado": "silueta",
+     "correcta": "una guitarra",
+     "distractores": [
+      "un zapato",
+      "una botella"
+     ]
+    },
+    {
+     "id": "silla",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "silla",
+     "degradado": "silueta",
+     "correcta": "una silla",
+     "distractores": [
+      "un paraguas",
+      "un pez"
+     ]
+    },
+    {
+     "id": "sarten",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "sarten",
+     "degradado": "silueta",
+     "correcta": "una sartén",
+     "distractores": [
+      "una mariposa",
+      "una bicicleta"
+     ]
+    },
+    {
+     "id": "candado",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "candado",
+     "degradado": "silueta",
+     "correcta": "un candado",
+     "distractores": [
+      "una mariposa",
+      "una llave"
+     ]
+    },
+    {
+     "id": "telefono",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "telefono",
+     "degradado": "silueta",
+     "correcta": "un teléfono",
+     "distractores": [
+      "un pez",
+      "un candado"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivina por la silueta (8)",
+  "descripcion": "Reconocer el objeto por su silueta.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "tambor",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "tambor",
+     "degradado": "silueta",
+     "correcta": "un tambor",
+     "distractores": [
+      "una silla",
+      "un martillo"
+     ]
+    },
+    {
+     "id": "paraguas",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "paraguas",
+     "degradado": "silueta",
+     "correcta": "un paraguas",
+     "distractores": [
+      "un cactus",
+      "una llave"
+     ]
+    },
+    {
+     "id": "elefante",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "elefante",
+     "degradado": "silueta",
+     "correcta": "un elefante",
+     "distractores": [
+      "una llave",
+      "un perro"
+     ]
+    },
+    {
+     "id": "caballo",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "caballo",
+     "degradado": "silueta",
+     "correcta": "un caballo",
+     "distractores": [
+      "un elefante",
+      "un tren"
+     ]
+    },
+    {
+     "id": "mariposa",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "mariposa",
+     "degradado": "silueta",
+     "correcta": "una mariposa",
+     "distractores": [
+      "un teléfono",
+      "un destornillador"
+     ]
+    },
+    {
+     "id": "avion",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "avion",
+     "degradado": "silueta",
+     "correcta": "un avión",
+     "distractores": [
+      "una gafas",
+      "una hoja"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivina por la silueta (9)",
+  "descripcion": "Reconocer el objeto por su silueta.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "barco",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "barco",
+     "degradado": "silueta",
+     "correcta": "un barco",
+     "distractores": [
+      "una estrella",
+      "un abanico"
+     ]
+    },
+    {
+     "id": "tren",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "tren",
+     "degradado": "silueta",
+     "correcta": "un tren",
+     "distractores": [
+      "un conejo",
+      "un gato"
+     ]
+    },
+    {
+     "id": "gato",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "gato",
+     "degradado": "silueta",
+     "correcta": "un gato",
+     "distractores": [
+      "una lampara",
+      "una botella"
+     ]
+    },
+    {
+     "id": "perro",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "perro",
+     "degradado": "silueta",
+     "correcta": "un perro",
+     "distractores": [
+      "un cactus",
+      "un caballo"
+     ]
+    },
+    {
+     "id": "llave",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "llave",
+     "degradado": "silueta",
+     "correcta": "una llave",
+     "distractores": [
+      "una maceta",
+      "una cuchara"
+     ]
+    },
+    {
+     "id": "gafas",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "gafas",
+     "degradado": "silueta",
+     "correcta": "una gafas",
+     "distractores": [
+      "un avión",
+      "un paraguas"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivina por la silueta (10)",
+  "descripcion": "Reconocer el objeto por su silueta.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "maceta",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "maceta",
+     "degradado": "silueta",
+     "correcta": "una maceta",
+     "distractores": [
+      "una mariposa",
+      "una bicicleta"
+     ]
+    },
+    {
+     "id": "lampara",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "lampara",
+     "degradado": "silueta",
+     "correcta": "una lampara",
+     "distractores": [
+      "un destornillador",
+      "una taza"
+     ]
+    },
+    {
+     "id": "abanico",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "abanico",
+     "degradado": "silueta",
+     "correcta": "un abanico",
+     "distractores": [
+      "un conejo",
+      "un cactus"
+     ]
+    },
+    {
+     "id": "campana",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "campana",
+     "degradado": "silueta",
+     "correcta": "una campana",
+     "distractores": [
+      "una sartén",
+      "un abanico"
+     ]
+    },
+    {
+     "id": "destornillador",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "destornillador",
+     "degradado": "silueta",
+     "correcta": "un destornillador",
+     "distractores": [
+      "una campana",
+      "un zapato"
+     ]
+    },
+    {
+     "id": "bicicleta",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "bicicleta",
+     "degradado": "silueta",
+     "correcta": "una bicicleta",
+     "distractores": [
+      "un reloj",
+      "una cuchara"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivina por la silueta (11)",
+  "descripcion": "Reconocer el objeto por su silueta.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "cactus",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "cactus",
+     "degradado": "silueta",
+     "correcta": "un cactus",
+     "distractores": [
+      "un avión",
+      "un abanico"
+     ]
+    },
+    {
+     "id": "pato",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "pato",
+     "degradado": "silueta",
+     "correcta": "un pato",
+     "distractores": [
+      "un zapato",
+      "un paraguas"
+     ]
+    },
+    {
+     "id": "conejo",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "conejo",
+     "degradado": "silueta",
+     "correcta": "un conejo",
+     "distractores": [
+      "una flor",
+      "un paraguas"
+     ]
+    },
+    {
+     "id": "pez",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "pez",
+     "degradado": "silueta",
+     "correcta": "un pez",
+     "distractores": [
+      "un avión",
+      "una gafas"
+     ]
+    },
+    {
+     "id": "flor",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "flor",
+     "degradado": "silueta",
+     "correcta": "una flor",
+     "distractores": [
+      "una sartén",
+      "un candado"
+     ]
+    },
+    {
+     "id": "estrella",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "estrella",
+     "degradado": "silueta",
+     "correcta": "una estrella",
+     "distractores": [
+      "un cactus",
+      "una cuchara"
+     ]
+    }
+   ]
+  }
  }
 ]
