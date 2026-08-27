@@ -96134,6 +96134,516 @@
     "tiempo_ms",
     "num_toques"
    ]
+  },
+  {
+   "ejercicio_id": "¿Cuál no pertenece? (1)",
+   "nombre": "¿Cuál no pertenece? (1)",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Cuál no es una prenda de vestir?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El tenedor",
+     "La camisa",
+     "El abrigo"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "np0_3",
+    "correcta": "El tenedor"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Cuál no pertenece? (2)",
+   "nombre": "¿Cuál no pertenece? (2)",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Cuál no es una parte del cuerpo?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La ventana",
+     "El pie",
+     "La mano"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "np4_3",
+    "correcta": "La ventana"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Cuál no pertenece? (3)",
+   "nombre": "¿Cuál no pertenece? (3)",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Cuál no es un día de la semana?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Domingo",
+     "Lunes",
+     "Enero"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "np8_0",
+    "correcta": "Enero"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Significa lo mismo (1)",
+   "nombre": "Significa lo mismo (1)",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "'Empezar' significa lo mismo que...",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Comenzar",
+     "Guardar",
+     "Terminar"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "si0_2",
+    "correcta": "Comenzar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Significa lo mismo (2)",
+   "nombre": "Significa lo mismo (2)",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "'Grande' significa lo mismo que...",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Pequeño",
+     "Enorme",
+     "Estrecho"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "si4_1",
+    "correcta": "Enorme"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Significa lo mismo (3)",
+   "nombre": "Significa lo mismo (3)",
+   "bloque": "lenguaje",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "'Contento' o 'feliz' es lo contrario de...",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Alegre",
+     "Triste",
+     "Sonriente"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "si8_3",
+    "correcta": "Triste"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Compara: ¿cuál es...? (1)",
+   "nombre": "Compara: ¿cuál es...? (1)",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Cuál pesa más?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La pluma",
+     "La hoja",
+     "El camión"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "cm0_3",
+    "correcta": "El camión"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Compara: ¿cuál es...? (2)",
+   "nombre": "Compara: ¿cuál es...? (2)",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Cuál es más rápido?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "El caracol",
+     "El avión",
+     "La bicicleta"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "cm4_1",
+    "correcta": "El avión"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Compara: ¿cuál es...? (3)",
+   "nombre": "Compara: ¿cuál es...? (3)",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué hay más lejos?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "La pared",
+     "La mesa",
+     "La luna"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "cm8_1",
+    "correcta": "La luna"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuentas sencillas (1)",
+   "nombre": "Cuentas sencillas (1)",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Tienes 3 caramelos y te dan 3. ¿Cuántos tienes?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "6",
+     "5",
+     "7"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "ca0_2",
+    "correcta": "6"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuentas sencillas (2)",
+   "nombre": "Cuentas sencillas (2)",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Hay 3 gatos y llegan 2 más. ¿Cuántos hay?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "5",
+     "4",
+     "6"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "ca4_2",
+    "correcta": "5"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuentas sencillas (3)",
+   "nombre": "Cuentas sencillas (3)",
+   "bloque": "calculo",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "5 más 5, ¿cuántos son?",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "10",
+     "11",
+     "9"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "ca8_0",
+    "correcta": "10"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Analogías: completa (1)",
+   "nombre": "Analogías: completa (1)",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Perro es a ladrar como gato es a...",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Volar",
+     "Nadar",
+     "Maullar"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "an0_1",
+    "correcta": "Maullar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Analogías: completa (2)",
+   "nombre": "Analogías: completa (2)",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Llave es a puerta como tijera es a...",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Cortar",
+     "Cocinar",
+     "Pintar"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "an4_2",
+    "correcta": "Cortar"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Analogías: completa (3)",
+   "nombre": "Analogías: completa (3)",
+   "bloque": "razonamiento",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Uva es a vino como manzana es a...",
+    "enunciado": null,
+    "imagen": null,
+    "audio": null,
+    "opciones": [
+     "Leche",
+     "Zumo",
+     "Pan"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "an8_3",
+    "correcta": "Zumo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
   }
  ]
 }

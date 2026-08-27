@@ -145478,5 +145478,752 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Cuál no pertenece? (1)",
+  "descripcion": "Elige el que no va con los demás.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "np0_0",
+     "instruccion": "¿Cuál no es una fruta?",
+     "correcta": "El martillo",
+     "distractores": [
+      "La manzana",
+      "La pera",
+      "El plátano"
+     ]
+    },
+    {
+     "id": "np0_1",
+     "instruccion": "¿Cuál no es un animal?",
+     "correcta": "La silla",
+     "distractores": [
+      "El perro",
+      "El gato",
+      "El caballo"
+     ]
+    },
+    {
+     "id": "np0_2",
+     "instruccion": "¿Cuál no es un color?",
+     "correcta": "La mesa",
+     "distractores": [
+      "El rojo",
+      "El azul",
+      "El verde"
+     ]
+    },
+    {
+     "id": "np0_3",
+     "instruccion": "¿Cuál no es una prenda de vestir?",
+     "correcta": "El tenedor",
+     "distractores": [
+      "La camisa",
+      "El abrigo",
+      "El pantalón"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Cuál no pertenece? (2)",
+  "descripcion": "Elige el que no va con los demás.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "np4_0",
+     "instruccion": "¿Cuál no es un mueble?",
+     "correcta": "La naranja",
+     "distractores": [
+      "La silla",
+      "La mesa",
+      "La cama"
+     ]
+    },
+    {
+     "id": "np4_1",
+     "instruccion": "¿Cuál no es un medio de transporte?",
+     "correcta": "El árbol",
+     "distractores": [
+      "El coche",
+      "El tren",
+      "El barco"
+     ]
+    },
+    {
+     "id": "np4_2",
+     "instruccion": "¿Cuál no es una verdura?",
+     "correcta": "El reloj",
+     "distractores": [
+      "El tomate",
+      "La lechuga",
+      "La cebolla"
+     ]
+    },
+    {
+     "id": "np4_3",
+     "instruccion": "¿Cuál no es una parte del cuerpo?",
+     "correcta": "La ventana",
+     "distractores": [
+      "La mano",
+      "El pie",
+      "La nariz"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Cuál no pertenece? (3)",
+  "descripcion": "Elige el que no va con los demás.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "np8_0",
+     "instruccion": "¿Cuál no es un día de la semana?",
+     "correcta": "Enero",
+     "distractores": [
+      "Lunes",
+      "Martes",
+      "Domingo"
+     ]
+    },
+    {
+     "id": "np8_1",
+     "instruccion": "¿Cuál no es un mes?",
+     "correcta": "Jueves",
+     "distractores": [
+      "Abril",
+      "Agosto",
+      "Diciembre"
+     ]
+    },
+    {
+     "id": "np8_2",
+     "instruccion": "¿Cuál no es una flor?",
+     "correcta": "El plato",
+     "distractores": [
+      "La rosa",
+      "El clavel",
+      "El girasol"
+     ]
+    },
+    {
+     "id": "np8_3",
+     "instruccion": "¿Cuál no es una bebida?",
+     "correcta": "El pan",
+     "distractores": [
+      "El agua",
+      "La leche",
+      "El zumo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Significa lo mismo (1)",
+  "descripcion": "Elige la palabra que significa lo mismo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "si0_0",
+     "instruccion": "'Contento' significa lo mismo que...",
+     "correcta": "Alegre",
+     "distractores": [
+      "Triste",
+      "Cansado"
+     ]
+    },
+    {
+     "id": "si0_1",
+     "instruccion": "'Bonito' significa lo mismo que...",
+     "correcta": "Hermoso",
+     "distractores": [
+      "Feo",
+      "Roto"
+     ]
+    },
+    {
+     "id": "si0_2",
+     "instruccion": "'Empezar' significa lo mismo que...",
+     "correcta": "Comenzar",
+     "distractores": [
+      "Terminar",
+      "Guardar"
+     ]
+    },
+    {
+     "id": "si0_3",
+     "instruccion": "'Rápido' significa lo mismo que...",
+     "correcta": "Veloz",
+     "distractores": [
+      "Lento",
+      "Pesado"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Significa lo mismo (2)",
+  "descripcion": "Elige la palabra que significa lo mismo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "si4_0",
+     "instruccion": "'Enfadado' significa lo mismo que...",
+     "correcta": "Molesto",
+     "distractores": [
+      "Contento",
+      "Dormido"
+     ]
+    },
+    {
+     "id": "si4_1",
+     "instruccion": "'Grande' significa lo mismo que...",
+     "correcta": "Enorme",
+     "distractores": [
+      "Pequeño",
+      "Estrecho"
+     ]
+    },
+    {
+     "id": "si4_2",
+     "instruccion": "'Casa' significa lo mismo que...",
+     "correcta": "Hogar",
+     "distractores": [
+      "Calle",
+      "Jardín"
+     ]
+    },
+    {
+     "id": "si4_3",
+     "instruccion": "'Bello' significa lo mismo que...",
+     "correcta": "Guapo",
+     "distractores": [
+      "Sucio",
+      "Viejo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Significa lo mismo (3)",
+  "descripcion": "Elige la palabra que significa lo mismo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "si8_0",
+     "instruccion": "'Cansado' significa lo mismo que...",
+     "correcta": "Fatigado",
+     "distractores": [
+      "Despierto",
+      "Fuerte"
+     ]
+    },
+    {
+     "id": "si8_1",
+     "instruccion": "'Hablar' significa lo mismo que...",
+     "correcta": "Conversar",
+     "distractores": [
+      "Callar",
+      "Correr"
+     ]
+    },
+    {
+     "id": "si8_2",
+     "instruccion": "'Comida' significa lo mismo que...",
+     "correcta": "Alimento",
+     "distractores": [
+      "Bebida",
+      "Ropa"
+     ]
+    },
+    {
+     "id": "si8_3",
+     "instruccion": "'Contento' o 'feliz' es lo contrario de...",
+     "correcta": "Triste",
+     "distractores": [
+      "Alegre",
+      "Sonriente"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Compara: ¿cuál es...? (1)",
+  "descripcion": "Compara y elige la respuesta.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "cm0_0",
+     "instruccion": "¿Cuál es más grande?",
+     "correcta": "El elefante",
+     "distractores": [
+      "El ratón",
+      "La hormiga"
+     ]
+    },
+    {
+     "id": "cm0_1",
+     "instruccion": "¿Cuál es más pequeño?",
+     "correcta": "La hormiga",
+     "distractores": [
+      "El perro",
+      "El caballo"
+     ]
+    },
+    {
+     "id": "cm0_2",
+     "instruccion": "¿Cuál es más alto?",
+     "correcta": "El árbol",
+     "distractores": [
+      "La flor",
+      "La hierba"
+     ]
+    },
+    {
+     "id": "cm0_3",
+     "instruccion": "¿Cuál pesa más?",
+     "correcta": "El camión",
+     "distractores": [
+      "La pluma",
+      "La hoja"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Compara: ¿cuál es...? (2)",
+  "descripcion": "Compara y elige la respuesta.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "cm4_0",
+     "instruccion": "¿Cuál es más largo?",
+     "correcta": "El tren",
+     "distractores": [
+      "El lápiz",
+      "La cuchara"
+     ]
+    },
+    {
+     "id": "cm4_1",
+     "instruccion": "¿Cuál es más rápido?",
+     "correcta": "El avión",
+     "distractores": [
+      "La bicicleta",
+      "El caracol"
+     ]
+    },
+    {
+     "id": "cm4_2",
+     "instruccion": "¿Cuál es más pequeño?",
+     "correcta": "La moneda",
+     "distractores": [
+      "La mesa",
+      "La puerta"
+     ]
+    },
+    {
+     "id": "cm4_3",
+     "instruccion": "¿Cuál es más grande?",
+     "correcta": "La montaña",
+     "distractores": [
+      "La piedra",
+      "El grano de arena"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Compara: ¿cuál es...? (3)",
+  "descripcion": "Compara y elige la respuesta.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "cm8_0",
+     "instruccion": "¿Qué es más frío?",
+     "correcta": "El hielo",
+     "distractores": [
+      "La sopa caliente",
+      "El café"
+     ]
+    },
+    {
+     "id": "cm8_1",
+     "instruccion": "¿Qué hay más lejos?",
+     "correcta": "La luna",
+     "distractores": [
+      "La mesa",
+      "La pared"
+     ]
+    },
+    {
+     "id": "cm8_2",
+     "instruccion": "¿Cuál es más dulce?",
+     "correcta": "El azúcar",
+     "distractores": [
+      "El limón",
+      "La sal"
+     ]
+    },
+    {
+     "id": "cm8_3",
+     "instruccion": "¿Cuál es más pesado?",
+     "correcta": "La piedra",
+     "distractores": [
+      "El globo",
+      "La pluma"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "calculo",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Cuentas sencillas (1)",
+  "descripcion": "Resuelve la cuenta y elige el número.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "ca0_0",
+     "instruccion": "Tienes 2 manzanas y te dan 1 más. ¿Cuántas tienes?",
+     "correcta": "3",
+     "distractores": [
+      "2",
+      "4"
+     ]
+    },
+    {
+     "id": "ca0_1",
+     "instruccion": "Hay 5 pájaros y se van 2. ¿Cuántos quedan?",
+     "correcta": "3",
+     "distractores": [
+      "2",
+      "4"
+     ]
+    },
+    {
+     "id": "ca0_2",
+     "instruccion": "Tienes 3 caramelos y te dan 3. ¿Cuántos tienes?",
+     "correcta": "6",
+     "distractores": [
+      "5",
+      "7"
+     ]
+    },
+    {
+     "id": "ca0_3",
+     "instruccion": "Había 4 vasos y se rompe 1. ¿Cuántos quedan?",
+     "correcta": "3",
+     "distractores": [
+      "2",
+      "4"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "calculo",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Cuentas sencillas (2)",
+  "descripcion": "Resuelve la cuenta y elige el número.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "ca4_0",
+     "instruccion": "2 y 2, ¿cuántos son?",
+     "correcta": "4",
+     "distractores": [
+      "3",
+      "5"
+     ]
+    },
+    {
+     "id": "ca4_1",
+     "instruccion": "Tienes 6 flores y regalas 2. ¿Cuántas quedan?",
+     "correcta": "4",
+     "distractores": [
+      "3",
+      "5"
+     ]
+    },
+    {
+     "id": "ca4_2",
+     "instruccion": "Hay 3 gatos y llegan 2 más. ¿Cuántos hay?",
+     "correcta": "5",
+     "distractores": [
+      "4",
+      "6"
+     ]
+    },
+    {
+     "id": "ca4_3",
+     "instruccion": "Tienes 10 euros y gastas 4. ¿Cuánto te queda?",
+     "correcta": "6",
+     "distractores": [
+      "5",
+      "7"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "calculo",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Cuentas sencillas (3)",
+  "descripcion": "Resuelve la cuenta y elige el número.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "ca8_0",
+     "instruccion": "5 más 5, ¿cuántos son?",
+     "correcta": "10",
+     "distractores": [
+      "9",
+      "11"
+     ]
+    },
+    {
+     "id": "ca8_1",
+     "instruccion": "Había 7 galletas y te comes 3. ¿Cuántas quedan?",
+     "correcta": "4",
+     "distractores": [
+      "3",
+      "5"
+     ]
+    },
+    {
+     "id": "ca8_2",
+     "instruccion": "Tienes 1 perro y te dan 2 más. ¿Cuántos tienes?",
+     "correcta": "3",
+     "distractores": [
+      "2",
+      "4"
+     ]
+    },
+    {
+     "id": "ca8_3",
+     "instruccion": "8 menos 3, ¿cuántos son?",
+     "correcta": "5",
+     "distractores": [
+      "4",
+      "6"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Analogías: completa (1)",
+  "descripcion": "Sigue la relación y completa.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "an0_0",
+     "instruccion": "Guante es a mano como calcetín es a...",
+     "correcta": "Pie",
+     "distractores": [
+      "Cabeza",
+      "Mesa"
+     ]
+    },
+    {
+     "id": "an0_1",
+     "instruccion": "Perro es a ladrar como gato es a...",
+     "correcta": "Maullar",
+     "distractores": [
+      "Volar",
+      "Nadar"
+     ]
+    },
+    {
+     "id": "an0_2",
+     "instruccion": "Día es a sol como noche es a...",
+     "correcta": "Luna",
+     "distractores": [
+      "Lluvia",
+      "Nieve"
+     ]
+    },
+    {
+     "id": "an0_3",
+     "instruccion": "Rey es a corona como soldado es a...",
+     "correcta": "Casco",
+     "distractores": [
+      "Zapato",
+      "Guante"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Analogías: completa (2)",
+  "descripcion": "Sigue la relación y completa.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "an4_0",
+     "instruccion": "Pájaro es a nido como persona es a...",
+     "correcta": "Casa",
+     "distractores": [
+      "Coche",
+      "Árbol"
+     ]
+    },
+    {
+     "id": "an4_1",
+     "instruccion": "Pez es a agua como pájaro es a...",
+     "correcta": "Aire",
+     "distractores": [
+      "Tierra",
+      "Fuego"
+     ]
+    },
+    {
+     "id": "an4_2",
+     "instruccion": "Llave es a puerta como tijera es a...",
+     "correcta": "Cortar",
+     "distractores": [
+      "Pintar",
+      "Cocinar"
+     ]
+    },
+    {
+     "id": "an4_3",
+     "instruccion": "Pan es a panadería como carne es a...",
+     "correcta": "Carnicería",
+     "distractores": [
+      "Farmacia",
+      "Zapatería"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Analogías: completa (3)",
+  "descripcion": "Sigue la relación y completa.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 4,
+   "items": [
+    {
+     "id": "an8_0",
+     "instruccion": "Ojo es a ver como oído es a...",
+     "correcta": "Oír",
+     "distractores": [
+      "Oler",
+      "Tocar"
+     ]
+    },
+    {
+     "id": "an8_1",
+     "instruccion": "Invierno es a frío como verano es a...",
+     "correcta": "Calor",
+     "distractores": [
+      "Lluvia",
+      "Viento"
+     ]
+    },
+    {
+     "id": "an8_2",
+     "instruccion": "Profesor es a enseñar como médico es a...",
+     "correcta": "Curar",
+     "distractores": [
+      "Cocinar",
+      "Conducir"
+     ]
+    },
+    {
+     "id": "an8_3",
+     "instruccion": "Uva es a vino como manzana es a...",
+     "correcta": "Zumo",
+     "distractores": [
+      "Pan",
+      "Leche"
+     ]
+    }
+   ]
+  }
  }
 ]
