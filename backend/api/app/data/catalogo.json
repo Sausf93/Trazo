@@ -528,7 +528,7 @@
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja la pieza",
-  "descripcion": "Arrastrar cada pieza (redonda, cuadrada, triangular) hasta el hueco de su misma forma.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -536,44 +536,45 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
@@ -7808,11 +7809,11 @@
     },
     {
      "id": "antes-comida",
-     "instruccion": "¿Qué comida va antes?",
-     "correcta": "La comida del mediodía",
+     "instruccion": "¿Qué comida va antes en el día?",
+     "correcta": "El almuerzo",
      "distractores": [
       "La cena",
-      "El café después de cenar"
+      "La merienda"
      ]
     }
    ]
@@ -17538,7 +17539,7 @@
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (3 piezas) #1",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -17546,42 +17547,43 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (3 piezas) #2",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -17589,42 +17591,43 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (3 piezas) #3",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -17632,42 +17635,43 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (4 piezas) #4",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -17675,51 +17679,52 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (4 piezas) #5",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -17727,51 +17732,52 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_circulo",
+     "label": "Círculo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (4 piezas) #6",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -17779,51 +17785,52 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (5 piezas) #7",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 5,
@@ -17831,60 +17838,61 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja las formas (5 piezas) #8",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 5,
@@ -17892,53 +17900,54 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_estrella",
+     "label": "Estrella"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
@@ -19323,7 +19332,7 @@
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado estrella corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -19331,51 +19340,52 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_circulo",
+     "label": "Círculo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -19383,51 +19393,52 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_estrella",
+     "label": "Estrella"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -19435,42 +19446,43 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "razonamiento",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo estrella corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -19478,51 +19490,52 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: estrella corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -19530,42 +19543,43 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_circulo",
+     "label": "Círculo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo triangulo estrella corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -19573,51 +19587,52 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "razonamiento",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado estrella corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -19625,51 +19640,52 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: triangulo estrella luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -19677,42 +19693,43 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_circulo",
+     "label": "Círculo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "razonamiento",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado triangulo corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -19720,51 +19737,52 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_circulo",
+     "label": "Círculo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "razonamiento",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado triangulo estrella",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -19772,42 +19790,43 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado triangulo corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -19815,42 +19834,43 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: triangulo corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -19858,42 +19878,43 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_circulo",
+     "label": "Círculo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "razonamiento",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo triangulo corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -19901,42 +19922,43 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado estrella",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -19944,35 +19966,36 @@
    "muestrear": false,
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     }
    ],
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
@@ -21393,7 +21416,7 @@
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -21401,42 +21424,43 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -21444,42 +21468,43 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "razonamiento",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo triangulo estrella",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -21487,42 +21512,43 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo triangulo luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -21530,42 +21556,43 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo estrella corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -21573,42 +21600,43 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo estrella luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -21616,42 +21644,43 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -21659,42 +21688,43 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "razonamiento",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado triangulo luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -21702,42 +21732,43 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_circulo",
+     "label": "Círculo"
     }
    ],
    "piezas": [
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado estrella corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -21745,42 +21776,43 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
    ],
    "piezas": [
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "razonamiento",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado estrella luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -21788,42 +21820,43 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_circulo",
+     "label": "Círculo"
     }
    ],
    "piezas": [
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "razonamiento",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -21831,42 +21864,43 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_circulo",
+     "label": "Círculo"
     }
    ],
    "piezas": [
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: triangulo estrella corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "facil",
    "cantidad_min": 3,
@@ -21874,42 +21908,43 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
    ],
    "piezas": [
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo estrella",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -21917,51 +21952,52 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -21969,51 +22005,52 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado estrella luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -22021,51 +22058,52 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -22073,51 +22111,52 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "razonamiento",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo triangulo estrella luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -22125,51 +22164,52 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo triangulo corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -22177,51 +22217,52 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado triangulo estrella corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -22229,51 +22270,52 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
    ],
    "piezas": [
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado triangulo estrella luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -22281,51 +22323,52 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_circulo",
+     "label": "Círculo"
     }
    ],
    "piezas": [
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: triangulo estrella corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 4,
@@ -22333,51 +22376,52 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_circulo",
+     "label": "Círculo"
     }
    ],
    "piezas": [
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo estrella corazon",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 5,
@@ -22385,60 +22429,61 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo estrella luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 5,
@@ -22446,60 +22491,61 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_corazon",
+     "label": "Corazón"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado triangulo corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 5,
@@ -22507,60 +22553,61 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_estrella",
+     "label": "Estrella"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo cuadrado estrella corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 5,
@@ -22568,60 +22615,61 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: circulo triangulo estrella corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 5,
@@ -22629,60 +22677,61 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_circulo",
-     "label": "hueco redondo"
+     "id": "zona_circulo",
+     "label": "Círculo"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     }
    ],
    "piezas": [
     {
-     "id": "circulo",
-     "label": "pieza redonda",
-     "zona_correcta": "hueco_circulo"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {
   "bloque": "percepcion",
   "plantilla_tipo": "arrastrar_posicion",
   "nombre": "Encaja formas: cuadrado triangulo estrella corazon luna",
-  "descripcion": "Toca cada pieza y llévala a su hueco.",
+  "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
   "parametros_json": {
    "dificultad": "media",
    "cantidad_min": 5,
@@ -22690,53 +22739,54 @@
    "muestrear": false,
    "zonas": [
     {
-     "id": "hueco_cuadrado",
-     "label": "hueco cuadrado"
+     "id": "zona_cuadrado",
+     "label": "Cuadrado"
     },
     {
-     "id": "hueco_triangulo",
-     "label": "hueco triangular"
+     "id": "zona_triangulo",
+     "label": "Triángulo"
     },
     {
-     "id": "hueco_estrella",
-     "label": "hueco de estrella"
+     "id": "zona_estrella",
+     "label": "Estrella"
     },
     {
-     "id": "hueco_corazon",
-     "label": "hueco de corazón"
+     "id": "zona_corazon",
+     "label": "Corazón"
     },
     {
-     "id": "hueco_luna",
-     "label": "hueco de luna"
+     "id": "zona_circulo",
+     "label": "Círculo"
     }
    ],
    "piezas": [
     {
-     "id": "cuadrado",
-     "label": "pieza cuadrada",
-     "zona_correcta": "hueco_cuadrado"
+     "id": "forma_cuadrado",
+     "label": "cuadrado",
+     "zona_correcta": "zona_cuadrado"
     },
     {
-     "id": "triangulo",
-     "label": "pieza triangular",
-     "zona_correcta": "hueco_triangulo"
+     "id": "forma_triangulo",
+     "label": "triángulo",
+     "zona_correcta": "zona_triangulo"
     },
     {
-     "id": "estrella",
-     "label": "pieza de estrella",
-     "zona_correcta": "hueco_estrella"
+     "id": "forma_estrella",
+     "label": "estrella",
+     "zona_correcta": "zona_estrella"
     },
     {
-     "id": "corazon",
-     "label": "pieza de corazón",
-     "zona_correcta": "hueco_corazon"
+     "id": "forma_corazon",
+     "label": "corazón",
+     "zona_correcta": "zona_corazon"
     },
     {
-     "id": "luna",
-     "label": "pieza de luna",
-     "zona_correcta": "hueco_luna"
+     "id": "forma_circulo",
+     "label": "círculo",
+     "zona_correcta": "zona_circulo"
     }
-   ]
+   ],
+   "instruccion": "Pon cada figura donde dice su nombre"
   }
  },
  {

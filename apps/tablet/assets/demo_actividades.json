@@ -371,46 +371,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      }
     ]
    },
@@ -418,10 +418,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella"
     }
    },
    "metricas": [
@@ -6108,14 +6108,14 @@
    "plantilla": "seleccion_multiple",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "¿Qué comida va antes?",
+    "instruccion": "¿Qué comida va antes en el día?",
     "enunciado": null,
     "imagen": null,
     "audio": null,
     "opciones": [
-     "La comida del mediodía",
+     "El almuerzo",
      "La cena",
-     "El café después de cenar"
+     "La merienda"
     ],
     "serie": null,
     "figuras": null,
@@ -6127,7 +6127,7 @@
    "cantidad_objetivo": {
     "n_opciones": 3,
     "item_id": "antes-comida",
-    "correcta": "La comida del mediodía"
+    "correcta": "El almuerzo"
    },
    "metricas": [
     "correcto",
@@ -21172,37 +21172,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      }
     ]
    },
@@ -21210,9 +21210,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo"
     }
    },
    "metricas": [
@@ -21228,37 +21228,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      }
     ]
    },
@@ -21266,9 +21266,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "estrella": "hueco_estrella"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_estrella": "zona_estrella"
     }
    },
    "metricas": [
@@ -21284,37 +21284,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -21322,9 +21322,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon"
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -21340,46 +21340,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      }
     ]
    },
@@ -21387,10 +21387,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella"
     }
    },
    "metricas": [
@@ -21406,46 +21406,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_circulo",
+      "label": "Círculo"
      }
     ]
    },
@@ -21453,10 +21453,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_corazon": "zona_corazon",
+     "forma_circulo": "zona_circulo"
     }
    },
    "metricas": [
@@ -21472,46 +21472,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      }
     ]
    },
@@ -21519,10 +21519,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon",
+     "forma_cuadrado": "zona_cuadrado"
     }
    },
    "metricas": [
@@ -21538,55 +21538,55 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 5,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -21594,11 +21594,11 @@
     "cantidad": 5,
     "n_piezas": 5,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -21614,55 +21614,55 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 5,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_estrella",
+      "label": "Estrella"
      }
     ]
    },
@@ -21670,11 +21670,11 @@
     "cantidad": 5,
     "n_piezas": 5,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_corazon": "zona_corazon",
+     "forma_estrella": "zona_estrella"
     }
    },
    "metricas": [
@@ -23429,46 +23429,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_circulo",
+      "label": "Círculo"
      }
     ]
    },
@@ -23476,10 +23476,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "cuadrado": "hueco_cuadrado",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon",
+     "forma_circulo": "zona_circulo"
     }
    },
    "metricas": [
@@ -23495,46 +23495,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_estrella",
+      "label": "Estrella"
      }
     ]
    },
@@ -23542,10 +23542,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella"
     }
    },
    "metricas": [
@@ -23561,37 +23561,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -23599,9 +23599,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "corazon": "hueco_corazon"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -23617,46 +23617,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      }
     ]
    },
@@ -23664,10 +23664,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon",
+     "forma_cuadrado": "zona_cuadrado"
     }
    },
    "metricas": [
@@ -23683,37 +23683,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_circulo",
+      "label": "Círculo"
      }
     ]
    },
@@ -23721,9 +23721,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon",
+     "forma_circulo": "zona_circulo"
     }
    },
    "metricas": [
@@ -23739,46 +23739,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -23786,10 +23786,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon"
+     "forma_circulo": "zona_circulo",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -23805,46 +23805,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -23852,10 +23852,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -23871,37 +23871,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_circulo",
+      "label": "Círculo"
      }
     ]
    },
@@ -23909,9 +23909,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "luna": "hueco_luna"
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_circulo": "zona_circulo"
     }
    },
    "metricas": [
@@ -23927,46 +23927,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_circulo",
+      "label": "Círculo"
      }
     ]
    },
@@ -23974,10 +23974,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_corazon": "zona_corazon",
+     "forma_circulo": "zona_circulo"
     }
    },
    "metricas": [
@@ -23993,37 +23993,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      }
     ]
    },
@@ -24031,9 +24031,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella"
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella"
     }
    },
    "metricas": [
@@ -24049,37 +24049,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -24087,9 +24087,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "corazon": "hueco_corazon"
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -24105,37 +24105,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_circulo",
+      "label": "Círculo"
      }
     ]
    },
@@ -24143,9 +24143,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "triangulo": "hueco_triangulo",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_triangulo": "zona_triangulo",
+     "forma_corazon": "zona_corazon",
+     "forma_circulo": "zona_circulo"
     }
    },
    "metricas": [
@@ -24161,37 +24161,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -24199,9 +24199,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "triangulo": "hueco_triangulo",
-     "corazon": "hueco_corazon"
+     "forma_circulo": "zona_circulo",
+     "forma_triangulo": "zona_triangulo",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -24217,37 +24217,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      }
     ]
    },
@@ -24255,9 +24255,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "estrella": "hueco_estrella"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_estrella": "zona_estrella"
     }
    },
    "metricas": [
@@ -26094,37 +26094,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      }
     ]
    },
@@ -26132,9 +26132,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo"
     }
    },
    "metricas": [
@@ -26150,37 +26150,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      }
     ]
    },
@@ -26188,9 +26188,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo"
     }
    },
    "metricas": [
@@ -26206,37 +26206,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      }
     ]
    },
@@ -26244,9 +26244,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella"
+     "forma_circulo": "zona_circulo",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella"
     }
    },
    "metricas": [
@@ -26262,37 +26262,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      }
     ]
    },
@@ -26300,9 +26300,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "triangulo": "hueco_triangulo",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_triangulo": "zona_triangulo",
+     "forma_cuadrado": "zona_cuadrado"
     }
    },
    "metricas": [
@@ -26318,37 +26318,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -26356,9 +26356,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon"
+     "forma_circulo": "zona_circulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -26374,37 +26374,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      }
     ]
    },
@@ -26412,9 +26412,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "estrella": "hueco_estrella",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_estrella": "zona_estrella",
+     "forma_cuadrado": "zona_cuadrado"
     }
    },
    "metricas": [
@@ -26430,37 +26430,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      }
     ]
    },
@@ -26468,9 +26468,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_corazon": "zona_corazon",
+     "forma_cuadrado": "zona_cuadrado"
     }
    },
    "metricas": [
@@ -26486,37 +26486,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_circulo",
+      "label": "Círculo"
      }
     ]
    },
@@ -26524,9 +26524,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "luna": "hueco_luna"
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_circulo": "zona_circulo"
     }
    },
    "metricas": [
@@ -26542,37 +26542,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -26580,9 +26580,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "cuadrado": "hueco_cuadrado",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon"
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -26598,37 +26598,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_circulo",
+      "label": "Círculo"
      }
     ]
    },
@@ -26636,9 +26636,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "cuadrado": "hueco_cuadrado",
-     "estrella": "hueco_estrella",
-     "luna": "hueco_luna"
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_estrella": "zona_estrella",
+     "forma_circulo": "zona_circulo"
     }
    },
    "metricas": [
@@ -26654,37 +26654,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_circulo",
+      "label": "Círculo"
      }
     ]
    },
@@ -26692,9 +26692,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "cuadrado": "hueco_cuadrado",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_corazon": "zona_corazon",
+     "forma_circulo": "zona_circulo"
     }
    },
    "metricas": [
@@ -26710,37 +26710,37 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 3,
     "piezas": [
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -26748,9 +26748,9 @@
     "cantidad": 3,
     "n_piezas": 3,
     "emparejamientos": {
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon"
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -26766,46 +26766,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      }
     ]
    },
@@ -26813,10 +26813,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella"
     }
    },
    "metricas": [
@@ -26832,46 +26832,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -26879,10 +26879,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "corazon": "hueco_corazon"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -26898,46 +26898,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      }
     ]
    },
@@ -26945,10 +26945,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "estrella": "hueco_estrella",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_estrella": "zona_estrella",
+     "forma_triangulo": "zona_triangulo"
     }
    },
    "metricas": [
@@ -26964,46 +26964,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      }
     ]
    },
@@ -27011,10 +27011,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_corazon": "zona_corazon",
+     "forma_triangulo": "zona_triangulo"
     }
    },
    "metricas": [
@@ -27030,46 +27030,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      }
     ]
    },
@@ -27077,10 +27077,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_cuadrado": "zona_cuadrado"
     }
    },
    "metricas": [
@@ -27096,46 +27096,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      }
     ]
    },
@@ -27143,10 +27143,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "triangulo": "hueco_triangulo",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_triangulo": "zona_triangulo",
+     "forma_corazon": "zona_corazon",
+     "forma_cuadrado": "zona_cuadrado"
     }
    },
    "metricas": [
@@ -27162,46 +27162,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -27209,10 +27209,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon"
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -27228,46 +27228,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_circulo",
+      "label": "Círculo"
      }
     ]
    },
@@ -27275,10 +27275,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "luna": "hueco_luna"
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_circulo": "zona_circulo"
     }
    },
    "metricas": [
@@ -27294,46 +27294,46 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 4,
     "piezas": [
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_circulo",
+      "label": "Círculo"
      }
     ]
    },
@@ -27341,10 +27341,10 @@
     "cantidad": 4,
     "n_piezas": 4,
     "emparejamientos": {
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon",
+     "forma_circulo": "zona_circulo"
     }
    },
    "metricas": [
@@ -27360,55 +27360,55 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 5,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -27416,11 +27416,11 @@
     "cantidad": 5,
     "n_piezas": 5,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -27436,55 +27436,55 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 5,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_corazon",
+      "label": "Corazón"
      }
     ]
    },
@@ -27492,11 +27492,11 @@
     "cantidad": 5,
     "n_piezas": 5,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon"
     }
    },
    "metricas": [
@@ -27512,55 +27512,55 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 5,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_estrella",
+      "label": "Estrella"
      }
     ]
    },
@@ -27568,11 +27568,11 @@
     "cantidad": 5,
     "n_piezas": 5,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_corazon": "zona_corazon",
+     "forma_estrella": "zona_estrella"
     }
    },
    "metricas": [
@@ -27588,55 +27588,55 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 5,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      }
     ]
    },
@@ -27644,11 +27644,11 @@
     "cantidad": 5,
     "n_piezas": 5,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "cuadrado": "hueco_cuadrado",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon",
+     "forma_triangulo": "zona_triangulo"
     }
    },
    "metricas": [
@@ -27664,55 +27664,55 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 5,
     "piezas": [
      {
-      "id": "circulo",
-      "label": "pieza redonda",
-      "zona_correcta": "hueco_circulo"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_circulo",
-      "label": "hueco redondo"
+      "id": "zona_circulo",
+      "label": "Círculo"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      }
     ]
    },
@@ -27720,11 +27720,11 @@
     "cantidad": 5,
     "n_piezas": 5,
     "emparejamientos": {
-     "circulo": "hueco_circulo",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_circulo": "zona_circulo",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon",
+     "forma_cuadrado": "zona_cuadrado"
     }
    },
    "metricas": [
@@ -27740,55 +27740,55 @@
    "plantilla": "arrastrar_posicion",
    "estado": "en_pruebas",
    "render": {
-    "instruccion": "Toca cada cosa y luego su sitio",
+    "instruccion": "Pon cada figura donde dice su nombre",
     "multiplicador": 5,
     "piezas": [
      {
-      "id": "cuadrado",
-      "label": "pieza cuadrada",
-      "zona_correcta": "hueco_cuadrado"
+      "id": "forma_cuadrado",
+      "label": "cuadrado",
+      "zona_correcta": "zona_cuadrado"
      },
      {
-      "id": "triangulo",
-      "label": "pieza triangular",
-      "zona_correcta": "hueco_triangulo"
+      "id": "forma_triangulo",
+      "label": "triángulo",
+      "zona_correcta": "zona_triangulo"
      },
      {
-      "id": "estrella",
-      "label": "pieza de estrella",
-      "zona_correcta": "hueco_estrella"
+      "id": "forma_estrella",
+      "label": "estrella",
+      "zona_correcta": "zona_estrella"
      },
      {
-      "id": "corazon",
-      "label": "pieza de corazón",
-      "zona_correcta": "hueco_corazon"
+      "id": "forma_corazon",
+      "label": "corazón",
+      "zona_correcta": "zona_corazon"
      },
      {
-      "id": "luna",
-      "label": "pieza de luna",
-      "zona_correcta": "hueco_luna"
+      "id": "forma_circulo",
+      "label": "círculo",
+      "zona_correcta": "zona_circulo"
      }
     ],
     "zonas": [
      {
-      "id": "hueco_cuadrado",
-      "label": "hueco cuadrado"
+      "id": "zona_cuadrado",
+      "label": "Cuadrado"
      },
      {
-      "id": "hueco_triangulo",
-      "label": "hueco triangular"
+      "id": "zona_triangulo",
+      "label": "Triángulo"
      },
      {
-      "id": "hueco_estrella",
-      "label": "hueco de estrella"
+      "id": "zona_estrella",
+      "label": "Estrella"
      },
      {
-      "id": "hueco_corazon",
-      "label": "hueco de corazón"
+      "id": "zona_corazon",
+      "label": "Corazón"
      },
      {
-      "id": "hueco_luna",
-      "label": "hueco de luna"
+      "id": "zona_circulo",
+      "label": "Círculo"
      }
     ]
    },
@@ -27796,11 +27796,11 @@
     "cantidad": 5,
     "n_piezas": 5,
     "emparejamientos": {
-     "cuadrado": "hueco_cuadrado",
-     "triangulo": "hueco_triangulo",
-     "estrella": "hueco_estrella",
-     "corazon": "hueco_corazon",
-     "luna": "hueco_luna"
+     "forma_cuadrado": "zona_cuadrado",
+     "forma_triangulo": "zona_triangulo",
+     "forma_estrella": "zona_estrella",
+     "forma_corazon": "zona_corazon",
+     "forma_circulo": "zona_circulo"
     }
    },
    "metricas": [

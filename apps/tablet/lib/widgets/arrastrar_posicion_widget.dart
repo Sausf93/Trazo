@@ -1,4 +1,4 @@
-import 'dart:math' show min, max;
+import 'dart:math' show min, max, cos, sin, pi;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -49,6 +49,18 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
           ? Map<String, dynamic>.from(e)
           : {'id': e.toString(), 'label': e.toString()})
       .toList();
+
+  /// Si el id es una pieza de FORMA (`forma_circulo`…), devuelve el nombre de la
+  /// figura a pintar; si no, null (se pinta como ilustración/texto normal).
+  static const _formasGeom = {
+    'circulo', 'cuadrado', 'triangulo', 'estrella', 'corazon', 'rombo', 'ovalo',
+    'rectangulo'
+  };
+  String? _formaDe(String id) {
+    if (!id.startsWith('forma_')) return null;
+    final f = id.substring(6);
+    return _formasGeom.contains(f) ? f : null;
+  }
 
   String _idDe(Map<String, dynamic> e) =>
       (e['id'] ?? e['label'] ?? e['nombre'] ?? '').toString();
@@ -289,6 +301,34 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
 
   Widget _chipPieza(String id, String label,
       {bool seleccionada = false, bool compacto = false}) {
+    // Piezas de FORMA (encaja la pieza): se pinta la figura geométrica LIMPIA y
+    // SIN texto; el nombre va en la zona ("Círculo"). Así se asocia figura→nombre
+    // (feedback de Saulo: "hueco círculo" confundía porque no hay hueco redondo).
+    final forma = _formaDe(id);
+    if (forma != null) {
+      final tam = compacto ? 46.0 : 64.0;
+      return Material(
+        color: Colors.transparent,
+        child: Container(
+          width: compacto ? 84.0 : 108.0,
+          padding: EdgeInsets.all(compacto ? 8 : 12),
+          decoration: BoxDecoration(
+            color: seleccionada ? TrazoColors.coralDark : TrazoColors.card,
+            border: Border.all(
+                color: seleccionada ? TrazoColors.coralDark : TrazoColors.sand,
+                width: seleccionada ? 4 : 2),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Center(
+            child: CustomPaint(
+              size: Size(tam, tam),
+              painter: _FormaPintada(forma,
+                  color: seleccionada ? Colors.white : TrazoColors.sageDark),
+            ),
+          ),
+        ),
+      );
+    }
     final tieneDibujo = IlustracionResolver.tiene(id);
     final tamDibujo = compacto ? 40.0 : 52.0;
     // Ancho FIJO: así una etiqueta larga ("cepillo de dientes") no ensancha la
@@ -414,4 +454,93 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
       ],
     );
   }
+}
+
+/// Figura geométrica limpia (para las piezas de "encaja la pieza"): relleno +
+/// contorno oscuro, grande y con buen contraste.
+class _FormaPintada extends CustomPainter {
+  final String nombre;
+  final Color color;
+  _FormaPintada(this.nombre, {required this.color});
+  @override
+  void paint(Canvas canvas, Size size) {
+    final p = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+    final borde = Paint()
+      ..color = TrazoColors.ink.withValues(alpha: 0.28)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = max(1.5, size.width * 0.03);
+    final w = size.width, h = size.height, cx = w / 2, cy = h / 2;
+    final r = min(w, h) / 2;
+    void fs(Path path) {
+      canvas.drawPath(path, p);
+      canvas.drawPath(path, borde);
+    }
+
+    switch (nombre) {
+      case 'circulo':
+        canvas.drawCircle(Offset(cx, cy), r, p);
+        canvas.drawCircle(Offset(cx, cy), r, borde);
+        break;
+      case 'ovalo':
+        final rect =
+            Rect.fromCenter(center: Offset(cx, cy), width: w, height: h * 0.7);
+        canvas.drawOval(rect, p);
+        canvas.drawOval(rect, borde);
+        break;
+      case 'cuadrado':
+        fs(Path()
+          ..addRRect(RRect.fromRectAndRadius(
+              Rect.fromCenter(
+                  center: Offset(cx, cy), width: w * 0.92, height: h * 0.92),
+              const Radius.circular(4))));
+        break;
+      case 'rectangulo':
+        fs(Path()
+          ..addRRect(RRect.fromRectAndRadius(
+              Rect.fromCenter(
+                  center: Offset(cx, cy), width: w, height: h * 0.62),
+              const Radius.circular(4))));
+        break;
+      case 'triangulo':
+        fs(Path()
+          ..moveTo(cx, cy - r)
+          ..lineTo(cx + r, cy + r)
+          ..lineTo(cx - r, cy + r)
+          ..close());
+        break;
+      case 'rombo':
+        fs(Path()
+          ..moveTo(cx, cy - r)
+          ..lineTo(cx + r, cy)
+          ..lineTo(cx, cy + r)
+          ..lineTo(cx - r, cy)
+          ..close());
+        break;
+      case 'corazon':
+        final path = Path()..moveTo(cx, cy + r * 0.75);
+        path.cubicTo(
+            cx - r * 1.4, cy - r * 0.2, cx - r * 0.5, cy - r, cx, cy - r * 0.35);
+        path.cubicTo(
+            cx + r * 0.5, cy - r, cx + r * 1.4, cy - r * 0.2, cx, cy + r * 0.75);
+        fs(path);
+        break;
+      case 'estrella':
+        final path = Path();
+        for (var i = 0; i < 10; i++) {
+          final rr = i.isEven ? r : r * 0.42;
+          final a = -pi / 2 + i * pi / 5;
+          final pt = Offset(cx + cos(a) * rr, cy + sin(a) * rr);
+          i == 0 ? path.moveTo(pt.dx, pt.dy) : path.lineTo(pt.dx, pt.dy);
+        }
+        path.close();
+        fs(path);
+        break;
+    }
+  }
+
+  @override
+  bool shouldRepaint(_FormaPintada old) =>
+      old.nombre != nombre || old.color != color;
 }

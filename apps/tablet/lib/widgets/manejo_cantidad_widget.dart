@@ -354,27 +354,34 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
     final hora = (render['hora'] as num?)?.toInt() ?? 12;
     final minuto = (render['minuto'] as num?)?.toInt() ?? 0;
 
-    return Column(
-      children: [
-        Text(instruccion,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 26, color: TrazoColors.ink)),
-        const SizedBox(height: 8),
-        const Text('Mira el reloj y pon la misma hora abajo',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20, color: TrazoColors.sageDark)),
-        const SizedBox(height: 16),
-        Expanded(
-          child: Center(
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: CustomPaint(
-                painter: _RelojPainter(hora: hora, minuto: minuto),
+    // Desplazable + reloj GRANDE con lado mínimo: en la tarjeta del banco (poco
+    // alto) el reloj se veía diminuto y no se leía la hora (feedback de Saulo).
+    // Ahora ocupa un lado holgado (220–320) y, si no cabe, la vista hace scroll
+    // en vez de encogerlo.
+    return LayoutBuilder(builder: (context, c) {
+      final ancho = c.maxWidth.isFinite ? c.maxWidth : 320.0;
+      final lado = ancho.clamp(220.0, 320.0) * 0.92;
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            Text(instruccion,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 26, color: TrazoColors.ink)),
+            const SizedBox(height: 8),
+            const Text('Mira el reloj y pon la misma hora abajo',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20, color: TrazoColors.sageDark)),
+            const SizedBox(height: 16),
+            Center(
+              child: SizedBox(
+                width: lado,
+                height: lado,
+                child: CustomPaint(
+                  painter: _RelojPainter(hora: hora, minuto: minuto),
+                ),
               ),
             ),
-          ),
-        ),
-        const SizedBox(height: 12),
+            const SizedBox(height: 12),
         // Wrap (no Row) para que en móvil estrecho los dos selectores bajen a
         // una segunda línea en vez de desbordar la pantalla.
         Wrap(
@@ -394,7 +401,9 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
         ),
         const SizedBox(height: 12),
       ],
-    );
+          ),
+        );
+      });
   }
 
   Widget _selector(
