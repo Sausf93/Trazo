@@ -77591,6 +77591,490 @@
     "tiempo_ms",
     "num_toques"
    ]
+  },
+  {
+   "ejercicio_id": "Ordena la frase (1)",
+   "nombre": "Ordena la frase (1)",
+   "bloque": "lenguaje",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Forma la frase",
+    "pasos_barajados": [
+     {
+      "paso": "leche",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "bebe",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "gata",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "La",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "f2",
+    "orden_correcto_pasos": [
+     "La",
+     "gata",
+     "bebe",
+     "leche"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena la frase (2)",
+   "nombre": "Ordena la frase (2)",
+   "bloque": "lenguaje",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Forma la frase",
+    "pasos_barajados": [
+     {
+      "paso": "muy",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "vuelan",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "pájaros",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "Los",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "f2",
+    "orden_correcto_pasos": [
+     "Los",
+     "pájaros",
+     "vuelan",
+     "muy"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena la frase (3)",
+   "nombre": "Ordena la frase (3)",
+   "bloque": "lenguaje",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Forma el dicho",
+    "pasos_barajados": [
+     {
+      "paso": "Dios",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "madruga",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "quien",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "A",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "f2",
+    "orden_correcto_pasos": [
+     "A",
+     "quien",
+     "madruga",
+     "Dios"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena la frase (4)",
+   "nombre": "Ordena la frase (4)",
+   "bloque": "lenguaje",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Forma la frase",
+    "pasos_barajados": [
+     {
+      "paso": "la",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "por",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "gracias",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "Muchas",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "f2",
+    "orden_correcto_pasos": [
+     "Muchas",
+     "gracias",
+     "por",
+     "la"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce con foto: el baño",
+   "nombre": "Reconoce con foto: el baño",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué es esto?",
+    "enunciado": null,
+    "imagen": "cepillo_dientes",
+    "audio": null,
+    "opciones": [
+     "un plato",
+     "una llave",
+     "una cepillo dientes"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "cepillo_dientes",
+    "correcta": "una cepillo dientes"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce con foto: verduras",
+   "nombre": "Reconoce con foto: verduras",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué es esto?",
+    "enunciado": null,
+    "imagen": "pimiento",
+    "audio": null,
+    "opciones": [
+     "una pera",
+     "una manzana",
+     "una pimiento"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "pimiento",
+    "correcta": "una pimiento"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce con foto: flores",
+   "nombre": "Reconoce con foto: flores",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué es esto?",
+    "enunciado": null,
+    "imagen": "margarita",
+    "audio": null,
+    "opciones": [
+     "una hoja",
+     "un árbol",
+     "una margarita"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "margarita",
+    "correcta": "una margarita"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce con foto: en la mesa",
+   "nombre": "Reconoce con foto: en la mesa",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué es esto?",
+    "enunciado": null,
+    "imagen": "cuchillo",
+    "audio": null,
+    "opciones": [
+     "un reloj",
+     "una llave",
+     "una cuchillo"
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "cuchillo",
+    "correcta": "una cuchillo"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Clasifica: frutas y verduras (fotos)",
+   "nombre": "Clasifica: frutas y verduras (fotos)",
+   "bloque": "razonamiento",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 5,
+    "piezas": [
+     {
+      "id": "lechuga",
+      "label": "lechuga",
+      "zona_correcta": "verdura"
+     },
+     {
+      "id": "naranja",
+      "label": "naranja",
+      "zona_correcta": "fruta"
+     },
+     {
+      "id": "tomate",
+      "label": "tomate",
+      "zona_correcta": "verdura"
+     },
+     {
+      "id": "fresa",
+      "label": "fresa",
+      "zona_correcta": "fruta"
+     },
+     {
+      "id": "cebolla",
+      "label": "cebolla",
+      "zona_correcta": "verdura"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "fruta",
+      "label": "Fruta"
+     },
+     {
+      "id": "verdura",
+      "label": "Verdura"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 5,
+    "n_piezas": 5,
+    "emparejamientos": {
+     "lechuga": "verdura",
+     "naranja": "fruta",
+     "tomate": "verdura",
+     "fresa": "fruta",
+     "cebolla": "verdura"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Clasifica: animales y plantas",
+   "nombre": "Clasifica: animales y plantas",
+   "bloque": "razonamiento",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 5,
+    "piezas": [
+     {
+      "id": "rosa",
+      "label": "rosa",
+      "zona_correcta": "planta"
+     },
+     {
+      "id": "pajaro",
+      "label": "pajaro",
+      "zona_correcta": "animal"
+     },
+     {
+      "id": "girasol",
+      "label": "girasol",
+      "zona_correcta": "planta"
+     },
+     {
+      "id": "pez",
+      "label": "pez",
+      "zona_correcta": "animal"
+     },
+     {
+      "id": "arbol",
+      "label": "arbol",
+      "zona_correcta": "planta"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "animal",
+      "label": "Animal"
+     },
+     {
+      "id": "planta",
+      "label": "Planta"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 5,
+    "n_piezas": 5,
+    "emparejamientos": {
+     "rosa": "planta",
+     "pajaro": "animal",
+     "girasol": "planta",
+     "pez": "animal",
+     "arbol": "planta"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Clasifica: en el aire, agua o tierra",
+   "nombre": "Clasifica: en el aire, agua o tierra",
+   "bloque": "razonamiento",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 5,
+    "piezas": [
+     {
+      "id": "avion",
+      "label": "avion",
+      "zona_correcta": "aire"
+     },
+     {
+      "id": "moto",
+      "label": "moto",
+      "zona_correcta": "tierra"
+     },
+     {
+      "id": "barco",
+      "label": "barco",
+      "zona_correcta": "agua"
+     },
+     {
+      "id": "tren",
+      "label": "tren",
+      "zona_correcta": "tierra"
+     },
+     {
+      "id": "bicicleta",
+      "label": "bicicleta",
+      "zona_correcta": "tierra"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "aire",
+      "label": "Por el aire"
+     },
+     {
+      "id": "agua",
+      "label": "Por el agua"
+     },
+     {
+      "id": "tierra",
+      "label": "Por la tierra"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 5,
+    "n_piezas": 5,
+    "emparejamientos": {
+     "avion": "aire",
+     "moto": "tierra",
+     "barco": "agua",
+     "tren": "tierra",
+     "bicicleta": "tierra"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
   }
  ]
 }

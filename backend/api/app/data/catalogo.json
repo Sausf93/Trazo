@@ -120275,5 +120275,636 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "Ordena la frase (1)",
+  "descripcion": "Pon las palabras en orden para formar la frase.",
+  "parametros_json": {
+   "dificultad": "media",
+   "pasos_min": 3,
+   "pasos_max": 5,
+   "tareas": [
+    {
+     "id": "f1",
+     "titulo": "Forma la frase",
+     "pasos": [
+      "El",
+      "niño",
+      "come",
+      "pan"
+     ]
+    },
+    {
+     "id": "f2",
+     "titulo": "Forma la frase",
+     "pasos": [
+      "La",
+      "gata",
+      "bebe",
+      "leche"
+     ]
+    },
+    {
+     "id": "f3",
+     "titulo": "Forma la frase",
+     "pasos": [
+      "Mi",
+      "abuelo",
+      "lee",
+      "el",
+      "periódico"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "Ordena la frase (2)",
+  "descripcion": "Coloca las palabras en su orden.",
+  "parametros_json": {
+   "dificultad": "media",
+   "pasos_min": 3,
+   "pasos_max": 5,
+   "tareas": [
+    {
+     "id": "f1",
+     "titulo": "Forma la frase",
+     "pasos": [
+      "El",
+      "sol",
+      "sale",
+      "por",
+      "la",
+      "mañana"
+     ]
+    },
+    {
+     "id": "f2",
+     "titulo": "Forma la frase",
+     "pasos": [
+      "Los",
+      "pájaros",
+      "vuelan",
+      "muy",
+      "alto"
+     ]
+    },
+    {
+     "id": "f3",
+     "titulo": "Forma la frase",
+     "pasos": [
+      "La",
+      "niña",
+      "juega",
+      "en",
+      "el",
+      "parque"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "Ordena la frase (3)",
+  "descripcion": "Ordena las palabras del refrán.",
+  "parametros_json": {
+   "dificultad": "media",
+   "pasos_min": 3,
+   "pasos_max": 5,
+   "tareas": [
+    {
+     "id": "f1",
+     "titulo": "Forma el dicho",
+     "pasos": [
+      "Más",
+      "vale",
+      "tarde",
+      "que",
+      "nunca"
+     ]
+    },
+    {
+     "id": "f2",
+     "titulo": "Forma el dicho",
+     "pasos": [
+      "A",
+      "quien",
+      "madruga",
+      "Dios",
+      "le",
+      "ayuda"
+     ]
+    },
+    {
+     "id": "f3",
+     "titulo": "Forma la frase",
+     "pasos": [
+      "En",
+      "abril",
+      "aguas",
+      "mil"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "lenguaje",
+  "plantilla_tipo": "secuencia_ordenar",
+  "nombre": "Ordena la frase (4)",
+  "descripcion": "Pon el saludo o la frase en orden.",
+  "parametros_json": {
+   "dificultad": "media",
+   "pasos_min": 3,
+   "pasos_max": 5,
+   "tareas": [
+    {
+     "id": "f1",
+     "titulo": "Forma la frase",
+     "pasos": [
+      "Buenos",
+      "días",
+      "a",
+      "todos"
+     ]
+    },
+    {
+     "id": "f2",
+     "titulo": "Forma la frase",
+     "pasos": [
+      "Muchas",
+      "gracias",
+      "por",
+      "la",
+      "comida"
+     ]
+    },
+    {
+     "id": "f3",
+     "titulo": "Forma la frase",
+     "pasos": [
+      "Vamos",
+      "a",
+      "dar",
+      "un",
+      "paseo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Reconoce con foto: el baño",
+  "descripcion": "Reconocer cosas del baño por la foto.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "jabon",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "jabon",
+     "correcta": "una jabon",
+     "distractores": [
+      "una llave",
+      "un plato"
+     ]
+    },
+    {
+     "id": "toalla",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "toalla",
+     "correcta": "una toalla",
+     "distractores": [
+      "una llave",
+      "un plato"
+     ]
+    },
+    {
+     "id": "espejo",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "espejo",
+     "correcta": "un espejo",
+     "distractores": [
+      "una llave",
+      "un plato"
+     ]
+    },
+    {
+     "id": "cepillo_dientes",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "cepillo_dientes",
+     "correcta": "una cepillo dientes",
+     "distractores": [
+      "una llave",
+      "un plato"
+     ]
+    },
+    {
+     "id": "servilleta",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "servilleta",
+     "correcta": "una servilleta",
+     "distractores": [
+      "una llave",
+      "un plato"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Reconoce con foto: verduras",
+  "descripcion": "Reconocer verduras por la foto.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "tomate",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "tomate",
+     "correcta": "una tomate",
+     "distractores": [
+      "una manzana",
+      "una pera"
+     ]
+    },
+    {
+     "id": "cebolla",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "cebolla",
+     "correcta": "una cebolla",
+     "distractores": [
+      "una manzana",
+      "una pera"
+     ]
+    },
+    {
+     "id": "lechuga",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "lechuga",
+     "correcta": "una lechuga",
+     "distractores": [
+      "una manzana",
+      "una pera"
+     ]
+    },
+    {
+     "id": "pimiento",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "pimiento",
+     "correcta": "una pimiento",
+     "distractores": [
+      "una manzana",
+      "una pera"
+     ]
+    },
+    {
+     "id": "patata",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "patata",
+     "correcta": "una patata",
+     "distractores": [
+      "una manzana",
+      "una pera"
+     ]
+    },
+    {
+     "id": "zanahoria",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "zanahoria",
+     "correcta": "una zanahoria",
+     "distractores": [
+      "una manzana",
+      "una pera"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Reconoce con foto: flores",
+  "descripcion": "Reconocer flores por la foto.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "rosa",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "rosa",
+     "correcta": "una rosa",
+     "distractores": [
+      "un árbol",
+      "una hoja"
+     ]
+    },
+    {
+     "id": "clavel",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "clavel",
+     "correcta": "una clavel",
+     "distractores": [
+      "un árbol",
+      "una hoja"
+     ]
+    },
+    {
+     "id": "girasol",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "girasol",
+     "correcta": "una girasol",
+     "distractores": [
+      "un árbol",
+      "una hoja"
+     ]
+    },
+    {
+     "id": "margarita",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "margarita",
+     "correcta": "una margarita",
+     "distractores": [
+      "un árbol",
+      "una hoja"
+     ]
+    },
+    {
+     "id": "tulipan",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "tulipan",
+     "correcta": "una tulipan",
+     "distractores": [
+      "un árbol",
+      "una hoja"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Reconoce con foto: en la mesa",
+  "descripcion": "Reconocer cosas de la mesa por la foto.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "taza",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "taza",
+     "correcta": "una taza",
+     "distractores": [
+      "una llave",
+      "un reloj"
+     ]
+    },
+    {
+     "id": "botella",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "botella",
+     "correcta": "una botella",
+     "distractores": [
+      "una llave",
+      "un reloj"
+     ]
+    },
+    {
+     "id": "cuchara",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "cuchara",
+     "correcta": "una cuchara",
+     "distractores": [
+      "una llave",
+      "un reloj"
+     ]
+    },
+    {
+     "id": "cuchillo",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "cuchillo",
+     "correcta": "una cuchillo",
+     "distractores": [
+      "una llave",
+      "un reloj"
+     ]
+    },
+    {
+     "id": "servilleta",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "servilleta",
+     "correcta": "una servilleta",
+     "distractores": [
+      "una llave",
+      "un reloj"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "Clasifica: frutas y verduras (fotos)",
+  "descripcion": "Arrastra cada una a su grupo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "cantidad_min": 4,
+   "cantidad_max": 6,
+   "muestrear": true,
+   "zonas": [
+    {
+     "id": "fruta",
+     "label": "Fruta"
+    },
+    {
+     "id": "verdura",
+     "label": "Verdura"
+    }
+   ],
+   "piezas": [
+    {
+     "id": "manzana",
+     "label": "manzana",
+     "zona_correcta": "fruta"
+    },
+    {
+     "id": "pera",
+     "label": "pera",
+     "zona_correcta": "fruta"
+    },
+    {
+     "id": "fresa",
+     "label": "fresa",
+     "zona_correcta": "fruta"
+    },
+    {
+     "id": "naranja",
+     "label": "naranja",
+     "zona_correcta": "fruta"
+    },
+    {
+     "id": "lechuga",
+     "label": "lechuga",
+     "zona_correcta": "verdura"
+    },
+    {
+     "id": "tomate",
+     "label": "tomate",
+     "zona_correcta": "verdura"
+    },
+    {
+     "id": "cebolla",
+     "label": "cebolla",
+     "zona_correcta": "verdura"
+    },
+    {
+     "id": "zanahoria",
+     "label": "zanahoria",
+     "zona_correcta": "verdura"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "Clasifica: animales y plantas",
+  "descripcion": "Cada dibujo a su grupo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "cantidad_min": 4,
+   "cantidad_max": 6,
+   "muestrear": true,
+   "zonas": [
+    {
+     "id": "animal",
+     "label": "Animal"
+    },
+    {
+     "id": "planta",
+     "label": "Planta"
+    }
+   ],
+   "piezas": [
+    {
+     "id": "perro",
+     "label": "perro",
+     "zona_correcta": "animal"
+    },
+    {
+     "id": "gato",
+     "label": "gato",
+     "zona_correcta": "animal"
+    },
+    {
+     "id": "pez",
+     "label": "pez",
+     "zona_correcta": "animal"
+    },
+    {
+     "id": "pajaro",
+     "label": "pajaro",
+     "zona_correcta": "animal"
+    },
+    {
+     "id": "rosa",
+     "label": "rosa",
+     "zona_correcta": "planta"
+    },
+    {
+     "id": "girasol",
+     "label": "girasol",
+     "zona_correcta": "planta"
+    },
+    {
+     "id": "arbol",
+     "label": "arbol",
+     "zona_correcta": "planta"
+    },
+    {
+     "id": "cactus",
+     "label": "cactus",
+     "zona_correcta": "planta"
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "razonamiento",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "Clasifica: en el aire, agua o tierra",
+  "descripcion": "Pon cada medio de transporte donde va.",
+  "parametros_json": {
+   "dificultad": "media",
+   "cantidad_min": 4,
+   "cantidad_max": 6,
+   "muestrear": true,
+   "zonas": [
+    {
+     "id": "aire",
+     "label": "Por el aire"
+    },
+    {
+     "id": "agua",
+     "label": "Por el agua"
+    },
+    {
+     "id": "tierra",
+     "label": "Por la tierra"
+    }
+   ],
+   "piezas": [
+    {
+     "id": "avion",
+     "label": "avion",
+     "zona_correcta": "aire"
+    },
+    {
+     "id": "barco",
+     "label": "barco",
+     "zona_correcta": "agua"
+    },
+    {
+     "id": "coche",
+     "label": "coche",
+     "zona_correcta": "tierra"
+    },
+    {
+     "id": "moto",
+     "label": "moto",
+     "zona_correcta": "tierra"
+    },
+    {
+     "id": "tren",
+     "label": "tren",
+     "zona_correcta": "tierra"
+    },
+    {
+     "id": "bicicleta",
+     "label": "bicicleta",
+     "zona_correcta": "tierra"
+    }
+   ]
+  }
  }
 ]
