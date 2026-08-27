@@ -125,6 +125,10 @@ class PlantillaSeleccionMultiple(PlantillaBase):
                 "imagen": item.get("imagen"),
                 "audio": item.get("audio"),
                 "opciones": opciones,
+                # Serie VISUAL (lista de colores/figuras) que se pinta como fichas
+                # de color encima de las opciones: p. ej. ["rojo","azul","rojo"] y
+                # se toca el color que sigue. Solo va si el ítem la trae.
+                "serie": item.get("serie"),
             },
             # `correcta` viaja aquí para que el backend autocorrija el intento
             # (la tablet reenvía cantidad_objetivo sin usarla ni mostrarla).

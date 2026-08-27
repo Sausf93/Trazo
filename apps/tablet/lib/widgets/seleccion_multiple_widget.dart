@@ -20,6 +20,44 @@ class SeleccionMultipleWidget extends StatefulWidget {
       _SeleccionMultipleWidgetState();
 }
 
+/// Colores por su nombre en español (para series VISUALES y opciones de color).
+/// Devuelve null si la palabra no es un color conocido.
+Color? _colorDe(String s) {
+  switch (s.trim().toLowerCase()) {
+    case 'rojo':
+    case 'roja':
+      return const Color(0xFFD7362B);
+    case 'azul':
+      return const Color(0xFF2C6FB5);
+    case 'verde':
+      return const Color(0xFF3C9A4E);
+    case 'amarillo':
+    case 'amarilla':
+      return const Color(0xFFF2C33D);
+    case 'naranja':
+      return const Color(0xFFE8802B);
+    case 'morado':
+    case 'morada':
+    case 'violeta':
+    case 'lila':
+      return const Color(0xFF8A4FBE);
+    case 'rosa':
+      return const Color(0xFFE87AA8);
+    case 'marrón':
+    case 'marron':
+      return const Color(0xFF8B5A2B);
+    case 'negro':
+    case 'negra':
+      return const Color(0xFF2B2B2B);
+    case 'blanco':
+    case 'blanca':
+      return const Color(0xFFFFFFFF);
+    case 'gris':
+      return const Color(0xFF9AA0A6);
+  }
+  return null;
+}
+
 class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
   String? _elegida;
   final DateTime _inicio = DateTime.now();
@@ -43,6 +81,7 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
         instruccion.isNotEmpty &&
         instruccion != enunciado;
     final imagen = (render['imagen'] ?? '').toString();
+    final serie = (render['serie'] as List?)?.map((e) => e.toString()).toList();
 
     final n = opciones.length;
     const gap = 14.0;
@@ -77,6 +116,11 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
                 const SizedBox(height: 12),
                 Ilustracion(imagen, size: 110),
               ],
+              // Serie VISUAL: se ven las fichas de color y al final un "?".
+              if (serie != null && serie.isNotEmpty) ...[
+                const SizedBox(height: 16),
+                _serieVisual(serie),
+              ],
               const SizedBox(height: 18),
               // Opciones a un tamaño táctil cómodo y estable (no gigantes).
               for (var i = 0; i < n; i++) ...[
@@ -91,8 +135,54 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
     });
   }
 
+  /// Fila de fichas de color de la serie (rojo, azul, rojo…) y al final un "?".
+  Widget _serieVisual(List<String> serie) {
+    Widget ficha(Color c) => Container(
+          width: 54,
+          height: 54,
+          decoration: BoxDecoration(
+            color: c,
+            shape: BoxShape.circle,
+            border: Border.all(
+                color: TrazoColors.ink.withValues(alpha: 0.25), width: 2),
+          ),
+        );
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 12,
+      runSpacing: 12,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        for (final s in serie)
+          _colorDe(s) != null
+              ? ficha(_colorDe(s)!)
+              : Text(s,
+                  style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                      color: TrazoColors.ink)),
+        Container(
+          width: 54,
+          height: 54,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: TrazoColors.card,
+            shape: BoxShape.circle,
+            border: Border.all(color: TrazoColors.sageDark, width: 2.5),
+          ),
+          child: const Text('?',
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w900,
+                  color: TrazoColors.sageDark)),
+        ),
+      ],
+    );
+  }
+
   Widget _opcion(String op, double alto) {
     final sel = op == _elegida;
+    final colorOp = _colorDe(op); // si la opción es un color, se pinta su ficha
     // Texto grande; si la opción es larga (un refrán, una definición), algo menor.
     final fontSize = op.length > 42
         ? 19.0
@@ -140,6 +230,20 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
                       const Icon(Icons.check_circle,
                           color: TrazoColors.coralDark, size: 30),
                       const SizedBox(width: 10),
+                    ],
+                    if (colorOp != null) ...[
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: colorOp,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                              color: TrazoColors.ink.withValues(alpha: 0.25),
+                              width: 2),
+                        ),
+                      ),
+                      const SizedBox(width: 14),
                     ],
                     Flexible(
                       // Se muestra ENTERA (hasta 5 líneas envueltas): un refrán o

@@ -120906,5 +120906,1102 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Sigue la serie de colores (1)",
+  "descripcion": "Mira los colores y elige el que sigue.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rojo",
+      "rosa",
+      "rojo",
+      "rosa",
+      "rojo"
+     ],
+     "correcta": "rosa",
+     "distractores": [
+      "naranja",
+      "morado"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "verde",
+      "rosa",
+      "verde",
+      "rosa",
+      "verde"
+     ],
+     "correcta": "rosa",
+     "distractores": [
+      "amarillo",
+      "verde"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "naranja",
+      "morado",
+      "naranja",
+      "morado",
+      "naranja"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "amarillo",
+      "rosa"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "azul",
+      "verde",
+      "azul",
+      "verde",
+      "azul"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "azul",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "amarillo",
+      "rosa",
+      "amarillo",
+      "rosa"
+     ],
+     "correcta": "amarillo",
+     "distractores": [
+      "azul",
+      "naranja"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "azul",
+      "morado",
+      "azul",
+      "morado"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "naranja",
+      "rojo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Sigue la serie de colores (2)",
+  "descripcion": "Continúa la fila de colores.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rosa",
+      "morado",
+      "rosa",
+      "morado",
+      "rosa"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "rosa",
+      "azul"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "azul",
+      "rosa",
+      "azul",
+      "rosa",
+      "azul"
+     ],
+     "correcta": "rosa",
+     "distractores": [
+      "naranja",
+      "verde"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rojo",
+      "morado",
+      "rojo",
+      "morado"
+     ],
+     "correcta": "rojo",
+     "distractores": [
+      "amarillo",
+      "verde"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "azul",
+      "amarillo",
+      "azul",
+      "amarillo"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "rosa",
+      "verde"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "azul",
+      "rosa",
+      "azul",
+      "rosa"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "amarillo",
+      "morado"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rojo",
+      "verde",
+      "rojo",
+      "verde",
+      "rojo"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "morado",
+      "rojo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de tres colores (1)",
+  "descripcion": "Tres colores que se repiten: ¿cuál sigue?",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rosa",
+      "verde",
+      "morado",
+      "rosa",
+      "verde"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "verde",
+      "azul"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "amarillo",
+      "rosa",
+      "verde",
+      "amarillo",
+      "rosa",
+      "verde"
+     ],
+     "correcta": "amarillo",
+     "distractores": [
+      "azul",
+      "naranja"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "morado",
+      "azul",
+      "verde",
+      "morado",
+      "azul",
+      "verde"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "amarillo",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "amarillo",
+      "rojo",
+      "verde",
+      "amarillo",
+      "rojo"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "amarillo",
+      "naranja"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "verde",
+      "azul",
+      "rosa",
+      "verde",
+      "azul"
+     ],
+     "correcta": "rosa",
+     "distractores": [
+      "morado",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "azul",
+      "morado",
+      "verde",
+      "azul",
+      "morado",
+      "verde"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "morado",
+      "rojo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Serie de tres colores (2)",
+  "descripcion": "Sigue el patrón de tres colores.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "azul",
+      "verde",
+      "amarillo",
+      "azul",
+      "verde",
+      "amarillo"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "morado",
+      "verde"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "verde",
+      "azul",
+      "rosa",
+      "verde",
+      "azul",
+      "rosa",
+      "verde"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "verde",
+      "morado"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "naranja",
+      "rojo",
+      "verde",
+      "naranja",
+      "rojo",
+      "verde",
+      "naranja"
+     ],
+     "correcta": "rojo",
+     "distractores": [
+      "azul",
+      "naranja"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rosa",
+      "verde",
+      "rojo",
+      "rosa",
+      "verde"
+     ],
+     "correcta": "rojo",
+     "distractores": [
+      "morado",
+      "rosa"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "naranja",
+      "amarillo",
+      "azul",
+      "naranja",
+      "amarillo",
+      "azul"
+     ],
+     "correcta": "naranja",
+     "distractores": [
+      "rosa",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "verde",
+      "amarillo",
+      "azul",
+      "verde",
+      "amarillo"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "morado",
+      "rojo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Colores de dos en dos (1)",
+  "descripcion": "Van de dos en dos: elige el que sigue.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "verde",
+      "verde",
+      "amarillo",
+      "amarillo",
+      "verde",
+      "verde"
+     ],
+     "correcta": "amarillo",
+     "distractores": [
+      "rosa",
+      "azul"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rosa",
+      "rosa",
+      "rojo",
+      "rojo",
+      "rosa"
+     ],
+     "correcta": "rosa",
+     "distractores": [
+      "verde",
+      "azul"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "amarillo",
+      "amarillo",
+      "morado",
+      "morado",
+      "amarillo",
+      "amarillo"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "amarillo",
+      "rosa"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "verde",
+      "verde",
+      "rosa",
+      "rosa"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "naranja",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "verde",
+      "verde",
+      "morado",
+      "morado"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "naranja",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "morado",
+      "morado",
+      "verde",
+      "verde",
+      "morado"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "amarillo",
+      "verde"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Colores de dos en dos (2)",
+  "descripcion": "Sigue el patrón de dos en dos.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "verde",
+      "verde",
+      "amarillo",
+      "amarillo",
+      "verde"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "azul",
+      "morado"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rosa",
+      "rosa",
+      "verde",
+      "verde",
+      "rosa"
+     ],
+     "correcta": "rosa",
+     "distractores": [
+      "amarillo",
+      "morado"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "azul",
+      "azul",
+      "rosa",
+      "rosa",
+      "azul",
+      "azul"
+     ],
+     "correcta": "rosa",
+     "distractores": [
+      "amarillo",
+      "morado"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "naranja",
+      "naranja",
+      "verde",
+      "verde",
+      "naranja",
+      "naranja"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "naranja",
+      "azul"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rosa",
+      "rosa",
+      "amarillo",
+      "amarillo",
+      "rosa",
+      "rosa"
+     ],
+     "correcta": "amarillo",
+     "distractores": [
+      "verde",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "amarillo",
+      "amarillo",
+      "naranja",
+      "naranja"
+     ],
+     "correcta": "amarillo",
+     "distractores": [
+      "naranja",
+      "morado"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El patrón dos y uno (1)",
+  "descripcion": "Dos iguales y uno distinto: ¿qué sigue?",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "amarillo",
+      "amarillo",
+      "morado",
+      "amarillo",
+      "amarillo"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "naranja",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "verde",
+      "verde",
+      "naranja",
+      "verde"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "amarillo",
+      "morado"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "naranja",
+      "naranja",
+      "morado",
+      "naranja",
+      "naranja"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "azul",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rojo",
+      "rojo",
+      "verde",
+      "rojo",
+      "rojo"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "azul",
+      "naranja"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "morado",
+      "morado",
+      "amarillo",
+      "morado",
+      "morado",
+      "amarillo"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "azul",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rojo",
+      "rojo",
+      "naranja",
+      "rojo",
+      "rojo"
+     ],
+     "correcta": "naranja",
+     "distractores": [
+      "morado",
+      "rojo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El patrón dos y uno (2)",
+  "descripcion": "Continúa el patrón de colores.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rojo",
+      "rojo",
+      "verde",
+      "rojo"
+     ],
+     "correcta": "rojo",
+     "distractores": [
+      "naranja",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "azul",
+      "azul",
+      "naranja",
+      "azul",
+      "azul",
+      "naranja"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "verde",
+      "naranja"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "amarillo",
+      "amarillo",
+      "azul",
+      "amarillo"
+     ],
+     "correcta": "amarillo",
+     "distractores": [
+      "rosa",
+      "verde"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "naranja",
+      "naranja",
+      "rosa",
+      "naranja",
+      "naranja"
+     ],
+     "correcta": "rosa",
+     "distractores": [
+      "verde",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "morado",
+      "morado",
+      "verde",
+      "morado"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "rosa",
+      "azul"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "morado",
+      "morado",
+      "azul",
+      "morado",
+      "morado"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "naranja",
+      "amarillo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "La cenefa de colores (1)",
+  "descripcion": "Sigue la cenefa de colores.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rojo",
+      "rosa",
+      "rojo",
+      "rosa",
+      "rojo"
+     ],
+     "correcta": "rosa",
+     "distractores": [
+      "morado",
+      "azul"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rojo",
+      "naranja",
+      "rojo",
+      "naranja",
+      "rojo"
+     ],
+     "correcta": "naranja",
+     "distractores": [
+      "rojo",
+      "azul"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "naranja",
+      "rojo",
+      "naranja",
+      "rojo",
+      "naranja"
+     ],
+     "correcta": "rojo",
+     "distractores": [
+      "amarillo",
+      "morado"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rojo",
+      "azul",
+      "rojo",
+      "azul"
+     ],
+     "correcta": "rojo",
+     "distractores": [
+      "verde",
+      "azul"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "morado",
+      "rojo",
+      "morado",
+      "rojo"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "verde",
+      "azul"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "morado",
+      "rojo",
+      "morado",
+      "rojo",
+      "morado"
+     ],
+     "correcta": "rojo",
+     "distractores": [
+      "rosa",
+      "verde"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "El collar de colores",
+  "descripcion": "Continúa el collar: ¿de qué color es la siguiente cuenta?",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "azul",
+      "naranja",
+      "rosa",
+      "azul",
+      "naranja",
+      "rosa"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "morado",
+      "naranja"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "rosa",
+      "rojo",
+      "azul",
+      "rosa",
+      "rojo",
+      "azul"
+     ],
+     "correcta": "rosa",
+     "distractores": [
+      "amarillo",
+      "morado"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "azul",
+      "naranja",
+      "verde",
+      "azul",
+      "naranja",
+      "verde"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "rojo",
+      "verde"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "morado",
+      "verde",
+      "rosa",
+      "morado",
+      "verde"
+     ],
+     "correcta": "rosa",
+     "distractores": [
+      "rojo",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "verde",
+      "morado",
+      "rosa",
+      "verde",
+      "morado",
+      "rosa",
+      "verde"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "rojo",
+      "azul"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Qué color va ahora?",
+     "serie": [
+      "morado",
+      "azul",
+      "verde",
+      "morado",
+      "azul"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "azul",
+      "rosa"
+     ]
+    }
+   ]
+  }
  }
 ]
