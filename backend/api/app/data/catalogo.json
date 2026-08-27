@@ -122881,5 +122881,1228 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Cuenta las figuras (1)",
+  "descripcion": "Mira y cuenta cuántas figuras hay.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "círculo",
+      "círculo"
+     ],
+     "correcta": "2",
+     "distractores": [
+      "3",
+      "1"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "cuadrado",
+      "cuadrado",
+      "cuadrado",
+      "cuadrado",
+      "cuadrado",
+      "cuadrado"
+     ],
+     "correcta": "6",
+     "distractores": [
+      "7",
+      "5"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "estrella",
+      "estrella",
+      "estrella"
+     ],
+     "correcta": "3",
+     "distractores": [
+      "4",
+      "2"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "triángulo",
+      "triángulo"
+     ],
+     "correcta": "2",
+     "distractores": [
+      "3",
+      "1"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "cuadrado",
+      "cuadrado",
+      "cuadrado"
+     ],
+     "correcta": "3",
+     "distractores": [
+      "4",
+      "2"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "triángulo",
+      "triángulo"
+     ],
+     "correcta": "2",
+     "distractores": [
+      "3",
+      "1"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Cuenta las figuras (2)",
+  "descripcion": "¿Cuántas figuras ves?",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "corazón",
+      "corazón",
+      "corazón",
+      "corazón",
+      "corazón"
+     ],
+     "correcta": "5",
+     "distractores": [
+      "6",
+      "4"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "círculo",
+      "círculo"
+     ],
+     "correcta": "2",
+     "distractores": [
+      "3",
+      "1"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "estrella",
+      "estrella",
+      "estrella",
+      "estrella"
+     ],
+     "correcta": "4",
+     "distractores": [
+      "5",
+      "3"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "estrella",
+      "estrella",
+      "estrella",
+      "estrella",
+      "estrella",
+      "estrella"
+     ],
+     "correcta": "6",
+     "distractores": [
+      "7",
+      "5"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "cuadrado",
+      "cuadrado"
+     ],
+     "correcta": "2",
+     "distractores": [
+      "3",
+      "1"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "cuadrado",
+      "cuadrado",
+      "cuadrado"
+     ],
+     "correcta": "3",
+     "distractores": [
+      "4",
+      "2"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Cuenta los círculos de color",
+  "descripcion": "Cuenta cuántos círculos de color hay.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "azul",
+      "azul",
+      "azul"
+     ],
+     "correcta": "3",
+     "distractores": [
+      "4",
+      "2"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "morado",
+      "morado",
+      "morado",
+      "morado",
+      "morado"
+     ],
+     "correcta": "5",
+     "distractores": [
+      "6",
+      "4"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "naranja",
+      "naranja"
+     ],
+     "correcta": "2",
+     "distractores": [
+      "3",
+      "1"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "morado",
+      "morado",
+      "morado",
+      "morado"
+     ],
+     "correcta": "4",
+     "distractores": [
+      "5",
+      "3"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "azul",
+      "azul",
+      "azul",
+      "azul",
+      "azul",
+      "azul"
+     ],
+     "correcta": "6",
+     "distractores": [
+      "7",
+      "5"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "verde",
+      "verde",
+      "verde",
+      "verde",
+      "verde"
+     ],
+     "correcta": "5",
+     "distractores": [
+      "6",
+      "4"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Cuenta las estrellas",
+  "descripcion": "¿Cuántas estrellas hay?",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "estrella",
+      "estrella",
+      "estrella",
+      "estrella",
+      "estrella"
+     ],
+     "correcta": "5",
+     "distractores": [
+      "6",
+      "4"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "estrella",
+      "estrella"
+     ],
+     "correcta": "2",
+     "distractores": [
+      "3",
+      "1"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "estrella",
+      "estrella",
+      "estrella"
+     ],
+     "correcta": "3",
+     "distractores": [
+      "4",
+      "2"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "estrella",
+      "estrella",
+      "estrella",
+      "estrella"
+     ],
+     "correcta": "4",
+     "distractores": [
+      "5",
+      "3"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "estrella",
+      "estrella"
+     ],
+     "correcta": "2",
+     "distractores": [
+      "3",
+      "1"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "estrella",
+      "estrella"
+     ],
+     "correcta": "2",
+     "distractores": [
+      "3",
+      "1"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Cuenta los corazones",
+  "descripcion": "¿Cuántos corazones hay?",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "corazón",
+      "corazón",
+      "corazón",
+      "corazón",
+      "corazón"
+     ],
+     "correcta": "5",
+     "distractores": [
+      "6",
+      "4"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "corazón",
+      "corazón",
+      "corazón"
+     ],
+     "correcta": "3",
+     "distractores": [
+      "4",
+      "2"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "corazón",
+      "corazón",
+      "corazón",
+      "corazón",
+      "corazón"
+     ],
+     "correcta": "5",
+     "distractores": [
+      "6",
+      "4"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "corazón",
+      "corazón",
+      "corazón",
+      "corazón"
+     ],
+     "correcta": "4",
+     "distractores": [
+      "5",
+      "3"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "corazón",
+      "corazón",
+      "corazón",
+      "corazón",
+      "corazón"
+     ],
+     "correcta": "5",
+     "distractores": [
+      "6",
+      "4"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuántas figuras hay?",
+     "figuras": [
+      "corazón",
+      "corazón",
+      "corazón",
+      "corazón"
+     ],
+     "correcta": "4",
+     "distractores": [
+      "5",
+      "3"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Cuál figura es igual? (1)",
+  "descripcion": "Elige la figura igual al modelo.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "cuadrado",
+     "correcta": "cuadrado",
+     "distractores": [
+      "rombo",
+      "triángulo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "triángulo",
+     "correcta": "triángulo",
+     "distractores": [
+      "estrella",
+      "rombo"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "triángulo",
+     "correcta": "triángulo",
+     "distractores": [
+      "corazón",
+      "rombo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "cuadrado",
+     "correcta": "cuadrado",
+     "distractores": [
+      "rombo",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "triángulo",
+     "correcta": "triángulo",
+     "distractores": [
+      "corazón",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "corazón",
+     "correcta": "corazón",
+     "distractores": [
+      "rombo",
+      "círculo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Cuál figura es igual? (2)",
+  "descripcion": "Toca la que es igual a la de arriba.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "rombo",
+     "correcta": "rombo",
+     "distractores": [
+      "cuadrado",
+      "corazón"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "estrella",
+     "correcta": "estrella",
+     "distractores": [
+      "corazón",
+      "rombo"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "círculo",
+     "correcta": "círculo",
+     "distractores": [
+      "cuadrado",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "triángulo",
+     "correcta": "triángulo",
+     "distractores": [
+      "rombo",
+      "corazón"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "triángulo",
+     "correcta": "triángulo",
+     "distractores": [
+      "corazón",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "triángulo",
+     "correcta": "triángulo",
+     "distractores": [
+      "estrella",
+      "círculo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Cuál color es igual? (1)",
+  "descripcion": "Elige el color igual al modelo.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "naranja",
+     "correcta": "naranja",
+     "distractores": [
+      "verde",
+      "azul"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "azul",
+     "correcta": "azul",
+     "distractores": [
+      "rojo",
+      "verde"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "naranja",
+     "correcta": "naranja",
+     "distractores": [
+      "rojo",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "azul",
+     "correcta": "azul",
+     "distractores": [
+      "rojo",
+      "naranja"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "verde",
+     "correcta": "verde",
+     "distractores": [
+      "rojo",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "morado",
+     "correcta": "morado",
+     "distractores": [
+      "azul",
+      "rojo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Cuál color es igual? (2)",
+  "descripcion": "Toca el color igual al de arriba.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "morado",
+     "correcta": "morado",
+     "distractores": [
+      "azul",
+      "verde"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "naranja",
+     "correcta": "naranja",
+     "distractores": [
+      "azul",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "morado",
+     "correcta": "morado",
+     "distractores": [
+      "verde",
+      "azul"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "azul",
+     "correcta": "azul",
+     "distractores": [
+      "naranja",
+      "morado"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "rojo",
+     "correcta": "rojo",
+     "distractores": [
+      "morado",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuál es igual a este?",
+     "modelo": "rojo",
+     "correcta": "rojo",
+     "distractores": [
+      "amarillo",
+      "morado"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Cuál figura es diferente? (1)",
+  "descripcion": "Casi todas son iguales: toca la distinta.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "triángulo",
+      "triángulo",
+      "corazón",
+      "triángulo"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "triángulo",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "rombo",
+      "cuadrado",
+      "rombo",
+      "rombo"
+     ],
+     "correcta": "cuadrado",
+     "distractores": [
+      "rombo",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "rombo",
+      "rombo",
+      "estrella",
+      "rombo",
+      "rombo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "rombo",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "cuadrado",
+      "rombo",
+      "cuadrado",
+      "cuadrado",
+      "cuadrado"
+     ],
+     "correcta": "rombo",
+     "distractores": [
+      "cuadrado",
+      "estrella"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "cuadrado",
+      "cuadrado",
+      "cuadrado",
+      "cuadrado",
+      "triángulo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "cuadrado",
+      "cuadrado"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "estrella",
+      "corazón",
+      "estrella",
+      "estrella",
+      "estrella"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "estrella",
+      "triángulo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Cuál figura es diferente? (2)",
+  "descripcion": "Encuentra la figura que no es como las demás.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "estrella",
+      "rombo",
+      "rombo",
+      "rombo",
+      "rombo"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "rombo",
+      "círculo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "corazón",
+      "estrella",
+      "corazón",
+      "corazón",
+      "corazón"
+     ],
+     "correcta": "estrella",
+     "distractores": [
+      "corazón",
+      "círculo"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "círculo",
+      "círculo",
+      "corazón",
+      "círculo",
+      "círculo"
+     ],
+     "correcta": "corazón",
+     "distractores": [
+      "círculo",
+      "triángulo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "círculo",
+      "círculo",
+      "círculo",
+      "triángulo"
+     ],
+     "correcta": "triángulo",
+     "distractores": [
+      "círculo",
+      "rombo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "corazón",
+      "corazón",
+      "corazón",
+      "rombo",
+      "corazón"
+     ],
+     "correcta": "rombo",
+     "distractores": [
+      "corazón",
+      "círculo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "rombo",
+      "cuadrado",
+      "cuadrado",
+      "cuadrado"
+     ],
+     "correcta": "rombo",
+     "distractores": [
+      "cuadrado",
+      "triángulo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Cuál color es diferente? (1)",
+  "descripcion": "Toca el color distinto a los demás.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "rojo",
+      "rojo",
+      "morado",
+      "rojo",
+      "rojo"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "rojo",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "morado",
+      "naranja",
+      "morado",
+      "morado"
+     ],
+     "correcta": "naranja",
+     "distractores": [
+      "morado",
+      "verde"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "morado",
+      "morado",
+      "verde",
+      "morado"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "morado",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "amarillo",
+      "amarillo",
+      "amarillo",
+      "azul",
+      "amarillo"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "amarillo",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "rojo",
+      "verde",
+      "rojo",
+      "rojo"
+     ],
+     "correcta": "verde",
+     "distractores": [
+      "rojo",
+      "amarillo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "azul",
+      "verde",
+      "verde",
+      "verde"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "verde",
+      "amarillo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Cuál color es diferente? (2)",
+  "descripcion": "Encuentra el color que no encaja.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "i0",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "morado",
+      "morado",
+      "morado",
+      "morado",
+      "azul"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "morado",
+      "verde"
+     ]
+    },
+    {
+     "id": "i1",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "naranja",
+      "morado",
+      "naranja",
+      "naranja",
+      "naranja"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "naranja",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i2",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "morado",
+      "azul",
+      "azul",
+      "azul",
+      "azul"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "azul",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i3",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "naranja",
+      "naranja",
+      "naranja",
+      "azul",
+      "naranja"
+     ],
+     "correcta": "azul",
+     "distractores": [
+      "naranja",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i4",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "amarillo",
+      "amarillo",
+      "amarillo",
+      "morado"
+     ],
+     "correcta": "morado",
+     "distractores": [
+      "amarillo",
+      "rojo"
+     ]
+    },
+    {
+     "id": "i5",
+     "instruccion": "¿Cuál es diferente?",
+     "figuras": [
+      "naranja",
+      "naranja",
+      "naranja",
+      "naranja",
+      "amarillo"
+     ],
+     "correcta": "amarillo",
+     "distractores": [
+      "naranja",
+      "azul"
+     ]
+    }
+   ]
+  }
  }
 ]

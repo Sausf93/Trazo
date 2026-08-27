@@ -198,6 +198,9 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
         instruccion != enunciado;
     final imagen = (render['imagen'] ?? '').toString();
     final serie = (render['serie'] as List?)?.map((e) => e.toString()).toList();
+    final figuras =
+        (render['figuras'] as List?)?.map((e) => e.toString()).toList();
+    final modelo = (render['modelo'] ?? '').toString();
 
     final n = opciones.length;
     const gap = 14.0;
@@ -232,10 +235,21 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
                 const SizedBox(height: 12),
                 Ilustracion(imagen, size: 110),
               ],
-              // Serie VISUAL: se ven las fichas de color y al final un "?".
+              // Serie VISUAL a continuar (fichas + "?").
               if (serie != null && serie.isNotEmpty) ...[
                 const SizedBox(height: 16),
-                _serieVisual(serie),
+                _filaVisual(serie, conInterrogante: true),
+              ],
+              // Conjunto VISUAL para contar (sin "?").
+              if (figuras != null && figuras.isNotEmpty) ...[
+                const SizedBox(height: 16),
+                _filaVisual(figuras, conInterrogante: false),
+              ],
+              // Modelo VISUAL grande a emparejar ("¿cuál es igual?").
+              if (modelo.isNotEmpty &&
+                  (_colorDe(modelo) != null || _esFigura(modelo))) ...[
+                const SizedBox(height: 12),
+                _ficha(modelo, size: 92),
               ],
               const SizedBox(height: 18),
               // Opciones a un tamaño táctil cómodo y estable (no gigantes).
@@ -251,49 +265,52 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
     });
   }
 
-  /// Fila de fichas de color de la serie (rojo, azul, rojo…) y al final un "?".
-  Widget _serieVisual(List<String> serie) {
-    Widget ficha(Color c) => Container(
-          width: 54,
-          height: 54,
-          decoration: BoxDecoration(
-            color: c,
-            shape: BoxShape.circle,
-            border: Border.all(
-                color: TrazoColors.ink.withValues(alpha: 0.25), width: 2),
-          ),
-        );
+  /// Ficha visual de un token: círculo de color, figura dibujada o texto.
+  Widget _ficha(String s, {double size = 54}) {
+    final c = _colorDe(s);
+    if (c != null) {
+      return Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          color: c,
+          shape: BoxShape.circle,
+          border: Border.all(
+              color: TrazoColors.ink.withValues(alpha: 0.25), width: 2),
+        ),
+      );
+    }
+    if (_esFigura(s)) return _FiguraMini(s, size: size);
+    return Text(s,
+        style: const TextStyle(
+            fontSize: 24, fontWeight: FontWeight.w700, color: TrazoColors.ink));
+  }
+
+  /// Fila de fichas visuales; con "?" al final si es una SERIE a continuar.
+  Widget _filaVisual(List<String> tokens, {bool conInterrogante = true}) {
     return Wrap(
       alignment: WrapAlignment.center,
       spacing: 12,
       runSpacing: 12,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        for (final s in serie)
-          _colorDe(s) != null
-              ? ficha(_colorDe(s)!)
-              : _esFigura(s)
-                  ? _FiguraMini(s, size: 54)
-                  : Text(s,
-                      style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w700,
-                          color: TrazoColors.ink)),
-        Container(
-          width: 54,
-          height: 54,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: TrazoColors.card,
-            shape: BoxShape.circle,
-            border: Border.all(color: TrazoColors.sageDark, width: 2.5),
+        for (final s in tokens) _ficha(s),
+        if (conInterrogante)
+          Container(
+            width: 54,
+            height: 54,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: TrazoColors.card,
+              shape: BoxShape.circle,
+              border: Border.all(color: TrazoColors.sageDark, width: 2.5),
+            ),
+            child: const Text('?',
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w900,
+                    color: TrazoColors.sageDark)),
           ),
-          child: const Text('?',
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w900,
-                  color: TrazoColors.sageDark)),
-        ),
       ],
     );
   }

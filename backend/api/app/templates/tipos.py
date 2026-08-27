@@ -129,6 +129,10 @@ class PlantillaSeleccionMultiple(PlantillaBase):
                 # de color encima de las opciones: p. ej. ["rojo","azul","rojo"] y
                 # se toca el color que sigue. Solo va si el ítem la trae.
                 "serie": item.get("serie"),
+                # Conjunto VISUAL sin "?" (para contar: "¿cuántos círculos hay?").
+                "figuras": item.get("figuras"),
+                # Modelo VISUAL grande a emparejar ("¿cuál es igual a este?").
+                "modelo": item.get("modelo"),
             },
             # `correcta` viaja aquí para que el backend autocorrija el intento
             # (la tablet reenvía cantidad_objetivo sin usarla ni mostrarla).
