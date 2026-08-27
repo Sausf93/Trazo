@@ -142843,5 +142843,179 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Reconoce con foto: en la mesa y más",
+  "descripcion": "Reconocer objetos cotidianos por la foto.",
+  "parametros_json": {
+   "dificultad": "facil",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "tenedor",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "tenedor",
+     "correcta": "un tenedor",
+     "distractores": [
+      "una cuchara",
+      "un cuchillo"
+     ]
+    },
+    {
+     "id": "plato",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "plato",
+     "correcta": "un plato",
+     "distractores": [
+      "un vaso",
+      "una taza"
+     ]
+    },
+    {
+     "id": "vaso",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "vaso",
+     "correcta": "un vaso",
+     "distractores": [
+      "una botella",
+      "una taza"
+     ]
+    },
+    {
+     "id": "pelota",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "pelota",
+     "correcta": "una pelota",
+     "distractores": [
+      "un globo",
+      "una naranja"
+     ]
+    },
+    {
+     "id": "bolso",
+     "instruccion": "¿Qué es esto?",
+     "imagen": "bolso",
+     "correcta": "un bolso",
+     "distractores": [
+      "una maleta",
+      "una caja"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivina por la silueta (5)",
+  "descripcion": "Reconocer el objeto por su silueta.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "tenedor",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "tenedor",
+     "degradado": "silueta",
+     "correcta": "un tenedor",
+     "distractores": [
+      "una cuchara",
+      "una llave"
+     ]
+    },
+    {
+     "id": "vaso",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "vaso",
+     "degradado": "silueta",
+     "correcta": "un vaso",
+     "distractores": [
+      "una botella",
+      "una taza"
+     ]
+    },
+    {
+     "id": "pelota",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "pelota",
+     "degradado": "silueta",
+     "correcta": "una pelota",
+     "distractores": [
+      "un plato",
+      "una rueda"
+     ]
+    },
+    {
+     "id": "bolso",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "bolso",
+     "degradado": "silueta",
+     "correcta": "un bolso",
+     "distractores": [
+      "una maleta",
+      "una caja"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "vida_cotidiana",
+  "plantilla_tipo": "arrastrar_posicion",
+  "nombre": "En la mesa: vajilla o cubiertos",
+  "descripcion": "Pon cada cosa en su grupo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "cantidad_min": 4,
+   "cantidad_max": 6,
+   "muestrear": true,
+   "zonas": [
+    {
+     "id": "va",
+     "label": "Vajilla"
+    },
+    {
+     "id": "cu",
+     "label": "Cubiertos"
+    }
+   ],
+   "piezas": [
+    {
+     "id": "plato",
+     "label": "Plato",
+     "zona_correcta": "va"
+    },
+    {
+     "id": "vaso",
+     "label": "Vaso",
+     "zona_correcta": "va"
+    },
+    {
+     "id": "taza",
+     "label": "Taza",
+     "zona_correcta": "va"
+    },
+    {
+     "id": "tenedor",
+     "label": "Tenedor",
+     "zona_correcta": "cu"
+    },
+    {
+     "id": "cuchara",
+     "label": "Cuchara",
+     "zona_correcta": "cu"
+    },
+    {
+     "id": "cuchillo",
+     "label": "Cuchillo",
+     "zona_correcta": "cu"
+    }
+   ]
+  }
  }
 ]

@@ -524,6 +524,11 @@ class IlustracionResolver {
     'globo_rojo': 'assets/fotos/globo_rojo.png',
     'guantes': 'assets/fotos/guantes.png',
     'limon': 'assets/fotos/limon.png',
+    'tenedor': 'assets/fotos/tenedor.png',
+    'plato': 'assets/fotos/plato.png',
+    'vaso': 'assets/fotos/vaso.png',
+    'pelota': 'assets/fotos/pelota.png',
+    'bolso': 'assets/fotos/bolso.png',
   };
 
   /// Ruta de la FOTO real para un id, o `null` si aún no hay foto (usar dibujo).

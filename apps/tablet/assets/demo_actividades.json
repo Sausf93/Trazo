@@ -95053,6 +95053,144 @@
     "tiempo_ms",
     "num_toques"
    ]
+  },
+  {
+   "ejercicio_id": "Reconoce con foto: en la mesa y más",
+   "nombre": "Reconoce con foto: en la mesa y más",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué es esto?",
+    "enunciado": null,
+    "imagen": "plato",
+    "audio": null,
+    "opciones": [
+     "un plato",
+     "un vaso",
+     "una taza"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": null,
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "plato",
+    "correcta": "un plato"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "Adivina por la silueta (5)",
+   "nombre": "Adivina por la silueta (5)",
+   "bloque": "gnosias",
+   "plantilla": "seleccion_multiple",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "¿Qué objeto es?",
+    "enunciado": null,
+    "imagen": "tenedor",
+    "audio": null,
+    "opciones": [
+     "un tenedor",
+     "una cuchara",
+     "una llave"
+    ],
+    "serie": null,
+    "figuras": null,
+    "modelo": null,
+    "degradado": "silueta",
+    "modelo_fila": null,
+    "opciones_figuras": null
+   },
+   "cantidad_objetivo": {
+    "n_opciones": 3,
+    "item_id": "tenedor",
+    "correcta": "un tenedor"
+   },
+   "metricas": [
+    "correcto",
+    "tiempo_ms",
+    "num_toques"
+   ]
+  },
+  {
+   "ejercicio_id": "En la mesa: vajilla o cubiertos",
+   "nombre": "En la mesa: vajilla o cubiertos",
+   "bloque": "vida_cotidiana",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 6,
+    "piezas": [
+     {
+      "id": "cuchara",
+      "label": "Cuchara",
+      "zona_correcta": "cu"
+     },
+     {
+      "id": "plato",
+      "label": "Plato",
+      "zona_correcta": "va"
+     },
+     {
+      "id": "cuchillo",
+      "label": "Cuchillo",
+      "zona_correcta": "cu"
+     },
+     {
+      "id": "taza",
+      "label": "Taza",
+      "zona_correcta": "va"
+     },
+     {
+      "id": "vaso",
+      "label": "Vaso",
+      "zona_correcta": "va"
+     },
+     {
+      "id": "tenedor",
+      "label": "Tenedor",
+      "zona_correcta": "cu"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "va",
+      "label": "Vajilla"
+     },
+     {
+      "id": "cu",
+      "label": "Cubiertos"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 6,
+    "n_piezas": 6,
+    "emparejamientos": {
+     "cuchara": "cu",
+     "plato": "va",
+     "cuchillo": "cu",
+     "taza": "va",
+     "vaso": "va",
+     "tenedor": "cu"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
   }
  ]
 }
