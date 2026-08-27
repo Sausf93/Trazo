@@ -117,6 +117,14 @@ class PlantillaSeleccionMultiple(PlantillaBase):
         opciones = [correcta] + distractores[: max(1, n_opciones - 1)]
         rng.shuffle(opciones)
 
+        # Opciones VISUALES (filas de fichas): el ítem trae un mapa
+        # {texto_opcion: [tokens]}; se reordena para casar con `opciones` ya
+        # barajadas (la tablet lo empareja por índice).
+        fpo = item.get("figuras_por_opcion")
+        opciones_figuras = (
+            [fpo.get(o) for o in opciones] if isinstance(fpo, dict) else None
+        )
+
         return InstanciaEjercicio(
             plantilla=self.tipo,
             render={
@@ -133,6 +141,12 @@ class PlantillaSeleccionMultiple(PlantillaBase):
                 "figuras": item.get("figuras"),
                 # Modelo VISUAL grande a emparejar ("¿cuál es igual a este?").
                 "modelo": item.get("modelo"),
+                # Imagen DEGRADADA para gnosias: "silueta" o "borroso".
+                "degradado": item.get("degradado"),
+                # Modelo de VARIAS fichas a copiar ("replica la figura con sus colores").
+                "modelo_fila": item.get("modelo_fila"),
+                # Opciones VISUALES (una fila de fichas por opción).
+                "opciones_figuras": opciones_figuras,
             },
             # `correcta` viaja aquí para que el backend autocorrija el intento
             # (la tablet reenvía cantidad_objetivo sin usarla ni mostrarla).

@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'dart:ui' show ImageFilter;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -83,69 +84,78 @@ bool _esFigura(String s) => _kFiguras.contains(s.trim().toLowerCase());
 class _FiguraMini extends StatelessWidget {
   final String nombre;
   final double size;
-  const _FiguraMini(this.nombre, {this.size = 54});
+  final Color? color;
+  const _FiguraMini(this.nombre, {this.size = 54, this.color});
   @override
-  Widget build(BuildContext context) =>
-      CustomPaint(size: Size(size, size), painter: _FiguraPainter(nombre));
+  Widget build(BuildContext context) => CustomPaint(
+      size: Size(size, size), painter: _FiguraPainter(nombre, color));
 }
 
 class _FiguraPainter extends CustomPainter {
   final String nombre;
-  _FiguraPainter(this.nombre);
+  final Color? color;
+  _FiguraPainter(this.nombre, [this.color]);
   @override
   void paint(Canvas canvas, Size size) {
     final p = Paint()
-      ..color = TrazoColors.sageDark
+      ..color = color ?? TrazoColors.sageDark
       ..style = PaintingStyle.fill;
+    // Contorno oscuro para que una figura de color claro (amarillo/blanco) no se
+    // pierda sobre el fondo de la tarjeta.
+    final borde = Paint()
+      ..color = TrazoColors.ink.withValues(alpha: 0.28)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = math.max(1.5, size.width * 0.03);
     final w = size.width, h = size.height, cx = w / 2, cy = h / 2;
     final r = math.min(w, h) / 2;
+    void fillStroke(Path path) {
+      canvas.drawPath(path, p);
+      canvas.drawPath(path, borde);
+    }
+
     switch (nombre.trim().toLowerCase()) {
       case 'círculo':
       case 'circulo':
         canvas.drawCircle(Offset(cx, cy), r, p);
+        canvas.drawCircle(Offset(cx, cy), r, borde);
         break;
       case 'óvalo':
       case 'ovalo':
-        canvas.drawOval(
-            Rect.fromCenter(center: Offset(cx, cy), width: w, height: h * 0.7),
-            p);
+        final rect =
+            Rect.fromCenter(center: Offset(cx, cy), width: w, height: h * 0.7);
+        canvas.drawOval(rect, p);
+        canvas.drawOval(rect, borde);
         break;
       case 'cuadrado':
-        canvas.drawRRect(
-            RRect.fromRectAndRadius(
-                Rect.fromCenter(
-                    center: Offset(cx, cy), width: w * 0.92, height: h * 0.92),
-                const Radius.circular(4)),
-            p);
+        fillStroke(Path()
+          ..addRRect(RRect.fromRectAndRadius(
+              Rect.fromCenter(
+                  center: Offset(cx, cy), width: w * 0.92, height: h * 0.92),
+              const Radius.circular(4))));
         break;
       case 'rectángulo':
       case 'rectangulo':
-        canvas.drawRRect(
-            RRect.fromRectAndRadius(
-                Rect.fromCenter(
-                    center: Offset(cx, cy), width: w, height: h * 0.62),
-                const Radius.circular(4)),
-            p);
+        fillStroke(Path()
+          ..addRRect(RRect.fromRectAndRadius(
+              Rect.fromCenter(
+                  center: Offset(cx, cy), width: w, height: h * 0.62),
+              const Radius.circular(4))));
         break;
       case 'triángulo':
       case 'triangulo':
-        canvas.drawPath(
-            Path()
-              ..moveTo(cx, cy - r)
-              ..lineTo(cx + r, cy + r)
-              ..lineTo(cx - r, cy + r)
-              ..close(),
-            p);
+        fillStroke(Path()
+          ..moveTo(cx, cy - r)
+          ..lineTo(cx + r, cy + r)
+          ..lineTo(cx - r, cy + r)
+          ..close());
         break;
       case 'rombo':
-        canvas.drawPath(
-            Path()
-              ..moveTo(cx, cy - r)
-              ..lineTo(cx + r, cy)
-              ..lineTo(cx, cy + r)
-              ..lineTo(cx - r, cy)
-              ..close(),
-            p);
+        fillStroke(Path()
+          ..moveTo(cx, cy - r)
+          ..lineTo(cx + r, cy)
+          ..lineTo(cx, cy + r)
+          ..lineTo(cx - r, cy)
+          ..close());
         break;
       case 'corazón':
       case 'corazon':
@@ -154,7 +164,7 @@ class _FiguraPainter extends CustomPainter {
             cy - r * 0.35);
         path.cubicTo(cx + r * 0.5, cy - r, cx + r * 1.4, cy - r * 0.2, cx,
             cy + r * 0.75);
-        canvas.drawPath(path, p);
+        fillStroke(path);
         break;
       case 'estrella':
         final path = Path();
@@ -165,13 +175,14 @@ class _FiguraPainter extends CustomPainter {
           i == 0 ? path.moveTo(pt.dx, pt.dy) : path.lineTo(pt.dx, pt.dy);
         }
         path.close();
-        canvas.drawPath(path, p);
+        fillStroke(path);
         break;
     }
   }
 
   @override
-  bool shouldRepaint(_FiguraPainter old) => old.nombre != nombre;
+  bool shouldRepaint(_FiguraPainter old) =>
+      old.nombre != nombre || old.color != color;
 }
 
 class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
@@ -197,10 +208,21 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
         instruccion.isNotEmpty &&
         instruccion != enunciado;
     final imagen = (render['imagen'] ?? '').toString();
+    // Degradación de la imagen para GNOSIAS: 'silueta' (contorno negro) o
+    // 'borroso'. Reconocer un objeto con información incompleta.
+    final degradado = (render['degradado'] ?? '').toString().toLowerCase();
     final serie = (render['serie'] as List?)?.map((e) => e.toString()).toList();
     final figuras =
         (render['figuras'] as List?)?.map((e) => e.toString()).toList();
     final modelo = (render['modelo'] ?? '').toString();
+    // Modelo de VARIAS fichas (fila) para "replicar la figura con sus colores".
+    final modeloFila =
+        (render['modelo_fila'] as List?)?.map((e) => e.toString()).toList();
+    // Opciones VISUALES: cada opción es una fila de fichas (colores/figuras).
+    // Se empareja por índice con `opciones` (el texto sigue siendo la elección).
+    final opcionesFiguras = (render['opciones_figuras'] as List?)
+        ?.map((e) => (e as List? ?? const []).map((x) => x.toString()).toList())
+        .toList();
 
     final n = opciones.length;
     const gap = 14.0;
@@ -233,7 +255,7 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
                       color: TrazoColors.ink)),
               if (imagen.isNotEmpty && IlustracionResolver.tiene(imagen)) ...[
                 const SizedBox(height: 12),
-                Ilustracion(imagen, size: 110),
+                _imagenQuiza(imagen, degradado),
               ],
               // Serie VISUAL a continuar (fichas + "?").
               if (serie != null && serie.isNotEmpty) ...[
@@ -246,16 +268,23 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
                 _filaVisual(figuras, conInterrogante: false),
               ],
               // Modelo VISUAL grande a emparejar ("¿cuál es igual?").
-              if (modelo.isNotEmpty &&
-                  (_colorDe(modelo) != null || _esFigura(modelo))) ...[
+              if (modelo.isNotEmpty && _parseFicha(modelo).esVisual) ...[
                 const SizedBox(height: 12),
                 _ficha(modelo, size: 92),
+              ],
+              // Modelo de VARIAS fichas (replicar la figura con sus colores).
+              if (modeloFila != null && modeloFila.isNotEmpty) ...[
+                const SizedBox(height: 14),
+                _marcoModelo(_filaVisual(modeloFila,
+                    conInterrogante: false, size: 60)),
               ],
               const SizedBox(height: 18),
               // Opciones a un tamaño táctil cómodo y estable (no gigantes).
               for (var i = 0; i < n; i++) ...[
                 if (i > 0) const SizedBox(height: gap),
-                _opcion(opciones[i], 66),
+                (opcionesFiguras != null && i < opcionesFiguras.length)
+                    ? _opcionVisual(opciones[i], opcionesFiguras[i])
+                    : _opcion(opciones[i], 66),
               ],
               const SizedBox(height: 8),
             ],
@@ -265,11 +294,32 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
     });
   }
 
-  /// Ficha visual de un token: círculo de color, figura dibujada o texto.
-  Widget _ficha(String s, {double size = 54}) {
-    final c = _colorDe(s);
-    if (c != null) {
-      return Container(
+  /// Ficha visual de un token: círculo de color, figura dibujada (con su color
+  /// si el token es "círculo rojo"), o texto. Devuelve null en `figura`/`color`
+  /// según lo que sea, para que las opciones lo pinten igual.
+  ({String? figura, Color? color, bool esVisual}) _parseFicha(String s) {
+    final t = s.trim().toLowerCase();
+    // "círculo rojo" / "rojo círculo": figura + color.
+    final parts = t.split(RegExp(r'\s+'));
+    if (parts.length == 2) {
+      String? fig;
+      Color? col;
+      for (final w in parts) {
+        if (_esFigura(w)) fig = w;
+        final c = _colorDe(w);
+        if (c != null) col = c;
+      }
+      if (fig != null && col != null) {
+        return (figura: fig, color: col, esVisual: true);
+      }
+    }
+    final c = _colorDe(t);
+    if (c != null) return (figura: null, color: c, esVisual: true);
+    if (_esFigura(t)) return (figura: t, color: null, esVisual: true);
+    return (figura: null, color: null, esVisual: false);
+  }
+
+  Widget _circuloColor(Color c, double size) => Container(
         width: size,
         height: size,
         decoration: BoxDecoration(
@@ -279,35 +329,40 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
               color: TrazoColors.ink.withValues(alpha: 0.25), width: 2),
         ),
       );
-    }
-    if (_esFigura(s)) return _FiguraMini(s, size: size);
+
+  /// Ficha visual de un token: figura de color, círculo de color, figura o texto.
+  Widget _ficha(String s, {double size = 54}) {
+    final f = _parseFicha(s);
+    if (f.figura != null) return _FiguraMini(f.figura!, size: size, color: f.color);
+    if (f.color != null) return _circuloColor(f.color!, size);
     return Text(s,
         style: const TextStyle(
             fontSize: 24, fontWeight: FontWeight.w700, color: TrazoColors.ink));
   }
 
   /// Fila de fichas visuales; con "?" al final si es una SERIE a continuar.
-  Widget _filaVisual(List<String> tokens, {bool conInterrogante = true}) {
+  Widget _filaVisual(List<String> tokens,
+      {bool conInterrogante = true, double size = 54}) {
     return Wrap(
       alignment: WrapAlignment.center,
       spacing: 12,
       runSpacing: 12,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        for (final s in tokens) _ficha(s),
+        for (final s in tokens) _ficha(s, size: size),
         if (conInterrogante)
           Container(
-            width: 54,
-            height: 54,
+            width: size,
+            height: size,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: TrazoColors.card,
               shape: BoxShape.circle,
               border: Border.all(color: TrazoColors.sageDark, width: 2.5),
             ),
-            child: const Text('?',
+            child: Text('?',
                 style: TextStyle(
-                    fontSize: 30,
+                    fontSize: size * 0.55,
                     fontWeight: FontWeight.w900,
                     color: TrazoColors.sageDark)),
           ),
@@ -315,9 +370,99 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
     );
   }
 
+  /// La imagen tal cual, en SILUETA (contorno negro) o BORROSA, para gnosias.
+  Widget _imagenQuiza(String id, String degradado) {
+    final img = Ilustracion(id, size: 130);
+    switch (degradado) {
+      case 'silueta':
+        return ColorFiltered(
+          colorFilter: const ColorFilter.mode(
+              Color(0xFF2B2B2B), BlendMode.srcATop),
+          child: img,
+        );
+      case 'borroso':
+        return ImageFiltered(
+          imageFilter: ImageFilter.blur(sigmaX: 4.5, sigmaY: 4.5),
+          child: img,
+        );
+      default:
+        return Ilustracion(id, size: 110);
+    }
+  }
+
+  /// Marco suave alrededor del modelo a copiar (lo separa de las opciones).
+  Widget _marcoModelo(Widget hijo) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          color: TrazoColors.card,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: TrazoColors.sageDark, width: 2),
+        ),
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          const Text('Modelo',
+              style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: TrazoColors.sageDark)),
+          const SizedBox(height: 6),
+          hijo,
+        ]),
+      );
+
+  /// Opción cuyo contenido es una FILA de fichas (colores/figuras). La elección
+  /// registrada sigue siendo el texto `key` (para la autocorrección).
+  Widget _opcionVisual(String key, List<String> tokens) {
+    final sel = key == _elegida;
+    return Semantics(
+      button: true,
+      selected: sel,
+      label: key,
+      child: SizedBox(
+        width: double.infinity,
+        child: Material(
+          color: sel ? const Color(0xFFFBEFE4) : TrazoColors.card,
+          borderRadius: BorderRadius.circular(16),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(16),
+            onTap: () {
+              HapticFeedback.selectionClick();
+              setState(() => _elegida = key);
+              widget.onMetricas({
+                'eleccion': key,
+                'tiempo_ms': DateTime.now().difference(_inicio).inMilliseconds,
+              });
+            },
+            child: Container(
+              constraints: const BoxConstraints(minHeight: 76),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                    color: sel ? TrazoColors.coralDark : TrazoColors.sand,
+                    width: sel ? 3 : 1.5),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (sel) ...[
+                    const Icon(Icons.check_circle,
+                        color: TrazoColors.coralDark, size: 28),
+                    const SizedBox(width: 10),
+                  ],
+                  Flexible(child: _filaVisual(tokens, conInterrogante: false)),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _opcion(String op, double alto) {
     final sel = op == _elegida;
-    final colorOp = _colorDe(op); // si la opción es un color, se pinta su ficha
+    final fop = _parseFicha(op); // color/figura/figura-color -> ficha delante
     // Texto grande; si la opción es larga (un refrán, una definición), algo menor.
     final fontSize = op.length > 42
         ? 19.0
@@ -366,21 +511,11 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
                           color: TrazoColors.coralDark, size: 30),
                       const SizedBox(width: 10),
                     ],
-                    if (colorOp != null) ...[
-                      Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          color: colorOp,
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                              color: TrazoColors.ink.withValues(alpha: 0.25),
-                              width: 2),
-                        ),
-                      ),
+                    if (fop.figura != null) ...[
+                      _FiguraMini(fop.figura!, size: 42, color: fop.color),
                       const SizedBox(width: 14),
-                    ] else if (_esFigura(op)) ...[
-                      _FiguraMini(op, size: 42),
+                    ] else if (fop.color != null) ...[
+                      _circuloColor(fop.color!, 40),
                       const SizedBox(width: 14),
                     ],
                     Flexible(

@@ -141166,5 +141166,1682 @@
     }
    ]
   }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivina por la silueta (1)",
+  "descripcion": "Reconocer el objeto por su silueta (contorno).",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "botella",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "botella",
+     "degradado": "silueta",
+     "correcta": "una botella",
+     "distractores": [
+      "una gafas",
+      "una llave"
+     ]
+    },
+    {
+     "id": "gafas",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "gafas",
+     "degradado": "silueta",
+     "correcta": "una gafas",
+     "distractores": [
+      "una llave",
+      "una reloj"
+     ]
+    },
+    {
+     "id": "llave",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "llave",
+     "degradado": "silueta",
+     "correcta": "una llave",
+     "distractores": [
+      "una cuchara",
+      "una tenedor"
+     ]
+    },
+    {
+     "id": "paraguas",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "paraguas",
+     "degradado": "silueta",
+     "correcta": "un paraguas",
+     "distractores": [
+      "un bastón",
+      "una llave"
+     ]
+    },
+    {
+     "id": "taza",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "taza",
+     "degradado": "silueta",
+     "correcta": "una taza",
+     "distractores": [
+      "una botella",
+      "una bol"
+     ]
+    },
+    {
+     "id": "reloj",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "reloj",
+     "degradado": "silueta",
+     "correcta": "un reloj",
+     "distractores": [
+      "una gafas",
+      "una plato"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivina por la silueta (2)",
+  "descripcion": "Reconocer el objeto por su silueta (contorno).",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "zapato",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "zapato",
+     "degradado": "silueta",
+     "correcta": "un zapato",
+     "distractores": [
+      "una bota",
+      "una calcetín"
+     ]
+    },
+    {
+     "id": "martillo",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "martillo",
+     "degradado": "silueta",
+     "correcta": "un martillo",
+     "distractores": [
+      "una cuchara",
+      "una llave"
+     ]
+    },
+    {
+     "id": "guitarra",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "guitarra",
+     "degradado": "silueta",
+     "correcta": "una guitarra",
+     "distractores": [
+      "un violín",
+      "una raqueta"
+     ]
+    },
+    {
+     "id": "silla",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "silla",
+     "degradado": "silueta",
+     "correcta": "una silla",
+     "distractores": [
+      "una mesa",
+      "una sofá"
+     ]
+    },
+    {
+     "id": "sarten",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "sarten",
+     "degradado": "silueta",
+     "correcta": "una sartén",
+     "distractores": [
+      "una olla",
+      "una plato"
+     ]
+    },
+    {
+     "id": "candado",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "candado",
+     "degradado": "silueta",
+     "correcta": "un candado",
+     "distractores": [
+      "una llave",
+      "una reloj"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivina por la silueta (3)",
+  "descripcion": "Reconocer el objeto por su silueta (contorno).",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "telefono",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "telefono",
+     "degradado": "silueta",
+     "correcta": "un teléfono",
+     "distractores": [
+      "una libro",
+      "una caja"
+     ]
+    },
+    {
+     "id": "tambor",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "tambor",
+     "degradado": "silueta",
+     "correcta": "un tambor",
+     "distractores": [
+      "un cubo",
+      "una olla"
+     ]
+    },
+    {
+     "id": "abanico",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "abanico",
+     "degradado": "silueta",
+     "correcta": "un abanico",
+     "distractores": [
+      "una hoja",
+      "una paraguas"
+     ]
+    },
+    {
+     "id": "cuchillo",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "cuchillo",
+     "degradado": "silueta",
+     "correcta": "un cuchillo",
+     "distractores": [
+      "una cuchara",
+      "una tenedor"
+     ]
+    },
+    {
+     "id": "elefante",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "elefante",
+     "degradado": "silueta",
+     "correcta": "un elefante",
+     "distractores": [
+      "una caballo",
+      "una vaca"
+     ]
+    },
+    {
+     "id": "caballo",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "caballo",
+     "degradado": "silueta",
+     "correcta": "un caballo",
+     "distractores": [
+      "una vaca",
+      "una perro"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Adivina por la silueta (4)",
+  "descripcion": "Reconocer el objeto por su silueta (contorno).",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "mariposa",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "mariposa",
+     "degradado": "silueta",
+     "correcta": "una mariposa",
+     "distractores": [
+      "una hoja",
+      "una flor"
+     ]
+    },
+    {
+     "id": "avion",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "avion",
+     "degradado": "silueta",
+     "correcta": "un avión",
+     "distractores": [
+      "una pájaro",
+      "una barco"
+     ]
+    },
+    {
+     "id": "barco",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "barco",
+     "degradado": "silueta",
+     "correcta": "un barco",
+     "distractores": [
+      "una coche",
+      "una zapato"
+     ]
+    },
+    {
+     "id": "tren",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "tren",
+     "degradado": "silueta",
+     "correcta": "un tren",
+     "distractores": [
+      "un camión",
+      "un autobús"
+     ]
+    },
+    {
+     "id": "gato",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "gato",
+     "degradado": "silueta",
+     "correcta": "un gato",
+     "distractores": [
+      "una perro",
+      "una conejo"
+     ]
+    },
+    {
+     "id": "pez",
+     "instruccion": "¿Qué objeto es?",
+     "imagen": "pez",
+     "degradado": "silueta",
+     "correcta": "un pez",
+     "distractores": [
+      "una hoja",
+      "una gota"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué es? Imagen borrosa (1)",
+  "descripcion": "Reconocer el objeto aunque se vea borroso.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "manzana",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "manzana",
+     "degradado": "borroso",
+     "correcta": "una manzana",
+     "distractores": [
+      "un reloj",
+      "un perro"
+     ]
+    },
+    {
+     "id": "naranja",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "naranja",
+     "degradado": "borroso",
+     "correcta": "una naranja",
+     "distractores": [
+      "un paraguas",
+      "un zapato"
+     ]
+    },
+    {
+     "id": "limon",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "limon",
+     "degradado": "borroso",
+     "correcta": "un limon",
+     "distractores": [
+      "un reloj",
+      "un paraguas"
+     ]
+    },
+    {
+     "id": "zanahoria",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "zanahoria",
+     "degradado": "borroso",
+     "correcta": "una zanahoria",
+     "distractores": [
+      "una mariposa",
+      "un coche"
+     ]
+    },
+    {
+     "id": "coche",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "coche",
+     "degradado": "borroso",
+     "correcta": "un coche",
+     "distractores": [
+      "una manzana",
+      "un reloj"
+     ]
+    },
+    {
+     "id": "gato",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "gato",
+     "degradado": "borroso",
+     "correcta": "un gato",
+     "distractores": [
+      "un perro",
+      "una taza"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué es? Imagen borrosa (2)",
+  "descripcion": "Reconocer el objeto aunque se vea borroso.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "perro",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "perro",
+     "degradado": "borroso",
+     "correcta": "un perro",
+     "distractores": [
+      "un gato",
+      "un coche"
+     ]
+    },
+    {
+     "id": "reloj",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "reloj",
+     "degradado": "borroso",
+     "correcta": "un reloj",
+     "distractores": [
+      "una manzana",
+      "un paraguas"
+     ]
+    },
+    {
+     "id": "silla",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "silla",
+     "degradado": "borroso",
+     "correcta": "una silla",
+     "distractores": [
+      "una cuchara",
+      "una manzana"
+     ]
+    },
+    {
+     "id": "botella",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "botella",
+     "degradado": "borroso",
+     "correcta": "una botella",
+     "distractores": [
+      "una silla",
+      "un zapato"
+     ]
+    },
+    {
+     "id": "paraguas",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "paraguas",
+     "degradado": "borroso",
+     "correcta": "un paraguas",
+     "distractores": [
+      "una gafas",
+      "un zapato"
+     ]
+    },
+    {
+     "id": "guitarra",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "guitarra",
+     "degradado": "borroso",
+     "correcta": "una guitarra",
+     "distractores": [
+      "un libro",
+      "un gato"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "gnosias",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "¿Qué es? Imagen borrosa (3)",
+  "descripcion": "Reconocer el objeto aunque se vea borroso.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "flor",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "flor",
+     "degradado": "borroso",
+     "correcta": "una flor",
+     "distractores": [
+      "un gato",
+      "una manzana"
+     ]
+    },
+    {
+     "id": "mariposa",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "mariposa",
+     "degradado": "borroso",
+     "correcta": "una mariposa",
+     "distractores": [
+      "un coche",
+      "un limon"
+     ]
+    },
+    {
+     "id": "pez",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "pez",
+     "degradado": "borroso",
+     "correcta": "un pez",
+     "distractores": [
+      "una flor",
+      "un paraguas"
+     ]
+    },
+    {
+     "id": "taza",
+     "instruccion": "¿Qué es? (se ve borroso)",
+     "imagen": "taza",
+     "degradado": "borroso",
+     "correcta": "una taza",
+     "distractores": [
+      "un coche",
+      "una guitarra"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Replica el modelo (1)",
+  "descripcion": "Copiar la figura con sus colores: elige la fila igual al modelo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "r1_0",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "rombo verde",
+      "rombo verde"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "rombo verde",
+       "rombo verde"
+      ],
+      "opción B": [
+       "triángulo verde",
+       "rombo verde"
+      ],
+      "opción C": [
+       "rombo verde",
+       "cuadrado verde"
+      ]
+     }
+    },
+    {
+     "id": "r1_1",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "rombo verde",
+      "triángulo amarillo"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "rombo verde",
+       "triángulo amarillo"
+      ],
+      "opción B": [
+       "rombo verde",
+       "triángulo naranja"
+      ],
+      "opción C": [
+       "triángulo verde",
+       "triángulo amarillo"
+      ]
+     }
+    },
+    {
+     "id": "r1_2",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "cuadrado azul",
+      "estrella rosa"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "cuadrado azul",
+       "estrella rosa"
+      ],
+      "opción B": [
+       "cuadrado verde",
+       "estrella rosa"
+      ],
+      "opción C": [
+       "cuadrado azul",
+       "estrella rojo"
+      ]
+     }
+    },
+    {
+     "id": "r1_3",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "círculo morado",
+      "círculo azul"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "círculo morado",
+       "círculo azul"
+      ],
+      "opción B": [
+       "círculo verde",
+       "círculo azul"
+      ],
+      "opción C": [
+       "cuadrado morado",
+       "círculo azul"
+      ]
+     }
+    },
+    {
+     "id": "r1_4",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "cuadrado rosa",
+      "círculo verde"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "cuadrado rosa",
+       "círculo verde"
+      ],
+      "opción B": [
+       "cuadrado rosa",
+       "círculo morado"
+      ],
+      "opción C": [
+       "cuadrado amarillo",
+       "círculo verde"
+      ]
+     }
+    },
+    {
+     "id": "r1_5",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "rombo rojo",
+      "corazón amarillo"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "rombo rojo",
+       "corazón amarillo"
+      ],
+      "opción B": [
+       "rombo rojo",
+       "corazón azul"
+      ],
+      "opción C": [
+       "estrella rojo",
+       "corazón amarillo"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Replica el modelo (2)",
+  "descripcion": "Copiar la figura con sus colores: elige la fila igual al modelo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "r2_0",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "corazón verde",
+      "cuadrado morado"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "corazón verde",
+       "cuadrado morado"
+      ],
+      "opción B": [
+       "corazón verde",
+       "triángulo morado"
+      ],
+      "opción C": [
+       "corazón verde",
+       "círculo morado"
+      ]
+     }
+    },
+    {
+     "id": "r2_1",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "rombo rosa",
+      "estrella naranja"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "rombo rosa",
+       "estrella naranja"
+      ],
+      "opción B": [
+       "rombo azul",
+       "estrella naranja"
+      ],
+      "opción C": [
+       "corazón rosa",
+       "estrella naranja"
+      ]
+     }
+    },
+    {
+     "id": "r2_2",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "cuadrado morado",
+      "cuadrado naranja"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "cuadrado morado",
+       "cuadrado naranja"
+      ],
+      "opción B": [
+       "círculo morado",
+       "cuadrado naranja"
+      ],
+      "opción C": [
+       "cuadrado rosa",
+       "cuadrado naranja"
+      ]
+     }
+    },
+    {
+     "id": "r2_3",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "cuadrado azul",
+      "corazón rojo"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "cuadrado azul",
+       "corazón rojo"
+      ],
+      "opción B": [
+       "cuadrado rojo",
+       "corazón rojo"
+      ],
+      "opción C": [
+       "cuadrado verde",
+       "corazón rojo"
+      ]
+     }
+    },
+    {
+     "id": "r2_4",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "círculo rosa",
+      "cuadrado rojo"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "círculo rosa",
+       "cuadrado rojo"
+      ],
+      "opción B": [
+       "estrella rosa",
+       "cuadrado rojo"
+      ],
+      "opción C": [
+       "círculo naranja",
+       "cuadrado rojo"
+      ]
+     }
+    },
+    {
+     "id": "r2_5",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "estrella rosa",
+      "corazón rojo"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "estrella rosa",
+       "corazón rojo"
+      ],
+      "opción B": [
+       "estrella verde",
+       "corazón rojo"
+      ],
+      "opción C": [
+       "estrella rosa",
+       "corazón verde"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Replica el modelo (3)",
+  "descripcion": "Copiar la figura con sus colores: elige la fila igual al modelo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "r3_0",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "cuadrado azul",
+      "triángulo morado",
+      "cuadrado amarillo"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "cuadrado azul",
+       "triángulo morado",
+       "cuadrado amarillo"
+      ],
+      "opción B": [
+       "cuadrado azul",
+       "triángulo rosa",
+       "cuadrado amarillo"
+      ],
+      "opción C": [
+       "cuadrado naranja",
+       "triángulo morado",
+       "cuadrado amarillo"
+      ]
+     }
+    },
+    {
+     "id": "r3_1",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "rombo rojo",
+      "círculo rosa",
+      "círculo morado"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "rombo rojo",
+       "círculo rosa",
+       "círculo morado"
+      ],
+      "opción B": [
+       "rombo rojo",
+       "círculo rosa",
+       "corazón morado"
+      ],
+      "opción C": [
+       "rombo rojo",
+       "cuadrado rosa",
+       "círculo morado"
+      ]
+     }
+    },
+    {
+     "id": "r3_2",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "círculo rosa",
+      "rombo naranja",
+      "triángulo rosa"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "círculo rosa",
+       "rombo naranja",
+       "triángulo rosa"
+      ],
+      "opción B": [
+       "círculo rosa",
+       "estrella naranja",
+       "triángulo rosa"
+      ],
+      "opción C": [
+       "círculo rosa",
+       "rombo naranja",
+       "corazón rosa"
+      ]
+     }
+    },
+    {
+     "id": "r3_3",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "rombo verde",
+      "rombo amarillo",
+      "cuadrado verde"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "rombo verde",
+       "rombo amarillo",
+       "cuadrado verde"
+      ],
+      "opción B": [
+       "rombo verde",
+       "rombo azul",
+       "cuadrado verde"
+      ],
+      "opción C": [
+       "rombo verde",
+       "rombo amarillo",
+       "triángulo verde"
+      ]
+     }
+    },
+    {
+     "id": "r3_4",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "círculo rosa",
+      "círculo azul",
+      "cuadrado morado"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "círculo rosa",
+       "círculo azul",
+       "cuadrado morado"
+      ],
+      "opción B": [
+       "círculo rosa",
+       "círculo amarillo",
+       "cuadrado morado"
+      ],
+      "opción C": [
+       "cuadrado rosa",
+       "círculo azul",
+       "cuadrado morado"
+      ]
+     }
+    },
+    {
+     "id": "r3_5",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "estrella rojo",
+      "cuadrado rojo",
+      "triángulo azul"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "estrella rojo",
+       "cuadrado rojo",
+       "triángulo azul"
+      ],
+      "opción B": [
+       "estrella rojo",
+       "estrella rojo",
+       "triángulo azul"
+      ],
+      "opción C": [
+       "estrella rojo",
+       "cuadrado rojo",
+       "círculo azul"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Replica el modelo (4)",
+  "descripcion": "Copiar la figura con sus colores: elige la fila igual al modelo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "r4_0",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "estrella rosa",
+      "corazón verde",
+      "círculo rosa"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "estrella rosa",
+       "corazón verde",
+       "círculo rosa"
+      ],
+      "opción B": [
+       "estrella azul",
+       "corazón verde",
+       "círculo rosa"
+      ],
+      "opción C": [
+       "estrella rosa",
+       "corazón verde",
+       "círculo naranja"
+      ]
+     }
+    },
+    {
+     "id": "r4_1",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "corazón rosa",
+      "corazón naranja",
+      "triángulo rojo"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "corazón rosa",
+       "corazón naranja",
+       "triángulo rojo"
+      ],
+      "opción B": [
+       "corazón rosa",
+       "cuadrado naranja",
+       "triángulo rojo"
+      ],
+      "opción C": [
+       "corazón rosa",
+       "corazón azul",
+       "triángulo rojo"
+      ]
+     }
+    },
+    {
+     "id": "r4_2",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "cuadrado rojo",
+      "estrella rojo",
+      "círculo rosa"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "cuadrado rojo",
+       "estrella rojo",
+       "círculo rosa"
+      ],
+      "opción B": [
+       "cuadrado rojo",
+       "estrella rojo",
+       "círculo verde"
+      ],
+      "opción C": [
+       "triángulo rojo",
+       "estrella rojo",
+       "círculo rosa"
+      ]
+     }
+    },
+    {
+     "id": "r4_3",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "círculo azul",
+      "círculo naranja",
+      "círculo verde"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "círculo azul",
+       "círculo naranja",
+       "círculo verde"
+      ],
+      "opción B": [
+       "corazón azul",
+       "círculo naranja",
+       "círculo verde"
+      ],
+      "opción C": [
+       "círculo rosa",
+       "círculo naranja",
+       "círculo verde"
+      ]
+     }
+    },
+    {
+     "id": "r4_4",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "círculo naranja",
+      "triángulo morado",
+      "rombo amarillo"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "círculo naranja",
+       "triángulo morado",
+       "rombo amarillo"
+      ],
+      "opción B": [
+       "estrella naranja",
+       "triángulo morado",
+       "rombo amarillo"
+      ],
+      "opción C": [
+       "círculo naranja",
+       "triángulo morado",
+       "rombo rosa"
+      ]
+     }
+    },
+    {
+     "id": "r4_5",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "triángulo naranja",
+      "triángulo amarillo",
+      "rombo rojo"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "triángulo naranja",
+       "triángulo amarillo",
+       "rombo rojo"
+      ],
+      "opción B": [
+       "triángulo naranja",
+       "corazón amarillo",
+       "rombo rojo"
+      ],
+      "opción C": [
+       "corazón naranja",
+       "triángulo amarillo",
+       "rombo rojo"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Replica el modelo (5)",
+  "descripcion": "Copiar la figura con sus colores: elige la fila igual al modelo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "r5_0",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "cuadrado verde",
+      "triángulo verde",
+      "triángulo morado"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "cuadrado verde",
+       "triángulo verde",
+       "triángulo morado"
+      ],
+      "opción B": [
+       "cuadrado verde",
+       "triángulo morado",
+       "triángulo morado"
+      ],
+      "opción C": [
+       "cuadrado verde",
+       "triángulo verde",
+       "triángulo amarillo"
+      ]
+     }
+    },
+    {
+     "id": "r5_1",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "corazón amarillo",
+      "corazón naranja",
+      "rombo morado"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "corazón amarillo",
+       "corazón naranja",
+       "rombo morado"
+      ],
+      "opción B": [
+       "triángulo amarillo",
+       "corazón naranja",
+       "rombo morado"
+      ],
+      "opción C": [
+       "corazón amarillo",
+       "corazón naranja",
+       "cuadrado morado"
+      ]
+     }
+    },
+    {
+     "id": "r5_2",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "círculo rojo",
+      "triángulo verde",
+      "cuadrado azul"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "círculo rojo",
+       "triángulo verde",
+       "cuadrado azul"
+      ],
+      "opción B": [
+       "rombo rojo",
+       "triángulo verde",
+       "cuadrado azul"
+      ],
+      "opción C": [
+       "círculo rojo",
+       "círculo verde",
+       "cuadrado azul"
+      ]
+     }
+    },
+    {
+     "id": "r5_3",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "estrella verde",
+      "triángulo rosa",
+      "triángulo azul"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "estrella verde",
+       "triángulo rosa",
+       "triángulo azul"
+      ],
+      "opción B": [
+       "estrella verde",
+       "triángulo rojo",
+       "triángulo azul"
+      ],
+      "opción C": [
+       "estrella verde",
+       "rombo rosa",
+       "triángulo azul"
+      ]
+     }
+    },
+    {
+     "id": "r5_4",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "estrella amarillo",
+      "triángulo verde",
+      "círculo azul"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "estrella amarillo",
+       "triángulo verde",
+       "círculo azul"
+      ],
+      "opción B": [
+       "triángulo amarillo",
+       "triángulo verde",
+       "círculo azul"
+      ],
+      "opción C": [
+       "estrella amarillo",
+       "círculo verde",
+       "círculo azul"
+      ]
+     }
+    },
+    {
+     "id": "r5_5",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "corazón rosa",
+      "corazón verde",
+      "corazón verde"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "corazón rosa",
+       "corazón verde",
+       "corazón verde"
+      ],
+      "opción B": [
+       "corazón rosa",
+       "corazón verde",
+       "triángulo verde"
+      ],
+      "opción C": [
+       "corazón rosa",
+       "rombo verde",
+       "corazón verde"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "bloque": "percepcion",
+  "plantilla_tipo": "seleccion_multiple",
+  "nombre": "Replica el modelo (6)",
+  "descripcion": "Copiar la figura con sus colores: elige la fila igual al modelo.",
+  "parametros_json": {
+   "dificultad": "media",
+   "opciones_min": 3,
+   "opciones_max": 3,
+   "items": [
+    {
+     "id": "r6_0",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "estrella verde",
+      "estrella naranja",
+      "estrella verde"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "estrella verde",
+       "estrella naranja",
+       "estrella verde"
+      ],
+      "opción B": [
+       "cuadrado verde",
+       "estrella naranja",
+       "estrella verde"
+      ],
+      "opción C": [
+       "estrella verde",
+       "estrella naranja",
+       "estrella naranja"
+      ]
+     }
+    },
+    {
+     "id": "r6_1",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "cuadrado rojo",
+      "círculo rosa",
+      "rombo rosa"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "cuadrado rojo",
+       "círculo rosa",
+       "rombo rosa"
+      ],
+      "opción B": [
+       "cuadrado rojo",
+       "círculo naranja",
+       "rombo rosa"
+      ],
+      "opción C": [
+       "triángulo rojo",
+       "círculo rosa",
+       "rombo rosa"
+      ]
+     }
+    },
+    {
+     "id": "r6_2",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "círculo azul",
+      "corazón rojo",
+      "círculo morado"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "círculo azul",
+       "corazón rojo",
+       "círculo morado"
+      ],
+      "opción B": [
+       "círculo azul",
+       "corazón rojo",
+       "corazón morado"
+      ],
+      "opción C": [
+       "círculo azul",
+       "corazón rojo",
+       "cuadrado morado"
+      ]
+     }
+    },
+    {
+     "id": "r6_3",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "corazón amarillo",
+      "triángulo rojo",
+      "cuadrado naranja"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "corazón amarillo",
+       "triángulo rojo",
+       "cuadrado naranja"
+      ],
+      "opción B": [
+       "estrella amarillo",
+       "triángulo rojo",
+       "cuadrado naranja"
+      ],
+      "opción C": [
+       "cuadrado amarillo",
+       "triángulo rojo",
+       "cuadrado naranja"
+      ]
+     }
+    },
+    {
+     "id": "r6_4",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "rombo rosa",
+      "cuadrado verde",
+      "rombo naranja"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "rombo rosa",
+       "cuadrado verde",
+       "rombo naranja"
+      ],
+      "opción B": [
+       "rombo rosa",
+       "cuadrado verde",
+       "triángulo naranja"
+      ],
+      "opción C": [
+       "rombo rosa",
+       "cuadrado amarillo",
+       "rombo naranja"
+      ]
+     }
+    },
+    {
+     "id": "r6_5",
+     "instruccion": "Toca la fila igual al modelo",
+     "modelo_fila": [
+      "estrella rosa",
+      "corazón rojo",
+      "estrella morado"
+     ],
+     "correcta": "opción A",
+     "distractores": [
+      "opción B",
+      "opción C"
+     ],
+     "figuras_por_opcion": {
+      "opción A": [
+       "estrella rosa",
+       "corazón rojo",
+       "estrella morado"
+      ],
+      "opción B": [
+       "estrella rosa",
+       "corazón rojo",
+       "triángulo morado"
+      ],
+      "opción C": [
+       "estrella rosa",
+       "corazón rojo",
+       "rombo morado"
+      ]
+     }
+    }
+   ]
+  }
  }
 ]
