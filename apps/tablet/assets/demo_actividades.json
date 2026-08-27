@@ -86922,6 +86922,3017 @@
     "tiempo_ms",
     "num_toques"
    ]
+  },
+  {
+   "ejercicio_id": "Ordena los pasos (1)",
+   "nombre": "Ordena los pasos (1)",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Preparar un café",
+    "pasos_barajados": [
+     {
+      "paso": "Echar el café",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "Calentar el agua",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "Servir en la taza",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "Poner el agua",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "t0",
+    "orden_correcto_pasos": [
+     "Poner el agua",
+     "Calentar el agua",
+     "Echar el café",
+     "Servir en la taza"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena los pasos (2)",
+   "nombre": "Ordena los pasos (2)",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Hacer la cama",
+    "pasos_barajados": [
+     {
+      "paso": "Poner la manta",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "Colocar la almohada",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "Estirar la sábana",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "Alisar la colcha",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "t0",
+    "orden_correcto_pasos": [
+     "Estirar la sábana",
+     "Poner la manta",
+     "Colocar la almohada",
+     "Alisar la colcha"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena los pasos (3)",
+   "nombre": "Ordena los pasos (3)",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Plantar una flor",
+    "pasos_barajados": [
+     {
+      "paso": "Coger una maceta",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "Regar la tierra",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "Poner la semilla",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "Echar la tierra",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "t1",
+    "orden_correcto_pasos": [
+     "Coger una maceta",
+     "Echar la tierra",
+     "Poner la semilla",
+     "Regar la tierra"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena los pasos (4)",
+   "nombre": "Ordena los pasos (4)",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Ir a comprar el pan",
+    "pasos_barajados": [
+     {
+      "paso": "Coger el monedero",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "Pedir el pan",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "Salir de casa",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "Pagar y volver",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "t1",
+    "orden_correcto_pasos": [
+     "Coger el monedero",
+     "Salir de casa",
+     "Pedir el pan",
+     "Pagar y volver"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena los pasos (5)",
+   "nombre": "Ordena los pasos (5)",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Lavarse los dientes",
+    "pasos_barajados": [
+     {
+      "paso": "Echar la pasta",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "Cepillar los dientes",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "Enjuagarse la boca",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "Coger el cepillo",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "t1",
+    "orden_correcto_pasos": [
+     "Coger el cepillo",
+     "Echar la pasta",
+     "Cepillar los dientes",
+     "Enjuagarse la boca"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena los pasos (6)",
+   "nombre": "Ordena los pasos (6)",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Barrer el suelo",
+    "pasos_barajados": [
+     {
+      "paso": "Recogerlo con el recogedor",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "Tirarlo a la basura",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "Coger la escoba",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "Juntar el polvo",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "t2",
+    "orden_correcto_pasos": [
+     "Coger la escoba",
+     "Juntar el polvo",
+     "Recogerlo con el recogedor",
+     "Tirarlo a la basura"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué va primero? (1)",
+   "nombre": "¿Qué va primero? (1)",
+   "bloque": "razonamiento",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "De la semilla al árbol",
+    "pasos_barajados": [
+     {
+      "paso": "El brote",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "La semilla",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "La planta",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "El árbol",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "t1",
+    "orden_correcto_pasos": [
+     "La semilla",
+     "El brote",
+     "La planta",
+     "El árbol"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué va primero? (2)",
+   "nombre": "¿Qué va primero? (2)",
+   "bloque": "razonamiento",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Crecer",
+    "pasos_barajados": [
+     {
+      "paso": "El huevo",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "La gallina",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "El pollito",
+      "pos_mostrada": 2
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 3,
+    "tarea_id": "t0",
+    "orden_correcto_pasos": [
+     "El huevo",
+     "El pollito",
+     "La gallina"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Qué va primero? (3)",
+   "nombre": "¿Qué va primero? (3)",
+   "bloque": "razonamiento",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Del más frío al más caliente",
+    "pasos_barajados": [
+     {
+      "paso": "El café caliente",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "El agua",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "El hielo",
+      "pos_mostrada": 2
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 3,
+    "tarea_id": "t1",
+    "orden_correcto_pasos": [
+     "El hielo",
+     "El agua",
+     "El café caliente"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena de menor a mayor (1)",
+   "nombre": "Ordena de menor a mayor (1)",
+   "bloque": "calculo",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Ordena los números",
+    "pasos_barajados": [
+     {
+      "paso": "6",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "7",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "8",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "10",
+      "pos_mostrada": 3
+     },
+     {
+      "paso": "9",
+      "pos_mostrada": 4
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 5,
+    "tarea_id": "n1",
+    "orden_correcto_pasos": [
+     "8",
+     "6",
+     "10",
+     "7",
+     "9"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena de menor a mayor (2)",
+   "nombre": "Ordena de menor a mayor (2)",
+   "bloque": "calculo",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Ordena los números",
+    "pasos_barajados": [
+     {
+      "paso": "35",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "15",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "25",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "5",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "n1",
+    "orden_correcto_pasos": [
+     "5",
+     "15",
+     "25",
+     "35"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena de menor a mayor (3)",
+   "nombre": "Ordena de menor a mayor (3)",
+   "bloque": "calculo",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Ordena los números",
+    "pasos_barajados": [
+     {
+      "paso": "8",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "6",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "4",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "9",
+      "pos_mostrada": 3
+     },
+     {
+      "paso": "7",
+      "pos_mostrada": 4
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 5,
+    "tarea_id": "n2",
+    "orden_correcto_pasos": [
+     "7",
+     "4",
+     "9",
+     "6",
+     "8"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena de mayor a menor (1)",
+   "nombre": "Ordena de mayor a menor (1)",
+   "bloque": "calculo",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Ordena los números",
+    "pasos_barajados": [
+     {
+      "paso": "1",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "3",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "5",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "4",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "n0",
+    "orden_correcto_pasos": [
+     "5",
+     "3",
+     "1",
+     "4"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena por tamaño: animales (1)",
+   "nombre": "Ordena por tamaño: animales (1)",
+   "bloque": "percepcion",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "De pequeño a grande",
+    "pasos_barajados": [
+     {
+      "paso": "El elefante",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "El gato",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "La hormiga",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "El caballo",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "s0",
+    "orden_correcto_pasos": [
+     "La hormiga",
+     "El gato",
+     "El caballo",
+     "El elefante"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena por tamaño: cosas (1)",
+   "nombre": "Ordena por tamaño: cosas (1)",
+   "bloque": "percepcion",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "De pequeño a grande",
+    "pasos_barajados": [
+     {
+      "paso": "La moneda",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "El plato",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "La mesa",
+      "pos_mostrada": 2
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 3,
+    "tarea_id": "s0",
+    "orden_correcto_pasos": [
+     "La moneda",
+     "El plato",
+     "La mesa"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena por tamaño: naturaleza",
+   "nombre": "Ordena por tamaño: naturaleza",
+   "bloque": "percepcion",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "De pequeño a grande",
+    "pasos_barajados": [
+     {
+      "paso": "El lago",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "La gota",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "El charco",
+      "pos_mostrada": 2
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 3,
+    "tarea_id": "s1",
+    "orden_correcto_pasos": [
+     "La gota",
+     "El charco",
+     "El lago"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena la frase (5)",
+   "nombre": "Ordena la frase (5)",
+   "bloque": "lenguaje",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Forma la frase",
+    "pasos_barajados": [
+     {
+      "paso": "comida",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "madre",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "la",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "Mi",
+      "pos_mostrada": 3
+     },
+     {
+      "paso": "cocina",
+      "pos_mostrada": 4
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 5,
+    "tarea_id": "f1",
+    "orden_correcto_pasos": [
+     "Mi",
+     "madre",
+     "cocina",
+     "la",
+     "comida"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena la frase (6)",
+   "nombre": "Ordena la frase (6)",
+   "bloque": "lenguaje",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Forma la frase",
+    "pasos_barajados": [
+     {
+      "paso": "El",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "café",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "está",
+      "pos_mostrada": 2
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 3,
+    "tarea_id": "f0",
+    "orden_correcto_pasos": [
+     "El",
+     "café",
+     "está"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena el refrán (7)",
+   "nombre": "Ordena el refrán (7)",
+   "bloque": "lenguaje",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Forma la frase",
+    "pasos_barajados": [
+     {
+      "paso": "Ojos",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "ven",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "que",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "no",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "f2",
+    "orden_correcto_pasos": [
+     "Ojos",
+     "que",
+     "no",
+     "ven"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena la frase (8)",
+   "nombre": "Ordena la frase (8)",
+   "bloque": "lenguaje",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Forma la frase",
+    "pasos_barajados": [
+     {
+      "paso": "el",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "descansa",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "El",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "en",
+      "pos_mostrada": 3
+     },
+     {
+      "paso": "sillón",
+      "pos_mostrada": 4
+     },
+     {
+      "paso": "abuelo",
+      "pos_mostrada": 5
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 6,
+    "tarea_id": "f1",
+    "orden_correcto_pasos": [
+     "El",
+     "abuelo",
+     "descansa",
+     "en",
+     "el",
+     "sillón"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Clasifica: animales y frutas",
+   "nombre": "Clasifica: animales y frutas",
+   "bloque": "lenguaje",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 4,
+    "piezas": [
+     {
+      "id": "pez",
+      "label": "Pez",
+      "zona_correcta": "an"
+     },
+     {
+      "id": "pera",
+      "label": "Pera",
+      "zona_correcta": "fr"
+     },
+     {
+      "id": "uva",
+      "label": "Uva",
+      "zona_correcta": "fr"
+     },
+     {
+      "id": "perro",
+      "label": "Perro",
+      "zona_correcta": "an"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "an",
+      "label": "Animal"
+     },
+     {
+      "id": "fr",
+      "label": "Fruta"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 4,
+    "n_piezas": 4,
+    "emparejamientos": {
+     "pez": "an",
+     "pera": "fr",
+     "uva": "fr",
+     "perro": "an"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Clasifica: cocina y baño",
+   "nombre": "Clasifica: cocina y baño",
+   "bloque": "lenguaje",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 6,
+    "piezas": [
+     {
+      "id": "sarten",
+      "label": "Sartén",
+      "zona_correcta": "co"
+     },
+     {
+      "id": "jabon",
+      "label": "Jabón",
+      "zona_correcta": "ba"
+     },
+     {
+      "id": "peine",
+      "label": "Peine",
+      "zona_correcta": "ba"
+     },
+     {
+      "id": "cuchara",
+      "label": "Cuchara",
+      "zona_correcta": "co"
+     },
+     {
+      "id": "toalla",
+      "label": "Toalla",
+      "zona_correcta": "ba"
+     },
+     {
+      "id": "olla",
+      "label": "Olla",
+      "zona_correcta": "co"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "co",
+      "label": "Cocina"
+     },
+     {
+      "id": "ba",
+      "label": "Baño"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 6,
+    "n_piezas": 6,
+    "emparejamientos": {
+     "sarten": "co",
+     "jabon": "ba",
+     "peine": "ba",
+     "cuchara": "co",
+     "toalla": "ba",
+     "olla": "co"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Clasifica: ropa y comida",
+   "nombre": "Clasifica: ropa y comida",
+   "bloque": "lenguaje",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 4,
+    "piezas": [
+     {
+      "id": "huevo",
+      "label": "Huevo",
+      "zona_correcta": "cm"
+     },
+     {
+      "id": "pan",
+      "label": "Pan",
+      "zona_correcta": "cm"
+     },
+     {
+      "id": "queso",
+      "label": "Queso",
+      "zona_correcta": "cm"
+     },
+     {
+      "id": "abrigo",
+      "label": "Abrigo",
+      "zona_correcta": "ro"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "ro",
+      "label": "Ropa"
+     },
+     {
+      "id": "cm",
+      "label": "Comida"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 4,
+    "n_piezas": 4,
+    "emparejamientos": {
+     "huevo": "cm",
+     "pan": "cm",
+     "queso": "cm",
+     "abrigo": "ro"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Clasifica: transporte y muebles",
+   "nombre": "Clasifica: transporte y muebles",
+   "bloque": "lenguaje",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 5,
+    "piezas": [
+     {
+      "id": "cama",
+      "label": "Cama",
+      "zona_correcta": "mu"
+     },
+     {
+      "id": "avion",
+      "label": "Avión",
+      "zona_correcta": "tr"
+     },
+     {
+      "id": "mesa",
+      "label": "Mesa",
+      "zona_correcta": "mu"
+     },
+     {
+      "id": "barco",
+      "label": "Barco",
+      "zona_correcta": "tr"
+     },
+     {
+      "id": "silla",
+      "label": "Silla",
+      "zona_correcta": "mu"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "tr",
+      "label": "Transporte"
+     },
+     {
+      "id": "mu",
+      "label": "Mueble"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 5,
+    "n_piezas": 5,
+    "emparejamientos": {
+     "cama": "mu",
+     "avion": "tr",
+     "mesa": "mu",
+     "barco": "tr",
+     "silla": "mu"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Clasifica: se come o no se come",
+   "nombre": "Clasifica: se come o no se come",
+   "bloque": "lenguaje",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 6,
+    "piezas": [
+     {
+      "id": "pan",
+      "label": "Pan",
+      "zona_correcta": "si"
+     },
+     {
+      "id": "reloj",
+      "label": "Reloj",
+      "zona_correcta": "no"
+     },
+     {
+      "id": "queso",
+      "label": "Queso",
+      "zona_correcta": "si"
+     },
+     {
+      "id": "zapato",
+      "label": "Zapato",
+      "zona_correcta": "no"
+     },
+     {
+      "id": "llave",
+      "label": "Llave",
+      "zona_correcta": "no"
+     },
+     {
+      "id": "manzana",
+      "label": "Manzana",
+      "zona_correcta": "si"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "si",
+      "label": "Se come"
+     },
+     {
+      "id": "no",
+      "label": "No se come"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 6,
+    "n_piezas": 6,
+    "emparejamientos": {
+     "pan": "si",
+     "reloj": "no",
+     "queso": "si",
+     "zapato": "no",
+     "llave": "no",
+     "manzana": "si"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Agrupa: grande y pequeño",
+   "nombre": "Agrupa: grande y pequeño",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 6,
+    "piezas": [
+     {
+      "id": "vaca",
+      "label": "Vaca",
+      "zona_correcta": "g"
+     },
+     {
+      "id": "caballo",
+      "label": "Caballo",
+      "zona_correcta": "g"
+     },
+     {
+      "id": "elefante",
+      "label": "Elefante",
+      "zona_correcta": "g"
+     },
+     {
+      "id": "hormiga",
+      "label": "Hormiga",
+      "zona_correcta": "p"
+     },
+     {
+      "id": "raton",
+      "label": "Ratón",
+      "zona_correcta": "p"
+     },
+     {
+      "id": "abeja",
+      "label": "Abeja",
+      "zona_correcta": "p"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "g",
+      "label": "Grande"
+     },
+     {
+      "id": "p",
+      "label": "Pequeño"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 6,
+    "n_piezas": 6,
+    "emparejamientos": {
+     "vaca": "g",
+     "caballo": "g",
+     "elefante": "g",
+     "hormiga": "p",
+     "raton": "p",
+     "abeja": "p"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Agrupa: para el frío y para el calor",
+   "nombre": "Agrupa: para el frío y para el calor",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 4,
+    "piezas": [
+     {
+      "id": "abanico",
+      "label": "Abanico",
+      "zona_correcta": "ca"
+     },
+     {
+      "id": "abrigo",
+      "label": "Abrigo",
+      "zona_correcta": "fr"
+     },
+     {
+      "id": "gafas_sol",
+      "label": "Gafas de sol",
+      "zona_correcta": "ca"
+     },
+     {
+      "id": "bufanda",
+      "label": "Bufanda",
+      "zona_correcta": "fr"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "fr",
+      "label": "Para el frío"
+     },
+     {
+      "id": "ca",
+      "label": "Para el calor"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 4,
+    "n_piezas": 4,
+    "emparejamientos": {
+     "abanico": "ca",
+     "abrigo": "fr",
+     "gafas_sol": "ca",
+     "bufanda": "fr"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Agrupa: dulce y salado",
+   "nombre": "Agrupa: dulce y salado",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 4,
+    "piezas": [
+     {
+      "id": "aceituna",
+      "label": "Aceituna",
+      "zona_correcta": "sa"
+     },
+     {
+      "id": "miel",
+      "label": "Miel",
+      "zona_correcta": "du"
+     },
+     {
+      "id": "caramelo",
+      "label": "Caramelo",
+      "zona_correcta": "du"
+     },
+     {
+      "id": "pastel",
+      "label": "Pastel",
+      "zona_correcta": "du"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "du",
+      "label": "Dulce"
+     },
+     {
+      "id": "sa",
+      "label": "Salado"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 4,
+    "n_piezas": 4,
+    "emparejamientos": {
+     "aceituna": "sa",
+     "miel": "du",
+     "caramelo": "du",
+     "pastel": "du"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Agrupa: de día y de noche",
+   "nombre": "Agrupa: de día y de noche",
+   "bloque": "funcion_ejecutiva",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 5,
+    "piezas": [
+     {
+      "id": "pijama",
+      "label": "Pijama",
+      "zona_correcta": "no"
+     },
+     {
+      "id": "desayuno",
+      "label": "Desayuno",
+      "zona_correcta": "di"
+     },
+     {
+      "id": "estrella",
+      "label": "Estrella",
+      "zona_correcta": "no"
+     },
+     {
+      "id": "cama",
+      "label": "Cama",
+      "zona_correcta": "no"
+     },
+     {
+      "id": "sol",
+      "label": "Sol",
+      "zona_correcta": "di"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "di",
+      "label": "De día"
+     },
+     {
+      "id": "no",
+      "label": "De noche"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 5,
+    "n_piezas": 5,
+    "emparejamientos": {
+     "pijama": "no",
+     "desayuno": "di",
+     "estrella": "no",
+     "cama": "no",
+     "sol": "di"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Agrupa por color: rojo y amarillo",
+   "nombre": "Agrupa por color: rojo y amarillo",
+   "bloque": "percepcion",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 6,
+    "piezas": [
+     {
+      "id": "fresa",
+      "label": "Fresa",
+      "zona_correcta": "ro"
+     },
+     {
+      "id": "amapola",
+      "label": "Amapola",
+      "zona_correcta": "ro"
+     },
+     {
+      "id": "tomate",
+      "label": "Tomate",
+      "zona_correcta": "ro"
+     },
+     {
+      "id": "platano",
+      "label": "Plátano",
+      "zona_correcta": "am"
+     },
+     {
+      "id": "limon",
+      "label": "Limón",
+      "zona_correcta": "am"
+     },
+     {
+      "id": "girasol",
+      "label": "Girasol",
+      "zona_correcta": "am"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "ro",
+      "label": "Rojo"
+     },
+     {
+      "id": "am",
+      "label": "Amarillo"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 6,
+    "n_piezas": 6,
+    "emparejamientos": {
+     "fresa": "ro",
+     "amapola": "ro",
+     "tomate": "ro",
+     "platano": "am",
+     "limon": "am",
+     "girasol": "am"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Agrupa por color: verde y naranja",
+   "nombre": "Agrupa por color: verde y naranja",
+   "bloque": "percepcion",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 5,
+    "piezas": [
+     {
+      "id": "naranja",
+      "label": "Naranja",
+      "zona_correcta": "na"
+     },
+     {
+      "id": "lechuga",
+      "label": "Lechuga",
+      "zona_correcta": "ve"
+     },
+     {
+      "id": "pera",
+      "label": "Pera",
+      "zona_correcta": "ve"
+     },
+     {
+      "id": "arbol",
+      "label": "Árbol",
+      "zona_correcta": "ve"
+     },
+     {
+      "id": "zanahoria",
+      "label": "Zanahoria",
+      "zona_correcta": "na"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "ve",
+      "label": "Verde"
+     },
+     {
+      "id": "na",
+      "label": "Naranja"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 5,
+    "n_piezas": 5,
+    "emparejamientos": {
+     "naranja": "na",
+     "lechuga": "ve",
+     "pera": "ve",
+     "arbol": "ve",
+     "zanahoria": "na"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce y agrupa: fruta o verdura",
+   "nombre": "Reconoce y agrupa: fruta o verdura",
+   "bloque": "gnosias",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 4,
+    "piezas": [
+     {
+      "id": "fresa",
+      "label": "Fresa",
+      "zona_correcta": "fr"
+     },
+     {
+      "id": "tomate",
+      "label": "Tomate",
+      "zona_correcta": "ve"
+     },
+     {
+      "id": "manzana",
+      "label": "Manzana",
+      "zona_correcta": "fr"
+     },
+     {
+      "id": "naranja",
+      "label": "Naranja",
+      "zona_correcta": "fr"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "fr",
+      "label": "Fruta"
+     },
+     {
+      "id": "ve",
+      "label": "Verdura"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 4,
+    "n_piezas": 4,
+    "emparejamientos": {
+     "fresa": "fr",
+     "tomate": "ve",
+     "manzana": "fr",
+     "naranja": "fr"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce y agrupa: animal o planta",
+   "nombre": "Reconoce y agrupa: animal o planta",
+   "bloque": "gnosias",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 4,
+    "piezas": [
+     {
+      "id": "gato",
+      "label": "Gato",
+      "zona_correcta": "an"
+     },
+     {
+      "id": "arbol",
+      "label": "Árbol",
+      "zona_correcta": "pl"
+     },
+     {
+      "id": "rosa",
+      "label": "Rosa",
+      "zona_correcta": "pl"
+     },
+     {
+      "id": "pez",
+      "label": "Pez",
+      "zona_correcta": "an"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "an",
+      "label": "Animal"
+     },
+     {
+      "id": "pl",
+      "label": "Planta"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 4,
+    "n_piezas": 4,
+    "emparejamientos": {
+     "gato": "an",
+     "arbol": "pl",
+     "rosa": "pl",
+     "pez": "an"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena la rutina (1)",
+   "nombre": "Ordena la rutina (1)",
+   "bloque": "vida_cotidiana",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Un día en el centro",
+    "pasos_barajados": [
+     {
+      "paso": "Llegar por la mañana",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "Hacer las actividades",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "Desayunar",
+      "pos_mostrada": 2
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 3,
+    "tarea_id": "r0",
+    "orden_correcto_pasos": [
+     "Llegar por la mañana",
+     "Desayunar",
+     "Hacer las actividades"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena la rutina (2)",
+   "nombre": "Ordena la rutina (2)",
+   "bloque": "vida_cotidiana",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Acostarse",
+    "pasos_barajados": [
+     {
+      "paso": "Apagar la luz",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "Dormir",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "Ponerse el pijama",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "Lavarse los dientes",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "r1",
+    "orden_correcto_pasos": [
+     "Ponerse el pijama",
+     "Lavarse los dientes",
+     "Apagar la luz",
+     "Dormir"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "¿Dónde va cada cosa?",
+   "nombre": "¿Dónde va cada cosa?",
+   "bloque": "vida_cotidiana",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 4,
+    "piezas": [
+     {
+      "id": "armario",
+      "label": "Armario",
+      "zona_correcta": "do"
+     },
+     {
+      "id": "nevera",
+      "label": "Nevera",
+      "zona_correcta": "co"
+     },
+     {
+      "id": "almohada",
+      "label": "Almohada",
+      "zona_correcta": "do"
+     },
+     {
+      "id": "olla",
+      "label": "Olla",
+      "zona_correcta": "co"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "co",
+      "label": "Cocina"
+     },
+     {
+      "id": "do",
+      "label": "Dormitorio"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 4,
+    "n_piezas": 4,
+    "emparejamientos": {
+     "armario": "do",
+     "nevera": "co",
+     "almohada": "do",
+     "olla": "co"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Guarda la compra",
+   "nombre": "Guarda la compra",
+   "bloque": "vida_cotidiana",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 6,
+    "piezas": [
+     {
+      "id": "pasta",
+      "label": "Pasta",
+      "zona_correcta": "de"
+     },
+     {
+      "id": "yogur",
+      "label": "Yogur",
+      "zona_correcta": "ne"
+     },
+     {
+      "id": "leche",
+      "label": "Leche",
+      "zona_correcta": "ne"
+     },
+     {
+      "id": "galletas",
+      "label": "Galletas",
+      "zona_correcta": "de"
+     },
+     {
+      "id": "queso",
+      "label": "Queso",
+      "zona_correcta": "ne"
+     },
+     {
+      "id": "arroz",
+      "label": "Arroz",
+      "zona_correcta": "de"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "ne",
+      "label": "En la nevera"
+     },
+     {
+      "id": "de",
+      "label": "En la despensa"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 6,
+    "n_piezas": 6,
+    "emparejamientos": {
+     "pasta": "de",
+     "yogur": "ne",
+     "leche": "ne",
+     "galletas": "de",
+     "queso": "ne",
+     "arroz": "de"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ropa de verano o de invierno",
+   "nombre": "Ropa de verano o de invierno",
+   "bloque": "vida_cotidiana",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 6,
+    "piezas": [
+     {
+      "id": "camiseta",
+      "label": "Camiseta",
+      "zona_correcta": "ve"
+     },
+     {
+      "id": "bufanda",
+      "label": "Bufanda",
+      "zona_correcta": "in"
+     },
+     {
+      "id": "bota",
+      "label": "Bota",
+      "zona_correcta": "in"
+     },
+     {
+      "id": "abrigo",
+      "label": "Abrigo",
+      "zona_correcta": "in"
+     },
+     {
+      "id": "gorra",
+      "label": "Gorra",
+      "zona_correcta": "ve"
+     },
+     {
+      "id": "sandalia",
+      "label": "Sandalia",
+      "zona_correcta": "ve"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "ve",
+      "label": "Verano"
+     },
+     {
+      "id": "in",
+      "label": "Invierno"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 6,
+    "n_piezas": 6,
+    "emparejamientos": {
+     "camiseta": "ve",
+     "bufanda": "in",
+     "bota": "in",
+     "abrigo": "in",
+     "gorra": "ve",
+     "sandalia": "ve"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Palabras cortas o largas",
+   "nombre": "Palabras cortas o largas",
+   "bloque": "lenguaje",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 5,
+    "piezas": [
+     {
+      "id": "bicicleta",
+      "label": "Bicicleta",
+      "zona_correcta": "l"
+     },
+     {
+      "id": "sol",
+      "label": "Sol",
+      "zona_correcta": "c"
+     },
+     {
+      "id": "flor",
+      "label": "Flor",
+      "zona_correcta": "c"
+     },
+     {
+      "id": "telefono",
+      "label": "Teléfono",
+      "zona_correcta": "l"
+     },
+     {
+      "id": "mariposa",
+      "label": "Mariposa",
+      "zona_correcta": "l"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "c",
+      "label": "Corta (1-2 sílabas)"
+     },
+     {
+      "id": "l",
+      "label": "Larga (3+ sílabas)"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 5,
+    "n_piezas": 5,
+    "emparejamientos": {
+     "bicicleta": "l",
+     "sol": "c",
+     "flor": "c",
+     "telefono": "l",
+     "mariposa": "l"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Clasifica: partes del cuerpo o de la casa",
+   "nombre": "Clasifica: partes del cuerpo o de la casa",
+   "bloque": "lenguaje",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 5,
+    "piezas": [
+     {
+      "id": "ventana",
+      "label": "Ventana",
+      "zona_correcta": "ca"
+     },
+     {
+      "id": "tejado",
+      "label": "Tejado",
+      "zona_correcta": "ca"
+     },
+     {
+      "id": "nariz",
+      "label": "Nariz",
+      "zona_correcta": "cu"
+     },
+     {
+      "id": "puerta",
+      "label": "Puerta",
+      "zona_correcta": "ca"
+     },
+     {
+      "id": "pie",
+      "label": "Pie",
+      "zona_correcta": "cu"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "cu",
+      "label": "Cuerpo"
+     },
+     {
+      "id": "ca",
+      "label": "Casa"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 5,
+    "n_piezas": 5,
+    "emparejamientos": {
+     "ventana": "ca",
+     "tejado": "ca",
+     "nariz": "cu",
+     "puerta": "ca",
+     "pie": "cu"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Clasifica: profesiones y animales",
+   "nombre": "Clasifica: profesiones y animales",
+   "bloque": "lenguaje",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 6,
+    "piezas": [
+     {
+      "id": "oveja",
+      "label": "Oveja",
+      "zona_correcta": "an"
+     },
+     {
+      "id": "cartero",
+      "label": "Cartero",
+      "zona_correcta": "pr"
+     },
+     {
+      "id": "medico",
+      "label": "Médico",
+      "zona_correcta": "pr"
+     },
+     {
+      "id": "caballo",
+      "label": "Caballo",
+      "zona_correcta": "an"
+     },
+     {
+      "id": "panadero",
+      "label": "Panadero",
+      "zona_correcta": "pr"
+     },
+     {
+      "id": "gallina",
+      "label": "Gallina",
+      "zona_correcta": "an"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "pr",
+      "label": "Profesión"
+     },
+     {
+      "id": "an",
+      "label": "Animal"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 6,
+    "n_piezas": 6,
+    "emparejamientos": {
+     "oveja": "an",
+     "cartero": "pr",
+     "medico": "pr",
+     "caballo": "an",
+     "panadero": "pr",
+     "gallina": "an"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Clasifica: instrumentos y herramientas",
+   "nombre": "Clasifica: instrumentos y herramientas",
+   "bloque": "lenguaje",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 4,
+    "piezas": [
+     {
+      "id": "sierra",
+      "label": "Sierra",
+      "zona_correcta": "he"
+     },
+     {
+      "id": "destornillador",
+      "label": "Destornillador",
+      "zona_correcta": "he"
+     },
+     {
+      "id": "tambor",
+      "label": "Tambor",
+      "zona_correcta": "in"
+     },
+     {
+      "id": "martillo",
+      "label": "Martillo",
+      "zona_correcta": "he"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "in",
+      "label": "Instrumento musical"
+     },
+     {
+      "id": "he",
+      "label": "Herramienta"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 4,
+    "n_piezas": 4,
+    "emparejamientos": {
+     "sierra": "he",
+     "destornillador": "he",
+     "tambor": "in",
+     "martillo": "he"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena la frase (9)",
+   "nombre": "Ordena la frase (9)",
+   "bloque": "lenguaje",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Forma la frase",
+    "pasos_barajados": [
+     {
+      "paso": "música",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "la",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "mucho",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "gusta",
+      "pos_mostrada": 3
+     },
+     {
+      "paso": "Me",
+      "pos_mostrada": 4
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 5,
+    "tarea_id": "f0",
+    "orden_correcto_pasos": [
+     "Me",
+     "gusta",
+     "mucho",
+     "la",
+     "música"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena el refrán (10)",
+   "nombre": "Ordena el refrán (10)",
+   "bloque": "lenguaje",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Forma la frase",
+    "pasos_barajados": [
+     {
+      "paso": "con",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "Dime",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "quién",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "andas",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "f2",
+    "orden_correcto_pasos": [
+     "Dime",
+     "con",
+     "quién",
+     "andas"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena la frase (11)",
+   "nombre": "Ordena la frase (11)",
+   "bloque": "lenguaje",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Forma la frase",
+    "pasos_barajados": [
+     {
+      "paso": "trae",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "cartero",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "El",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "las",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "f2",
+    "orden_correcto_pasos": [
+     "El",
+     "cartero",
+     "trae",
+     "las"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce y agrupa: ave o pez",
+   "nombre": "Reconoce y agrupa: ave o pez",
+   "bloque": "gnosias",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 4,
+    "piezas": [
+     {
+      "id": "aguila",
+      "label": "Águila",
+      "zona_correcta": "av"
+     },
+     {
+      "id": "pato",
+      "label": "Pato",
+      "zona_correcta": "av"
+     },
+     {
+      "id": "gallina",
+      "label": "Gallina",
+      "zona_correcta": "av"
+     },
+     {
+      "id": "tiburon",
+      "label": "Tiburón",
+      "zona_correcta": "pe"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "av",
+      "label": "Ave"
+     },
+     {
+      "id": "pe",
+      "label": "Pez"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 4,
+    "n_piezas": 4,
+    "emparejamientos": {
+     "aguila": "av",
+     "pato": "av",
+     "gallina": "av",
+     "tiburon": "pe"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce y agrupa: rueda o no rueda",
+   "nombre": "Reconoce y agrupa: rueda o no rueda",
+   "bloque": "gnosias",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 6,
+    "piezas": [
+     {
+      "id": "bicicleta",
+      "label": "Bicicleta",
+      "zona_correcta": "ru"
+     },
+     {
+      "id": "moto",
+      "label": "Moto",
+      "zona_correcta": "ru"
+     },
+     {
+      "id": "coche",
+      "label": "Coche",
+      "zona_correcta": "ru"
+     },
+     {
+      "id": "barco",
+      "label": "Barco",
+      "zona_correcta": "no"
+     },
+     {
+      "id": "silla",
+      "label": "Silla",
+      "zona_correcta": "no"
+     },
+     {
+      "id": "avion",
+      "label": "Avión",
+      "zona_correcta": "no"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "ru",
+      "label": "Tiene ruedas"
+     },
+     {
+      "id": "no",
+      "label": "No tiene ruedas"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 6,
+    "n_piezas": 6,
+    "emparejamientos": {
+     "bicicleta": "ru",
+     "moto": "ru",
+     "coche": "ru",
+     "barco": "no",
+     "silla": "no",
+     "avion": "no"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Reconoce y agrupa: se bebe o se come",
+   "nombre": "Reconoce y agrupa: se bebe o se come",
+   "bloque": "gnosias",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 4,
+    "piezas": [
+     {
+      "id": "queso",
+      "label": "Queso",
+      "zona_correcta": "co"
+     },
+     {
+      "id": "pan",
+      "label": "Pan",
+      "zona_correcta": "co"
+     },
+     {
+      "id": "leche",
+      "label": "Leche",
+      "zona_correcta": "be"
+     },
+     {
+      "id": "manzana",
+      "label": "Manzana",
+      "zona_correcta": "co"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "be",
+      "label": "Se bebe"
+     },
+     {
+      "id": "co",
+      "label": "Se come"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 4,
+    "n_piezas": 4,
+    "emparejamientos": {
+     "queso": "co",
+     "pan": "co",
+     "leche": "be",
+     "manzana": "co"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena de menor a mayor (4)",
+   "nombre": "Ordena de menor a mayor (4)",
+   "bloque": "calculo",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Ordena los números",
+    "pasos_barajados": [
+     {
+      "paso": "15",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "10",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "5",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "25",
+      "pos_mostrada": 3
+     },
+     {
+      "paso": "20",
+      "pos_mostrada": 4
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 5,
+    "tarea_id": "n1",
+    "orden_correcto_pasos": [
+     "15",
+     "5",
+     "25",
+     "10",
+     "20"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuenta de 2 en 2",
+   "nombre": "Cuenta de 2 en 2",
+   "bloque": "calculo",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Ordena los números",
+    "pasos_barajados": [
+     {
+      "paso": "16",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "10",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "12",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "14",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "n1",
+    "orden_correcto_pasos": [
+     "10",
+     "12",
+     "14",
+     "16"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Cuenta de 5 en 5",
+   "nombre": "Cuenta de 5 en 5",
+   "bloque": "calculo",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Ordena los números",
+    "pasos_barajados": [
+     {
+      "paso": "60",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "55",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "50",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "65",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "n2",
+    "orden_correcto_pasos": [
+     "50",
+     "55",
+     "60",
+     "65"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Agrupa: pares e impares",
+   "nombre": "Agrupa: pares e impares",
+   "bloque": "calculo",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 4,
+    "piezas": [
+     {
+      "id": "seis",
+      "label": "6",
+      "zona_correcta": "pa"
+     },
+     {
+      "id": "tres",
+      "label": "3",
+      "zona_correcta": "im"
+     },
+     {
+      "id": "uno",
+      "label": "1",
+      "zona_correcta": "im"
+     },
+     {
+      "id": "cuatro",
+      "label": "4",
+      "zona_correcta": "pa"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "pa",
+      "label": "Pares"
+     },
+     {
+      "id": "im",
+      "label": "Impares"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 4,
+    "n_piezas": 4,
+    "emparejamientos": {
+     "seis": "pa",
+     "tres": "im",
+     "uno": "im",
+     "cuatro": "pa"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Agrupa: muchos y pocos",
+   "nombre": "Agrupa: muchos y pocos",
+   "bloque": "calculo",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 6,
+    "piezas": [
+     {
+      "id": "ochenta",
+      "label": "80",
+      "zona_correcta": "mu"
+     },
+     {
+      "id": "noventa",
+      "label": "90",
+      "zona_correcta": "mu"
+     },
+     {
+      "id": "cien",
+      "label": "100",
+      "zona_correcta": "mu"
+     },
+     {
+      "id": "uno1",
+      "label": "1",
+      "zona_correcta": "po"
+     },
+     {
+      "id": "dos2",
+      "label": "2",
+      "zona_correcta": "po"
+     },
+     {
+      "id": "tres3",
+      "label": "3",
+      "zona_correcta": "po"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "mu",
+      "label": "Muchos"
+     },
+     {
+      "id": "po",
+      "label": "Pocos"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 6,
+    "n_piezas": 6,
+    "emparejamientos": {
+     "ochenta": "mu",
+     "noventa": "mu",
+     "cien": "mu",
+     "uno1": "po",
+     "dos2": "po",
+     "tres3": "po"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Agrupa por forma: redondo o alargado",
+   "nombre": "Agrupa por forma: redondo o alargado",
+   "bloque": "percepcion",
+   "plantilla": "arrastrar_posicion",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Toca cada cosa y luego su sitio",
+    "multiplicador": 5,
+    "piezas": [
+     {
+      "id": "platano",
+      "label": "Plátano",
+      "zona_correcta": "al"
+     },
+     {
+      "id": "rueda",
+      "label": "Rueda",
+      "zona_correcta": "re"
+     },
+     {
+      "id": "cuchara",
+      "label": "Cuchara",
+      "zona_correcta": "al"
+     },
+     {
+      "id": "lapiz",
+      "label": "Lápiz",
+      "zona_correcta": "al"
+     },
+     {
+      "id": "pelota",
+      "label": "Pelota",
+      "zona_correcta": "re"
+     }
+    ],
+    "zonas": [
+     {
+      "id": "re",
+      "label": "Redondo"
+     },
+     {
+      "id": "al",
+      "label": "Alargado"
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "cantidad": 5,
+    "n_piezas": 5,
+    "emparejamientos": {
+     "platano": "al",
+     "rueda": "re",
+     "cuchara": "al",
+     "lapiz": "al",
+     "pelota": "re"
+    }
+   },
+   "metricas": [
+    "colocados_correctos",
+    "colocados_incorrectos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Ordena por tamaño: ropa y cosas",
+   "nombre": "Ordena por tamaño: ropa y cosas",
+   "bloque": "percepcion",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "De pequeño a grande",
+    "pasos_barajados": [
+     {
+      "paso": "El botón",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "El plato",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "La rueda",
+      "pos_mostrada": 2
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 3,
+    "tarea_id": "s0",
+    "orden_correcto_pasos": [
+     "El botón",
+     "El plato",
+     "La rueda"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Recuerda el orden (1)",
+   "nombre": "Recuerda el orden (1)",
+   "bloque": "atencion_memoria",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Repite el orden",
+    "pasos_barajados": [
+     {
+      "paso": "Uno",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "Cuatro",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "Tres",
+      "pos_mostrada": 2
+     },
+     {
+      "paso": "Dos",
+      "pos_mostrada": 3
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 4,
+    "tarea_id": "a2",
+    "orden_correcto_pasos": [
+     "Uno",
+     "Dos",
+     "Tres",
+     "Cuatro"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
+  },
+  {
+   "ejercicio_id": "Recuerda el orden (2)",
+   "nombre": "Recuerda el orden (2)",
+   "bloque": "atencion_memoria",
+   "plantilla": "secuencia_ordenar",
+   "estado": "en_pruebas",
+   "render": {
+    "instruccion": "Ordena los pasos",
+    "titulo": "Repite el orden",
+    "pasos_barajados": [
+     {
+      "paso": "Martes",
+      "pos_mostrada": 0
+     },
+     {
+      "paso": "Lunes",
+      "pos_mostrada": 1
+     },
+     {
+      "paso": "Miércoles",
+      "pos_mostrada": 2
+     }
+    ]
+   },
+   "cantidad_objetivo": {
+    "n_pasos": 3,
+    "tarea_id": "a2",
+    "orden_correcto_pasos": [
+     "Lunes",
+     "Martes",
+     "Miércoles"
+    ]
+   },
+   "metricas": [
+    "correcto",
+    "movimientos",
+    "tiempo_ms"
+   ]
   }
  ]
 }
