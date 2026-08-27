@@ -1,0 +1,103 @@
+{
+ "tipos_recomendados": [
+  {
+   "nombre_tipo": "Completar refranes y dichos populares",
+   "para_que_sirve": "Evocación de lenguaje automatizado y acceso a memoria semántica MUY consolidada (los refranes se conservan hasta fases avanzadas de Alzheimer). Da éxito garantizado y emociona: refuerza identidad cultural y autoestima. Ideal para arrancar sesión y para baja capacidad lectora si la maestra lo lee en voz alta.",
+   "bloque": "Lenguaje",
+   "como_hacerlo_con_texto": "Plantilla seleccion_multiple con enunciado en texto: se muestra el refrán con el final oculto y 3 opciones de texto (una correcta, dos plausibles). Correcta única e inequívoca. La maestra puede leerlo; el mayor solo señala.",
+   "ejemplo": "«A quien madruga...» → a) Dios le ayuda [correcta]  b) le duele la cabeza  c) llega tarde. Otros: «Más vale pájaro en mano que...», «No por mucho madrugar...»."
+  },
+  {
+   "nombre_tipo": "Categoría semántica: nombrar / elegir a qué grupo pertenece",
+   "para_que_sirve": "Memoria semántica y organización de conceptos por categorías (la red que primero se erosiona en el deterioro). Trabaja evocación dirigida sin exigir producción verbal.",
+   "bloque": "Lenguaje",
+   "como_hacerlo_con_texto": "seleccion_multiple con imagen o palabra objetivo y 3 categorías como opciones de texto: '¿A qué grupo pertenece?'. Categorías amplias y sin solape (fruta / animal / mueble). Contenido claro para que la única duda sea la etiqueta, no reconocer la figura.",
+   "ejemplo": "Imagen o palabra 'plátano' → Fruta / Herramienta / Ropa. 'martillo' → Herramienta / Animal / Fruta. 'sillón' → Mueble / Comida / Vehículo."
+  },
+  {
+   "nombre_tipo": "Clasificar por categoría semántica (arrastre por toque a 2-3 cestas)",
+   "para_que_sirve": "Organización semántica activa y flexibilidad: repartir varios elementos entre categorías obliga a mantener el criterio. Más exigente que elegir uno; buen puente entre lenguaje y control ejecutivo.",
+   "bloque": "Lenguaje",
+   "como_hacerlo_con_texto": "arrastrar_posicion (por toque): 4-6 imágenes/palabras y 2-3 destinos rotulados con texto (p. ej. 'Frutas' / 'Animales'). Cada ítem tiene una sola cesta correcta. Empezar con 2 cestas y pocos ítems para el usuario más frágil.",
+   "ejemplo": "Cestas 'Se come' / 'No se come': manzana, pan, zapato, pescado, llave, tomate. O 'Verano' / 'Invierno': abanico, bufanda, helado, estufa."
+  },
+  {
+   "nombre_tipo": "Reconocer objeto a partir de imagen degradada (silueta / parcial / superpuesta)",
+   "para_que_sirve": "Gnosias visuales: acceder a la identidad de un objeto pese a información incompleta. Es un bloque hoy poco cubierto y muy sensible en el deterioro visoperceptivo del Alzheimer.",
+   "bloque": "Gnosias",
+   "como_hacerlo_con_texto": "seleccion_multiple mostrando la figura en silueta/contorno o parcialmente tapada y 3 opciones (texto o imagen) para nombrar qué es. Degradación suave y objetos cotidianos muy familiares; una sola respuesta correcta.",
+   "ejemplo": "Silueta negra de una tetera → Tetera / Regadera / Jarra. Contorno de gafas → Gafas / Reloj / Llave. (Reutiliza ilustraciones ya existentes en versión silueta.)"
+  },
+  {
+   "nombre_tipo": "Orientación temporal: estaciones, meses y momentos del día",
+   "para_que_sirve": "Orientación temporal, pilar de la valoración cognitiva y de la autonomía diaria. Conecta con el aquí-y-ahora del centro; material ecológico y significativo.",
+   "bloque": "Vida cotidiana",
+   "como_hacerlo_con_texto": "seleccion_multiple con imagen de escena o pregunta en texto y 3 opciones. Preguntas por estación (árbol nevado / playa), por momento del día (desayuno / cena) o por festividad conocida. Anclar a experiencias, no a fechas exactas.",
+   "ejemplo": "Imagen de playa con sol → ¿Qué estación es? Verano / Invierno / Otoño. «Nos levantamos y tomamos café con leche: es la...» Mañana / Noche / Tarde. «¿En qué mes ponemos el Belén?» Diciembre / Abril / Agosto."
+  },
+  {
+   "nombre_tipo": "Ordenar por tamaño (seriación por magnitud)",
+   "para_que_sirve": "Percepción de tamaño y seriación (comparar y ordenar magnitudes visuales), base del razonamiento espacial y del sentido de cantidad. Complementa las series de patrón que ya existen.",
+   "bloque": "Percepción",
+   "como_hacerlo_con_texto": "secuencia_ordenar: se dan 3-4 versiones del mismo objeto en distinto tamaño y se ordenan de menor a mayor (o al revés). Enunciado en texto claro; misma figura para aislar el tamaño como único criterio.",
+   "ejemplo": "Tres círculos de distinto tamaño → ordenar de pequeño a grande. Cuatro peces de tamaño creciente. Tres tazas → de la más pequeña a la más grande."
+  },
+  {
+   "nombre_tipo": "Analogías visuales o verbales sencillas",
+   "para_que_sirve": "Razonamiento por relaciones: inferir una regla que vincula dos elementos y aplicarla. Ejercita el pensamiento relacional con un único juicio lógico, distinto del patrón perceptivo de las series.",
+   "bloque": "Razonamiento",
+   "como_hacerlo_con_texto": "seleccion_multiple tipo 'A es a B como C es a ___', con la relación explícita en texto o imagen y 3 opciones. Relaciones muy familiares (función, pertenencia, parte-todo). Una sola respuesta correcta y sin ambigüedad.",
+   "ejemplo": "'Guante es a mano como calcetín es a...' → Pie / Cabeza / Mesa. 'Perro–ladra, gato–...' → Maúlla / Vuela / Nada. 'Llave abre puerta, tijera...' → Corta / Pinta / Cocina."
+  },
+  {
+   "nombre_tipo": "Series numéricas: continuar la cuenta",
+   "para_que_sirve": "Sentido numérico y cálculo: detectar la regla aritmética (de uno en uno, de dos en dos, de diez en diez) y continuarla. Complementa contar/comparar con manipulación de la secuencia numérica.",
+   "bloque": "Cálculo",
+   "como_hacerlo_con_texto": "seleccion_multiple mostrando la serie en texto con un hueco y 3 números como opciones. Pasos regulares y pequeños; empezar por +1 y +2. También sirve 'ordena estos números de menor a mayor' con secuencia_ordenar.",
+   "ejemplo": "2, 4, 6, __ → 8 / 7 / 10. 10, 20, 30, __ → 40 / 35 / 50. Ordenar 5, 2, 8, 1 de menor a mayor."
+  },
+  {
+   "nombre_tipo": "Palabra por su definición / adivinanzas",
+   "para_que_sirve": "Comprensión y memoria semántica: recuperar el concepto a partir de su descripción. Estimula evocación con apoyo y el vocabulario funcional. Las adivinanzas clásicas añaden carga cultural motivadora.",
+   "bloque": "Lenguaje",
+   "como_hacerlo_con_texto": "seleccion_multiple: la maestra o el texto dan una definición sencilla y se elige entre 3 palabras (o imágenes). Definiciones cortas, concretas y unívocas; evitar tecnicismos.",
+   "ejemplo": "'Fruta amarilla y alargada que pelamos' → Plátano / Manzana / Pera. 'Sirve para saber la hora' → Reloj / Radio / Libro. 'Animal que da leche y hace muu' → Vaca / Gallina / Gato."
+  },
+  {
+   "nombre_tipo": "Antónimos y opuestos",
+   "para_que_sirve": "Lenguaje y organización semántica por oposición; también flexibilidad (inhibir el término dado para buscar su contrario). Concepto sencillo, muy accesible y con buena tasa de éxito.",
+   "bloque": "Lenguaje",
+   "como_hacerlo_con_texto": "seleccion_multiple: se muestra una palabra o imagen y 3 opciones; 'Elige lo contrario'. Pares cotidianos (grande/pequeño, día/noche, frío/caliente). Una sola opción es el opuesto claro.",
+   "ejemplo": "'Grande' → Pequeño / Rojo / Rápido. 'Día' → Noche / Sol / Mesa. Imagen de algo caliente (sopa humeante) → elige 'frío' (helado)."
+  },
+  {
+   "nombre_tipo": "Seguir una instrucción (comprensión de órdenes)",
+   "para_que_sirve": "Comprensión del lenguaje y retención de la instrucción mientras se ejecuta (memoria de trabajo verbal). Cuando la orden tiene 2 pasos añade control ejecutivo. Muy funcional para la vida diaria.",
+   "bloque": "Lenguaje",
+   "como_hacerlo_con_texto": "seleccion_multiple: enunciado en texto con una consigna y una rejilla de imágenes; el mayor toca la que cumple la orden. Empezar por una condición ('toca el objeto rojo') y subir a dos ('el vaso pequeño').",
+   "ejemplo": "'Toca el animal grande' entre 4 figuras. 'Señala la fruta que NO es roja'. 'Elige el vaso que está lleno'. (Con arrastrar_posicion: 'pon la manzana dentro de la cesta'.)"
+  },
+  {
+   "nombre_tipo": "Rotación / orientación espacial: ¿cuál mira igual que el modelo?",
+   "para_que_sirve": "Percepción de la orientación y relaciones espaciales, muy afectadas en el deterioro visoespacial. Complementa emparejar-con-modelo añadiendo el eje de la dirección/giro.",
+   "bloque": "Percepción",
+   "como_hacerlo_con_texto": "seleccion_multiple con una figura-modelo arriba y 3 versiones rotadas; 'Elige la que está igual que el ejemplo'. Figuras muy asimétricas y claras (flecha, mano, casa) para que la orientación sea inequívoca. Rotaciones grandes (no 15º).",
+   "ejemplo": "Modelo: flecha apuntando a la derecha → opciones flecha derecha / izquierda / arriba. Modelo casa inclinada → elegir la casa con la misma inclinación."
+  },
+  {
+   "nombre_tipo": "Odd-one-out semántico (el que no pertenece por categoría)",
+   "para_que_sirve": "Razonamiento conceptual y categorización: excluir por significado, no por rasgo físico. Es el complemento del odd-one-out perceptivo que ya existe; trabaja la abstracción de categorías.",
+   "bloque": "Razonamiento",
+   "como_hacerlo_con_texto": "seleccion_multiple con 3-4 imágenes/palabras donde todas comparten categoría menos una; 'Señala el que no es de la familia'. La categoría debe ser obvia y la intrusa clara para no depender de conocimiento fino.",
+   "ejemplo": "Manzana, pera, plátano, martillo → sobra el martillo. Perro, gato, caballo, silla → la silla. Camisa, pantalón, zapato, pan → el pan."
+  },
+  {
+   "nombre_tipo": "Ordenar los pasos de una rutina cotidiana",
+   "para_que_sirve": "Planificación y secuenciación aplicada a tareas reales (función ejecutiva con contenido ecológico): sostener la meta y colocar los pasos en orden. Refuerza autonomía en actividades de la vida diaria.",
+   "bloque": "Vida cotidiana",
+   "como_hacerlo_con_texto": "secuencia_ordenar con 3-4 imágenes o frases de una rutina muy familiar que se colocan en orden. Rutinas universales (prepararse un café, lavarse los dientes, vestirse) con un único orden lógico razonable. Empezar con 3 pasos.",
+   "ejemplo": "Café con leche: 1) poner el vaso, 2) echar el café, 3) añadir la leche, 4) beber. Lavarse los dientes: coger cepillo → poner pasta → cepillar → enjuagar."
+  }
+ ],
+ "resumen": "Menú de 14 tipos nuevos o poco cubiertos, todos realizables con las plantillas existentes (seleccion_multiple, secuencia_ordenar, arrastrar_posicion por toque) y mapeados a los 9 bloques reales de la taxonomía de Trazo. Prioridades por valor clínico y hueco actual: LENGUAJE es hoy lo más aprovechable con poco esfuerzo (refranes, categorías, definiciones, antónimos, seguir instrucciones) y de altísimo rendimiento emocional en mayores con Alzheimer porque apoya en memoria semántica y automatismos muy conservados. GNOSIAS es el bloque más desatendido: la 'silueta/figura degradada' lo abre reutilizando ilustraciones ya existentes. RAZONAMIENTO gana con analogías y odd-one-out semántico (distinto del perceptivo que ya hay). PERCEPCIÓN se completa con seriación por tamaño y rotación/orientación. CÁLCULO con series numéricas. VIDA COTIDIANA con orientación temporal (estaciones/momentos del día) y ordenar rutinas reales, que son a la vez orientación y funciones ejecutivas aplicadas. Recomendación de implementación: empezar por refranes, categoría semántica, definiciones y orientación temporal (máximo impacto, mínimo riesgo, contenido inequívoco y con éxito garantizado para el usuario más frágil), cuidando siempre opción correcta única, distractores plausibles pero claros, y que la maestra pueda leer el enunciado en voz alta para quien no lee. Sugerencia de contenido nuevo: usar la skill 'contenido' para validar autocorrección y calibración antes de desplegar.\""
+}
