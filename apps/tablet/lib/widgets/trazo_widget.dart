@@ -38,7 +38,13 @@ class _TrazoWidgetState extends State<TrazoWidget>
   late final List<List<Offset>> _trazos;
   late final AnimationController _anim;
 
-  final List<Offset> _puntosUsuario = []; // en coords del viewBox
+  // Trazos del usuario: UNA lista por cada vez que baja el dedo/lápiz (entre
+  // `onPanStart` y `onPanEnd`). Antes era una sola lista plana y el pintor unía
+  // todos los puntos, así que al levantar y volver a bajar (letras de varios
+  // trazos: E, F, T…) dibujaba una línea del final de un trazo al inicio del
+  // siguiente. Guardándolos separados, cada trazo se pinta solo (feedback Saulo).
+  final List<List<Offset>> _trazosUsuario = []; // en coords del viewBox
+  Iterable<Offset> get _puntosUsuario => _trazosUsuario.expand((t) => t);
   final DateTime _inicio = DateTime.now();
 
   @override
@@ -110,7 +116,7 @@ class _TrazoWidgetState extends State<TrazoWidget>
 
   void _limpiar() {
     HapticFeedback.selectionClick();
-    setState(() => _puntosUsuario.clear());
+    setState(() => _trazosUsuario.clear());
     // Vuelve a dejar la métrica "sin trazo" para no arrastrar el intento erróneo.
     widget.onMetricas({
       'precision': null,
@@ -120,16 +126,17 @@ class _TrazoWidgetState extends State<TrazoWidget>
   }
 
   void _emitirMetricas() {
-    if (_puntosUsuario.isEmpty) return;
+    final puntos = _puntosUsuario.toList();
+    if (puntos.isEmpty) return;
     int dentro = 0;
-    for (final p in _puntosUsuario) {
+    for (final p in puntos) {
       if (_distanciaMinima(p) <= _tolerancia) dentro++;
     }
-    final precision = dentro / _puntosUsuario.length;
+    final precision = dentro / puntos.length;
     widget.onMetricas({
       'precision': double.parse(precision.toStringAsFixed(3)),
       'tiempo_ms': DateTime.now().difference(_inicio).inMilliseconds,
-      'puntos_capturados': _puntosUsuario.length,
+      'puntos_capturados': puntos.length,
     });
   }
 
@@ -169,11 +176,15 @@ class _TrazoWidgetState extends State<TrazoWidget>
                 onPanStart: (d) {
                   HapticFeedback
                       .selectionClick(); // confirma que empezó a trazar
-                  setState(() =>
-                      _puntosUsuario.add(_aViewBox(d.localPosition, size)));
+                  // Nuevo sub-trazo: NO se une con el anterior.
+                  setState(() => _trazosUsuario
+                      .add([_aViewBox(d.localPosition, size)]));
                 },
-                onPanUpdate: (d) => setState(
-                    () => _puntosUsuario.add(_aViewBox(d.localPosition, size))),
+                onPanUpdate: (d) => setState(() {
+                  if (_trazosUsuario.isNotEmpty) {
+                    _trazosUsuario.last.add(_aViewBox(d.localPosition, size));
+                  }
+                }),
                 onPanEnd: (_) => _emitirMetricas(),
                 child: Container(
                   decoration: BoxDecoration(
@@ -184,7 +195,7 @@ class _TrazoWidgetState extends State<TrazoWidget>
                   child: CustomPaint(
                     painter: _TrazoPainter(
                       guia: _guia,
-                      puntosUsuario: _puntosUsuario,
+                      trazosUsuario: _trazosUsuario,
                       trazos: _trazos,
                       t: _anim,
                       vbW: _vbW,
@@ -204,7 +215,7 @@ class _TrazoWidgetState extends State<TrazoWidget>
           padding: EdgeInsets.only(top: estrecho ? 8 : 12),
           child: Center(
             child: OutlinedButton.icon(
-              onPressed: _puntosUsuario.isEmpty ? null : _limpiar,
+              onPressed: _trazosUsuario.isEmpty ? null : _limpiar,
               icon: const Icon(Icons.refresh, size: 24),
               label: const Text('Empezar de nuevo'),
               style: OutlinedButton.styleFrom(
@@ -226,21 +237,24 @@ class _TrazoWidgetState extends State<TrazoWidget>
 
 class _TrazoPainter extends CustomPainter {
   final Path guia;
-  final List<Offset> puntosUsuario;
+  final List<List<Offset>> trazosUsuario; // un trazo del usuario por pen-down
   final List<List<Offset>>
-      trazos; // puntos por sub-trazo, en orden de escritura
+      trazos; // puntos por sub-trazo de la GUÍA, en orden de escritura
   final Animation<double> t; // 0..1 en bucle
   final double vbW;
   final double vbH;
 
   _TrazoPainter({
     required this.guia,
-    required this.puntosUsuario,
+    required this.trazosUsuario,
     required this.trazos,
     required this.t,
     required this.vbW,
     required this.vbH,
   }) : super(repaint: t);
+
+  int get _totalPuntosUsuario =>
+      trazosUsuario.fold(0, (a, t) => a + t.length);
 
   /// La guía en PUNTITOS (como un cuadernillo de caligrafía) para repasar encima.
   Path _puntitos(Path fuente, {double punto = 2.5, double hueco = 11}) {
@@ -359,17 +373,22 @@ class _TrazoPainter extends CustomPainter {
       }
     }
 
-    // Trazo del usuario
-    if (puntosUsuario.length > 1) {
-      final userPaint = Paint()
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 5
-        ..strokeCap = StrokeCap.round
-        ..strokeJoin = StrokeJoin.round
-        ..color = TrazoColors.coralDark;
-      final path = Path()
-        ..moveTo(puntosUsuario.first.dx, puntosUsuario.first.dy);
-      for (final p in puntosUsuario.skip(1)) {
+    // Trazo del usuario: CADA sub-trazo por separado (no se unen entre sí).
+    final userPaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 5
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round
+      ..color = TrazoColors.coralDark;
+    for (final trazo in trazosUsuario) {
+      if (trazo.isEmpty) continue;
+      if (trazo.length == 1) {
+        // Un solo toque (punto): un puntito, para que se vea que marcó ahí.
+        canvas.drawCircle(trazo.first, 3, Paint()..color = TrazoColors.coralDark);
+        continue;
+      }
+      final path = Path()..moveTo(trazo.first.dx, trazo.first.dy);
+      for (final p in trazo.skip(1)) {
         path.lineTo(p.dx, p.dy);
       }
       canvas.drawPath(path, userPaint);
@@ -379,5 +398,6 @@ class _TrazoPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_TrazoPainter old) =>
-      old.puntosUsuario.length != puntosUsuario.length;
+      old._totalPuntosUsuario != _totalPuntosUsuario ||
+      old.trazosUsuario.length != trazosUsuario.length;
 }
