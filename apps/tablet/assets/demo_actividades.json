@@ -36672,7 +36672,7 @@
    "estado": "en_pruebas",
    "render": {
     "instruccion": "Elige la respuesta",
-    "enunciado": "Sirve para lavarse el cuerpo con espuma",
+    "enunciado": "Sirve para lavarse el cuerpo en la ducha",
     "imagen": null,
     "audio": null,
     "opciones": [
@@ -37652,7 +37652,7 @@
    "estado": "en_pruebas",
    "render": {
     "instruccion": "Elige la respuesta",
-    "enunciado": "Hierba con olor a menta para las infusiones",
+    "enunciado": "Hierba aromática y refrescante muy usada en las infusiones",
     "imagen": null,
     "audio": null,
     "opciones": [

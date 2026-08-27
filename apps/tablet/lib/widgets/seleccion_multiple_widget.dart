@@ -29,8 +29,9 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
     final render = widget.instancia.render;
     // Cast tolerante: una instancia malformada del backend no debe tumbar la
     // tablet en pleno kiosco (mejor sin opciones que un crash).
-    final opciones =
-        (render['opciones'] as List? ?? const []).map((e) => e.toString()).toList();
+    final opciones = (render['opciones'] as List? ?? const [])
+        .map((e) => e.toString())
+        .toList();
     final instruccion = render['instruccion'] as String?;
     final enunciado = render['enunciado'] as String? ??
         render['instruccion'] as String? ??
@@ -92,59 +93,67 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
 
   Widget _opcion(String op, double alto) {
     final sel = op == _elegida;
-    // Texto grande; si la opción es larga, algo menor para que quepa.
-    final fontSize = op.length > 22 ? 22.0 : 30.0;
+    // Texto grande; si la opción es larga (un refrán, una definición), algo menor.
+    final fontSize = op.length > 42
+        ? 19.0
+        : op.length > 22
+            ? 22.0
+            : 30.0;
     return Semantics(
       button: true,
       selected: sel,
       label: op,
-      child: SizedBox(
-        height: alto,
-        width: double.infinity,
-        child: Material(
-          color: sel ? const Color(0xFFFBEFE4) : TrazoColors.card,
-          borderRadius: BorderRadius.circular(16),
-          child: InkWell(
+      child: ConstrainedBox(
+        // Altura ADAPTABLE: mínimo cómodo pero CRECE si el texto es largo, para
+        // que un refrán o una definición se lea ENTERO (antes se cortaba con "…").
+        constraints: BoxConstraints(minHeight: alto),
+        child: SizedBox(
+          width: double.infinity,
+          child: Material(
+            color: sel ? const Color(0xFFFBEFE4) : TrazoColors.card,
             borderRadius: BorderRadius.circular(16),
-            onTap: () {
-              HapticFeedback.selectionClick();
-              setState(() => _elegida = op);
-              widget.onMetricas({
-                'eleccion': op,
-                'tiempo_ms':
-                    DateTime.now().difference(_inicio).inMilliseconds,
-              });
-            },
-            child: Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(
-                    color: sel ? TrazoColors.coralDark : TrazoColors.sand,
-                    width: sel ? 3 : 1.5),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (sel) ...[
-                    const Icon(Icons.check_circle,
-                        color: TrazoColors.coralDark, size: 30),
-                    const SizedBox(width: 10),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(16),
+              onTap: () {
+                HapticFeedback.selectionClick();
+                setState(() => _elegida = op);
+                widget.onMetricas({
+                  'eleccion': op,
+                  'tiempo_ms':
+                      DateTime.now().difference(_inicio).inMilliseconds,
+                });
+              },
+              child: Container(
+                alignment: Alignment.center,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                      color: sel ? TrazoColors.coralDark : TrazoColors.sand,
+                      width: sel ? 3 : 1.5),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (sel) ...[
+                      const Icon(Icons.check_circle,
+                          color: TrazoColors.coralDark, size: 30),
+                      const SizedBox(width: 10),
+                    ],
+                    Flexible(
+                      // Se muestra ENTERA (hasta 5 líneas envueltas): un refrán o
+                      // una definición larga ya no se corta con "…".
+                      child: Text(op,
+                          textAlign: TextAlign.center,
+                          maxLines: 5,
+                          style: TextStyle(
+                              fontSize: fontSize,
+                              fontWeight: FontWeight.w600,
+                              color: TrazoColors.ink)),
+                    ),
                   ],
-                  Flexible(
-                    // Hasta 3 líneas: una respuesta larga (un refrán) se muestra
-                    // ENTERA envuelta en vez de cortarse con "…" a 2 líneas.
-                    child: Text(op,
-                        textAlign: TextAlign.center,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: fontSize,
-                            fontWeight: FontWeight.w600,
-                            color: TrazoColors.ink)),
-                  ),
-                ],
+                ),
               ),
             ),
           ),

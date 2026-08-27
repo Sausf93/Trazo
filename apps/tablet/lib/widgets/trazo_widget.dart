@@ -31,11 +31,11 @@ class _TrazoWidgetState extends State<TrazoWidget>
   late final double _vbH;
   late final double _tolerancia;
 
-  // Guía DINÁMICA: un punto animado recorre la figura EN ORDEN de escritura, así
-  // se ve de un vistazo por dónde empezar y hacia dónde ir (más intuitivo que
-  // una flecha estática). Los números 1, 2, 3… se mantienen para el orden de los
-  // sub-trazos (apunte de Laura: mayores que nunca aprendieron a escribir).
-  late final List<(Offset, double)> _inicios; // por sub-trazo: posición inicial
+  // Guía DINÁMICA: un punto animado recorre los sub-trazos UNO A UNO, en orden de
+  // escritura (primero el paso 1 entero, luego el 2…). Solo se ve el movimiento
+  // del trazo ACTUAL (la estela no salta de un trazo a otro) y solo su número, así
+  // no se solapan (feedback de Saulo). Cada sub-trazo va en su propia lista.
+  late final List<List<Offset>> _trazos;
   late final AnimationController _anim;
 
   final List<Offset> _puntosUsuario = []; // en coords del viewBox
@@ -52,50 +52,37 @@ class _TrazoWidgetState extends State<TrazoWidget>
     final vb = (render['viewbox'] as String? ?? '0 0 300 140').split(' ');
     _vbW = (vb.length > 2 ? double.tryParse(vb[2]) : null) ?? 300;
     _vbH = (vb.length > 3 ? double.tryParse(vb[3]) : null) ?? 140;
-    _muestrasGuia = _muestrear(_guia, paso: 3.0);
-    _inicios = _iniciosTrazos(_guia);
-    // Duración proporcional al recorrido (letras/palabras largas, más lento) con
-    // una pausa al final del bucle para que se entienda dónde reempieza.
-    final segs = (2.0 + _muestrasGuia.length / 90).clamp(2.0, 6.0);
+    _trazos = _muestrearPorTrazo(_guia, paso: 3.0);
+    _muestrasGuia = [for (final t in _trazos) ...t];
+    // Duración proporcional al recorrido total (palabras largas → más lento).
+    final segs = (2.2 + _muestrasGuia.length / 80).clamp(2.2, 7.0);
     _anim = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: (segs * 1000).round()),
     )..repeat();
   }
 
+  /// Muestrea cada sub-trazo por separado (una lista de puntos por contorno), en
+  /// orden de escritura. Así la animación va trazo a trazo sin unir unos con otros.
+  List<List<Offset>> _muestrearPorTrazo(Path path, {double paso = 3.0}) {
+    final trazos = <List<Offset>>[];
+    for (final metric in path.computeMetrics()) {
+      final pts = <Offset>[];
+      double d = 0;
+      while (d <= metric.length) {
+        final t = metric.getTangentForOffset(d);
+        if (t != null) pts.add(t.position);
+        d += paso;
+      }
+      if (pts.length >= 2) trazos.add(pts);
+    }
+    return trazos;
+  }
+
   @override
   void dispose() {
     _anim.dispose();
     super.dispose();
-  }
-
-  /// Inicio y dirección inicial de cada sub-trazo, EN ORDEN de escritura (1, 2,
-  /// 3…). Estilo cuadernillo: el badge numerado se coloca un poco DENTRO del
-  /// trazo (no en el vértice exacto) para que dos trazos que arrancan del mismo
-  /// punto —p. ej. el palo y la barra alta de la E— no se solapen.
-  List<(Offset, double)> _iniciosTrazos(Path path) {
-    final res = <(Offset, double)>[];
-    for (final metric in path.computeMetrics()) {
-      final len = metric.length;
-      if (len < 4) continue; // tramo insignificante
-      final o = math.min(14.0, len * 0.3);
-      final t = metric.getTangentForOffset(o) ?? metric.getTangentForOffset(0);
-      if (t != null) res.add((t.position, t.angle));
-    }
-    return res;
-  }
-
-  List<Offset> _muestrear(Path path, {double paso = 3.0}) {
-    final puntos = <Offset>[];
-    for (final metric in path.computeMetrics()) {
-      double d = 0;
-      while (d < metric.length) {
-        final t = metric.getTangentForOffset(d);
-        if (t != null) puntos.add(t.position);
-        d += paso;
-      }
-    }
-    return puntos;
   }
 
   // Escala/offset para encajar el viewBox dentro del área disponible.
@@ -198,8 +185,7 @@ class _TrazoWidgetState extends State<TrazoWidget>
                     painter: _TrazoPainter(
                       guia: _guia,
                       puntosUsuario: _puntosUsuario,
-                      inicios: _inicios,
-                      recorrido: _muestrasGuia,
+                      trazos: _trazos,
                       t: _anim,
                       vbW: _vbW,
                       vbH: _vbH,
@@ -241,17 +227,16 @@ class _TrazoWidgetState extends State<TrazoWidget>
 class _TrazoPainter extends CustomPainter {
   final Path guia;
   final List<Offset> puntosUsuario;
-  final List<(Offset, double)> inicios; // por sub-trazo, en orden de escritura
-  final List<Offset> recorrido; // toda la guía muestreada EN ORDEN de escritura
-  final Animation<double> t; // 0..1 en bucle, mueve el punto guía
+  final List<List<Offset>>
+      trazos; // puntos por sub-trazo, en orden de escritura
+  final Animation<double> t; // 0..1 en bucle
   final double vbW;
   final double vbH;
 
   _TrazoPainter({
     required this.guia,
     required this.puntosUsuario,
-    required this.inicios,
-    required this.recorrido,
+    required this.trazos,
     required this.t,
     required this.vbW,
     required this.vbH,
@@ -301,62 +286,77 @@ class _TrazoPainter extends CustomPainter {
         ..color = TrazoColors.sand,
     );
 
-    // GUÍA DINÁMICA: un punto recorre toda la figura EN ORDEN de escritura,
-    // dejando una estela que se desvanece. Así se ve por dónde empezar y hacia
-    // dónde ir, como si alguien lo escribiera delante (más claro que una flecha).
-    if (recorrido.length > 3) {
-      final n = recorrido.length;
-      final cabeza = (t.value * (n - 1)).floor().clamp(0, n - 1);
-      // Estela: los ~26 puntos anteriores, cada vez más tenues.
-      const largoEstela = 26;
+    // GUÍA DINÁMICA PASO A PASO: se anima UN sub-trazo cada vez (paso 1 entero,
+    // pausa, paso 2…). Solo se ve la estela del trazo ACTUAL (no se une con otros)
+    // y solo su número, en su punto de arranque.
+    if (trazos.isNotEmpty) {
+      // Reparte el tiempo entre los sub-trazos (por su longitud) + una pausa entre
+      // cada uno, para que se entienda dónde empieza cada trazo.
+      const pausa = 0.35; // fracción de "peso" de pausa por trazo
+      final pesos = [for (final s in trazos) s.length.toDouble() + 1];
+      final total = pesos.fold(0.0, (a, b) => a + b) * (1 + pausa);
+      double acum = 0;
+      int actual = 0;
+      double localP = 0; // 0..1 dentro del trazo (o >1 = en pausa)
+      final tt = t.value * total;
+      for (var i = 0; i < trazos.length; i++) {
+        final trazo = pesos[i];
+        final pausaI = pesos[i] * pausa;
+        if (tt < acum + trazo) {
+          actual = i;
+          localP = (tt - acum) / trazo;
+          break;
+        }
+        if (tt < acum + trazo + pausaI) {
+          actual = i;
+          localP = 1.0; // pausa: trazo completo mostrado
+          break;
+        }
+        acum += trazo + pausaI;
+        actual = i;
+        localP = 1.0;
+      }
+      final pts = trazos[actual];
+      final cabeza =
+          (localP * (pts.length - 1)).floor().clamp(0, pts.length - 1);
+      // Estela del trazo actual (hasta la cabeza), desvaneciéndose.
+      const largoEstela = 22;
       for (var k = 0; k < largoEstela; k++) {
         final idx = cabeza - k;
         if (idx < 0) break;
         final alpha = (1 - k / largoEstela) * 0.9;
-        canvas.drawCircle(recorrido[idx], 6.5 - k * 0.14,
+        canvas.drawCircle(pts[idx], 6.5 - k * 0.16,
             Paint()..color = TrazoColors.coralDark.withValues(alpha: alpha));
       }
-      // Cabeza: punto grande con halo blanco (el "lápiz" que escribe).
-      final head = recorrido[cabeza];
-      canvas.drawCircle(
-          head, 12, Paint()..color = Colors.white.withValues(alpha: 0.9));
-      canvas.drawCircle(head, 9, Paint()..color = TrazoColors.coralDark);
-    }
+      // Cabeza: el "lápiz" que escribe.
+      canvas.drawCircle(pts[cabeza], 12,
+          Paint()..color = Colors.white.withValues(alpha: 0.9));
+      canvas.drawCircle(pts[cabeza], 9, Paint()..color = TrazoColors.coralDark);
 
-    // Arranque que LATE en verde ("empieza aquí") sobre el primer sub-trazo, y un
-    // badge numerado por sub-trazo para el orden. Sin flechas.
-    final pulso = 0.5 + 0.5 * math.sin(t.value * 2 * math.pi * 2);
-    for (var i = 0; i < inicios.length; i++) {
-      final (pos, _) = inicios[i];
-      if (i == 0) {
+      // Número del trazo ACTUAL (solo ese), latiendo en su arranque. Si solo hay
+      // un sub-trazo (espiral, círculo…), no se pone número: estorbaría.
+      if (trazos.length > 1) {
+        final ini = pts.first;
+        final pulso = 0.5 + 0.5 * math.sin(t.value * 2 * math.pi * 3);
         canvas.drawCircle(
-            pos,
-            15 + pulso * 6,
+            ini,
+            14 + pulso * 5,
             Paint()
               ..color =
-                  TrazoColors.sageDark.withValues(alpha: 0.25 * (1 - pulso)));
+                  TrazoColors.sageDark.withValues(alpha: 0.22 * (1 - pulso)));
+        canvas.drawCircle(
+            ini, 11, Paint()..color = Colors.white.withValues(alpha: 0.95));
+        canvas.drawCircle(ini, 9.5, Paint()..color = TrazoColors.sage);
+        final tp = TextPainter(
+          text: TextSpan(
+            text: '${actual + 1}',
+            style: const TextStyle(
+                fontSize: 14, fontWeight: FontWeight.w900, color: Colors.white),
+          ),
+          textDirection: TextDirection.ltr,
+        )..layout();
+        tp.paint(canvas, Offset(ini.dx - tp.width / 2, ini.dy - tp.height / 2));
       }
-      // Badge numerado: disco verde con halo blanco y el número del trazo.
-      canvas.drawCircle(
-          pos, 12, Paint()..color = Colors.white.withValues(alpha: 0.95));
-      canvas.drawCircle(pos, 10, Paint()..color = TrazoColors.sage);
-      canvas.drawCircle(
-        pos,
-        10,
-        Paint()
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 2.5
-          ..color = TrazoColors.sageDark,
-      );
-      final tp = TextPainter(
-        text: TextSpan(
-          text: '${i + 1}',
-          style: const TextStyle(
-              fontSize: 15, fontWeight: FontWeight.w900, color: Colors.white),
-        ),
-        textDirection: TextDirection.ltr,
-      )..layout();
-      tp.paint(canvas, Offset(pos.dx - tp.width / 2, pos.dy - tp.height / 2));
     }
 
     // Trazo del usuario

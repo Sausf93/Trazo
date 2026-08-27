@@ -29537,7 +29537,7 @@
      "id": "i2",
      "instruccion": "Elige la respuesta",
      "enunciado": "Sirve para pelar las patatas",
-     "correcta": "un pelador",
+     "correcta": "un pelapatatas",
      "distractores": [
       "una almohada",
       "un paraguas"
@@ -29692,7 +29692,7 @@
     {
      "id": "i3",
      "instruccion": "Elige la respuesta",
-     "enunciado": "Sirve para lavarse el cuerpo con espuma",
+     "enunciado": "Sirve para lavarse el cuerpo en la ducha",
      "correcta": "el jabón",
      "distractores": [
       "la sal",
@@ -32137,7 +32137,7 @@
     {
      "id": "i3",
      "instruccion": "Elige la respuesta",
-     "enunciado": "Hierba con olor a menta para las infusiones",
+     "enunciado": "Hierba aromática y refrescante muy usada en las infusiones",
      "correcta": "la hierbabuena",
      "distractores": [
       "la cebolla",
