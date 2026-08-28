@@ -316,9 +316,11 @@ class _MemoriaParejasWidgetState extends State<MemoriaParejasWidget> {
     final destapada = c.estado != _Estado.abajo;
     final emparejada = c.estado == _Estado.emparejada;
     // Parejas de COLOR ("une cada color con su igual"): la carta es un círculo de
-    // color, SIN texto (se empareja por el color, no leyendo el nombre).
-    final colorCarta = colorPorNombre(c.par);
-    final tieneDibujo = colorCarta == null && IlustracionResolver.tiene(c.par);
+    // color, SIN texto. SOLO cuando el `par` es un color y NO tiene ilustración,
+    // para que 'naranja' (fruta) y 'rosa' (flor) sigan mostrando su dibujo, no un
+    // círculo de color (regresión detectada por Saulo en "Parejas de frutas").
+    final tieneDibujo = IlustracionResolver.tiene(c.par);
+    final colorCarta = tieneDibujo ? null : colorPorNombre(c.par);
 
     final cara = destapada
         ? Container(

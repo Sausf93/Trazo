@@ -113,6 +113,33 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
+ * Responsive móvil: en pantallas estrechas el panel se veía "fatal" porque las
+ * tablas anchas (minWidth 480-620) desbordaban y toda la página hacía scroll
+ * horizontal. Aquí cada tabla se vuelve su propia caja con scroll lateral, y
+ * se impide el desbordamiento horizontal de la página. La cabecera/nav las
+ * gestiona Layout.tsx (barra lateral -> cabecera con nav deslizable).
+ * ------------------------------------------------------------------------ */
+@media (max-width: 820px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  /* Tabla no imprimible -> caja con scroll propio (no arrastra la página). */
+  table:not(.trazo-informe table) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Deja respirar cifras/celdas al hacer scroll. */
+  table:not(.trazo-informe table) th,
+  table:not(.trazo-informe table) td {
+    white-space: nowrap;
+  }
+}
+
+/* --------------------------------------------------------------------------
  * Informe para la familia (imprimible / "Guardar como PDF")
  *
  * En pantalla, el informe existe en el DOM pero está fuera de la vista, con un

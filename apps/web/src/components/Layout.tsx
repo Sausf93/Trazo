@@ -1,4 +1,8 @@
-/** Marco de la aplicación: barra lateral de navegación + área de contenido. */
+/** Marco de la aplicación: barra lateral de navegación + área de contenido.
+ * Responsive: en móvil la barra lateral se convierte en una cabecera con la
+ * navegación en una fila horizontal deslizable, y el contenido ocupa todo el
+ * ancho (antes el panel "se veía fatal" en móvil: la barra fija de 232px
+ * aplastaba el contenido). */
 import { useEffect, useState, type ReactNode } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
@@ -25,9 +29,25 @@ const NAV_ADMIN = [
   { to: "/cumplimiento", label: "Cumplimiento", end: false },
 ];
 
+/** True cuando la ventana es estrecha (móvil/tablet vertical). */
+function useEsMovil(bp = 820) {
+  const [movil, setMovil] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= bp : false,
+  );
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${bp}px)`);
+    const on = () => setMovil(mq.matches);
+    on();
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, [bp]);
+  return movil;
+}
+
 export function Layout({ children }: { children: ReactNode }) {
   const { session, signOut } = useAuth();
   const navigate = useNavigate();
+  const movil = useEsMovil();
 
   // Contador de "por revisar" en el menú: la integradora ve si hay cola sin
   // entrar (esos intentos no cuentan hasta valorarlos, no deben acumularse).
@@ -39,7 +59,6 @@ export function Layout({ children }: { children: ReactNode }) {
         .then((p) => vivo && setPorRevisar(p.length))
         .catch(() => {});
     refrescar();
-    // La bandeja avisa al valorar un intento para mantener el contador al día.
     window.addEventListener("trazo:pendientes-cambiaron", refrescar);
     return () => {
       vivo = false;
@@ -47,6 +66,135 @@ export function Layout({ children }: { children: ReactNode }) {
     };
   }, []);
 
+  const items = session?.rol === "admin_centro" ? [...NAV, ...NAV_ADMIN] : NAV;
+
+  const badge = (to: string) =>
+    to === "/revisar" && porRevisar != null && porRevisar > 0 ? (
+      <span
+        className="mono"
+        aria-label={`${porRevisar} por revisar`}
+        style={{
+          fontSize: 11.5,
+          fontWeight: 700,
+          minWidth: 20,
+          textAlign: "center",
+          padding: "1px 6px",
+          borderRadius: 999,
+          background: colors.coral,
+          color: colors.white,
+        }}
+      >
+        {porRevisar}
+      </span>
+    ) : null;
+
+  const cerrar = (
+    <button
+      onClick={() => {
+        signOut();
+        navigate("/login");
+      }}
+      style={{
+        padding: "9px 12px",
+        borderRadius: radius.sm,
+        border: `1.5px solid ${colors.sand}`,
+        background: "transparent",
+        color: colors.textMuted,
+        fontWeight: 600,
+        fontSize: 14,
+        whiteSpace: "nowrap",
+      }}
+    >
+      Cerrar sesión
+    </button>
+  );
+
+  // -------------------- MÓVIL: cabecera + nav horizontal --------------------
+  if (movil) {
+    return (
+      <div style={{ minHeight: "100vh", background: colors.ivory }}>
+        <header
+          style={{
+            position: "sticky",
+            top: 0,
+            zIndex: 10,
+            background: colors.white,
+            borderBottom: `1px solid ${colors.sand}`,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 10,
+              padding: "12px 16px",
+            }}
+          >
+            <Logo size={26} textSize={22} />
+            <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+              <div style={{ textAlign: "right", minWidth: 0 }}>
+                <div
+                  style={{
+                    fontSize: 13,
+                    fontWeight: 600,
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    maxWidth: 120,
+                  }}
+                >
+                  {session?.nombre}
+                </div>
+              </div>
+              {cerrar}
+            </div>
+          </div>
+          <nav
+            aria-label="Navegación principal"
+            style={{
+              display: "flex",
+              gap: 8,
+              overflowX: "auto",
+              WebkitOverflowScrolling: "touch",
+              padding: "0 12px 10px",
+              scrollbarWidth: "none",
+            }}
+          >
+            {items.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.end}
+                style={({ isActive }) => ({
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                  padding: "9px 14px",
+                  borderRadius: 999,
+                  fontWeight: 600,
+                  fontSize: 14.5,
+                  whiteSpace: "nowrap",
+                  textDecoration: "none",
+                  color: isActive ? colors.white : colors.ink,
+                  background: isActive ? colors.sageDark : colors.card,
+                })}
+              >
+                <span>{item.label}</span>
+                {badge(item.to)}
+              </NavLink>
+            ))}
+          </nav>
+        </header>
+
+        <main style={{ padding: "20px clamp(14px, 4vw, 22px) 56px" }}>
+          <div style={{ maxWidth: 1080, margin: "0 auto" }}>{children}</div>
+        </main>
+      </div>
+    );
+  }
+
+  // -------------------- ESCRITORIO: barra lateral --------------------
   return (
     <div style={{ display: "flex", minHeight: "100vh", background: colors.ivory }}>
       <aside
@@ -70,7 +218,7 @@ export function Layout({ children }: { children: ReactNode }) {
         </div>
 
         <nav style={{ display: "flex", flexDirection: "column", gap: 4 }} aria-label="Navegación principal">
-          {(session?.rol === "admin_centro" ? [...NAV, ...NAV_ADMIN] : NAV).map((item) => (
+          {items.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
@@ -90,24 +238,7 @@ export function Layout({ children }: { children: ReactNode }) {
               })}
             >
               <span>{item.label}</span>
-              {item.to === "/revisar" && porRevisar != null && porRevisar > 0 && (
-                <span
-                  className="mono"
-                  aria-label={`${porRevisar} por revisar`}
-                  style={{
-                    fontSize: 11.5,
-                    fontWeight: 700,
-                    minWidth: 20,
-                    textAlign: "center",
-                    padding: "1px 6px",
-                    borderRadius: 999,
-                    background: colors.coral,
-                    color: colors.white,
-                  }}
-                >
-                  {porRevisar}
-                </span>
-              )}
+              {badge(item.to)}
             </NavLink>
           ))}
         </nav>
@@ -117,24 +248,7 @@ export function Layout({ children }: { children: ReactNode }) {
           <div style={{ fontSize: 12.5, color: colors.textFaint, marginBottom: 12 }}>
             {session?.rol === "admin_centro" ? "Administración del centro" : "Integradora"}
           </div>
-          <button
-            onClick={() => {
-              signOut();
-              navigate("/login");
-            }}
-            style={{
-              width: "100%",
-              padding: "9px 12px",
-              borderRadius: radius.sm,
-              border: `1.5px solid ${colors.sand}`,
-              background: "transparent",
-              color: colors.textMuted,
-              fontWeight: 600,
-              fontSize: 14,
-            }}
-          >
-            Cerrar sesión
-          </button>
+          {cerrar}
         </div>
       </aside>
 
