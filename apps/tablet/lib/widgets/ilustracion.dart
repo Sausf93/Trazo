@@ -524,6 +524,7 @@ class IlustracionResolver {
     'globo_rojo': 'assets/fotos/globo_rojo.png',
     'guantes': 'assets/fotos/guantes.png',
     'limon': 'assets/fotos/limon.png',
+    'boligrafo': 'assets/fotos/boligrafo.png',
     'tenedor': 'assets/fotos/tenedor.png',
     'plato': 'assets/fotos/plato.png',
     'vaso': 'assets/fotos/vaso.png',
