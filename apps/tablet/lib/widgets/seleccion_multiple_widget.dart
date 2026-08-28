@@ -449,7 +449,7 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                    color: sel ? TrazoColors.coralDark : TrazoColors.sand,
+                    color: sel ? TrazoColors.coralDark : TrazoColors.bordeControl,
                     width: sel ? 3 : 1.5),
               ),
               child: Row(
@@ -514,7 +514,7 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                      color: sel ? TrazoColors.coralDark : TrazoColors.sand,
+                      color: sel ? TrazoColors.coralDark : TrazoColors.bordeControl,
                       width: sel ? 3 : 1.5),
                 ),
                 child: Row(

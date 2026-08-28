@@ -8625,50 +8625,6 @@
   "estado": "validada"
  },
  {
-  "bloque": "lenguaje",
-  "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Termina la frase hecha",
-  "descripcion": "Completa expresiones fijas muy habituales.",
-  "parametros_json": {
-   "dificultad": "media",
-   "opciones_min": 3,
-   "opciones_max": 4,
-   "items": [
-    {
-     "id": "ojos-que-no-ven",
-     "instruccion": "Ojos que no ven, corazón que no...",
-     "correcta": "Siente",
-     "distractores": [
-      "Late",
-      "Duele",
-      "Llora"
-     ]
-    },
-    {
-     "id": "a-buenas-horas",
-     "instruccion": "A buenas horas, mangas...",
-     "correcta": "Verdes",
-     "distractores": [
-      "Rotas",
-      "Largas",
-      "Anchas"
-     ]
-    },
-    {
-     "id": "quien-rie-ultimo",
-     "instruccion": "Quien ríe el último, ríe...",
-     "correcta": "Mejor",
-     "distractores": [
-      "Menos",
-      "Solo",
-      "Antes"
-     ]
-    }
-   ]
-  },
-  "estado": "validada"
- },
- {
   "bloque": "vida_cotidiana",
   "plantilla_tipo": "seleccion_multiple",
   "nombre": "¿Qué se hace con esto?",
@@ -9402,7 +9358,7 @@
     },
     {
      "id": "sofa",
-     "label": "sofá"
+     "label": "sofa"
     },
     {
      "id": "martillo",
@@ -9410,7 +9366,19 @@
     },
     {
      "id": "lampara",
-     "label": "lámpara"
+     "label": "lampara"
+    },
+    {
+     "id": "television",
+     "label": "television"
+    },
+    {
+     "id": "nevera",
+     "label": "nevera"
+    },
+    {
+     "id": "espejo",
+     "label": "espejo"
     }
    ]
   },
@@ -9504,11 +9472,15 @@
     },
     {
      "id": "cepillo",
-     "label": "cepillo de pelo"
+     "label": "cepillo"
     },
     {
      "id": "lapiz",
-     "label": "lápiz"
+     "label": "lapiz"
+    },
+    {
+     "id": "boligrafo",
+     "label": "boligrafo"
     }
    ]
   }
@@ -13390,11 +13362,11 @@
    "banco": [
     {
      "id": "jabon",
-     "label": "jabón"
+     "label": "jabon"
     },
     {
      "id": "cepillo",
-     "label": "cepillo de pelo"
+     "label": "cepillo"
     },
     {
      "id": "espejo",
@@ -13402,11 +13374,15 @@
     },
     {
      "id": "cepillo_dientes",
-     "label": "cepillo de dientes"
+     "label": "cepillo dientes"
     },
     {
      "id": "toalla",
      "label": "toalla"
+    },
+    {
+     "id": "servilleta",
+     "label": "servilleta"
     }
    ]
   },
@@ -20023,7 +19999,15 @@
     },
     {
      "id": "sandia",
-     "label": "sandía"
+     "label": "sandia"
+    },
+    {
+     "id": "tomate",
+     "label": "tomate"
+    },
+    {
+     "id": "pimiento",
+     "label": "pimiento"
     }
    ]
   },
@@ -20046,15 +20030,19 @@
     },
     {
      "id": "limon",
-     "label": "limón"
+     "label": "limon"
     },
     {
      "id": "sandia",
-     "label": "sandía"
+     "label": "sandia"
     },
     {
      "id": "pera",
      "label": "pera"
+    },
+    {
+     "id": "naranja",
+     "label": "naranja"
     }
    ]
   },
@@ -20159,6 +20147,14 @@
     {
      "id": "perro",
      "label": "perro"
+    },
+    {
+     "id": "elefante",
+     "label": "elefante"
+    },
+    {
+     "id": "toro",
+     "label": "toro"
     }
    ]
   },
@@ -20177,11 +20173,11 @@
    "banco": [
     {
      "id": "avion",
-     "label": "avión"
+     "label": "avion"
     },
     {
      "id": "pajaro",
-     "label": "pájaro"
+     "label": "pajaro"
     },
     {
      "id": "nube",
@@ -20190,6 +20186,14 @@
     {
      "id": "casa",
      "label": "casa"
+    },
+    {
+     "id": "mariposa",
+     "label": "mariposa"
+    },
+    {
+     "id": "globo_rojo",
+     "label": "globo rojo"
     }
    ]
   },
@@ -20256,7 +20260,7 @@
     },
     {
      "id": "autobus",
-     "label": "autobús"
+     "label": "autobus"
     },
     {
      "id": "moto",
@@ -20264,11 +20268,19 @@
     },
     {
      "id": "camion",
-     "label": "camión"
+     "label": "camion"
     },
     {
      "id": "bicicleta",
      "label": "bicicleta"
+    },
+    {
+     "id": "tren",
+     "label": "tren"
+    },
+    {
+     "id": "furgoneta",
+     "label": "furgoneta"
     }
    ]
   },
@@ -57296,26 +57308,6 @@
       "Que el agua se debe tirar",
       "Que hay que beber agua corriente"
      ]
-    },
-    {
-     "id": "i4",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Dime con quién andas y te diré quién eres». ¿Qué significa?",
-     "correcta": "Que las compañías dicen mucho de una persona",
-     "distractores": [
-      "Que hay que andar acompañado",
-      "Que conviene caminar a diario"
-     ]
-    },
-    {
-     "id": "i5",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Quien siembra vientos recoge tempestades». ¿Qué significa?",
-     "correcta": "Que las malas acciones traen malas consecuencias",
-     "distractores": [
-      "Que el viento trae tormentas",
-      "Que hay que sembrar con viento"
-     ]
     }
    ]
   }
@@ -71646,89 +71638,6 @@
      "distractores": [
       "din-don",
       "tic-tac"
-     ]
-    }
-   ]
-  }
- },
- {
-  "bloque": "lenguaje",
-  "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Termina la canción popular",
-  "descripcion": "Completa la letra de estas canciones de siempre.",
-  "parametros_json": {
-   "dificultad": "facil",
-   "opciones_min": 3,
-   "opciones_max": 3,
-   "items": [
-    {
-     "id": "i0",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Que llueva, que llueva, la Virgen de la...»",
-     "correcta": "cueva",
-     "distractores": [
-      "casa",
-      "iglesia"
-     ]
-    },
-    {
-     "id": "i1",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Tengo una vaca...»",
-     "correcta": "lechera",
-     "distractores": [
-      "torera",
-      "ligera"
-     ]
-    },
-    {
-     "id": "i2",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Los pollitos dicen pío, pío, pío, cuando tienen hambre, cuando tienen...»",
-     "correcta": "frío",
-     "distractores": [
-      "sueño",
-      "sed"
-     ]
-    },
-    {
-     "id": "i3",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Estaba el señor Don Gato sentadito en su...»",
-     "correcta": "tejado",
-     "distractores": [
-      "balcón",
-      "sillón"
-     ]
-    },
-    {
-     "id": "i4",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Debajo un botón, ton, ton, que encontró Martín, había un...»",
-     "correcta": "ratón",
-     "distractores": [
-      "gorrión",
-      "gusano"
-     ]
-    },
-    {
-     "id": "i5",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Arroz con leche, me quiero...»",
-     "correcta": "casar",
-     "distractores": [
-      "bañar",
-      "sentar"
-     ]
-    },
-    {
-     "id": "i6",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Al pasar la barca, me dijo el...»",
-     "correcta": "barquero",
-     "distractores": [
-      "marinero",
-      "pescador"
      ]
     }
    ]
@@ -92857,79 +92766,6 @@
  {
   "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Refranes del trabajo",
-  "descripcion": "Remata refranes sobre el esfuerzo y las tareas bien hechas.",
-  "parametros_json": {
-   "dificultad": "media",
-   "opciones_min": 3,
-   "opciones_max": 3,
-   "items": [
-    {
-     "id": "i0",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "A quien madruga, Dios le...",
-     "correcta": "ayuda",
-     "distractores": [
-      "castiga",
-      "olvida"
-     ]
-    },
-    {
-     "id": "i1",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "El que algo quiere, algo le...",
-     "correcta": "cuesta",
-     "distractores": [
-      "sobra",
-      "regala"
-     ]
-    },
-    {
-     "id": "i2",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "No dejes para mañana lo que puedas hacer...",
-     "correcta": "hoy",
-     "distractores": [
-      "nunca",
-      "tarde"
-     ]
-    },
-    {
-     "id": "i3",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Quien mucho abarca, poco...",
-     "correcta": "aprieta",
-     "distractores": [
-      "gana",
-      "come"
-     ]
-    },
-    {
-     "id": "i4",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "No por mucho madrugar amanece más...",
-     "correcta": "temprano",
-     "distractores": [
-      "tarde",
-      "oscuro"
-     ]
-    },
-    {
-     "id": "i5",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "A Dios rogando y con el mazo...",
-     "correcta": "dando",
-     "distractores": [
-      "rezando",
-      "cantando"
-     ]
-    }
-   ]
-  }
- },
- {
-  "bloque": "lenguaje",
-  "plantilla_tipo": "seleccion_multiple",
   "nombre": "Refranes de la amistad",
   "descripcion": "Completa dichos sobre los amigos y el buen trato.",
   "parametros_json": {
@@ -93149,79 +92985,6 @@
  {
   "bloque": "lenguaje",
   "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Refranes de cada mes",
-  "descripcion": "Remata refranes del almanaque, mes a mes.",
-  "parametros_json": {
-   "dificultad": "dificil",
-   "opciones_min": 3,
-   "opciones_max": 3,
-   "items": [
-    {
-     "id": "i0",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "En abril, aguas...",
-     "correcta": "mil",
-     "distractores": [
-      "poco",
-      "cien"
-     ]
-    },
-    {
-     "id": "i1",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Hasta el cuarenta de mayo, no te quites el...",
-     "correcta": "sayo",
-     "distractores": [
-      "sombrero",
-      "zapato"
-     ]
-    },
-    {
-     "id": "i2",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Agua de por San Juan, quita vino y no da...",
-     "correcta": "pan",
-     "distractores": [
-      "sol",
-      "fruta"
-     ]
-    },
-    {
-     "id": "i3",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "En enero, cada oveja con su...",
-     "correcta": "pareja",
-     "distractores": [
-      "cordero",
-      "campo"
-     ]
-    },
-    {
-     "id": "i4",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Marzo ventoso y abril lluvioso, sacan a mayo florido y...",
-     "correcta": "hermoso",
-     "distractores": [
-      "nublado",
-      "frío"
-     ]
-    },
-    {
-     "id": "i5",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "En agosto, frío en el...",
-     "correcta": "rostro",
-     "distractores": [
-      "pie",
-      "campo"
-     ]
-    }
-   ]
-  }
- },
- {
-  "bloque": "lenguaje",
-  "plantilla_tipo": "seleccion_multiple",
   "nombre": "Refranes de la vejez y la experiencia",
   "descripcion": "Completa dichos que valoran los años y lo aprendido.",
   "parametros_json": {
@@ -93310,16 +93073,6 @@
      "distractores": [
       "palabras",
       "dientes"
-     ]
-    },
-    {
-     "id": "i1",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Por la boca muere el...",
-     "correcta": "pez",
-     "distractores": [
-      "pájaro",
-      "gato"
      ]
     },
     {
@@ -93448,16 +93201,6 @@
    "opciones_min": 3,
    "opciones_max": 3,
    "items": [
-    {
-     "id": "i0",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Más vale prevenir que...",
-     "correcta": "curar",
-     "distractores": [
-      "llorar",
-      "sanar"
-     ]
-    },
     {
      "id": "i1",
      "instruccion": "Elige la respuesta",
@@ -93612,16 +93355,6 @@
      "distractores": [
       "pierde",
       "gasta"
-     ]
-    },
-    {
-     "id": "i2",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Año de nieves, año de...",
-     "correcta": "bienes",
-     "distractores": [
-      "males",
-      "hambre"
      ]
     },
     {
@@ -126188,16 +125921,6 @@
      ]
     },
     {
-     "id": "i1",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Barriga llena, corazón...",
-     "correcta": "contento",
-     "distractores": [
-      "triste",
-      "vacío"
-     ]
-    },
-    {
      "id": "i2",
      "instruccion": "Elige la respuesta",
      "enunciado": "Con pan y vino se anda el...",
@@ -126251,16 +125974,6 @@
    "opciones_max": 3,
    "items": [
     {
-     "id": "i0",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Quien tiene un amigo, tiene un...",
-     "correcta": "tesoro",
-     "distractores": [
-      "problema",
-      "vecino"
-     ]
-    },
-    {
      "id": "i1",
      "instruccion": "Elige la respuesta",
      "enunciado": "Haz bien y no mires a...",
@@ -126268,16 +125981,6 @@
      "distractores": [
       "dónde",
       "cuándo"
-     ]
-    },
-    {
-     "id": "i2",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Amor con amor se...",
-     "correcta": "paga",
-     "distractores": [
-      "gana",
-      "pierde"
      ]
     },
     {
@@ -126308,152 +126011,6 @@
      "distractores": [
       "vive",
       "come"
-     ]
-    }
-   ]
-  }
- },
- {
-  "bloque": "lenguaje",
-  "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Remata el refrán del campo",
-  "descripcion": "Termina cada refrán sobre el campo y las labores.",
-  "parametros_json": {
-   "dificultad": "media",
-   "opciones_min": 3,
-   "opciones_max": 3,
-   "items": [
-    {
-     "id": "i0",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Año de nieves, año de...",
-     "correcta": "bienes",
-     "distractores": [
-      "males",
-      "penas"
-     ]
-    },
-    {
-     "id": "i1",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "En abril, aguas...",
-     "correcta": "mil",
-     "distractores": [
-      "cien",
-      "poco"
-     ]
-    },
-    {
-     "id": "i2",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Quien siembra vientos, recoge...",
-     "correcta": "tempestades",
-     "distractores": [
-      "flores",
-      "trigo"
-     ]
-    },
-    {
-     "id": "i3",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "No por mucho madrugar amanece más...",
-     "correcta": "temprano",
-     "distractores": [
-      "pronto",
-      "tarde"
-     ]
-    },
-    {
-     "id": "i4",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "A quien madruga, Dios le...",
-     "correcta": "ayuda",
-     "distractores": [
-      "mira",
-      "habla"
-     ]
-    },
-    {
-     "id": "i5",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "De tal palo, tal...",
-     "correcta": "astilla",
-     "distractores": [
-      "rama",
-      "tronco"
-     ]
-    }
-   ]
-  }
- },
- {
-  "bloque": "lenguaje",
-  "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Refranes del bien hablar",
-  "descripcion": "Completa cada refrán sobre las palabras y el callar.",
-  "parametros_json": {
-   "dificultad": "media",
-   "opciones_min": 3,
-   "opciones_max": 3,
-   "items": [
-    {
-     "id": "i0",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "A palabras necias, oídos...",
-     "correcta": "sordos",
-     "distractores": [
-      "atentos",
-      "abiertos"
-     ]
-    },
-    {
-     "id": "i1",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "El que mucho habla, mucho...",
-     "correcta": "yerra",
-     "distractores": [
-      "sabe",
-      "calla"
-     ]
-    },
-    {
-     "id": "i2",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "En boca cerrada no entran...",
-     "correcta": "moscas",
-     "distractores": [
-      "palabras",
-      "penas"
-     ]
-    },
-    {
-     "id": "i3",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Perro ladrador, poco...",
-     "correcta": "mordedor",
-     "distractores": [
-      "corredor",
-      "comedor"
-     ]
-    },
-    {
-     "id": "i4",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Quien mucho abarca, poco...",
-     "correcta": "aprieta",
-     "distractores": [
-      "alcanza",
-      "gana"
-     ]
-    },
-    {
-     "id": "i5",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "Al pan, pan, y al vino,...",
-     "correcta": "vino",
-     "distractores": [
-      "agua",
-      "tinto"
      ]
     }
    ]
@@ -162308,79 +161865,6 @@
       "potro",
       "ternero",
       "cordero"
-     ]
-    }
-   ]
-  }
- },
- {
-  "bloque": "atencion_memoria",
-  "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Canciones de siempre: ¿cómo sigue? (1)",
-  "descripcion": "Continuar una canción infantil muy conocida completando la última palabra.",
-  "parametros_json": {
-   "dificultad": "facil",
-   "opciones_min": 3,
-   "opciones_max": 3,
-   "items": [
-    {
-     "id": "i0",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Los pollitos dicen pío, pío, pío cuando tienen hambre y cuando tienen…»",
-     "correcta": "frío",
-     "distractores": [
-      "sueño",
-      "sed"
-     ]
-    },
-    {
-     "id": "i1",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«El patio de mi casa es particular: cuando llueve se moja como los…»",
-     "correcta": "demás",
-     "distractores": [
-      "cristales",
-      "zapatos"
-     ]
-    },
-    {
-     "id": "i2",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Cucú, cantaba la rana, cucú, debajo del…»",
-     "correcta": "agua",
-     "distractores": [
-      "puente",
-      "árbol"
-     ]
-    },
-    {
-     "id": "i3",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Al corro de la patata comeremos ensalada, lo que comen los…»",
-     "correcta": "señores",
-     "distractores": [
-      "niños",
-      "conejos"
-     ]
-    },
-    {
-     "id": "i4",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Debajo un botón, ton, ton, que encontró Martín, tin, tin, había un…»",
-     "correcta": "ratón",
-     "distractores": [
-      "gusano",
-      "tesoro"
-     ]
-    },
-    {
-     "id": "i5",
-     "instruccion": "Elige la respuesta",
-     "enunciado": "«Estaba el señor Don Gato sentadito en su…»",
-     "correcta": "tejado",
-     "distractores": [
-      "sillón",
-      "balcón"
      ]
     }
    ]

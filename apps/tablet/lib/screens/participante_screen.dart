@@ -397,10 +397,20 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
     final r = inst.render;
     final instr = (r['instruccion'] ?? '').toString().trim();
     final enun = (r['enunciado'] ?? '').toString().trim();
-    if (enun.isNotEmpty && enun != instr) {
-      return instr.isEmpty ? enun : '$instr. $enun';
+    var base = (enun.isNotEmpty && enun != instr)
+        ? (instr.isEmpty ? enun : '$instr. $enun')
+        : instr;
+    // Accesibilidad: leer también las OPCIONES en voz alta (muchos mayores no
+    // leen bien; antes solo se dictaba la pregunta y las respuestas quedaban
+    // mudas). Solo seleccion_multiple trae 'opciones'.
+    final opciones = (r['opciones'] as List?)
+        ?.map((e) => e.toString().trim())
+        .where((s) => s.isNotEmpty)
+        .toList();
+    if (opciones != null && opciones.isNotEmpty) {
+      base = '$base. Las opciones son: ${opciones.join(', ')}.';
     }
-    return instr;
+    return base;
   }
 
   /// Reintento robusto: si la cola no llegó a cargarse, la reintenta; si ya

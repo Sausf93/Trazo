@@ -12,6 +12,11 @@ class TrazoColors {
   static const coral = Color(0xFFF08A6B);
   static const coralDark = Color(0xFFC4553A);
   static const sand = Color(0xFFD2E6E2);
+  // Borde de CONTROL en reposo (botones, teclas, tarjetas de opción). `sand`
+  // sobre ivory/card daba ~1.1-1.5:1 (WCAG 1.4.11 pide ≥3:1 para el contorno de
+  // un control): un mayor con baja visión no veía dónde tocar. Este teal apagado
+  // llega a ~3.3:1 sin resultar tan fuerte como sageDark.
+  static const bordeControl = Color(0xFF5F918A);
   static const white = Color(0xFFFFFEFB);
   static const azul =
       Color(0xFF2C7595); // acento de marca (p. ej. "otro grupo")

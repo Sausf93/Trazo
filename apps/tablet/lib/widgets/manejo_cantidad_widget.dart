@@ -333,7 +333,7 @@ class _ManejoCantidadWidgetState extends State<ManejoCantidadWidget> {
   /// seguridad ante un toque de más con temblor: deben leerse y acertarse).
   ButtonStyle _estiloBotonRescate() => OutlinedButton.styleFrom(
         foregroundColor: TrazoColors.sageDark,
-        side: const BorderSide(color: TrazoColors.sand, width: 1.5),
+        side: const BorderSide(color: TrazoColors.bordeControl, width: 1.5),
         textStyle: const TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
       );

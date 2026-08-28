@@ -189,7 +189,7 @@ class _TrazoWidgetState extends State<TrazoWidget>
                 child: Container(
                   decoration: BoxDecoration(
                     color: const Color(0xFFFCFAF4),
-                    border: Border.all(color: TrazoColors.sand, width: 2),
+                    border: Border.all(color: TrazoColors.bordeControl, width: 2),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: CustomPaint(
@@ -220,7 +220,7 @@ class _TrazoWidgetState extends State<TrazoWidget>
               label: const Text('Empezar de nuevo'),
               style: OutlinedButton.styleFrom(
                 foregroundColor: TrazoColors.sageDark,
-                side: const BorderSide(color: TrazoColors.sand, width: 1.5),
+                side: const BorderSide(color: TrazoColors.bordeControl, width: 1.5),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
                 minimumSize: const Size(0, 56),

@@ -176,7 +176,7 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
           width: 160,
           decoration: BoxDecoration(
             color: TrazoColors.white,
-            border: Border.all(color: TrazoColors.sand, width: 2),
+            border: Border.all(color: TrazoColors.bordeControl, width: 2),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text(_numero.isEmpty ? '—' : _numero,
@@ -220,7 +220,7 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
         },
         style: OutlinedButton.styleFrom(
           foregroundColor: TrazoColors.ink,
-          side: const BorderSide(color: TrazoColors.sand),
+          side: const BorderSide(color: TrazoColors.bordeControl, width: 1.5),
           padding: EdgeInsets.zero,
         ),
         child: Text(label, style: const TextStyle(fontSize: 24)),

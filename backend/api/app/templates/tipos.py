@@ -179,9 +179,11 @@ class PlantillaMemoriaVisual(PlantillaBase):
         else:
             n = _rango(nivel, parametros, "recordar_min", "recordar_max", 2, 4, rng)
         # Presupuesto REAL de distractores: la rejilla NUNCA puede ser idéntica a
-        # lo memorizado (si no, se "gana" tocando todo y no se mide memoria). Se
-        # reservan al menos max(2, n) huecos para distractores dentro del banco.
-        min_distractores = max(2, n)
+        # lo memorizado (si no, se "gana" tocando todo y no se mide memoria). Con
+        # 2 distractores basta para impedir el "toco todo" (da 2 fallos); reservar
+        # `n` colapsaba el nº a memorizar en bancos pequeños e IGNORABA el nivel
+        # (bug de la ronda QA: 34/66 no escalaban, 8 memorizaban 1 sola figura).
+        min_distractores = 2
         n = max(1, min(n, len(banco) - min_distractores))
 
         a_recordar = rng.sample(banco, n)
