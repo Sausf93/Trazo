@@ -7255,7 +7255,7 @@
    "cantidad_min": 2,
    "cantidad_max": 6,
    "objetos": [
-    "taza",
+    "vaso",
     "bol"
    ]
   }
@@ -10359,7 +10359,7 @@
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta: manzana",
-  "descripcion": "Cuenta cuántos manzana hay.",
+  "descripcion": "Cuenta cuántas manzanas hay.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
@@ -10367,7 +10367,8 @@
    "cantidad_max": 6,
    "objetos": [
     "manzana"
-   ]
+   ],
+   "descripcion": "Cuenta cuántas manzanas hay."
   }
  },
  {
@@ -10422,7 +10423,7 @@
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta: tomate",
-  "descripcion": "Cuenta cuántos tomate hay.",
+  "descripcion": "Cuenta cuántos tomates hay.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
@@ -10430,7 +10431,8 @@
    "cantidad_max": 6,
    "objetos": [
     "tomate"
-   ]
+   ],
+   "descripcion": "Cuenta cuántos tomates hay."
   }
  },
  {
@@ -10485,7 +10487,7 @@
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta: vaca",
-  "descripcion": "Cuenta cuántos vaca hay.",
+  "descripcion": "Cuenta cuántas vacas hay.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
@@ -10493,7 +10495,8 @@
    "cantidad_max": 6,
    "objetos": [
     "vaca"
-   ]
+   ],
+   "descripcion": "Cuenta cuántas vacas hay."
   }
  },
  {
@@ -10596,7 +10599,7 @@
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta: plato",
-  "descripcion": "Cuenta cuántos plato hay.",
+  "descripcion": "Cuenta cuántos platos hay.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
@@ -10604,7 +10607,8 @@
    "cantidad_max": 6,
    "objetos": [
     "plato"
-   ]
+   ],
+   "descripcion": "Cuenta cuántos platos hay."
   }
  },
  {
@@ -10618,7 +10622,7 @@
    "cantidad_min": 2,
    "cantidad_max": 7,
    "objetos": [
-    "bol",
+    "plato",
     "cuchara"
    ]
   }
@@ -10634,7 +10638,7 @@
    "cantidad_min": 2,
    "cantidad_max": 7,
    "objetos": [
-    "bol",
+    "plato",
     "cuchara"
    ]
   }
@@ -10707,7 +10711,7 @@
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta: camisa",
-  "descripcion": "Cuenta cuántos camisa hay.",
+  "descripcion": "Cuenta cuántas camisas hay.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
@@ -10715,7 +10719,8 @@
    "cantidad_max": 6,
    "objetos": [
     "camisa"
-   ]
+   ],
+   "descripcion": "Cuenta cuántas camisas hay."
   }
  },
  {
@@ -10818,7 +10823,7 @@
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta: puerta",
-  "descripcion": "Cuenta cuántos puerta hay.",
+  "descripcion": "Cuenta cuántas puertas hay.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
@@ -10826,7 +10831,8 @@
    "cantidad_max": 6,
    "objetos": [
     "puerta"
-   ]
+   ],
+   "descripcion": "Cuenta cuántas puertas hay."
   }
  },
  {
@@ -10992,7 +10998,7 @@
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta: nube",
-  "descripcion": "Cuenta cuántos nube hay.",
+  "descripcion": "Cuenta cuántas nubes hay.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
@@ -11000,7 +11006,8 @@
    "cantidad_max": 6,
    "objetos": [
     "nube"
-   ]
+   ],
+   "descripcion": "Cuenta cuántas nubes hay."
   }
  },
  {
@@ -11055,7 +11062,7 @@
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta: casa",
-  "descripcion": "Cuenta cuántos estrella hay.",
+  "descripcion": "Cuenta cuántas casas hay.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
@@ -11063,7 +11070,8 @@
    "cantidad_max": 6,
    "objetos": [
     "casa"
-   ]
+   ],
+   "descripcion": "Cuenta cuántas casas hay."
   }
  },
  {
@@ -13261,7 +13269,7 @@
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta: leche (la nevera)",
-  "descripcion": "Cuenta cuántos leche hay.",
+  "descripcion": "Cuenta cuánta leche hay.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
@@ -13269,7 +13277,8 @@
    "cantidad_max": 6,
    "objetos": [
     "leche"
-   ]
+   ],
+   "descripcion": "Cuenta cuánta leche hay."
   }
  },
  {
@@ -13650,7 +13659,7 @@
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta: olla (la cocina)",
-  "descripcion": "Cuenta cuántos olla hay.",
+  "descripcion": "Cuenta cuántas ollas hay.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
@@ -13658,7 +13667,8 @@
    "cantidad_max": 6,
    "objetos": [
     "olla"
-   ]
+   ],
+   "descripcion": "Cuenta cuántas ollas hay."
   }
  },
  {
@@ -14015,7 +14025,7 @@
  {
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
-  "nombre": "¿Cuál tiene más? tarta o fresa (los postres)",
+  "nombre": "¿Cuál tiene más? galleta o fresa (los postres)",
   "descripcion": "Toca el grupo con más.",
   "parametros_json": {
    "dificultad": "media",
@@ -14031,7 +14041,7 @@
  {
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
-  "nombre": "Suma: tarta y fresa (los postres)",
+  "nombre": "Suma: galleta y fresa (los postres)",
   "descripcion": "Cuenta y suma tarta y fresa.",
   "parametros_json": {
    "dificultad": "media",
@@ -14367,8 +14377,8 @@
    "cantidad_min": 2,
    "cantidad_max": 7,
    "objetos": [
-    "bol",
-    "taza"
+    "plato",
+    "vaso"
    ]
   }
  },
@@ -14383,8 +14393,8 @@
    "cantidad_min": 1,
    "cantidad_max": 5,
    "objetos": [
-    "bol",
-    "taza"
+    "plato",
+    "vaso"
    ]
   }
  },
@@ -17002,7 +17012,7 @@
  {
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
-  "nombre": "¿Cuál tiene más? sandía o melón (frutas de verano)",
+  "nombre": "¿Cuál tiene más? sandía o naranja (frutas de verano)",
   "descripcion": "Toca el grupo con más.",
   "parametros_json": {
    "dificultad": "media",
@@ -20060,7 +20070,7 @@
   "bloque": "calculo",
   "plantilla_tipo": "conteo_comparacion",
   "nombre": "Cuenta plátano (frutas amarillas)",
-  "descripcion": "Cuenta cuántos plátano hay.",
+  "descripcion": "Cuenta cuántos plátanos hay.",
   "parametros_json": {
    "dificultad": "facil",
    "modo": "contar",
@@ -20068,7 +20078,8 @@
    "cantidad_max": 6,
    "objetos": [
     "platano"
-   ]
+   ],
+   "descripcion": "Cuenta cuántos plátanos hay."
   }
  },
  {

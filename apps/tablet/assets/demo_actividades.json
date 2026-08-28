@@ -5741,7 +5741,7 @@
     "modo": "cual_tiene_mas",
     "grupos": [
      {
-      "objeto": "taza",
+      "objeto": "vaso",
       "cantidad": 4
      },
      {
@@ -5757,7 +5757,7 @@
      2
     ],
     "solucion": {
-     "objeto_mayor": "taza"
+     "objeto_mayor": "vaso"
     }
    },
    "metricas": [
@@ -9284,7 +9284,7 @@
     "modo": "cual_tiene_mas",
     "grupos": [
      {
-      "objeto": "bol",
+      "objeto": "plato",
       "cantidad": 2
      },
      {
@@ -9319,7 +9319,7 @@
     "modo": "cual_tiene_menos",
     "grupos": [
      {
-      "objeto": "bol",
+      "objeto": "plato",
       "cantidad": 2
      },
      {
@@ -9335,7 +9335,7 @@
      4
     ],
     "solucion": {
-     "objeto_menor": "bol"
+     "objeto_menor": "plato"
     }
    },
    "metricas": [
@@ -15030,8 +15030,8 @@
    ]
   },
   {
-   "ejercicio_id": "¿Cuál tiene más? tarta o fresa (los postres)",
-   "nombre": "¿Cuál tiene más? tarta o fresa (los postres)",
+   "ejercicio_id": "¿Cuál tiene más? galleta o fresa (los postres)",
+   "nombre": "¿Cuál tiene más? galleta o fresa (los postres)",
    "bloque": "calculo",
    "plantilla": "conteo_comparacion",
    "estado": "en_pruebas",
@@ -15065,8 +15065,8 @@
    ]
   },
   {
-   "ejercicio_id": "Suma: tarta y fresa (los postres)",
-   "nombre": "Suma: tarta y fresa (los postres)",
+   "ejercicio_id": "Suma: galleta y fresa (los postres)",
+   "nombre": "Suma: galleta y fresa (los postres)",
    "bloque": "calculo",
    "plantilla": "conteo_comparacion",
    "estado": "en_pruebas",
@@ -15574,11 +15574,11 @@
     "modo": "cual_tiene_menos",
     "grupos": [
      {
-      "objeto": "bol",
+      "objeto": "plato",
       "cantidad": 4
      },
      {
-      "objeto": "taza",
+      "objeto": "vaso",
       "cantidad": 2
      }
     ]
@@ -15590,7 +15590,7 @@
      2
     ],
     "solucion": {
-     "objeto_menor": "taza"
+     "objeto_menor": "vaso"
     }
    },
    "metricas": [
@@ -15609,11 +15609,11 @@
     "modo": "sumar",
     "grupos": [
      {
-      "objeto": "bol",
+      "objeto": "plato",
       "cantidad": 3
      },
      {
-      "objeto": "taza",
+      "objeto": "vaso",
       "cantidad": 4
      }
     ]
@@ -20878,8 +20878,8 @@
    ]
   },
   {
-   "ejercicio_id": "¿Cuál tiene más? sandía o melón (frutas de verano)",
-   "nombre": "¿Cuál tiene más? sandía o melón (frutas de verano)",
+   "ejercicio_id": "¿Cuál tiene más? sandía o naranja (frutas de verano)",
+   "nombre": "¿Cuál tiene más? sandía o naranja (frutas de verano)",
    "bloque": "calculo",
    "plantilla": "conteo_comparacion",
    "estado": "en_pruebas",
