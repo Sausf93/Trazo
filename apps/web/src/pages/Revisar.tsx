@@ -17,10 +17,13 @@ import { fmtFecha, fmtPorcentaje } from "../utils/format";
 
 type Resultado = "logrado" | "parcial" | "no_logrado";
 
-const OPCIONES: { valor: Resultado; label: string; color: string }[] = [
-  { valor: "logrado", label: "Lo logró", color: colors.sageDark },
-  { valor: "parcial", label: "A medias", color: colors.coral },
-  { valor: "no_logrado", label: "No lo logró", color: colors.coralDark },
+// `color` = borde/fondo activo; `texto` = color del texto en reposo (con
+// contraste AA). Para "A medias", el coral claro (#F08A6B) sobre blanco daba
+// ~2.3:1 (falla AA); el texto usa coralDeep (ronda 3 QA).
+const OPCIONES: { valor: Resultado; label: string; color: string; texto: string }[] = [
+  { valor: "logrado", label: "Lo logró", color: colors.sageDark, texto: colors.sageDark },
+  { valor: "parcial", label: "A medias", color: colors.coral, texto: colors.coralDeep },
+  { valor: "no_logrado", label: "No lo logró", color: colors.coralDark, texto: colors.coralDark },
 ];
 
 /** Resumen legible de QUÉ hizo la persona, para decidir con criterio (no a ciegas). */
@@ -192,7 +195,7 @@ export function RevisarPage() {
                           borderRadius: radius.sm,
                           border: `1.5px solid ${o.color}`,
                           background: activo ? o.color : "transparent",
-                          color: activo ? colors.white : o.color,
+                          color: activo ? colors.white : o.texto,
                           fontWeight: 600,
                           fontSize: 14,
                           cursor: guardandoId === p.id ? "default" : "pointer",

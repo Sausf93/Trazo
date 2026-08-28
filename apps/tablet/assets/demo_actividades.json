@@ -71294,7 +71294,7 @@
     "degradado": null,
     "modelo_fila": null,
     "opciones_figuras": null,
-    "no_leer_opciones": null
+    "no_leer_opciones": true
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
@@ -71714,7 +71714,7 @@
     "degradado": null,
     "modelo_fila": null,
     "opciones_figuras": null,
-    "no_leer_opciones": null
+    "no_leer_opciones": true
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
@@ -95656,7 +95656,7 @@
     "serie": null,
     "figuras": null,
     "modelo": null,
-    "degradado": "silueta",
+    "degradado": "borroso",
     "modelo_fila": null,
     "opciones_figuras": null,
     "no_leer_opciones": null
@@ -96217,8 +96217,8 @@
     "audio": null,
     "opciones": [
      "una pelota",
-     "una rueda",
-     "un plato"
+     "un libro",
+     "un zapato"
     ],
     "serie": null,
     "figuras": null,
@@ -97218,7 +97218,7 @@
     "serie": null,
     "figuras": null,
     "modelo": null,
-    "degradado": "silueta",
+    "degradado": "borroso",
     "modelo_fila": null,
     "opciones_figuras": null,
     "no_leer_opciones": null
@@ -99325,7 +99325,7 @@
     "degradado": null,
     "modelo_fila": null,
     "opciones_figuras": null,
-    "no_leer_opciones": null
+    "no_leer_opciones": true
    },
    "cantidad_objetivo": {
     "n_opciones": 3,
@@ -99675,7 +99675,7 @@
     "degradado": null,
     "modelo_fila": null,
     "opciones_figuras": null,
-    "no_leer_opciones": null
+    "no_leer_opciones": true
    },
    "cantidad_objetivo": {
     "n_opciones": 3,

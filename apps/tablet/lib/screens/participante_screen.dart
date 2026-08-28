@@ -106,7 +106,12 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
 
   // Palabra cálida rotada para el refuerzo entre actividades (sobria, no infantil).
   String _fraseRefuerzo() {
-    const frases = ['¡Muy bien!', 'Estupendo', '¡Vas muy bien!', 'Perfecto', '¡Bien hecho!'];
+    // Ánimo de PROCESO, no de acierto: el intento nace `sin_valorar` (nadie ha
+    // juzgado aún el desempeño), así que afirmar "¡Perfecto!/¡Bien hecho!" tras
+    // cada actividad —aunque no se tocara nada o se fallara— contradice el
+    // principio clínico y suena hueco (feedback de la ronda 3). Se anima a seguir,
+    // sin evaluar.
+    const frases = ['¡Seguimos!', 'Vamos bien', '¡Adelante!', 'Muy bien, seguimos', 'Vamos a por la siguiente'];
     return frases[_idx % frases.length];
   }
 

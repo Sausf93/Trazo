@@ -93787,7 +93787,8 @@
       "aberto"
      ]
     }
-   ]
+   ],
+   "no_leer_opciones": true
   }
  },
  {
@@ -94664,7 +94665,8 @@
       "reys"
      ]
     }
-   ]
+   ],
+   "no_leer_opciones": true
   }
  },
  {
@@ -109931,7 +109933,7 @@
      "id": "calcetin",
      "instruccion": "¿Qué es esto?",
      "imagen": "calcetin",
-     "correcta": "una calcetín",
+     "correcta": "un calcetín",
      "distractores": [
       "un sombrero",
       "una toalla"
@@ -139165,7 +139167,7 @@
      "correcta": "un zapato",
      "distractores": [
       "una bota",
-      "una calcetín"
+      "un calcetín"
      ]
     },
     {
@@ -139216,7 +139218,7 @@
      "id": "candado",
      "instruccion": "¿Qué objeto es?",
      "imagen": "candado",
-     "degradado": "silueta",
+     "degradado": "borroso",
      "correcta": "un candado",
      "distractores": [
       "una llave",
@@ -140847,8 +140849,8 @@
      "degradado": "silueta",
      "correcta": "una pelota",
      "distractores": [
-      "un plato",
-      "una rueda"
+      "un zapato",
+      "un libro"
      ]
     },
     {
@@ -142993,7 +142995,7 @@
      "id": "candado",
      "instruccion": "¿Qué objeto es?",
      "imagen": "candado",
-     "degradado": "silueta",
+     "degradado": "borroso",
      "correcta": "un candado",
      "distractores": [
       "una mariposa",
@@ -143219,7 +143221,7 @@
      "id": "campana",
      "instruccion": "¿Qué objeto es?",
      "imagen": "campana",
-     "degradado": "silueta",
+     "degradado": "borroso",
      "correcta": "una campana",
      "distractores": [
       "una sartén",
@@ -143265,7 +143267,7 @@
      "id": "cactus",
      "instruccion": "¿Qué objeto es?",
      "imagen": "cactus",
-     "degradado": "silueta",
+     "degradado": "borroso",
      "correcta": "un cactus",
      "distractores": [
       "un avión",
@@ -143320,7 +143322,7 @@
      "id": "estrella",
      "instruccion": "¿Qué objeto es?",
      "imagen": "estrella",
-     "degradado": "silueta",
+     "degradado": "borroso",
      "correcta": "una estrella",
      "distractores": [
       "un cactus",
@@ -146343,7 +146345,8 @@
       "colries"
      ]
     }
-   ]
+   ],
+   "no_leer_opciones": true
   }
  },
  {
@@ -147100,7 +147103,8 @@
       "jamonos"
      ]
     }
-   ]
+   ],
+   "no_leer_opciones": true
   }
  },
  {

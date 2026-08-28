@@ -27,11 +27,16 @@ def _num(v, defecto=None):
         return defecto
 
 
-def _grada(fraccion: float, hubo_intento: bool) -> str:
-    """Convierte una fracción de acierto (0..1) en logrado/parcial/no_logrado."""
+def _grada(fraccion: float, hubo_intento: bool, umbral_parcial: float = _UMBRAL_PARCIAL) -> str:
+    """Convierte una fracción de acierto (0..1) en logrado/parcial/no_logrado.
+
+    `umbral_parcial` permite subir el listón cuando la métrica base tiene un azar
+    alto (p. ej. la fracción de pares concordantes de una ordenación vale 0.5 al
+    azar: usar 0.5 premiaría con 'parcial' a más de la mitad de ordenaciones
+    aleatorias — bug de la ronda 3)."""
     if fraccion >= 0.999:
         return "logrado"
-    if fraccion >= _UMBRAL_PARCIAL:
+    if fraccion >= umbral_parcial:
         return "parcial"
     return "no_logrado" if hubo_intento else "sin_valorar"
 
@@ -102,10 +107,16 @@ def _por_aciertos_fallos(v, o, clave_objetivos):
     # bulto (TO).
     if aciertos >= objetivos and fallos == 0:
         return "logrado"
-    # "Tocar a bulto": si hay tantos o más fallos que aciertos, no discrimina;
-    # premiar eso con 'parcial' (0.5) inflaría el desempeño de quien no reconoce
-    # y ensucia la evolución y el informe. Solo hay 'parcial' si acierta MÁS de
-    # lo que falla.
+    # "Tocar TODO por si acaso" (conducta muy típica del mayor confundido): con
+    # pocos distractores, aciertos(3-5) > fallos(2) daría 'parcial' y subiría el
+    # desempeño de quien NO discrimina (bug de la ronda 3, 198/198). Si tocó TODOS
+    # los distractores de la rejilla, no ha discriminado nada -> no_logrado, sin
+    # importar cuántos objetivos haya "acertado" (los tocó todos).
+    total = int(_num(o.get("n_rejilla") or o.get("total"), 0) or 0)
+    n_distractores = total - objetivos if total > objetivos else 0
+    if n_distractores > 0 and fallos >= n_distractores:
+        return "no_logrado"
+    # Solo hay 'parcial' si acierta MÁS de lo que falla (discrimina de verdad).
     if aciertos >= 1 and aciertos > fallos:
         return "parcial"
     return "no_logrado"  # no acertó ninguna, o tocó a bulto (fallos>=aciertos)
@@ -151,7 +162,10 @@ def _secuencia_ordenar(v, o):
                 if seq[i] < seq[j]:
                     concordantes += 1
         ratio_pares = concordantes / total if total else ratio_pos
-    return _grada(max(ratio_pos, ratio_pares), hubo_intento=True)
+    # Umbral de 'parcial' por ENCIMA del azar (0.5 = permutación aleatoria): 0.67
+    # exige estar claramente cerca del orden correcto (un desplazamiento de un paso
+    # sigue puntuando parcial; ordenar al azar ya no).
+    return _grada(max(ratio_pos, ratio_pares), hubo_intento=True, umbral_parcial=0.66)
 
 
 def _arrastrar_posicion(v, o):

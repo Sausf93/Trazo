@@ -378,7 +378,7 @@ function ColaPreview({ usuarioId }: { usuarioId: string }) {
       <Card>
         <h2 style={{ fontSize: 19, marginBottom: 4 }}>Qué actividades le tocarán</h2>
         <p style={{ color: colors.textMuted, fontSize: 14, marginBottom: 14 }}>
-          Comprueba, antes de guardar, las actividades que la tablet le irá pidiendo con este plan.
+          Muestra las actividades que la tablet le irá pidiendo con el plan YA GUARDADO. Guarda tus cambios antes para verlos reflejados aquí.
         </p>
         <Button variant="ghost" onClick={() => setVer(true)}>Ver qué le tocará</Button>
       </Card>
