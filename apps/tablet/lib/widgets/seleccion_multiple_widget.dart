@@ -224,6 +224,16 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
         ?.map((e) => (e as List? ?? const []).map((x) => x.toString()).toList())
         .toList();
 
+    // ¿Es una actividad VISUAL de verdad (series/figuras/modelo)? Solo en esas se
+    // pintan círculos de color / figuras DELANTE de las opciones. En una pregunta
+    // normal, una opción que sea "rojo" o "naranja" (color, fruta…) NO debe llevar
+    // círculo: confundía en muchas actividades (feedback de Saulo).
+    final esVisualAct = (serie != null && serie.isNotEmpty) ||
+        (figuras != null && figuras.isNotEmpty) ||
+        (modelo.isNotEmpty && _parseFicha(modelo).esVisual) ||
+        (modeloFila != null && modeloFila.isNotEmpty) ||
+        (opcionesFiguras != null && opcionesFiguras.isNotEmpty);
+
     final n = opciones.length;
     const gap = 14.0;
     // Se desplaza SOLO si no cabe (minHeight = alto disponible). Así en pantallas
@@ -284,7 +294,7 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
                 if (i > 0) const SizedBox(height: gap),
                 (opcionesFiguras != null && i < opcionesFiguras.length)
                     ? _opcionVisual(opciones[i], opcionesFiguras[i])
-                    : _opcion(opciones[i], 66),
+                    : _opcion(opciones[i], 66, esVisualAct),
               ],
               const SizedBox(height: 8),
             ],
@@ -460,9 +470,13 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
     );
   }
 
-  Widget _opcion(String op, double alto) {
+  Widget _opcion(String op, double alto, [bool visual = false]) {
     final sel = op == _elegida;
-    final fop = _parseFicha(op); // color/figura/figura-color -> ficha delante
+    // Ficha (color/figura) DELANTE solo en actividades visuales; en preguntas
+    // normales una opción "rojo"/"naranja" va como texto, sin círculo.
+    final fop = visual
+        ? _parseFicha(op)
+        : (figura: null, color: null, esVisual: false);
     // Texto grande; si la opción es larga (un refrán, una definición), algo menor.
     final fontSize = op.length > 42
         ? 19.0
