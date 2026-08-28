@@ -10,7 +10,7 @@
 Herramienta de estimulación cognitiva para personas mayores (mayoría con Alzheimer)
 en centros de día. Tres piezas:
 
-1. **App de tablet** (Flutter) — ejercicios de 8 dominios cognitivos, modo participante
+1. **App de tablet** (Flutter) — ejercicios de 9 bloques cognitivos (ver docs/taxonomia-trazo.md), modo participante
    y modo facilitadora.
 2. **Backend** (FastAPI + PostgreSQL) — motor de ejercicios *data-driven*, sesiones,
    intentos y detección temprana de cambios.
@@ -50,11 +50,11 @@ trazo/
 | Pieza | Estado |
 |---|---|
 | Backend: modelo de datos + auth JWT + motor de plantillas + alertas + planes/dispositivos/cola + auto-sugerencia de nivel + ciclo de sala | OK, funcionando |
-| Catálogo de actividades (data-driven en `catalogo.json`) | OK, 71 actividades (>=8 por tipo) |
+| Catálogo de actividades (data-driven en `catalogo.json`) | OK, ~2.800 actividades en el banco (~229 validadas en producción; compuerta en_pruebas/validada). Ver `pytest` y `catalogo.json` |
 | Tests (unitarios + E2E de sesión) | OK, 28 en verde |
 | Panel web (React): login, panel, evolución, alertas, ejercicios, sesión en vivo, editor de planes, dispositivos | OK, verificado contra la API |
 | Web comercial (landing): con slider de actividades ilustradas | OK |
-| App tablet (Flutter): modelo maestra/kiosco, reparto por toque, cola con las 8 actividades y mediciones | OK, compila y arranca |
+| App tablet (Flutter): modelo maestra/kiosco, reparto por toque, cola con las 9 plantillas y mediciones | OK, compila y arranca |
 
 > Guía paso a paso para levantarlo en local: [`docs/GUIA-LOCAL.md`](docs/GUIA-LOCAL.md).
 

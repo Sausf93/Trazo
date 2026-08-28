@@ -52,9 +52,16 @@ def test_arrastrar_posicion():
     o = {"emparejamientos": {"tenedor": "izq", "cuchillo": "der"}}
     assert corregir("arrastrar_posicion",
                     {"colocaciones": {"tenedor": "izq", "cuchillo": "der"}}, o) == "logrado"
+    # Volcar TODAS las piezas en una sola zona (habiendo ≥2 zonas correctas) NO
+    # discrimina, aunque alguna caiga bien por casualidad -> no_logrado (guardia
+    # anti-bulto, mismo criterio que memoria/búsqueda).
     assert corregir("arrastrar_posicion",
-                    {"colocaciones": {"tenedor": "izq", "cuchillo": "izq"}}, o) == "parcial"
+                    {"colocaciones": {"tenedor": "izq", "cuchillo": "izq"}}, o) == "no_logrado"
     assert corregir("arrastrar_posicion", {"colocaciones": {}}, o) == "sin_valorar"
+    # Parcial REAL: reparte entre zonas y falla una (usa varias zonas, sin bulto).
+    o3 = {"emparejamientos": {"a": "izq", "b": "der", "c": "der"}}
+    assert corregir("arrastrar_posicion",
+                    {"colocaciones": {"a": "izq", "b": "der", "c": "izq"}}, o3) == "parcial"
 
 
 def test_manejo_cantidad_dinero_y_reloj():

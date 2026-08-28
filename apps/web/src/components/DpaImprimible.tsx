@@ -50,12 +50,12 @@ export function DpaImprimible({ centro, onHecho }: { centro: string; onHecho: ()
       {clausula("3. Instrucciones", <>El Encargado tratará los datos <strong>únicamente siguiendo las instrucciones documentadas</strong> del Responsable y no para fines propios.</>)}
       {clausula("4. Confidencialidad", <>El personal del Encargado con acceso a los datos está sujeto a deber de confidencialidad.</>)}
       {clausula("5. Medidas de seguridad (art. 32)", <>Cifrado en tránsito y en reposo, pseudonimización, control de accesos por rol, aislamiento por centro y registro de auditoría de accesos.</>)}
-      {clausula("6. Subencargados", <>El Encargado se apoya en proveedores de infraestructura en la UE (alojamiento y base de datos gestionada). Se compromete a trasladarles las mismas obligaciones y a informar de cualquier cambio para que el Responsable pueda oponerse.</>)}
+      {clausula("6. Subencargados", <>El Encargado se apoya en los siguientes subencargados: <strong>Google Cloud (Cloud Run, región Madrid, España)</strong> como alojamiento de la aplicación; <strong>Aiven</strong> como base de datos gestionada (PostgreSQL); y <strong>Cloudflare</strong> para la entrega de los frontends. El tratamiento se realiza en la Unión Europea. El Encargado traslada a estos subencargados las mismas obligaciones de protección de datos e informará de cualquier alta o cambio para que el Responsable pueda oponerse.</>)}
       {clausula("7. Asistencia al Responsable", <>El Encargado ayudará a atender los derechos de los interesados (acceso, rectificación, supresión, etc.) y el cumplimiento de los arts. 32-36.</>)}
       {clausula("8. Brechas de seguridad", <>El Encargado notificará al Responsable, sin dilación indebida, cualquier violación de seguridad de la que tenga conocimiento.</>)}
       {clausula("9. Fin del encargo", <>Al terminar, el Encargado, a elección del Responsable, devolverá o suprimirá los datos y las copias.</>)}
       {clausula("10. Auditorías", <>El Encargado permitirá y contribuirá a las auditorías del Responsable.</>)}
-      {clausula("11. Ubicación de los datos", <>Los datos se tratan en servidores dentro del Espacio Económico Europeo; no hay transferencias internacionales fuera del EEE.</>)}
+      {clausula("11. Ubicación de los datos y transferencias", <>Los datos se tratan en servidores ubicados en el Espacio Económico Europeo (Madrid, España). Algunos subencargados (Google Cloud, Cloudflare) pertenecen a grupos con matriz en EE. UU.; para cualquier acceso desde fuera del EEE se aplican las garantías del capítulo V del RGPD (cláusulas contractuales tipo y/o el marco EU-US Data Privacy Framework).</>)}
 
       <div style={{ marginTop: 24, display: "flex", gap: 40, flexWrap: "wrap" }}>
         <div style={{ flex: "1 1 240px" }}>

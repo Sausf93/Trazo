@@ -11,6 +11,7 @@ from app.models import (
     ROLES_OTORGANTE,
     Consentimiento,
     DatosIdentificativos,
+    DocumentoLegal,
     PlanPacienteLinea,
     Sesion,
     SesionParticipante,
@@ -139,11 +140,13 @@ async def suprimir_usuario(
     db: AsyncSession = Depends(get_db),
     staff: UsuarioStaff = Depends(get_current_staff),
 ):
-    """RGPD art. 17 (derecho de supresión): ANONIMIZA a la persona. Borra sus datos
-    identificativos (nombre real) y consentimientos, la saca de las salas y
-    pseudonimiza su alias. El histórico de intentos se conserva ya SIN vínculo con
-    su identidad (interés legítimo: estadística clínica), y queda traza de la
-    supresión en auditoría. Solo el admin del centro puede hacerlo."""
+    """RGPD art. 17 (derecho de supresión): DISOCIA a la persona. Borra TODO dato
+    que la identifique — nombre real, consentimientos y los DOCUMENTOS legales
+    escaneados (que contienen nombre, DNI/NIE e imágenes) —, la saca de las salas
+    y pseudonimiza su alias. El histórico de intentos se conserva ya SIN vínculo
+    con su identidad (interés legítimo: estadística clínica) y, borrados esos
+    documentos, deja de ser reidentificable. Queda traza de la supresión en
+    auditoría. Solo el admin del centro puede hacerlo."""
     if staff.rol != "admin_centro":
         raise HTTPException(status.HTTP_403_FORBIDDEN,
                             "Solo la administración del centro puede suprimir una persona")
@@ -160,6 +163,13 @@ async def suprimir_usuario(
         select(Consentimiento).where(Consentimiento.usuario_final_id == uf.id)
     )).scalars().all():
         await db.delete(cons)
+    # 2b) Borrar los DOCUMENTOS legales escaneados (consentimiento firmado, imagen,
+    # representación): contienen nombre, DNI/NIE y fotos. Sin esto la persona
+    # seguía siendo REIDENTIFICABLE tras "suprimirla" (hallazgo de auditoría RGPD).
+    for doc in (await db.execute(
+        select(DocumentoLegal).where(DocumentoLegal.usuario_final_id == uf.id)
+    )).scalars().all():
+        await db.delete(doc)
     # 3) Sacarla de cualquier sala y pseudonimizar el alias.
     for pid in (await db.execute(
         select(SesionParticipante.id)
@@ -173,7 +183,7 @@ async def suprimir_usuario(
     uf.alias_interno = "Persona suprimida"
     uf.activo = False
     await auditar(db, staff, "supresion_rgpd", usuario_final_id=uf.id,
-                  detalle="anonimizada: borrados datos identificativos y consentimientos")
+                  detalle="disociada: borrados datos identificativos, consentimientos y documentos legales")
     await db.commit()
     return None
 

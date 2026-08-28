@@ -20,8 +20,8 @@ producción. Lee esto antes de tocar nada: evita re-derivar la arquitectura.
 | Landing + vitrina | `apps/landing` | HTML + build de la tablet en `/demo` |
 
 - **Multi-tenant**: TODO va scoped por `centro_id`. Anti-IDOR en cada endpoint (`usuario_del_centro`, `acceso_centro` revalida centro activo). No romper el aislamiento.
-- **Motor de ejercicios data-driven**: 8 plantillas, ~230 actividades en `backend/api/app/data/catalogo.json`. Generadores en `app/templates/tipos.py`. Autocorrección en `app/services/correccion.py`. Añadir contenido: skill `contenido` (pipeline seguro con validación y prueba de autocorrección).
-- Las 8 plantillas: `trazo`, `seleccion_multiple`, `memoria_visual`, `busqueda_visual`, `secuencia_ordenar`, `arrastrar_posicion` (por TOQUE, no arrastre), `conteo_comparacion`, `manejo_cantidad` (dinero/reloj).
+- **Motor de ejercicios data-driven**: 9 plantillas, ~2.800 actividades en el banco (~229 validadas en producción; compuerta en_pruebas/validada) en `backend/api/app/data/catalogo.json`. Generadores en `app/templates/tipos.py`. Autocorrección en `app/services/correccion.py`. Añadir contenido: skill `contenido` (pipeline seguro con validación y prueba de autocorrección).
+- Las 9 plantillas: `trazo`, `seleccion_multiple`, `memoria_visual`, `busqueda_visual`, `secuencia_ordenar`, `arrastrar_posicion` (por TOQUE, no arrastre), `conteo_comparacion`, `manejo_cantidad` (dinero/reloj), `parejas` (memoria de parejas).
 
 ## Flujos clave (no re-derivar)
 - **Tablet, inicio (`rol_screen.dart`)**: EMPAREJAR es lo primero y OBLIGATORIO (código del panel «Tablets», token de dispositivo). SOLO tras emparejar aparece MAESTRA / PARTICIPANTE, y el rol se elige EN CADA USO (la misma tablet sirve para ambas). El demo/vitrina usa `GaleriaScreen` (sin emparejar).
@@ -31,7 +31,7 @@ producción. Lee esto antes de tocar nada: evita re-derivar la arquitectura.
 ## Principios clínicos que NO revertir
 - El intento **nace `sin_valorar`**: no puntúa hasta que la integradora lo revise. `sin_valorar` ≠ `no_logrado` (no tocar nada no es fallar).
 - Se mide **desempeño**, no deterioro; nunca lenguaje diagnóstico.
-- Señal principal = **resultado autocorregido** (`logrado`=1 / `parcial`=0.5 / `no_logrado`=0), definido para las 8 plantillas. La gráfica de evolución y el informe a familia usan ESE desempeño (no `precision`, que solo existe en 3 plantillas).
+- Señal principal = **resultado autocorregido** (`logrado`=1 / `parcial`=0.5 / `no_logrado`=0), definido para las plantillas medibles. La gráfica de evolución y el informe a familia usan ESE desempeño (no `precision`, que solo existe en 3 plantillas).
 - Alertas = cambio vs la **propia base** del paciente (por sesión, segmentado por dificultad). No re-implementar heurísticas cliente que la contradigan.
 
 ## Comandos

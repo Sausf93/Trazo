@@ -1270,31 +1270,50 @@ class _VistaEjercicio extends StatelessWidget {
                       color: TrazoColors.ink),
                 ),
               ),
+              // "Escuchar" CON etiqueta y objetivo táctil amplio: quien más lo
+              // necesita (baja visión / no lee) no encontraba el icono suelto.
               if (onLeer != null)
-                Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: Material(
-                    color: TrazoColors.card,
-                    shape: const CircleBorder(),
-                    child: InkWell(
-                      customBorder: const CircleBorder(),
-                      onTap: onLeer,
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Icon(Icons.volume_up,
-                            size: 30, color: TrazoColors.sageDark),
-                      ),
+                Material(
+                  color: TrazoColors.card,
+                  borderRadius: BorderRadius.circular(999),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(999),
+                    onTap: onLeer,
+                    child: Container(
+                      constraints: const BoxConstraints(minHeight: 48),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 10),
+                      child: const Row(mainAxisSize: MainAxisSize.min, children: [
+                        Icon(Icons.volume_up,
+                            size: 26, color: TrazoColors.sageDark),
+                        SizedBox(width: 8),
+                        Text('Escuchar',
+                            style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w700,
+                                color: TrazoColors.sageDark)),
+                      ]),
                     ),
                   ),
                 ),
-              Text('${indice + 1} de $total',
-                  style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: TrazoColors.sageDark)),
             ],
           ),
         ),
+        // Progreso SUTIL (barra), no "3 de 20": ver "me faltan 17" desanima y
+        // anticipa fatiga a una persona frágil (feedback de la ronda 3 QA).
+        if (total > 0)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: LinearProgressIndicator(
+                value: (indice + 1) / total,
+                minHeight: 5,
+                backgroundColor: TrazoColors.sand,
+                color: TrazoColors.sage,
+              ),
+            ),
+          ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(24),
@@ -1408,7 +1427,7 @@ class _PinDialogState extends State<_PinDialog> {
         child: OutlinedButton(
           onPressed: () => _pulsa(d),
           style: OutlinedButton.styleFrom(
-              side: const BorderSide(color: TrazoColors.sand)),
+              side: const BorderSide(color: TrazoColors.bordeControl)),
           child: Text(d,
               style: const TextStyle(fontSize: 24, color: TrazoColors.ink)),
         ),
@@ -1435,7 +1454,7 @@ class _PinDialogState extends State<_PinDialog> {
                     shape: BoxShape.circle,
                     color: i < _entrada.length
                         ? TrazoColors.sageDark
-                        : TrazoColors.sand,
+                        : TrazoColors.bordeControl,
                   ),
                 ),
               ),
@@ -1460,7 +1479,7 @@ class _PinDialogState extends State<_PinDialog> {
                   child: OutlinedButton(
                     onPressed: _borra,
                     style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: TrazoColors.sand)),
+                        side: const BorderSide(color: TrazoColors.bordeControl)),
                     child: const Icon(Icons.backspace_outlined,
                         color: TrazoColors.sageDark),
                   ),

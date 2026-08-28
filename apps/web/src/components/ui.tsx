@@ -134,7 +134,7 @@ export const inputStyle: CSSProperties = {
   width: "100%",
   padding: "11px 13px",
   borderRadius: radius.sm,
-  border: `1.5px solid ${colors.sand}`,
+  border: `1.5px solid ${colors.bordeControl}`,
   background: colors.white,
   color: colors.ink,
 };
@@ -200,7 +200,7 @@ export function Badge({
 }) {
   const tones = {
     sage: { bg: "rgba(124,152,133,0.16)", fg: colors.sageDark, br: "rgba(124,152,133,0.4)" },
-    coral: { bg: colors.alertBg, fg: colors.coralDark, br: colors.coral },
+    coral: { bg: colors.alertBg, fg: colors.coralDeep, br: colors.coralDark },
     neutral: { bg: colors.card, fg: colors.textMuted, br: colors.sand },
   }[tone];
   return (

@@ -16,6 +16,9 @@ export const colors = {
   // Coral profundo para texto/botones con texto blanco (contraste WCAG AA).
   coralDeep: "#A8431F",
   sand: "#D2E6E2",
+  // Borde de CONTROL en reposo (inputs, selects): sand ~1.1:1 sobre blanco
+  // fallaba WCAG 1.4.11 (control debe tener >=3:1). Mismo teal que la tablet.
+  bordeControl: "#5F918A",
   white: "#FFFEFB",
 
   // Azul de acento (petición de Saulo para CTA/enlaces).
@@ -25,7 +28,7 @@ export const colors = {
   // Derivados usados en la presentación (texto secundario, fondos suaves).
   text: "#12312E",
   textMuted: "#5A716E",
-  textFaint: "#5F736F",
+  textFaint: "#4E635F",
   alertBg: "#FDEEE8",
   alertText: "#7A4A3A",
 } as const;

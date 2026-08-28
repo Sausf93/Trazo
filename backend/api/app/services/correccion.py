@@ -178,6 +178,14 @@ def _arrastrar_posicion(v, o):
     total = len(emparejamientos)
     aciertos = sum(1 for pieza, zona in colocaciones.items()
                    if emparejamientos.get(pieza) == zona)
+    # Guardia anti-"responder a bulto": volcar TODAS las piezas en una sola zona
+    # (conducta del mayor confundido) acierta las de esa zona y sacaría 'parcial'
+    # sin discriminar. Si usó una sola zona habiendo ≥2 zonas correctas distintas,
+    # no ha clasificado -> no_logrado (mismo criterio que memoria/búsqueda).
+    zonas_correctas = set(emparejamientos.values())
+    zonas_usadas = set(colocaciones.values())
+    if len(zonas_correctas) >= 2 and len(zonas_usadas) == 1:
+        return "no_logrado"
     return _grada(aciertos / total, hubo_intento=True)
 
 
