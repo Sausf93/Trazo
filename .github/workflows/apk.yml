@@ -1,0 +1,50 @@
+name: APK Trazo (tablet)
+
+# Compila el APK de la tablet en un runner Linux (evita el bloqueo de loopback
+# de Gradle que hay en el equipo local). Se dispara al hacer push que toque la
+# tablet, o a mano desde la pestaña Actions ("Run workflow").
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "apps/tablet/**"
+      - ".github/workflows/apk.yml"
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/tablet
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Configurar Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Dependencias
+        run: flutter pub get
+
+      - name: Compilar APK (release)
+        run: flutter build apk --release --dart-define=API_URL=https://trazo-api-11684717030.europe-southwest1.run.app
+
+      - name: Renombrar APK
+        run: cp build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/Trazo.apk
+
+      - name: Publicar APK como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: Trazo-apk
+          path: apps/tablet/build/app/outputs/flutter-apk/Trazo.apk
+          if-no-files-found: error
+          retention-days: 30
