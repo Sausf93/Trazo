@@ -55,3 +55,7 @@ _deploy/*.aab
 
 # Config MCP con secretos (Firecrawl API key) - no versionar
 .mcp.json
+
+# Playwright MCP snapshots y capturas sueltas
+.playwright-mcp/
+/*.png
