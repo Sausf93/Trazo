@@ -86,7 +86,7 @@ export function SesionesPage() {
 const SEGMENTOS = [
   { key: "logrado", label: "Lo logró", color: colors.sage },
   { key: "parcial", label: "A medias", color: colors.coral },
-  { key: "no_logrado", label: "No lo logró", color: colors.sand },
+  { key: "no_logrado", label: "No lo logró", color: colors.textMuted },
 ] as const;
 
 function ResumenDetalle({ sesion, onVolver }: { sesion: SesionListItem; onVolver: () => void }) {

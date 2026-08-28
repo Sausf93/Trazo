@@ -147,6 +147,9 @@ class PlantillaSeleccionMultiple(PlantillaBase):
                 "modelo_fila": item.get("modelo_fila"),
                 # Opciones VISUALES (una fila de fichas por opción).
                 "opciones_figuras": opciones_figuras,
+                # No leer las opciones en voz alta (homófonos/ortografía: "ola",
+                # "hola", "olla" suenan igual; dictarlas hace la tarea imposible).
+                "no_leer_opciones": parametros.get("no_leer_opciones"),
             },
             # `correcta` viaja aquí para que el backend autocorrija el intento
             # (la tablet reenvía cantidad_objetivo sin usarla ni mostrarla).
@@ -602,7 +605,11 @@ class PlantillaManejoCantidad(PlantillaBase):
         return self._gen_dinero(cfg, nivel, denoms, denoms_render, modo, banda_id, rng)
 
     def _gen_reloj(self, cfg, rng):
-        hora = rng.randint(1, 12)
+        # `horas` fija las horas posibles (p. ej. "¿Qué hora es? sobre las 3" ->
+        # horas:[3]); sin ella, cualquier hora. Antes salía SIEMPRE al azar y las
+        # 12 actividades "sobre las N" eran duplicados con nombre falso (ronda QA).
+        horas = cfg.get("horas") or list(range(1, 13))
+        hora = rng.choice([int(h) for h in horas])
         minuto = rng.choice(cfg.get("minutos", [0, 15, 30, 45]))
         return InstanciaEjercicio(
             plantilla=self.tipo,
@@ -661,11 +668,16 @@ class PlantillaManejoCantidad(PlantillaBase):
             pago_c = next((b for b in BILLETES_C if b >= precio_c), precio_c)
         vuelta_c = pago_c - precio_c
         desglose = _desglose_greedy(vuelta_c, denoms)
+        # No decir "monedas" si en pantalla hay billetes (o la vuelta los usa): la
+        # consigna pedía "con las monedas" mientras aparecían billetes de 5/10/20 €
+        # y la vuelta correcta a veces los necesitaba (bug de la ronda QA).
+        con_billetes = any(d >= 500 for d in denoms) or any(m >= 500 for m in desglose)
+        con_que = "con el dinero" if con_billetes else "con las monedas"
         return InstanciaEjercicio(
             plantilla=self.tipo,
             render={
                 "instruccion": f"Compras algo de {_fmt_eur(precio_c)} y pagas con "
-                               f"{_fmt_eur(pago_c)}. Prepara la vuelta con las monedas.",
+                               f"{_fmt_eur(pago_c)}. Prepara la vuelta {con_que}.",
                 "modo": "vuelta",
                 # Se muestra la vuelta como objetivo (importe_c/importe_texto): así
                 # el widget pinta la caja "Tienes que reunir" y es auto-verificable,

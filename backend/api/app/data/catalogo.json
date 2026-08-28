@@ -10603,7 +10603,7 @@
    "cantidad_min": 2,
    "cantidad_max": 6,
    "objetos": [
-    "bol"
+    "plato"
    ]
   }
  },
@@ -10650,7 +10650,7 @@
    "cantidad_min": 1,
    "cantidad_max": 5,
    "objetos": [
-    "bol",
+    "plato",
     "cuchara"
    ]
   }
@@ -18937,7 +18937,7 @@
  {
   "bloque": "razonamiento",
   "plantilla_tipo": "seleccion_multiple",
-  "nombre": "¿Cuál sobra? (vehículos)",
+  "nombre": "¿Cuál sobra? (Vehículos)",
   "descripcion": "Encuentra el intruso entre vehículos.",
   "parametros_json": {
    "dificultad": "media",
@@ -20025,24 +20025,32 @@
    "segundos": 45,
    "banco": [
     {
-     "id": "manzana",
-     "label": "manzana"
-    },
-    {
      "id": "limon",
      "label": "limon"
     },
     {
-     "id": "sandia",
-     "label": "sandia"
+     "id": "platano",
+     "label": "platano"
     },
     {
      "id": "pera",
      "label": "pera"
     },
     {
+     "id": "manzana",
+     "label": "manzana"
+    },
+    {
      "id": "naranja",
      "label": "naranja"
+    },
+    {
+     "id": "fresa",
+     "label": "fresa"
+    },
+    {
+     "id": "cereza",
+     "label": "cereza"
     }
    ]
   },
@@ -20059,7 +20067,7 @@
    "cantidad_min": 2,
    "cantidad_max": 6,
    "objetos": [
-    "pera"
+    "platano"
    ]
   }
  },
@@ -23266,6 +23274,9 @@
     15,
     30,
     45
+   ],
+   "horas": [
+    1
    ]
   }
  },
@@ -23282,6 +23293,9 @@
     15,
     30,
     45
+   ],
+   "horas": [
+    2
    ]
   }
  },
@@ -23298,6 +23312,9 @@
     15,
     30,
     45
+   ],
+   "horas": [
+    3
    ]
   }
  },
@@ -23314,6 +23331,9 @@
     15,
     30,
     45
+   ],
+   "horas": [
+    4
    ]
   }
  },
@@ -23330,6 +23350,9 @@
     15,
     30,
     45
+   ],
+   "horas": [
+    5
    ]
   }
  },
@@ -23346,6 +23369,9 @@
     15,
     30,
     45
+   ],
+   "horas": [
+    6
    ]
   }
  },
@@ -23362,6 +23388,9 @@
     15,
     30,
     45
+   ],
+   "horas": [
+    7
    ]
   }
  },
@@ -23378,6 +23407,9 @@
     15,
     30,
     45
+   ],
+   "horas": [
+    8
    ]
   }
  },
@@ -23394,6 +23426,9 @@
     15,
     30,
     45
+   ],
+   "horas": [
+    9
    ]
   }
  },
@@ -23410,6 +23445,9 @@
     15,
     30,
     45
+   ],
+   "horas": [
+    10
    ]
   }
  },
@@ -23426,6 +23464,9 @@
     15,
     30,
     45
+   ],
+   "horas": [
+    11
    ]
   }
  },
@@ -23442,6 +23483,9 @@
     15,
     30,
     45
+   ],
+   "horas": [
+    12
    ]
   }
  },
@@ -27219,7 +27263,7 @@
  {
   "bloque": "lenguaje",
   "plantilla_tipo": "arrastrar_posicion",
-  "nombre": "Clasifica: animales de la granja y vehículos",
+  "nombre": "Clasifica: animales de la granja y Vehículos",
   "descripcion": "Clasifica: animales de la granja y vehículos",
   "parametros_json": {
    "dificultad": "media",
@@ -28556,7 +28600,7 @@
      "instruccion": "¿Cuál es el más largo?",
      "correcta": "Tren",
      "distractores": [
-      "Lápiz",
+      "lápiz",
       "Regla"
      ]
     },
@@ -28590,10 +28634,10 @@
     {
      "id": "El m4",
      "instruccion": "¿Cuál es el más largo?",
-     "correcta": "Bastón",
+     "correcta": "bastón",
      "distractores": [
       "Aguja",
-      "Lápiz"
+      "lápiz"
      ]
     }
    ]
@@ -28612,7 +28656,7 @@
     {
      "id": "El m0",
      "instruccion": "¿Cuál es el más corto?",
-     "correcta": "Lápiz",
+     "correcta": "lápiz",
      "distractores": [
       "Regla",
       "Tren"
@@ -28650,8 +28694,8 @@
      "instruccion": "¿Cuál es el más corto?",
      "correcta": "Aguja",
      "distractores": [
-      "Lápiz",
-      "Bastón"
+      "lápiz",
+      "bastón"
      ]
     }
    ]
@@ -28688,7 +28732,7 @@
     {
      "id": "El m2",
      "instruccion": "¿Cuál es el más alto?",
-     "correcta": "Árbol",
+     "correcta": "árbol",
      "distractores": [
       "Perro",
       "Persona"
@@ -28749,7 +28793,7 @@
      "correcta": "Perro",
      "distractores": [
       "Persona",
-      "Árbol"
+      "árbol"
      ]
     },
     {
@@ -28911,7 +28955,7 @@
     {
      "id": "El m1",
      "instruccion": "¿Cuál es el más rápido?",
-     "correcta": "Avión",
+     "correcta": "avión",
      "distractores": [
       "Caracol",
       "Bicicleta"
@@ -28972,7 +29016,7 @@
      "correcta": "Caracol",
      "distractores": [
       "Bicicleta",
-      "Avión"
+      "avión"
      ]
     },
     {
@@ -29114,7 +29158,7 @@
      "correcta": "guardaespaldas",
      "distractores": [
       "salvavidas",
-      "cortauñas"
+      "cortaúñas"
      ],
      "enunciado": "El que GUARDA las ESPALDAS de alguien es el…"
     },
@@ -39644,7 +39688,7 @@
  {
   "bloque": "funcion_ejecutiva",
   "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Todo menos los vehículos",
+  "nombre": "Todo menos los Vehículos",
   "descripcion": "Tocarlo todo salvo los vehículos: esos se saltan.",
   "parametros_json": {
    "dificultad": "media",
@@ -40023,7 +40067,7 @@
      "correcta": "Agua en el depósito",
      "distractores": [
       "El café ya hecho en la taza",
-      "Azúcar en el fuego"
+      "azúcar en el fuego"
      ]
     },
     {
@@ -40779,7 +40823,7 @@
      "correcta": "Jabón",
      "distractores": [
       "Aceite",
-      "Azúcar"
+      "azúcar"
      ]
     },
     {
@@ -41008,7 +41052,7 @@
      "correcta": "Un poco de aceite",
      "distractores": [
       "Agua fría",
-      "Azúcar"
+      "azúcar"
      ]
     },
     {
@@ -44311,7 +44355,7 @@
      "correcta": "El saco de patatas",
      "distractores": [
       "La hoja de laurel",
-      "Una miga de pan"
+      "un miga de pan"
      ]
     },
     {
@@ -46677,7 +46721,7 @@
      "correcta": "La chimenea",
      "distractores": [
       "La ventana",
-      "El balcon"
+      "El balcón"
      ]
     },
     {
@@ -46704,7 +46748,7 @@
      "id": "i4",
      "instruccion": "Elige la respuesta",
      "enunciado": "Saliente con barandilla asomado a la calle",
-     "correcta": "El balcon",
+     "correcta": "El balcón",
      "distractores": [
       "La escalera",
       "El tejado"
@@ -46789,7 +46833,7 @@
      "enunciado": "Pasillo largo que une las habitaciones",
      "correcta": "El corredor",
      "distractores": [
-      "El balcon",
+      "El balcón",
       "La chimenea"
      ]
     }
@@ -47018,7 +47062,7 @@
  {
   "bloque": "gnosias",
   "plantilla_tipo": "seleccion_multiple",
-  "nombre": "En la estacion de tren",
+  "nombre": "En la estación de tren",
   "descripcion": "Identifica las partes del tren y de la estacion por su descripcion.",
   "parametros_json": {
    "dificultad": "media",
@@ -47031,7 +47075,7 @@
      "enunciado": "Suelo alto junto a las vias donde se espera el tren",
      "correcta": "El anden",
      "distractores": [
-      "El tunel",
+      "El túnel",
       "El vagon"
      ]
     },
@@ -47069,7 +47113,7 @@
      "id": "i4",
      "instruccion": "Elige la respuesta",
      "enunciado": "Agujero en la montana por donde pasa el tren",
-     "correcta": "El tunel",
+     "correcta": "El túnel",
      "distractores": [
       "El anden",
       "La via"
@@ -47081,7 +47125,7 @@
      "enunciado": "Papel que se compra para poder viajar",
      "correcta": "El billete",
      "distractores": [
-      "El tunel",
+      "El túnel",
       "El vagon"
      ]
     }
@@ -47091,7 +47135,7 @@
  {
   "bloque": "gnosias",
   "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Partes del avion",
+  "nombre": "Partes del avión",
   "descripcion": "Reconoce las partes de un avion por su descripcion.",
   "parametros_json": {
    "dificultad": "dificil",
@@ -47177,7 +47221,7 @@
      "enunciado": "Trabaja en la panaderia y hace el pan",
      "correcta": "El panadero",
      "distractores": [
-      "El medico",
+      "El médico",
       "El pescador"
      ]
     },
@@ -47185,7 +47229,7 @@
      "id": "i1",
      "instruccion": "Elige la respuesta",
      "enunciado": "Atiende a los enfermos en el hospital",
-     "correcta": "El medico",
+     "correcta": "El médico",
      "distractores": [
       "El panadero",
       "El albanil"
@@ -47217,7 +47261,7 @@
      "enunciado": "Guisa los platos en la cocina del restaurante",
      "correcta": "El cocinero",
      "distractores": [
-      "El medico",
+      "El médico",
       "El carnicero"
      ]
     },
@@ -47237,7 +47281,7 @@
  {
   "bloque": "gnosias",
   "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Vehiculos de servicio y emergencia",
+  "nombre": "Vehículos de servicio y emergencia",
   "descripcion": "Reconoce el vehiculo por el trabajo que hace en la calle.",
   "parametros_json": {
    "dificultad": "facil",
@@ -47250,7 +47294,7 @@
      "enunciado": "Corre con sirena y lleva a los enfermos al hospital",
      "correcta": "La ambulancia",
      "distractores": [
-      "El autobus",
+      "El autobús",
       "El tractor"
      ]
     },
@@ -47258,7 +47302,7 @@
      "id": "i1",
      "instruccion": "Elige la respuesta",
      "enunciado": "Rojo, con manguera, apaga los incendios",
-     "correcta": "El camion de bomberos",
+     "correcta": "El camión de bomberos",
      "distractores": [
       "La ambulancia",
       "El taxi"
@@ -47278,7 +47322,7 @@
      "id": "i3",
      "instruccion": "Elige la respuesta",
      "enunciado": "Recoge la basura por las calles",
-     "correcta": "El camion de la basura",
+     "correcta": "El camión de la basura",
      "distractores": [
       "El taxi",
       "La ambulancia"
@@ -47290,7 +47334,7 @@
      "enunciado": "Lo paras en la calle y pagas por el viaje",
      "correcta": "El taxi",
      "distractores": [
-      "El camion de bomberos",
+      "El camión de bomberos",
       "El tractor"
      ]
     },
@@ -47310,7 +47354,7 @@
  {
   "bloque": "gnosias",
   "plantilla_tipo": "seleccion_multiple",
-  "nombre": "Platos tipicos de Espana",
+  "nombre": "Platos típicos de España",
   "descripcion": "Reconoce el plato tipico espanol por su descripcion.",
   "parametros_json": {
    "dificultad": "media",
@@ -47394,7 +47438,7 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "Se corta en lonchas finas, curado de la pata del cerdo",
-     "correcta": "El jamon",
+     "correcta": "El jamón",
      "distractores": [
       "El queso",
       "El pan"
@@ -47406,7 +47450,7 @@
      "enunciado": "Rojo, embutido con pimenton, picante o dulce",
      "correcta": "El chorizo",
      "distractores": [
-      "El jamon",
+      "El jamón",
       "La aceituna"
      ]
     },
@@ -47416,7 +47460,7 @@
      "enunciado": "Negra, hecha con sangre y arroz o cebolla",
      "correcta": "La morcilla",
      "distractores": [
-      "El jamon",
+      "El jamón",
       "El queso"
      ]
     },
@@ -47446,7 +47490,7 @@
      "enunciado": "Fiambre rosado con puntitos, gusta a los ninos",
      "correcta": "La mortadela",
      "distractores": [
-      "El jamon",
+      "El jamón",
       "El chorizo"
      ]
     }
@@ -47470,7 +47514,7 @@
      "correcta": "Tomate",
      "distractores": [
       "Coche de bomberos",
-      "Plátano"
+      "plátano"
      ]
     },
     {
@@ -47499,7 +47543,7 @@
      "enunciado": "Rojo y que se come:",
      "correcta": "Pimiento rojo",
      "distractores": [
-      "Semáforo",
+      "semáforo",
       "Zanahoria"
      ]
     },
@@ -47603,7 +47647,7 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "Grande y con ruedas:",
-     "correcta": "Autobús",
+     "correcta": "autobús",
      "distractores": [
       "Ballena",
       "Patines"
@@ -47613,7 +47657,7 @@
      "id": "i1",
      "instruccion": "Elige la respuesta",
      "enunciado": "Grande y con ruedas:",
-     "correcta": "Camión",
+     "correcta": "camión",
      "distractores": [
       "Montaña",
       "Monopatín"
@@ -47666,7 +47710,7 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "Amarillo y que se come:",
-     "correcta": "Plátano",
+     "correcta": "plátano",
      "distractores": [
       "Taxi",
       "Berenjena"
@@ -47676,7 +47720,7 @@
      "id": "i1",
      "instruccion": "Elige la respuesta",
      "enunciado": "Amarillo y que se come:",
-     "correcta": "Limón",
+     "correcta": "limón",
      "distractores": [
       "Patito de goma",
       "Cereza"
@@ -47741,8 +47785,8 @@
      "enunciado": "Verde y que se come:",
      "correcta": "Pepino",
      "distractores": [
-      "Semáforo en verde",
-      "Jamón"
+      "semáforo en verde",
+      "jamón"
      ]
     },
     {
@@ -47795,7 +47839,7 @@
      "correcta": "Naranja",
      "distractores": [
       "Balón de fútbol",
-      "Plátano"
+      "plátano"
      ]
     },
     {
@@ -53013,8 +53057,8 @@
      "enunciado": "El lugar donde tienes tu cama y tu mesa es tu…",
      "correcta": "Domicilio",
      "distractores": [
-      "Semáforo",
-      "Paraguas"
+      "semáforo",
+      "paraguas"
      ]
     },
     {
@@ -54420,7 +54464,7 @@
      "enunciado": "Los peces viven en el agua. La trucha es un pez, así que vive en el...",
      "correcta": "Agua",
      "distractores": [
-      "Árbol",
+      "árbol",
       "Tejado"
      ]
     },
@@ -54766,7 +54810,7 @@
      "correcta": "Goma",
      "distractores": [
       "Papel",
-      "Azúcar"
+      "azúcar"
      ]
     },
     {
@@ -56437,7 +56481,7 @@
      "distractores": [
       "Piano",
       "Trompeta",
-      "Violín"
+      "violín"
      ]
     },
     {
@@ -56545,7 +56589,7 @@
      "id": "i4",
      "instruccion": "Elige la respuesta",
      "enunciado": "¿Cuál no es una flor?",
-     "correcta": "Botón",
+     "correcta": "botón",
      "distractores": [
       "Lirio",
       "Petunia",
@@ -56602,7 +56646,7 @@
      "id": "i2",
      "instruccion": "Elige la respuesta",
      "enunciado": "¿Cuál no es una especia ni un condimento?",
-     "correcta": "Sandía",
+     "correcta": "sandía",
      "distractores": [
       "Pimienta",
       "Laurel",
@@ -56773,8 +56817,8 @@
      "enunciado": "¿Cuál no vuela por el cielo?",
      "correcta": "Silla",
      "distractores": [
-      "Avión",
-      "Águila",
+      "avión",
+      "águila",
       "Golondrina"
      ]
     },
@@ -56819,7 +56863,7 @@
      "enunciado": "¿Cuál no es un deporte?",
      "correcta": "Cocinar",
      "distractores": [
-      "Fútbol",
+      "fútbol",
       "Tenis",
       "Natación"
      ]
@@ -56918,7 +56962,7 @@
      "id": "i2",
      "instruccion": "Elige la respuesta",
      "enunciado": "¿Cuál no es una bebida?",
-     "correcta": "Jamón",
+     "correcta": "jamón",
      "distractores": [
       "Cerveza",
       "Sidra",
@@ -56977,8 +57021,8 @@
      "enunciado": "¿Cuál no sirve para escribir o dibujar?",
      "correcta": "Tenedor",
      "distractores": [
-      "Lápiz",
-      "Bolígrafo",
+      "lápiz",
+      "bolígrafo",
       "Rotulador"
      ]
     },
@@ -57010,7 +57054,7 @@
      "enunciado": "¿Cuál no sirve para escribir o dibujar?",
      "correcta": "Cuchara",
      "distractores": [
-      "Bolígrafo",
+      "bolígrafo",
       "Rotulador",
       "Pluma"
      ]
@@ -57021,7 +57065,7 @@
      "enunciado": "¿Cuál no sirve para escribir o dibujar?",
      "correcta": "Llave",
      "distractores": [
-      "Lápiz",
+      "lápiz",
       "Tiza",
       "Pincel"
      ]
@@ -57034,7 +57078,7 @@
      "distractores": [
       "Cera",
       "Rotulador",
-      "Bolígrafo"
+      "bolígrafo"
      ]
     }
    ]
@@ -57846,7 +57890,7 @@
      "correcta": "Martillo",
      "distractores": [
       "Panadero",
-      "Médico",
+      "médico",
       "Carpintero"
      ]
     },
@@ -60022,7 +60066,7 @@
      "id": "i1",
      "instruccion": "Elige la respuesta",
      "enunciado": "Es pequeño, se apoya en el hombro y se toca con un arco",
-     "correcta": "Violín",
+     "correcta": "violín",
      "distractores": [
       "Flauta",
       "Pandereta"
@@ -60088,7 +60132,7 @@
      "correcta": "Flauta",
      "distractores": [
       "Tambor",
-      "Violín"
+      "violín"
      ]
     },
     {
@@ -60117,7 +60161,7 @@
      "enunciado": "Grande, dorado y curvado, se abraza y suena muy grave",
      "correcta": "Tuba",
      "distractores": [
-      "Violín",
+      "violín",
       "Castañuelas"
      ]
     },
@@ -60190,7 +60234,7 @@
      "enunciado": "Redonda, con sonajas, se golpea con la mano en las fiestas",
      "correcta": "Pandereta",
      "distractores": [
-      "Violín",
+      "violín",
       "Trompeta"
      ]
     },
@@ -60243,7 +60287,7 @@
      "enunciado": "Redonda con sonajas, se toca en Navidad",
      "correcta": "Pandereta",
      "distractores": [
-      "Violín",
+      "violín",
       "Flauta"
      ]
     },
@@ -60377,7 +60421,7 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "Vuela alto y lleva a muchas personas de un país a otro",
-     "correcta": "Avión",
+     "correcta": "avión",
      "distractores": [
       "Barco",
       "Tren"
@@ -60399,7 +60443,7 @@
      "enunciado": "Sube al cielo con un gran globo de aire caliente y una cesta",
      "correcta": "Globo aerostático",
      "distractores": [
-      "Camión",
+      "camión",
       "Tren"
      ]
     },
@@ -60409,7 +60453,7 @@
      "enunciado": "Nave que sube al espacio con mucho fuego y humo",
      "correcta": "Cohete",
      "distractores": [
-      "Autobús",
+      "autobús",
       "Barco"
      ]
     },
@@ -60453,7 +60497,7 @@
      "correcta": "Velero",
      "distractores": [
       "Tren",
-      "Camión"
+      "camión"
      ]
     },
     {
@@ -60462,7 +60506,7 @@
      "enunciado": "Embarcación pequeña que se mueve con remos",
      "correcta": "Barca",
      "distractores": [
-      "Autobús",
+      "autobús",
       "Bicicleta"
      ]
     },
@@ -60472,7 +60516,7 @@
      "enunciado": "Barco muy grande para llevar de vacaciones a muchos pasajeros por el mar",
      "correcta": "Crucero",
      "distractores": [
-      "Avión",
+      "avión",
       "Coche"
      ]
     },
@@ -60502,7 +60546,7 @@
      "enunciado": "Barca larga y estrecha típica de Venecia, se mueve con un palo",
      "correcta": "Góndola",
      "distractores": [
-      "Autobús",
+      "autobús",
       "Bicicleta"
      ]
     }
@@ -60525,7 +60569,7 @@
      "enunciado": "Va sobre dos raíles y arrastra vagones enganchados",
      "correcta": "Tren",
      "distractores": [
-      "Avión",
+      "avión",
       "Barco"
      ]
     },
@@ -60535,7 +60579,7 @@
      "enunciado": "Tren que circula por debajo de la ciudad, bajo tierra",
      "correcta": "Metro",
      "distractores": [
-      "Camión",
+      "camión",
       "Barca"
      ]
     },
@@ -60545,7 +60589,7 @@
      "enunciado": "Va por raíles por las calles de la ciudad, con cables por arriba",
      "correcta": "Tranvía",
      "distractores": [
-      "Avión",
+      "avión",
       "Bicicleta"
      ]
     },
@@ -60555,7 +60599,7 @@
      "enunciado": "Tren español muy rápido que une ciudades lejanas",
      "correcta": "AVE",
      "distractores": [
-      "Autobús",
+      "autobús",
       "Barco"
      ]
     },
@@ -60575,7 +60619,7 @@
      "enunciado": "Vagoneta pequeña de las minas que llevaba el carbón",
      "correcta": "Vagoneta",
      "distractores": [
-      "Avión",
+      "avión",
       "Moto"
      ]
     }
@@ -60671,7 +60715,7 @@
      "enunciado": "Carruaje tirado por caballos que llevaba viajeros de pueblo en pueblo",
      "correcta": "Diligencia",
      "distractores": [
-      "Avión",
+      "avión",
       "Metro"
      ]
     },
@@ -60701,8 +60745,8 @@
      "enunciado": "Tren antiguo que echaba humo y funcionaba con carbón",
      "correcta": "Locomotora de vapor",
      "distractores": [
-      "Avión",
-      "Autobús"
+      "avión",
+      "autobús"
      ]
     },
     {
@@ -60711,7 +60755,7 @@
      "enunciado": "Carruaje elegante tirado por un caballo para salir a pasear",
      "correcta": "Coche de caballos",
      "distractores": [
-      "Avión",
+      "avión",
       "Metro"
      ]
     },
@@ -60817,7 +60861,7 @@
      "enunciado": "Antes de la lavadora, la ropa se restregaba en una...",
      "correcta": "Tabla de lavar",
      "distractores": [
-      "Televisión",
+      "televisión",
       "Nevera"
      ]
     },
@@ -60838,7 +60882,7 @@
      "correcta": "Mortero",
      "distractores": [
       "Televisor",
-      "Teléfono"
+      "teléfono"
      ]
     },
     {
@@ -61056,7 +61100,7 @@
      "enunciado": "Frasco donde se mojaba la pluma para escribir",
      "correcta": "Tintero",
      "distractores": [
-      "Bolígrafo",
+      "bolígrafo",
       "Ordenador"
      ]
     },
@@ -61074,7 +61118,7 @@
      "id": "i4",
      "instruccion": "Elige la respuesta",
      "enunciado": "Aparato de pared con manivela para poder hablar, muy antiguo",
-     "correcta": "Teléfono de manivela",
+     "correcta": "teléfono de manivela",
      "distractores": [
       "Móvil",
       "Tableta"
@@ -61323,7 +61367,7 @@
      "id": "i6",
      "instruccion": "Elige la respuesta",
      "enunciado": "Coger el tren se hace en la...",
-     "correcta": "Estación",
+     "correcta": "estación",
      "distractores": [
       "Farmacia",
       "Peluquería"
@@ -61422,7 +61466,7 @@
      "correcta": "Iglesia",
      "distractores": [
       "Mercado",
-      "Estación"
+      "estación"
      ]
     },
     {
@@ -73623,7 +73667,7 @@
      "correcta": "Bombilla",
      "distractores": [
       "Alga",
-      "Delfín",
+      "delfín",
       "Ostra"
      ]
     },
@@ -73894,7 +73938,7 @@
      "correcta": "Cama",
      "distractores": [
       "Coche",
-      "Autobús",
+      "autobús",
       "Tren"
      ]
     },
@@ -73915,8 +73959,8 @@
      "enunciado": "Bolígrafo, lápiz, pluma, tenedor. ¿Cuál no sirve para escribir?",
      "correcta": "Tenedor",
      "distractores": [
-      "Bolígrafo",
-      "Lápiz",
+      "bolígrafo",
+      "lápiz",
       "Pluma"
      ]
     },
@@ -73926,7 +73970,7 @@
      "enunciado": "Lámpara, vela, linterna, silla. ¿Cuál no sirve para alumbrar?",
      "correcta": "Silla",
      "distractores": [
-      "Lámpara",
+      "lámpara",
       "Vela",
       "Linterna"
      ]
@@ -74699,7 +74743,7 @@
      "distractores": [
       "Coche",
       "Bicicleta",
-      "Autobús"
+      "autobús"
      ]
     },
     {
@@ -74709,7 +74753,7 @@
      "correcta": "Mesa",
      "distractores": [
       "Tren",
-      "Avión",
+      "avión",
       "Barco"
      ]
     },
@@ -74717,10 +74761,10 @@
      "id": "i2",
      "instruccion": "Elige la respuesta",
      "enunciado": "Moto, camión, sofá, furgoneta. ¿Cuál sobra?",
-     "correcta": "Sofá",
+     "correcta": "sofá",
      "distractores": [
       "Moto",
-      "Camión",
+      "camión",
       "Furgoneta"
      ]
     },
@@ -74774,7 +74818,7 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "Silla, mesa, plátano, armario. ¿Cuál sobra?",
-     "correcta": "Plátano",
+     "correcta": "plátano",
      "distractores": [
       "Silla",
       "Mesa",
@@ -74788,7 +74832,7 @@
      "correcta": "Martillo",
      "distractores": [
       "Cama",
-      "Sofá",
+      "sofá",
       "Cómoda"
      ]
     },
@@ -75003,7 +75047,7 @@
      "distractores": [
       "Manzana",
       "Pera",
-      "Plátano"
+      "plátano"
      ]
     },
     {
@@ -75024,7 +75068,7 @@
      "correcta": "Silla",
      "distractores": [
       "Melón",
-      "Sandía",
+      "sandía",
       "Melocotón"
      ]
     },
@@ -75045,7 +75089,7 @@
      "enunciado": "Limón, mandarina, patata, kiwi. ¿Cuál sobra?",
      "correcta": "Patata",
      "distractores": [
-      "Limón",
+      "limón",
       "Mandarina",
       "Kiwi"
      ]
@@ -79646,7 +79690,7 @@
      "enunciado": "Para que la ropa quedara limpia se usaba una pastilla de...",
      "correcta": "Jabón",
      "distractores": [
-      "Azúcar",
+      "azúcar",
       "Cemento"
      ]
     },
@@ -79667,7 +79711,7 @@
      "correcta": "Barreño",
      "distractores": [
       "Microondas",
-      "Teléfono"
+      "teléfono"
      ]
     },
     {
@@ -79865,7 +79909,7 @@
      "enunciado": "El agua se llevaba a casa en un... de barro",
      "correcta": "Cántaro",
      "distractores": [
-      "Paraguas",
+      "paraguas",
       "Sombrero"
      ]
     },
@@ -80469,7 +80513,7 @@
      "enunciado": "Negro y una prenda:",
      "correcta": "Calcetines negros",
      "distractores": [
-      "Teléfono negro",
+      "teléfono negro",
       "Vestido verde"
      ]
     }
@@ -80490,10 +80534,10 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "Dulce y que sea fruta:",
-     "correcta": "Plátano",
+     "correcta": "plátano",
      "distractores": [
       "Caramelo",
-      "Limón"
+      "limón"
      ]
     },
     {
@@ -80522,7 +80566,7 @@
      "enunciado": "Dulce y fruta:",
      "correcta": "Melón",
      "distractores": [
-      "Azúcar",
+      "azúcar",
       "Ajo"
      ]
     },
@@ -80565,7 +80609,7 @@
      "enunciado": "Vuela y tiene plumas:",
      "correcta": "Gorrión",
      "distractores": [
-      "Murciélago",
+      "murciélago",
       "Pez"
      ]
     },
@@ -80583,9 +80627,9 @@
      "id": "i2",
      "instruccion": "Elige la respuesta",
      "enunciado": "Con plumas y que vuela:",
-     "correcta": "Águila",
+     "correcta": "águila",
      "distractores": [
-      "Avión",
+      "avión",
       "Perro"
      ]
     },
@@ -80711,7 +80755,7 @@
      "enunciado": "Amarillo y una flor:",
      "correcta": "Girasol",
      "distractores": [
-      "Plátano",
+      "plátano",
       "Rosa roja"
      ]
     },
@@ -80721,7 +80765,7 @@
      "enunciado": "Flor de color amarillo:",
      "correcta": "Narciso",
      "distractores": [
-      "Limón",
+      "limón",
       "Clavel"
      ]
     },
@@ -80845,7 +80889,7 @@
      "id": "i1",
      "instruccion": "Elige la respuesta",
      "enunciado": "Se come y es blando:",
-     "correcta": "Plátano maduro",
+     "correcta": "plátano maduro",
      "distractores": [
       "Almohada",
       "Galleta dura"
@@ -80910,7 +80954,7 @@
      "enunciado": "Pequeño y con ruedas:",
      "correcta": "Patinete",
      "distractores": [
-      "Camión",
+      "camión",
       "Taburete"
      ]
     },
@@ -80920,7 +80964,7 @@
      "enunciado": "Con ruedas y pequeño:",
      "correcta": "Coche de juguete",
      "distractores": [
-      "Autobús",
+      "autobús",
       "Zapato"
      ]
     },
@@ -80950,7 +80994,7 @@
      "enunciado": "Rueda y es pequeño:",
      "correcta": "Patines",
      "distractores": [
-      "Camión de bomberos",
+      "camión de bomberos",
       "Mesa"
      ]
     }
@@ -81119,7 +81163,7 @@
      "enunciado": "Cambiamos: ahora un insecto:",
      "correcta": "Mariposa",
      "distractores": [
-      "Águila",
+      "águila",
       "Perro"
      ]
     },
@@ -81273,7 +81317,7 @@
      "id": "i3",
      "instruccion": "Elige la respuesta",
      "enunciado": "Un instrumento:",
-     "correcta": "Violín",
+     "correcta": "violín",
      "distractores": [
       "Alicates",
       "Gato"
@@ -81346,7 +81390,7 @@
      "id": "i3",
      "instruccion": "Elige la respuesta",
      "enunciado": "Una fruta:",
-     "correcta": "Plátano",
+     "correcta": "plátano",
      "distractores": [
       "Judía",
       "Gato"
@@ -81587,7 +81631,7 @@
      "enunciado": "Vuelve a un mueble:",
      "correcta": "Cómoda",
      "distractores": [
-      "Televisión",
+      "televisión",
       "Puerta"
      ]
     }
@@ -81691,7 +81735,7 @@
      "id": "i1",
      "instruccion": "Elige la respuesta",
      "enunciado": "Otro de tierra:",
-     "correcta": "Autobús",
+     "correcta": "autobús",
      "distractores": [
       "Lancha",
       "Perro"
@@ -81703,7 +81747,7 @@
      "enunciado": "Ahora uno de agua:",
      "correcta": "Barco",
      "distractores": [
-      "Camión",
+      "camión",
       "Mesa"
      ]
     },
@@ -81827,7 +81871,7 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "Todo menos lo amarillo. ¿Cuál te saltas?",
-     "correcta": "Plátano",
+     "correcta": "plátano",
      "distractores": [
       "Manzana roja",
       "Uva verde"
@@ -81837,7 +81881,7 @@
      "id": "i1",
      "instruccion": "Elige la respuesta",
      "enunciado": "¿Cuál es amarillo y hay que dejar?",
-     "correcta": "Limón",
+     "correcta": "limón",
      "distractores": [
       "Fresa",
       "Ciruela"
@@ -82023,9 +82067,9 @@
      "id": "i5",
      "instruccion": "Elige la respuesta",
      "enunciado": "El de madera, ¿cuál es?",
-     "correcta": "Lápiz",
+     "correcta": "lápiz",
      "distractores": [
-      "Bolígrafo de plástico",
+      "bolígrafo de plástico",
       "Goma de borrar"
      ]
     }
@@ -82058,7 +82102,7 @@
      "enunciado": "¿Cuál es una verdura?",
      "correcta": "Zanahoria",
      "distractores": [
-      "Plátano",
+      "plátano",
       "Queso"
      ]
     },
@@ -82265,7 +82309,7 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "Todo menos los oficios. ¿Cuál te saltas?",
-     "correcta": "Médico",
+     "correcta": "médico",
      "distractores": [
       "Martillo",
       "Manzana"
@@ -82358,7 +82402,7 @@
      "id": "i2",
      "instruccion": "Elige la respuesta",
      "enunciado": "Deja lo que rueda:",
-     "correcta": "Camión",
+     "correcta": "camión",
      "distractores": [
       "Armario",
       "Cama"
@@ -82368,10 +82412,10 @@
      "id": "i3",
      "instruccion": "Elige la respuesta",
      "enunciado": "Lo de ruedas fuera:",
-     "correcta": "Autobús",
+     "correcta": "autobús",
      "distractores": [
       "Barco de remos",
-      "Sofá"
+      "sofá"
      ]
     },
     {
@@ -82484,10 +82528,10 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "Todo menos los cítricos. ¿Cuál te saltas?",
-     "correcta": "Limón",
+     "correcta": "limón",
      "distractores": [
       "Manzana",
-      "Plátano"
+      "plátano"
      ]
     },
     {
@@ -82526,7 +82570,7 @@
      "enunciado": "¿Cuál cítrico te saltas?",
      "correcta": "Lima",
      "distractores": [
-      "Sandía",
+      "sandía",
       "Melón"
      ]
     },
@@ -85022,7 +85066,7 @@
      "correcta": "una servilleta",
      "distractores": [
       "Un saco de cemento",
-      "Una rueda de coche"
+      "un rueda de coche"
      ]
     }
    ]
@@ -85938,7 +85982,7 @@
      "id": "i2",
      "instruccion": "Elige la respuesta",
      "enunciado": "¿Cuál es más gruesa?",
-     "correcta": "Una soga de barco",
+     "correcta": "un soga de barco",
      "distractores": [
       "Un cordel",
       "Un hilo"
@@ -87932,7 +87976,7 @@
      "correcta": "un analgésico",
      "distractores": [
       "un martillo",
-      "una barra de pan"
+      "un barra de pan"
      ]
     },
     {
@@ -90455,7 +90499,7 @@
      "id": "i3",
      "instruccion": "Elige la respuesta",
      "enunciado": "Si ves peor de un ojo, vas al...",
-     "correcta": "Médico de los ojos",
+     "correcta": "médico de los ojos",
      "distractores": [
       "Carnicero",
       "Panadero"
@@ -94389,7 +94433,8 @@
       "pasta"
      ]
     }
-   ]
+   ],
+   "no_leer_opciones": true
   }
  },
  {
@@ -103037,7 +103082,7 @@
      "id": "i3",
      "instruccion": "Elige la respuesta",
      "enunciado": "Corazón, corazón, estrella, corazón, corazón, estrella... ¿qué sigue?",
-     "correcta": "Corazón",
+     "correcta": "corazón",
      "distractores": [
       "Estrella",
       "Luna"
@@ -104353,7 +104398,7 @@
      "enunciado": "Si el atragantamiento es grave, se llama al",
      "correcta": "112",
      "distractores": [
-      "Teléfono del bar",
+      "teléfono del bar",
       "Un número inventado"
      ]
     },
@@ -109689,7 +109734,7 @@
      "id": "cerdo",
      "instruccion": "¿Qué es esto?",
      "imagen": "cerdo",
-     "correcta": "una cerdo",
+     "correcta": "un cerdo",
      "distractores": [
       "un perro",
       "un gato"
@@ -109835,7 +109880,7 @@
      "id": "pantalon",
      "instruccion": "¿Qué es esto?",
      "imagen": "pantalon",
-     "correcta": "una pantalón",
+     "correcta": "un pantalón",
      "distractores": [
       "un sombrero",
       "una toalla"
@@ -109855,7 +109900,7 @@
      "id": "vestido",
      "instruccion": "¿Qué es esto?",
      "imagen": "vestido",
-     "correcta": "una vestido",
+     "correcta": "un vestido",
      "distractores": [
       "un sombrero",
       "una toalla"
@@ -110104,7 +110149,7 @@
      "id": "sofa",
      "instruccion": "¿Qué es esto?",
      "imagen": "sofa",
-     "correcta": "un sofa",
+     "correcta": "un sofá",
      "distractores": [
       "una escoba",
       "un cubo"
@@ -113303,7 +113348,7 @@
      "id": "i3",
      "instruccion": "Elige la respuesta",
      "enunciado": "Regadera, hoz, pala, teléfono. ¿Cuál sobra?",
-     "correcta": "Teléfono",
+     "correcta": "teléfono",
      "distractores": [
       "Hoz",
       "Pala"
@@ -114773,7 +114818,7 @@
      "id": "i2",
      "instruccion": "Elige la respuesta",
      "enunciado": "¿Qué se puede poner dentro del bocadillo?",
-     "correcta": "Jamón o queso",
+     "correcta": "jamón o queso",
      "distractores": [
       "Un tornillo",
       "una piedra"
@@ -114839,7 +114884,7 @@
      "correcta": "El detergente",
      "distractores": [
       "Aceite de cocina",
-      "Azúcar"
+      "azúcar"
      ]
     },
     {
@@ -118598,7 +118643,7 @@
      "id": "cepillo_dientes",
      "instruccion": "¿Qué es esto?",
      "imagen": "cepillo_dientes",
-     "correcta": "una cepillo dientes",
+     "correcta": "un cepillo de dientes",
      "distractores": [
       "una llave",
       "un plato"
@@ -118631,7 +118676,7 @@
      "id": "tomate",
      "instruccion": "¿Qué es esto?",
      "imagen": "tomate",
-     "correcta": "una tomate",
+     "correcta": "un tomate",
      "distractores": [
       "una manzana",
       "una pera"
@@ -124404,7 +124449,7 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "Fruta amarilla, alargada y curva que se pela con la mano",
-     "correcta": "Plátano",
+     "correcta": "plátano",
      "distractores": [
       "Manzana",
       "Naranja"
@@ -124427,7 +124472,7 @@
      "correcta": "Naranja",
      "distractores": [
       "Melón",
-      "Plátano"
+      "plátano"
      ]
     },
     {
@@ -124444,7 +124489,7 @@
      "id": "i4",
      "instruccion": "Elige la respuesta",
      "enunciado": "Fruta grande, verde por fuera y roja por dentro, muy refrescante en verano",
-     "correcta": "Sandía",
+     "correcta": "sandía",
      "distractores": [
       "Melón",
       "Calabaza"
@@ -124454,7 +124499,7 @@
      "id": "i5",
      "instruccion": "Elige la respuesta",
      "enunciado": "Fruta amarilla y ácida con la que se hace limonada",
-     "correcta": "Limón",
+     "correcta": "limón",
      "distractores": [
       "Naranja",
       "Pomelo"
@@ -124748,7 +124793,7 @@
      "enunciado": "Mueble donde dormimos por la noche",
      "correcta": "Cama",
      "distractores": [
-      "Sofá",
+      "sofá",
       "Silla"
      ]
     },
@@ -124766,7 +124811,7 @@
      "id": "i3",
      "instruccion": "Elige la respuesta",
      "enunciado": "Mueble blando y ancho del salón para varias personas",
-     "correcta": "Sofá",
+     "correcta": "sofá",
      "distractores": [
       "Sillón",
       "Cama"
@@ -124821,7 +124866,7 @@
      "enunciado": "Instrumento de cuerda que se rasga en el flamenco",
      "correcta": "Guitarra",
      "distractores": [
-      "Violín",
+      "violín",
       "Arpa"
      ]
     },
@@ -124869,7 +124914,7 @@
      "id": "i5",
      "instruccion": "Elige la respuesta",
      "enunciado": "Instrumento de cuerda que se toca con un arco, apoyado en el hombro",
-     "correcta": "Violín",
+     "correcta": "violín",
      "distractores": [
       "Guitarra",
       "Chelo"
@@ -124967,7 +125012,7 @@
      "enunciado": "Ave pequeña y parda muy común en las ciudades",
      "correcta": "Gorrión",
      "distractores": [
-      "Águila",
+      "águila",
       "Avestruz"
      ]
     },
@@ -124985,7 +125030,7 @@
      "id": "i2",
      "instruccion": "Elige la respuesta",
      "enunciado": "Ave grande que caza de día, reina de las alturas",
-     "correcta": "Águila",
+     "correcta": "águila",
      "distractores": [
       "Gorrión",
       "Canario"
@@ -125008,7 +125053,7 @@
      "correcta": "Paloma",
      "distractores": [
       "Cuervo",
-      "Águila"
+      "águila"
      ]
     },
     {
@@ -125018,7 +125063,7 @@
      "correcta": "Canario",
      "distractores": [
       "Cuervo",
-      "Águila"
+      "águila"
      ]
     }
    ]
@@ -125476,7 +125521,7 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "¿Cuál de estas cosas es un deporte?",
-     "correcta": "Fútbol",
+     "correcta": "fútbol",
      "distractores": [
       "Guitarra",
       "Cocina"
@@ -125591,7 +125636,7 @@
      "enunciado": "¿Cuál de estas cosas es una herramienta?",
      "correcta": "Llave inglesa",
      "distractores": [
-      "Plátano",
+      "plátano",
       "Zapato"
      ]
     },
@@ -125652,9 +125697,9 @@
      "id": "i3",
      "instruccion": "Elige la respuesta",
      "enunciado": "¿Cuál de estos animales es un pájaro?",
-     "correcta": "Águila",
+     "correcta": "águila",
      "distractores": [
-      "Delfín",
+      "delfín",
       "Oveja"
      ]
     },
@@ -125781,7 +125826,7 @@
      "correcta": "Ventana",
      "distractores": [
       "Puerta",
-      "Balcón"
+      "balcón"
      ]
     },
     {
@@ -125791,7 +125836,7 @@
      "correcta": "Silla",
      "distractores": [
       "Mesa",
-      "Sofá"
+      "sofá"
      ]
     },
     {
@@ -125800,7 +125845,7 @@
      "enunciado": "Dormimos en ella: C A _ A",
      "correcta": "Cama",
      "distractores": [
-      "Sofá",
+      "sofá",
       "Sillón"
      ]
     },
@@ -125864,7 +125909,7 @@
      "correcta": "Huevo",
      "distractores": [
       "Queso",
-      "Jamón"
+      "jamón"
      ]
     },
     {
@@ -125883,7 +125928,7 @@
      "enunciado": "Blanca, da sabor salado a la comida: S A _",
      "correcta": "Sal",
      "distractores": [
-      "Azúcar",
+      "azúcar",
       "Aceite"
      ]
     },
@@ -125891,7 +125936,7 @@
      "id": "i5",
      "instruccion": "Elige la respuesta",
      "enunciado": "Dulce y blanco, para endulzar el café: A Z Ú _ A R",
-     "correcta": "Azúcar",
+     "correcta": "azúcar",
      "distractores": [
       "Sal",
       "Harina"
@@ -129916,7 +129961,7 @@
      "id": "i5",
      "instruccion": "Elige la respuesta",
      "enunciado": "Del cerdo obtenemos...",
-     "correcta": "Jamón",
+     "correcta": "jamón",
      "distractores": [
       "Lana",
       "Miel"
@@ -130462,7 +130507,7 @@
      "enunciado": "Antes juntabas frutas. Ahora junta solo lo ROJO: ¿tomate, plátano o pera?",
      "correcta": "Tomate",
      "distractores": [
-      "Plátano",
+      "plátano",
       "Pera"
      ]
     },
@@ -130470,9 +130515,9 @@
      "id": "i1",
      "instruccion": "Elige la respuesta",
      "enunciado": "Ahora junta solo lo AMARILLO: ¿limón, sandía o berenjena?",
-     "correcta": "Limón",
+     "correcta": "limón",
      "distractores": [
-      "Sandía",
+      "sandía",
       "Berenjena"
      ]
     },
@@ -130744,7 +130789,7 @@
      "enunciado": "Ya está cortada. ¿Qué le añades?",
      "correcta": "Tomate y cebolla",
      "distractores": [
-      "Azúcar y canela",
+      "azúcar y canela",
       "Chocolate"
      ]
     },
@@ -130881,7 +130926,7 @@
      "correcta": "Estantería",
      "distractores": [
       "Cuchillo",
-      "Botón"
+      "botón"
      ]
     },
     {
@@ -131017,7 +131062,7 @@
      "correcta": "Granizado",
      "distractores": [
       "Caldo",
-      "Jamón"
+      "jamón"
      ]
     },
     {
@@ -131034,7 +131079,7 @@
      "id": "i4",
      "instruccion": "Elige la respuesta",
      "enunciado": "Dulce y frío: ¿sandía fresca, sopa caliente o pan tostado?",
-     "correcta": "Sandía fresca",
+     "correcta": "sandía fresca",
      "distractores": [
       "Sopa caliente",
       "Pan tostado"
@@ -131067,7 +131112,7 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "Antes elegías el más grande. Ahora el más pequeño: ¿elefante, gato o ratón?",
-     "correcta": "Ratón",
+     "correcta": "ratón",
      "distractores": [
       "Elefante",
       "Gato"
@@ -131079,7 +131124,7 @@
      "enunciado": "El más pequeño: ¿autobús, coche o moto?",
      "correcta": "Moto",
      "distractores": [
-      "Autobús",
+      "autobús",
       "Coche"
      ]
     },
@@ -131109,7 +131154,7 @@
      "enunciado": "El más pequeño: ¿árbol, arbusto o flor?",
      "correcta": "Flor",
      "distractores": [
-      "Árbol",
+      "árbol",
       "Arbusto"
      ]
     },
@@ -132198,7 +132243,7 @@
      "id": "i0",
      "instruccion": "Elige la respuesta",
      "enunciado": "Coge algo que NO sea rojo NI redondo: ¿plátano, tomate o pelota roja?",
-     "correcta": "Plátano",
+     "correcta": "plátano",
      "distractores": [
       "Tomate",
       "Pelota roja"
@@ -132238,7 +132283,7 @@
      "id": "i4",
      "instruccion": "Elige la respuesta",
      "enunciado": "Ni dulce ni frío: ¿jamón, helado o pastel?",
-     "correcta": "Jamón",
+     "correcta": "jamón",
      "distractores": [
       "Helado",
       "Pastel"
@@ -139142,7 +139187,7 @@
      "correcta": "una silla",
      "distractores": [
       "una mesa",
-      "un sofa"
+      "un sofá"
      ]
     },
     {
@@ -139278,7 +139323,7 @@
      "correcta": "un avión",
      "distractores": [
       "un pájaro",
-      "una barco"
+      "un barco"
      ]
     },
     {
@@ -139311,7 +139356,7 @@
      "correcta": "un gato",
      "distractores": [
       "un perro",
-      "una conejo"
+      "un conejo"
      ]
     },
     {
@@ -139365,7 +139410,7 @@
      "instruccion": "¿Qué es? (se ve borroso)",
      "imagen": "limon",
      "degradado": "borroso",
-     "correcta": "un limon",
+     "correcta": "un limón",
      "distractores": [
       "un reloj",
       "un paraguas"
@@ -139515,7 +139560,7 @@
      "correcta": "una mariposa",
      "distractores": [
       "un coche",
-      "un limon"
+      "un limón"
      ]
     },
     {
@@ -143939,7 +143984,7 @@
      "correcta": "Casa",
      "distractores": [
       "Coche",
-      "Árbol"
+      "árbol"
      ]
     },
     {
@@ -148590,7 +148635,7 @@
      "correcta": "Escoba",
      "distractores": [
       "Guitarra",
-      "Violín"
+      "violín"
      ]
     },
     {
@@ -148599,7 +148644,7 @@
      "enunciado": "Naranja, limón, mandarina, cebolla. ¿Cuál no es una fruta?",
      "correcta": "Cebolla",
      "distractores": [
-      "Limón",
+      "limón",
       "Mandarina"
      ]
     },
@@ -148629,7 +148674,7 @@
      "enunciado": "Médico, panadero, cartero, tijeras. ¿Cuál no es un oficio?",
      "correcta": "Tijeras",
      "distractores": [
-      "Médico",
+      "médico",
       "Cartero"
      ]
     }
@@ -149025,9 +149070,9 @@
      "id": "i2",
      "instruccion": "Elige la respuesta",
      "enunciado": "Bolígrafo, lápiz, pluma, plátano. ¿Cuál no sirve para escribir?",
-     "correcta": "Plátano",
+     "correcta": "plátano",
      "distractores": [
-      "Lápiz",
+      "lápiz",
       "Pluma"
      ]
     },
@@ -149045,10 +149090,10 @@
      "id": "i4",
      "instruccion": "Elige la respuesta",
      "enunciado": "Coche, tren, autobús, sofá. ¿Cuál no sirve para viajar?",
-     "correcta": "Sofá",
+     "correcta": "sofá",
      "distractores": [
       "Tren",
-      "Autobús"
+      "autobús"
      ]
     },
     {
@@ -149317,7 +149362,7 @@
      "id": "i3",
      "instruccion": "Elige la respuesta",
      "enunciado": "Corta el pelo y tiene dos hojas que se cruzan. ¿Qué es?",
-     "correcta": "Unas tijeras",
+     "correcta": "unas tijeras",
      "distractores": [
       "Un peine",
       "una cuchara"

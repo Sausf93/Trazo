@@ -403,11 +403,15 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
     // Accesibilidad: leer también las OPCIONES en voz alta (muchos mayores no
     // leen bien; antes solo se dictaba la pregunta y las respuestas quedaban
     // mudas). Solo seleccion_multiple trae 'opciones'.
+    // Salvo en actividades de ortografía/homófonos (ola/hola/olla), donde
+    // dictarlas las haría imposibles: ahí solo se lee la pregunta.
     final opciones = (r['opciones'] as List?)
         ?.map((e) => e.toString().trim())
         .where((s) => s.isNotEmpty)
         .toList();
-    if (opciones != null && opciones.isNotEmpty) {
+    if (r['no_leer_opciones'] != true &&
+        opciones != null &&
+        opciones.isNotEmpty) {
       base = '$base. Las opciones son: ${opciones.join(', ')}.';
     }
     return base;
