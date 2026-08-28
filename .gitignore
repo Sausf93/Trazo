@@ -52,3 +52,6 @@ _fotos_wip/
 _deploy/*.apk
 _deploy/*.zip
 _deploy/*.aab
+
+# Config MCP con secretos (Firecrawl API key) - no versionar
+.mcp.json

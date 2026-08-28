@@ -270,9 +270,15 @@ class PlantillaSecuenciaOrdenar(PlantillaBase):
         tarea = rng.choice(tareas)
         pasos_ordenados = tarea["pasos"]  # ya en orden correcto
 
-        # Recorta al nivel: nº de pasos a presentar.
-        n = _rango(nivel, parametros, "pasos_min", "pasos_max", 3, len(pasos_ordenados), rng)
-        n = min(n, len(pasos_ordenados))
+        # Recorta al nivel: nº de pasos a presentar. PERO en tareas lingüísticas
+        # (frases, refranes) un prefijo es una oración rota ("El niño come" en vez
+        # de "El niño come pan"): esas actividades marcan `no_recortar` y se
+        # muestran ENTERAS.
+        if parametros.get("no_recortar"):
+            n = len(pasos_ordenados)
+        else:
+            n = _rango(nivel, parametros, "pasos_min", "pasos_max", 3, len(pasos_ordenados), rng)
+            n = min(n, len(pasos_ordenados))
         pasos_ordenados = pasos_ordenados[:n]
 
         barajados = list(enumerate(pasos_ordenados))  # (indice_correcto, paso)
