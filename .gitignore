@@ -47,3 +47,8 @@ pgdata/
 Thumbs.db
 apps/landing/demo/
 _fotos_wip/
+
+# Artefactos grandes de despliegue (APK/zip) - no versionar
+_deploy/*.apk
+_deploy/*.zip
+_deploy/*.aab
