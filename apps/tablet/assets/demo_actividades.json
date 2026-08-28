@@ -7912,28 +7912,28 @@
     "objetivo_label": "naranja",
     "celdas": [
      {
-      "id": "limon",
-      "label": "limón"
-     },
-     {
-      "id": "naranja",
-      "label": "naranja"
-     },
-     {
-      "id": "naranja",
-      "label": "naranja"
-     },
-     {
       "id": "sandia",
       "label": "sandía"
      },
      {
-      "id": "llave",
-      "label": "llave"
+      "id": "naranja",
+      "label": "naranja"
      },
      {
-      "id": "llave",
-      "label": "llave"
+      "id": "naranja",
+      "label": "naranja"
+     },
+     {
+      "id": "uvas",
+      "label": "uvas"
+     },
+     {
+      "id": "limon",
+      "label": "limón"
+     },
+     {
+      "id": "limon",
+      "label": "limón"
      }
     ]
    },
@@ -11524,19 +11524,19 @@
     "titulo": "Cuenta atrás",
     "pasos_barajados": [
      {
-      "paso": "4",
+      "paso": "2",
       "pos_mostrada": 0
      },
      {
-      "paso": "2",
+      "paso": "4",
       "pos_mostrada": 1
      },
      {
-      "paso": "5",
+      "paso": "1",
       "pos_mostrada": 2
      },
      {
-      "paso": "1",
+      "paso": "5",
       "pos_mostrada": 3
      },
      {
@@ -11549,11 +11549,11 @@
     "n_pasos": 5,
     "tarea_id": "ca5",
     "orden_correcto_pasos": [
-     "5",
-     "4",
-     "3",
+     "1",
      "2",
-     "1"
+     "3",
+     "4",
+     "5"
     ]
    },
    "metricas": [
@@ -11573,7 +11573,7 @@
     "titulo": "Cuenta atrás",
     "pasos_barajados": [
      {
-      "paso": "6",
+      "paso": "10",
       "pos_mostrada": 0
      },
      {
@@ -11581,15 +11581,15 @@
       "pos_mostrada": 1
      },
      {
-      "paso": "9",
+      "paso": "7",
       "pos_mostrada": 2
      },
      {
-      "paso": "10",
+      "paso": "6",
       "pos_mostrada": 3
      },
      {
-      "paso": "7",
+      "paso": "9",
       "pos_mostrada": 4
      }
     ]
@@ -11598,11 +11598,11 @@
     "n_pasos": 5,
     "tarea_id": "ca10",
     "orden_correcto_pasos": [
-     "10",
-     "9",
-     "8",
+     "6",
      "7",
-     "6"
+     "8",
+     "9",
+     "10"
     ]
    },
    "metricas": [
@@ -13983,12 +13983,16 @@
     "objetivo_label": "uvas",
     "celdas": [
      {
-      "id": "uvas",
-      "label": "uvas"
+      "id": "fresa",
+      "label": "fresa"
      },
      {
-      "id": "destornillador",
-      "label": "destornillador"
+      "id": "limon",
+      "label": "limón"
+     },
+     {
+      "id": "uvas",
+      "label": "uvas"
      },
      {
       "id": "manzana",
@@ -13999,12 +14003,8 @@
       "label": "uvas"
      },
      {
-      "id": "fresa",
-      "label": "fresa"
-     },
-     {
-      "id": "naranja",
-      "label": "naranja"
+      "id": "limon",
+      "label": "limón"
      }
     ]
    },
@@ -15174,20 +15174,20 @@
       "label": "limón"
      },
      {
-      "id": "destornillador",
-      "label": "destornillador"
+      "id": "manzana",
+      "label": "manzana"
      },
      {
-      "id": "destornillador",
-      "label": "destornillador"
+      "id": "fresa",
+      "label": "fresa"
      },
      {
-      "id": "pera",
-      "label": "pera"
+      "id": "fresa",
+      "label": "fresa"
      },
      {
-      "id": "sandia",
-      "label": "sandía"
+      "id": "naranja",
+      "label": "naranja"
      }
     ]
    },
@@ -22869,43 +22869,43 @@
     "titulo": "10→1",
     "pasos_barajados": [
      {
-      "paso": "4",
+      "paso": "7",
       "pos_mostrada": 0
      },
      {
-      "paso": "9",
+      "paso": "2",
       "pos_mostrada": 1
      },
      {
-      "paso": "1",
+      "paso": "10",
       "pos_mostrada": 2
      },
      {
-      "paso": "3",
+      "paso": "8",
       "pos_mostrada": 3
      },
      {
-      "paso": "10",
+      "paso": "1",
       "pos_mostrada": 4
      },
      {
-      "paso": "2",
+      "paso": "9",
       "pos_mostrada": 5
      },
      {
-      "paso": "6",
+      "paso": "5",
       "pos_mostrada": 6
      },
      {
-      "paso": "5",
+      "paso": "6",
       "pos_mostrada": 7
      },
      {
-      "paso": "8",
+      "paso": "3",
       "pos_mostrada": 8
      },
      {
-      "paso": "7",
+      "paso": "4",
       "pos_mostrada": 9
      }
     ]
@@ -22914,16 +22914,16 @@
     "n_pasos": 10,
     "tarea_id": "ca101",
     "orden_correcto_pasos": [
-     "10",
-     "9",
-     "8",
-     "7",
-     "6",
-     "5",
-     "4",
-     "3",
+     "1",
      "2",
-     "1"
+     "3",
+     "4",
+     "5",
+     "6",
+     "7",
+     "8",
+     "9",
+     "10"
     ]
    },
    "metricas": [
@@ -22943,27 +22943,27 @@
     "titulo": "15→10",
     "pasos_barajados": [
      {
-      "paso": "10",
+      "paso": "15",
       "pos_mostrada": 0
      },
      {
-      "paso": "15",
+      "paso": "10",
       "pos_mostrada": 1
      },
      {
-      "paso": "14",
+      "paso": "11",
       "pos_mostrada": 2
      },
      {
-      "paso": "12",
+      "paso": "13",
       "pos_mostrada": 3
      },
      {
-      "paso": "11",
+      "paso": "14",
       "pos_mostrada": 4
      },
      {
-      "paso": "13",
+      "paso": "12",
       "pos_mostrada": 5
      }
     ]
@@ -22972,12 +22972,12 @@
     "n_pasos": 6,
     "tarea_id": "ca1510",
     "orden_correcto_pasos": [
-     "15",
-     "14",
-     "13",
-     "12",
+     "10",
      "11",
-     "10"
+     "12",
+     "13",
+     "14",
+     "15"
     ]
    },
    "metricas": [
@@ -22997,27 +22997,27 @@
     "titulo": "20→15",
     "pasos_barajados": [
      {
-      "paso": "16",
+      "paso": "19",
       "pos_mostrada": 0
      },
      {
-      "paso": "15",
+      "paso": "20",
       "pos_mostrada": 1
      },
      {
-      "paso": "19",
+      "paso": "16",
       "pos_mostrada": 2
      },
      {
-      "paso": "18",
+      "paso": "17",
       "pos_mostrada": 3
      },
      {
-      "paso": "20",
+      "paso": "15",
       "pos_mostrada": 4
      },
      {
-      "paso": "17",
+      "paso": "18",
       "pos_mostrada": 5
      }
     ]
@@ -23026,12 +23026,12 @@
     "n_pasos": 6,
     "tarea_id": "ca2015",
     "orden_correcto_pasos": [
-     "20",
-     "19",
-     "18",
-     "17",
+     "15",
      "16",
-     "15"
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    "metricas": [
@@ -23051,27 +23051,27 @@
     "titulo": "9→4",
     "pasos_barajados": [
      {
-      "paso": "6",
+      "paso": "7",
       "pos_mostrada": 0
      },
      {
-      "paso": "7",
+      "paso": "6",
       "pos_mostrada": 1
      },
      {
-      "paso": "9",
+      "paso": "4",
       "pos_mostrada": 2
      },
      {
-      "paso": "8",
+      "paso": "5",
       "pos_mostrada": 3
      },
      {
-      "paso": "4",
+      "paso": "9",
       "pos_mostrada": 4
      },
      {
-      "paso": "5",
+      "paso": "8",
       "pos_mostrada": 5
      }
     ]
@@ -23080,12 +23080,12 @@
     "n_pasos": 6,
     "tarea_id": "ca94",
     "orden_correcto_pasos": [
-     "9",
-     "8",
-     "7",
-     "6",
+     "4",
      "5",
-     "4"
+     "6",
+     "7",
+     "8",
+     "9"
     ]
    },
    "metricas": [
@@ -23105,27 +23105,27 @@
     "titulo": "12→7",
     "pasos_barajados": [
      {
-      "paso": "12",
+      "paso": "7",
       "pos_mostrada": 0
      },
      {
-      "paso": "11",
+      "paso": "8",
       "pos_mostrada": 1
      },
      {
-      "paso": "10",
+      "paso": "9",
       "pos_mostrada": 2
      },
      {
-      "paso": "9",
+      "paso": "10",
       "pos_mostrada": 3
      },
      {
-      "paso": "8",
+      "paso": "11",
       "pos_mostrada": 4
      },
      {
-      "paso": "7",
+      "paso": "12",
       "pos_mostrada": 5
      }
     ]
@@ -23134,12 +23134,12 @@
     "n_pasos": 6,
     "tarea_id": "ca127",
     "orden_correcto_pasos": [
-     "12",
-     "11",
-     "10",
-     "9",
+     "7",
      "8",
-     "7"
+     "9",
+     "10",
+     "11",
+     "12"
     ]
    },
    "metricas": [
@@ -23163,27 +23163,27 @@
       "pos_mostrada": 0
      },
      {
-      "paso": "6",
+      "paso": "4",
       "pos_mostrada": 1
      },
      {
-      "paso": "3",
+      "paso": "7",
       "pos_mostrada": 2
      },
      {
-      "paso": "7",
+      "paso": "3",
       "pos_mostrada": 3
      },
      {
-      "paso": "8",
+      "paso": "2",
       "pos_mostrada": 4
      },
      {
-      "paso": "2",
+      "paso": "8",
       "pos_mostrada": 5
      },
      {
-      "paso": "4",
+      "paso": "6",
       "pos_mostrada": 6
      }
     ]
@@ -23192,13 +23192,13 @@
     "n_pasos": 7,
     "tarea_id": "ca82",
     "orden_correcto_pasos": [
-     "8",
-     "7",
-     "6",
-     "5",
-     "4",
+     "2",
      "3",
-     "2"
+     "4",
+     "5",
+     "6",
+     "7",
+     "8"
     ]
    },
    "metricas": [
@@ -93069,23 +93069,23 @@
     "titulo": "Ordena los números",
     "pasos_barajados": [
      {
-      "paso": "8",
+      "paso": "6",
       "pos_mostrada": 0
      },
      {
-      "paso": "9",
+      "paso": "10",
       "pos_mostrada": 1
      },
      {
-      "paso": "6",
+      "paso": "7",
       "pos_mostrada": 2
      },
      {
-      "paso": "10",
+      "paso": "8",
       "pos_mostrada": 3
      },
      {
-      "paso": "7",
+      "paso": "9",
       "pos_mostrada": 4
      }
     ]
@@ -93094,11 +93094,11 @@
     "n_pasos": 5,
     "tarea_id": "n1",
     "orden_correcto_pasos": [
-     "8",
      "6",
-     "10",
      "7",
-     "9"
+     "8",
+     "9",
+     "10"
     ]
    },
    "metricas": [
@@ -93162,19 +93162,19 @@
     "titulo": "Ordena los números",
     "pasos_barajados": [
      {
-      "paso": "9",
+      "paso": "7",
       "pos_mostrada": 0
      },
      {
-      "paso": "6",
+      "paso": "8",
       "pos_mostrada": 1
      },
      {
-      "paso": "7",
+      "paso": "4",
       "pos_mostrada": 2
      },
      {
-      "paso": "4",
+      "paso": "6",
       "pos_mostrada": 3
      }
     ]
@@ -93183,10 +93183,10 @@
     "n_pasos": 4,
     "tarea_id": "n2",
     "orden_correcto_pasos": [
-     "7",
      "4",
-     "9",
-     "6"
+     "6",
+     "7",
+     "8"
     ]
    },
    "metricas": [
@@ -93206,7 +93206,7 @@
     "titulo": "Ordena los números",
     "pasos_barajados": [
      {
-      "paso": "7",
+      "paso": "8",
       "pos_mostrada": 0
      },
      {
@@ -93214,11 +93214,11 @@
       "pos_mostrada": 1
      },
      {
-      "paso": "5",
+      "paso": "7",
       "pos_mostrada": 2
      },
      {
-      "paso": "8",
+      "paso": "6",
       "pos_mostrada": 3
      }
     ]
@@ -93228,9 +93228,9 @@
     "tarea_id": "n1",
     "orden_correcto_pasos": [
      "9",
+     "8",
      "7",
-     "5",
-     "8"
+     "6"
     ]
    },
    "metricas": [
@@ -95251,11 +95251,11 @@
     "titulo": "Ordena los números",
     "pasos_barajados": [
      {
-      "paso": "80",
+      "paso": "100",
       "pos_mostrada": 0
      },
      {
-      "paso": "40",
+      "paso": "80",
       "pos_mostrada": 1
      },
      {
@@ -95263,11 +95263,11 @@
       "pos_mostrada": 2
      },
      {
-      "paso": "20",
+      "paso": "40",
       "pos_mostrada": 3
      },
      {
-      "paso": "100",
+      "paso": "20",
       "pos_mostrada": 4
      }
     ]
@@ -95276,11 +95276,11 @@
     "n_pasos": 5,
     "tarea_id": "n0",
     "orden_correcto_pasos": [
-     "100",
      "20",
-     "60",
      "40",
-     "80"
+     "60",
+     "80",
+     "100"
     ]
    },
    "metricas": [

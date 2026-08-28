@@ -75,6 +75,22 @@ export function PlanEditorPage() {
     }
   }, [plan.data]);
 
+  // ¿Hay cambios sin guardar? (compara el estado editado con el plan persistido,
+  // ignorando la clave interna _key). Se usa para avisar antes de perder el
+  // trabajo clínico al recargar/cerrar (hallazgo de auditoría de operación).
+  const hayCambiosSinGuardar =
+    plan.data != null &&
+    JSON.stringify(lineas.map(({ _key, ...r }) => r)) !== JSON.stringify(plan.data);
+  useEffect(() => {
+    if (!hayCambiosSinGuardar) return;
+    const avisar = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", avisar);
+    return () => window.removeEventListener("beforeunload", avisar);
+  }, [hayCambiosSinGuardar]);
+
   function actualizar(key: string, cambios: Partial<EditLinea>) {
     setLineas((prev) => prev.map((l) => (l._key === key ? { ...l, ...cambios } : l)));
     setOk(false);
@@ -143,6 +159,11 @@ export function PlanEditorPage() {
     <div>
       <Link
         to={`/usuarios/${id}`}
+        onClick={(e) => {
+          if (hayCambiosSinGuardar && !window.confirm("Hay cambios sin guardar en el plan. ¿Salir sin guardarlos?")) {
+            e.preventDefault();
+          }
+        }}
         style={{ color: colors.sageDark, fontSize: 14, fontWeight: 600, textDecoration: "none" }}
       >
         ← Volver a la ficha

@@ -9640,20 +9640,12 @@
      "label": "pera"
     },
     {
-     "id": "martillo",
-     "label": "martillo"
-    },
-    {
      "id": "uvas",
      "label": "uvas"
     },
     {
      "id": "sandia",
      "label": "sandía"
-    },
-    {
-     "id": "destornillador",
-     "label": "destornillador"
     },
     {
      "id": "limon",
@@ -9666,10 +9658,6 @@
     {
      "id": "cereza",
      "label": "cereza"
-    },
-    {
-     "id": "llave",
-     "label": "llave"
     }
    ]
   },
@@ -11888,11 +11876,11 @@
      "titulo": "Cuenta atrás",
      "instruccion": "Del 5 al 1: el 5 arriba.",
      "pasos": [
-      "5",
-      "4",
-      "3",
+      "1",
       "2",
-      "1"
+      "3",
+      "4",
+      "5"
      ]
     }
    ]
@@ -11913,11 +11901,11 @@
      "titulo": "Cuenta atrás",
      "instruccion": "Del 10 al 6: el 10 arriba.",
      "pasos": [
-      "10",
-      "9",
-      "8",
+      "6",
       "7",
-      "6"
+      "8",
+      "9",
+      "10"
      ]
     }
    ]
@@ -13335,20 +13323,12 @@
      "label": "pera"
     },
     {
-     "id": "martillo",
-     "label": "martillo"
-    },
-    {
      "id": "naranja",
      "label": "naranja"
     },
     {
      "id": "fresa",
      "label": "fresa"
-    },
-    {
-     "id": "destornillador",
-     "label": "destornillador"
     },
     {
      "id": "limon",
@@ -14121,16 +14101,8 @@
      "label": "pera"
     },
     {
-     "id": "martillo",
-     "label": "martillo"
-    },
-    {
      "id": "naranja",
      "label": "naranja"
-    },
-    {
-     "id": "destornillador",
-     "label": "destornillador"
     },
     {
      "id": "sandia",
@@ -19064,16 +19036,16 @@
      "titulo": "10→1",
      "instruccion": "El 10 arriba.",
      "pasos": [
-      "10",
-      "9",
-      "8",
-      "7",
-      "6",
-      "5",
-      "4",
-      "3",
+      "1",
       "2",
-      "1"
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10"
      ]
     }
    ]
@@ -19094,12 +19066,12 @@
      "titulo": "15→10",
      "instruccion": "El 15 arriba.",
      "pasos": [
-      "15",
-      "14",
-      "13",
-      "12",
+      "10",
       "11",
-      "10"
+      "12",
+      "13",
+      "14",
+      "15"
      ]
     }
    ]
@@ -19120,12 +19092,12 @@
      "titulo": "20→15",
      "instruccion": "El 20 arriba.",
      "pasos": [
-      "20",
-      "19",
-      "18",
-      "17",
+      "15",
       "16",
-      "15"
+      "17",
+      "18",
+      "19",
+      "20"
      ]
     }
    ]
@@ -19146,12 +19118,12 @@
      "titulo": "9→4",
      "instruccion": "El 9 arriba.",
      "pasos": [
-      "9",
-      "8",
-      "7",
-      "6",
+      "4",
       "5",
-      "4"
+      "6",
+      "7",
+      "8",
+      "9"
      ]
     }
    ]
@@ -19172,12 +19144,12 @@
      "titulo": "12→7",
      "instruccion": "El 12 arriba.",
      "pasos": [
-      "12",
-      "11",
-      "10",
-      "9",
+      "7",
       "8",
-      "7"
+      "9",
+      "10",
+      "11",
+      "12"
      ]
     }
    ]
@@ -19198,13 +19170,13 @@
      "titulo": "8→2",
      "instruccion": "El 8 arriba.",
      "pasos": [
-      "8",
-      "7",
-      "6",
-      "5",
-      "4",
+      "2",
       "3",
-      "2"
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
      ]
     }
    ]
@@ -71891,7 +71863,7 @@
      "correcta": "rabo",
      "distractores": [
       "dueño",
-      "cola"
+      "hueso"
      ]
     },
     {
@@ -81922,7 +81894,7 @@
      "id": "i4",
      "instruccion": "Elige la respuesta",
      "enunciado": "¿Cuál amarillo te saltas?",
-     "correcta": "Queso",
+     "correcta": "Plátano",
      "distractores": [
       "Leche blanca",
       "Aceituna negra"
@@ -136784,22 +136756,22 @@
      "id": "n0",
      "titulo": "Ordena los números",
      "pasos": [
-      "3",
       "1",
-      "5",
       "2",
-      "4"
+      "3",
+      "4",
+      "5"
      ]
     },
     {
      "id": "n1",
      "titulo": "Ordena los números",
      "pasos": [
-      "8",
       "6",
-      "10",
       "7",
-      "9"
+      "8",
+      "9",
+      "10"
      ]
     },
     {
@@ -136830,8 +136802,8 @@
      "titulo": "Ordena los números",
      "pasos": [
       "10",
-      "30",
       "20",
+      "30",
       "40"
      ]
     },
@@ -136873,31 +136845,31 @@
      "id": "n0",
      "titulo": "Ordena los números",
      "pasos": [
-      "12",
       "10",
-      "14",
-      "11"
+      "11",
+      "12",
+      "14"
      ]
     },
     {
      "id": "n1",
      "titulo": "Ordena los números",
      "pasos": [
-      "50",
       "20",
+      "30",
       "40",
-      "30"
+      "50"
      ]
     },
     {
      "id": "n2",
      "titulo": "Ordena los números",
      "pasos": [
-      "7",
       "4",
-      "9",
       "6",
-      "8"
+      "7",
+      "8",
+      "9"
      ]
     }
    ]
@@ -136918,10 +136890,10 @@
      "titulo": "Ordena los números",
      "pasos": [
       "5",
-      "3",
-      "1",
       "4",
-      "2"
+      "3",
+      "2",
+      "1"
      ]
     },
     {
@@ -136929,10 +136901,10 @@
      "titulo": "Ordena los números",
      "pasos": [
       "9",
-      "7",
-      "5",
       "8",
-      "6"
+      "7",
+      "6",
+      "5"
      ]
     },
     {
@@ -138749,22 +138721,22 @@
      "id": "n0",
      "titulo": "Ordena los números",
      "pasos": [
-      "100",
       "20",
-      "60",
       "40",
-      "80"
+      "60",
+      "80",
+      "100"
      ]
     },
     {
      "id": "n1",
      "titulo": "Ordena los números",
      "pasos": [
-      "15",
       "5",
-      "25",
       "10",
-      "20"
+      "15",
+      "20",
+      "25"
      ]
     },
     {
@@ -138772,8 +138744,8 @@
      "titulo": "Ordena los números",
      "pasos": [
       "3",
-      "9",
       "6",
+      "9",
       "12",
       "15"
      ]

@@ -175,7 +175,7 @@ export function InformeFamilia({
           <strong style={{ color: colors.ink }}>Periodo:</strong>{" "}
           {desde ? `${fmtFecha(desde)} — ${fmtFecha(hasta)}` : "sin sesiones registradas todavía"}
           {"  ·  "}
-          <strong style={{ color: colors.ink }}>Sesiones:</strong> {total}
+          <strong style={{ color: colors.ink }}>Actividades valoradas:</strong> {total}
         </div>
       </header>
 
@@ -185,7 +185,7 @@ export function InformeFamilia({
           Cómo ha ido en el tiempo
         </h2>
         <p style={{ fontSize: 12.5, color: colors.textMuted, marginBottom: 8 }}>
-          Cada punto es una sesión. La línea sube cuando resuelve mejor las actividades.
+          Cada punto es una actividad valorada. La línea sube cuando resuelve mejor las actividades.
           Siempre se compara a la persona consigo misma, nunca con otras.
         </p>
         <div

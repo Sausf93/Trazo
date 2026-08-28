@@ -125,7 +125,7 @@ function FilaPaciente({ usuario, esAdmin, onCambio }: { usuario: UsuarioFinal; e
     // Acción irreversible: se pide teclear el alias exacto para confirmar.
     const conf = window.prompt(
       `SUPRIMIR (RGPD) a "${usuario.alias_interno}".\n\n` +
-        "Se borran su nombre real y consentimientos; se conserva su histórico ANONIMIZADO (estadística). Es IRREVERSIBLE.\n\n" +
+        "Se borran su nombre real, consentimientos y documentos escaneados; se conserva su histórico DISOCIADO (estadística). Es IRREVERSIBLE.\n\n" +
         `Para confirmar, escribe el nombre exacto: ${usuario.alias_interno}`,
     );
     if (conf == null) return;

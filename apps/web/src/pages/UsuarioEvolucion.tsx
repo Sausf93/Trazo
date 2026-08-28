@@ -101,8 +101,15 @@ export function UsuarioEvolucionPage() {
               </button>
               <button
                 type="button"
-                onClick={() => {
-                  if (id && centroId) descargarIntentosCsv({ centro_id: centroId, usuario_final_id: id, incluir_nombre: true });
+                onClick={async () => {
+                  if (!id || !centroId) return;
+                  // Antes era una promesa flotante: si fallaba (sesión caducada,
+                  // 500…) el botón no descargaba nada y NO avisaba. Ahora se avisa.
+                  try {
+                    await descargarIntentosCsv({ centro_id: centroId, usuario_final_id: id, incluir_nombre: true });
+                  } catch {
+                    alert("No se pudo exportar el CSV. Comprueba tu sesión e inténtalo de nuevo.");
+                  }
                 }}
                 disabled={!evolucion.data || evolucion.data.puntos.length === 0}
                 title="Descarga los datos (fecha, área, resultado…) para la historia clínica"

@@ -18,12 +18,15 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 
 def _ip_cliente(request: Request) -> str:
     """IP real del cliente. Tras el proxy de Cloud Run, `request.client.host` es una
-    IP interna (todos compartirían una) -> se toma la primera de X-Forwarded-For."""
+    IP interna. Cloud Run AÑADE la IP real al FINAL de X-Forwarded-For y conserva lo
+    que el cliente mandara antes; por eso hay que tomar el ÚLTIMO valor, no el
+    primero (que el cliente puede falsificar para rotar la clave y saltarse el
+    rate-limit del login — hallazgo de auditoría de seguridad)."""
     xff = request.headers.get("x-forwarded-for")
     if xff:
-        primera = xff.split(",")[0].strip()
-        if primera:
-            return primera
+        partes = [p.strip() for p in xff.split(",") if p.strip()]
+        if partes:
+            return partes[-1]
     return request.client.host if request.client else "desconocida"
 
 

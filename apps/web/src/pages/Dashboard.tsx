@@ -28,7 +28,13 @@ export function DashboardPage() {
   const areas = useAsync<ResumenArea[]>((s) => resumenAreas(centroId, s), [centroId]);
   const uso = useAsync<ResumenUso>((s) => resumenUso(centroId, s), [centroId]);
   const dispositivos = useAsync<Dispositivo[]>((s) => listarDispositivos({ centro_id: centroId }, s), [centroId]);
-  const equipo = useAsync<Staff[]>((s) => listarStaff(s), [centroId]);
+  // Solo el admin del centro puede listar el equipo; para la integradora,
+  // llamar a /staff devolvía 403 en cada carga del panel (ruido innecesario).
+  const esAdmin = session!.rol === "admin_centro";
+  const equipo = useAsync<Staff[]>(
+    (s) => (esAdmin ? listarStaff(s) : Promise.resolve([] as Staff[])),
+    [centroId],
+  );
 
   // Onboarding: mientras falten hitos básicos de arranque, guiamos al centro nuevo.
   const hayEquipo = (equipo.data?.filter((m) => m.rol !== "admin_centro").length ?? 0) > 0;

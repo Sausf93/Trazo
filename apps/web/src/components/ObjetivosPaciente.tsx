@@ -41,6 +41,9 @@ export function ObjetivosPaciente({ usuarioId }: { usuarioId: string }) {
   }
 
   async function onBorrar(id: string) {
+    // Un toque accidental en la × borraba una meta clínica sin aviso; se confirma
+    // como el resto de acciones destructivas del panel.
+    if (!window.confirm("¿Quitar este objetivo de intervención?")) return;
     setError(null);
     try {
       await borrarObjetivo(id);
