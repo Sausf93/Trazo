@@ -1966,7 +1966,7 @@
         {
           "id": "a",
           "instruccion": "¿Qué palabra es? (con la A)",
-          "enunciado": "Empieza por A: rodear con los brazos",
+          "enunciado": "Empieza por A: apretar a alguien con cariño contra el pecho",
           "correcta": "Abrazar",
           "distractores": [
             "Aplaudir",
@@ -27701,7 +27701,7 @@
         {
           "id": "corchos",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El aparato que sirve para SACAR los CORCHOS es un…",
+          "enunciado": "El utensilio que sirve para destapar las botellas de vino es un…",
           "correcta": "Sacacorchos",
           "distractores": [
             "Abrelatas",
@@ -27712,7 +27712,7 @@
         {
           "id": "latas",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El aparato que sirve para ABRIR las LATAS es un…",
+          "enunciado": "El utensilio de cocina para destapar las conservas de metal es un…",
           "correcta": "Abrelatas",
           "distractores": [
             "Sacacorchos",
@@ -27723,7 +27723,7 @@
         {
           "id": "aguas",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Lo que nos protege de la lluvia, del agua, es un…",
+          "enunciado": "Lo que se abre por encima de la cabeza para no mojarse cuando llueve es un…",
           "correcta": "Paraguas",
           "distractores": [
             "Parasol",
@@ -27734,7 +27734,7 @@
         {
           "id": "puntas",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El aparato para SACAR PUNTA a los lápices es un…",
+          "enunciado": "El aparato para afilar los lápices es un…",
           "correcta": "Sacapuntas",
           "distractores": [
             "Sacacorchos",
@@ -27745,7 +27745,7 @@
         {
           "id": "unas",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Lo que sirve para CORTARSE las UÑAS es un…",
+          "enunciado": "El utensilio de aseo para arreglar lo que crece en la punta de los dedos es un…",
           "correcta": "Cortaúñas",
           "distractores": [
             "Sacapuntas",
@@ -27756,7 +27756,7 @@
         {
           "id": "vajillas",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La máquina que LAVA la VAJILLA es un…",
+          "enunciado": "La máquina que friega solos los platos y los vasos es un…",
           "correcta": "Lavavajillas",
           "distractores": [
             "Quitamanchas",
@@ -27767,7 +27767,7 @@
         {
           "id": "nueces",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Lo que sirve para CASCAR las NUECES es un…",
+          "enunciado": "Lo que aprieta y abre la corteza dura de los frutos secos es un…",
           "correcta": "Cascanueces",
           "distractores": [
             "Sacacorchos",
@@ -27778,7 +27778,7 @@
         {
           "id": "cielos",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Un edificio altísimo, que casi toca el cielo, es un…",
+          "enunciado": "Un edificio altísimo, con muchísimos pisos, típico de las grandes ciudades, es un…",
           "correcta": "Rascacielos",
           "distractores": [
             "Paraguas",
@@ -29007,7 +29007,7 @@
             "Abrelatas",
             "Sacapuntas"
           ],
-          "enunciado": "El mueble para GUARDAR ROPA es el…"
+          "enunciado": "El mueble alto con puertas donde se cuelgan los abrigos y los vestidos es el…"
         },
         {
           "id": "co1",
@@ -29017,7 +29017,7 @@
             "Paraguas",
             "Sacacorchos"
           ],
-          "enunciado": "Lo que LIMPIA los CRISTALES del coche es el…"
+          "enunciado": "La escobilla que se mueve sobre el cristal delantero del coche para apartar la lluvia es el…"
         },
         {
           "id": "co2",
@@ -29027,7 +29027,7 @@
             "Salvavidas",
             "Cortaúñas"
           ],
-          "enunciado": "El que GUARDA las ESPALDAS de alguien es el…"
+          "enunciado": "La persona que protege a alguien importante y va siempre a su lado es el…"
         },
         {
           "id": "co3",
@@ -29037,7 +29037,7 @@
             "Paraguas",
             "Guardabosques"
           ],
-          "enunciado": "Lo que SALVA VIDAS en la piscina es el…"
+          "enunciado": "El flotador que evita que alguien se ahogue en la piscina es el…"
         },
         {
           "id": "co4",
@@ -29047,7 +29047,7 @@
             "Salvavidas",
             "Limpiabotas"
           ],
-          "enunciado": "El que cuida y GUARDA el BOSQUE es el…"
+          "enunciado": "La persona que vigila y cuida los montes y los árboles del campo es el…"
         },
         {
           "id": "co5",
@@ -29057,7 +29057,7 @@
             "Sacapuntas",
             "Cortaúñas"
           ],
-          "enunciado": "Lo que abre las LATAS es el…"
+          "enunciado": "El utensilio de cocina para destapar las conservas de metal es el…"
         }
       ]
     },
@@ -29101,7 +29101,7 @@
             "El vaso",
             "El reloj"
           ],
-          "enunciado": "Sirve para PEINARSE."
+          "enunciado": "Sirve para arreglarnos el pelo."
         },
         {
           "id": "de3",
@@ -29336,7 +29336,7 @@
             "Abrir la puerta con calma",
             "Ordenar la casa"
           ],
-          "enunciado": "Suena el timbre y el teléfono a la vez y algo hierve. ¿Qué es lo más URGENTE?"
+          "enunciado": "Suena el timbre y el teléfono a la vez y una olla se sale en el fuego. ¿Qué es lo más URGENTE?"
         },
         {
           "id": "pr2",
@@ -29356,7 +29356,7 @@
             "Tocar la pared",
             "Secarte con la camisa buena"
           ],
-          "enunciado": "Te has manchado la mano de pintura. ¿Qué haces PRIMERO?"
+          "enunciado": "Te has manchado los dedos de pintura. ¿Qué haces PRIMERO?"
         },
         {
           "id": "pr4",
@@ -29366,7 +29366,7 @@
             "Encender el horno",
             "Poner la mesa"
           ],
-          "enunciado": "Vas a cocinar y tienes las manos sucias. ¿Qué haces antes?"
+          "enunciado": "Vas a cocinar y vienes de la calle sin asearte. ¿Qué haces antes?"
         }
       ]
     }
@@ -29477,7 +29477,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Sirve para pelar las patatas",
+          "enunciado": "Sirve para quitarle la piel a las verduras crudas",
           "correcta": "Un pelapatatas",
           "distractores": [
             "Una almohada",
@@ -29603,7 +29603,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Sirve para lavarse los dientes",
+          "enunciado": "Sirve para limpiarse la boca, frotando con un poco de pasta",
           "correcta": "Un cepillo de dientes",
           "distractores": [
             "Un tenedor",
@@ -29789,7 +29789,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Sirve para tirar la basura dentro de casa",
+          "enunciado": "Sirve para echar dentro los desperdicios de la casa",
           "correcta": "Un cubo de basura",
           "distractores": [
             "Un jarrón",
@@ -30177,7 +30177,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Sirve para que el sol no dé en los ojos",
+          "enunciado": "Sirve para que los rayos fuertes no molesten a los ojos",
           "correcta": "Unas gafas de sol",
           "distractores": [
             "Unos guantes",
@@ -30406,7 +30406,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Antiguamente servía para escribir a máquina, con sus teclas",
+          "enunciado": "Antiguamente, con sus teclas, dejaba las letras impresas en el papel",
           "correcta": "Una máquina de escribir",
           "distractores": [
             "Una radio",
@@ -30449,7 +30449,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Sirve para sacar fotos del viaje",
+          "enunciado": "Aparato con el que se retratan los paisajes y los momentos del viaje",
           "correcta": "Una cámara de fotos",
           "distractores": [
             "Una escoba",
@@ -30638,7 +30638,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Se pone para bañarse en el mar",
+          "enunciado": "Prenda que nos ponemos para meternos en el mar",
           "correcta": "Un bañador",
           "distractores": [
             "Un abrigo",
@@ -30658,7 +30658,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Se clava en la arena para dar sombra",
+          "enunciado": "Se clava en la arena para resguardarnos del sol",
           "correcta": "Una sombrilla",
           "distractores": [
             "Una escoba",
@@ -30678,7 +30678,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Sirve para flotar y no hundirse en el agua",
+          "enunciado": "Nos ayuda a mantenernos sobre el agua sin hundirnos",
           "correcta": "Un flotador",
           "distractores": [
             "Una manta",
@@ -30721,7 +30721,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Sirve para vendar una herida o un esguince",
+          "enunciado": "Tira de tela que se enrolla para cubrir una herida o sujetar un esguince",
           "correcta": "Una venda",
           "distractores": [
             "Una servilleta",
@@ -31879,7 +31879,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Oso muy grande y blanco que vive entre el hielo",
+          "enunciado": "Animal enorme y blanco que vive entre el hielo y nada en aguas heladas",
           "correcta": "El oso polar",
           "distractores": [
             "El conejo",
@@ -31942,7 +31942,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Nada dando vueltas en la pecera",
+          "enunciado": "Nada dando vueltas dentro de un recipiente de cristal con agua",
           "correcta": "El pez",
           "distractores": [
             "El perro",
@@ -32015,7 +32015,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Árbol siempre verde de hojas finas que pinchan y da piñas",
+          "enunciado": "Árbol siempre verde de hojas finas como agujas, muy típico de los montes",
           "correcta": "El pino",
           "distractores": [
             "El naranjo",
@@ -32423,7 +32423,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Oso blanco que vive entre los hielos",
+          "enunciado": "Animal blanco y muy grande que vive entre los hielos",
           "correcta": "El oso polar",
           "distractores": [
             "El zorro",
@@ -32433,7 +32433,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Oso blanco y negro que come cañas de bambú",
+          "enunciado": "Animal blanco y negro que come cañas de bambú",
           "correcta": "El oso panda",
           "distractores": [
             "El león",
@@ -33017,7 +33017,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Bebida recién exprimida de una fruta redonda de color anaranjado, para el desayuno",
+          "enunciado": "Bebida recién exprimida de una fruta redonda de gajos, muy típica del desayuno",
           "correcta": "El zumo de naranja",
           "distractores": [
             "El café",
@@ -33123,7 +33123,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Postre de grano blanco cocido en leche con canela por encima",
+          "enunciado": "Postre de granos blancos cocidos, dulce y con canela espolvoreada por encima",
           "correcta": "El arroz con leche",
           "distractores": [
             "La ensalada",
@@ -33143,7 +33143,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Postre dulce de chocolate que se derrite en la boca",
+          "enunciado": "Dulce marrón hecho de cacao que se derrite en la boca",
           "correcta": "El chocolate",
           "distractores": [
             "La sal",
@@ -33332,7 +33332,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Bolsa con asa que lleva la señora para guardar sus cosas al salir",
+          "enunciado": "Con asa, lo lleva la señora para guardar sus cosas al salir",
           "correcta": "El bolso",
           "distractores": [
             "El zapato",
@@ -33385,7 +33385,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Tira de cuero que sujeta el pantalón por la cintura",
+          "enunciado": "Tira de cuero que sujeta el pantalón para que no se caiga",
           "correcta": "El cinturón",
           "distractores": [
             "La corbata",
@@ -33395,7 +33395,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Prenda que cubre la cabeza y da sombra, la usaban los abuelos en el campo",
+          "enunciado": "Prenda que cubre la cabeza y protege del sol, la usaban los abuelos en el campo",
           "correcta": "El sombrero",
           "distractores": [
             "El zapato",
@@ -33826,7 +33826,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Prenda interior ligera que se lleva debajo de la camisa",
+          "enunciado": "Prenda interior ligera que se lleva pegada al cuerpo, debajo de la ropa",
           "correcta": "La camiseta",
           "distractores": [
             "El abrigo de piel",
@@ -34494,7 +34494,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Dónde se cocina?",
+          "enunciado": "¿En qué habitación se preparan las comidas?",
           "correcta": "En la cocina",
           "distractores": [
             "En el baño",
@@ -40285,7 +40285,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Al abrigarte para el frío, ¿qué te pones lo último?",
+          "enunciado": "Al taparte bien para el frío, ¿qué te pones lo último?",
           "correcta": "El abrigo por encima",
           "distractores": [
             "La camiseta interior",
@@ -47178,7 +47178,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Con luces azules, la usa la policia",
+          "enunciado": "Con la sirena y las luces azules, persigue a los ladrones",
           "correcta": "El coche de policia",
           "distractores": [
             "El tractor",
@@ -47188,7 +47188,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Recoge la basura por las calles",
+          "enunciado": "Pasa por las calles vaciando los contenedores",
           "correcta": "El camión de la basura",
           "distractores": [
             "El taxi",
@@ -47281,7 +47281,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Rebanada tostada restregada con tomate maduro y regada con aceite",
+          "enunciado": "Rebanada tostada restregada con un fruto rojo y jugoso, y regada con aceite de oliva",
           "correcta": "El pan con tomate",
           "distractores": [
             "El cocido",
@@ -47344,7 +47344,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Lomo de cerdo curado, en lonchas",
+          "enunciado": "Pieza magra del cerdo, curada y cortada en lonchas finas",
           "correcta": "El lomo",
           "distractores": [
             "La morcilla",
@@ -50469,7 +50469,7 @@
         {
           "id": "carne",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para comprar carne voy a…",
+          "enunciado": "Para comprar filetes y chuletas voy a…",
           "correcta": "La carnicería",
           "distractores": [
             "La papelería",
@@ -51783,7 +51783,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué cosa se clava con el martillo?",
+          "enunciado": "¿Qué se golpea con el martillo para meterlo en la madera?",
           "correcta": "El clavo",
           "distractores": [
             "El plátano",
@@ -51929,7 +51929,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué borra lo escrito a lápiz?",
+          "enunciado": "¿Qué quita lo escrito a lápiz?",
           "correcta": "La goma de borrar",
           "distractores": [
             "El fogón",
@@ -52254,7 +52254,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Persona que reparte las cartas por las casas",
+          "enunciado": "Persona que reparte el correo por las casas",
           "correcta": "El cartero",
           "distractores": [
             "El bombero",
@@ -52732,7 +52732,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "MIRAR con disimulo, de lado, es…",
+          "enunciado": "Observar con disimulo, de lado, es…",
           "correcta": "Mirar de reojo",
           "distractores": [
             "Dar un paseo",
@@ -53223,7 +53223,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Una persona lista y con ingenio es…",
+          "enunciado": "Una persona lista, que tiene muchas ideas, es…",
           "correcta": "Ingeniosa",
           "distractores": [
             "Distraída",
@@ -53349,7 +53349,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Reír bajito y con gusto es…",
+          "enunciado": "Cuando algo te hace gracia y lo sueltas bajito, es…",
           "correcta": "Reírse",
           "distractores": [
             "Gritar",
@@ -53389,7 +53389,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Reír de algo gracioso es…",
+          "enunciado": "Lo que hacemos cuando algo nos hace mucha gracia es…",
           "correcta": "Reír",
           "distractores": [
             "Llorar",
@@ -55622,7 +55622,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Es naranja y da zumo por la mañana. ¿Qué es?",
+          "enunciado": "Es una fruta redonda de piel gruesa que da zumo por la mañana. ¿Qué es?",
           "correcta": "La naranja",
           "distractores": [
             "El limón",
@@ -55652,7 +55652,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Es blanca, se echa a la comida y es salada. ¿Qué es?",
+          "enunciado": "Es blanca, en granos, y se echa a la comida para sazonarla. ¿Qué es?",
           "correcta": "La sal",
           "distractores": [
             "El azúcar",
@@ -55841,7 +55841,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La comida fuerte del mediodía se llama...",
+          "enunciado": "El plato principal que se toma al mediodía se llama...",
           "correcta": "El almuerzo o la comida",
           "distractores": [
             "El desayuno",
@@ -58221,7 +58221,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Es un lagarto pequeño que trepa por las paredes",
+          "enunciado": "Reptil pequeño que trepa por las paredes de las casas en verano",
           "correcta": "La lagartija",
           "distractores": [
             "La abeja",
@@ -58241,7 +58241,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Es un lagarto grande que toma el sol sobre las piedras",
+          "enunciado": "Reptil grande de cola larga que toma el sol sobre las piedras",
           "correcta": "El lagarto",
           "distractores": [
             "La oveja",
@@ -58347,7 +58347,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Es alargada, de cáscara marrón, y sale del almendro",
+          "enunciado": "Fruto seco alargado, de cáscara marrón, que se usa en el turrón y el mazapán",
           "correcta": "La almendra",
           "distractores": [
             "La pera",
@@ -58357,7 +58357,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Se comen en invierno, calentitas y asadas; caen del castaño",
+          "enunciado": "Se comen en invierno, calentitas y asadas, compradas en el puestecillo de la esquina",
           "correcta": "La castaña",
           "distractores": [
             "La zanahoria",
@@ -58367,7 +58367,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Es redonda, con cáscara dura marrón, y sale del avellano",
+          "enunciado": "Fruto seco redondo, de cáscara dura y marrón, muy usado en el chocolate",
           "correcta": "La avellana",
           "distractores": [
             "La cebolla",
@@ -58503,7 +58503,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Pulpo cocido con pimentón y aceite, típico de Galicia",
+          "enunciado": "Marisco de tentáculos, cocido y aliñado con pimentón y aceite, muy típico del noroeste de España",
           "correcta": "El pulpo a la gallega",
           "distractores": [
             "La tortilla de patata",
@@ -58513,7 +58513,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Cochinillo asado al horno, típico de Segovia y Castilla",
+          "enunciado": "Cría del cerdo hecha entera al horno, plato muy típico de Segovia",
           "correcta": "El cochinillo asado",
           "distractores": [
             "El gazpacho",
@@ -58523,7 +58523,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Cocido de garbanzos, carne y verduras, típico de Madrid",
+          "enunciado": "Guiso de garbanzos, carne y verduras que se sirve en varios vuelcos, típico de la capital",
           "correcta": "El cocido madrileño",
           "distractores": [
             "El gazpacho",
@@ -58546,7 +58546,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Patatas fritas en dados con una salsa roja picante",
+          "enunciado": "Trozos de verdura frita en dados con una salsa roja muy picante",
           "correcta": "Las patatas bravas",
           "distractores": [
             "El flan",
@@ -58576,7 +58576,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Aceitunas aliñadas para picar antes de comer",
+          "enunciado": "Se sirven aliñadas, verdes o negras, para picar antes de comer",
           "correcta": "Las aceitunas",
           "distractores": [
             "El pan de molde",
@@ -58586,7 +58586,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Lonchas de jamón serrano servidas en un platito",
+          "enunciado": "Lonchas finas de cerdo curado y serrano, servidas en un platito",
           "correcta": "El jamón",
           "distractores": [
             "El yogur",
@@ -58951,7 +58951,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Pez de río con unas barbas junto a la boca",
+          "enunciado": "Pez de río con unos bigotes carnosos junto a la boca",
           "correcta": "El barbo",
           "distractores": [
             "La merluza",
@@ -59014,7 +59014,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Bolita seca de olor fuerte que se clava en la cebolla del guiso",
+          "enunciado": "Bolita seca de olor fuerte que se hinca en la cebolla del guiso para aromatizarlo",
           "correcta": "El clavo",
           "distractores": [
             "La leche",
@@ -59047,7 +59047,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Grano blanco que se cuece para la paella y el arroz con leche",
+          "enunciado": "Grano blanco que se cuece para la paella y para el postre con leche y canela",
           "correcta": "El arroz",
           "distractores": [
             "La patata",
@@ -59213,7 +59213,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Pescado de escamas doradas, muy fino, se hace a la sal",
+          "enunciado": "Pescado marino de carne blanca muy fina, que se cocina entero cubierto de sal",
           "correcta": "La dorada",
           "distractores": [
             "La pera",
@@ -59382,7 +59382,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Ayuda al pastor a guiar el rebaño de ovejas",
+          "enunciado": "Ayuda a guiar el rebaño de ovejas por el campo. ¿Qué animal es?",
           "correcta": "El perro pastor",
           "distractores": [
             "El conejo",
@@ -59780,7 +59780,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Fruta redonda y naranja, de la que se hace zumo por la mañana",
+          "enunciado": "Fruta redonda de piel gruesa, de la que se hace zumo por la mañana",
           "correcta": "La naranja",
           "distractores": [
             "La patata",
@@ -60228,7 +60228,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Sube al cielo con un gran globo de aire caliente y una cesta",
+          "enunciado": "Sube al cielo gracias al aire caliente y lleva a la gente en una cesta",
           "correcta": "Globo aerostático",
           "distractores": [
             "Camión",
@@ -60258,7 +60258,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Avión pequeño de hélice para pocas personas",
+          "enunciado": "Aparato volador pequeño, de hélice, para pocas personas",
           "correcta": "Avioneta",
           "distractores": [
             "Tranvía",
@@ -60540,7 +60540,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Carruaje elegante tirado por un caballo para salir a pasear",
+          "enunciado": "Carruaje antiguo tirado por animales para salir a pasear",
           "correcta": "Coche de caballos",
           "distractores": [
             "Avión",
@@ -60603,7 +60603,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Aparato de manivela para moler el café en casa",
+          "enunciado": "Aparato de manivela para moler los granos tostados del desayuno en casa",
           "correcta": "Molinillo de café",
           "distractores": [
             "Microondas",
@@ -60769,7 +60769,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Farol que llevaba el sereno para alumbrar las calles de noche",
+          "enunciado": "Luz con mango que llevaba el sereno para alumbrar las calles de noche",
           "correcta": "Farol",
           "distractores": [
             "Radio",
@@ -60792,7 +60792,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Reloj con cadena que los caballeros llevaban en el chaleco",
+          "enunciado": "Aparato con cadena que los caballeros llevaban en el chaleco para saber la hora",
           "correcta": "Reloj de bolsillo",
           "distractores": [
             "Móvil",
@@ -60822,7 +60822,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Máquina con teclas que escribía las cartas letra a letra, sin pantalla",
+          "enunciado": "Aparato con teclas que estampaba las cartas letra a letra sobre el papel, sin pantalla",
           "correcta": "Máquina de escribir",
           "distractores": [
             "Móvil",
@@ -60832,7 +60832,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Aparato de pared con manivela para poder hablar, muy antiguo",
+          "enunciado": "Aparato antiguo colgado en la pared que se giraba con una manija para poder hablar con otra persona",
           "correcta": "Teléfono de manivela",
           "distractores": [
             "Móvil",
@@ -60842,7 +60842,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Cacharro con brasas dentro que se pasaba por las sábanas para calentar la cama",
+          "enunciado": "Cacharro de metal con brasas dentro que se pasaba por las sábanas para templarlas antes de dormir",
           "correcta": "Calientacamas",
           "distractores": [
             "Radiador eléctrico",
@@ -60905,7 +60905,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Espejo con mango para mirarse, del tocador de la señora",
+          "enunciado": "Objeto con mango y cristal para mirarse la cara, del tocador de la señora",
           "correcta": "Espejo de mano",
           "distractores": [
             "Móvil",
@@ -60915,7 +60915,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Reloj alto, de pie, que daba las horas con campanadas",
+          "enunciado": "Mueble alto, de pie y antiguo, que daba las horas con campanadas",
           "correcta": "Reloj de péndulo",
           "distractores": [
             "Despertador digital",
@@ -60948,7 +60948,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para comprar la carne voy a la...",
+          "enunciado": "Para comprar los filetes y las chuletas voy a la...",
           "correcta": "Carnicería",
           "distractores": [
             "Farmacia",
@@ -60958,7 +60958,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para comprar el pescado voy a la...",
+          "enunciado": "Para comprar la merluza y las sardinas voy a la...",
           "correcta": "Pescadería",
           "distractores": [
             "Zapatería",
@@ -60978,7 +60978,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para comprar fruta y verdura voy a la...",
+          "enunciado": "Para comprar manzanas y lechugas voy a la...",
           "correcta": "Frutería",
           "distractores": [
             "Ferretería",
@@ -60988,7 +60988,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para comprar los zapatos voy a la...",
+          "enunciado": "Para comprar las botas y las sandalias voy a la...",
           "correcta": "Zapatería",
           "distractores": [
             "Pescadería",
@@ -66650,7 +66650,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué quema al salir del horno?",
+          "enunciado": "¿Qué quema si lo coges nada más hacerlo, calentito?",
           "correcta": "El pan recién horneado",
           "distractores": [
             "La ensalada fría",
@@ -67784,7 +67784,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué sabe salado?",
+          "enunciado": "¿Qué tiene mucha sal?",
           "correcta": "El bacalao salado",
           "distractores": [
             "El azúcar",
@@ -67794,7 +67794,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué está salado?",
+          "enunciado": "¿Qué lleva mucha sal?",
           "correcta": "Los frutos secos salados",
           "distractores": [
             "El bizcocho",
@@ -67814,7 +67814,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué caldo es salado?",
+          "enunciado": "¿Qué sopa lleva mucha sal?",
           "correcta": "El caldo de cocido",
           "distractores": [
             "El zumo dulce",
@@ -69235,7 +69235,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Quien afronta el riesgo con coraje es...",
+          "enunciado": "Quien afronta el peligro sin miedo es...",
           "correcta": "Corajudo",
           "distractores": [
             "Pusilánime",
@@ -69547,7 +69547,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Un grupo de árboles juntos es una...",
+          "enunciado": "Un conjunto de muchos pinos y encinas juntos es una...",
           "correcta": "Arboleda",
           "distractores": [
             "Pradera",
@@ -70091,7 +70091,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Una ropa llena de manchas está...",
+          "enunciado": "Una ropa con lamparones de comida está...",
           "correcta": "Manchada",
           "distractores": [
             "Planchada",
@@ -70131,7 +70131,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Algo lleno de polvo está...",
+          "enunciado": "Algo cubierto de una capa gris y fina por no limpiarlo está...",
           "correcta": "Polvoriento",
           "distractores": [
             "Limpio",
@@ -70403,7 +70403,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Quien dice mentiras es un...",
+          "enunciado": "Quien no dice nunca la verdad es un...",
           "correcta": "Mentiroso",
           "distractores": [
             "Sincero",
@@ -70423,7 +70423,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Inventarse algo falso es...",
+          "enunciado": "Contar algo que no es verdad para engañar es...",
           "correcta": "Falsear",
           "distractores": [
             "Comprobar",
@@ -70622,7 +70622,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Una casa muy vieja y ruinosa es...",
+          "enunciado": "Una casa muy vieja, medio derrumbada, está...",
           "correcta": "Ruinosa",
           "distractores": [
             "Flamante",
@@ -72185,7 +72185,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "En la cocina se...",
+          "enunciado": "En el sitio de la casa con fogones y horno se...",
           "correcta": "Cocina",
           "distractores": [
             "Conduce",
@@ -72726,7 +72726,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La flor que sigue al sol es el...",
+          "enunciado": "La flor grande y amarilla que se vuelve hacia el astro del día es el...",
           "correcta": "Girasol",
           "distractores": [
             "Clavel",
@@ -72736,7 +72736,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La tela que teje la araña es la...",
+          "enunciado": "La red de hilos finos y pegajosos que teje en los rincones ese bicho de ocho patas es la...",
           "correcta": "Telaraña",
           "distractores": [
             "Telón",
@@ -72746,7 +72746,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El arco de colores tras la lluvia es el...",
+          "enunciado": "La franja curva de siete colores que aparece en el cielo tras la lluvia es el...",
           "correcta": "Arcoíris",
           "distractores": [
             "Relámpago",
@@ -72756,7 +72756,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El que espanta a los pájaros en el huerto es el...",
+          "enunciado": "El muñeco de paja y ropa vieja que se pone en el huerto para ahuyentar a los cuervos es el...",
           "correcta": "Espantapájaros",
           "distractores": [
             "Molino",
@@ -72766,7 +72766,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Lo que protege del rayo en los tejados es el...",
+          "enunciado": "La barra de metal en lo alto de los tejados que evita que la chispa de la tormenta dañe la casa es el...",
           "correcta": "Pararrayos",
           "distractores": [
             "Paraguas",
@@ -72776,7 +72776,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El temblor de la tierra es un...",
+          "enunciado": "La fuerte sacudida del suelo que hace temblar los edificios es un...",
           "correcta": "Terremoto",
           "distractores": [
             "Trueno",
@@ -73810,7 +73810,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Quién usa la caña de pescar?",
+          "enunciado": "¿Quién usa la caña y las redes en el barco?",
           "correcta": "El pescador",
           "distractores": [
             "El cocinero",
@@ -73913,7 +73913,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El aceite de oliva se hace con...",
+          "enunciado": "El líquido dorado con que se aliña la ensalada se hace con...",
           "correcta": "Aceitunas",
           "distractores": [
             "Naranjas",
@@ -74171,7 +74171,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para hacer un café tengo agua y me falta...",
+          "enunciado": "Tengo agua y azúcar, y para la bebida oscura del desayuno me falta...",
           "correcta": "Café",
           "distractores": [
             "Arena",
@@ -74856,7 +74856,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Dónde ves una obra de teatro?",
+          "enunciado": "¿Dónde ves a los actores representar una obra en el escenario?",
           "correcta": "En el teatro",
           "distractores": [
             "En la piscina",
@@ -74866,7 +74866,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Dónde compras la carne?",
+          "enunciado": "¿Dónde compras los filetes y las chuletas?",
           "correcta": "En la carnicería",
           "distractores": [
             "En la zapatería",
@@ -76648,7 +76648,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Nos da la seda con la que se tejen los pañuelos finos.",
+          "enunciado": "Cría que produce el fino hilo con el que se tejen los pañuelos más suaves.",
           "correcta": "El gusano de seda",
           "distractores": [
             "La abeja",
@@ -76877,7 +76877,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "En otoño da castañas dentro de un erizo con pinchos.",
+          "enunciado": "En otoño da un fruto marrón, encerrado en un erizo con pinchos, que se asa.",
           "correcta": "El castaño",
           "distractores": [
             "El pino",
@@ -76910,7 +76910,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Redonda y naranja, se parte en gajos y tiene mucho zumo.",
+          "enunciado": "Redonda y de piel gruesa, se parte en gajos y tiene mucho zumo.",
           "correcta": "La naranja",
           "distractores": [
             "La pera",
@@ -77202,7 +77202,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Grano blanco cocido despacio en leche dulce y espolvoreado con canela.",
+          "enunciado": "Grano blanco cocido despacio, endulzado y espolvoreado con canela, servido en cuenco.",
           "correcta": "El arroz con leche",
           "distractores": [
             "El flan",
@@ -77242,7 +77242,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Tarta de almendra con una cruz dibujada en azúcar por encima, típica de Galicia.",
+          "enunciado": "Dulce de almendra con una cruz de azúcar espolvoreada por encima, típico de Galicia.",
           "correcta": "La tarta de Santiago",
           "distractores": [
             "El flan",
@@ -77899,7 +77899,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Tela fuerte y azul de la que se hacen los vaqueros.",
+          "enunciado": "Tejido fuerte y azul con el que se cosen los pantalones tejanos.",
           "correcta": "La tela vaquera",
           "distractores": [
             "La seda",
@@ -78098,7 +78098,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Sirve para cortar las ramas y podar el rosal.",
+          "enunciado": "Sirve para cortar las ramas y dar forma a los rosales.",
           "correcta": "Las tijeras de podar",
           "distractores": [
             "La regadera",
@@ -78161,7 +78161,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Se lleva en la cabeza para el frío, de lana y a veces con pompón.",
+          "enunciado": "Se lleva en la cabeza para el frío, de punto y a veces con pompón.",
           "correcta": "El gorro de lana",
           "distractores": [
             "El guante",
@@ -78307,7 +78307,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Polvo blanco que da sabor salado a la comida.",
+          "enunciado": "Producto blanco en granos finos que se echa a la comida para que no esté sosa.",
           "correcta": "La sal",
           "distractores": [
             "El azúcar",
@@ -78337,7 +78337,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Salsa roja de tomate cocido para la pasta.",
+          "enunciado": "Salsa roja y espesa, cocida, que se pone a la pasta y a la carne.",
           "correcta": "El tomate frito",
           "distractores": [
             "La sal",
@@ -78400,7 +78400,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Botas de goma para andar por los charcos de lluvia.",
+          "enunciado": "Calzado alto de goma para andar por los charcos sin mojarse los pies.",
           "correcta": "Las botas de agua",
           "distractores": [
             "El abanico",
@@ -78453,7 +78453,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Es un triángulo de metal que se hace sonar con una varilla",
+          "enunciado": "Barra de metal doblada en tres lados, que se golpea con una varilla y suena agudo",
           "correcta": "El triángulo",
           "distractores": [
             "La trompeta",
@@ -78745,7 +78745,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Dónde se juega al fútbol?",
+          "enunciado": "¿Dónde juegan once contra once dando patadas al balón?",
           "correcta": "En el campo de fútbol",
           "distractores": [
             "En la pista de hielo",
@@ -78818,7 +78818,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para boxear se calzan unos...",
+          "enunciado": "Para pelear a puñetazos sobre el ring, en las manos se calzan unos...",
           "correcta": "Guantes de boxeo",
           "distractores": [
             "Esquís",
@@ -78921,7 +78921,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Navegar aprovechando el viento en las velas de una barca",
+          "enunciado": "Deporte de navegar en una barca aprovechando la fuerza del viento",
           "correcta": "La vela",
           "distractores": [
             "El esquí",
@@ -78994,7 +78994,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Se hace rodar un aro por la calle con la ayuda de un palito",
+          "enunciado": "Se hace rodar un círculo de metal por la calle, empujándolo con un palito",
           "correcta": "El aro",
           "distractores": [
             "El dominó",
@@ -79163,7 +79163,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Antes se frotaba la ropa sobre una tabla con surcos llamada...",
+          "enunciado": "Antes se frotaba la ropa a mano sobre una pieza de madera con surcos. ¿Cómo se llamaba?",
           "correcta": "La tabla de lavar",
           "distractores": [
             "La televisión",
@@ -79694,7 +79694,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La música también se grababa en cintas metidas en una...",
+          "enunciado": "La música también se grababa en un pequeño estuche de plástico con dos ruedecillas que giraban. ¿Qué era?",
           "correcta": "Cinta de casete",
           "distractores": [
             "Lata de conservas",
@@ -79810,7 +79810,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "En la panadería, ¿quién despacha el pan?",
+          "enunciado": "¿Quién hace y despacha el pan cada mañana?",
           "correcta": "El panadero",
           "distractores": [
             "El médico",
@@ -79820,7 +79820,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "En la farmacia, ¿quién te da las medicinas?",
+          "enunciado": "¿Quién prepara y te da las medicinas con receta?",
           "correcta": "El farmacéutico",
           "distractores": [
             "El carpintero",
@@ -79830,7 +79830,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "En la carnicería, ¿quién corta la carne?",
+          "enunciado": "¿Quién corta y despacha los filetes y las chuletas?",
           "correcta": "El carnicero",
           "distractores": [
             "El cartero",
@@ -79840,7 +79840,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "En la peluquería, ¿quién te corta el pelo?",
+          "enunciado": "¿Quién te lava y te corta el pelo en su local?",
           "correcta": "El peluquero",
           "distractores": [
             "El fontanero",
@@ -79850,7 +79850,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "En la zapatería, ¿quién arregla los zapatos?",
+          "enunciado": "¿Quién arregla y remienda el calzado gastado?",
           "correcta": "El zapatero",
           "distractores": [
             "El electricista",
@@ -79860,7 +79860,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "En la pescadería, ¿quién vende el pescado?",
+          "enunciado": "¿Quién vende la merluza y las sardinas en su puesto?",
           "correcta": "El pescadero",
           "distractores": [
             "El albañil",
@@ -87750,7 +87750,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para hacer una tortilla de patatas necesito, sobre todo…",
+          "enunciado": "Para hacer una tortilla española necesito, sobre todo…",
           "correcta": "Huevos y patatas",
           "distractores": [
             "Arroz y azafrán",
@@ -87833,7 +87833,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Si abro el grifo y sale agua, pago el recibo del…",
+          "enunciado": "Por lo que sale del grifo cuando lo abro, pago cada mes el recibo del…",
           "correcta": "Agua",
           "distractores": [
             "Gas",
@@ -87843,7 +87843,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para hablar por teléfono pago a la compañía…",
+          "enunciado": "Para poder llamar y hablar con la familia de lejos, pago cada mes a la compañía…",
           "correcta": "De teléfono",
           "distractores": [
             "De la luz",
@@ -87853,7 +87853,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El dinero que se paga cada mes por un piso alquilado es el…",
+          "enunciado": "El dinero que se paga cada mes al dueño por vivir en un piso que no es tuyo es el…",
           "correcta": "Alquiler",
           "distractores": [
             "Propina",
@@ -88832,7 +88832,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La sábana de abajo que cubre el colchón es la…",
+          "enunciado": "La tela de abajo que se ajusta y cubre el colchón es la…",
           "correcta": "Sábana bajera",
           "distractores": [
             "Cortina",
@@ -88855,7 +88855,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para medir un vaso de leche uso el…",
+          "enunciado": "Para saber cuánta leche echo en la receta, uso el…",
           "correcta": "Vaso medidor",
           "distractores": [
             "Metro de carpintero",
@@ -89094,7 +89094,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Un café solo con un poco de leche es un…",
+          "enunciado": "Un solo con solo una gota de leche, servido en taza pequeña, es un…",
           "correcta": "Café cortado",
           "distractores": [
             "Vaso de agua",
@@ -89147,7 +89147,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para cocinar la comida voy a la…",
+          "enunciado": "Para preparar la comida en los fogones voy a la…",
           "correcta": "Cocina",
           "distractores": [
             "Dormitorio",
@@ -96634,7 +96634,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué nos despierta por la mañana con su pitido?",
+          "enunciado": "¿Qué suena por la mañana con su pitido para levantarnos?",
           "correcta": "El despertador",
           "distractores": [
             "La lavadora",
@@ -96644,7 +96644,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué suena cuando nos llaman por teléfono?",
+          "enunciado": "¿Qué suena en casa cuando alguien nos llama para hablar?",
           "correcta": "El teléfono",
           "distractores": [
             "La radio",
@@ -96853,7 +96853,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué pita cuando la olla exprés coge presión?",
+          "enunciado": "¿Qué pita en el fuego cuando coge mucha presión al cocinar rápido?",
           "correcta": "La olla exprés",
           "distractores": [
             "El cajón",
@@ -96936,7 +96936,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué truena en el cielo antes de la tormenta?",
+          "enunciado": "¿Qué retumba en el cielo antes de la tormenta?",
           "correcta": "El trueno",
           "distractores": [
             "La brisa",
@@ -101150,7 +101150,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Una bicicleta con manillar y sillín, pero sin ruedas. ¿Qué le falta?",
+          "enunciado": "Una bicicleta con manillar y sillín, pero no puede rodar. ¿Qué le falta?",
           "correcta": "Las ruedas",
           "distractores": [
             "Las alas",
@@ -101160,7 +101160,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Unas gafas con las dos patillas y un solo cristal. ¿Qué le falta?",
+          "enunciado": "Unas gafas con las dos patillas y un solo lado para ver. ¿Qué le falta?",
           "correcta": "El otro cristal",
           "distractores": [
             "El mango",
@@ -101170,7 +101170,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Una tetera con tapa y asa, pero sin pico. ¿Qué le falta?",
+          "enunciado": "Una tetera con tapa y asa, pero no puede verter. ¿Qué le falta?",
           "correcta": "El pico",
           "distractores": [
             "Las patas",
@@ -101180,7 +101180,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Un reloj con esfera y números, pero sin agujas. ¿Qué le falta?",
+          "enunciado": "Un reloj con esfera y números, pero no marca la hora. ¿Qué le falta?",
           "correcta": "Las agujas",
           "distractores": [
             "Las ruedas",
@@ -101190,7 +101190,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Una camisa con cuello y botones, pero sin mangas. ¿Qué le falta?",
+          "enunciado": "Una camisa con cuello y botones, pero deja los brazos al aire. ¿Qué le falta?",
           "correcta": "Las mangas",
           "distractores": [
             "Los cordones",
@@ -101200,7 +101200,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Una silla con asiento y respaldo, pero con tres patas. ¿Qué le falta?",
+          "enunciado": "Una silla con asiento y respaldo, pero se tambalea sobre tres apoyos. ¿Qué le falta?",
           "correcta": "Una pata",
           "distractores": [
             "Un cajón",
@@ -112424,7 +112424,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Es roja por fuera, crujiente y crece en el manzano. ¿Qué fruta es?",
+          "enunciado": "Es roja por fuera, crujiente, y se dice que una al día aleja al médico. ¿Qué fruta es?",
           "correcta": "La manzana",
           "distractores": [
             "La pera",
@@ -112444,7 +112444,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Es redonda, naranja y tiene gajos. ¿Qué fruta es?",
+          "enunciado": "Es redonda, se abre en gajos y da un zumo típico del desayuno. ¿Qué fruta es?",
           "correcta": "La naranja",
           "distractores": [
             "El limón",
@@ -112474,7 +112474,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Es amarillo, muy ácido y sirve para la limonada. ¿Qué fruta es?",
+          "enunciado": "Es amarillo, muy ácido, y con su zumo y azúcar se hace una bebida refrescante. ¿Qué fruta es?",
           "correcta": "El limón",
           "distractores": [
             "La naranja",
@@ -112736,7 +112736,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Borbotea al subir el café en la cocina.",
+          "enunciado": "Borbotea en el fogón mientras se hace la bebida del desayuno.",
           "correcta": "La cafetera",
           "distractores": [
             "El despertador",
@@ -112746,7 +112746,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Suena su alarma para despertarnos temprano.",
+          "enunciado": "Suena su alarma para levantarnos temprano.",
           "correcta": "El despertador",
           "distractores": [
             "La lavadora",
@@ -112756,7 +112756,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Zumba y da vueltas lavando la ropa.",
+          "enunciado": "Zumba y da vueltas dejando limpia la ropa.",
           "correcta": "La lavadora",
           "distractores": [
             "El teléfono",
@@ -112766,7 +112766,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Salta el pan cuando ya está tostado.",
+          "enunciado": "Salta el pan caliente y dorado cuando está listo.",
           "correcta": "La tostadora",
           "distractores": [
             "La aspiradora",
@@ -112776,7 +112776,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Ruge aspirando el polvo de la alfombra.",
+          "enunciado": "Ruge tragando el polvo de la alfombra.",
           "correcta": "La aspiradora",
           "distractores": [
             "El grifo",
@@ -112849,7 +112849,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Su alarma pita si hay humo en la cocina.",
+          "enunciado": "Aparato del techo cuya alarma pita cuando algo empieza a arder en la cocina.",
           "correcta": "El detector de humo",
           "distractores": [
             "El perchero",
@@ -112859,7 +112859,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Pita al pasar la compra por la caja del súper.",
+          "enunciado": "Pita al pasar cada producto por el lector, donde se paga en el súper.",
           "correcta": "La caja registradora",
           "distractores": [
             "El paraguas",
@@ -113068,7 +113068,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Anuncia el recreo en el colegio.",
+          "enunciado": "Suena para avisar del recreo de los niños.",
           "correcta": "El timbre del colegio",
           "distractores": [
             "Las campanas de boda",
@@ -113078,7 +113078,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Repican alegres el día de una boda.",
+          "enunciado": "Repican alegres cuando dos personas se casan en la iglesia.",
           "correcta": "Las campanas de boda",
           "distractores": [
             "El despertador",
@@ -113088,7 +113088,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Suena a la hora de salir de la fábrica.",
+          "enunciado": "Suena muy fuerte para avisar de la entrada y la salida de los obreros.",
           "correcta": "La sirena de la fábrica",
           "distractores": [
             "El timbre de casa",
@@ -113121,7 +113121,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Ácida y fresca, hecha con limón y azúcar.",
+          "enunciado": "Ácida y fresca, hecha con el zumo de un cítrico amarillo, agua y azúcar.",
           "correcta": "La limonada",
           "distractores": [
             "El café",
@@ -122072,7 +122072,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El almuerzo de media mañana se toma...",
+          "enunciado": "El pequeño tentempié que se toma entre el desayuno y la comida se toma...",
           "correcta": "A media mañana",
           "distractores": [
             "A medianoche",
@@ -123259,7 +123259,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Tubérculo con el que se hacen las patatas fritas",
+          "enunciado": "Tubérculo redondo que se fríe en bastoncillos o se cuece para el puré",
           "correcta": "Patata",
           "distractores": [
             "Boniato",
@@ -123707,7 +123707,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Bebida que se hace exprimiendo naranjas",
+          "enunciado": "Bebida que se obtiene exprimiendo una fruta redonda de piel gruesa, típica del desayuno",
           "correcta": "Zumo de naranja",
           "distractores": [
             "Café",
@@ -124530,7 +124530,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Blanca, da sabor salado a la comida: S A _",
+          "enunciado": "Blanca, se echa a la comida para que no esté sosa: S A _",
           "correcta": "Sal",
           "distractores": [
             "Azúcar",
@@ -125137,7 +125137,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿En qué se parecen un abrigo y una bufanda?",
+          "enunciado": "¿En qué se parecen una prenda de invierno y una bufanda?",
           "correcta": "Sirven para abrigar",
           "distractores": [
             "Sirven para comer",
@@ -127795,7 +127795,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Garbanzos, verdura y carne cocidos juntos",
+          "enunciado": "Garbanzos, verdura y carne guisados juntos en la olla, plato de cuchara del invierno",
           "correcta": "El cocido",
           "distractores": [
             "La paella",
@@ -127825,7 +127825,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Pan del día anterior, ajo y agua caliente",
+          "enunciado": "Pan del día anterior hervido en agua caliente con un diente picado y pimentón",
           "correcta": "La sopa de ajo",
           "distractores": [
             "El gazpacho",
@@ -127951,7 +127951,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para correr y hacer deporte",
+          "enunciado": "Para correr y hacer ejercicio en el gimnasio o el parque",
           "correcta": "Las zapatillas de deporte",
           "distractores": [
             "Los zapatos de tacón",
@@ -127961,7 +127961,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para estar cómodo en casa",
+          "enunciado": "Para andar cómodo por el hogar, al levantarse de la cama",
           "correcta": "Las zapatillas de casa",
           "distractores": [
             "Las botas",
@@ -128150,7 +128150,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La niña de la capa roja a la que engaña el lobo",
+          "enunciado": "La niña de la capa colorada a la que engaña el lobo",
           "correcta": "Caperucita Roja",
           "distractores": [
             "Cenicienta",
@@ -128200,7 +128200,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Un gato con botas ayudaba a su amo a hacerse rico",
+          "enunciado": "Un felino calzado y astuto ayudaba a su amo a hacerse rico",
           "correcta": "El Gato con Botas",
           "distractores": [
             "Pinocho",
@@ -134340,7 +134340,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para el cumpleaños de tu nieto le escribes…",
+          "enunciado": "Para el día en que tu nieto cumple años le escribes…",
           "correcta": "Feliz cumpleaños",
           "distractores": [
             "Una factura",
@@ -142796,7 +142796,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Salgo de la cocina calentita y tostada, y con mantequilla estoy más rica untada. ¿Qué es?",
+          "enunciado": "Salgo de la cocina calentita y dorada, y con mantequilla estoy más rica untada. ¿Qué es?",
           "correcta": "La tostada",
           "distractores": [
             "La sopa",
@@ -144276,7 +144276,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Prenda de abrigo que se pone encima de todo",
+          "enunciado": "Prenda larga que se pone encima de todo para salir a la calle en invierno",
           "correcta": "Abrigo",
           "distractores": [
             "Camiseta",
@@ -144887,7 +144887,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Cuando ya es de noche y toca dormir, es",
+          "enunciado": "Cuando el cielo está oscuro y toca dormir, es",
           "correcta": "La noche",
           "distractores": [
             "El amanecer",
@@ -145524,7 +145524,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "En un día de mucho sol, para los ojos usas",
+          "enunciado": "En un día de mucha luz que deslumbra, para los ojos usas",
           "correcta": "Gafas de sol",
           "distractores": [
             "Guantes",
@@ -149108,7 +149108,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Tiene púas, cabe en el bolsillo y peina el pelo. ¿Qué es?",
+          "enunciado": "Tiene púas, cabe en el bolsillo y sirve para arreglarse el pelo. ¿Qué es?",
           "correcta": "El peine",
           "distractores": [
             "La cuchara",
@@ -149171,7 +149171,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Tiene ruedas y asa, y sirve para llevar la compra. ¿Qué es?",
+          "enunciado": "Tiene ruedas y asa, y sirve para transportar las bolsas del mercado. ¿Qué es?",
           "correcta": "El carrito de la compra",
           "distractores": [
             "El tenedor",
@@ -149201,7 +149201,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Cuelga sobre la mesa y sostiene la cesta del pan. Es de mimbre. ¿Qué es?",
+          "enunciado": "Cuelga sobre la mesa, es de mimbre y en él se guarda la barra recién hecha. ¿Qué es?",
           "correcta": "El panero o cesto del pan",
           "distractores": [
             "El grifo",
@@ -151908,7 +151908,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Quién afilaba los cuchillos por la calle con su silbato?",
+          "enunciado": "¿Quién dejaba bien cortantes los cuchillos de las casas, yendo por la calle con su silbato?",
           "correcta": "El afilador",
           "distractores": [
             "El cartero",
@@ -151918,7 +151918,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Quién encendía las farolas de gas al anochecer?",
+          "enunciado": "¿Quién iba encendiendo una a una las luces de gas de las calles al anochecer?",
           "correcta": "El farolero",
           "distractores": [
             "El pastor",
@@ -151928,7 +151928,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Quién llevaba las cartas de casa en casa?",
+          "enunciado": "¿Quién repartía el correo de casa en casa?",
           "correcta": "El cartero",
           "distractores": [
             "El herrero",
@@ -151958,7 +151958,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Quién vendía agua fresca por los pueblos?",
+          "enunciado": "¿Quién iba por los pueblos vendiendo y repartiendo cántaros para calmar la sed?",
           "correcta": "El aguador",
           "distractores": [
             "El cartero",
@@ -155173,7 +155173,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "el pelo se peina con...",
+          "enunciado": "el pelo se desenreda y se arregla con...",
           "correcta": "Un peine o un cepillo",
           "distractores": [
             "Un tenedor",
@@ -161342,7 +161342,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿De qué color son a la vez la naranja y la zanahoria?",
+          "enunciado": "¿De qué color son a la vez una mandarina madura y la zanahoria?",
           "correcta": "Naranja",
           "distractores": [
             "Azul",
