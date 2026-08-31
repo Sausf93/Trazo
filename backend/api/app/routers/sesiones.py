@@ -347,7 +347,11 @@ async def crear_sesion(
         if ej is None:
             raise HTTPException(status.HTTP_404_NOT_FOUND, "Ejercicio compartido no encontrado")
     # Verifica que los participantes son del centro (evita colar ids ajenos).
-    await _validar_participantes(db, body.participantes, staff)
+    # Se DEDUPLICA (preservando orden): si el cliente manda la misma persona dos
+    # veces (doble selección), un segundo INSERT violaría uq_sesion_usuario y
+    # daría un 500 crudo justo al abrir la sala delante de la maestra.
+    participantes = list(dict.fromkeys(body.participantes))
+    await _validar_participantes(db, participantes, staff)
     ses = Sesion(
         centro_id=staff.centro_id,
         tipo=body.tipo,
@@ -363,12 +367,12 @@ async def crear_sesion(
     # grupos). Lo único que no vale es que una misma persona esté en dos salas
     # abiertas: en el kiosco aparecería en dos sitios y su medición se bifurcaría.
     if ses.abierta:
-        await _rechazar_si_en_otra_sala(db, staff.centro_id, body.participantes)
+        await _rechazar_si_en_otra_sala(db, staff.centro_id, participantes)
     db.add(ses)
     await db.flush()
     # Config por participante (la maestra fija nivel/categorías/nº para la sesión).
     configs = {c.usuario_final_id: c for c in body.configs}
-    for uf_id in body.participantes:
+    for uf_id in participantes:
         cfg = configs.get(uf_id)
         config_json = _config_json(cfg.nivel, cfg.lineas) if cfg is not None else None
         db.add(SesionParticipante(
@@ -545,7 +549,8 @@ async def editar_sesion_programada(
         raise HTTPException(
             status.HTTP_409_CONFLICT, "Solo se editan sesiones programadas sin abrir"
         )
-    await _validar_participantes(db, body.participantes, staff)
+    participantes = list(dict.fromkeys(body.participantes))
+    await _validar_participantes(db, participantes, staff)
     if body.nombre is not None:
         ses.nombre = body.nombre
     if body.modo is not None:
@@ -564,7 +569,7 @@ async def editar_sesion_programada(
         await db.delete(p)
     await db.flush()
     configs = {c.usuario_final_id: c for c in body.configs}
-    for uf_id in body.participantes:
+    for uf_id in participantes:
         cfg = configs.get(uf_id)
         config_json = _config_json(cfg.nivel, cfg.lineas) if cfg is not None else None
         db.add(SesionParticipante(

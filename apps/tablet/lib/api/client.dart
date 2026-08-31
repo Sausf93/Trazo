@@ -26,6 +26,12 @@ class ApiClient {
   // sin login de staff: se envía en la cabecera X-Device-Token.
   String? _deviceToken;
 
+  /// True mientras la tablet está en modo PARTICIPANTE (el mayor jugando). En
+  /// ese modo NO se envía el token de staff (solo el de dispositivo): así, si el
+  /// JWT de la maestra caducó, un 401 no expulsa al mayor a la pantalla de login
+  /// en mitad del ejercicio. Lo pone/quita `participante_screen`.
+  bool modoParticipante = false;
+
   /// Tiempo máximo de espera de cada petición. En el centro el WiFi puede ser
   /// inestable; sin esto una llamada colgada dejaría al mayor atrapado en
   /// "Preparando…" para siempre. Al vencer, lanza ApiException (rama de error
@@ -58,9 +64,10 @@ class ApiClient {
     );
   }
 
+  // En modo participante el token de staff se OMITE (ver `modoParticipante`).
   Map<String, String> get _headers => {
         'Content-Type': 'application/json',
-        if (_token != null) 'Authorization': 'Bearer $_token',
+        if (_token != null && !modoParticipante) 'Authorization': 'Bearer $_token',
         if (_deviceToken != null) 'X-Device-Token': _deviceToken!,
       };
 
@@ -518,8 +525,9 @@ class ApiClient {
 
   void _check(http.Response resp) {
     if (resp.statusCode == 401) {
-      if (_token != null) {
+      if (_token != null && !modoParticipante) {
         // Caducidad de la sesión de STAFF (login): cerrar y volver al login.
+        // (En modo participante NUNCA se llega aquí: el mayor no debe ver el login.)
         _token = null;
         SharedPreferences.getInstance().then((p) {
           p.remove('token');

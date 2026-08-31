@@ -41,6 +41,20 @@ final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Si un widget de actividad falla al DIBUJARSE (render mal formado: un SVG
+  // roto, un elemento de lista que no es Map…), Flutter pintaría una caja gris
+  // de error fea en el kiosco. En su lugar mostramos un aviso digno y contenido,
+  // para que el mayor nunca vea una pantalla rota.
+  ErrorWidget.builder = (FlutterErrorDetails details) => Container(
+        color: TrazoColors.ivory,
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(24),
+        child: const Text(
+          'Esta actividad no se pudo mostrar.\nPasa a la siguiente.',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 18, color: TrazoColors.ink),
+        ),
+      );
   // Calienta la voz cuanto antes (sobre todo en web): así el primer toque del
   // altavoz ya lee directo, sin perder el gesto ni esperar a que carguen voces.
   unawaited(Tts.instance.calienta());

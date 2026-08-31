@@ -92,7 +92,15 @@ async function request<T>(path: string, opts: RequestOptions = {}): Promise<T> {
 
   if (res.status === 204) return undefined as T;
   const text = await res.text();
-  return (text ? JSON.parse(text) : undefined) as T;
+  if (!text) return undefined as T;
+  try {
+    return JSON.parse(text) as T;
+  } catch {
+    // Un 2xx con cuerpo no-JSON (un proxy/portal cautivo/WiFi inestable puede
+    // devolver HTML) rompería con un SyntaxError que la app no reconoce como
+    // ApiError. Lo normalizamos a un error legible.
+    throw new ApiError(res.status, "Respuesta inesperada del servidor. Inténtalo de nuevo.");
+  }
 }
 
 export function buildQuery(params: Record<string, string | number | boolean | undefined | null>): string {

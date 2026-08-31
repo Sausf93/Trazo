@@ -118,12 +118,16 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
   @override
   void initState() {
     super.initState();
+    // En modo participante NO se envía el token de staff: si el JWT de la
+    // maestra caducó, un 401 no debe sacar al mayor a la pantalla de login.
+    ApiClient.instance.modoParticipante = true;
     _poll();
     _timer = Timer.periodic(const Duration(seconds: 3), (_) => _poll());
   }
 
   @override
   void dispose() {
+    ApiClient.instance.modoParticipante = false;
     _timer?.cancel();
     Tts.instance.parar();
     super.dispose();
