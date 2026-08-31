@@ -167653,5 +167653,565 @@
       "porLado": 5
     },
     "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: en el cuarto de baño",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "jabon",
+          "label": "jabón"
+        },
+        {
+          "id": "toalla",
+          "label": "toalla"
+        },
+        {
+          "id": "espejo",
+          "label": "espejo"
+        },
+        {
+          "id": "cepillo_dientes",
+          "label": "cepillo de dientes"
+        },
+        {
+          "id": "cepillo",
+          "label": "cepillo de pelo"
+        },
+        {
+          "id": "vaso",
+          "label": "vaso"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: animales domésticos",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "perro",
+          "label": "perro"
+        },
+        {
+          "id": "gato",
+          "label": "gato"
+        },
+        {
+          "id": "conejo",
+          "label": "conejo"
+        },
+        {
+          "id": "raton",
+          "label": "raton"
+        },
+        {
+          "id": "pajaro",
+          "label": "pajaro"
+        },
+        {
+          "id": "pez",
+          "label": "pez"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: poner la mesa",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "plato",
+          "label": "plato"
+        },
+        {
+          "id": "vaso",
+          "label": "vaso"
+        },
+        {
+          "id": "taza",
+          "label": "taza"
+        },
+        {
+          "id": "cuchara",
+          "label": "cuchara"
+        },
+        {
+          "id": "cuchillo",
+          "label": "cuchillo"
+        },
+        {
+          "id": "tenedor",
+          "label": "tenedor"
+        },
+        {
+          "id": "servilleta",
+          "label": "servilleta"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: en la carretera",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "coche",
+          "label": "coche"
+        },
+        {
+          "id": "autobus",
+          "label": "autobus"
+        },
+        {
+          "id": "camion",
+          "label": "camion"
+        },
+        {
+          "id": "moto",
+          "label": "moto"
+        },
+        {
+          "id": "bicicleta",
+          "label": "bicicleta"
+        },
+        {
+          "id": "tren",
+          "label": "tren"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: verduras de la huerta",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "tomate",
+          "label": "tomate"
+        },
+        {
+          "id": "cebolla",
+          "label": "cebolla"
+        },
+        {
+          "id": "lechuga",
+          "label": "lechuga"
+        },
+        {
+          "id": "pimiento",
+          "label": "pimiento"
+        },
+        {
+          "id": "zanahoria",
+          "label": "zanahoria"
+        },
+        {
+          "id": "patata",
+          "label": "patata"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: flores y plantas",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "flor",
+          "label": "flor"
+        },
+        {
+          "id": "girasol",
+          "label": "girasol"
+        },
+        {
+          "id": "clavel",
+          "label": "clavel"
+        },
+        {
+          "id": "margarita",
+          "label": "margarita"
+        },
+        {
+          "id": "tulipan",
+          "label": "tulipan"
+        },
+        {
+          "id": "maceta",
+          "label": "maceta"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: los pájaros",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todos los PÁJAROS",
+      "objetivo": {
+        "id": "pajaro",
+        "label": "pajaro"
+      },
+      "distractores": [
+        {
+          "id": "gato",
+          "label": "gato"
+        },
+        {
+          "id": "perro",
+          "label": "perro"
+        },
+        {
+          "id": "conejo",
+          "label": "conejo"
+        },
+        {
+          "id": "raton",
+          "label": "raton"
+        },
+        {
+          "id": "gallina",
+          "label": "gallina"
+        },
+        {
+          "id": "pez",
+          "label": "pez"
+        },
+        {
+          "id": "caballo",
+          "label": "caballo"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: las botellas",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todas las BOTELLAS",
+      "objetivo": {
+        "id": "botella",
+        "label": "botella"
+      },
+      "distractores": [
+        {
+          "id": "vaso",
+          "label": "vaso"
+        },
+        {
+          "id": "taza",
+          "label": "taza"
+        },
+        {
+          "id": "olla",
+          "label": "olla"
+        },
+        {
+          "id": "sarten",
+          "label": "sarten"
+        },
+        {
+          "id": "bol",
+          "label": "bol"
+        },
+        {
+          "id": "plato",
+          "label": "plato"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: los libros",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todos los LIBROS",
+      "objetivo": {
+        "id": "libro",
+        "label": "libro"
+      },
+      "distractores": [
+        {
+          "id": "lapiz",
+          "label": "lapiz"
+        },
+        {
+          "id": "boligrafo",
+          "label": "boligrafo"
+        },
+        {
+          "id": "telefono",
+          "label": "telefono"
+        },
+        {
+          "id": "reloj",
+          "label": "reloj"
+        },
+        {
+          "id": "gafas",
+          "label": "gafas"
+        },
+        {
+          "id": "llave",
+          "label": "llave"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: los relojes",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todos los RELOJES",
+      "objetivo": {
+        "id": "reloj",
+        "label": "reloj"
+      },
+      "distractores": [
+        {
+          "id": "telefono",
+          "label": "telefono"
+        },
+        {
+          "id": "television",
+          "label": "television"
+        },
+        {
+          "id": "lampara",
+          "label": "lampara"
+        },
+        {
+          "id": "espejo",
+          "label": "espejo"
+        },
+        {
+          "id": "llave",
+          "label": "llave"
+        },
+        {
+          "id": "gafas",
+          "label": "gafas"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: las sillas (2)",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todas las SILLAS",
+      "objetivo": {
+        "id": "silla",
+        "label": "silla"
+      },
+      "distractores": [
+        {
+          "id": "mesa",
+          "label": "mesa"
+        },
+        {
+          "id": "sofa",
+          "label": "sofa"
+        },
+        {
+          "id": "lampara",
+          "label": "lampara"
+        },
+        {
+          "id": "puerta",
+          "label": "puerta"
+        },
+        {
+          "id": "ventana",
+          "label": "ventana"
+        },
+        {
+          "id": "nevera",
+          "label": "nevera"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: los caballos",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todos los CABALLOS",
+      "objetivo": {
+        "id": "caballo",
+        "label": "caballo"
+      },
+      "distractores": [
+        {
+          "id": "vaca",
+          "label": "vaca"
+        },
+        {
+          "id": "oveja",
+          "label": "oveja"
+        },
+        {
+          "id": "cerdo",
+          "label": "cerdo"
+        },
+        {
+          "id": "perro",
+          "label": "perro"
+        },
+        {
+          "id": "gato",
+          "label": "gato"
+        },
+        {
+          "id": "conejo",
+          "label": "conejo"
+        },
+        {
+          "id": "gallina",
+          "label": "gallina"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Cuenta: peras y manzanas",
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 6,
+      "objetos": [
+        "pera",
+        "manzana"
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Cuenta: coches y camiones",
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 6,
+      "objetos": [
+        "coche",
+        "camion"
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Cuenta: vasos y tazas",
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 6,
+      "objetos": [
+        "vaso",
+        "taza"
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Cuenta: peces y pájaros",
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 6,
+      "objetos": [
+        "pez",
+        "pajaro"
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Cuenta: naranjas y limones",
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 6,
+      "objetos": [
+        "naranja",
+        "limon"
+      ]
+    },
+    "estado": "en_pruebas"
   }
 ]
