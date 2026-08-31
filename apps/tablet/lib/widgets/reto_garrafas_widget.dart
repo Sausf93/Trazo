@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme.dart';
+import 'reto_contenedor.dart';
 
 /// Reto interactivo de GARRAFAS (decantación de líquido). El grupo mide una
 /// cantidad exacta pasando agua entre garrafas de distinta capacidad y la echa
@@ -178,7 +179,7 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
       );
     }
     final maxCap = _caps.reduce(math.max);
-    return LayoutBuilder(builder: (context, outer) {
+    return RetoContenedor(child: LayoutBuilder(builder: (context, outer) {
       return SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: outer.maxHeight),
@@ -327,7 +328,7 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
           ),
         ),
       );
-    });
+    }));
   }
 
   // Pequeña señal visual de que la garrafa tapada es la META (flecha + texto).

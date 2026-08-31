@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme.dart';
+import 'reto_contenedor.dart';
 
 /// Reto interactivo de LA TORRE DE HANOI. Tres palos y una torre de discos de
 /// distinto tamaño. Se mueve un disco cada vez, y NUNCA un disco grande encima
@@ -120,7 +121,7 @@ class _RetoHanoiWidgetState extends State<RetoHanoiWidget> {
         ),
       );
     }
-    return LayoutBuilder(builder: (context, outer) {
+    return RetoContenedor(child: LayoutBuilder(builder: (context, outer) {
       return SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: outer.maxHeight),
@@ -184,7 +185,7 @@ class _RetoHanoiWidgetState extends State<RetoHanoiWidget> {
           ),
         ),
       );
-    });
+    }));
   }
 
   Widget _palo(int p, double discoMax, double altoDisco, int n) {

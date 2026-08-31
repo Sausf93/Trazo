@@ -20204,10 +20204,6 @@
           "label": "limon"
         },
         {
-          "id": "platano",
-          "label": "platano"
-        },
-        {
           "id": "pera",
           "label": "pera"
         },
@@ -166352,18 +166348,6 @@
   },
   {
     "bloque": "retos",
-    "plantilla_tipo": "reto_taquin",
-    "nombre": "Reto: el taquín de números (3x3)",
-    "descripcion": "Reto de ingenio (puzzle deslizante).",
-    "parametros_json": {
-      "titulo": "Reto: el taquín de números (3x3)",
-      "enunciado": "Deslizad las fichas para dejar los números en orden, del 1 al 8, con el hueco al final. Se toca una ficha de al lado del hueco para moverla.",
-      "lado": 3,
-      "instruccion": "Resolvedlo en grupo."
-    }
-  },
-  {
-    "bloque": "retos",
     "plantilla_tipo": "reto_garrafas",
     "nombre": "Reto: garrafas de 3 y 7 litros (medir 5)",
     "descripcion": "Reto de garrafas.",
@@ -166423,18 +166407,6 @@
       ],
       "con_grifo": true,
       "instruccion": "Resolvedlo en grupo."
-    }
-  },
-  {
-    "bloque": "retos",
-    "plantilla_tipo": "reto_taquin",
-    "nombre": "Reto: el taquín de números (4x4)",
-    "descripcion": "Reto de ingenio.",
-    "parametros_json": {
-      "titulo": "Reto: el taquín de números (4x4)",
-      "enunciado": "Deslizad las fichas para dejar los números del 1 al 15 en orden, con el hueco al final.",
-      "instruccion": "Resolvedlo en grupo.",
-      "lado": 4
     }
   },
   {
@@ -166816,10 +166788,6 @@
           "label": "zapato"
         },
         {
-          "id": "gorro",
-          "label": "gorro"
-        },
-        {
           "id": "bufanda",
           "label": "bufanda"
         },
@@ -166854,20 +166822,12 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "platano"
-        },
-        {
           "id": "fresa",
           "label": "fresa"
         },
         {
           "id": "uvas",
           "label": "uvas"
-        },
-        {
-          "id": "melon",
-          "label": "melon"
         }
       ]
     },
@@ -167190,10 +167150,6 @@
           "label": "pera"
         },
         {
-          "id": "platano",
-          "label": "platano"
-        },
-        {
           "id": "limon",
           "label": "limon"
         },
@@ -167204,10 +167160,6 @@
         {
           "id": "fresa",
           "label": "fresa"
-        },
-        {
-          "id": "melocoton",
-          "label": "melocoton"
         }
       ]
     },
@@ -167368,10 +167320,6 @@
         {
           "id": "pantalon",
           "label": "pantalon"
-        },
-        {
-          "id": "gorro",
-          "label": "gorro"
         },
         {
           "id": "guantes",

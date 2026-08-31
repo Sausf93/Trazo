@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme.dart';
+import 'reto_contenedor.dart';
 
 /// Reto interactivo tipo MASTERMIND: adivinar una secuencia oculta de colores.
 /// Se elige una fila de colores y se pulsa COMPROBAR; la app dice cuántos están
@@ -135,7 +136,7 @@ class _RetoMastermindWidgetState extends State<RetoMastermindWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, outer) {
+    return RetoContenedor(child: LayoutBuilder(builder: (context, outer) {
       return SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: outer.maxHeight),
@@ -232,7 +233,7 @@ class _RetoMastermindWidgetState extends State<RetoMastermindWidget> {
           ),
         ),
       );
-    });
+    }));
   }
 
   Widget _circulo(int color, double d, bool relleno) {

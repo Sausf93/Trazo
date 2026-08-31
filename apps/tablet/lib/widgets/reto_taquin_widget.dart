@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme.dart';
+import 'reto_contenedor.dart';
 
 /// Reto interactivo del TAQUÍN (puzzle deslizante). Una cuadrícula con fichas
 /// numeradas y un hueco; se toca una ficha de al lado del hueco para deslizarla.
@@ -101,7 +102,7 @@ class _RetoTaquinWidgetState extends State<RetoTaquinWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, outer) {
+    return RetoContenedor(child: LayoutBuilder(builder: (context, outer) {
       return SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: outer.maxHeight),
@@ -188,7 +189,7 @@ class _RetoTaquinWidgetState extends State<RetoTaquinWidget> {
           ),
         ),
       );
-    });
+    }));
   }
 
   Widget _ficha(int pos, double celda) {

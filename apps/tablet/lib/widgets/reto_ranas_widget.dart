@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme.dart';
+import 'reto_contenedor.dart';
 
 /// Reto interactivo de LAS RANAS QUE SALTAN. En una fila de piedras hay ranas
 /// verdes a la izquierda (avanzan hacia la derecha) y marrones a la derecha
@@ -117,7 +118,8 @@ class _RetoRanasWidgetState extends State<RetoRanasWidget> {
         ),
       );
     }
-    return LayoutBuilder(builder: (context, outer) {
+    return RetoContenedor(
+        child: LayoutBuilder(builder: (context, outer) {
       return SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: outer.maxHeight),
@@ -184,7 +186,7 @@ class _RetoRanasWidgetState extends State<RetoRanasWidget> {
           ),
         ),
       );
-    });
+    }));
   }
 
   Widget _piedra(int i, double tam) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme.dart';
+import 'reto_contenedor.dart';
 
 /// Reto interactivo de CRUZAR EL RÍO. Motor genérico que cubre dos clásicos:
 ///  - El barquero (el lobo, la cabra y la col): hay un REMERO (el barquero) que
@@ -211,7 +212,7 @@ class _RetoCruzarWidgetState extends State<RetoCruzarWidget> {
         ),
       );
     }
-    return LayoutBuilder(builder: (context, outer) {
+    return RetoContenedor(child: LayoutBuilder(builder: (context, outer) {
       return SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: outer.maxHeight),
@@ -289,7 +290,7 @@ class _RetoCruzarWidgetState extends State<RetoCruzarWidget> {
           ),
         ),
       );
-    });
+    }));
   }
 
   Widget _banner(Color c, IconData ic, String txt) => Container(
