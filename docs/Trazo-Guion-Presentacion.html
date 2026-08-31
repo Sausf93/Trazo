@@ -1,0 +1,410 @@
+<title>Guion de Trazo</title>
+<style>
+  :root{
+    --ivory:#F5FBFA; --card:#FFFFFF; --ink:#12312E; --muted:#4E635F;
+    --sage:#12A99B; --sageDark:#1F7A70; --coral:#F08A6B; --coralDark:#C4553A;
+    --sand:#D2E6E2; --line:#E2EFEC;
+  }
+  :root[data-theme="dark"], :root:not([data-theme="light"]){}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ivory:#0E2320; --card:#123330; --ink:#EAF5F2; --muted:#9CB6B1;
+      --sage:#3FC9BC; --sageDark:#8FE0D6; --coral:#F3A488; --coralDark:#F3A488;
+      --sand:#1C4A44; --line:#1C4A44;
+    }
+  }
+  :root[data-theme="dark"]{
+      --ivory:#0E2320; --card:#123330; --ink:#EAF5F2; --muted:#9CB6B1;
+      --sage:#3FC9BC; --sageDark:#8FE0D6; --coral:#F3A488; --coralDark:#F3A488;
+      --sand:#1C4A44; --line:#1C4A44;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ivory);color:var(--ink);
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.55;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:48px 24px 80px}
+  .top{border-bottom:2px solid var(--sand);padding-bottom:24px;margin-bottom:8px}
+  .eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--sageDark);font-weight:700;margin:0 0 6px}
+  h1{font-size:38px;margin:0 0 8px;font-weight:800;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:17px;margin:0}
+  .meta{display:flex;gap:20px;flex-wrap:wrap;margin-top:18px;font-size:14px;color:var(--muted)}
+  .meta b{color:var(--ink)}
+  .tips{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:18px 22px;margin:26px 0 34px}
+  .tips h3{margin:0 0 10px;font-size:15px;color:var(--sageDark);
+    text-transform:uppercase;letter-spacing:.1em}
+  .tips ul{margin:0;padding-left:20px;color:var(--muted)}
+  .tips li{margin:4px 0}
+  .tips li b{color:var(--ink)}
+  .slide{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:22px 24px;margin:16px 0;box-shadow:0 1px 3px rgba(18,49,46,.05);
+    break-inside:avoid}
+  .s-head{display:flex;align-items:flex-start;gap:16px}
+  .s-num{flex:0 0 auto;width:40px;height:40px;border-radius:50%;
+    background:var(--sageDark);color:#fff;font-weight:800;font-size:18px;
+    display:grid;place-items:center}
+  .s-titles{flex:1 1 auto;min-width:0}
+  .s-titles h2{margin:2px 0 2px;font-size:22px;font-weight:800;letter-spacing:-.01em}
+  .s-msg{margin:0;color:var(--sageDark);font-style:italic;font-weight:600;font-size:15px}
+  .s-time{flex:0 0 auto;color:var(--muted);font-size:13px;
+    background:var(--ivory);border:1px solid var(--line);border-radius:20px;
+    padding:3px 12px;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .s-body{display:grid;grid-template-columns:1fr 260px;gap:22px;margin-top:16px}
+  .lbl{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--coralDark);font-weight:700;margin-bottom:5px}
+  .lbl2{margin-top:14px}
+  .s-say p{margin:0;font-size:16.5px;line-height:1.62}
+  .s-show{border-left:1px solid var(--line);padding-left:20px}
+  .s-show p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+  .s-show ul{margin:6px 0 0;padding-left:18px;color:var(--ink);font-size:14px}
+  .s-show li{margin:3px 0}
+  .foot{margin-top:40px;padding-top:20px;border-top:2px solid var(--sand);
+    color:var(--muted);font-size:14px}
+  @media (max-width:680px){.s-body{grid-template-columns:1fr}
+    .s-show{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:14px}}
+  @media print{body{background:#fff}.slide{box-shadow:none}.tips{break-inside:avoid}}
+</style>
+<div class="wrap">
+  <div class="top">
+    <p class="eyebrow">Guion de presentación</p>
+    <h1>Trazo — qué decir en cada diapositiva</h1>
+    <p class="sub">Estimulación cognitiva en tablet para centros de día. Guía del ponente, diapositiva a diapositiva.</p>
+    <div class="meta">
+      <span><b>15</b> diapositivas</span>
+      <span>Duración estimada del discurso <b>≈ 6 min 10 s</b></span>
+      <span>Deja <b>3–4 min</b> extra para la demo en vivo</span>
+    </div>
+  </div>
+
+  <div class="tips">
+    <h3>Antes de empezar</h3>
+    <ul>
+      <li><b>Enseña, no leas.</b> Las diapositivas llevan poco texto a propósito: el peso lo llevas tú y la demo en vivo.</li>
+      <li><b>Ten la tablet a mano.</b> En los pasos 2–4 y en el reto (diapositivas 7, 8, 11) abre la app de verdad y hazlo delante de ellos.</li>
+      <li><b>Habla desde la persona mayor.</b> Es tu usuario más frágil; que se note que todo está pensado para su dignidad.</li>
+      <li><b>Cierra con el piloto</b>, no con el precio: propón probarlo en un centro antes de hablar de los cinco.</li>
+    </ul>
+  </div>
+
+  <article class="slide">
+    <header class="s-head">
+      <span class="s-num">1</span>
+      <div class="s-titles">
+        <h2>Trazo</h2>
+        <p class="s-msg">Se planifica en minutos, corrige y mide sola.</p>
+      </div>
+      <span class="s-time">≈ 20 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Buenos días. Esto es Trazo. En vez de contaros qué hace, os lo voy a enseñar funcionando, con las mismas pantallas que verá vuestro equipo. Una frase para quedaros: la sesión se prepara en minutos, la app corrige y mide sola, y funciona aunque se caiga internet. Empecemos por el problema que conocéis mejor que yo.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Portada a sangre con landing-hero.png (tablet con una actividad) sobre fondo ivory cálido; logo Trazo grande. Sin más texto.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Estimulación cognitiva en tablet</li><li>Para centros de día</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">2</span>
+      <div class="s-titles">
+        <h2>Las tijeras, el boli rojo y diez personas a la vez</h2>
+        <p class="s-msg">Recortar fichas, corregir a mano y vigilar a todos agota.</p>
+      </div>
+      <span class="s-time">≈ 25 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Pensad en un martes cualquiera. La integradora ha llegado antes para fotocopiar y recortar fichas. Durante la sesión corrige a boli mientras intenta estar pendiente de diez personas que van a ritmos distintos. Y a fin de mes, cuando la familia pregunta si su madre mejora, la respuesta honesta es una impresión, no un dato. Ese desgaste es justo lo que venimos a quitaros.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Tres iconos grandes (tijeras/fotocopia, lápiz corrigiendo, ojo cansado) sobre fondo neutro; una foto cálida de sala de centro de día si hay. Nada de párrafos.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Horas recortando fichas</li><li>Corrección una a una</li><li>Nadie ve la evolución</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">3</span>
+      <div class="s-titles">
+        <h2>Por qué Laura dejó NeuronUP</h2>
+        <p class="s-msg">El referente frena justo donde más duele: el día a día.</p>
+      </div>
+      <span class="s-time">≈ 30 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>No os voy a decir que la competencia es mala. NeuronUP es el referente y hace bien muchas cosas. Pero la empresa que hoy es nuestro cliente ancla, con cinco centros, lo dejó por dos razones muy concretas: les salía caro y se les hacía cuesta arriba en el día a día. Justo ahí queremos estar: más ágil de manejar y más asequible, sin bajar el rigor ni un milímetro.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Comparativa muy simple: a la izquierda 'lo de siempre' en gris; a la derecha 'Trazo' en color cálido. Solo tres filas de iconos, sin tabla densa.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Caro</li><li>Lento de operar</li><li>Poco vivo en sesión</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">4</span>
+      <div class="s-titles">
+        <h2>Un solo login para todo el centro</h2>
+        <p class="s-msg">La maestra manda, las tablets solo juegan, el panel lo recuerda todo.</p>
+      </div>
+      <span class="s-time">≈ 25 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Trazo son tres piezas que trabajan juntas. La tablet de la maestra, la única con contraseña, monta y vigila la sesión. Las tablets de los mayores no piden nada: solo muestran su actividad. Y el panel web guarda la historia de cada persona. Detrás, nueve tipos de ejercicio y un banco de casi tres mil, todos con corrección automática.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Diagrama limpio de 3 piezas conectadas: tablet maestra -&gt; tablets participantes -&gt; panel web. Iconos grandes, flechas suaves. Al lado, tablet-actividades.png en pequeño.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Tablet maestra + participantes</li><li>Panel web de seguimiento</li><li>9 tipos, ~2.800 actividades</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">5</span>
+      <div class="s-titles">
+        <h2>Cinco pasos, y casi todo ya está hecho</h2>
+        <p class="s-msg">Preparar, abrir, repartir, jugar y revisar: eso es un día entero.</p>
+      </div>
+      <span class="s-time">≈ 20 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>El día completo cabe en cinco pasos, y os los enseño uno a uno con pantallas reales. Fijaos en una cosa mientras avanzamos: lo que hay que decidir en el momento es mínimo. Casi todo el pensar queda hecho el día antes, con calma. La maestra llega y solo tiene que arrancar.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Cinta horizontal de 5 pasos numerados con un icono cada uno; el primero resaltado. Es la diapo-índice que guía las 5 siguientes.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>1 Preparar</li><li>2 Abrir sala</li><li>3 Repartir</li><li>4 Jugar</li><li>5 Revisar</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">6</span>
+      <div class="s-titles">
+        <h2>Paso 1 · Se piensa el lunes, sirve toda la semana</h2>
+        <p class="s-msg">Eliges dominio y nivel una vez; el motor rota los ejercicios solo.</p>
+      </div>
+      <span class="s-time">≈ 25 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Paso uno, y el corazón de todo: el plan de cada persona. Se monta en el panel sin prisa, marcando por ejemplo memoria, nivel medio, y cuántos ejercicios tendrá la sesión. A partir de ahí el motor rota el contenido solo, sin repetir. Y puede dejar preparada la de mañana. Al día siguiente ya no se elige nada a mano.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Captura del editor de plan / panel (panel-movil-dashboard.png) con anotaciones de flecha señalando dominio y nivel. Marco de dispositivo.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Por dominio y nivel</li><li>Ejercicios por sesión</li><li>Deja lista la de mañana</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">7</span>
+      <div class="s-titles">
+        <h2>Pasos 2 y 3 · Le das la tablet a Juan y arranca Juan</h2>
+        <p class="s-msg">Abre la sala, toca el nombre y la actividad empieza sola.</p>
+      </div>
+      <span class="s-time">≈ 25 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Pasos dos y tres, juntos porque duran segundos. La maestra abre la sala del día y las tablets de los participantes se despiertan mostrando los nombres. Le da la tablet a Juan, pulsa Juan, y arranca su plan. Sin contraseñas, sin teclear códigos delante del mayor. Y si hay dos grupos en paralelo con dos maestras, funcionan a la vez sin pisarse.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Dos capturas en secuencia: pantalla '¿Quién eres?' con nombres (kiosk-vida-1.png o similar) y una mano tocando un nombre. Flecha entre ambas.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Sin códigos cada vez</li><li>Reparto por toque</li><li>Dos grupos a la vez</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">8</span>
+      <div class="s-titles">
+        <h2>Paso 4 · Juega, y jamás lee 'has fallado'</h2>
+        <p class="s-msg">Una actividad a pantalla completa, sin menús y sin prisa.</p>
+      </div>
+      <span class="s-time">≈ 25 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Paso cuatro: juegan. Cada persona ve una sola actividad ocupando toda la pantalla, sin menús donde perderse. Trazar una figura, contar objetos, dar el cambio con monedas. Está pensado para el usuario más frágil, incluso con temblor o poca vista: nada que atrape y ningún mensaje de fracaso. Y mientras la persona simplemente juega, la app va corrigiendo por dentro.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Mosaico de 3 capturas reales del kiosco: vit-trazo.png, vit-conteo.png y vit-dinero.png. Grandes, a sangre, con marco de tablet.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Un ejercicio cada vez</li><li>Nunca dice que falló</li><li>Botones grandes, alto contraste</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">9</span>
+      <div class="s-titles">
+        <h2>Paso 4 · La app le dice dónde mirar</h2>
+        <p class="s-msg">Una tarjeta por persona: quién trabaja, quién se atascó, quién acabó.</p>
+      </div>
+      <span class="s-time">≈ 25 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Y mientras ellos juegan, la maestra deja de correr de mesa en mesa. Tiene un tablero en vivo con una tarjeta por persona: trabajando, atascado, ayudado, terminado. Si alguien lleva un minuto sin tocar nada, un sonido suave se lo avisa. Ya no tiene que estar encima de todos: la app le dice exactamente dónde hace falta.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Captura del monitor en vivo (panel-movil-dashboard.png o tablet-actividades.png) con tarjetas de estado; resaltar una en 'atascado'.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Aviso suave si se atasca</li><li>Ayuda de un toque</li><li>Sin vigilar a todos</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">10</span>
+      <div class="s-titles">
+        <h2>Paso 5 · No tocar algo no es fallar</h2>
+        <p class="s-msg">Medimos desempeño, no deterioro, y nada puntúa sin revisión humana.</p>
+      </div>
+      <span class="s-time">≈ 25 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Paso cinco, y aquí está el rigor clínico. Cada intento nace sin valorar: no puntúa hasta que la profesional lo revisa, porque no tocar algo no es fallar. Medimos desempeño, nunca deterioro, y jamás usamos lenguaje de diagnóstico. Y las alertas comparan a cada persona consigo misma, no con el grupo: avisan de un cambio en su propia línea, que es lo que de verdad importa.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Captura de la gráfica de evolución por persona (panel-movil-dashboard.png). Encima, mini-leyenda de los 3 resultados con color. Números grandes.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Nace 'sin valorar'</li><li>Logrado, parcial, no logrado</li><li>Se compara consigo misma</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">11</span>
+      <div class="s-titles">
+        <h2>Y para los que se aburren con lo fácil</h2>
+        <p class="s-msg">Retos de ingenio que se resuelven pensando juntos, en voz alta.</p>
+      </div>
+      <span class="s-time">≈ 25 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Ahora una novedad de la que estoy orgulloso: los retos de ingenio, para quienes van sobrados y se aburren con la ficha básica. El barquero con el lobo y la cabra, las garrafas de agua, las ranas, la Torre de Hanói, el taquín, Mastermind. Se resuelven en grupo, discutiendo, con lápiz si hace falta. La tablet deja probar sin castigo y celebra cuando lo consiguen.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>banco-retos.png como fondo mosaico de los 6 retos; superponer reto-play1.png (uno en marcha) grande. Etiqueta 'NUEVO'.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Garrafas, río, ranas</li><li>Hanói, taquín, Mastermind</li><li>En grupo, no puntúan</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">12</span>
+      <div class="s-titles">
+        <h2>Esto no lo da una ficha de papel</h2>
+        <p class="s-msg">Resuelven el acertijo juntos y la pantalla lo celebra con ellos.</p>
+      </div>
+      <span class="s-time">≈ 20 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Dejadme un segundo con esta imagen. No es una pantalla más: es un grupo de personas mayores resolviendo un enigma entre todas, y la tablet celebrándolo a la vez. De ahí salen conversación, orgullo y ganas de volver mañana. Ese vínculo, ese buen rato compartido, es justo lo que una fotocopia nunca va a dar.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>reto-win.png a pantalla casi completa (pantalla de reto resuelto). Emoción, poco texto. Deja respirar la imagen.</p>
+        
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">13</span>
+      <div class="s-titles">
+        <h2>Si se cae el wifi, la sesión sigue</h2>
+        <p class="s-msg">Funciona offline, cumple RGPD y una tablet perdida se corta al instante.</p>
+      </div>
+      <span class="s-time">≈ 25 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Tres cosas que a dirección le quitan el sueño, resueltas. Una: si se cae el wifi, la sesión no se para; sigue y sincroniza cuando vuelve. Dos: RGPD de serie, los datos van pseudonimizados y protegidos por diseño. Y tres: las tablets no piden contraseñas pero tampoco guardan nada, así que si se pierde una, cortáis su acceso desde el panel en un toque.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Tres pastillas con icono: nube tachada (offline), candado dorado (RGPD), tablet con botón revocar. Fondo limpio, sin foto.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Offline, sincroniza al volver</li><li>Datos pseudonimizados</li><li>Se revoca desde el panel</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">14</span>
+      <div class="s-titles">
+        <h2>La maestra recupera horas; la familia por fin ve datos</h2>
+        <p class="s-msg">Menos papeleo, cero corrección a mano y una evolución que se enseña.</p>
+      </div>
+      <span class="s-time">≈ 25 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Recapitulando lo que gana el centro. La integradora recupera horas cada semana, porque la sesión se prepara en minutos y ya no corrige a boli. Y la dirección, por fin, tiene una evolución real que enseñar a la familia: con datos, no con impresiones. En una frase: más tiempo con las personas y menos con el papeleo.</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Tres cifras/iconos grandes tipo dashboard: reloj (minutos), tick (auto-corrección), gráfica (evolución). Estilo KPI, números enormes.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Lista en minutos</li><li>Cero corrección manual</li><li>Evidencia para la familia</li></ul>
+      </aside>
+    </div>
+  </article>
+<article class="slide">
+    <header class="s-head">
+      <span class="s-num">15</span>
+      <div class="s-titles">
+        <h2>No os pido que decidáis hoy</h2>
+        <p class="s-msg">Empezamos con un piloto gratis en un centro y lo veis funcionando.</p>
+      </div>
+      <span class="s-time">≈ 30 s</span>
+    </header>
+    <div class="s-body">
+      <div class="s-say">
+        <span class="lbl">Qué decir</span>
+        <p>Y el precio es sencillo, sin sustos: desde ciento veinticinco euros al mes por centro, con el equipo entero incluido sin límite de usuarias, y solo tres euros más por persona activa cuando pasáis de treinta. Pero no os pido decidir hoy: os propongo un piloto gratis en uno de vuestros centros, para que lo veáis con vuestro equipo y vuestras personas. Si funciona como creo, hablamos de los cinco. ¿Lo montamos?</p>
+      </div>
+      <aside class="s-show">
+        <span class="lbl">Qué mostrar</span>
+        <p>Bloque de precio limpio y grande (10€ destacado, tramos abajo en pequeño) + botón CTA 'Empezar un piloto'. Logo Trazo. Datos de contacto.</p>
+        <span class="lbl lbl2">En pantalla</span><ul><li>Desde 125€/mes por centro</li><li>Equipo sin límite incluido</li><li>Piloto gratis</li></ul>
+      </aside>
+    </div>
+  </article>
+
+  <div class="foot">
+    Trazo · Guion generado a partir del guion del ponente incluido en las notas del PPT.
+    Cada tiempo es orientativo (ritmo pausado). Ajusta según preguntas de la sala.
+  </div>
+</div>

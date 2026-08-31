@@ -65583,7 +65583,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La sardina, la trucha y la ballena. ¿cuál es más grande?",
+          "enunciado": "La sardina, la trucha y la ballena. ¿Cuál es más grande?",
           "correcta": "La ballena",
           "distractores": [
             "La trucha",
@@ -65646,7 +65646,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El mosquito, el escarabajo y la mariposa. ¿cuál es más pequeño?",
+          "enunciado": "El mosquito, el escarabajo y la mariposa. ¿Cuál es más pequeño?",
           "correcta": "El mosquito",
           "distractores": [
             "La mariposa",
@@ -65719,7 +65719,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La castaña, el piñón y la almendra. ¿cuál es más menudo?",
+          "enunciado": "La castaña, el piñón y la almendra. ¿Cuál es más menudo?",
           "correcta": "El piñón",
           "distractores": [
             "La almendra",
@@ -65792,7 +65792,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El garbanzo, la lenteja y el haba. ¿cuál es más grande?",
+          "enunciado": "El garbanzo, la lenteja y el haba. ¿Cuál es más grande?",
           "correcta": "El haba",
           "distractores": [
             "El garbanzo",
@@ -65938,7 +65938,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La calabaza, el rábano y el ajo. ¿cuál es más grande?",
+          "enunciado": "La calabaza, el rábano y el ajo. ¿Cuál es más grande?",
           "correcta": "La calabaza",
           "distractores": [
             "El rábano",
@@ -66011,7 +66011,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La barra, la hogaza y el panecillo. ¿cuál es más pequeño?",
+          "enunciado": "La barra, la hogaza y el panecillo. ¿Cuál es más pequeño?",
           "correcta": "El panecillo",
           "distractores": [
             "La hogaza",
@@ -66084,7 +66084,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El contrabajo, la armónica y el violín. ¿cuál es mayor?",
+          "enunciado": "El contrabajo, la armónica y el violín. ¿Cuál es mayor?",
           "correcta": "El contrabajo",
           "distractores": [
             "El violín",
@@ -66157,7 +66157,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La pelota de golf, el balón de baloncesto y la canica. ¿cuál es mayor?",
+          "enunciado": "La pelota de golf, el balón de baloncesto y la canica. ¿Cuál es mayor?",
           "correcta": "El balón de baloncesto",
           "distractores": [
             "La canica",
@@ -66522,7 +66522,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La carretilla, la pala y el desplantador. ¿cuál es más pequeño?",
+          "enunciado": "La carretilla, la pala y el desplantador. ¿Cuál es más pequeño?",
           "correcta": "El desplantador",
           "distractores": [
             "La pala",
@@ -66668,7 +66668,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La loma, el montículo y la montaña. ¿cuál es más alta?",
+          "enunciado": "La loma, el montículo y la montaña. ¿Cuál es más alta?",
           "correcta": "La montaña",
           "distractores": [
             "La loma",
@@ -66741,7 +66741,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La caseta, el rascacielos y la choza. ¿cuál es más alto?",
+          "enunciado": "La caseta, el rascacielos y la choza. ¿Cuál es más alto?",
           "correcta": "El rascacielos",
           "distractores": [
             "La choza",
@@ -66887,7 +66887,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El del abrigo, el de la camisa y el de la trenca. ¿cuál es más pequeño?",
+          "enunciado": "El del abrigo, el de la camisa y el de la trenca. ¿Cuál es más pequeño?",
           "correcta": "El de la camisa",
           "distractores": [
             "El del abrigo",
@@ -66960,7 +66960,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La chincheta, la tachuela y el clavo grande. ¿cuál es más largo?",
+          "enunciado": "La chincheta, la tachuela y el clavo grande. ¿Cuál es más largo?",
           "correcta": "El clavo grande",
           "distractores": [
             "La chincheta",
@@ -67033,7 +67033,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El cirio, la velita y la vela de tarta. ¿cuál es más larga?",
+          "enunciado": "El cirio, la velita y la vela de tarta. ¿Cuál es más larga?",
           "correcta": "El cirio",
           "distractores": [
             "La velita",
@@ -67106,7 +67106,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La rama gorda, la rama principal y la ramita. ¿cuál es más fina?",
+          "enunciado": "La rama gorda, la rama principal y la ramita. ¿Cuál es más fina?",
           "correcta": "La ramita",
           "distractores": [
             "La rama gorda",
@@ -67471,7 +67471,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "La gota, el charco y el mar. ¿cuál es más grande?",
+          "enunciado": "La gota, el charco y el mar. ¿Cuál es más grande?",
           "correcta": "El mar",
           "distractores": [
             "El charco",
@@ -76514,7 +76514,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El aceite de oliva sale de...",
+          "enunciado": "El aceite que usamos para aliñar la ensalada sale de...",
           "correcta": "Las aceitunas",
           "distractores": [
             "Las naranjas",
@@ -85696,7 +85696,7 @@
           "correcta": "Una servilleta",
           "distractores": [
             "Un saco de cemento",
-            "Un rueda de coche"
+            "Una rueda de coche"
           ]
         }
       ]
@@ -86612,7 +86612,7 @@
           "id": "i2",
           "instruccion": "Elige la respuesta",
           "enunciado": "¿Cuál es más gruesa?",
-          "correcta": "Un soga de barco",
+          "correcta": "Una soga de barco",
           "distractores": [
             "Un cordel",
             "Un hilo"
@@ -88533,7 +88533,7 @@
           "correcta": "Un analgésico",
           "distractores": [
             "Un martillo",
-            "Un barra de pan"
+            "Una barra de pan"
           ]
         },
         {
@@ -116467,7 +116467,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El de 2 €, el de 1 € y Cuestan igual. ¿Cuál es más barato?",
+          "enunciado": "Dos paquetes iguales: uno cuesta 2 € y otro cuesta 1 €. ¿Cuál es más barato?",
           "correcta": "El de 1 €",
           "distractores": [
             "El de 2 €",
@@ -127044,7 +127044,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Se abre para llover al revés y te protege del agua. ¿Qué es?",
+          "enunciado": "Se abre por encima de la cabeza y te protege de la lluvia. ¿Qué es?",
           "correcta": "El paraguas",
           "distractores": [
             "El abanico",
@@ -127535,8 +127535,8 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Pienso en una fruta. No es amarilla ni redonda; es alargada y verde por fuera. ¿Cuál es?",
-          "correcta": "El calabacín... una fruta alargada verde: mejor 'el pepino'",
+          "enunciado": "Pienso en algo de la huerta. No es amarillo ni redondo; es alargado y verde por fuera. ¿Cuál es?",
+          "correcta": "El pepino",
           "distractores": [
             "El limón",
             "La naranja"
@@ -141314,7 +141314,7 @@
             "cuadrado morado",
             "triángulo morado"
           ],
-          "correcta": "Estrella rojo",
+          "correcta": "Estrella roja",
           "distractores": [
             "Cuadrado morado",
             "Triángulo morado"
@@ -141330,7 +141330,7 @@
             "estrella naranja",
             "estrella naranja"
           ],
-          "correcta": "Estrella morado",
+          "correcta": "Estrella morada",
           "distractores": [
             "Círculo verde",
             "Estrella naranja"
@@ -141359,7 +141359,7 @@
             "estrella morado",
             "cuadrado azul"
           ],
-          "correcta": "Estrella morado",
+          "correcta": "Estrella morada",
           "distractores": [
             "Triángulo morado",
             "Cuadrado azul"
@@ -141410,7 +141410,7 @@
           "correcta": "Triángulo morado",
           "distractores": [
             "Triángulo amarillo",
-            "Estrella morado"
+            "Estrella morada"
           ]
         },
         {
@@ -141484,7 +141484,7 @@
             "triángulo morado",
             "triángulo azul"
           ],
-          "correcta": "Estrella rojo",
+          "correcta": "Estrella roja",
           "distractores": [
             "Triángulo azul",
             "Triángulo morado"
@@ -141580,7 +141580,7 @@
           "correcta": "Triángulo morado",
           "distractores": [
             "Corazón rosa",
-            "Estrella rojo"
+            "Estrella roja"
           ]
         },
         {
@@ -141769,7 +141769,7 @@
           "correcta": "Triángulo verde",
           "distractores": [
             "Rombo morado",
-            "Estrella morado"
+            "Estrella morada"
           ]
         }
       ]
@@ -141822,7 +141822,7 @@
           "correcta": "Círculo rojo",
           "distractores": [
             "Círculo morado",
-            "Estrella rojo"
+            "Estrella roja"
           ]
         },
         {
@@ -141832,7 +141832,7 @@
           "correcta": "Rombo amarillo",
           "distractores": [
             "Rombo azul",
-            "Estrella amarillo"
+            "Estrella amarilla"
           ]
         },
         {
@@ -141985,9 +141985,9 @@
           "id": "m3_5",
           "instruccion": "¿Cuál es igual al modelo?",
           "modelo": "estrella amarillo",
-          "correcta": "Estrella amarillo",
+          "correcta": "Estrella amarilla",
           "distractores": [
-            "Estrella rojo",
+            "Estrella roja",
             "Rombo amarillo"
           ]
         }
@@ -142048,7 +142048,7 @@
           "id": "m4_4",
           "instruccion": "¿Cuál es igual al modelo?",
           "modelo": "estrella rojo",
-          "correcta": "Estrella rojo",
+          "correcta": "Estrella roja",
           "distractores": [
             "Estrella rosa",
             "Triángulo rojo"
@@ -165248,7 +165248,7 @@
     "descripcion": "Reto de ingenio para resolver en grupo (garrafas de agua).",
     "parametros_json": {
       "titulo": "Reto: garrafas de 3 y 5 litros (medir 4)",
-      "enunciado": "Tenéis una garrafa de 3 L y otra de 5 L, y un grifo. ¿Cómo dejáis exactamente 4 litros en una garrafa?",
+      "enunciado": "Tenéis una garrafa de 3 L y otra de 5 L, y un grifo. ¿Cómo dejáis exactamente 4 litros en la garrafa tapada?",
       "capacidades": [
         5,
         3
@@ -165269,7 +165269,7 @@
     "descripcion": "Reto de ingenio para resolver en grupo (garrafas de agua).",
     "parametros_json": {
       "titulo": "Reto: garrafas de 5 y 8 litros (medir 4)",
-      "enunciado": "Con una garrafa de 5 L, otra de 8 L y un grifo, dejad exactamente 4 litros en una de ellas.",
+      "enunciado": "Con una garrafa de 5 L, otra de 8 L y un grifo, dejad exactamente 4 litros en la garrafa tapada.",
       "capacidades": [
         8,
         5
@@ -165290,7 +165290,7 @@
     "descripcion": "Reto de ingenio para resolver en grupo (garrafas de agua).",
     "parametros_json": {
       "titulo": "Reto: garrafas 8, 5 y 3 sin grifo (medir 4)",
-      "enunciado": "La garrafa de 8 L está LLENA; las de 5 L y 3 L, vacías. Sin grifo (solo verter de una a otra), dejad 4 litros en una garrafa.",
+      "enunciado": "La garrafa de 8 L está LLENA; las de 5 L y 3 L, vacías. Sin grifo (solo verter de una a otra), dejad 4 litros en la garrafa tapada.",
       "capacidades": [
         8,
         5,
@@ -165313,7 +165313,7 @@
     "descripcion": "Reto de ingenio para resolver en grupo (garrafas de agua).",
     "parametros_json": {
       "titulo": "Reto: garrafas de 4 y 9 litros (medir 6)",
-      "enunciado": "Con una garrafa de 4 L, otra de 9 L y un grifo, dejad exactamente 6 litros en una de ellas.",
+      "enunciado": "Con una garrafa de 4 L, otra de 9 L y un grifo, dejad exactamente 6 litros en la garrafa tapada.",
       "capacidades": [
         9,
         4
