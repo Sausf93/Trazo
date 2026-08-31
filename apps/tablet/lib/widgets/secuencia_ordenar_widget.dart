@@ -32,8 +32,8 @@ class _SecuenciaOrdenarWidgetState extends State<SecuenciaOrdenarWidget> {
     final render = widget.instancia.render;
     final barajados = (render['pasos_barajados'] as List? ?? []);
     _pasos = barajados
-        .map((e) =>
-            (Map<String, dynamic>.from(e as Map)['paso'] ?? '').toString())
+        .whereType<Map>()
+        .map((e) => (Map<String, dynamic>.from(e)['paso'] ?? '').toString())
         .toList();
   }
 

@@ -35,7 +35,8 @@ class _BusquedaVisualWidgetState extends State<BusquedaVisualWidget> {
     super.initState();
     final render = widget.instancia.render;
     _celdas = ((render['celdas'] ?? []) as List)
-        .map((e) => Map<String, dynamic>.from(e as Map))
+        .whereType<Map>()
+        .map((e) => Map<String, dynamic>.from(e))
         .toList();
     final obj = render['objetivo'] is Map
         ? Map<String, dynamic>.from(render['objetivo'] as Map)

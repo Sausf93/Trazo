@@ -46,7 +46,8 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
     // y su respuesta nunca cuadraba -> siempre no_logrado e irresoluble.)
     final esComparacion = modo == 'cual_tiene_mas' || modo == 'cual_tiene_menos';
     final grupos = (render['grupos'] as List? ?? [])
-        .map((e) => Map<String, dynamic>.from(e as Map))
+        .whereType<Map>()
+        .map((e) => Map<String, dynamic>.from(e))
         .toList();
 
     final grupoRow = Row(

@@ -65,7 +65,8 @@ class _MemoriaParejasWidgetState extends State<MemoriaParejasWidget> {
     _nPares = (render['n_pares'] as num?)?.toInt() ?? 0;
     _columnasBase = (render['columnas'] as num?)?.toInt() ?? 4;
     _cartas = ((render['cartas'] as List?) ?? [])
-        .map((e) => Map<String, dynamic>.from(e as Map))
+        .whereType<Map>()
+        .map((e) => Map<String, dynamic>.from(e))
         .map((m) => _Carta(
               (m['carta'] ?? m['par'] ?? '').toString(),
               (m['par'] ?? '').toString(),

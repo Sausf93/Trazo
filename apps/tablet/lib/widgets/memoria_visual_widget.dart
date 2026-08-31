@@ -82,7 +82,8 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
   }
 
   List<Map<String, dynamic>> _comoLista(dynamic v) => (v as List? ?? [])
-      .map((e) => Map<String, dynamic>.from(e as Map))
+      .whereType<Map>()
+      .map((e) => Map<String, dynamic>.from(e))
       .toList();
 
   String _idDe(Map<String, dynamic> e) =>
