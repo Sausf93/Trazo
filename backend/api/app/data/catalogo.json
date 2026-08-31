@@ -164781,5 +164781,379 @@
         "conejo"
       ]
     }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "busqueda_visual",
+    "nombre": "Busca las mariposas",
+    "descripcion": "Toca todas las mariposas.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todas las que sean igual",
+      "objetivo": {
+        "id": "mariposa",
+        "label": "mariposa"
+      },
+      "distractores": [
+        {
+          "id": "hormiga",
+          "label": "hormiga"
+        },
+        {
+          "id": "flor",
+          "label": "flor"
+        },
+        {
+          "id": "hoja",
+          "label": "hoja"
+        },
+        {
+          "id": "pajaro",
+          "label": "pajaro"
+        },
+        {
+          "id": "nube",
+          "label": "nube"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "busqueda_visual",
+    "nombre": "Busca las estrellas",
+    "descripcion": "Toca todas las estrellas.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todas las que sean igual",
+      "objetivo": {
+        "id": "estrella",
+        "label": "estrella"
+      },
+      "distractores": [
+        {
+          "id": "luna",
+          "label": "luna"
+        },
+        {
+          "id": "sol",
+          "label": "sol"
+        },
+        {
+          "id": "nube",
+          "label": "nube"
+        },
+        {
+          "id": "corazon",
+          "label": "corazon"
+        },
+        {
+          "id": "flor",
+          "label": "flor"
+        },
+        {
+          "id": "globo_rojo",
+          "label": "globo_rojo"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "busqueda_visual",
+    "nombre": "Busca los paraguas",
+    "descripcion": "Toca todas los paraguas.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todas las que sean igual",
+      "objetivo": {
+        "id": "paraguas",
+        "label": "paraguas"
+      },
+      "distractores": [
+        {
+          "id": "bufanda",
+          "label": "bufanda"
+        },
+        {
+          "id": "gorro",
+          "label": "gorro"
+        },
+        {
+          "id": "gafas",
+          "label": "gafas"
+        },
+        {
+          "id": "bolso",
+          "label": "bolso"
+        },
+        {
+          "id": "maleta",
+          "label": "maleta"
+        },
+        {
+          "id": "zapato",
+          "label": "zapato"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "busqueda_visual",
+    "nombre": "Busca las guitarras",
+    "descripcion": "Toca todas las guitarras.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todas las que sean igual",
+      "objetivo": {
+        "id": "guitarra",
+        "label": "guitarra"
+      },
+      "distractores": [
+        {
+          "id": "tambor",
+          "label": "tambor"
+        },
+        {
+          "id": "reloj",
+          "label": "reloj"
+        },
+        {
+          "id": "telefono",
+          "label": "telefono"
+        },
+        {
+          "id": "lampara",
+          "label": "lampara"
+        },
+        {
+          "id": "libro",
+          "label": "libro"
+        },
+        {
+          "id": "llave",
+          "label": "llave"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "busqueda_visual",
+    "nombre": "Busca las pelotas",
+    "descripcion": "Toca todas las pelotas.",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todas las que sean igual",
+      "objetivo": {
+        "id": "pelota",
+        "label": "pelota"
+      },
+      "distractores": [
+        {
+          "id": "manzana",
+          "label": "manzana"
+        },
+        {
+          "id": "naranja",
+          "label": "naranja"
+        },
+        {
+          "id": "globo_rojo",
+          "label": "globo_rojo"
+        },
+        {
+          "id": "reloj",
+          "label": "reloj"
+        },
+        {
+          "id": "pera",
+          "label": "pera"
+        },
+        {
+          "id": "huevo",
+          "label": "huevo"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: frutas del verano",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "sandia",
+          "label": "sandia"
+        },
+        {
+          "id": "melon",
+          "label": "melon"
+        },
+        {
+          "id": "cereza",
+          "label": "cereza"
+        },
+        {
+          "id": "uvas",
+          "label": "uvas"
+        },
+        {
+          "id": "melocoton",
+          "label": "melocoton"
+        },
+        {
+          "id": "limon",
+          "label": "limon"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: el desayuno",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "cafe",
+          "label": "cafe"
+        },
+        {
+          "id": "leche",
+          "label": "leche"
+        },
+        {
+          "id": "pan",
+          "label": "pan"
+        },
+        {
+          "id": "huevo",
+          "label": "huevo"
+        },
+        {
+          "id": "galleta",
+          "label": "galleta"
+        },
+        {
+          "id": "naranja",
+          "label": "naranja"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: en el salón",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "sofa",
+          "label": "sofa"
+        },
+        {
+          "id": "television",
+          "label": "television"
+        },
+        {
+          "id": "lampara",
+          "label": "lampara"
+        },
+        {
+          "id": "reloj",
+          "label": "reloj"
+        },
+        {
+          "id": "telefono",
+          "label": "telefono"
+        },
+        {
+          "id": "libro",
+          "label": "libro"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "gnosias",
+    "plantilla_tipo": "seleccion_multiple",
+    "nombre": "¿Qué verdura es? (fotos)",
+    "descripcion": "Reconocer por la foto.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "opciones_min": 3,
+      "opciones_max": 3,
+      "items": [
+        {
+          "id": "r0",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "tomate",
+          "correcta": "El tomate",
+          "distractores": [
+            "El pimiento",
+            "La cebolla"
+          ]
+        },
+        {
+          "id": "r1",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "zanahoria",
+          "correcta": "La zanahoria",
+          "distractores": [
+            "El pepino",
+            "La patata"
+          ]
+        },
+        {
+          "id": "r2",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "cebolla",
+          "correcta": "La cebolla",
+          "distractores": [
+            "El ajo",
+            "La patata"
+          ]
+        },
+        {
+          "id": "r3",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "lechuga",
+          "correcta": "La lechuga",
+          "distractores": [
+            "La col",
+            "La espinaca"
+          ]
+        },
+        {
+          "id": "r4",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "patata",
+          "correcta": "La patata",
+          "distractores": [
+            "La cebolla",
+            "El tomate"
+          ]
+        },
+        {
+          "id": "r5",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "pimiento",
+          "correcta": "El pimiento",
+          "distractores": [
+            "El tomate",
+            "La zanahoria"
+          ]
+        }
+      ]
+    }
   }
 ]
