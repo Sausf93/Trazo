@@ -117,18 +117,25 @@ class _RetoRanasWidgetState extends State<RetoRanasWidget> {
         ),
       );
     }
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
-          child: Text(widget.reto.enunciado,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  fontSize: 19, color: TrazoColors.ink, height: 1.25)),
-        ),
-        Expanded(
-          child: Center(
-            child: LayoutBuilder(builder: (context, cons) {
+    return LayoutBuilder(builder: (context, outer) {
+      return SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: outer.maxHeight),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
+                child: Text(widget.reto.enunciado,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 19, color: TrazoColors.ink, height: 1.25)),
+              ),
+              SizedBox(
+                height: 200,
+                child: Center(
+                  child: LayoutBuilder(builder: (context, cons) {
               final n = _p.length;
               final tam =
                   ((cons.maxWidth - 24) / n).clamp(44.0, 92.0).toDouble();
@@ -173,8 +180,11 @@ class _RetoRanasWidgetState extends State<RetoRanasWidget> {
             ],
           ),
         ),
-      ],
-    );
+            ],
+          ),
+        ),
+      );
+    });
   }
 
   Widget _piedra(int i, double tam) {

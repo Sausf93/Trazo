@@ -135,8 +135,14 @@ class _RetoMastermindWidgetState extends State<RetoMastermindWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return LayoutBuilder(builder: (context, outer) {
+      return SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: outer.maxHeight),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 12, 20, 4),
           child: Text(widget.reto.enunciado,
@@ -153,7 +159,8 @@ class _RetoMastermindWidgetState extends State<RetoMastermindWidget> {
                   fontSize: 15, color: TrazoColors.bordeControl)),
         ),
         // Historial de intentos + fila actual
-        Expanded(
+        SizedBox(
+          height: 320,
           child: SingleChildScrollView(
             reverse: true,
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -221,8 +228,11 @@ class _RetoMastermindWidgetState extends State<RetoMastermindWidget> {
             ],
           ),
         ),
-      ],
-    );
+            ],
+          ),
+        ),
+      );
+    });
   }
 
   Widget _circulo(int color, double d, bool relleno) {

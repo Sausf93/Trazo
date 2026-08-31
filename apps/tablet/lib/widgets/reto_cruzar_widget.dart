@@ -211,24 +211,31 @@ class _RetoCruzarWidgetState extends State<RetoCruzarWidget> {
         ),
       );
     }
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
-          child: Text(r.enunciado,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  fontSize: 19, color: TrazoColors.ink, height: 1.25)),
-        ),
-        Expanded(
-          child: Row(
+    return LayoutBuilder(builder: (context, outer) {
+      return SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: outer.maxHeight),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(child: _orilla(0, 'Esta orilla')),
-              _canal(),
-              Expanded(child: _orilla(1, 'La otra orilla')),
-            ],
-          ),
-        ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
+                child: Text(r.enunciado,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 19, color: TrazoColors.ink, height: 1.25)),
+              ),
+              SizedBox(
+                height: 300,
+                child: Row(
+                  children: [
+                    Expanded(child: _orilla(0, 'Esta orilla')),
+                    _canal(),
+                    Expanded(child: _orilla(1, 'La otra orilla')),
+                  ],
+                ),
+              ),
         if (_aviso != null)
           _banner(TrazoColors.coralDark, Icons.warning_amber_rounded,
               '¡Vaya! $_aviso  Probad otra vez.'),
@@ -279,7 +286,10 @@ class _RetoCruzarWidgetState extends State<RetoCruzarWidget> {
           ),
         ),
       ],
-    );
+          ),
+        ),
+      );
+    });
   }
 
   Widget _banner(Color c, IconData ic, String txt) => Container(

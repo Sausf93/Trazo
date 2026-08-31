@@ -120,8 +120,14 @@ class _RetoHanoiWidgetState extends State<RetoHanoiWidget> {
         ),
       );
     }
-    return Column(
-      children: [
+    return LayoutBuilder(builder: (context, outer) {
+      return SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: outer.maxHeight),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
           child: Text(widget.reto.enunciado,
@@ -129,7 +135,8 @@ class _RetoHanoiWidgetState extends State<RetoHanoiWidget> {
               style: const TextStyle(
                   fontSize: 19, color: TrazoColors.ink, height: 1.25)),
         ),
-        Expanded(
+        SizedBox(
+          height: 320,
           child: LayoutBuilder(builder: (context, cons) {
             final anchoPalo = cons.maxWidth / 3;
             final discoMax = (anchoPalo * 0.86).clamp(90.0, 220.0).toDouble();
@@ -174,7 +181,10 @@ class _RetoHanoiWidgetState extends State<RetoHanoiWidget> {
           ),
         ),
       ],
-    );
+          ),
+        ),
+      );
+    });
   }
 
   Widget _palo(int p, double discoMax, double altoDisco, int n) {

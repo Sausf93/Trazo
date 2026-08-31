@@ -178,8 +178,14 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
       );
     }
     final maxCap = _caps.reduce(math.max);
-    return Column(
-      children: [
+    return LayoutBuilder(builder: (context, outer) {
+      return SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: outer.maxHeight),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 12, 20, 4),
           child: Text(
@@ -215,7 +221,8 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
                 fontWeight: _sel == null ? FontWeight.normal : FontWeight.w700),
           ),
         ),
-        Expanded(
+        SizedBox(
+          height: 300,
           child: LayoutBuilder(
             builder: (context, cons) {
               final reservaBotones = r.conGrifo ? 56.0 : 8.0;
@@ -317,7 +324,10 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
           ),
         ),
       ],
-    );
+          ),
+        ),
+      );
+    });
   }
 
   // Pequeña señal visual de que la garrafa tapada es la META (flecha + texto).

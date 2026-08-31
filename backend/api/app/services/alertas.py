@@ -82,6 +82,10 @@ async def evaluar_usuario_bloque(
     Devuelve la Alerta creada (aún sin commit) o None. El commit lo hace quien
     llama, para poder agrupar varias evaluaciones en una transacción.
     """
+    # Los RETOS son un extra de grupo, no medibles a nivel individual: nunca
+    # generan alertas sobre una persona.
+    if bloque == "retos":
+        return None
     # Ventana histórica ACOTADA: esta evaluación corre en CADA registro de intento
     # (path caliente del kiosco), así que no reprocesamos todo el pasado. Los
     # últimos _MAX_HISTORIAL intentos bastan de sobra para baseline+reciente.

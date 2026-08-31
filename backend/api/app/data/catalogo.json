@@ -579,7 +579,8 @@
         }
       ],
       "instruccion": "Pon cada figura donde dice su nombre"
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "calculo",
@@ -1139,7 +1140,8 @@
           "path": "M150,130 C108,130 108,40 150,40"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "vida_cotidiana",
@@ -1328,7 +1330,8 @@
       "objetos": [
         "moneda_1e"
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "calculo",
@@ -5831,7 +5834,8 @@
           "label": "No se come"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "vida_cotidiana",
@@ -5972,7 +5976,8 @@
           "label": "Comida"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "lenguaje",
@@ -7334,55 +7339,6 @@
   },
   {
     "bloque": "atencion_memoria",
-    "plantilla_tipo": "busqueda_visual",
-    "nombre": "Busca las gafas",
-    "descripcion": "Toca todos los gorros entre otras prendas.",
-    "parametros_json": {
-      "dificultad": "media",
-      "instruccion": "Toca todos los GORROS",
-      "objetivo": {
-        "id": "gafas",
-        "label": "gafas"
-      },
-      "distractores": [
-        {
-          "id": "camisa",
-          "label": "camisa"
-        },
-        {
-          "id": "pantalon",
-          "label": "pantalón"
-        },
-        {
-          "id": "chaqueta",
-          "label": "chaqueta"
-        },
-        {
-          "id": "zapato",
-          "label": "zapato"
-        },
-        {
-          "id": "bufanda",
-          "label": "bufanda"
-        },
-        {
-          "id": "guantes",
-          "label": "guantes"
-        },
-        {
-          "id": "calcetin",
-          "label": "calcetín"
-        },
-        {
-          "id": "vestido",
-          "label": "vestido"
-        }
-      ]
-    },
-    "estado": "validada"
-  },
-  {
-    "bloque": "atencion_memoria",
     "plantilla_tipo": "memoria_visual",
     "nombre": "Objetos personales",
     "descripcion": "Recuerda estos objetos de diario y localízalos.",
@@ -7425,7 +7381,8 @@
           "label": "paraguas"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "calculo",
@@ -8307,56 +8264,6 @@
   {
     "bloque": "lenguaje",
     "plantilla_tipo": "seleccion_multiple",
-    "nombre": "¿Cuál es una fruta?",
-    "descripcion": "Elija la palabra que pertenece a la categoría indicada.",
-    "parametros_json": {
-      "dificultad": "facil",
-      "opciones_min": 3,
-      "opciones_max": 4,
-      "items": [
-        {
-          "id": "cual-fruta",
-          "instruccion": "¿Cuál de estas es una fruta?",
-          "correcta": "La naranja",
-          "distractores": [
-            "La mesa",
-            "El zapato"
-          ]
-        },
-        {
-          "id": "cual-animal",
-          "instruccion": "¿Cuál de estos es un animal?",
-          "correcta": "El perro",
-          "distractores": [
-            "La ventana",
-            "El tenedor"
-          ]
-        },
-        {
-          "id": "cual-verdura",
-          "instruccion": "¿Cuál de estas es una verdura?",
-          "correcta": "La zanahoria",
-          "distractores": [
-            "El martillo",
-            "La camisa"
-          ]
-        },
-        {
-          "id": "cual-flor",
-          "instruccion": "¿Cuál de estas es una flor?",
-          "correcta": "La rosa",
-          "distractores": [
-            "La cuchara",
-            "El reloj"
-          ]
-        }
-      ]
-    },
-    "estado": "validada"
-  },
-  {
-    "bloque": "lenguaje",
-    "plantilla_tipo": "seleccion_multiple",
     "nombre": "Familias de palabras",
     "descripcion": "Elija la palabra que pertenece al grupo.",
     "parametros_json": {
@@ -9058,7 +8965,8 @@
           "label": "bol"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "calculo",
@@ -9524,7 +9432,8 @@
           "label": "boligrafo"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -9726,7 +9635,8 @@
           "label": "patata"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -10020,7 +9930,8 @@
           "label": "guantes"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -25703,7 +25614,8 @@
           "label": "limón"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -25738,7 +25650,8 @@
           "label": "patata"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -25781,7 +25694,8 @@
           "label": "gallina"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -26144,7 +26058,8 @@
           "label": "naranja"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -26179,7 +26094,8 @@
           "label": "lechuga"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -26246,7 +26162,8 @@
           "label": "tulipán"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -48020,7 +47937,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "gnosias",
@@ -49101,7 +49019,8 @@
           "label": "clavel"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -49325,7 +49244,8 @@
           "label": "taza de café"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -165248,7 +165168,8 @@
           "label": "pescado"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -165283,7 +165204,8 @@
           "label": "llave"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -165318,7 +165240,8 @@
           "label": "piedra"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -165388,7 +165311,8 @@
           "label": "pescado"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "retos",
@@ -165725,7 +165649,8 @@
           "label": "maceta"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -166186,7 +166111,8 @@
           "label": "nube"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "atencion_memoria",
@@ -166623,7 +166549,8 @@
       "enunciado": "Pasad la torre de 5 discos al último palo. Un disco cada vez, nunca uno grande sobre uno pequeño.",
       "instruccion": "Resolvedlo en grupo.",
       "discos": 5
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "retos",

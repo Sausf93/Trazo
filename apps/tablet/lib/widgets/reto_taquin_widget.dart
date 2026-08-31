@@ -101,8 +101,14 @@ class _RetoTaquinWidgetState extends State<RetoTaquinWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return LayoutBuilder(builder: (context, outer) {
+      return SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: outer.maxHeight),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
           child: Text(widget.reto.enunciado,
@@ -110,7 +116,8 @@ class _RetoTaquinWidgetState extends State<RetoTaquinWidget> {
               style: const TextStyle(
                   fontSize: 19, color: TrazoColors.ink, height: 1.25)),
         ),
-        Expanded(
+        SizedBox(
+          height: 340,
           child: Center(
             child: LayoutBuilder(builder: (context, cons) {
               final lado = min(cons.maxWidth, cons.maxHeight) - 16;
@@ -178,7 +185,10 @@ class _RetoTaquinWidgetState extends State<RetoTaquinWidget> {
           ),
         ),
       ],
-    );
+          ),
+        ),
+      );
+    });
   }
 
   Widget _ficha(int pos, double celda) {

@@ -62,7 +62,10 @@ async def resumen_areas(
         .join(EjercicioCatalogo, EjercicioCatalogo.id == Intento.ejercicio_id)
         .where(UsuarioFinal.centro_id == centro_id,
                UsuarioFinal.activo.is_(True),
-               Intento.resultado != "sin_valorar")
+               Intento.resultado != "sin_valorar",
+               # Los RETOS son un extra de grupo, NO medibles a nivel individual:
+               # nunca cuentan en el desempeño/evolución de una persona.
+               EjercicioCatalogo.bloque != "retos")
     )).all()
 
     # bloque -> usuario -> [desempeños]; luego media por persona y agregado por área.
@@ -269,6 +272,9 @@ async def _calcular_evolucion(
         select(Intento, EjercicioCatalogo)
         .join(EjercicioCatalogo, Intento.ejercicio_id == EjercicioCatalogo.id)
         .where(Intento.usuario_final_id == usuario_id)
+        # Los RETOS (extra de grupo) NUNCA son evidencia individual: fuera de la
+        # evolución de una persona, se pida el bloque que se pida.
+        .where(EjercicioCatalogo.bloque != "retos")
         .order_by(Intento.timestamp_inicio.asc())
     )
     if bloque:
