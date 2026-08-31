@@ -166020,5 +166020,373 @@
         }
       ]
     }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta las llaves",
+    "descripcion": "Cuenta las llaves de la pantalla.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántas llaves hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "llave"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los libros",
+    "descripcion": "Cuenta los libros de la pantalla.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos libros hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "libro"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los lápices",
+    "descripcion": "Cuenta los lápices de la pantalla.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos lápices hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "lapiz"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los zapatos",
+    "descripcion": "Cuenta los zapatos de la pantalla.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos zapatos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "zapato"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los paraguas",
+    "descripcion": "Cuenta los paraguas de la pantalla.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos paraguas hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "paraguas"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los relojes",
+    "descripcion": "Cuenta los relojes de la pantalla.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos relojes hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "reloj"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los barcos",
+    "descripcion": "Cuenta los barcos de la pantalla.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos barcos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "barco"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los aviones",
+    "descripcion": "Cuenta los aviones de la pantalla.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos aviones hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "avion"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los trenes",
+    "descripcion": "Cuenta los trenes de la pantalla.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos trenes hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "tren"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los martillos",
+    "descripcion": "Cuenta los martillos de la pantalla.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos martillos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "martillo"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los gorros",
+    "descripcion": "Cuenta los gorros de la pantalla.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos gorros hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "gorro"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? estrella o corazon",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "estrella",
+        "corazon"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? estrella o corazon",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "estrella",
+        "corazon"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? llave o libro",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "llave",
+        "libro"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? llave o libro",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "llave",
+        "libro"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? zapato o paraguas",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "zapato",
+        "paraguas"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? zapato o paraguas",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "zapato",
+        "paraguas"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? barco o avion",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "barco",
+        "avion"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? barco o avion",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "barco",
+        "avion"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? martillo o tijeras",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "martillo",
+        "tijeras"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? martillo o tijeras",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "martillo",
+        "tijeras"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? reloj o gafas",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "reloj",
+        "gafas"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? reloj o gafas",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "reloj",
+        "gafas"
+      ]
+    }
   }
 ]
