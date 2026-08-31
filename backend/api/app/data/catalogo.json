@@ -48872,10 +48872,6 @@
           "label": "vaca"
         },
         {
-          "id": "pato",
-          "label": "pato"
-        },
-        {
           "id": "pajaro",
           "label": "pájaro"
         }
@@ -49142,10 +49138,6 @@
           "label": "flor"
         },
         {
-          "id": "pato",
-          "label": "pato"
-        },
-        {
           "id": "pescado",
           "label": "pescado"
         }
@@ -49185,10 +49177,6 @@
         {
           "id": "nube",
           "label": "nube"
-        },
-        {
-          "id": "pato",
-          "label": "pato"
         },
         {
           "id": "cafe",
@@ -49492,10 +49480,6 @@
         {
           "id": "coche",
           "label": "coche"
-        },
-        {
-          "id": "pato",
-          "label": "pato"
         },
         {
           "id": "fresa",
@@ -91888,10 +91872,6 @@
           "label": "mesa"
         },
         {
-          "id": "pato",
-          "label": "pato"
-        },
-        {
           "id": "elefante",
           "label": "elefante"
         },
@@ -96790,7 +96770,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -96863,7 +96844,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -97019,7 +97001,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -97092,7 +97075,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -97165,7 +97149,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -97238,7 +97223,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -97311,7 +97297,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -97384,7 +97371,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -97457,7 +97445,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -97530,7 +97519,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -97603,7 +97593,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -97676,7 +97667,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "gnosias",
@@ -111056,7 +111048,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -111100,7 +111093,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "percepcion",
@@ -112493,7 +112487,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -112572,7 +112567,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -112651,7 +112647,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -112730,7 +112727,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -112809,7 +112807,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -112882,7 +112881,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -112955,7 +112955,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -113028,7 +113029,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -113101,7 +113103,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -113174,7 +113177,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -113237,7 +113241,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -113300,7 +113305,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -113363,7 +113369,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -113426,7 +113433,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -113499,7 +113507,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -113572,7 +113581,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -113645,7 +113655,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -113718,7 +113729,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "gnosias",
@@ -118709,7 +118721,8 @@
           "zona_correcta": "verdura"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -118773,7 +118786,8 @@
           "zona_correcta": "planta"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -118831,7 +118845,8 @@
           "zona_correcta": "tierra"
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "percepcion",
@@ -126347,7 +126362,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -126430,7 +126446,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -126503,90 +126520,8 @@
           ]
         }
       ]
-    }
-  },
-  {
-    "bloque": "razonamiento",
-    "plantilla_tipo": "seleccion_multiple",
-    "nombre": "La causa que lo explica",
-    "descripcion": "Elige el motivo más sensato de lo que ocurre.",
-    "parametros_json": {
-      "dificultad": "media",
-      "opciones_min": 3,
-      "opciones_max": 3,
-      "items": [
-        {
-          "id": "i0",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "El suelo de la calle está mojado. ¿Cuál es la causa más probable?",
-          "correcta": "Ha llovido",
-          "distractores": [
-            "Hace mucho sol",
-            "Sopla el viento seco"
-          ]
-        },
-        {
-          "id": "i1",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "A María le suenan las tripas. ¿Por qué será?",
-          "correcta": "Tiene hambre",
-          "distractores": [
-            "Tiene sueño",
-            "Tiene frío"
-          ]
-        },
-        {
-          "id": "i2",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Las plantas del balcón están secas. ¿Cuál es la causa?",
-          "correcta": "Nadie las ha regado",
-          "distractores": [
-            "Han recibido demasiada agua",
-            "Hace mucho frío por la noche"
-          ]
-        },
-        {
-          "id": "i3",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Juan estornuda y le pica la nariz. ¿Qué le pasa?",
-          "correcta": "Está resfriado",
-          "distractores": [
-            "Tiene mucha sed",
-            "Está muy contento"
-          ]
-        },
-        {
-          "id": "i4",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "La leche del cazo se ha salido. ¿Por qué?",
-          "correcta": "Ha hervido demasiado",
-          "distractores": [
-            "Estaba en la nevera",
-            "Le faltaba azúcar"
-          ]
-        },
-        {
-          "id": "i5",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "El niño llora en la cocina con un plátano en la mano. ¿Qué ha pasado seguramente?",
-          "correcta": "Se ha caído o se ha hecho daño",
-          "distractores": [
-            "Ha ganado un premio",
-            "Se ha ido a dormir"
-          ]
-        },
-        {
-          "id": "i6",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "La ropa tendida está seca al final del día. ¿Cuál es la causa?",
-          "correcta": "Ha hecho sol y aire",
-          "distractores": [
-            "Ha estado lloviendo",
-            "La han metido en la nevera"
-          ]
-        }
-      ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -126659,7 +126594,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -126732,7 +126668,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -126805,7 +126742,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -126878,7 +126816,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -126961,7 +126900,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127034,7 +126974,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127107,7 +127048,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127180,7 +127122,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127253,7 +127196,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127278,7 +127222,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Si empieza a hervir la olla y se sale, ¿qué conviene?",
+          "enunciado": "Si la olla empieza a hervir y rebosa, ¿qué conviene hacer?",
           "correcta": "Bajar el fuego",
           "distractores": [
             "Subir el fuego al máximo",
@@ -127399,7 +127343,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127472,7 +127417,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127545,7 +127491,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127618,7 +127565,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127691,7 +127639,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127764,7 +127713,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127837,7 +127787,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127910,7 +127861,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -127983,7 +127935,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -128056,7 +128009,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -128129,7 +128083,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -128202,7 +128157,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -128275,7 +128231,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "gnosias",
@@ -136325,7 +136282,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -136367,7 +136325,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -136399,7 +136358,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "calculo",
@@ -141216,7 +141176,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -141325,7 +141286,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -141434,7 +141396,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -141543,7 +141506,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -141652,7 +141616,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "percepcion",
@@ -142305,7 +142270,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -142354,7 +142320,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -142403,7 +142370,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -142452,7 +142420,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -142501,7 +142470,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -146996,7 +146966,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147069,7 +147040,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147142,7 +147114,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147215,7 +147188,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147288,7 +147262,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147361,7 +147336,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147424,7 +147400,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147497,7 +147474,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147533,7 +147511,7 @@
           "id": "i2",
           "instruccion": "Elige la respuesta",
           "enunciado": "¿Dónde se guardan los platos limpios?",
-          "correcta": "En el aparador",
+          "correcta": "En el armario de la cocina",
           "distractores": [
             "En la lavadora",
             "En el jardín"
@@ -147643,7 +147621,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147706,7 +147685,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147779,7 +147759,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147852,7 +147833,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147925,7 +147907,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -147998,7 +147981,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -148071,7 +148055,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -148144,7 +148129,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -148217,7 +148203,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -148290,7 +148277,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "calculo",
@@ -154793,7 +154781,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -154856,7 +154845,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -154929,7 +154919,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -154992,7 +154983,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155055,7 +155047,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155118,7 +155111,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155191,7 +155185,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155264,7 +155259,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155337,7 +155333,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155400,7 +155397,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155463,7 +155461,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155526,7 +155525,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155589,7 +155589,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155652,7 +155653,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155778,7 +155780,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155841,7 +155844,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155904,7 +155908,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -155967,7 +155972,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -156030,7 +156036,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "razonamiento",
@@ -156093,7 +156100,8 @@
           ]
         }
       ]
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "vida_cotidiana",
@@ -166745,7 +166753,8 @@
       "colores": 3,
       "longitud": 4,
       "instruccion": "Resolvedlo en grupo."
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "retos",
@@ -166758,7 +166767,8 @@
       "colores": 4,
       "longitud": 4,
       "instruccion": "Resolvedlo en grupo."
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "retos",
@@ -166771,7 +166781,8 @@
       "colores": 5,
       "longitud": 4,
       "instruccion": "Resolvedlo en grupo."
-    }
+    },
+    "estado": "validada"
   },
   {
     "bloque": "retos",
@@ -166784,7 +166795,8 @@
       "colores": 6,
       "longitud": 4,
       "instruccion": "Resolvedlo en grupo."
-    }
+    },
+    "estado": "validada"
   },
   {
     "nombre": "Memoria: cosas de la cocina",
@@ -166861,10 +166873,6 @@
         {
           "id": "conejo",
           "label": "conejo"
-        },
-        {
-          "id": "pato",
-          "label": "pato"
         }
       ]
     },
@@ -167353,10 +167361,6 @@
         {
           "id": "gallina",
           "label": "gallina"
-        },
-        {
-          "id": "pato",
-          "label": "pato"
         }
       ]
     },
