@@ -165155,5 +165155,17 @@
         }
       ]
     }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_taquin",
+    "nombre": "Reto: el taquín de números (3x3)",
+    "descripcion": "Reto de ingenio (puzzle deslizante).",
+    "parametros_json": {
+      "titulo": "Reto: el taquín de números (3x3)",
+      "enunciado": "Deslizad las fichas para dejar los números en orden, del 1 al 8, con el hueco al final. Se toca una ficha de al lado del hueco para moverla.",
+      "lado": 3,
+      "instruccion": "Resolvedlo en grupo."
+    }
   }
 ]

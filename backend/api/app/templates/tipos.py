@@ -895,3 +895,26 @@ class PlantillaRetoHanoi(PlantillaBase):
             solucion={"torre_en_el_ultimo_palo": True},
             metricas=self.metricas,
         )
+
+
+class PlantillaRetoTaquin(PlantillaBase):
+    """Reto interactivo del taquín (puzzle deslizante). Juego de grupo,
+    autoevaluado en la tablet."""
+
+    tipo = "reto_taquin"
+    metricas = ["resuelto", "movimientos", "tiempo_ms"]
+
+    def generar(self, parametros, nivel=None, rng=None):
+        n = int(parametros.get("lado", 3))
+        return InstanciaEjercicio(
+            plantilla=self.tipo,
+            render={
+                "instruccion": parametros.get("instruccion", "Resolvedlo en grupo"),
+                "enunciado": parametros.get("enunciado", ""),
+                "titulo": parametros.get("titulo", ""),
+                "lado": n,
+            },
+            cantidad_objetivo={"lado": n},
+            solucion={"en_orden": True},
+            metricas=self.metricas,
+        )

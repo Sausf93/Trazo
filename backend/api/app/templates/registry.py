@@ -13,6 +13,7 @@ from app.templates.tipos import (
     PlantillaRetoGarrafas,
     PlantillaRetoHanoi,
     PlantillaRetoRanas,
+    PlantillaRetoTaquin,
     PlantillaSecuenciaOrdenar,
     PlantillaSeleccionMultiple,
     PlantillaTrazo,
@@ -32,6 +33,7 @@ _PLANTILLAS: list[type[PlantillaBase]] = [
     PlantillaRetoCruzar,
     PlantillaRetoHanoi,
     PlantillaRetoRanas,
+    PlantillaRetoTaquin,
 ]
 
 REGISTRY: dict[str, PlantillaBase] = {p.tipo: p() for p in _PLANTILLAS}
