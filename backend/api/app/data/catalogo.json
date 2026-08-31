@@ -42293,7 +42293,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Cuál es la fruta más grande?",
+          "enunciado": "¿Cuál es más grande?",
           "correcta": "La sandía",
           "distractores": [
             "La uva",
@@ -42326,7 +42326,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Cuál es la fruta más grande?",
+          "enunciado": "¿Cuál es más grande?",
           "correcta": "La calabaza",
           "distractores": [
             "La aceituna",
@@ -45746,7 +45746,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Cuál es más grueso, cortado a lo bruto?",
+          "enunciado": "¿Cuál es más grueso?",
           "correcta": "El taco de queso",
           "distractores": [
             "La loncha de queso",
@@ -75007,7 +75007,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "El líquido dorado con que se aliña la ensalada se hace con...",
+          "enunciado": "El aceite con que se aliña la ensalada se hace con...",
           "correcta": "Aceitunas",
           "distractores": [
             "Naranjas",
@@ -81688,7 +81688,7 @@
           "correcta": "Vaso de cristal",
           "distractores": [
             "Cesta de pan",
-            "Pecera"
+            "Servilleta de tela"
           ]
         }
       ]
@@ -103714,7 +103714,7 @@
           "id": "i4",
           "instruccion": "Elige la respuesta",
           "enunciado": "En el semáforo están el rojo y el verde; para estar completo falta...",
-          "correcta": "El ámbar",
+          "correcta": "El amarillo",
           "distractores": [
             "El morado",
             "El blanco"
@@ -104277,11 +104277,11 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Azulejo, baldosa, ladrillo y pelota. Todas son cuadradas menos una. ¿Cuál sobra?",
+          "enunciado": "Azulejo, baldosa, pañuelo y pelota. Todas son cuadradas menos una. ¿Cuál sobra?",
           "correcta": "La pelota",
           "distractores": [
             "El azulejo",
-            "El ladrillo"
+            "El pañuelo"
           ]
         },
         {
@@ -105727,7 +105727,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Para llamar a mi hija guardada",
+          "enunciado": "Para llamar a mi hija, cuyo número tengo guardado,",
           "correcta": "Busco su nombre en la agenda",
           "distractores": [
             "Marco al azar",
@@ -126493,7 +126493,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿En qué se parecen una prenda de invierno y una bufanda?",
+          "enunciado": "¿En qué se parecen un gorro de lana y una bufanda?",
           "correcta": "Sirven para abrigar",
           "distractores": [
             "Sirven para comer",
@@ -142527,153 +142527,6 @@
     }
   },
   {
-    "bloque": "calculo",
-    "plantilla_tipo": "seleccion_multiple",
-    "nombre": "Cuentas sencillas (1)",
-    "descripcion": "Resuelve la cuenta y elige el número.",
-    "parametros_json": {
-      "dificultad": "media",
-      "opciones_min": 3,
-      "opciones_max": 4,
-      "items": [
-        {
-          "id": "ca0_0",
-          "instruccion": "Tienes 2 manzanas y te dan 1 más. ¿Cuántas tienes?",
-          "correcta": "3",
-          "distractores": [
-            "2",
-            "4"
-          ]
-        },
-        {
-          "id": "ca0_1",
-          "instruccion": "Hay 5 pájaros y se van 2. ¿Cuántos quedan?",
-          "correcta": "3",
-          "distractores": [
-            "2",
-            "4"
-          ]
-        },
-        {
-          "id": "ca0_2",
-          "instruccion": "Tienes 3 caramelos y te dan 3. ¿Cuántos tienes?",
-          "correcta": "6",
-          "distractores": [
-            "5",
-            "7"
-          ]
-        },
-        {
-          "id": "ca0_3",
-          "instruccion": "Había 4 vasos y se rompe 1. ¿Cuántos quedan?",
-          "correcta": "3",
-          "distractores": [
-            "2",
-            "4"
-          ]
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "calculo",
-    "plantilla_tipo": "seleccion_multiple",
-    "nombre": "Cuentas sencillas (2)",
-    "descripcion": "Resuelve la cuenta y elige el número.",
-    "parametros_json": {
-      "dificultad": "media",
-      "opciones_min": 3,
-      "opciones_max": 4,
-      "items": [
-        {
-          "id": "ca4_0",
-          "instruccion": "2 y 2, ¿cuántos son?",
-          "correcta": "4",
-          "distractores": [
-            "3",
-            "5"
-          ]
-        },
-        {
-          "id": "ca4_1",
-          "instruccion": "Tienes 6 flores y regalas 2. ¿Cuántas quedan?",
-          "correcta": "4",
-          "distractores": [
-            "3",
-            "5"
-          ]
-        },
-        {
-          "id": "ca4_2",
-          "instruccion": "Hay 3 gatos y llegan 2 más. ¿Cuántos hay?",
-          "correcta": "5",
-          "distractores": [
-            "4",
-            "6"
-          ]
-        },
-        {
-          "id": "ca4_3",
-          "instruccion": "Tienes 10 euros y gastas 4. ¿Cuánto te queda?",
-          "correcta": "6",
-          "distractores": [
-            "5",
-            "7"
-          ]
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "calculo",
-    "plantilla_tipo": "seleccion_multiple",
-    "nombre": "Cuentas sencillas (3)",
-    "descripcion": "Resuelve la cuenta y elige el número.",
-    "parametros_json": {
-      "dificultad": "media",
-      "opciones_min": 3,
-      "opciones_max": 4,
-      "items": [
-        {
-          "id": "ca8_0",
-          "instruccion": "5 más 5, ¿cuántos son?",
-          "correcta": "10",
-          "distractores": [
-            "9",
-            "11"
-          ]
-        },
-        {
-          "id": "ca8_1",
-          "instruccion": "Había 7 galletas y te comes 3. ¿Cuántas quedan?",
-          "correcta": "4",
-          "distractores": [
-            "3",
-            "5"
-          ]
-        },
-        {
-          "id": "ca8_2",
-          "instruccion": "Tienes 1 perro y te dan 2 más. ¿Cuántos tienes?",
-          "correcta": "3",
-          "distractores": [
-            "2",
-            "4"
-          ]
-        },
-        {
-          "id": "ca8_3",
-          "instruccion": "8 menos 3, ¿cuántos son?",
-          "correcta": "5",
-          "distractores": [
-            "4",
-            "6"
-          ]
-        }
-      ]
-    }
-  },
-  {
     "bloque": "razonamiento",
     "plantilla_tipo": "seleccion_multiple",
     "nombre": "Analogías: completa (1)",
@@ -150611,7 +150464,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Es de cristal, la ves de lejos y sirve para ver mejor. ¿Qué es?",
+          "enunciado": "Son de cristal y sirven para ver mejor. ¿Qué es?",
           "correcta": "Las gafas",
           "distractores": [
             "La escoba",
@@ -154879,7 +154732,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué tiene forma de estrella?",
+          "enunciado": "¿Qué animal marino tiene cinco brazos o puntas?",
           "correcta": "La estrella de mar",
           "distractores": [
             "El plátano",
@@ -155752,7 +155605,7 @@
           "correcta": "Ratones",
           "distractores": [
             "Peces",
-            "Pájaros"
+            "Flores"
           ]
         }
       ]
@@ -157382,7 +157235,7 @@
           "correcta": "El mango",
           "distractores": [
             "La suela caliente",
-            "La parte de abajo"
+            "El cable"
           ]
         },
         {
