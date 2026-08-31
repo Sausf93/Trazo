@@ -7,7 +7,6 @@ import '../widgets/reto_garrafas_widget.dart';
 import '../widgets/reto_hanoi_widget.dart';
 import '../widgets/reto_mastermind_widget.dart';
 import '../widgets/reto_ranas_widget.dart';
-import '../widgets/reto_taquin_widget.dart';
 
 /// Sección "Retos de ingenio": juegos de lógica interactivos para resolver EN
 /// GRUPO (con papel y lápiz si hace falta). Son actividades MUY especiales, para
@@ -202,22 +201,6 @@ class RetosScreen extends StatelessWidget {
                             'Pasad toda la torre de 4 discos al último palo. Un disco '
                             'cada vez y nunca uno grande sobre uno pequeño.',
                         discos: 4))),
-          ),
-          const SizedBox(height: 12),
-          const _Titulo('El taquín de números'),
-          _TarjetaReto(
-            titulo: 'El taquín de números (3x3)',
-            icono: Icons.grid_3x3,
-            onAbrir: () => _abrir(
-                context,
-                'El taquín de números',
-                const RetoTaquinWidget(
-                    reto: RetoTaquin(
-                        titulo: 'El taquín de números',
-                        enunciado:
-                            'Deslizad las fichas para dejar los números en orden, del 1 al 8, '
-                            'con el hueco al final. Se toca una ficha de al lado del hueco.',
-                        lado: 3))),
           ),
           const SizedBox(height: 12),
           const _Titulo('Adivina los colores (Mastermind)'),
