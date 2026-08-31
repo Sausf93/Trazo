@@ -12593,24 +12593,6 @@
   {
     "bloque": "praxias",
     "plantilla_tipo": "trazo",
-    "nombre": "Traza la letra A",
-    "descripcion": "Repasa la letra A con el dedo o el lápiz, siguiendo la flecha (sentido de la escritura).",
-    "parametros_json": {
-      "dificultad": "media",
-      "instruccion": "Traza la letra A",
-      "tolerancia_px": 26,
-      "viewbox": "0 0 100 145",
-      "figuras": [
-        {
-          "id": "letra_A",
-          "path": "M50,28 L30,118 M50,28 L70,118 M38,82 L62,82"
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "praxias",
-    "plantilla_tipo": "trazo",
     "nombre": "Traza la letra E",
     "descripcion": "Repasa la letra E con el dedo o el lápiz, siguiendo la flecha (sentido de la escritura).",
     "parametros_json": {
@@ -16133,33 +16115,6 @@
             "I",
             "J",
             "K"
-          ]
-        }
-      ],
-      "no_recortar": true
-    },
-    "estado": "validada"
-  },
-  {
-    "bloque": "lenguaje",
-    "plantilla_tipo": "secuencia_ordenar",
-    "nombre": "Ordena las letras: J a la N",
-    "descripcion": "Coloca las letras en orden.",
-    "parametros_json": {
-      "dificultad": "media",
-      "pasos_min": 5,
-      "pasos_max": 5,
-      "tareas": [
-        {
-          "id": "abc9",
-          "titulo": "J-N",
-          "instruccion": "Ponlas en orden, de la J a la N (la J arriba).",
-          "pasos": [
-            "J",
-            "K",
-            "L",
-            "M",
-            "N"
           ]
         }
       ],
@@ -42226,7 +42181,7 @@
           "distractores": [
             "La ciruela",
             "El arándano",
-            "La grosella"
+            "La uva"
           ]
         },
         {
@@ -50699,63 +50654,6 @@
   {
     "bloque": "praxias",
     "plantilla_tipo": "trazo",
-    "nombre": "Traza la palabra FOCA",
-    "descripcion": "Trazar la palabra FOCA letra a letra con el dedo o el lápiz. Grafomotricidad.",
-    "parametros_json": {
-      "dificultad": "media",
-      "instruccion": "Traza la palabra FOCA",
-      "tolerancia_px": 26,
-      "tolerancia_ref_w": 100,
-      "viewbox": "0 0 400 145",
-      "figuras": [
-        {
-          "id": "foca",
-          "path": "M32,28 L32,118 M32,28 L68,28 M32,72 L60,72 M150,28 C133,28 128,50 128,73 C128,96 133,118 150,118 C167,118 172,96 172,73 C172,50 167,28 150,28 Z M270,46 C258,28 230,30 230,73 C230,116 258,118 270,100 M350,28 L330,118 M350,28 L370,118 M338,82 L362,82"
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "praxias",
-    "plantilla_tipo": "trazo",
-    "nombre": "Traza la palabra NIDO",
-    "descripcion": "Trazar la palabra NIDO letra a letra con el dedo o el lápiz. Grafomotricidad.",
-    "parametros_json": {
-      "dificultad": "media",
-      "instruccion": "Traza la palabra NIDO",
-      "tolerancia_px": 26,
-      "tolerancia_ref_w": 100,
-      "viewbox": "0 0 400 145",
-      "figuras": [
-        {
-          "id": "nido",
-          "path": "M30,118 L30,28 L70,118 L70,28 M150,28 L150,118 M232,28 L232,118 M232,28 L252,28 C274,28 274,118 252,118 L232,118 M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z"
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "praxias",
-    "plantilla_tipo": "trazo",
-    "nombre": "Traza la palabra VASO",
-    "descripcion": "Trazar la palabra VASO letra a letra con el dedo o el lápiz. Grafomotricidad.",
-    "parametros_json": {
-      "dificultad": "media",
-      "instruccion": "Traza la palabra VASO",
-      "tolerancia_px": 26,
-      "tolerancia_ref_w": 100,
-      "viewbox": "0 0 400 145",
-      "figuras": [
-        {
-          "id": "vaso",
-          "path": "M30,28 L50,118 L70,28 M150,28 L130,118 M150,28 L170,118 M138,82 L162,82 M268,44 C260,28 232,28 232,48 C232,66 268,72 268,96 C268,118 240,118 232,100 M350,28 C333,28 328,50 328,73 C328,96 333,118 350,118 C367,118 372,96 372,73 C372,50 367,28 350,28 Z"
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "praxias",
-    "plantilla_tipo": "trazo",
     "nombre": "Traza la palabra FLOR",
     "descripcion": "Trazar la palabra FLOR letra a letra con el dedo o el lápiz. Grafomotricidad.",
     "parametros_json": {
@@ -57795,7 +57693,7 @@
           "enunciado": "Para lavarse los dientes, ¿qué es lo primero?",
           "correcta": "Coger el cepillo",
           "distractores": [
-            "Enjuagarse la boca",
+            "Echar la pasta en el cepillo",
             "Guardar el cepillo"
           ]
         },
@@ -78929,7 +78827,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Tejido fuerte y azul con el que se cosen los pantalones tejanos.",
+          "enunciado": "Tejido fuerte y azul, muy resistente, con el que se hacen muchos pantalones.",
           "correcta": "La tela vaquera",
           "distractores": [
             "La seda",
@@ -79914,7 +79812,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Caminar por el monte y los senderos por afición",
+          "enunciado": "¿Qué afición consiste en caminar por el monte y los senderos?",
           "correcta": "El senderismo",
           "distractores": [
             "La natación en piscina",
@@ -79924,7 +79822,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Sentarse junto al río con una caña para sacar peces",
+          "enunciado": "¿Qué afición consiste en sentarse junto al río con una caña para sacar peces?",
           "correcta": "La pesca",
           "distractores": [
             "El esquí",
@@ -79934,7 +79832,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Montar a caballo y cabalgar por el campo",
+          "enunciado": "¿Qué deporte consiste en montar a caballo y cabalgar por el campo?",
           "correcta": "La equitación",
           "distractores": [
             "El remo",
@@ -79944,7 +79842,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Recorrer caminos y carreteras sobre la bicicleta",
+          "enunciado": "¿Qué deporte consiste en recorrer caminos y carreteras en bicicleta?",
           "correcta": "El ciclismo",
           "distractores": [
             "La vela",
@@ -79954,7 +79852,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Salir al campo con perro y escopeta a por perdices",
+          "enunciado": "¿Qué afición consiste en salir al campo con perro y escopeta a por perdices?",
           "correcta": "La caza",
           "distractores": [
             "La natación",
@@ -79964,7 +79862,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Deporte de navegar en una barca aprovechando la fuerza del viento",
+          "enunciado": "¿Qué deporte consiste en navegar en una barca aprovechando la fuerza del viento?",
           "correcta": "La vela",
           "distractores": [
             "El esquí",
@@ -80768,7 +80666,7 @@
           "enunciado": "Las primeras radios eran grandes y funcionaban con unas...",
           "correcta": "Válvulas",
           "distractores": [
-            "Pilas de reloj",
+            "Pilas",
             "Cuerdas de guitarra"
           ]
         }
@@ -98323,7 +98221,7 @@
           "id": "i0",
           "instruccion": "Elige la respuesta",
           "enunciado": "¿Qué es blando y mullido al tocarlo?",
-          "correcta": "El almohadón",
+          "correcta": "La almohada",
           "distractores": [
             "El martillo",
             "La piedra"
@@ -98573,7 +98471,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué es blando y flexible, y se estira sin romperse, como la suela de unas botas de agua?",
+          "enunciado": "¿Qué es blando y flexible, y se estira sin romperse, como un globo?",
           "correcta": "La goma",
           "distractores": [
             "El mármol",
@@ -123023,7 +122921,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Nos bañamos con el bañador puesto. ¿Qué estación es?",
+          "enunciado": "Vamos a la playa con el bañador y mucho calor a bañarnos en el mar. ¿Qué estación es?",
           "correcta": "Verano",
           "distractores": [
             "Invierno",
@@ -150875,7 +150773,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Tiene mango, púas y sirve para comer. ¿Qué es?",
+          "enunciado": "Tiene mango, dientes y sirve para comer. ¿Qué es?",
           "correcta": "El tenedor",
           "distractores": [
             "La almohada",
@@ -166806,5 +166704,893 @@
       "longitud": 4,
       "instruccion": "Resolvedlo en grupo."
     }
+  },
+  {
+    "nombre": "Memoria: cosas de la cocina",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "sarten",
+          "label": "sarten"
+        },
+        {
+          "id": "olla",
+          "label": "olla"
+        },
+        {
+          "id": "cuchara",
+          "label": "cuchara"
+        },
+        {
+          "id": "cuchillo",
+          "label": "cuchillo"
+        },
+        {
+          "id": "taza",
+          "label": "taza"
+        },
+        {
+          "id": "bol",
+          "label": "bol"
+        },
+        {
+          "id": "nevera",
+          "label": "nevera"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: animales del campo",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "vaca",
+          "label": "vaca"
+        },
+        {
+          "id": "oveja",
+          "label": "oveja"
+        },
+        {
+          "id": "cerdo",
+          "label": "cerdo"
+        },
+        {
+          "id": "caballo",
+          "label": "caballo"
+        },
+        {
+          "id": "gallina",
+          "label": "gallina"
+        },
+        {
+          "id": "conejo",
+          "label": "conejo"
+        },
+        {
+          "id": "pato",
+          "label": "pato"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: ropa para vestirse",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "camisa",
+          "label": "camisa"
+        },
+        {
+          "id": "pantalon",
+          "label": "pantalon"
+        },
+        {
+          "id": "chaqueta",
+          "label": "chaqueta"
+        },
+        {
+          "id": "zapato",
+          "label": "zapato"
+        },
+        {
+          "id": "gorro",
+          "label": "gorro"
+        },
+        {
+          "id": "bufanda",
+          "label": "bufanda"
+        },
+        {
+          "id": "guantes",
+          "label": "guantes"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: frutas del mercado",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "manzana",
+          "label": "manzana"
+        },
+        {
+          "id": "naranja",
+          "label": "naranja"
+        },
+        {
+          "id": "pera",
+          "label": "pera"
+        },
+        {
+          "id": "platano",
+          "label": "platano"
+        },
+        {
+          "id": "fresa",
+          "label": "fresa"
+        },
+        {
+          "id": "uvas",
+          "label": "uvas"
+        },
+        {
+          "id": "melon",
+          "label": "melon"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: cosas del jardín",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "flor",
+          "label": "flor"
+        },
+        {
+          "id": "arbol",
+          "label": "arbol"
+        },
+        {
+          "id": "maceta",
+          "label": "maceta"
+        },
+        {
+          "id": "hierba",
+          "label": "hierba"
+        },
+        {
+          "id": "girasol",
+          "label": "girasol"
+        },
+        {
+          "id": "mariposa",
+          "label": "mariposa"
+        },
+        {
+          "id": "hoja",
+          "label": "hoja"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: medios de transporte",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "coche",
+          "label": "coche"
+        },
+        {
+          "id": "autobus",
+          "label": "autobus"
+        },
+        {
+          "id": "tren",
+          "label": "tren"
+        },
+        {
+          "id": "avion",
+          "label": "avión"
+        },
+        {
+          "id": "barco",
+          "label": "barco"
+        },
+        {
+          "id": "bicicleta",
+          "label": "bicicleta"
+        },
+        {
+          "id": "moto",
+          "label": "moto"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: herramientas del taller",
+    "bloque": "praxias",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "martillo",
+          "label": "martillo"
+        },
+        {
+          "id": "destornillador",
+          "label": "destornillador"
+        },
+        {
+          "id": "sierra",
+          "label": "sierra"
+        },
+        {
+          "id": "tijeras",
+          "label": "tijeras"
+        },
+        {
+          "id": "llave_inglesa",
+          "label": "llave inglesa"
+        },
+        {
+          "id": "pincel",
+          "label": "pincel"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: instrumentos y juguetes",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "guitarra",
+          "label": "guitarra"
+        },
+        {
+          "id": "tambor",
+          "label": "tambor"
+        },
+        {
+          "id": "pelota",
+          "label": "pelota"
+        },
+        {
+          "id": "globo_rojo",
+          "label": "globo_rojo"
+        },
+        {
+          "id": "abanico",
+          "label": "abanico"
+        },
+        {
+          "id": "maleta",
+          "label": "maleta"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: los perros",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todos los PERROS",
+      "objetivo": {
+        "id": "perro",
+        "label": "perro"
+      },
+      "distractores": [
+        {
+          "id": "gato",
+          "label": "gato"
+        },
+        {
+          "id": "conejo",
+          "label": "conejo"
+        },
+        {
+          "id": "pajaro",
+          "label": "pajaro"
+        },
+        {
+          "id": "raton",
+          "label": "raton"
+        },
+        {
+          "id": "caballo",
+          "label": "caballo"
+        },
+        {
+          "id": "vaca",
+          "label": "vaca"
+        },
+        {
+          "id": "oveja",
+          "label": "oveja"
+        },
+        {
+          "id": "cerdo",
+          "label": "cerdo"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: los coches",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todos los COCHES",
+      "objetivo": {
+        "id": "coche",
+        "label": "coche"
+      },
+      "distractores": [
+        {
+          "id": "autobus",
+          "label": "autobus"
+        },
+        {
+          "id": "camion",
+          "label": "camion"
+        },
+        {
+          "id": "moto",
+          "label": "moto"
+        },
+        {
+          "id": "bicicleta",
+          "label": "bicicleta"
+        },
+        {
+          "id": "tren",
+          "label": "tren"
+        },
+        {
+          "id": "avion",
+          "label": "avión"
+        },
+        {
+          "id": "barco",
+          "label": "barco"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: las tazas",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todas las TAZAS",
+      "objetivo": {
+        "id": "taza",
+        "label": "taza"
+      },
+      "distractores": [
+        {
+          "id": "bol",
+          "label": "bol"
+        },
+        {
+          "id": "olla",
+          "label": "olla"
+        },
+        {
+          "id": "sarten",
+          "label": "sarten"
+        },
+        {
+          "id": "botella",
+          "label": "botella"
+        },
+        {
+          "id": "cuchara",
+          "label": "cuchara"
+        },
+        {
+          "id": "cuchillo",
+          "label": "cuchillo"
+        },
+        {
+          "id": "jabon",
+          "label": "jabón"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: las manzanas",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todas las MANZANAS",
+      "objetivo": {
+        "id": "manzana",
+        "label": "manzana"
+      },
+      "distractores": [
+        {
+          "id": "naranja",
+          "label": "naranja"
+        },
+        {
+          "id": "pera",
+          "label": "pera"
+        },
+        {
+          "id": "platano",
+          "label": "platano"
+        },
+        {
+          "id": "limon",
+          "label": "limon"
+        },
+        {
+          "id": "tomate",
+          "label": "tomate"
+        },
+        {
+          "id": "fresa",
+          "label": "fresa"
+        },
+        {
+          "id": "melocoton",
+          "label": "melocoton"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: las flores",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todas las FLORES",
+      "objetivo": {
+        "id": "flor",
+        "label": "flor"
+      },
+      "distractores": [
+        {
+          "id": "arbol",
+          "label": "arbol"
+        },
+        {
+          "id": "hoja",
+          "label": "hoja"
+        },
+        {
+          "id": "hierba",
+          "label": "hierba"
+        },
+        {
+          "id": "maceta",
+          "label": "maceta"
+        },
+        {
+          "id": "cactus",
+          "label": "cactus"
+        },
+        {
+          "id": "piedra",
+          "label": "piedra"
+        },
+        {
+          "id": "montana",
+          "label": "montaña"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: los gatos",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todos los GATOS",
+      "objetivo": {
+        "id": "gato",
+        "label": "gato"
+      },
+      "distractores": [
+        {
+          "id": "perro",
+          "label": "perro"
+        },
+        {
+          "id": "raton",
+          "label": "raton"
+        },
+        {
+          "id": "conejo",
+          "label": "conejo"
+        },
+        {
+          "id": "pajaro",
+          "label": "pajaro"
+        },
+        {
+          "id": "pez",
+          "label": "pez"
+        },
+        {
+          "id": "gallina",
+          "label": "gallina"
+        },
+        {
+          "id": "pato",
+          "label": "pato"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: las sillas",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todas las SILLAS",
+      "objetivo": {
+        "id": "silla",
+        "label": "silla"
+      },
+      "distractores": [
+        {
+          "id": "mesa",
+          "label": "mesa"
+        },
+        {
+          "id": "sofa",
+          "label": "sofa"
+        },
+        {
+          "id": "lampara",
+          "label": "lampara"
+        },
+        {
+          "id": "ventana",
+          "label": "ventana"
+        },
+        {
+          "id": "puerta",
+          "label": "puerta"
+        },
+        {
+          "id": "espejo",
+          "label": "espejo"
+        },
+        {
+          "id": "nevera",
+          "label": "nevera"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Busca: los zapatos",
+    "bloque": "percepcion",
+    "plantilla_tipo": "busqueda_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "instruccion": "Toca todos los ZAPATOS",
+      "objetivo": {
+        "id": "zapato",
+        "label": "zapato"
+      },
+      "distractores": [
+        {
+          "id": "calcetin",
+          "label": "calcetín"
+        },
+        {
+          "id": "camisa",
+          "label": "camisa"
+        },
+        {
+          "id": "pantalon",
+          "label": "pantalon"
+        },
+        {
+          "id": "gorro",
+          "label": "gorro"
+        },
+        {
+          "id": "guantes",
+          "label": "guantes"
+        },
+        {
+          "id": "bufanda",
+          "label": "bufanda"
+        },
+        {
+          "id": "chaqueta",
+          "label": "chaqueta"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Cuenta: manzanas y peras",
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 6,
+      "objetos": [
+        "manzana",
+        "pera"
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Cuenta: gatos y perros",
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 6,
+      "objetos": [
+        "gato",
+        "perro"
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Cuenta: coches y motos",
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 6,
+      "objetos": [
+        "coche",
+        "moto"
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Cuenta: flores y árboles",
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 6,
+      "objetos": [
+        "flor",
+        "arbol"
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Cuenta: huevos y galletas",
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 6,
+      "objetos": [
+        "huevo",
+        "galleta"
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Cuenta: estrellas y corazones",
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 6,
+      "objetos": [
+        "estrella",
+        "corazon"
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Reto: garrafas de 5 y 9 litros (medir 3)",
+    "bloque": "retos",
+    "plantilla_tipo": "reto_garrafas",
+    "parametros_json": {
+      "titulo": "Reto: garrafas de 5 y 9 litros (medir 3)",
+      "enunciado": "Tenéis una garrafa de 5 L y otra de 9 L, y un grifo. ¿Cómo dejáis exactamente 3 litros en la garrafa tapada?",
+      "capacidades": [
+        9,
+        5
+      ],
+      "objetivo": 3,
+      "iniciales": [
+        0,
+        0
+      ],
+      "con_grifo": true,
+      "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta."
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Reto: garrafas de 7 y 12 litros (medir 6)",
+    "bloque": "retos",
+    "plantilla_tipo": "reto_garrafas",
+    "parametros_json": {
+      "titulo": "Reto: garrafas de 7 y 12 litros (medir 6)",
+      "enunciado": "Tenéis una garrafa de 7 L y otra de 12 L, y un grifo. ¿Cómo dejáis exactamente 6 litros en la garrafa tapada?",
+      "capacidades": [
+        12,
+        7
+      ],
+      "objetivo": 6,
+      "iniciales": [
+        0,
+        0
+      ],
+      "con_grifo": true,
+      "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta."
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Reto: garrafas de 4 y 7 litros (medir 2)",
+    "bloque": "retos",
+    "plantilla_tipo": "reto_garrafas",
+    "parametros_json": {
+      "titulo": "Reto: garrafas de 4 y 7 litros (medir 2)",
+      "enunciado": "Tenéis una garrafa de 4 L y otra de 7 L, y un grifo. ¿Cómo dejáis exactamente 2 litros en la garrafa tapada?",
+      "capacidades": [
+        7,
+        4
+      ],
+      "objetivo": 2,
+      "iniciales": [
+        0,
+        0
+      ],
+      "con_grifo": true,
+      "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta."
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Reto: garrafas de 3 y 10 litros (medir 8)",
+    "bloque": "retos",
+    "plantilla_tipo": "reto_garrafas",
+    "parametros_json": {
+      "titulo": "Reto: garrafas de 3 y 10 litros (medir 8)",
+      "enunciado": "Tenéis una garrafa de 3 L y otra de 10 L, y un grifo. ¿Cómo dejáis exactamente 8 litros en la garrafa tapada?",
+      "capacidades": [
+        10,
+        3
+      ],
+      "objetivo": 8,
+      "iniciales": [
+        0,
+        0
+      ],
+      "con_grifo": true,
+      "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta."
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Reto: la torre de Hanoi (6 discos)",
+    "bloque": "retos",
+    "plantilla_tipo": "reto_hanoi",
+    "parametros_json": {
+      "titulo": "Reto: la torre de Hanoi (6 discos)",
+      "enunciado": "Pasad toda la torre al último palo. Se mueve un disco cada vez y nunca un disco grande encima de uno más pequeño.",
+      "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta.",
+      "discos": 6
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Reto: las ranas que saltan (5 y 5)",
+    "bloque": "retos",
+    "plantilla_tipo": "reto_ranas",
+    "parametros_json": {
+      "titulo": "Reto: las ranas que saltan (5 y 5)",
+      "enunciado": "5 ranas verdes a un lado y 5 marrones al otro, con una piedra vacía en medio. Las verdes solo avanzan a la derecha y las marrones a la izquierda; pueden dar un paso a una piedra vacía o saltar por encima de UNA rana. ¿Podéis intercambiarlas?",
+      "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta.",
+      "porLado": 5
+    },
+    "estado": "en_pruebas"
   }
 ]
