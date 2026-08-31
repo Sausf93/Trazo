@@ -240,9 +240,17 @@ class PlantillaBusqueda(PlantillaBase):
             return {"id": x["id"], "label": x.get("label", x["id"])}
 
         celdas = [_cel(objetivo) for _ in range(n_obj)]
-        for _ in range(total - n_obj):
-            celdas.append(_cel(rng.choice(distractores)))
+        # Distractores SIN repetir mientras haya banco: para un mayor, dos
+        # distractores idénticos parecen una "pareja" y despistan de la tarea
+        # (feedback real: "hay dos bicicletas", "dos perros iguales"). Si el banco
+        # no llega para llenar la rejilla, se hace una rejilla algo más pequeña
+        # ANTES que repetir un distractor (más vale menos celdas que una pareja).
+        n_relleno = min(total - n_obj, len(distractores))
+        pool = list(distractores)
+        rng.shuffle(pool)
+        celdas += [_cel(d) for d in pool[:n_relleno]]
         rng.shuffle(celdas)
+        total = len(celdas)  # rejilla REAL (puede ser menor si el banco es pequeño)
 
         etiqueta = objetivo.get("label", objetivo["id"])
         return InstanciaEjercicio(

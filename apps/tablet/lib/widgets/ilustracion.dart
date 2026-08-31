@@ -480,7 +480,8 @@ class IlustracionResolver {
     'pescado': 'assets/fotos/pescado.png',
     'pimiento': 'assets/fotos/pimiento.png',
     'puerta': 'assets/fotos/puerta.png',
-    'queso': 'assets/fotos/queso.png',
+    // 'queso' usa el SVG (cuña con agujeros, reconocible); la foto no se
+    // identificaba (feedback repetido de Saulo/Laura/jjsh).
     'reloj': 'assets/fotos/reloj.png',
     'sandia': 'assets/fotos/sandia.png',
     'sarten': 'assets/fotos/sarten.png',

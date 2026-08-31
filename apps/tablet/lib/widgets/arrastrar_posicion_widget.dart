@@ -29,6 +29,11 @@ class ArrastrarPosicionWidget extends StatefulWidget {
 class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
   late final List<Map<String, dynamic>> _piezas;
   late final List<Map<String, dynamic>> _zonas;
+  // Coherencia visual: dentro de una misma actividad, o TODAS las piezas-objeto
+  // llevan ilustración o NINGUNA (nada de mezclar dibujo/foto con texto pelado,
+  // que descuadraba la pantalla —feedback de Saulo). Si alguna no tiene dibujo,
+  // se muestran todas como texto.
+  late final bool _todasConDibujo;
 
   // piezaId -> zonaId
   final Map<String, String> _colocaciones = {};
@@ -42,6 +47,9 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
     final render = widget.instancia.render;
     _piezas = _comoLista(render['piezas']);
     _zonas = _comoLista(render['zonas']);
+    final objetos = _piezas.where((p) => _formaDe(_idDe(p)) == null).toList();
+    _todasConDibujo = objetos.isNotEmpty &&
+        objetos.every((p) => IlustracionResolver.tiene(_idDe(p)));
   }
 
   List<Map<String, dynamic>> _comoLista(dynamic v) => (v as List? ?? [])
@@ -329,7 +337,7 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
         ),
       );
     }
-    final tieneDibujo = IlustracionResolver.tiene(id);
+    final tieneDibujo = _todasConDibujo && IlustracionResolver.tiene(id);
     final tamDibujo = compacto ? 40.0 : 52.0;
     // Ancho FIJO: así una etiqueta larga ("cepillo de dientes") no ensancha la
     // caja ni descuadra la fila; el texto se ajusta a 2 líneas.
