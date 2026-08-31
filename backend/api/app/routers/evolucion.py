@@ -216,14 +216,25 @@ async def exportar_intentos_csv(
 
 
 def _precision(valores: dict) -> float | None:
+    # Los `valores` vienen del cliente (JSON) y pueden traer basura (un string
+    # donde se espera un número). float() crudo daría un 500 en la gráfica de
+    # evolución; por eso cada conversión va protegida y ante datos raros -> None.
+    def _f(v):
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            return None
+
     if not valores:
         return None
     if valores.get("precision") is not None:
-        return float(valores["precision"])
+        return _f(valores["precision"])
     if valores.get("correcto") is not None:
         return 1.0 if valores["correcto"] else 0.0
     if "aciertos" in valores:
-        a = float(valores.get("aciertos", 0)); f = float(valores.get("fallos", 0))
+        a = _f(valores.get("aciertos", 0)); f = _f(valores.get("fallos", 0))
+        if a is None or f is None:
+            return None
         return a / (a + f) if (a + f) > 0 else None
     return None
 

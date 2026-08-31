@@ -59,16 +59,29 @@ async def sincronizar_catalogo(db: AsyncSession) -> int:
     cuántas se añadieron.
     """
     catalogo = _ejercicios_semilla()
+    # Robustez de ARRANQUE: una fila mal formada del catálogo NO debe tumbar el
+    # backend entero (correría en un bucle de reinicios en producción). Se ignora
+    # cualquier fila sin 'nombre' y se procesa cada una en su propio try/except.
+    catalogo = [cfg for cfg in catalogo if isinstance(cfg, dict) and cfg.get("nombre")]
     nombres_json = {cfg["nombre"] for cfg in catalogo}
     por_nombre = {
         ej.nombre: ej
         for ej in (await db.execute(select(EjercicioCatalogo))).scalars().all()
     }
     nuevas = 0
+    descartadas = 0
     for cfg in catalogo:
+      try:
         ej = por_nombre.get(cfg["nombre"])
         if ej is None:
-            db.add(EjercicioCatalogo(**cfg))
+            db.add(EjercicioCatalogo(
+                nombre=cfg["nombre"],
+                bloque=cfg["bloque"],
+                plantilla_tipo=cfg["plantilla_tipo"],
+                descripcion=cfg.get("descripcion"),
+                parametros_json=cfg.get("parametros_json", {}),
+                estado=cfg.get("estado", "en_pruebas"),
+            ))
             nuevas += 1
         else:
             # El JSON es la FUENTE DE LA VERDAD: actualiza los parámetros de las
@@ -82,6 +95,10 @@ async def sincronizar_catalogo(db: AsyncSession) -> int:
             # El JSON manda también sobre la compuerta: sin campo -> "en_pruebas".
             # Al validar una actividad se le pone "estado":"validada" en el JSON.
             ej.estado = cfg.get("estado", "en_pruebas")
+      except Exception:
+        # Fila corrupta: se ignora y se sigue. Nunca tumbar el arranque por una.
+        descartadas += 1
+        continue
     # Las actividades que ya NO están en el JSON se DESACTIVAN (no se borran, para
     # conservar el histórico y no romper referencias).
     for nombre, ej in por_nombre.items():

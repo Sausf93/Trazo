@@ -86,6 +86,12 @@ async def generar_instancia(
         instancia = plantilla.generar(ej.parametros_json or {}, nivel=nivel_efectivo)
     except ValueError as e:
         raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, str(e))
+    except Exception:
+        # Parámetros nulos o mal tipados en el catálogo no deben dar un 500 crudo:
+        # la actividad está mal formada -> 422 legible (la integradora la revisa).
+        raise HTTPException(
+            status.HTTP_422_UNPROCESSABLE_ENTITY,
+            "Esta actividad no se puede preparar ahora mismo.")
 
     # El nivel viaja en cantidad_objetivo para que la firma de dificultad segmente
     # por nivel (reinicia el baseline al subir/bajar y evita el falso positivo de

@@ -311,6 +311,9 @@ def hubo_interaccion(plantilla: str, valores: dict | None) -> bool:
     if plantilla == "parejas":
         return (int(_num(v.get("pares_encontrados"), 0) or 0) > 0
                 or int(_num(v.get("errores"), 0) or 0) > 0)
+    if plantilla.startswith("reto_"):
+        return v.get("resuelto") is True \
+            or int(_num(v.get("movimientos"), 0) or 0) > 0
     return True
 
 

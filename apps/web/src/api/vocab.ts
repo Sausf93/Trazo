@@ -28,6 +28,9 @@ export const BLOQUE_LABEL: Record<string, string> = {
   percepcion: "Percepción",
   funcion_ejecutiva: "Función ejecutiva",
   vida_cotidiana: "Vida cotidiana",
+  // Solo etiqueta: 'retos' NO se añade a BLOQUES (no es planificable), pero puede
+  // aparecer en listados/banco y no debe verse la clave cruda.
+  retos: "Retos de ingenio",
 };
 
 export const PLANTILLAS = [
@@ -54,6 +57,10 @@ export const PLANTILLA_LABEL: Record<string, string> = {
   busqueda_visual: "Búsqueda visual",
   manejo_cantidad: "Manejo de cantidad",
   parejas: "Parejas (memoria)",
+  reto_garrafas: "Reto: garrafas",
+  reto_cruzar: "Reto: cruzar el río",
+  reto_ranas: "Reto: las ranas",
+  reto_hanoi: "Reto: torre de Hanoi",
 };
 
 export const NIVELES = ["bajo", "medio", "alto"] as const;

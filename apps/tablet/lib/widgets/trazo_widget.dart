@@ -53,7 +53,15 @@ class _TrazoWidgetState extends State<TrazoWidget>
     final render = widget.instancia.render;
     // Cast tolerante: una instancia malformada no debe tumbar la tablet.
     final gp = render['guide_path'];
-    _guia = (gp is String && gp.isNotEmpty) ? parseSvgPathData(gp) : Path();
+    // parseSvgPathData LANZA si el path no es vacío pero está mal formado; sin
+    // proteger, tumbaría la tablet en initState. Ante un path inválido, guía vacía.
+    Path guia;
+    try {
+      guia = (gp is String && gp.isNotEmpty) ? parseSvgPathData(gp) : Path();
+    } catch (_) {
+      guia = Path();
+    }
+    _guia = guia;
     _tolerancia = (render['tolerancia_px'] as num?)?.toDouble() ?? 24.0;
     final vb = (render['viewbox'] as String? ?? '0 0 300 140').split(' ');
     _vbW = (vb.length > 2 ? double.tryParse(vb[2]) : null) ?? 300;
