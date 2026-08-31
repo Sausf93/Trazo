@@ -165167,5 +165167,104 @@
       "lado": 3,
       "instruccion": "Resolvedlo en grupo."
     }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_garrafas",
+    "nombre": "Reto: garrafas de 3 y 7 litros (medir 5)",
+    "descripcion": "Reto de garrafas.",
+    "parametros_json": {
+      "titulo": "Reto: garrafas de 3 y 7 litros (medir 5)",
+      "enunciado": "Con una garrafa de 3 L, otra de 7 L y un grifo, dejad exactamente 5 litros.",
+      "capacidades": [
+        7,
+        3
+      ],
+      "objetivo": 5,
+      "iniciales": [
+        0,
+        0
+      ],
+      "con_grifo": true,
+      "instruccion": "Resolvedlo en grupo."
+    }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_garrafas",
+    "nombre": "Reto: garrafas de 5 y 3 litros (medir 1)",
+    "descripcion": "Reto de garrafas.",
+    "parametros_json": {
+      "titulo": "Reto: garrafas de 5 y 3 litros (medir 1)",
+      "enunciado": "Con garrafas de 5 L y 3 L y un grifo, dejad exactamente 1 litro.",
+      "capacidades": [
+        5,
+        3
+      ],
+      "objetivo": 1,
+      "iniciales": [
+        0,
+        0
+      ],
+      "con_grifo": true,
+      "instruccion": "Resolvedlo en grupo."
+    }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_garrafas",
+    "nombre": "Reto: garrafas de 6 y 4 litros (medir 2)",
+    "descripcion": "Reto de garrafas.",
+    "parametros_json": {
+      "titulo": "Reto: garrafas de 6 y 4 litros (medir 2)",
+      "enunciado": "Con garrafas de 6 L y 4 L y un grifo, dejad exactamente 2 litros.",
+      "capacidades": [
+        6,
+        4
+      ],
+      "objetivo": 2,
+      "iniciales": [
+        0,
+        0
+      ],
+      "con_grifo": true,
+      "instruccion": "Resolvedlo en grupo."
+    }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_taquin",
+    "nombre": "Reto: el taquín de números (4x4)",
+    "descripcion": "Reto de ingenio.",
+    "parametros_json": {
+      "titulo": "Reto: el taquín de números (4x4)",
+      "enunciado": "Deslizad las fichas para dejar los números del 1 al 15 en orden, con el hueco al final.",
+      "instruccion": "Resolvedlo en grupo.",
+      "lado": 4
+    }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_hanoi",
+    "nombre": "Reto: la torre de Hanoi (5 discos)",
+    "descripcion": "Reto de ingenio.",
+    "parametros_json": {
+      "titulo": "Reto: la torre de Hanoi (5 discos)",
+      "enunciado": "Pasad la torre de 5 discos al último palo. Un disco cada vez, nunca uno grande sobre uno pequeño.",
+      "instruccion": "Resolvedlo en grupo.",
+      "discos": 5
+    }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_ranas",
+    "nombre": "Reto: las ranas que saltan (4 y 4)",
+    "descripcion": "Reto de ingenio.",
+    "parametros_json": {
+      "titulo": "Reto: las ranas que saltan (4 y 4)",
+      "enunciado": "Cuatro ranas verdes y cuatro marrones con una piedra vacía en medio. Intercambiad los grupos.",
+      "instruccion": "Resolvedlo en grupo.",
+      "por_lado": 4
+    }
   }
 ]
