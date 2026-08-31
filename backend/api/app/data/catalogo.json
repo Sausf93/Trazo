@@ -166474,5 +166474,215 @@
       "con_grifo": true,
       "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta."
     }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: el taller",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "martillo",
+          "label": "martillo"
+        },
+        {
+          "id": "destornillador",
+          "label": "destornillador"
+        },
+        {
+          "id": "sierra",
+          "label": "sierra"
+        },
+        {
+          "id": "llave_inglesa",
+          "label": "llave inglesa"
+        },
+        {
+          "id": "pincel",
+          "label": "pincel"
+        },
+        {
+          "id": "tijeras",
+          "label": "tijeras"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: la comida",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "pan",
+          "label": "pan"
+        },
+        {
+          "id": "huevo",
+          "label": "huevo"
+        },
+        {
+          "id": "leche",
+          "label": "leche"
+        },
+        {
+          "id": "queso",
+          "label": "queso"
+        },
+        {
+          "id": "jamon",
+          "label": "jamon"
+        },
+        {
+          "id": "pescado",
+          "label": "pescado"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: instrumentos y objetos",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "guitarra",
+          "label": "guitarra"
+        },
+        {
+          "id": "tambor",
+          "label": "tambor"
+        },
+        {
+          "id": "reloj",
+          "label": "reloj"
+        },
+        {
+          "id": "telefono",
+          "label": "telefono"
+        },
+        {
+          "id": "lampara",
+          "label": "lampara"
+        },
+        {
+          "id": "llave",
+          "label": "llave"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: en el campo",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "arbol",
+          "label": "arbol"
+        },
+        {
+          "id": "flor",
+          "label": "flor"
+        },
+        {
+          "id": "hoja",
+          "label": "hoja"
+        },
+        {
+          "id": "sol",
+          "label": "sol"
+        },
+        {
+          "id": "nube",
+          "label": "nube"
+        },
+        {
+          "id": "piedra",
+          "label": "piedra"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: para vestirse",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "camisa",
+          "label": "camisa"
+        },
+        {
+          "id": "pantalon",
+          "label": "pantalon"
+        },
+        {
+          "id": "zapato",
+          "label": "zapato"
+        },
+        {
+          "id": "gorro",
+          "label": "gorro"
+        },
+        {
+          "id": "bufanda",
+          "label": "bufanda"
+        },
+        {
+          "id": "gafas",
+          "label": "gafas"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: la nevera",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "leche",
+          "label": "leche"
+        },
+        {
+          "id": "huevo",
+          "label": "huevo"
+        },
+        {
+          "id": "queso",
+          "label": "queso"
+        },
+        {
+          "id": "tomate",
+          "label": "tomate"
+        },
+        {
+          "id": "lechuga",
+          "label": "lechuga"
+        },
+        {
+          "id": "pescado",
+          "label": "pescado"
+        }
+      ]
+    }
   }
 ]
