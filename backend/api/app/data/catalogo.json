@@ -164173,5 +164173,389 @@
       "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta.",
       "discos": 4
     }
+  },
+  {
+    "bloque": "gnosias",
+    "plantilla_tipo": "seleccion_multiple",
+    "nombre": "¿Qué animal es? (fotos)",
+    "descripcion": "Reconocer el objeto por la foto.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "opciones_min": 3,
+      "opciones_max": 3,
+      "items": [
+        {
+          "id": "r0",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "elefante",
+          "correcta": "El elefante",
+          "distractores": [
+            "El caballo",
+            "El toro"
+          ]
+        },
+        {
+          "id": "r1",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "delfin",
+          "correcta": "El delfín",
+          "distractores": [
+            "El pez",
+            "La ballena"
+          ]
+        },
+        {
+          "id": "r2",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "mariposa",
+          "correcta": "La mariposa",
+          "distractores": [
+            "La abeja",
+            "La mosca"
+          ]
+        },
+        {
+          "id": "r3",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "conejo",
+          "correcta": "El conejo",
+          "distractores": [
+            "El ratón",
+            "El gato"
+          ]
+        },
+        {
+          "id": "r4",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "gallina",
+          "correcta": "La gallina",
+          "distractores": [
+            "El pato",
+            "El pavo"
+          ]
+        },
+        {
+          "id": "r5",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "caballo",
+          "correcta": "El caballo",
+          "distractores": [
+            "La vaca",
+            "El burro"
+          ]
+        }
+      ],
+      "no_leer_opciones": null
+    }
+  },
+  {
+    "bloque": "gnosias",
+    "plantilla_tipo": "seleccion_multiple",
+    "nombre": "¿Qué objeto de casa es? (fotos)",
+    "descripcion": "Reconocer el objeto por la foto.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "opciones_min": 3,
+      "opciones_max": 3,
+      "items": [
+        {
+          "id": "r0",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "lampara",
+          "correcta": "La lámpara",
+          "distractores": [
+            "El espejo",
+            "El reloj"
+          ]
+        },
+        {
+          "id": "r1",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "telefono",
+          "correcta": "El teléfono",
+          "distractores": [
+            "La radio",
+            "La televisión"
+          ]
+        },
+        {
+          "id": "r2",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "espejo",
+          "correcta": "El espejo",
+          "distractores": [
+            "La ventana",
+            "El cuadro"
+          ]
+        },
+        {
+          "id": "r3",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "reloj",
+          "correcta": "El reloj",
+          "distractores": [
+            "La lámpara",
+            "El plato"
+          ]
+        },
+        {
+          "id": "r4",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "paraguas",
+          "correcta": "El paraguas",
+          "distractores": [
+            "El bastón",
+            "La sombrilla"
+          ]
+        },
+        {
+          "id": "r5",
+          "instruccion": "¿Qué es esto?",
+          "imagen": "maleta",
+          "correcta": "La maleta",
+          "distractores": [
+            "El bolso",
+            "La caja"
+          ]
+        }
+      ],
+      "no_leer_opciones": null
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: en el jardín",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "flor",
+          "label": "flor"
+        },
+        {
+          "id": "arbol",
+          "label": "arbol"
+        },
+        {
+          "id": "rosa",
+          "label": "rosa"
+        },
+        {
+          "id": "tulipan",
+          "label": "tulipan"
+        },
+        {
+          "id": "margarita",
+          "label": "margarita"
+        },
+        {
+          "id": "maceta",
+          "label": "maceta"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: aves y mascotas",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "pajaro",
+          "label": "pajaro"
+        },
+        {
+          "id": "gallina",
+          "label": "gallina"
+        },
+        {
+          "id": "pato",
+          "label": "pato"
+        },
+        {
+          "id": "perro",
+          "label": "perro"
+        },
+        {
+          "id": "gato",
+          "label": "gato"
+        },
+        {
+          "id": "conejo",
+          "label": "conejo"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: la fiesta",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "globo_rojo",
+          "label": "globo rojo"
+        },
+        {
+          "id": "globo_azul",
+          "label": "globo azul"
+        },
+        {
+          "id": "globo_verde",
+          "label": "globo verde"
+        },
+        {
+          "id": "tambor",
+          "label": "tambor"
+        },
+        {
+          "id": "guitarra",
+          "label": "guitarra"
+        },
+        {
+          "id": "pelota",
+          "label": "pelota"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "nombre": "Parejas: escribir y leer",
+    "descripcion": "Encuentra las parejas iguales.",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "lapiz",
+          "label": "lapiz"
+        },
+        {
+          "id": "boligrafo",
+          "label": "boligrafo"
+        },
+        {
+          "id": "libro",
+          "label": "libro"
+        },
+        {
+          "id": "tijeras",
+          "label": "tijeras"
+        },
+        {
+          "id": "reloj",
+          "label": "reloj"
+        },
+        {
+          "id": "llave",
+          "label": "llave"
+        }
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta las mariposas",
+    "descripcion": "Cuenta las mariposas.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "mariposa"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los patos",
+    "descripcion": "Cuenta los patos.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "pato"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los cactus",
+    "descripcion": "Cuenta los cactus.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "cactus"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta las pelotas",
+    "descripcion": "Cuenta las pelotas.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "pelota"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta las maletas",
+    "descripcion": "Cuenta las maletas.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "maleta"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los bolsos",
+    "descripcion": "Cuenta los bolsos.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "bolso"
+      ]
+    }
   }
 ]
