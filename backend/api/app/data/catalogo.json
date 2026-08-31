@@ -164557,5 +164557,229 @@
         "bolso"
       ]
     }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? mariposa o pato",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "mariposa",
+        "pato"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? mariposa o pato",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "mariposa",
+        "pato"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? cactus o flor",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "cactus",
+        "flor"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? cactus o flor",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "cactus",
+        "flor"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? pelota o libro",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "pelota",
+        "libro"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? pelota o libro",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "pelota",
+        "libro"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? maleta o llave",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "maleta",
+        "llave"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? maleta o llave",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "maleta",
+        "llave"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? guitarra o tambor",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "guitarra",
+        "tambor"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? guitarra o tambor",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "guitarra",
+        "tambor"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? paraguas o gafas",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "paraguas",
+        "gafas"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? paraguas o gafas",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "paraguas",
+        "gafas"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene más? caballo o conejo",
+    "descripcion": "¿De cuál hay más?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_mas",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "caballo",
+        "conejo"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "¿Cuál tiene menos? caballo o conejo",
+    "descripcion": "¿De cuál hay menos?",
+    "parametros_json": {
+      "dificultad": "media",
+      "modo": "cual_tiene_menos",
+      "cantidad_min": 2,
+      "cantidad_max": 7,
+      "objetos": [
+        "caballo",
+        "conejo"
+      ]
+    }
   }
 ]
