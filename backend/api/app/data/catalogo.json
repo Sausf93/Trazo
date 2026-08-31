@@ -32204,7 +32204,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Fruta redonda de color naranja con gajos por dentro",
+          "enunciado": "Fruta redonda de piel gruesa y gajos jugosos que se pela con la mano",
           "correcta": "La naranja",
           "distractores": [
             "La manzana",
@@ -32808,7 +32808,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Pan cuadrado y blando que viene en bolsa y sirve para el sándwich",
+          "enunciado": "Rebanadas cuadradas y blandas que vienen en bolsa, para preparar sándwiches",
           "correcta": "El pan de molde",
           "distractores": [
             "El turrón",
@@ -32861,7 +32861,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Filete plano de carne que se hace a la plancha o empanado",
+          "enunciado": "Loncha plana de carne que se hace a la plancha o rebozada y empanada",
           "correcta": "El filete",
           "distractores": [
             "El pan",
@@ -33017,7 +33017,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Zumo de una fruta naranja, recién exprimido",
+          "enunciado": "Bebida recién exprimida de una fruta redonda de color anaranjado, para el desayuno",
           "correcta": "El zumo de naranja",
           "distractores": [
             "El café",
@@ -33123,7 +33123,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Postre de leche y arroz cocido con canela por encima",
+          "enunciado": "Postre de grano blanco cocido en leche con canela por encima",
           "correcta": "El arroz con leche",
           "distractores": [
             "La ensalada",
@@ -33269,7 +33269,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Calzado alto de goma para andar por el agua o el barro",
+          "enunciado": "Calzado alto de goma para pisar los charcos y el barro sin mojarse los pies",
           "correcta": "La bota de agua",
           "distractores": [
             "La camiseta",
@@ -33501,7 +33501,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Copa de cristal con pie alto para el vino en las celebraciones",
+          "enunciado": "Recipiente de cristal con pie alto para servir el vino en las celebraciones",
           "correcta": "La copa",
           "distractores": [
             "La olla",
@@ -33899,7 +33899,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Goma pequeña que quita lo escrito con lápiz",
+          "enunciado": "Objeto pequeño y blando que borra lo escrito con lápiz al frotarlo",
           "correcta": "La goma de borrar",
           "distractores": [
             "El martillo",
@@ -47251,7 +47251,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "De patata y huevo, cuajada en la sarten",
+          "enunciado": "De un tubérculo en láminas y huevo, cuajada en la sartén",
           "correcta": "La tortilla de patatas",
           "distractores": [
             "El gazpacho",
@@ -47281,7 +47281,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Pan tostado con tomate y aceite",
+          "enunciado": "Rebanada tostada restregada con tomate maduro y regada con aceite",
           "correcta": "El pan con tomate",
           "distractores": [
             "El cocido",
@@ -60404,7 +60404,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Vagoneta pequeña de las minas que llevaba el carbón",
+          "enunciado": "Carro pequeño de hierro que corría por carriles dentro de las minas cargado de carbón",
           "correcta": "Vagoneta",
           "distractores": [
             "Avión",
@@ -60774,79 +60774,6 @@
           "distractores": [
             "Radio",
             "Batidora"
-          ]
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "gnosias",
-    "plantilla_tipo": "seleccion_multiple",
-    "nombre": "Cacharros de barro",
-    "descripcion": "Reconoce las vasijas de barro de toda la vida.",
-    "parametros_json": {
-      "dificultad": "facil",
-      "opciones_min": 3,
-      "opciones_max": 3,
-      "items": [
-        {
-          "id": "i0",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Para beber agua fresca, con pitorro para no tocar la boca",
-          "correcta": "Botijo",
-          "distractores": [
-            "Sartén",
-            "Cuchara"
-          ]
-        },
-        {
-          "id": "i1",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Olla de barro para el cocido de puchero",
-          "correcta": "Puchero",
-          "distractores": [
-            "Tenedor",
-            "Vaso de cristal"
-          ]
-        },
-        {
-          "id": "i2",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Vasija con dos asas para acarrear el agua de la fuente",
-          "correcta": "Cántaro",
-          "distractores": [
-            "Cuchillo",
-            "Servilleta"
-          ]
-        },
-        {
-          "id": "i3",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Recipiente hondo de barro para servir el guiso a la mesa",
-          "correcta": "Cazuela de barro",
-          "distractores": [
-            "Copa",
-            "Mantel"
-          ]
-        },
-        {
-          "id": "i4",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Vasija muy grande para guardar el vino o el aceite en la bodega",
-          "correcta": "Tinaja",
-          "distractores": [
-            "Tenedor",
-            "Plato de plástico"
-          ]
-        },
-        {
-          "id": "i5",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Jarrita de barro para servir el vino en la mesa",
-          "correcta": "Jarra de barro",
-          "distractores": [
-            "Cuchara",
-            "Vaso de tubo"
           ]
         }
       ]
@@ -63024,7 +62951,7 @@
         {
           "id": "i0",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Tocamos todo menos lo blando. ¿Cuál te saltas?",
+          "enunciado": "Nombramos todo menos lo blando. ¿Cuál te saltas?",
           "correcta": "El algodón",
           "distractores": [
             "La piedra",
@@ -76744,79 +76671,6 @@
   {
     "bloque": "gnosias",
     "plantilla_tipo": "seleccion_multiple",
-    "nombre": "El plato por sus ingredientes",
-    "descripcion": "Reconoce el plato típico por lo que lleva.",
-    "parametros_json": {
-      "dificultad": "media",
-      "opciones_min": 3,
-      "opciones_max": 3,
-      "items": [
-        {
-          "id": "i0",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Sopa fría de tomate, pepino y pan, típica de Andalucía.",
-          "correcta": "Gazpacho",
-          "distractores": [
-            "Paella",
-            "Cocido"
-          ]
-        },
-        {
-          "id": "i1",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Arroz amarillo con azafrán, pollo y marisco.",
-          "correcta": "Paella",
-          "distractores": [
-            "Fabada",
-            "Gazpacho"
-          ]
-        },
-        {
-          "id": "i2",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Se hace batiendo huevos con patata en la sartén.",
-          "correcta": "Tortilla de patata",
-          "distractores": [
-            "Gazpacho",
-            "Paella"
-          ]
-        },
-        {
-          "id": "i3",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Guiso de garbanzos con verduras y carne, servido en varios vuelcos.",
-          "correcta": "Cocido",
-          "distractores": [
-            "Gazpacho",
-            "Tortilla de patata"
-          ]
-        },
-        {
-          "id": "i4",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Guiso asturiano de alubias blancas con chorizo y morcilla.",
-          "correcta": "Fabada",
-          "distractores": [
-            "Paella",
-            "Gazpacho"
-          ]
-        },
-        {
-          "id": "i5",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Pan frito con ajo, típico de las tierras de secano.",
-          "correcta": "Migas",
-          "distractores": [
-            "Cocido",
-            "Paella"
-          ]
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "gnosias",
-    "plantilla_tipo": "seleccion_multiple",
     "nombre": "El oficio por el material que trabaja",
     "descripcion": "Di qué oficio trabaja cada material.",
     "parametros_json": {
@@ -76950,7 +76804,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Se cría bajo tierra y con ella se hacen las patatas fritas.",
+          "enunciado": "Tubérculo redondo que se cría bajo tierra y se fríe cortado en bastoncitos.",
           "correcta": "La patata",
           "distractores": [
             "El pimiento",
@@ -77348,7 +77202,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Se cuece el arroz con leche, azúcar y canela.",
+          "enunciado": "Grano blanco cocido despacio en leche dulce y espolvoreado con canela.",
           "correcta": "El arroz con leche",
           "distractores": [
             "El flan",
@@ -77388,7 +77242,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Tarta de almendra con la cruz de Santiago dibujada en azúcar.",
+          "enunciado": "Tarta de almendra con una cruz dibujada en azúcar por encima, típica de Galicia.",
           "correcta": "La tarta de Santiago",
           "distractores": [
             "El flan",
@@ -77660,7 +77514,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Zumo dorado que se exprime de las naranjas.",
+          "enunciado": "Bebida dorada que se saca exprimiendo una fruta de color anaranjado.",
           "correcta": "El zumo de naranja",
           "distractores": [
             "El café",
@@ -77758,79 +77612,6 @@
           "distractores": [
             "El médico",
             "El dentista"
-          ]
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "gnosias",
-    "plantilla_tipo": "seleccion_multiple",
-    "nombre": "La flor por su color y aroma",
-    "descripcion": "Reconoce la flor por su color, sus pétalos o su olor.",
-    "parametros_json": {
-      "dificultad": "facil",
-      "opciones_min": 3,
-      "opciones_max": 3,
-      "items": [
-        {
-          "id": "i0",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Flor roja con espinas en el tallo, símbolo del amor.",
-          "correcta": "La rosa",
-          "distractores": [
-            "El girasol",
-            "La amapola"
-          ]
-        },
-        {
-          "id": "i1",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Flor grande y amarilla que gira mirando al sol.",
-          "correcta": "El girasol",
-          "distractores": [
-            "La rosa",
-            "El clavel"
-          ]
-        },
-        {
-          "id": "i2",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Flor roja del campo de trigo, de pétalos muy finos.",
-          "correcta": "La amapola",
-          "distractores": [
-            "El girasol",
-            "La margarita"
-          ]
-        },
-        {
-          "id": "i3",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Flor blanca de pétalos con el centro amarillo; se deshoja.",
-          "correcta": "La margarita",
-          "distractores": [
-            "La rosa",
-            "El girasol"
-          ]
-        },
-        {
-          "id": "i4",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Flor morada de olor fuerte que perfuma los armarios.",
-          "correcta": "La lavanda",
-          "distractores": [
-            "El girasol",
-            "La rosa"
-          ]
-        },
-        {
-          "id": "i5",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Flor de muchos pétalos y aroma intenso, típica de la feria.",
-          "correcta": "El clavel",
-          "distractores": [
-            "El girasol",
-            "La margarita"
           ]
         }
       ]
@@ -77977,79 +77758,6 @@
           "distractores": [
             "La cuchara",
             "El tenedor"
-          ]
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "gnosias",
-    "plantilla_tipo": "seleccion_multiple",
-    "nombre": "Sonidos de la naturaleza",
-    "descripcion": "Reconoce qué hace cada sonido del campo o del cielo.",
-    "parametros_json": {
-      "dificultad": "media",
-      "opciones_min": 3,
-      "opciones_max": 3,
-      "items": [
-        {
-          "id": "i0",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Retumba en el cielo cuando hay tormenta.",
-          "correcta": "El trueno",
-          "distractores": [
-            "El río",
-            "El viento"
-          ]
-        },
-        {
-          "id": "i1",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Rompen una y otra vez contra la arena de la playa.",
-          "correcta": "Las olas del mar",
-          "distractores": [
-            "El trueno",
-            "La lluvia"
-          ]
-        },
-        {
-          "id": "i2",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Sopla entre las ramas y mueve las hojas.",
-          "correcta": "El viento",
-          "distractores": [
-            "Las olas del mar",
-            "El trueno"
-          ]
-        },
-        {
-          "id": "i3",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Cae del cielo y repiquetea sobre los cristales.",
-          "correcta": "La lluvia",
-          "distractores": [
-            "El viento",
-            "Las olas del mar"
-          ]
-        },
-        {
-          "id": "i4",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Corre por su cauce entre las piedras con un rumor suave.",
-          "correcta": "El río",
-          "distractores": [
-            "El trueno",
-            "El viento"
-          ]
-        },
-        {
-          "id": "i5",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Crujen bajo los pies al pisarlas en el otoño.",
-          "correcta": "Las hojas secas",
-          "distractores": [
-            "Las olas del mar",
-            "La lluvia"
           ]
         }
       ]
@@ -97530,7 +97238,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué raspa como una lija?",
+          "enunciado": "¿Qué raspa y deja lisa la madera al frotarla?",
           "correcta": "El papel de lija",
           "distractores": [
             "La seda",
@@ -97540,7 +97248,7 @@
         {
           "id": "i4",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué es suave como una pluma?",
+          "enunciado": "¿Qué es tan ligero y suave que casi no se nota al cogerlo en la mano?",
           "correcta": "La pluma",
           "distractores": [
             "El ladrillo",
@@ -97749,7 +97457,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué es blando y flexible, como una goma de borrar?",
+          "enunciado": "¿Qué es blando y flexible, y se estira sin romperse, como la suela de unas botas de agua?",
           "correcta": "La goma",
           "distractores": [
             "El mármol",
@@ -98212,79 +97920,6 @@
           "distractores": [
             "Francia",
             "Alemania"
-          ]
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "gnosias",
-    "plantilla_tipo": "seleccion_multiple",
-    "nombre": "Banderas del mundo",
-    "descripcion": "Adivina el país por la descripción de su bandera.",
-    "parametros_json": {
-      "dificultad": "dificil",
-      "opciones_min": 3,
-      "opciones_max": 3,
-      "items": [
-        {
-          "id": "i0",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Una bandera con un sol y franjas azules y blancas es de...",
-          "correcta": "Argentina",
-          "distractores": [
-            "Alemania",
-            "Italia"
-          ]
-        },
-        {
-          "id": "i1",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Una bandera roja con una media luna y una estrella es de...",
-          "correcta": "Turquía",
-          "distractores": [
-            "Suecia",
-            "Grecia"
-          ]
-        },
-        {
-          "id": "i2",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Una bandera roja con una cruz blanca en el centro es de...",
-          "correcta": "Suiza",
-          "distractores": [
-            "España",
-            "Italia"
-          ]
-        },
-        {
-          "id": "i3",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Una bandera roja y amarilla con un escudo es de...",
-          "correcta": "España",
-          "distractores": [
-            "Francia",
-            "Alemania"
-          ]
-        },
-        {
-          "id": "i4",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Una bandera verde y roja con un escudo es de...",
-          "correcta": "Portugal",
-          "distractores": [
-            "Italia",
-            "Suiza"
-          ]
-        },
-        {
-          "id": "i5",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Una bandera negra, roja y amarilla a franjas es de...",
-          "correcta": "Alemania",
-          "distractores": [
-            "España",
-            "Francia"
           ]
         }
       ]
@@ -123210,7 +122845,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Se oye el pitido del tren y hay gente con maletas. ¿Dónde estamos?",
+          "enunciado": "Se oye un silbido y un altavoz, y hay gente con maletas esperando para subir a los vagones. ¿Dónde estamos?",
           "correcta": "En la estación de tren",
           "distractores": [
             "En la panadería",
@@ -123428,7 +123063,7 @@
         {
           "id": "i1",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Fruta redonda y roja que se da en el manzano",
+          "enunciado": "Fruta redonda y roja, muy común, que se come cruda, asada o en compota",
           "correcta": "Manzana",
           "distractores": [
             "Pera",
@@ -123438,7 +123073,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Fruta de gajos, jugosa y de color naranja",
+          "enunciado": "Fruta redonda de gajos jugosos que se pela con las manos, típica del invierno",
           "correcta": "Naranja",
           "distractores": [
             "Melón",
@@ -123468,7 +123103,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Fruta amarilla y ácida con la que se hace limonada",
+          "enunciado": "Fruta amarilla y muy ácida que se exprime para dar sabor a las bebidas y los guisos",
           "correcta": "Limón",
           "distractores": [
             "Naranja",
@@ -123644,7 +123279,7 @@
         {
           "id": "i6",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Hortaliza verde y alargada, parecida al pepino, para el pisto",
+          "enunciado": "Hortaliza verde y alargada, de piel fina y carne blanca, muy usada en el pisto",
           "correcta": "Calabacín",
           "distractores": [
             "Pepino",
@@ -128170,7 +127805,7 @@
         {
           "id": "i2",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Huevo y patata fritos y cuajados",
+          "enunciado": "Huevo batido y cuajado en la sartén con láminas de un tubérculo",
           "correcta": "La tortilla de patata",
           "distractores": [
             "La paella",
@@ -128200,7 +127835,7 @@
         {
           "id": "i5",
           "instruccion": "Elige la respuesta",
-          "enunciado": "Pulpo cocido con pimentón y aceite",
+          "enunciado": "Marisco de tentáculos, hervido y aliñado con pimentón y aceite, típico de Galicia",
           "correcta": "El pulpo a la gallega",
           "distractores": [
             "El cocido",
@@ -128497,79 +128132,6 @@
           "distractores": [
             "El gusto",
             "El oído"
-          ]
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "gnosias",
-    "plantilla_tipo": "seleccion_multiple",
-    "nombre": "Lugares muy conocidos de España",
-    "descripcion": "Reconoce el lugar famoso por su descripción.",
-    "parametros_json": {
-      "dificultad": "dificil",
-      "opciones_min": 3,
-      "opciones_max": 3,
-      "items": [
-        {
-          "id": "i0",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Museo de Madrid con cuadros de Velázquez y Goya",
-          "correcta": "El Prado",
-          "distractores": [
-            "La Alhambra",
-            "La Giralda"
-          ]
-        },
-        {
-          "id": "i1",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Palacio y fortaleza árabe en Granada",
-          "correcta": "La Alhambra",
-          "distractores": [
-            "El Prado",
-            "La Sagrada Familia"
-          ]
-        },
-        {
-          "id": "i2",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Torre y campanario junto a la catedral de Sevilla",
-          "correcta": "La Giralda",
-          "distractores": [
-            "La Alhambra",
-            "El Prado"
-          ]
-        },
-        {
-          "id": "i3",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Gran templo de Barcelona, obra de Gaudí, aún sin terminar",
-          "correcta": "La Sagrada Familia",
-          "distractores": [
-            "La Giralda",
-            "El Prado"
-          ]
-        },
-        {
-          "id": "i4",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Acueducto romano de piedra en Segovia",
-          "correcta": "El Acueducto de Segovia",
-          "distractores": [
-            "La Alhambra",
-            "La Giralda"
-          ]
-        },
-        {
-          "id": "i5",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Camino de peregrinos que termina en la tumba del Apóstol",
-          "correcta": "El Camino de Santiago",
-          "distractores": [
-            "El Prado",
-            "La Alhambra"
           ]
         }
       ]
@@ -129008,152 +128570,6 @@
           "distractores": [
             "La paloma",
             "La gallina"
-          ]
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "gnosias",
-    "plantilla_tipo": "seleccion_multiple",
-    "nombre": "Flores del jardín por su seña",
-    "descripcion": "Reconoce la flor por su descripción.",
-    "parametros_json": {
-      "dificultad": "media",
-      "opciones_min": 3,
-      "opciones_max": 3,
-      "items": [
-        {
-          "id": "i0",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Roja, con espinas en el tallo; flor del amor",
-          "correcta": "La rosa",
-          "distractores": [
-            "El clavel",
-            "La margarita"
-          ]
-        },
-        {
-          "id": "i1",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Blanca con el centro amarillo; se deshoja 'me quiere, no me quiere'",
-          "correcta": "La margarita",
-          "distractores": [
-            "La rosa",
-            "El tulipán"
-          ]
-        },
-        {
-          "id": "i2",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Grande y amarilla, mira siempre al sol",
-          "correcta": "El girasol",
-          "distractores": [
-            "La rosa",
-            "El clavel"
-          ]
-        },
-        {
-          "id": "i3",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Roja y rizada, muy de feria y de flamenca",
-          "correcta": "El clavel",
-          "distractores": [
-            "La margarita",
-            "El girasol"
-          ]
-        },
-        {
-          "id": "i4",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Roja de los trigales, con pétalos finos como el papel",
-          "correcta": "La amapola",
-          "distractores": [
-            "El girasol",
-            "La rosa"
-          ]
-        },
-        {
-          "id": "i5",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Pequeña, morada y muy olorosa",
-          "correcta": "La violeta",
-          "distractores": [
-            "El girasol",
-            "El clavel"
-          ]
-        }
-      ]
-    }
-  },
-  {
-    "bloque": "gnosias",
-    "plantilla_tipo": "seleccion_multiple",
-    "nombre": "El dulce por lo que lleva",
-    "descripcion": "Adivina el postre por sus ingredientes.",
-    "parametros_json": {
-      "dificultad": "media",
-      "opciones_min": 3,
-      "opciones_max": 3,
-      "items": [
-        {
-          "id": "i0",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Huevo y azúcar cuajados, con caramelo por encima",
-          "correcta": "El flan",
-          "distractores": [
-            "El arroz con leche",
-            "Las natillas"
-          ]
-        },
-        {
-          "id": "i1",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Arroz cocido con leche, azúcar y canela",
-          "correcta": "El arroz con leche",
-          "distractores": [
-            "El flan",
-            "El bizcocho"
-          ]
-        },
-        {
-          "id": "i2",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Yema y almendra; muy típico de la Navidad",
-          "correcta": "El turrón",
-          "distractores": [
-            "El flan",
-            "El arroz con leche"
-          ]
-        },
-        {
-          "id": "i3",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Pan frito en leche, huevo y azúcar; de Semana Santa",
-          "correcta": "Las torrijas",
-          "distractores": [
-            "El flan",
-            "El turrón"
-          ]
-        },
-        {
-          "id": "i4",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Masa esponjosa horneada, para mojar en el café",
-          "correcta": "El bizcocho",
-          "distractores": [
-            "El flan",
-            "Las natillas"
-          ]
-        },
-        {
-          "id": "i5",
-          "instruccion": "Elige la respuesta",
-          "enunciado": "Crema amarilla de huevo y leche, con una galleta encima",
-          "correcta": "Las natillas",
-          "distractores": [
-            "El turrón",
-            "Las torrijas"
           ]
         }
       ]
