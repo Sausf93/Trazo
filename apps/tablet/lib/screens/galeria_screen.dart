@@ -18,6 +18,7 @@ import '../widgets/generico_widget.dart';
 import '../widgets/manejo_cantidad_widget.dart';
 import '../widgets/memoria_parejas_widget.dart';
 import '../widgets/memoria_visual_widget.dart';
+import '../widgets/reto_garrafas_widget.dart';
 import '../widgets/secuencia_ordenar_widget.dart';
 import '../widgets/seleccion_multiple_widget.dart';
 import '../widgets/trazo_logo.dart';
@@ -33,6 +34,7 @@ const _kBloques = {
   'funcion_ejecutiva': 'Función ejecutiva',
   'vida_cotidiana': 'Vida cotidiana',
   'percepcion': 'Percepción',
+  'retos': 'Retos de ingenio',
 };
 
 /// Traduce el Map de métricas a un resumen legible (esta pantalla también
@@ -90,6 +92,9 @@ Widget renderActividadDemo(
       return ManejoCantidadWidget(instancia: inst, onMetricas: onMetricas);
     case 'busqueda_visual':
       return BusquedaVisualWidget(instancia: inst, onMetricas: onMetricas);
+    case 'reto_garrafas':
+      return RetoGarrafasWidget(
+          reto: RetoGarrafas.desdeRender(inst.render), onMetricas: onMetricas);
     default:
       return GenericoWidget(instancia: inst, onMetricas: onMetricas);
   }
@@ -320,6 +325,8 @@ IconData _iconoPlantilla(String plantilla) {
       return Icons.format_list_numbered;
     case 'manejo_cantidad':
       return Icons.euro;
+    case 'reto_garrafas':
+      return Icons.water_drop;
     default:
       return Icons.play_arrow_rounded;
   }

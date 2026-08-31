@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../api/client.dart';
 import '../models.dart';
 import '../theme.dart';
+import 'retos_screen.dart';
 
 /// Rol MAESTRA: abrir una sala, repartir participantes y seguir en vivo.
 class MaestraScreen extends StatefulWidget {
@@ -75,6 +76,14 @@ class _MaestraScreenState extends State<MaestraScreen> {
         title: Text(_sesionId == null ? 'Abrir sala' : 'Monitor en vivo'),
         actions: [
           if (_sesionId == null && !_comprobando) ...[
+            TextButton.icon(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => const RetosScreen())),
+              icon: const Icon(Icons.emoji_objects_outlined),
+              label: const Text('Retos'),
+              style:
+                  TextButton.styleFrom(foregroundColor: TrazoColors.sageDark),
+            ),
             TextButton.icon(
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (_) => const _HistorialScreen())),

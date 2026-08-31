@@ -80,6 +80,10 @@ BLOQUES = (
     "percepcion",
     "funcion_ejecutiva",
     "vida_cotidiana",
+    # Retos de ingenio INTERACTIVOS (garrafas, barquero, Hanoi…): juego en grupo
+    # para avanzados. Se revisan en el banco pero NO entran en la planificación
+    # normal (el plan por defecto no incluye este bloque).
+    "retos",
 )
 
 PLANTILLAS = (
@@ -92,6 +96,7 @@ PLANTILLAS = (
     "busqueda_visual",
     "manejo_cantidad",
     "parejas",
+    "reto_garrafas",
 )
 
 TIPOS_SESION = ("individual", "grupo")

@@ -783,3 +783,38 @@ class PlantillaParejas(PlantillaBase):
             solucion={"n_pares": n},
             metricas=self.metricas,
         )
+
+
+class PlantillaRetoGarrafas(PlantillaBase):
+    """Reto de ingenio INTERACTIVO: medir una cantidad exacta decantando agua
+    entre garrafas de distinta capacidad. Es un juego de GRUPO para avanzados;
+    se resuelve en la propia tablet (arrastrar/verter) y se autoevalúa allí
+    (gana cuando una garrafa tiene el objetivo exacto). No escala por nivel: el
+    reto es fijo. El backend solo transporta los parámetros y guarda el
+    resultado (resuelto / movimientos)."""
+
+    tipo = "reto_garrafas"
+    metricas = ["resuelto", "movimientos", "tiempo_ms"]
+
+    def generar(self, parametros, nivel=None, rng=None):
+        caps = parametros.get("capacidades") or []
+        if len(caps) < 2:
+            raise ValueError("reto_garrafas requiere >=2 'capacidades'")
+        objetivo = int(parametros.get("objetivo", 0))
+        iniciales = parametros.get("iniciales") or [0] * len(caps)
+        con_grifo = bool(parametros.get("con_grifo", True))
+        return InstanciaEjercicio(
+            plantilla=self.tipo,
+            render={
+                "instruccion": parametros.get("instruccion", "Resolvedlo en grupo"),
+                "enunciado": parametros.get("enunciado", ""),
+                "titulo": parametros.get("titulo", ""),
+                "capacidades": [int(c) for c in caps],
+                "iniciales": [int(x) for x in iniciales],
+                "objetivo": objetivo,
+                "con_grifo": con_grifo,
+            },
+            cantidad_objetivo={"objetivo": objetivo, "n_garrafas": len(caps)},
+            solucion={"objetivo": objetivo},
+            metricas=self.metricas,
+        )

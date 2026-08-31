@@ -166388,5 +166388,91 @@
         "gafas"
       ]
     }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_garrafas",
+    "nombre": "Reto: garrafas de 3 y 5 litros (medir 4)",
+    "descripcion": "Reto de ingenio para resolver en grupo (garrafas de agua).",
+    "parametros_json": {
+      "titulo": "Reto: garrafas de 3 y 5 litros (medir 4)",
+      "enunciado": "Tenéis una garrafa de 3 L y otra de 5 L, y un grifo. ¿Cómo dejáis exactamente 4 litros en una garrafa?",
+      "capacidades": [
+        5,
+        3
+      ],
+      "objetivo": 4,
+      "iniciales": [
+        0,
+        0
+      ],
+      "con_grifo": true,
+      "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta."
+    }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_garrafas",
+    "nombre": "Reto: garrafas de 5 y 8 litros (medir 4)",
+    "descripcion": "Reto de ingenio para resolver en grupo (garrafas de agua).",
+    "parametros_json": {
+      "titulo": "Reto: garrafas de 5 y 8 litros (medir 4)",
+      "enunciado": "Con una garrafa de 5 L, otra de 8 L y un grifo, dejad exactamente 4 litros en una de ellas.",
+      "capacidades": [
+        8,
+        5
+      ],
+      "objetivo": 4,
+      "iniciales": [
+        0,
+        0
+      ],
+      "con_grifo": true,
+      "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta."
+    }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_garrafas",
+    "nombre": "Reto: garrafas 8, 5 y 3 sin grifo (medir 4)",
+    "descripcion": "Reto de ingenio para resolver en grupo (garrafas de agua).",
+    "parametros_json": {
+      "titulo": "Reto: garrafas 8, 5 y 3 sin grifo (medir 4)",
+      "enunciado": "La garrafa de 8 L está LLENA; las de 5 L y 3 L, vacías. Sin grifo (solo verter de una a otra), dejad 4 litros en una garrafa.",
+      "capacidades": [
+        8,
+        5,
+        3
+      ],
+      "objetivo": 4,
+      "iniciales": [
+        8,
+        0,
+        0
+      ],
+      "con_grifo": false,
+      "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta."
+    }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_garrafas",
+    "nombre": "Reto: garrafas de 4 y 9 litros (medir 6)",
+    "descripcion": "Reto de ingenio para resolver en grupo (garrafas de agua).",
+    "parametros_json": {
+      "titulo": "Reto: garrafas de 4 y 9 litros (medir 6)",
+      "enunciado": "Con una garrafa de 4 L, otra de 9 L y un grifo, dejad exactamente 6 litros en una de ellas.",
+      "capacidades": [
+        9,
+        4
+      ],
+      "objetivo": 6,
+      "iniciales": [
+        0,
+        0
+      ],
+      "con_grifo": true,
+      "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta."
+    }
   }
 ]

@@ -314,7 +314,17 @@ def hubo_interaccion(plantilla: str, valores: dict | None) -> bool:
     return True
 
 
+def _reto_garrafas(v, o):
+    """Reto de garrafas: lo resuelve el grupo en la tablet y esta llega ya
+    autoevaluada (`resuelto`). Es un juego de grupo, no una medida individual:
+    'logrado' si lo consiguieron, 'sin_valorar' si no (que se revise, sin penalizar)."""
+    if v.get("resuelto") is True:
+        return "logrado"
+    return "sin_valorar"
+
+
 _CORRECTORES = {
+    "reto_garrafas": _reto_garrafas,
     "seleccion_multiple": _seleccion_multiple,
     "conteo_comparacion": _conteo_comparacion,
     "memoria_visual": _memoria_visual,
