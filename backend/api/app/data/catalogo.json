@@ -165266,5 +165266,196 @@
       "instruccion": "Resolvedlo en grupo.",
       "por_lado": 4
     }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los tulipanes",
+    "descripcion": "Cuenta los tulipanes.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "tulipan"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta las margaritas",
+    "descripcion": "Cuenta las margaritas.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "margarita"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los claveles",
+    "descripcion": "Cuenta los claveles.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "clavel"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta las rosas",
+    "descripcion": "Cuenta las rosas.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "rosa"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los caballos",
+    "descripcion": "Cuenta los caballos.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "caballo"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los conejos",
+    "descripcion": "Cuenta los conejos.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "conejo"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los elefantes",
+    "descripcion": "Cuenta los elefantes.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "elefante"
+      ]
+    }
+  },
+  {
+    "bloque": "calculo",
+    "plantilla_tipo": "conteo_comparacion",
+    "nombre": "Cuenta los delfines",
+    "descripcion": "Cuenta los delfines.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "modo": "contar",
+      "instruccion": "Cuenta cuántos hay",
+      "cantidad_min": 3,
+      "cantidad_max": 8,
+      "objetos": [
+        "delfin"
+      ]
+    }
+  },
+  {
+    "bloque": "gnosias",
+    "plantilla_tipo": "seleccion_multiple",
+    "nombre": "¿Qué flor es? (fotos)",
+    "descripcion": "Reconocer la flor por la foto.",
+    "parametros_json": {
+      "dificultad": "facil",
+      "opciones_min": 3,
+      "opciones_max": 3,
+      "items": [
+        {
+          "id": "r0",
+          "instruccion": "¿Qué flor es?",
+          "imagen": "rosa",
+          "correcta": "La rosa",
+          "distractores": [
+            "El clavel",
+            "El tulipán"
+          ]
+        },
+        {
+          "id": "r1",
+          "instruccion": "¿Qué flor es?",
+          "imagen": "girasol",
+          "correcta": "El girasol",
+          "distractores": [
+            "La margarita",
+            "La rosa"
+          ]
+        },
+        {
+          "id": "r2",
+          "instruccion": "¿Qué flor es?",
+          "imagen": "tulipan",
+          "correcta": "El tulipán",
+          "distractores": [
+            "La rosa",
+            "El clavel"
+          ]
+        },
+        {
+          "id": "r3",
+          "instruccion": "¿Qué flor es?",
+          "imagen": "margarita",
+          "correcta": "La margarita",
+          "distractores": [
+            "El girasol",
+            "La rosa"
+          ]
+        },
+        {
+          "id": "r4",
+          "instruccion": "¿Qué flor es?",
+          "imagen": "clavel",
+          "correcta": "El clavel",
+          "distractores": [
+            "La rosa",
+            "El tulipán"
+          ]
+        }
+      ]
+    }
   }
 ]
