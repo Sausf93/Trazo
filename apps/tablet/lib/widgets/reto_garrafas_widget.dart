@@ -148,6 +148,15 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
   @override
   Widget build(BuildContext context) {
     final r = widget.reto;
+    if (r.capacidades.isEmpty) {
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Text('Este reto no se puede mostrar.',
+              style: TextStyle(fontSize: 18, color: TrazoColors.ink)),
+        ),
+      );
+    }
     final maxCap = r.capacidades.reduce((a, b) => a > b ? a : b);
     return Column(
       children: [

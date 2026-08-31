@@ -108,6 +108,15 @@ class _RetoRanasWidgetState extends State<RetoRanasWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.reto.porLado < 1) {
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Text('Este reto no se puede mostrar.',
+              style: TextStyle(fontSize: 18, color: TrazoColors.ink)),
+        ),
+      );
+    }
     return Column(
       children: [
         Padding(

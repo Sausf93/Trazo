@@ -202,6 +202,15 @@ class _RetoCruzarWidgetState extends State<RetoCruzarWidget> {
   @override
   Widget build(BuildContext context) {
     final r = widget.reto;
+    if (r.entidades.isEmpty) {
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Text('Este reto no se puede mostrar.',
+              style: TextStyle(fontSize: 18, color: TrazoColors.ink)),
+        ),
+      );
+    }
     return Column(
       children: [
         Padding(

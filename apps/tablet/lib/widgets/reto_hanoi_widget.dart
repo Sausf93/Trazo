@@ -111,6 +111,15 @@ class _RetoHanoiWidgetState extends State<RetoHanoiWidget> {
   @override
   Widget build(BuildContext context) {
     final n = widget.reto.discos;
+    if (n < 1) {
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Text('Este reto no se puede mostrar.',
+              style: TextStyle(fontSize: 18, color: TrazoColors.ink)),
+        ),
+      );
+    }
     return Column(
       children: [
         Padding(
