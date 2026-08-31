@@ -12,6 +12,7 @@ from app.templates.tipos import (
     PlantillaRetoCruzar,
     PlantillaRetoGarrafas,
     PlantillaRetoHanoi,
+    PlantillaRetoMastermind,
     PlantillaRetoRanas,
     PlantillaRetoTaquin,
     PlantillaSecuenciaOrdenar,
@@ -32,6 +33,7 @@ _PLANTILLAS: list[type[PlantillaBase]] = [
     PlantillaRetoGarrafas,
     PlantillaRetoCruzar,
     PlantillaRetoHanoi,
+    PlantillaRetoMastermind,
     PlantillaRetoRanas,
     PlantillaRetoTaquin,
 ]

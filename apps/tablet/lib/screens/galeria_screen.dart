@@ -21,6 +21,7 @@ import '../widgets/memoria_visual_widget.dart';
 import '../widgets/reto_cruzar_widget.dart';
 import '../widgets/reto_garrafas_widget.dart';
 import '../widgets/reto_hanoi_widget.dart';
+import '../widgets/reto_mastermind_widget.dart';
 import '../widgets/reto_ranas_widget.dart';
 import '../widgets/reto_taquin_widget.dart';
 import '../widgets/secuencia_ordenar_widget.dart';
@@ -111,6 +112,9 @@ Widget renderActividadDemo(
     case 'reto_taquin':
       return RetoTaquinWidget(
           reto: RetoTaquin.desdeRender(inst.render), onMetricas: onMetricas);
+    case 'reto_mastermind':
+      return RetoMastermindWidget(
+          reto: RetoMastermind.desdeRender(inst.render), onMetricas: onMetricas);
     default:
       return GenericoWidget(instancia: inst, onMetricas: onMetricas);
   }
@@ -351,6 +355,8 @@ IconData _iconoPlantilla(String plantilla) {
       return Icons.view_agenda;
     case 'reto_taquin':
       return Icons.grid_3x3;
+    case 'reto_mastermind':
+      return Icons.palette;
     default:
       return Icons.play_arrow_rounded;
   }

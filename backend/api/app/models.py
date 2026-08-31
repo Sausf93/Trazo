@@ -101,6 +101,7 @@ PLANTILLAS = (
     "reto_ranas",
     "reto_hanoi",
     "reto_taquin",
+    "reto_mastermind",
 )
 
 TIPOS_SESION = ("individual", "grupo")

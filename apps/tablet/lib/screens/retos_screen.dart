@@ -5,6 +5,7 @@ import '../theme.dart';
 import '../widgets/reto_cruzar_widget.dart';
 import '../widgets/reto_garrafas_widget.dart';
 import '../widgets/reto_hanoi_widget.dart';
+import '../widgets/reto_mastermind_widget.dart';
 import '../widgets/reto_ranas_widget.dart';
 import '../widgets/reto_taquin_widget.dart';
 
@@ -218,6 +219,29 @@ class RetosScreen extends StatelessWidget {
                             'con el hueco al final. Se toca una ficha de al lado del hueco.',
                         lado: 3))),
           ),
+          const SizedBox(height: 12),
+          const _Titulo('Adivina los colores (Mastermind)'),
+          for (final nc in const [3, 4, 5, 6])
+            _TarjetaReto(
+              titulo: nc == 3
+                  ? 'Adivina los colores (fácil, 3)'
+                  : nc == 4
+                      ? 'Adivina los colores (medio, 4)'
+                      : nc == 5
+                          ? 'Adivina los colores (difícil, 5)'
+                          : 'Adivina los colores (muy difícil, 6)',
+              icono: Icons.palette,
+              onAbrir: () => _abrir(
+                  context,
+                  'Adivina los colores',
+                  RetoMastermindWidget(
+                      reto: RetoMastermind(
+                          titulo: 'Adivina los colores',
+                          enunciado:
+                              'Hay una fila secreta de 4 colores. Elegid una fila y pulsad Comprobar: os diré cuántos están en su sitio y cuántos son del color correcto pero en otro sitio.',
+                          colores: nc,
+                          longitud: 4))),
+            ),
         ],
       ),
     );

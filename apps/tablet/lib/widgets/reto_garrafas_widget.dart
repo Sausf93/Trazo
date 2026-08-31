@@ -60,6 +60,7 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
   int _movimientos = 0;
   int? _sel; // garrafa seleccionada (para verter por toque)
   bool _celebrado = false;
+  String? _feedback; // null / 'ok' / 'no' tras pulsar Comprobar
 
   bool get _resuelto => _nivel.any((l) => l == widget.reto.objetivo);
 
@@ -78,16 +79,23 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
       _movimientos = 0;
       _sel = null;
       _celebrado = false;
+      _feedback = null;
     });
   }
 
-  void _trasMover() {
-    if (_resuelto && !_celebrado) {
-      _celebrado = true;
-      HapticFeedback.mediumImpact();
-      widget.onMetricas
-          ?.call({'resuelto': true, 'movimientos': _movimientos});
-    }
+  // Comprobar (a petición del grupo): NO se gana solo; se prueba y la app dice
+  // si ya está o no, y se puede seguir intentando.
+  void _comprobar() {
+    final ok = _resuelto;
+    HapticFeedback.mediumImpact();
+    setState(() {
+      _feedback = ok ? 'ok' : 'no';
+      if (ok && !_celebrado) {
+        _celebrado = true;
+        widget.onMetricas
+            ?.call({'resuelto': true, 'movimientos': _movimientos});
+      }
+    });
   }
 
   void _verter(int src, int dst) {
@@ -108,8 +116,8 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
       _nivel[dst] += pasa;
       _movimientos++;
       _sel = null;
+      _feedback = null;
     });
-    _trasMover();
   }
 
   void _llenar(int i) {
@@ -120,8 +128,8 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
       _nivel[i] = cap;
       _movimientos++;
       _sel = null;
+      _feedback = null;
     });
-    _trasMover();
   }
 
   void _vaciar(int i) {
@@ -131,8 +139,8 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
       _nivel[i] = 0;
       _movimientos++;
       _sel = null;
+      _feedback = null;
     });
-    _trasMover();
   }
 
   void _tocar(int i) {
@@ -170,12 +178,29 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom: 8),
-          child: Text('Meta: dejar ${r.objetivo} L exactos en una garrafa',
+          padding: const EdgeInsets.only(bottom: 4),
+          child: Text('Meta: dejar ${r.objetivo} litros exactos en una garrafa',
               style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
                   color: TrazoColors.sageDark)),
+        ),
+        // Pista de USO clara (mayores): cómo se vierte de una garrafa a otra.
+        Padding(
+          padding: const EdgeInsets.only(bottom: 6),
+          child: Text(
+            _sel == null
+                ? 'Toca una garrafa y luego otra para pasar el agua.'
+                : 'Ahora toca la garrafa donde quieres echar el agua.',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 15,
+                color: _sel == null
+                    ? TrazoColors.bordeControl
+                    : TrazoColors.coralDark,
+                fontWeight:
+                    _sel == null ? FontWeight.normal : FontWeight.w700),
+          ),
         ),
         Expanded(
           child: LayoutBuilder(
@@ -201,26 +226,43 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
             },
           ),
         ),
-        if (_resuelto)
+        if (_feedback != null)
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
             decoration: BoxDecoration(
               color: TrazoColors.card,
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: TrazoColors.sageDark, width: 2.5),
+              border: Border.all(
+                  color: _feedback == 'ok'
+                      ? TrazoColors.sageDark
+                      : TrazoColors.coralDark,
+                  width: 2.5),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.check_circle,
-                    color: TrazoColors.sageDark, size: 30),
+                Icon(
+                    _feedback == 'ok'
+                        ? Icons.check_circle
+                        : Icons.info_outline,
+                    color: _feedback == 'ok'
+                        ? TrazoColors.sageDark
+                        : TrazoColors.coralDark,
+                    size: 30),
                 const SizedBox(width: 12),
-                Text('¡Lo habéis conseguido!  ($_movimientos movimientos)',
-                    style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w800,
-                        color: TrazoColors.sageDark)),
+                Flexible(
+                  child: Text(
+                      _feedback == 'ok'
+                          ? '¡Muy bien! Lo habéis conseguido ($_movimientos movimientos).'
+                          : 'Todavía no son ${widget.reto.objetivo} litros. Seguid probando.',
+                      style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w800,
+                          color: _feedback == 'ok'
+                              ? TrazoColors.sageDark
+                              : TrazoColors.coralDark)),
+                ),
               ],
             ),
           ),
@@ -232,6 +274,17 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
               Text('Movimientos: $_movimientos',
                   style: const TextStyle(
                       fontSize: 16, color: TrazoColors.bordeControl)),
+              ElevatedButton.icon(
+                onPressed: _comprobar,
+                icon: const Icon(Icons.check),
+                label: Text('Comprobar los ${widget.reto.objetivo} L'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: TrazoColors.sageDark,
+                  foregroundColor: TrazoColors.white,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20, vertical: 14),
+                ),
+              ),
               OutlinedButton.icon(
                 onPressed: _reset,
                 icon: const Icon(Icons.refresh),
@@ -378,57 +431,90 @@ class _JarraPintada extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    // La garrafa se dibuja algo más ancha que alta-neta para dejar sitio al
+    // cuello; el ancho pedido es el del CUERPO.
+    return SizedBox(
       width: ancho,
       height: alto,
-      decoration: BoxDecoration(
-        color: TrazoColors.white,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(
-          color: seleccionada ? TrazoColors.coralDark : TrazoColors.bordeControl,
-          width: seleccionada ? 4 : 2,
-        ),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(11),
-        child: CustomPaint(
-          size: Size(ancho, alto),
-          painter: _AguaPainter(litros: litros, capacidad: capacidad),
-        ),
+      child: CustomPaint(
+        size: Size(ancho, alto),
+        painter: _GarrafaPainter(
+            litros: litros,
+            capacidad: capacidad,
+            seleccionada: seleccionada),
       ),
     );
   }
 }
 
-class _AguaPainter extends CustomPainter {
+/// Silueta de GARRAFA (cuerpo + cuello) con el agua dentro. Pensada para que un
+/// mayor la reconozca de un vistazo como una garrafa de agua de verdad.
+class _GarrafaPainter extends CustomPainter {
   final int litros;
   final int capacidad;
-  _AguaPainter({required this.litros, required this.capacidad});
+  final bool seleccionada;
+  _GarrafaPainter(
+      {required this.litros,
+      required this.capacidad,
+      required this.seleccionada});
 
-  @override
-  void paint(Canvas canvas, Size size) {
-    // Agua
-    final frac = capacidad == 0 ? 0.0 : litros / capacidad;
-    final hAgua = size.height * frac;
-    final rectAgua = Rect.fromLTWH(0, size.height - hAgua, size.width, hAgua);
-    canvas.drawRect(
-        rectAgua, Paint()..color = const Color(0xFF5FB6E6).withValues(alpha: 0.9));
-    if (hAgua > 4) {
-      canvas.drawRect(
-          Rect.fromLTWH(0, size.height - hAgua, size.width, 4),
-          Paint()..color = const Color(0xFF3E97C9));
-    }
-    // Marcas de litro
-    final linea = Paint()
-      ..color = TrazoColors.sand
-      ..strokeWidth = 1;
-    for (var l = 1; l < capacidad; l++) {
-      final y = size.height - size.height * (l / capacidad);
-      canvas.drawLine(Offset(0, y), Offset(size.width * 0.22, y), linea);
-    }
+  Path _silueta(double w, double h) {
+    final p = Path();
+    // Cuello (estrecho, arriba) -> hombros -> cuerpo (ancho, fondo redondeado).
+    p.moveTo(w * 0.36, h * 0.03);
+    p.lineTo(w * 0.36, h * 0.13); // cuello izq
+    p.quadraticBezierTo(w * 0.10, h * 0.19, w * 0.07, h * 0.36); // hombro izq
+    p.lineTo(w * 0.07, h * 0.90);
+    p.quadraticBezierTo(w * 0.07, h * 0.985, w * 0.20, h * 0.985); // base izq
+    p.lineTo(w * 0.80, h * 0.985);
+    p.quadraticBezierTo(w * 0.93, h * 0.985, w * 0.93, h * 0.90); // base der
+    p.lineTo(w * 0.93, h * 0.36);
+    p.quadraticBezierTo(w * 0.90, h * 0.19, w * 0.64, h * 0.13); // hombro der
+    p.lineTo(w * 0.64, h * 0.03); // cuello der
+    p.close();
+    return p;
   }
 
   @override
-  bool shouldRepaint(_AguaPainter old) =>
-      old.litros != litros || old.capacidad != capacidad;
+  void paint(Canvas canvas, Size size) {
+    final w = size.width, h = size.height;
+    final jug = _silueta(w, h);
+    // Cristal (fondo blanco de la garrafa).
+    canvas.drawPath(jug, Paint()..color = TrazoColors.white);
+    // Agua: recortada a la silueta, llena desde abajo según la fracción.
+    canvas.save();
+    canvas.clipPath(jug);
+    final frac = capacidad == 0 ? 0.0 : (litros / capacidad).clamp(0.0, 1.0);
+    final top = h * 0.985 - (h * 0.955 * frac);
+    if (frac > 0) {
+      canvas.drawRect(Rect.fromLTWH(0, top, w, h),
+          Paint()..color = const Color(0xFF5FB6E6).withValues(alpha: 0.92));
+      canvas.drawRect(Rect.fromLTWH(0, top, w, 4),
+          Paint()..color = const Color(0xFF3E97C9)); // superficie
+    }
+    // Marcas de litro (cortas, a la izquierda del cuerpo).
+    final linea = Paint()
+      ..color = TrazoColors.sand
+      ..strokeWidth = 1.2;
+    for (var l = 1; l < capacidad; l++) {
+      final y = h * 0.985 - (h * 0.955 * (l / capacidad));
+      canvas.drawLine(Offset(w * 0.07, y), Offset(w * 0.24, y), linea);
+    }
+    canvas.restore();
+    // Contorno de la garrafa (más grueso y coral si está elegida).
+    canvas.drawPath(
+        jug,
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = seleccionada ? 5 : 2.5
+          ..strokeJoin = StrokeJoin.round
+          ..color =
+              seleccionada ? TrazoColors.coralDark : TrazoColors.bordeControl);
+  }
+
+  @override
+  bool shouldRepaint(_GarrafaPainter old) =>
+      old.litros != litros ||
+      old.capacidad != capacidad ||
+      old.seleccionada != seleccionada;
 }

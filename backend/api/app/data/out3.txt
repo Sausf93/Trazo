@@ -1,0 +1,89 @@
+SMELL ACT: Adivinanzas de animales pequeños
+SMELL ACT: Alto y pienso
+SMELL ACT: Analogías del cuerpo
+SMELL ACT: Analogías: completa (3)
+SMELL ACT: Ante una picadura de insecto
+SMELL ACT: Atender dos cosas a la vez
+SMELL ACT: Cocina segura
+SMELL ACT: Del trigo al pan
+SMELL ACT: Dichos populares y su sentido
+SMELL ACT: El cuerpo y los sentidos
+SMELL ACT: El gas y el fuego
+SMELL ACT: El gas y el fuego en la cocina
+SMELL ACT: El horno encendido
+SMELL ACT: El motivo de cada cosa
+SMELL ACT: El plan con más cabeza
+SMELL ACT: El sentido con que lo notamos
+SMELL ACT: El tronco más grueso
+SMELL ACT: El verbo contrario
+SMELL ACT: El árbol por su descripción
+SMELL ACT: Especias de la cocina
+SMELL ACT: Flores del jardín por su seña
+SMELL ACT: Frases hechas del cuerpo
+SMELL ACT: Hierbas de la cocina
+SMELL ACT: La cara y para qué sirve cada parte
+SMELL ACT: La causa más sensata
+SMELL ACT: La cocina de la abuela
+SMELL ACT: La especia por su uso en el guiso
+SMELL ACT: La flor por su color y aroma
+SMELL ACT: La flor por su definición
+SMELL ACT: La huerta
+SMELL ACT: Las partes de la planta
+SMELL ACT: Lo que no puede esperar
+SMELL ACT: Números útiles en un apuro
+SMELL ACT: Palabras con doble sentido
+SMELL ACT: Pensar antes de actuar
+SMELL ACT: Piensa antes de tocar
+SMELL ACT: Reconoce la flor
+SMELL ACT: Seguridad en casa: el gas
+SMELL ACT: Seguridad en casa: fuego y humo
+SMELL ACT: Si algo va mal, párate y piensa
+SMELL ACT: Si huele a gas
+SMELL ACT: Sinónimos de coger
+SMELL ACT: Sinónimos de mirar
+SMELL ACT: Sinónimos de sucio
+SMELL ACT: Sogas gruesas, hilos finos
+SMELL ACT: Solo si se cumple, hazlo
+SMELL ACT: ¿Con qué parte del cuerpo lo hago?
+SMELL ACT: ¿Cuál es la causa?
+SMELL ACT: ¿Dónde estamos?
+SMELL ACT: ¿Qué NO conviene hacer? Seguridad en casa
+SMELL ACT: ¿Qué atiendo primero en casa?
+SMELL ACT: ¿Qué significa la frase hecha?
+---CONF---
+CONF| Aves por su tamaño | i2 | E:¿Qué es más grande, el águila o el gorrión? | C:El águila | Dhit:['El gorrión']
+CONF| Aves por su tamaño | i3 | E:¿Qué abulta más, el pavo o la codorniz? | C:El pavo | Dhit:['La codorniz']
+CONF| Aves por su tamaño | i4 | E:¿Qué es más grande, la gallina o el canario? | C:La gallina | Dhit:['El canario']
+CONF| Aves por su tamaño | i5 | E:De la paloma, el cisne y el gorrión, ¿cuál es el más pequeño? | C:El gorrión | Dhit:['El cisne', 'La paloma']
+CONF| Pelotas por su tamaño | i0 | E:¿Cuál es más grande, el balón de fútbol o la pelota de ping-pong? | C:El balón de fútbol | Dhit:['La pelota de ping-pong']
+CONF| Pelotas por su tamaño | i1 | E:¿Qué es más pequeña, la canica o la pelota de tenis? | C:La canica | Dhit:['La pelota de tenis']
+CONF| Pelotas por su tamaño | i2 | E:¿Qué abulta más, el balón de playa o la pelota de golf? | C:El balón de playa | Dhit:['La pelota de golf']
+CONF| Pelotas por su tamaño | i3 | E:¿Cuál es más grande, la pelota de tenis o la de ping-pong? | C:La pelota de tenis | Dhit:['La de ping-pong']
+CONF| Pelotas por su tamaño | i4 | E:La pelota de golf, el balón de baloncesto y la canica. ¿cuál es mayor? | C:El balón de baloncesto | Dhit:['La canica', 'La pelota de golf']
+CONF| Pelotas por su tamaño | i5 | E:¿Cuál es la más pequeña, la canica o el balón de fútbol? | C:La canica | Dhit:['El balón de fútbol']
+CONF| El distinto por su color | i0 | E:Manzana roja, fresa roja y limón. ¿Cuál es de otro color? | C:El limón | Dhit:['La manzana', 'La fresa']
+CONF| El distinto por su color | i1 | E:Nieve blanca, leche blanca y carbón. ¿Cuál desentona? | C:El carbón | Dhit:['La nieve', 'La leche']
+CONF| El distinto por su color | i2 | E:Hierba verde, rana verde y naranja. ¿Cuál es de otro color? | C:La naranja | Dhit:['La hierba', 'La rana']
+CONF| El distinto por su color | i3 | E:Cielo azul, mar azul y tomate. ¿Cuál desentona por el color? | C:El tomate | Dhit:['El cielo']
+CONF| El distinto por su color | i4 | E:Plátano amarillo, limón amarillo y berenjena. ¿Cuál es de otro color? | C:La berenjena | Dhit:['El plátano', 'El limón']
+CONF| El distinto por su color | i5 | E:Cuervo negro, carbón negro y azucena. ¿Cuál desentona? | C:La azucena | Dhit:['El cuervo', 'El carbón']
+CONF| El distinto por su forma | i0 | E:Pelota, naranja y regla. ¿Cuál no es redonda? | C:La regla | Dhit:['La pelota', 'La naranja']
+CONF| El distinto por su forma | i1 | E:Moneda, plato y lápiz. ¿Cuál no es redondo? | C:El lápiz | Dhit:['La moneda', 'El plato']
+CONF| El distinto por su forma | i2 | E:Escoba, bastón y rueda. ¿Cuál no es alargado? | C:La rueda | Dhit:['La escoba', 'El bastón']
+CONF| El distinto por su forma | i3 | E:Botón, rueda y libro. ¿Cuál no es redondo? | C:El libro | Dhit:['El botón', 'La rueda']
+CONF| El distinto por su forma | i4 | E:Vela, caña y pelota. ¿Cuál no es alargada? | C:La pelota | Dhit:['La vela', 'La caña']
+CONF| El distinto por su forma | i5 | E:Azulejo, baldosa y huevo. ¿Cuál no es cuadrado? | C:El huevo | Dhit:['El azulejo', 'La baldosa']
+CONF| El distinto por su tamaño | i0 | E:Elefante, camión y hormiga. ¿Cuál es mucho más pequeño? | C:La hormiga | Dhit:['El elefante', 'El camión']
+CONF| El distinto por su tamaño | i1 | E:Garbanzo, lenteja y sandía. ¿Cuál es mucho más grande? | C:La sandía | Dhit:['El garbanzo', 'La lenteja']
+CONF| El distinto por su tamaño | i2 | E:Casa, montaña y botón. ¿Cuál es mucho más pequeño? | C:El botón | Dhit:['La casa', 'La montaña']
+CONF| El distinto por su tamaño | i3 | E:Mosca, hormiga y vaca. ¿Cuál es mucho más grande? | C:La vaca | Dhit:['La mosca', 'La hormiga']
+CONF| El distinto por su tamaño | i4 | E:Barco, ballena y alfiler. ¿Cuál es mucho más pequeño? | C:El alfiler | Dhit:['El barco', 'La ballena']
+CONF| El distinto por su tamaño | i5 | E:Piñón, avellana y armario. ¿Cuál es mucho más grande? | C:El armario | Dhit:['El piñón', 'La avellana']
+CONF| Lo que sobra por su forma | i0 | E:Pelota, naranja, moneda y regla. Todas son redondas menos una. ¿Cuál sobra? | C:La regla | Dhit:['La pelota', 'La moneda']
+CONF| Lo que sobra por su forma | i1 | E:Lápiz, vela, caña y plato. Todas son alargadas menos una. ¿Cuál sobra? | C:El plato | Dhit:['El lápiz', 'La caña']
+CONF| Lo que sobra por su forma | i2 | E:Azulejo, baldosa, ladrillo y pelota. Todas son cuadradas menos una. ¿Cuál sobra? | C:La pelota | Dhit:['El azulejo', 'El ladrillo']
+CONF| Lo que sobra por su forma | i3 | E:Rueda, moneda, botón y regla. Todos son redondos menos uno. ¿Cuál sobra? | C:La regla | Dhit:['La rueda', 'El botón']
+CONF| Lo que sobra por su forma | i4 | E:Escoba, bastón, palo y rueda. Todos son alargados menos uno. ¿Cuál sobra? | C:La rueda | Dhit:['La escoba', 'El palo']
+CONF| Lo que sobra por su forma | i5 | E:Plato, disco, luna llena y libro. Todos son redondos menos uno. ¿Cuál sobra? | C:El libro | Dhit:['El plato', 'El disco']
+CONF| La verdura por su definición | i6 | E:Hortaliza verde y alargada, parecida al pepino, para el pisto | C:Calabacín | Dhit:['Pepino']
+CONF| El guiso por su ingrediente principal | i5 | E:Pulpo cocido con pimentón y aceite | C:El pulpo a la gallega | Dhit:['El cocido']

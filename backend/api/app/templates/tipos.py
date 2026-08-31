@@ -918,3 +918,28 @@ class PlantillaRetoTaquin(PlantillaBase):
             solucion={"en_orden": True},
             metricas=self.metricas,
         )
+
+
+class PlantillaRetoMastermind(PlantillaBase):
+    """Reto interactivo tipo Mastermind (adivinar la secuencia de colores). Juego
+    de grupo, autoevaluado en la tablet. Dificultad por nº de colores."""
+
+    tipo = "reto_mastermind"
+    metricas = ["resuelto", "intentos", "tiempo_ms"]
+
+    def generar(self, parametros, nivel=None, rng=None):
+        nc = int(parametros.get("colores", 4))
+        ln = int(parametros.get("longitud", 4))
+        return InstanciaEjercicio(
+            plantilla=self.tipo,
+            render={
+                "instruccion": parametros.get("instruccion", "Resolvedlo en grupo"),
+                "enunciado": parametros.get("enunciado", ""),
+                "titulo": parametros.get("titulo", ""),
+                "colores": nc,
+                "longitud": ln,
+            },
+            cantidad_objetivo={"colores": nc, "longitud": ln},
+            solucion={"adivinar_secuencia": True},
+            metricas=self.metricas,
+        )
