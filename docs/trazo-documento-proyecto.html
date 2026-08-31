@@ -128,6 +128,12 @@
 
   .themetoggle{ position:fixed; top:14px; right:14px; z-index:20; background:var(--surface); border:1px solid var(--line); color:var(--text-2); border-radius:999px; padding:7px 13px; font-size:12.5px; font-family:'JetBrains Mono',monospace; cursor:pointer; box-shadow:var(--shadow); }
   :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+  @media print {
+    .themetoggle{ display:none !important; }
+    aside{ border-right:none; padding-bottom:8px; }
+    main{ padding-top:8px; }
+    .pillar, .callout, .sw, .tw{ break-inside:avoid; }
+  }
 </style>
 
 <button class="themetoggle" id="tt" aria-label="Cambiar tema">tema</button>
