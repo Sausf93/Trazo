@@ -149,8 +149,11 @@ class _RetoHanoiWidgetState extends State<RetoHanoiWidget> {
           _banner('¡Lo habéis conseguido!  ($_movimientos movimientos)'),
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 6, 20, 14),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            spacing: 10,
+            runSpacing: 10,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               Text('Movimientos: $_movimientos',
                   style: const TextStyle(

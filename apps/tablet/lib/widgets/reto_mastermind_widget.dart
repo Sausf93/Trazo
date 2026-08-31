@@ -188,8 +188,11 @@ class _RetoMastermindWidgetState extends State<RetoMastermindWidget> {
           ),
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 2, 20, 14),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            spacing: 10,
+            runSpacing: 10,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               OutlinedButton.icon(
                 onPressed: _reset,

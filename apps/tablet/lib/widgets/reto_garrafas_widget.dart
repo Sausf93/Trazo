@@ -281,8 +281,11 @@ class _RetoGarrafasWidgetState extends State<RetoGarrafasWidget> {
           ),
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 4, 20, 16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            spacing: 10,
+            runSpacing: 10,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               Text('Movimientos: $_movimientos',
                   style: const TextStyle(
