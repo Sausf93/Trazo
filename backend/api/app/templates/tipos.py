@@ -849,3 +849,49 @@ class PlantillaRetoCruzar(PlantillaBase):
             solucion={"todos_en_la_otra_orilla": True},
             metricas=self.metricas,
         )
+
+
+class PlantillaRetoRanas(PlantillaBase):
+    """Reto interactivo de las ranas que saltan (juego de grupo, autoevaluado en
+    la tablet)."""
+
+    tipo = "reto_ranas"
+    metricas = ["resuelto", "movimientos", "tiempo_ms"]
+
+    def generar(self, parametros, nivel=None, rng=None):
+        n = int(parametros.get("por_lado", 3))
+        return InstanciaEjercicio(
+            plantilla=self.tipo,
+            render={
+                "instruccion": parametros.get("instruccion", "Resolvedlo en grupo"),
+                "enunciado": parametros.get("enunciado", ""),
+                "titulo": parametros.get("titulo", ""),
+                "por_lado": n,
+            },
+            cantidad_objetivo={"por_lado": n},
+            solucion={"intercambiadas": True},
+            metricas=self.metricas,
+        )
+
+
+class PlantillaRetoHanoi(PlantillaBase):
+    """Reto interactivo de la torre de Hanoi (juego de grupo, autoevaluado en la
+    tablet)."""
+
+    tipo = "reto_hanoi"
+    metricas = ["resuelto", "movimientos", "tiempo_ms"]
+
+    def generar(self, parametros, nivel=None, rng=None):
+        n = int(parametros.get("discos", 3))
+        return InstanciaEjercicio(
+            plantilla=self.tipo,
+            render={
+                "instruccion": parametros.get("instruccion", "Resolvedlo en grupo"),
+                "enunciado": parametros.get("enunciado", ""),
+                "titulo": parametros.get("titulo", ""),
+                "discos": n,
+            },
+            cantidad_objetivo={"discos": n, "min_movimientos": 2 ** n - 1},
+            solucion={"torre_en_el_ultimo_palo": True},
+            metricas=self.metricas,
+        )

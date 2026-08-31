@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import '../theme.dart';
 import '../widgets/reto_cruzar_widget.dart';
 import '../widgets/reto_garrafas_widget.dart';
+import '../widgets/reto_hanoi_widget.dart';
+import '../widgets/reto_ranas_widget.dart';
 
 /// Sección "Retos de ingenio": juegos de lógica interactivos para resolver EN
 /// GRUPO (con papel y lápiz si hace falta). Son actividades MUY especiales, para
@@ -135,10 +137,70 @@ class RetosScreen extends StatelessWidget {
               icono: Icons.directions_boat,
               onAbrir: () => _abrir(context, r.titulo, RetoCruzarWidget(reto: r)),
             ),
-          const SizedBox(height: 18),
-          const _Titulo('Próximamente'),
-          const _Proximo('Las ranas que saltan'),
-          const _Proximo('La torre de Hanoi'),
+          const SizedBox(height: 12),
+          const _Titulo('Las ranas que saltan'),
+          _TarjetaReto(
+            titulo: 'Las ranas que saltan (fácil, 2 y 2)',
+            icono: Icons.pest_control,
+            onAbrir: () => _abrir(
+                context,
+                'Las ranas que saltan (fácil)',
+                const RetoRanasWidget(
+                    reto: RetoRanas(
+                        titulo: 'Las ranas que saltan',
+                        enunciado:
+                            'Dos ranas verdes y dos marrones, con una piedra vacía '
+                            'en medio. Las verdes solo van a la derecha y las marrones '
+                            'a la izquierda: un paso a una piedra vacía o un salto por '
+                            'encima de UNA rana. Intercambiadlas.',
+                        porLado: 2))),
+          ),
+          _TarjetaReto(
+            titulo: 'Las ranas que saltan (3 y 3)',
+            icono: Icons.pest_control,
+            onAbrir: () => _abrir(
+                context,
+                'Las ranas que saltan',
+                const RetoRanasWidget(
+                    reto: RetoRanas(
+                        titulo: 'Las ranas que saltan',
+                        enunciado:
+                            'Tres ranas verdes y tres marrones, con una piedra vacía '
+                            'en medio. Las verdes solo van a la derecha y las marrones '
+                            'a la izquierda: un paso a una piedra vacía o un salto por '
+                            'encima de UNA rana. Intercambiad los dos grupos.',
+                        porLado: 3))),
+          ),
+          const SizedBox(height: 12),
+          const _Titulo('La torre de Hanoi'),
+          _TarjetaReto(
+            titulo: 'La torre de Hanoi (3 discos)',
+            icono: Icons.view_agenda,
+            onAbrir: () => _abrir(
+                context,
+                'La torre de Hanoi (3 discos)',
+                const RetoHanoiWidget(
+                    reto: RetoHanoi(
+                        titulo: 'La torre de Hanoi',
+                        enunciado:
+                            'Pasad toda la torre al último palo. Se mueve un disco '
+                            'cada vez y nunca un disco grande encima de uno pequeño.',
+                        discos: 3))),
+          ),
+          _TarjetaReto(
+            titulo: 'La torre de Hanoi (4 discos)',
+            icono: Icons.view_agenda,
+            onAbrir: () => _abrir(
+                context,
+                'La torre de Hanoi (4 discos)',
+                const RetoHanoiWidget(
+                    reto: RetoHanoi(
+                        titulo: 'La torre de Hanoi',
+                        enunciado:
+                            'Pasad toda la torre de 4 discos al último palo. Un disco '
+                            'cada vez y nunca uno grande sobre uno pequeño.',
+                        discos: 4))),
+          ),
         ],
       ),
     );
@@ -192,27 +254,6 @@ class _TarjetaReto extends StatelessWidget {
   }
 }
 
-class _Proximo extends StatelessWidget {
-  final String texto;
-  const _Proximo(this.texto);
-  @override
-  Widget build(BuildContext context) => Opacity(
-        opacity: 0.55,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 4),
-          child: Row(
-            children: [
-              const Icon(Icons.lock_clock,
-                  size: 20, color: TrazoColors.bordeControl),
-              const SizedBox(width: 10),
-              Text(texto,
-                  style: const TextStyle(
-                      fontSize: 16, color: TrazoColors.ink)),
-            ],
-          ),
-        ),
-      );
-}
 
 /// Pantalla de juego del reto, en HORIZONTAL (los retos lucen y se juegan mejor
 /// apaisados; en tablet ya suele estarlo, en móvil se fuerza). Al salir se

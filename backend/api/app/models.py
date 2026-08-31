@@ -98,6 +98,8 @@ PLANTILLAS = (
     "parejas",
     "reto_garrafas",
     "reto_cruzar",
+    "reto_ranas",
+    "reto_hanoi",
 )
 
 TIPOS_SESION = ("individual", "grupo")

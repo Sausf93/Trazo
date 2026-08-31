@@ -20,6 +20,8 @@ import '../widgets/memoria_parejas_widget.dart';
 import '../widgets/memoria_visual_widget.dart';
 import '../widgets/reto_cruzar_widget.dart';
 import '../widgets/reto_garrafas_widget.dart';
+import '../widgets/reto_hanoi_widget.dart';
+import '../widgets/reto_ranas_widget.dart';
 import '../widgets/secuencia_ordenar_widget.dart';
 import '../widgets/seleccion_multiple_widget.dart';
 import '../widgets/trazo_logo.dart';
@@ -99,6 +101,12 @@ Widget renderActividadDemo(
     case 'reto_cruzar':
       return RetoCruzarWidget(
           reto: RetoCruzar.desdeRender(inst.render), onMetricas: onMetricas);
+    case 'reto_ranas':
+      return RetoRanasWidget(
+          reto: RetoRanas.desdeRender(inst.render), onMetricas: onMetricas);
+    case 'reto_hanoi':
+      return RetoHanoiWidget(
+          reto: RetoHanoi.desdeRender(inst.render), onMetricas: onMetricas);
     default:
       return GenericoWidget(instancia: inst, onMetricas: onMetricas);
   }
@@ -333,6 +341,10 @@ IconData _iconoPlantilla(String plantilla) {
       return Icons.water_drop;
     case 'reto_cruzar':
       return Icons.directions_boat;
+    case 'reto_ranas':
+      return Icons.pest_control;
+    case 'reto_hanoi':
+      return Icons.view_agenda;
     default:
       return Icons.play_arrow_rounded;
   }
