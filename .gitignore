@@ -59,3 +59,7 @@ _deploy/*.aab
 # Playwright MCP snapshots y capturas sueltas
 .playwright-mcp/
 /*.png
+
+# Secretos locales (NUNCA subir)
+_deploy/cloudflare_token.txt
+*.secret
