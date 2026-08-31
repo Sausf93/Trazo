@@ -97,6 +97,7 @@ PLANTILLAS = (
     "manejo_cantidad",
     "parejas",
     "reto_garrafas",
+    "reto_cruzar",
 )
 
 TIPOS_SESION = ("individual", "grupo")

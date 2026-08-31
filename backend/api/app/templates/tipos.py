@@ -818,3 +818,34 @@ class PlantillaRetoGarrafas(PlantillaBase):
             solucion={"objetivo": objetivo},
             metricas=self.metricas,
         )
+
+
+class PlantillaRetoCruzar(PlantillaBase):
+    """Reto de ingenio INTERACTIVO: cruzar el río. Motor genérico para el
+    barquero (lobo/cabra/col, con remero que vigila e incompatibles) y para
+    misioneros y caníbales (regla de mayoría). Juego de grupo, autoevaluable en
+    la tablet; el backend solo transporta el enunciado del reto."""
+
+    tipo = "reto_cruzar"
+    metricas = ["resuelto", "movimientos", "tiempo_ms"]
+
+    def generar(self, parametros, nivel=None, rng=None):
+        ents = parametros.get("entidades") or []
+        if len(ents) < 3:
+            raise ValueError("reto_cruzar requiere >=3 'entidades'")
+        return InstanciaEjercicio(
+            plantilla=self.tipo,
+            render={
+                "instruccion": parametros.get("instruccion", "Resolvedlo en grupo"),
+                "enunciado": parametros.get("enunciado", ""),
+                "titulo": parametros.get("titulo", ""),
+                "entidades": ents,
+                "capacidad_barca": int(parametros.get("capacidad_barca", 2)),
+                "remero": parametros.get("remero"),
+                "incompatibles": parametros.get("incompatibles", []),
+                "mayoria": parametros.get("mayoria"),
+            },
+            cantidad_objetivo={"n_entidades": len(ents)},
+            solucion={"todos_en_la_otra_orilla": True},
+            metricas=self.metricas,
+        )

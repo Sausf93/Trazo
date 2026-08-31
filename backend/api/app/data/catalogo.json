@@ -166684,5 +166684,111 @@
         }
       ]
     }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_cruzar",
+    "nombre": "Reto: el barquero (el lobo, la cabra y la col)",
+    "descripcion": "Reto de ingenio para resolver en grupo (cruzar el río).",
+    "parametros_json": {
+      "titulo": "Reto: el barquero (el lobo, la cabra y la col)",
+      "enunciado": "El barquero tiene que pasar al otro lado el LOBO, la CABRA y la COL. En la barca solo caben el barquero y una cosa. Si los deja solos: el lobo se come a la cabra, y la cabra se come la col. ¿Cómo lo hace?",
+      "entidades": [
+        {
+          "id": "granjero",
+          "nombre": "Barquero",
+          "emoji": "🧑‍🌾",
+          "tipo": ""
+        },
+        {
+          "id": "lobo",
+          "nombre": "Lobo",
+          "emoji": "🐺",
+          "tipo": ""
+        },
+        {
+          "id": "cabra",
+          "nombre": "Cabra",
+          "emoji": "🐐",
+          "tipo": ""
+        },
+        {
+          "id": "col",
+          "nombre": "Col",
+          "emoji": "🥬",
+          "tipo": ""
+        }
+      ],
+      "capacidad_barca": 2,
+      "remero": "granjero",
+      "incompatibles": [
+        [
+          "lobo",
+          "cabra"
+        ],
+        [
+          "cabra",
+          "col"
+        ]
+      ],
+      "mayoria": null,
+      "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta."
+    }
+  },
+  {
+    "bloque": "retos",
+    "plantilla_tipo": "reto_cruzar",
+    "nombre": "Reto: misioneros y caníbales",
+    "descripcion": "Reto de ingenio para resolver en grupo (cruzar el río).",
+    "parametros_json": {
+      "titulo": "Reto: misioneros y caníbales",
+      "enunciado": "Tres MISIONEROS y tres CANÍBALES quieren cruzar el río. En la barca caben dos. En ninguna orilla puede haber más caníbales que misioneros (o se los comen). ¿Cómo cruzan todos?",
+      "entidades": [
+        {
+          "id": "mis1",
+          "nombre": "Misionero",
+          "emoji": "🧑",
+          "tipo": "mis"
+        },
+        {
+          "id": "mis2",
+          "nombre": "Misionero",
+          "emoji": "🧑",
+          "tipo": "mis"
+        },
+        {
+          "id": "mis3",
+          "nombre": "Misionero",
+          "emoji": "🧑",
+          "tipo": "mis"
+        },
+        {
+          "id": "can1",
+          "nombre": "Caníbal",
+          "emoji": "😈",
+          "tipo": "can"
+        },
+        {
+          "id": "can2",
+          "nombre": "Caníbal",
+          "emoji": "😈",
+          "tipo": "can"
+        },
+        {
+          "id": "can3",
+          "nombre": "Caníbal",
+          "emoji": "😈",
+          "tipo": "can"
+        }
+      ],
+      "capacidad_barca": 2,
+      "remero": null,
+      "incompatibles": [],
+      "mayoria": {
+        "debil": "mis",
+        "fuerte": "can"
+      },
+      "instruccion": "Resolvedlo en grupo, con papel y lápiz si hace falta."
+    }
   }
 ]

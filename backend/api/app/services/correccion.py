@@ -325,6 +325,7 @@ def _reto_garrafas(v, o):
 
 _CORRECTORES = {
     "reto_garrafas": _reto_garrafas,
+    "reto_cruzar": _reto_garrafas,
     "seleccion_multiple": _seleccion_multiple,
     "conteo_comparacion": _conteo_comparacion,
     "memoria_visual": _memoria_visual,

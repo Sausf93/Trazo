@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme.dart';
+import '../widgets/reto_cruzar_widget.dart';
 import '../widgets/reto_garrafas_widget.dart';
 
 /// Sección "Retos de ingenio": juegos de lógica interactivos para resolver EN
 /// GRUPO (con papel y lápiz si hace falta). Son actividades MUY especiales, para
 /// participantes avanzados; por eso viven aquí, aparte, y NUNCA entran en la
 /// planificación normal de un usuario ni miden su desempeño individual.
-///
-/// De momento incluye la familia GARRAFAS (decantación de líquido). Las demás
-/// (barquero con el lobo/la cabra/la col, misioneros y caníbales, las ranas
-/// que saltan, la torre de Hanoi) se irán añadiendo con su propio motor.
 class RetosScreen extends StatelessWidget {
   const RetosScreen({super.key});
 
@@ -52,6 +49,51 @@ class RetosScreen extends StatelessWidget {
     ),
   ];
 
+  static const _cruzar = <RetoCruzar>[
+    RetoCruzar(
+      titulo: 'El barquero (el lobo, la cabra y la col)',
+      enunciado:
+          'El barquero tiene que pasar al otro lado el LOBO, la CABRA y la COL. '
+          'En la barca solo caben el barquero y una cosa. Si los deja solos: el '
+          'lobo se come a la cabra, y la cabra se come la col. ¿Cómo lo hace?',
+      entidades: [
+        CruzarEntidad(id: 'granjero', nombre: 'Barquero', emoji: '🧑‍🌾'),
+        CruzarEntidad(id: 'lobo', nombre: 'Lobo', emoji: '🐺'),
+        CruzarEntidad(id: 'cabra', nombre: 'Cabra', emoji: '🐐'),
+        CruzarEntidad(id: 'col', nombre: 'Col', emoji: '🥬'),
+      ],
+      capacidadBarca: 2,
+      remero: 'granjero',
+      incompatibles: [
+        ['lobo', 'cabra'],
+        ['cabra', 'col']
+      ],
+    ),
+    RetoCruzar(
+      titulo: 'Misioneros y caníbales',
+      enunciado:
+          'Tres MISIONEROS y tres CANÍBALES quieren cruzar el río. En la barca '
+          'caben dos. En ninguna orilla puede haber más caníbales que misioneros '
+          '(o se los comen). ¿Cómo cruzan todos?',
+      entidades: [
+        CruzarEntidad(id: 'mis1', nombre: 'Misionero', emoji: '🧑', tipo: 'mis'),
+        CruzarEntidad(id: 'mis2', nombre: 'Misionero', emoji: '🧑', tipo: 'mis'),
+        CruzarEntidad(id: 'mis3', nombre: 'Misionero', emoji: '🧑', tipo: 'mis'),
+        CruzarEntidad(id: 'can1', nombre: 'Caníbal', emoji: '😈', tipo: 'can'),
+        CruzarEntidad(id: 'can2', nombre: 'Caníbal', emoji: '😈', tipo: 'can'),
+        CruzarEntidad(id: 'can3', nombre: 'Caníbal', emoji: '😈', tipo: 'can'),
+      ],
+      capacidadBarca: 2,
+      mayoria: MayoriaRegla(debil: 'mis', fuerte: 'can'),
+    ),
+  ];
+
+  void _abrir(BuildContext context, String titulo, Widget juego) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => _RetoJugar(titulo: titulo, juego: juego),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,11 +121,22 @@ class RetosScreen extends StatelessWidget {
             ),
           ),
           const _Titulo('Garrafas de agua'),
-          for (final r in _garrafas) _TarjetaReto(reto: r),
+          for (final r in _garrafas)
+            _TarjetaReto(
+              titulo: r.titulo,
+              icono: Icons.water_drop,
+              onAbrir: () => _abrir(context, r.titulo, RetoGarrafasWidget(reto: r)),
+            ),
+          const SizedBox(height: 12),
+          const _Titulo('Cruzar el río'),
+          for (final r in _cruzar)
+            _TarjetaReto(
+              titulo: r.titulo,
+              icono: Icons.directions_boat,
+              onAbrir: () => _abrir(context, r.titulo, RetoCruzarWidget(reto: r)),
+            ),
           const SizedBox(height: 18),
           const _Titulo('Próximamente'),
-          const _Proximo('El barquero (el lobo, la cabra y la col)'),
-          const _Proximo('Misioneros y caníbales'),
           const _Proximo('Las ranas que saltan'),
           const _Proximo('La torre de Hanoi'),
         ],
@@ -107,8 +160,11 @@ class _Titulo extends StatelessWidget {
 }
 
 class _TarjetaReto extends StatelessWidget {
-  final RetoGarrafas reto;
-  const _TarjetaReto({required this.reto});
+  final String titulo;
+  final IconData icono;
+  final VoidCallback onAbrir;
+  const _TarjetaReto(
+      {required this.titulo, required this.icono, required this.onAbrir});
 
   @override
   Widget build(BuildContext context) {
@@ -119,20 +175,18 @@ class _TarjetaReto extends StatelessWidget {
       child: ListTile(
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-        leading: const CircleAvatar(
+        leading: CircleAvatar(
           backgroundColor: TrazoColors.card,
-          child: Icon(Icons.water_drop, color: TrazoColors.sageDark),
+          child: Icon(icono, color: TrazoColors.sageDark),
         ),
-        title: Text(reto.titulo,
+        title: Text(titulo,
             style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: TrazoColors.ink)),
         trailing: const Icon(Icons.play_circle_fill,
             color: TrazoColors.coralDark, size: 34),
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (_) => _RetoJugar(reto: reto),
-        )),
+        onTap: onAbrir,
       ),
     );
   }
@@ -160,12 +214,13 @@ class _Proximo extends StatelessWidget {
       );
 }
 
-/// Pantalla de juego del reto. Se muestra en HORIZONTAL (los retos lucen y se
-/// juegan mejor apaisados; en tablet ya suele estarlo, en móvil se fuerza). Al
-/// salir se restauran todas las orientaciones.
+/// Pantalla de juego del reto, en HORIZONTAL (los retos lucen y se juegan mejor
+/// apaisados; en tablet ya suele estarlo, en móvil se fuerza). Al salir se
+/// restauran todas las orientaciones.
 class _RetoJugar extends StatefulWidget {
-  final RetoGarrafas reto;
-  const _RetoJugar({required this.reto});
+  final String titulo;
+  final Widget juego;
+  const _RetoJugar({required this.titulo, required this.juego});
 
   @override
   State<_RetoJugar> createState() => _RetoJugarState();
@@ -191,9 +246,9 @@ class _RetoJugarState extends State<_RetoJugar> {
       backgroundColor: TrazoColors.ivory,
       appBar: AppBar(
         backgroundColor: TrazoColors.ivory,
-        title: Text(widget.reto.titulo),
+        title: Text(widget.titulo),
       ),
-      body: SafeArea(child: RetoGarrafasWidget(reto: widget.reto)),
+      body: SafeArea(child: widget.juego),
     );
   }
 }

@@ -18,6 +18,7 @@ import '../widgets/generico_widget.dart';
 import '../widgets/manejo_cantidad_widget.dart';
 import '../widgets/memoria_parejas_widget.dart';
 import '../widgets/memoria_visual_widget.dart';
+import '../widgets/reto_cruzar_widget.dart';
 import '../widgets/reto_garrafas_widget.dart';
 import '../widgets/secuencia_ordenar_widget.dart';
 import '../widgets/seleccion_multiple_widget.dart';
@@ -95,6 +96,9 @@ Widget renderActividadDemo(
     case 'reto_garrafas':
       return RetoGarrafasWidget(
           reto: RetoGarrafas.desdeRender(inst.render), onMetricas: onMetricas);
+    case 'reto_cruzar':
+      return RetoCruzarWidget(
+          reto: RetoCruzar.desdeRender(inst.render), onMetricas: onMetricas);
     default:
       return GenericoWidget(instancia: inst, onMetricas: onMetricas);
   }
@@ -327,6 +331,8 @@ IconData _iconoPlantilla(String plantilla) {
       return Icons.euro;
     case 'reto_garrafas':
       return Icons.water_drop;
+    case 'reto_cruzar':
+      return Icons.directions_boat;
     default:
       return Icons.play_arrow_rounded;
   }
