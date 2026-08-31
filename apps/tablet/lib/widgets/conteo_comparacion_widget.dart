@@ -26,6 +26,19 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
   final DateTime _inicio = DateTime.now();
   int? _grupoElegido;
   String _numero = '';
+  // Coherencia visual: si NO todas las figuras de la actividad tienen foto,
+  // se pintan TODAS como dibujo (nunca mezclar fotos y dibujos en la misma).
+  late final bool _soloDibujo;
+
+  @override
+  void initState() {
+    super.initState();
+    final ids = (widget.instancia.render['grupos'] as List? ?? [])
+        .whereType<Map>()
+        .map((e) => (e['objeto'] ?? '').toString())
+        .where((s) => s.isNotEmpty);
+    _soloDibujo = !IlustracionResolver.todasConFoto(ids);
+  }
 
   void _emitir(dynamic respuesta) {
     widget.onMetricas({
@@ -153,7 +166,7 @@ class _ConteoComparacionWidgetState extends State<ConteoComparacionWidget> {
                       runSpacing: 4,
                       children: List.generate(
                         cantidad,
-                        (_) => Ilustracion(objeto, size: s),
+                        (_) => Ilustracion(objeto, size: s, soloDibujo: _soloDibujo),
                       ),
                     ),
                   );

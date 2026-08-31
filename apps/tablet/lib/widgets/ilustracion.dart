@@ -17,12 +17,19 @@ class Ilustracion extends StatelessWidget {
   final String id;
   final double size;
 
-  const Ilustracion(this.id, {super.key, this.size = 64});
+  /// Si es `true`, NUNCA usa la foto real aunque exista: pinta el dibujo SVG.
+  /// Sirve para que una actividad no MEZCLE fotos y dibujos: el widget que la
+  /// pinta comprueba si TODAS sus figuras tienen foto; si no, pone `soloDibujo`
+  /// en todas y así salen todas del mismo estilo (dibujo) de forma coherente.
+  final bool soloDibujo;
+
+  const Ilustracion(this.id,
+      {super.key, this.size = 64, this.soloDibujo = false});
 
   @override
   Widget build(BuildContext context) {
-    // 1) Foto real, si existe: máxima reconocibilidad para personas mayores.
-    final foto = IlustracionResolver.fotoPara(id);
+    // 1) Foto real, si existe (y no se fuerza dibujo): máxima reconocibilidad.
+    final foto = soloDibujo ? null : IlustracionResolver.fotoPara(id);
     if (foto != null) {
       return ClipRRect(
         borderRadius: BorderRadius.circular(12),
@@ -544,6 +551,20 @@ class IlustracionResolver {
   /// pintar mostrarían TEXTO para objetos que sí tienen foto (rosa, servilleta,
   /// cepillo…), volviendo el ejercicio de lectura e ilegible para baja visión.
   static bool tiene(String raw) => fotoPara(raw) != null || _canonico(raw) != null;
+
+  /// `true` si TODAS las figuras dadas tienen foto real. Lo usan los widgets
+  /// para decidir el estilo de la actividad entera: si NO todas tienen foto,
+  /// pintan todas como DIBUJO (soloDibujo) y así nunca se mezclan fotos y
+  /// dibujos en la misma actividad.
+  static bool todasConFoto(Iterable<String> ids) {
+    var alguna = false;
+    for (final id in ids) {
+      if (id.trim().isEmpty) continue;
+      alguna = true;
+      if (fotoPara(id) == null) return false;
+    }
+    return alguna;
+  }
 
   /// Etiqueta legible para accesibilidad (id con espacios).
   static String etiqueta(String raw) => raw.replaceAll('_', ' ');

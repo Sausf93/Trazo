@@ -49,6 +49,9 @@ class _MemoriaParejasWidgetState extends State<MemoriaParejasWidget> {
   late final List<_Carta> _cartas;
   late final int _nPares;
   late final int _columnasBase;
+  // Coherencia visual: si NO todas las figuras del tablero tienen foto, TODAS
+  // salen como dibujo (nunca fotos y dibujos mezclados en la misma actividad).
+  late final bool _soloDibujo;
 
   bool _preview = true; // fase inicial: se ven todas
   bool _bloqueado = false; // durante el giro tras un fallo
@@ -74,6 +77,8 @@ class _MemoriaParejasWidgetState extends State<MemoriaParejasWidget> {
               _Estado.arriba, // durante el preview se ven destapadas
             ))
         .toList();
+    _soloDibujo =
+        !IlustracionResolver.todasConFoto(_cartas.map((c) => c.par));
     // Aún no se puede avanzar: primero hay que jugar el tablero.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       widget.onListoParaAvanzar?.call(false);
@@ -356,7 +361,7 @@ class _MemoriaParejasWidgetState extends State<MemoriaParejasWidget> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     if (tieneDibujo) ...[
-                      Ilustracion(c.par, size: imgSize),
+                      Ilustracion(c.par, size: imgSize, soloDibujo: _soloDibujo),
                       const SizedBox(height: 4),
                     ],
                     SizedBox(

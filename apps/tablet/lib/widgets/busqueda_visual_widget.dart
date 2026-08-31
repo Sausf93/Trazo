@@ -27,6 +27,9 @@ class _BusquedaVisualWidgetState extends State<BusquedaVisualWidget> {
   late final List<Map<String, dynamic>> _celdas;
   late final String _objetivoId;
   late final int _totalObjetivos;
+  // Si NO todas las figuras de la actividad tienen foto, TODAS se pintan como
+  // dibujo (coherentes), nunca fotos y dibujos mezclados en la misma actividad.
+  late final bool _soloDibujo;
   final Set<int> _seleccionadas = {};
   final DateTime _inicio = DateTime.now();
 
@@ -44,6 +47,12 @@ class _BusquedaVisualWidgetState extends State<BusquedaVisualWidget> {
     _objetivoId = (obj['id'] ?? '').toString();
     _totalObjetivos =
         _celdas.where((c) => (c['id'] ?? '').toString() == _objetivoId).length;
+    // Todos los ids de figura de la actividad: objetivo + celdas (distractores).
+    final idsFigura = <String>[
+      _objetivoId,
+      ..._celdas.map((c) => (c['id'] ?? '').toString()),
+    ];
+    _soloDibujo = !IlustracionResolver.todasConFoto(idsFigura);
   }
 
   void _emitir() {
@@ -213,7 +222,9 @@ class _BusquedaVisualWidgetState extends State<BusquedaVisualWidget> {
       final c = colorPorNombre(_colorForma[id.toLowerCase()] ?? '');
       return FiguraGeometrica(id, size: size, color: c);
     }
-    if (IlustracionResolver.tiene(id)) return Ilustracion(id, size: size);
+    if (IlustracionResolver.tiene(id)) {
+      return Ilustracion(id, size: size, soloDibujo: _soloDibujo);
+    }
     return SizedBox(
       width: size,
       height: size,

@@ -75626,7 +75626,7 @@
         {
           "id": "i3",
           "instruccion": "Elige la respuesta",
-          "enunciado": "¿Qué haces primero, mojarte o secarte con la toalla?",
+          "enunciado": "Al ducharte, ¿qué haces primero, mojarte o secarte con la toalla?",
           "correcta": "Mojarte",
           "distractores": [
             "Secarte",

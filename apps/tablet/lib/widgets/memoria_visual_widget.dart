@@ -34,6 +34,7 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
   late final List<Map<String, dynamic>> _aRecordar;
   late final List<Map<String, dynamic>> _rejilla;
   late final Set<String> _idsCorrectos;
+  late final bool _soloDibujo;
 
   bool _memorizando = true;
   int _restante = 0;
@@ -50,6 +51,10 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
     final render = widget.instancia.render;
     _aRecordar = _comoLista(render['a_recordar']);
     _rejilla = _comoLista(render['rejilla_seleccion']);
+    // Coherencia visual: si NO todas las figuras de la actividad tienen foto,
+    // se pintan TODAS como dibujo (nunca se mezclan fotos y dibujos).
+    _soloDibujo = !IlustracionResolver.todasConFoto(
+        [..._aRecordar, ..._rejilla].map((e) => _idDe(e)));
     _idsCorrectos = _aRecordar.map((e) => _idDe(e)).toSet();
     _restante = (render['segundos_memorizar'] as num?)?.toInt() ?? 10;
     // Empieza memorizando: oculta el botón global "Siguiente" hasta que la
@@ -304,7 +309,7 @@ class _MemoriaVisualWidgetState extends State<MemoriaVisualWidget> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   if (tieneDibujo) ...[
-                    Ilustracion(id, size: imgSize),
+                    Ilustracion(id, size: imgSize, soloDibujo: _soloDibujo),
                     const SizedBox(height: 4),
                   ],
                   // Banda de altura fija para la etiqueta: así NUNCA se recorta el
