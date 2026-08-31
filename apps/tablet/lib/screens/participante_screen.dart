@@ -16,6 +16,12 @@ import '../widgets/generico_widget.dart';
 import '../widgets/manejo_cantidad_widget.dart';
 import '../widgets/memoria_parejas_widget.dart';
 import '../widgets/memoria_visual_widget.dart';
+import '../widgets/reto_cruzar_widget.dart';
+import '../widgets/reto_garrafas_widget.dart';
+import '../widgets/reto_hanoi_widget.dart';
+import '../widgets/reto_mastermind_widget.dart';
+import '../widgets/reto_ranas_widget.dart';
+import '../widgets/reto_taquin_widget.dart';
 import '../widgets/secuencia_ordenar_widget.dart';
 import '../widgets/seleccion_multiple_widget.dart';
 import '../widgets/trazo_widget.dart';
@@ -593,6 +599,25 @@ class _ParticipanteScreenState extends State<ParticipanteScreen> {
         return ManejoCantidadWidget(instancia: inst, onMetricas: onMetricas);
       case 'busqueda_visual':
         return BusquedaVisualWidget(instancia: inst, onMetricas: onMetricas);
+      case 'reto_garrafas':
+        return RetoGarrafasWidget(
+            reto: RetoGarrafas.desdeRender(inst.render), onMetricas: onMetricas);
+      case 'reto_cruzar':
+        return RetoCruzarWidget(
+            reto: RetoCruzar.desdeRender(inst.render), onMetricas: onMetricas);
+      case 'reto_ranas':
+        return RetoRanasWidget(
+            reto: RetoRanas.desdeRender(inst.render), onMetricas: onMetricas);
+      case 'reto_hanoi':
+        return RetoHanoiWidget(
+            reto: RetoHanoi.desdeRender(inst.render), onMetricas: onMetricas);
+      case 'reto_taquin':
+        return RetoTaquinWidget(
+            reto: RetoTaquin.desdeRender(inst.render), onMetricas: onMetricas);
+      case 'reto_mastermind':
+        return RetoMastermindWidget(
+            reto: RetoMastermind.desdeRender(inst.render),
+            onMetricas: onMetricas);
       default:
         return GenericoWidget(instancia: inst, onMetricas: onMetricas);
     }
