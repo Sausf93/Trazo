@@ -14,6 +14,8 @@ on:
 jobs:
   build-apk:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # para publicar el APK como Release (QR de instalación)
     defaults:
       run:
         working-directory: apps/tablet
@@ -48,3 +50,16 @@ jobs:
           path: apps/tablet/build/app/outputs/flutter-apk/Trazo.apk
           if-no-files-found: error
           retention-days: 30
+
+      # Publica el APK en un Release fijo ("apk-latest") en cada compilación de
+      # main, para que el QR de instalación (releases/latest/download/Trazo.apk)
+      # sirva SIEMPRE la última versión, sin pasos manuales.
+      - name: Publicar APK en Releases (para el QR de instalación)
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: apk-latest
+          name: App Trazo (tablet) — APK (última)
+          body: "APK de la tablet (compilación más reciente de main). Descarga directa: releases/latest/download/Trazo.apk"
+          files: apps/tablet/build/app/outputs/flutter-apk/Trazo.apk
+          make_latest: "true"
