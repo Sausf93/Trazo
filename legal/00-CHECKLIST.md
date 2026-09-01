@@ -7,8 +7,9 @@
 - **Modelo de roles:** el **CENTRO es RESPONSABLE del tratamiento**; **Trazo (la empresa) es ENCARGADO del tratamiento** (art. 28 RGPD).
 - **Naturaleza del dato:** datos de salud / categoría especial (art. 9 RGPD) de personas mayores, mayoría con Alzheimer.
 - **Qué hace la app:** pseudonimiza (alias interno; nombre real en tabla separada), mide **desempeño** en actividades, compara a cada persona consigo misma y avisa de cambios para revisión profesional. **No es diagnóstico ni producto sanitario.**
-- **Infraestructura:** servidor propio, PostgreSQL, TLS, backups diarios (retención 14 días).
+- **Infraestructura (ACTUALIZADA 2026-09):** servicios gestionados en la nube — **API en Google Cloud Run (región `europe-southwest1`, Madrid, EEE)**, **base de datos Aiven for PostgreSQL** (único almacén persistente; cifrado en reposo por defecto), **frontends en Cloudflare Pages** (solo estáticos). Detalle técnico y medidas del art. 32 en **`04-medidas-seguridad-infraestructura.md`**. *(La descripción anterior — servidor propio + `docker-compose` + `./backups` + LUKS manual — YA NO aplica.)*
 - **Modelo de negocio:** B2B, por paciente activo/mes.
+- **Titular / encargado (RESUELTO):** Saulo Miguel De la Santacruz Fernández, **empresario individual (autónomo)**, NIF 42238667H, Santa Cruz de Tenerife (Islas Canarias), contacto saulodlsf@gmail.com.
 
 ---
 
@@ -16,18 +17,20 @@
 
 | # | Bloqueante | Estado |
 |---|------------|--------|
-| 1 | Entidad jurídica, datos fiscales y sustitución de placeholders | ☐ Pendiente |
-| 2 | Contrato de encargo del tratamiento (art. 28 RGPD) | ☐ Pendiente |
-| 3 | Consentimiento informado + representante legal (capacidad modificada) | ☐ Pendiente |
-| 4 | DPIA / EIPD (Evaluación de Impacto, art. 35 RGPD) | ☐ Pendiente |
-| 5 | Cifrado en reposo de la base de datos y de los backups | ☐ Pendiente |
-| 6 | Arrancar producción y probar restauración de backup | ☐ Pendiente |
+| 1 | Entidad jurídica, datos fiscales y sustitución de placeholders | ✅ **Resuelto** (autónomo; datos volcados en `aviso-legal.html` y `privacidad.html`). Falta el visto bueno final de un asesor y, en lo fiscal, **alta en RETA** + **modelo 400 IGIC** (trámites de Saulo, no del texto legal). |
+| 2 | Contrato de encargo del tratamiento (art. 28 RGPD) | 🟡 Borrador (`01-…`) + generador en el panel. Rellenar datos y revisar con asesor; **lo firma cada centro**. |
+| 3 | Consentimiento informado + representante legal (capacidad modificada) | 🟡 Modelado + formulario imprimible en el panel. **Lo recaba cada centro** por persona/representante. |
+| 4 | DPIA / EIPD (Evaluación de Impacto, art. 35 RGPD) | 🟡 Borrador (`03-…`) + anexo técnico (`04-…`) completado. Falta cierre/firma formal (DPO). |
+| 5 | Cifrado en reposo de la base de datos y de los backups | ✅ **Cubierto por la plataforma** (Aiven: LUKS/AES-256 en datos y backups). Solo **documentar** y archivar el DPA de Aiven. Ver `04-…`. |
+| 6 | Arrancar producción y probar restauración de backup | 🟡 Producción ya viva en Cloud Run. Falta **confirmar plan de Aiven con retención/PITR** y **registrar una prueba de restauración**. |
 
-> Regla práctica: **1, 2, 4 y 5 deben estar cerrados ANTES de introducir el primer dato real**. El 3 debe estar firmado **antes de dar de alta a cada paciente**. El 6 debe estar probado **antes de considerar el sistema operativo**.
+> Regla práctica (actualizada): el **1** y el **5** ya están cerrados. Antes del primer dato real quedan: revisar con asesor el **2/3/4** y **fijar plan de backups de Aiven (6)**. El **3** debe firmarse (por el centro) **antes de dar de alta a cada persona**.
 
 ---
 
 ## 1. Entidad jurídica, datos fiscales y sustitución de placeholders
+
+> ✅ **RESUELTO (2026-09).** Forma jurídica: **empresario individual (autónomo)**. Titular: **Saulo Miguel De la Santacruz Fernández**, NIF **42238667H**, Santa Cruz de Tenerife (Islas Canarias), contacto **saulodlsf@gmail.com**, epígrafe IAE **845**. Placeholders ya sustituidos en `apps/landing/aviso-legal.html` y `apps/landing/privacidad.html`. **Pendiente de Saulo (fiscal, no del texto):** alta en **RETA** (Seguridad Social) y **modelo 400** (IGIC, ATC — valorar REPEP si factura <30.000 €/año). Retirar el banner "Borrador…" cuando un asesor valide el texto.
 
 **Qué es.** Trazo, como encargado del tratamiento, necesita ser una **persona (física o jurídica) identificable y responsable en derecho**. Hoy el aviso legal y la política de privacidad tienen huecos sin rellenar (`[Razón social o nombre del titular]`, `[NIF/CIF pendiente]`, `[Dirección postal pendiente]`) y el único contacto es un correo de Gmail personal.
 
@@ -127,6 +130,8 @@
 ---
 
 ## 5. Cifrado en reposo de la base de datos y de los backups
+
+> ✅ **CUBIERTO POR LA PLATAFORMA (2026-09).** La infraestructura ya NO es autoalojada: la BD es **Aiven for PostgreSQL**, que cifra **datos y backups en reposo por defecto** (LUKS + AES-256, claves por fichero). Los pasos de abajo (LUKS manual, cifrar `./backups`, GPG/age) **ya no aplican**; se conservan solo como referencia histórica. Lo único pendiente aquí es **documentar** la medida y **archivar el DPA/certificaciones de Aiven**. Ver `04-medidas-seguridad-infraestructura.md` §2.
 
 **Qué es.** Que los datos almacenados en disco (la base de datos PostgreSQL y los ficheros de backup) estén **cifrados**, de modo que quien acceda físicamente al disco o robe una copia **no pueda leerlos**.
 

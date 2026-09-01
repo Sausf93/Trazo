@@ -10,6 +10,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import get_db
 from app.deps import Acceso, acceso_centro, get_current_staff, usuario_del_centro
 from app.models import (
+    Consentimiento,
+    DocumentoLegal,
     EjercicioCatalogo,
     Intento,
     Sesion,
@@ -352,6 +354,9 @@ async def crear_sesion(
     # daría un 500 crudo justo al abrir la sala delante de la maestra.
     participantes = list(dict.fromkeys(body.participantes))
     await _validar_participantes(db, participantes, staff)
+    # Compuerta legal (RGPD): datos de salud. No se abre una sesión real sin el
+    # contrato de encargo (DPA) del centro y el consentimiento de cada persona.
+    await _exigir_consentimiento_y_dpa(db, staff.centro_id, participantes)
     ses = Sesion(
         centro_id=staff.centro_id,
         tipo=body.tipo,
@@ -436,6 +441,53 @@ async def _validar_participantes(
         if not uf.activo:
             raise HTTPException(status.HTTP_409_CONFLICT,
                                 f"El participante {uf.alias_interno} está dado de baja")
+
+
+async def _exigir_consentimiento_y_dpa(
+    db: AsyncSession, centro_id: str, participantes: list[str]
+) -> None:
+    """Compuerta legal (RGPD, datos de salud): una persona no entra en una sesión
+    REAL hasta que su tratamiento está legitimado. Exige DOS cosas:
+
+    1. Que el CENTRO tenga su **contrato de encargo (DPA)** firmado y archivado
+       (art. 28 RGPD): sin él, Trazo no puede tratar datos por cuenta del centro.
+    2. Que CADA participante tenga su **consentimiento** registrado: una persona
+       "está de alta de verdad" cuando consta su consentimiento (o el de su
+       representante), no solo cuando se teclea su alias.
+
+    El demo/vitrina NO pasa por aquí (usa `GaleriaScreen`, sin sesiones de
+    backend). El mensaje dirige a la maestra a dónde subir cada documento."""
+    # (1) Contrato de encargo (DPA) del centro.
+    tiene_dpa = (await db.execute(
+        select(DocumentoLegal.id).where(
+            DocumentoLegal.centro_id == centro_id,
+            DocumentoLegal.tipo == "dpa",
+        ).limit(1)
+    )).first()
+    if tiene_dpa is None:
+        raise HTTPException(
+            status.HTTP_409_CONFLICT,
+            "El centro todavía no tiene el contrato de encargo (DPA) firmado. "
+            "Súbelo en «Cumplimiento» antes de abrir sesiones con personas reales.",
+        )
+    # (2) Consentimiento de cada participante.
+    if not participantes:
+        return
+    con_consent = set((await db.execute(
+        select(Consentimiento.usuario_final_id)
+        .where(Consentimiento.usuario_final_id.in_(participantes))
+    )).scalars().all())
+    faltan = [p for p in participantes if p not in con_consent]
+    if faltan:
+        filas = (await db.execute(
+            select(UsuarioFinal.alias_interno).where(UsuarioFinal.id.in_(faltan))
+        )).scalars().all()
+        nombres = ", ".join(filas) if filas else "algún participante"
+        raise HTTPException(
+            status.HTTP_409_CONFLICT,
+            f"Falta registrar el consentimiento de: {nombres}. "
+            "Regístralo en la ficha de cada persona antes de ponerla en una sesión.",
+        )
 
 
 @router.get("/programadas", response_model=list[SesionProgramadaOut])

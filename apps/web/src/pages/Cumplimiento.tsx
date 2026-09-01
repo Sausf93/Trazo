@@ -5,7 +5,7 @@
  * auditorías. Los consentimientos por persona se gestionan en cada ficha.
  */
 import { Link, Navigate } from "react-router-dom";
-import { listarDocumentos, listarUsuarios } from "../api/endpoints";
+import { crearCheckoutSuscripcion, listarDocumentos, listarUsuarios } from "../api/endpoints";
 import type { DocumentoLegal, UsuarioFinal } from "../api/types";
 import { useAuth } from "../auth/AuthContext";
 import { useState } from "react";
@@ -43,6 +43,20 @@ export function CumplimientoPage() {
   const docs = useAsync<DocumentoLegal[]>((s) => listarDocumentos({ solo_centro: true }, s), []);
   const personas = useAsync<UsuarioFinal[]>((s) => listarUsuarios(centroId, s), [centroId]);
   const [imprimirDpa, setImprimirDpa] = useState(false);
+  const [pagando, setPagando] = useState(false);
+  const [errorPago, setErrorPago] = useState<string | null>(null);
+
+  async function activarSuscripcion() {
+    setPagando(true);
+    setErrorPago(null);
+    try {
+      const { url } = await crearCheckoutSuscripcion();
+      window.location.href = url; // redirige a Stripe Checkout
+    } catch (e) {
+      setErrorPago(e instanceof Error ? e.message : "No se pudo iniciar el pago.");
+      setPagando(false);
+    }
+  }
 
   if (!esAdmin) return <Navigate to="/" replace />;
 
@@ -56,6 +70,18 @@ export function CumplimientoPage() {
         title="Cumplimiento (RGPD)"
         subtitle="Pasos para dejar el centro en regla al implantar Trazo, y los documentos guardados en la app para cuando haya una auditoría."
       />
+
+      <Card style={{ marginBottom: 24 }}>
+        <h2 style={{ fontSize: 17, marginBottom: 4 }}>Suscripción</h2>
+        <p style={{ fontSize: 13.5, color: colors.textMuted, marginBottom: 12 }}>
+          Trazo es de pago por centro (incluye hasta 30 personas; a partir de ahí, un pequeño extra
+          por persona). Activa la suscripción para seguir usándolo cuando termine la prueba.
+        </p>
+        {errorPago && <StateMessage tone="error">{errorPago}</StateMessage>}
+        <Button onClick={activarSuscripcion} disabled={pagando}>
+          {pagando ? "Abriendo el pago…" : "Activar suscripción (pagar)"}
+        </Button>
+      </Card>
 
       <Card style={{ marginBottom: 24 }}>
         <h2 style={{ fontSize: 17, marginBottom: 6 }}>Pasos a completar</h2>

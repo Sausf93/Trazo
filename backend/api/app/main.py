@@ -23,6 +23,7 @@ from app.routers import (
     documentos,
     ejercicios,
     evolucion,
+    facturacion,
     intentos,
     objetivos,
     planes,
@@ -163,3 +164,4 @@ app.include_router(documentos.router)
 app.include_router(banco.router)
 app.include_router(staff.router)
 app.include_router(plataforma.router)
+app.include_router(facturacion.router)

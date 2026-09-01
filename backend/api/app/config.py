@@ -40,6 +40,18 @@ class Settings(BaseSettings):
     # Solo lo conoce el dueño de la plataforma (tú). Nunca se expone al panel.
     platform_token: str = ""
 
+    # --- Stripe (facturación por suscripción). Si stripe_secret_key está vacío,
+    # el cobro queda DESACTIVADO (útil en dev/tests: no se llama a Stripe). ---
+    stripe_secret_key: str = ""
+    stripe_webhook_secret: str = ""
+    stripe_price_id: str = ""  # precio con tramos (125€/30 + 3€) creado en Stripe
+    # URL del panel del centro, para las redirecciones de Stripe Checkout.
+    panel_url: str = "https://trazo-panel.pages.dev"
+
+    @property
+    def stripe_activo(self) -> bool:
+        return bool(self.stripe_secret_key and self.stripe_price_id)
+
     @property
     def cors_origins_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]

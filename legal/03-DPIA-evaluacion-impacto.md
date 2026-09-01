@@ -17,9 +17,9 @@
 | Campo | Contenido |
 |---|---|
 | Título | EIPD del tratamiento "Estimulación cognitiva y medición de desempeño — Trazo" |
-| Versión | [Nº VERSIÓN] |
-| Fecha | [FECHA] |
-| Autor del borrador | [NOMBRE / ROL] |
+| Versión | 0.9 (borrador técnico, pendiente de revisión por DPO/asesoría) |
+| Fecha | [FECHA de aprobación] |
+| Autor del borrador | Saulo Miguel De la Santacruz Fernández (Trazo, encargado del tratamiento), con la parte técnica completada y verificada contra el código y la infraestructura reales |
 | Revisado por (DPO) | [NOMBRE DPO] |
 | Revisado por (asesoría jurídica) | [DESPACHO / ABOGADO] |
 | Aprobado por (responsable del tratamiento) | [NOMBRE / CARGO EN EL CENTRO] |
@@ -36,11 +36,11 @@
 
 | Rol | Entidad | Datos |
 |---|---|---|
-| **Responsable del tratamiento** | El CENTRO / residencia | [RAZÓN SOCIAL], [NIF], [DIRECCIÓN], [CONTACTO] |
-| **Encargado del tratamiento** | TRAZO (proveedor del software) | [RAZÓN SOCIAL DE TRAZO], [NIF], [DIRECCIÓN] |
-| **DPO del responsable** | [NOMBRE / CONTACTO — obligatorio si se cumple art. 37 RGPD; probable por tratamiento a gran escala de datos de salud] |
-| **DPO / contacto RGPD de Trazo** | [NOMBRE / CONTACTO] |
-| **Subencargados** | [PROVEEDOR HOSTING / MANTENIMIENTO / BACKUP, si los hubiera] |
+| **Responsable del tratamiento** | El CENTRO / residencia | [RAZÓN SOCIAL DEL CENTRO], [NIF], [DIRECCIÓN], [CONTACTO] — a cumplimentar por cada centro |
+| **Encargado del tratamiento** | TRAZO (proveedor del software) | Saulo Miguel De la Santacruz Fernández (empresario individual/autónomo), NIF 42238667H, Santa Cruz de Tenerife (Islas Canarias, España), saulodlsf@gmail.com |
+| **DPO del responsable** | [NOMBRE / CONTACTO — lo designa el centro; obligatorio si se cumple art. 37 RGPD, probable por tratamiento a gran escala de datos de salud] |
+| **DPO / contacto RGPD de Trazo** | Saulo Miguel De la Santacruz Fernández, saulodlsf@gmail.com (contacto RGPD; la designación formal de DPO se valorará según art. 37) |
+| **Subencargados** | **Google Cloud** (Cloud Run, región Madrid `europe-southwest1`) · **Aiven** (PostgreSQL gestionado, base de datos) · **Cloudflare** (Pages, webs estáticas). Detalle en `04-medidas-seguridad-infraestructura.md` §8 |
 
 Relación regulada mediante **contrato de encargo de tratamiento (art. 28 RGPD)** entre cada centro y Trazo. [REFERENCIA AL CONTRATO / ANEXO].
 
@@ -65,7 +65,7 @@ Relación regulada mediante **contrato de encargo de tratamiento (art. 28 RGPD)*
 
 1. Alta de la persona usuaria: el centro registra el nombre real y datos identificativos en una **tabla separada** y le asigna un **alias interno (seudónimo)**.
 2. La operativa de actividades y medición trabaja **solo con el alias**; el desempeño se asocia al seudónimo.
-3. Los datos se alojan en **servidor propio** ([UBICACIÓN FÍSICA / CPD — confirmar que está en el EEE]), con **Postgres**, **TLS** en tránsito y **copias de seguridad**.
+3. Los datos se alojan en **servicios gestionados en la nube dentro del EEE**: la API corre en **Google Cloud Run** (región `europe-southwest1`, **Madrid**), sin almacenamiento persistente; el **único almacén de datos** es **Aiven for PostgreSQL** (cifrado en reposo por defecto, ver §5); las webs son estáticas en **Cloudflare Pages** (sin datos personales). **TLS** en tránsito. Detalle técnico en `04-medidas-seguridad-infraestructura.md`. [CONFIRMAR que la región del servicio de Aiven está en el EEE.]
 4. El profesional consulta la evolución y los avisos desde la app, limitado a las personas de **su centro** (control de acceso por centro).
 5. [DESCRIBIR cualquier flujo adicional: exportaciones, informes en PDF, integración con historia del centro, soporte técnico de Trazo con acceso a datos, etc.]
 
@@ -77,11 +77,11 @@ Relación regulada mediante **contrato de encargo de tratamiento (art. 28 RGPD)*
 
 ### 2.1. Base jurídica (art. 6 RGPD)
 
-- Tratamiento de datos personales: [ELEGIR/CONFIRMAR con el DPO. Habitualmente art. 6.1.b (ejecución de contrato asistencial con la persona/su representante), 6.1.c (obligación legal en el ámbito de servicios sociales) y/o 6.1.f (interés legítimo del centro en la calidad asistencial), o 6.1.e si aplica misión de interés público. **Justificar la elegida.**]
+- Tratamiento de datos personales: **propuesta (a confirmar por el DPO)** → **art. 6.1.b** (ejecución del contrato de prestación asistencial con la persona usuaria o su representante) como base principal, reforzada por **art. 6.1.e/f** (misión de interés público en servicios sociales / interés legítimo del centro en la calidad asistencial). El centro es el responsable y elige/justifica la base según su título de prestación del servicio.
 
 ### 2.2. Condición que levanta la prohibición del art. 9 (datos de salud)
 
-Los datos de desempeño en actividades de estimulación, vinculados a personas con patologías cognitivas, son **datos relativos a la salud (art. 9.1 RGPD)**. Condición habilitante propuesta: [ELEGIR/CONFIRMAR. Candidatas: art. 9.2.h (fines de asistencia sanitaria o social, tratamiento por profesional sujeto a secreto), art. 9.2.a (consentimiento explícito) o art. 9.2.g (interés público). Analizar además arts. 9 LOPDGDD y disposiciones sobre datos de salud/servicios sociales.]
+Los datos de desempeño en actividades de estimulación, vinculados a personas con patologías cognitivas, son **datos relativos a la salud (art. 9.1 RGPD)**. Condición habilitante **propuesta (a confirmar por el DPO)**: **art. 9.2.h** (fines de asistencia sanitaria o social prestada por/ bajo la responsabilidad de profesional sujeto a secreto — encaja con un centro de día), **reforzada con el consentimiento explícito (art. 9.2.a)** del interesado o su representante para transparencia y por el carácter voluntario del uso de la herramienta. Base legal interna: **art. 9 LOPDGDD** y la normativa autonómica de servicios sociales aplicable. El profesional del centro que interpreta los datos está sujeto a **deber de secreto**, lo que sustenta la vía 9.2.h.
 
 > **Consentimiento y capacidad modificada:** muchas personas usuarias tienen su **capacidad de decisión modificada**. Debe articularse la intervención de la persona y, cuando proceda, de quien preste **apoyo/representación** conforme a la **Ley 8/2021** (reforma del apoyo a personas con discapacidad), **respetando la voluntad y preferencias de la persona** y evitando sustituir su decisión más de lo estrictamente necesario. [DEFINIR con asesoría jurídica el circuito de información y, en su caso, consentimiento/apoyo, y su documentación.] El **deber de información (arts. 13-14 RGPD)** debe cumplirse en formato **accesible y comprensible**.
 
@@ -190,8 +190,8 @@ Procedimientos para atender **acceso, rectificación, supresión, limitación, o
 
 ### Medidas frente a R1 (reidentificación)
 - **Seudonimización** por diseño: alias interno; el nombre real en **tabla separada** con acceso restringido y segregado.
-- Separación lógica y de permisos entre la tabla identificativa y la base operativa.
-- Cifrado en reposo de la tabla identificativa [CONFIRMAR]; cifrado en tránsito (TLS).
+- Separación lógica y de permisos entre la tabla identificativa (`datos_identificativos`) y la base operativa (que trabaja solo con alias).
+- **Cifrado en reposo: cubierto** — toda la base de datos (incluida la tabla identificativa) reside en Aiven, cifrada en reposo por defecto (LUKS/AES-256); cifrado en tránsito (TLS/`sslmode=require`). Ver `04-…` §2.
 - Minimización de datos de contexto que faciliten inferencia.
 - [Evaluar reglas para evitar reidentificación por grupos muy pequeños en informes.]
 - **Riesgo residual:** [ ]
@@ -212,9 +212,9 @@ Procedimientos para atender **acceso, rectificación, supresión, limitación, o
 - **Riesgo residual:** [ ]
 
 ### Medidas frente a R5 (brechas)
-- **Cifrado** en tránsito (TLS) y [en reposo — CONFIRMAR alcance].
-- **Copias de seguridad** [frecuencia, cifrado, prueba de restauración, retención].
-- Endurecimiento del servidor Postgres; segmentación de red; gestión de parches.
+- **Cifrado** en tránsito (TLS) y **en reposo** (Aiven cifra datos y backups por defecto, LUKS/AES-256).
+- **Copias de seguridad** gestionadas por Aiven (automáticas y cifradas). Pendiente: **confirmar plan con retención/PITR** adecuado y **registrar una prueba de restauración** (el plan gratuito retiene poco).
+- Base de datos gestionada por Aiven (parcheado y endurecimiento del proveedor); API sin estado en Cloud Run; secretos en variables de entorno del servicio, fuera de git.
 - Gestión de dispositivos (tablets): bloqueo, cifrado del dispositivo, borrado remoto, no persistencia local de datos sensibles [CONFIRMAR].
 - Registro de accesos (logs) y monitorización.
 - **Procedimiento de notificación de brechas** (arts. 33-34 RGPD): 72 h a la AEPD y, si alto riesgo, a los interesados; como encargado, Trazo notificará al responsable **sin dilación indebida** (art. 33.2). [DEFINIR protocolo y contactos.]
@@ -238,8 +238,8 @@ Procedimientos para atender **acceso, rectificación, supresión, limitación, o
 - **Riesgo residual:** [ ]
 
 ### Medidas frente a R9 (subencargados / ubicación)
-- Alojamiento en **servidor propio** y datos/backups en el **EEE** [CONFIRMAR].
-- Contratos art. 28 con subencargados; autorización del responsable; sin transferencias internacionales salvo con garantías del cap. V RGPD.
+- Alojamiento en **servicios gestionados del EEE**: API en Google Cloud Madrid; datos y backups en Aiven [CONFIRMAR región Aiven = EEE]; webs estáticas en Cloudflare (sin datos personales).
+- **Firmar/archivar el DPA de cada subencargado** (Google Cloud, Aiven, Cloudflare) con las garantías del cap. V (SCCs / EU-US DPF) para cualquier acceso desde fuera del EEE. Autorización del responsable en el contrato de encargo.
 - **Riesgo residual:** [ ]
 
 ### Medidas frente a R10 (continuidad)
@@ -266,9 +266,10 @@ Procedimientos para atender **acceso, rectificación, supresión, limitación, o
 |---|---|---|---|
 | Validar base jurídica (art. 6) y condición art. 9 | DPO / Asesoría | [FECHA] | [ ] |
 | Definir circuito de información/consentimiento y apoyo (Ley 8/2021) | DPO / Centro | [FECHA] | [ ] |
-| Confirmar cifrado en reposo, MFA y gestión de tablets | Trazo / IT | [FECHA] | [ ] |
-| Definir plazos de conservación y borrado/anonimización | DPO / Centro | [FECHA] | [ ] |
-| Confirmar ubicación EEE de datos y backups; contratos subencargados | Trazo | [FECHA] | [ ] |
+| Cifrado en reposo | Trazo | — | ✅ Cubierto (Aiven). Pendiente solo archivar DPA/certificaciones de Aiven |
+| Gestión de tablets (revocación de dispositivo perdido) | Trazo | — | ✅ Implementado (token revocable desde el panel). MFA del panel: [valorar] |
+| Definir plazos de conservación y borrado/anonimización | DPO / Centro | [FECHA] | [ ] Pendiente (ver propuesta en `04-…` / política de retención) |
+| Confirmar región EEE de Aiven y firmar DPAs de subencargados (Google/Aiven/Cloudflare) | Trazo | [FECHA] | [ ] API en Madrid ✅; falta confirmar región Aiven y archivar DPAs |
 | Aprobar cláusula informativa accesible | DPO | [FECHA] | [ ] |
 | Protocolo de brechas (33-34) y contactos | DPO / Trazo | [FECHA] | [ ] |
 | Decidir sobre consulta previa AEPD (art. 36) | DPO | [FECHA] | [ ] |

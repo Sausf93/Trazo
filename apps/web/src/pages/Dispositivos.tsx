@@ -5,6 +5,7 @@
  *  - Revoca (desvincula) una tablet (PATCH /dispositivos/{id}/revocar).
  */
 import { useState } from "react";
+import { QRCodeSVG } from "qrcode.react";
 import {
   emparejarDispositivo,
   listarDispositivos,
@@ -241,9 +242,17 @@ function EmparejarDispositivo({ centroId, onCreado }: { centroId: string; onCrea
             Tablet «{creado.nombre}» emparejada
           </strong>
           <p style={{ fontSize: 13.5, color: colors.textMuted, marginBottom: 10 }}>
-            Copia este código de emparejamiento ahora: es lo que escribes en la tablet para vincularla
-            (en la tablet: «Emparejar esta tablet» y pega el código), y no se vuelve a mostrar.
+            En la tablet, abre «Emparejar esta tablet» y <strong>escanea este QR</strong> (o pega el código de
+            abajo). Se muestra una sola vez: hazlo ahora.
           </p>
+          <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center", marginBottom: 12 }}>
+            <div style={{ background: "#fff", padding: 12, borderRadius: radius.sm, border: `1px solid ${colors.sand}`, lineHeight: 0 }}>
+              <QRCodeSVG value={creado.token} size={168} level="M" />
+            </div>
+            <div style={{ fontSize: 13, color: colors.textMuted, flex: "1 1 200px" }}>
+              Apunta la cámara de la tablet a este código y quedará vinculada a este centro.
+            </div>
+          </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
             <code
               style={{

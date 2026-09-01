@@ -27,6 +27,30 @@ _COLUMNAS = [
          "postgresql": "INTEGER NOT NULL DEFAULT 30"},
     ),
     (
+        # Suscripción: los centros que YA existen se quedan en 'cortesia' (acceso
+        # gratis que no caduca), para no cortar el acceso a nadie al desplegar.
+        # Los centros NUEVOS nacen en 'prueba' (lo pone el modelo, no este default).
+        "centros",
+        "estado_suscripcion",
+        {"sqlite": "VARCHAR(20) NOT NULL DEFAULT 'cortesia'",
+         "postgresql": "VARCHAR(20) NOT NULL DEFAULT 'cortesia'"},
+    ),
+    (
+        "centros",
+        "fecha_fin_prueba",
+        {"sqlite": "TIMESTAMP", "postgresql": "TIMESTAMPTZ"},
+    ),
+    (
+        "centros",
+        "stripe_customer_id",
+        {"sqlite": "VARCHAR(64)", "postgresql": "VARCHAR(64)"},
+    ),
+    (
+        "centros",
+        "stripe_subscription_id",
+        {"sqlite": "VARCHAR(64)", "postgresql": "VARCHAR(64)"},
+    ),
+    (
         "dispositivos",
         "visto_en",
         {"sqlite": "TIMESTAMP", "postgresql": "TIMESTAMPTZ"},

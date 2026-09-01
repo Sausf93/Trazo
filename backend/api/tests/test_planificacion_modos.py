@@ -29,7 +29,11 @@ async def _tablet(client, admin_h):
 async def _crear_usuario(client, headers, alias="Persona plan"):
     r = await client.post("/usuarios", headers=headers, json={"alias_interno": alias})
     assert r.status_code == 201, r.text
-    return r.json()["id"]
+    uid = r.json()["id"]
+    # Consentimiento (compuerta legal RGPD: sin él no se puede abrir sesión real).
+    await client.post(f"/usuarios/{uid}/consentimiento", headers=headers,
+                      json={"otorgado_por": "titular", "rol_otorgante": "titular"})
+    return uid
 
 
 # --------------------------------------------------------------------------

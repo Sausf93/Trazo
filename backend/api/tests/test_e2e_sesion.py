@@ -250,6 +250,9 @@ async def test_serie_descendente_genera_alerta_y_sugerencia(client):
     )
     assert r.status_code == 201, r.text
     uf = r.json()
+    # Consentimiento (compuerta legal RGPD: sin él no se puede abrir sesión real).
+    await client.post(f"/usuarios/{uf['id']}/consentimiento", headers=headers,
+                      json={"otorgado_por": "titular", "rol_otorgante": "titular"})
 
     # Plan con nivel en praxias (para poder sugerir bajar de nivel).
     r = await client.put(

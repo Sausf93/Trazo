@@ -24,6 +24,7 @@ export function PacientesPage() {
 
   const [busqueda, setBusqueda] = useState("");
   const [nuevoAlias, setNuevoAlias] = useState("");
+  const [nuevoNombre, setNuevoNombre] = useState("");
   const [creando, setCreando] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -39,8 +40,10 @@ export function PacientesPage() {
     setCreando(true);
     setError(null);
     try {
-      await crearUsuario({ alias_interno: alias });
+      const nombre = nuevoNombre.trim();
+      await crearUsuario({ alias_interno: alias, ...(nombre ? { nombre_real: nombre } : {}) });
       setNuevoAlias("");
+      setNuevoNombre("");
       usuarios.reload();
     } catch {
       setError("No se pudo añadir la persona. Inténtalo de nuevo.");
@@ -60,16 +63,29 @@ export function PacientesPage() {
       {/* Añadir + buscar */}
       <Card style={{ marginBottom: 24 }}>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "flex-end" }}>
-          <div style={{ flex: "1 1 240px" }}>
+          <div style={{ flex: "1 1 200px" }}>
             <label style={{ fontSize: 13, color: colors.textMuted, display: "block", marginBottom: 4 }}>
-              Añadir persona (alias interno, sin datos personales)
+              Alias interno (obligatorio, sin datos personales)
             </label>
             <input
               style={inputStyle}
               value={nuevoAlias}
-              aria-label="Añadir persona (alias interno)"
+              aria-label="Alias interno de la persona"
               placeholder="p. ej. Paco M."
               onChange={(e) => setNuevoAlias(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && anadir()}
+            />
+          </div>
+          <div style={{ flex: "1 1 200px" }}>
+            <label style={{ fontSize: 13, color: colors.textMuted, display: "block", marginBottom: 4 }}>
+              Nombre real (opcional, se guarda aparte)
+            </label>
+            <input
+              style={inputStyle}
+              value={nuevoNombre}
+              aria-label="Nombre real de la persona (opcional)"
+              placeholder="p. ej. Francisco Martín"
+              onChange={(e) => setNuevoNombre(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && anadir()}
             />
           </div>
@@ -77,6 +93,10 @@ export function PacientesPage() {
             {creando ? "Añadiendo…" : "Añadir"}
           </Button>
         </div>
+        <p style={{ fontSize: 12.5, color: colors.textFaint, marginTop: 8 }}>
+          El nombre real vive en una tabla separada de acceso restringido (RGPD) y solo se usa en el
+          informe a la familia. Para el día a día basta el alias. Puedes dejarlo vacío y añadirlo luego.
+        </p>
         {error && <p style={{ color: colors.coralDeep, marginTop: 8, fontSize: 14 }}>{error}</p>}
         <div style={{ marginTop: 16 }}>
           <input

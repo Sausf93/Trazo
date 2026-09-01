@@ -40,6 +40,9 @@ async def test_dejar_de_participar_genera_alerta(client):
     r = await client.post("/usuarios", headers=headers,
                           json={"alias_interno": "TestDesconexion", "nivel_base_json": {}})
     uf = r.json()
+    # Consentimiento (compuerta legal RGPD: sin él no se puede abrir sesión real).
+    await client.post(f"/usuarios/{uf['id']}/consentimiento", headers=headers,
+                      json={"otorgado_por": "titular", "rol_otorgante": "titular"})
     ej = (await client.get("/ejercicios?bloque=praxias&activo=true", headers=headers)).json()[0]
 
     async def _sesion_con(puntos):

@@ -85,6 +85,14 @@ async def main():
         centroB = coordB_login["centro_id"]
         check(coordA_login["rol"] == "admin_centro", "la coordinadora A es admin_centro (la que manda)")
 
+        # Contrato de encargo (DPA) de cada centro: la compuerta legal lo exige
+        # antes de abrir sesiones reales.
+        for _cn, _h in [("A", coordA), ("B", coordB)]:
+            rd = await c.post("/documentos", headers=_h, json={
+                "tipo": "dpa", "nombre_archivo": "dpa.txt", "mime": "text/plain",
+                "contenido_b64": "RFBBIGRlbW8="})
+            check(rd.status_code in (200, 201), "DPA centro %s (%s)" % (_cn, rd.status_code))
+
         # --- La coordinadora crea 2 maestras (integradoras) ---
         print("\n== Coordinadora crea su equipo (2 maestras) ==")
         maestras = {}
@@ -101,7 +109,11 @@ async def main():
         for i in range(10):
             r = await c.post("/usuarios", headers=coordA, json={"alias_interno": "Usuario %02d" % (i + 1)})
             assert r.status_code == 201, r.text
-            usuarios.append(r.json()["id"])
+            uid = r.json()["id"]
+            usuarios.append(uid)
+            # Consentimiento (compuerta legal): sin él no se abre sesión real.
+            await c.post("/usuarios/%s/consentimiento" % uid, headers=coordA,
+                         json={"otorgado_por": "titular", "rol_otorgante": "titular"})
         check(len(usuarios) == 10, "10 usuarios creados")
 
         # Plan + objetivo por usuario (la psicóloga planifica y plantea).

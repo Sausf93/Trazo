@@ -20,12 +20,29 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login", auto_error=True)
 # los datos se conservan. Se comprueba en CADA petición, así el bloqueo del
 # super-admin surte efecto al instante, incluso con tokens ya emitidos.
 CENTRO_SUSPENDIDO = "Centro suspendido. Contacta con Trazo para reactivarlo."
+SUSCRIPCION_SUSPENDIDA = (
+    "La suscripción del centro está suspendida (pago pendiente). "
+    "Contacta con Trazo para reactivarla.")
+PRUEBA_TERMINADA = (
+    "El periodo de prueba ha terminado. Activa la suscripción del centro para "
+    "seguir usando Trazo.")
 
 
 async def _exigir_centro_activo(db: AsyncSession, centro_id: str) -> None:
     centro = await db.get(Centro, centro_id)
     if centro is None or not centro.activo:
         raise HTTPException(status.HTTP_403_FORBIDDEN, CENTRO_SUSPENDIDO)
+    # Compuerta de suscripción: 'activa' y 'cortesia' pasan siempre; 'suspendido'
+    # y 'cancelada' se cortan; 'prueba' pasa hasta que caduca fecha_fin_prueba.
+    estado = getattr(centro, "estado_suscripcion", "cortesia") or "cortesia"
+    if estado in ("suspendido", "cancelada"):
+        raise HTTPException(status.HTTP_403_FORBIDDEN, SUSCRIPCION_SUSPENDIDA)
+    if estado == "prueba" and centro.fecha_fin_prueba is not None:
+        fin = centro.fecha_fin_prueba
+        if fin.tzinfo is None:  # sqlite guarda naive; normaliza a UTC
+            fin = fin.replace(tzinfo=timezone.utc)
+        if fin < datetime.now(timezone.utc):
+            raise HTTPException(status.HTTP_403_FORBIDDEN, PRUEBA_TERMINADA)
 
 
 async def get_current_staff(

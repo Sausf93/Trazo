@@ -17,12 +17,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.bootstrap import alta_centro_admin
 from app.config import settings
 from app.database import get_db
-from app.models import Centro, Intento, UsuarioFinal, UsuarioStaff
+from app.models import ESTADOS_SUSCRIPCION, Centro, Intento, UsuarioFinal, UsuarioStaff
 from app.schemas import (
     CentroEstadoIn,
     CentroInfoOut,
     CentroPlataformaIn,
     CentroPlataformaOut,
+    CentroSuscripcionIn,
     StaffOut,
 )
 
@@ -107,6 +108,8 @@ async def listar_centros(
             personas_activas=act,
             sobre_tope=bool(tope) and act > tope,
             personas_extra=extra,
+            estado_suscripcion=getattr(c, "estado_suscripcion", "cortesia"),
+            fecha_fin_prueba=getattr(c, "fecha_fin_prueba", None),
         ))
     return salida
 
@@ -148,4 +151,40 @@ async def cambiar_estado_centro(
     return CentroInfoOut(
         id=centro.id, nombre=centro.nombre, activo=centro.activo,
         creado_en=centro.creado_en,
+        estado_suscripcion=centro.estado_suscripcion,
+        fecha_fin_prueba=centro.fecha_fin_prueba,
+    )
+
+
+@router.patch("/centros/{centro_id}/suscripcion", response_model=CentroInfoOut)
+async def cambiar_suscripcion(
+    centro_id: str,
+    body: CentroSuscripcionIn,
+    x_platform_token: str | None = Header(default=None, alias="X-Platform-Token"),
+    db: AsyncSession = Depends(get_db),
+):
+    """Super-admin ajusta la suscripción de un centro a mano: darle CORTESÍA (gratis
+    sin caducar), SUSPENDER, reactivar, o extender la PRUEBA unos días. Útil para
+    dar acceso gratis a un centro concreto o para gestionar impagos sin Stripe."""
+    _exigir_token(x_platform_token)
+    centro = await db.get(Centro, centro_id)
+    if centro is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Centro no encontrado")
+    if body.dias_prueba is not None:
+        centro.estado_suscripcion = "prueba"
+        centro.fecha_fin_prueba = datetime.now(timezone.utc) + timedelta(
+            days=body.dias_prueba)
+    if body.estado is not None:
+        if body.estado not in ESTADOS_SUSCRIPCION:
+            raise HTTPException(
+                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                f"estado inválido (usa: {', '.join(ESTADOS_SUSCRIPCION)})")
+        centro.estado_suscripcion = body.estado
+    await db.commit()
+    await db.refresh(centro)
+    return CentroInfoOut(
+        id=centro.id, nombre=centro.nombre, activo=centro.activo,
+        creado_en=centro.creado_en,
+        estado_suscripcion=centro.estado_suscripcion,
+        fecha_fin_prueba=centro.fecha_fin_prueba,
     )

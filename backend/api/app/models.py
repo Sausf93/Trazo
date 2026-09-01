@@ -15,7 +15,7 @@ y para que la app de tablet pueda generar UUIDs en cliente (sync offline).
 from __future__ import annotations
 
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from sqlalchemy import (
     Boolean,
@@ -40,6 +40,20 @@ def _uuid() -> str:
 
 def _now() -> datetime:
     return datetime.now(timezone.utc)
+
+
+def _fin_prueba() -> datetime:
+    """Fin del periodo de prueba por defecto de un centro nuevo: 30 días."""
+    return _now() + timedelta(days=30)
+
+
+# Estados de la suscripción de un centro (facturación por Stripe).
+#   prueba     = periodo de prueba gratuito (hasta fecha_fin_prueba).
+#   activa     = suscripción de pago al día.
+#   cortesia   = acceso gratis concedido por la plataforma (no caduca).
+#   suspendido = impago o suspensión: se corta el acceso.
+#   cancelada  = el centro canceló; se comporta como suspendido para el acceso.
+ESTADOS_SUSCRIPCION = ("prueba", "activa", "cortesia", "suspendido", "cancelada")
 
 
 # --------------------------------------------------------------------------
@@ -140,6 +154,16 @@ class Centro(Base):
     # se avisa (base de la facturación por excedente). 0/None = sin límite.
     tope_personas: Mapped[int] = mapped_column(Integer, default=30, nullable=False)
     creado_en: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+    # --- Suscripción / facturación (Stripe) ---
+    # Un centro nuevo nace en PRUEBA (30 días). La compuerta de acceso mira esto:
+    # 'suspendido'/'cancelada' o prueba caducada -> se corta el acceso.
+    estado_suscripcion: Mapped[str] = mapped_column(
+        String(20), default="prueba", nullable=False)
+    fecha_fin_prueba: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), default=_fin_prueba, nullable=True)
+    stripe_customer_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    stripe_subscription_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
 
     staff: Mapped[list[UsuarioStaff]] = relationship(back_populates="centro")
     usuarios_finales: Mapped[list[UsuarioFinal]] = relationship(back_populates="centro")

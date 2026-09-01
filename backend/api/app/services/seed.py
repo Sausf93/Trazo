@@ -20,8 +20,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import (
     Centro,
+    Consentimiento,
     DatosIdentificativos,
     Dispositivo,
+    DocumentoLegal,
     EjercicioCatalogo,
     Intento,
     PlanPacienteLinea,
@@ -135,6 +137,14 @@ async def sembrar(db: AsyncSession) -> None:
     db.add(centro)
     await db.flush()
 
+    # Contrato de encargo (DPA) del centro: la compuerta legal exige que exista
+    # antes de abrir sesiones reales. En la demo lo damos por firmado.
+    db.add(DocumentoLegal(
+        centro_id=centro.id, tipo="dpa", version="demo",
+        nombre_archivo="dpa-demo.txt", mime="text/plain", tamano=0,
+        contenido_b64="", subido_por="seed",
+    ))
+
     db.add_all([
         UsuarioStaff(centro_id=centro.id, nombre="Marta (dirección)", rol="admin_centro",
                      email="admin@trazo.local", password_hash=hash_password(PASSWORD_DEMO)),
@@ -167,6 +177,12 @@ async def sembrar(db: AsyncSession) -> None:
         db.add(uf)
         await db.flush()
         db.add(DatosIdentificativos(usuario_final_id=uf.id, nombre_real=nombre_real))
+        # Consentimiento registrado: la compuerta legal exige que cada persona lo
+        # tenga antes de entrar en una sesión real. En la demo lo damos por dado.
+        db.add(Consentimiento(
+            usuario_final_id=uf.id, tipo="uso_y_seguimiento",
+            otorgado_por=nombre_real, rol_otorgante="titular",
+        ))
         participantes.append(uf)
 
     # El catálogo de actividades ya se sincroniza al arrancar (main.py, común a

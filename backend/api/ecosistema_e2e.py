@@ -83,6 +83,13 @@ async def main():
             centro_id = login_c["centro_id"]
             check(login_c["rol"] == "admin_centro", "%s: coordinadora es admin_centro (la que manda)" % cn)
 
+            # Contrato de encargo (DPA) del centro: la compuerta legal lo exige
+            # antes de abrir sesiones reales.
+            rd = await c.post("/documentos", headers=coord, json={
+                "tipo": "dpa", "nombre_archivo": "dpa.txt", "mime": "text/plain",
+                "contenido_b64": "RFBBIGRlbW8="})
+            check(rd.status_code in (200, 201), "%s: DPA subido (%s)" % (cn, rd.status_code))
+
             # 4 facilitadoras (integradoras)
             facils = []
             for i in range(4):
@@ -100,7 +107,11 @@ async def main():
             for i in range(20):
                 r = await c.post("/usuarios", headers=coord, json={"alias_interno": "%s P%02d" % (slug, i + 1)})
                 assert r.status_code == 201, r.text
-                usuarios.append(r.json()["id"])
+                uid = r.json()["id"]
+                usuarios.append(uid)
+                # Consentimiento (compuerta legal): sin él no se abre sesión real.
+                await c.post("/usuarios/%s/consentimiento" % uid, headers=coord,
+                             json={"otorgado_por": "titular", "rol_otorgante": "titular"})
             planificados = objetivados = 0
             for k, uid in enumerate(usuarios):
                 bloque = BLOQUES[k % len(BLOQUES)]

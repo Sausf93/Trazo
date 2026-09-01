@@ -190,17 +190,35 @@ function tarjetaCentro(c){
   const btn = c.activo
     ? `<button class="btn coral" onclick="bloquear('${c.id}', false)">Bloquear</button>`
     : `<button class="btn" onclick="bloquear('${c.id}', true)">Reactivar</button>`;
+  // Suscripción: estado + fin de prueba, con color según el estado.
+  const est = c.estado_suscripcion || 'cortesia';
+  const estColor = est==='activa' ? '#1F7A70' : est==='cortesia' ? '#0a7a5a'
+    : est==='prueba' ? '#C97B4A' : '#b00020';
+  const finP = (est==='prueba' && c.fecha_fin_prueba) ? ' · hasta '+fecha(c.fecha_fin_prueba) : '';
+  const subBadge = `<span class="badge" style="background:#F2ECDF;color:${estColor}">suscripción: ${est}${finP}</span>`;
   return `<div class="centro ${c.activo ? '' : 'blocked'}" id="c-${c.id}">
     <div class="row">
       <div class="grow">
-        <h3 style="font-size:19px">${esc(c.nombre)} &nbsp;${badge} &nbsp;${topeBadge}</h3>
+        <h3 style="font-size:19px">${esc(c.nombre)} &nbsp;${badge} &nbsp;${topeBadge} &nbsp;${subBadge}</h3>
         <div class="muted">Alta: ${fecha(c.creado_en)} · ${c.n_staff_activos}/${c.n_staff} cuentas activas · ${c.n_pacientes} personas dadas de alta · ${act} activas este mes (plan: ${tope})</div>
       </div>
       <button class="btn ghost" onclick="verStaff('${c.id}')">Ver cuentas</button>
       ${btn}
     </div>
+    <div class="row" style="margin-top:8px; gap:6px; flex-wrap:wrap">
+      <span class="muted" style="align-self:center">Suscripción:</span>
+      <button class="btn ghost" onclick="suscripcion('${c.id}',{estado:'cortesia'})">Cortesía (gratis)</button>
+      <button class="btn ghost" onclick="suscripcion('${c.id}',{dias_prueba:30})">+30 días prueba</button>
+      <button class="btn ghost" onclick="suscripcion('${c.id}',{estado:'activa'})">Marcar activa</button>
+      <button class="btn coral" onclick="suscripcion('${c.id}',{estado:'suspendido'})">Suspender</button>
+    </div>
     <div class="staff-list hidden" id="s-${c.id}"></div>
   </div>`;
+}
+
+async function suscripcion(id, body){
+  try { await api("/plataforma/centros/"+id+"/suscripcion", { method:"PATCH", body: JSON.stringify(body) }); cargar(); }
+  catch(e){ alert("No se pudo cambiar la suscripción: "+e.message); }
 }
 
 async function bloquear(id, activo){

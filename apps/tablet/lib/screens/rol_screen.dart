@@ -6,6 +6,7 @@ import '../models.dart';
 import '../services/actualizacion.dart';
 import '../theme.dart';
 import '../widgets/trazo_logo.dart';
+import 'escanear_qr_screen.dart';
 import 'maestra_picker_screen.dart';
 import 'maestra_screen.dart';
 import 'participante_screen.dart';
@@ -57,7 +58,8 @@ class _RolScreenState extends State<RolScreen> {
 
   Future<void> _emparejar() async {
     final ctrl = TextEditingController();
-    final code = await showDialog<String>(
+    // El diálogo devuelve: el código tecleado, o '__scan__' si eligen escanear.
+    final res = await showDialog<String>(
       context: context,
       builder: (_) => AlertDialog(
         title: const Text('Emparejar esta tablet'),
@@ -65,15 +67,23 @@ class _RolScreenState extends State<RolScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text(
-                'Pega el código de emparejamiento que da la responsable desde '
-                'el panel, en la sección «Tablets».',
+                'Lo más fácil: escanea el QR que muestra el panel en «Tablets». '
+                'O pega el código a mano.',
                 style: TextStyle(fontSize: 15, color: TrazoColors.sageDark)),
-            const SizedBox(height: 12),
+            const SizedBox(height: 14),
+            ElevatedButton.icon(
+              onPressed: () => Navigator.pop(context, '__scan__'),
+              icon: const Icon(Icons.qr_code_scanner),
+              label: const Text('Escanear QR'),
+              style: ElevatedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(52)),
+            ),
+            const SizedBox(height: 14),
             TextField(
               controller: ctrl,
-              autofocus: true,
               decoration: const InputDecoration(
-                  border: OutlineInputBorder(), hintText: 'código'),
+                  border: OutlineInputBorder(),
+                  labelText: 'o pega el código a mano'),
             ),
           ],
         ),
@@ -87,6 +97,14 @@ class _RolScreenState extends State<RolScreen> {
         ],
       ),
     );
+    if (res == null || res.isEmpty) return;
+    // Si eligieron escanear, abrimos la cámara y usamos lo leído como código.
+    String? code = res;
+    if (res == '__scan__') {
+      if (!mounted) return;
+      code = await Navigator.of(context).push<String>(
+          MaterialPageRoute(builder: (_) => const EscanearQrScreen()));
+    }
     if (code == null || code.isEmpty) return;
     try {
       final DispositivoYo yo =

@@ -51,6 +51,11 @@ export function crearStaff(body: {
   return http.post<Staff>("/staff", body);
 }
 
+/** Inicia el pago de la suscripción: devuelve la URL de Stripe Checkout. */
+export function crearCheckoutSuscripcion(): Promise<{ url: string }> {
+  return http.post<{ url: string }>("/facturacion/checkout", {});
+}
+
 export function actualizarStaff(
   id: string,
   body: { nombre?: string; activo?: boolean },
@@ -68,7 +73,7 @@ export function listarUsuarios(centroId: string, signal?: AbortSignal): Promise<
   return http.get<UsuarioFinal[]>(`/centros/${encodeURIComponent(centroId)}/usuarios`, signal);
 }
 
-export function crearUsuario(body: { alias_interno: string; nivel_base_json?: Record<string, unknown> }): Promise<UsuarioFinal> {
+export function crearUsuario(body: { alias_interno: string; nombre_real?: string; nivel_base_json?: Record<string, unknown> }): Promise<UsuarioFinal> {
   return http.post<UsuarioFinal>("/usuarios", body);
 }
 

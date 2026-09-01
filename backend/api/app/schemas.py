@@ -125,11 +125,25 @@ class CentroInfoOut(BaseModel):
     personas_activas: int = 0
     sobre_tope: bool = False
     personas_extra: int = 0
+    # Suscripción: estado y fin de prueba (para que el super-admin lo vea).
+    estado_suscripcion: str = "prueba"
+    fecha_fin_prueba: datetime | None = None
 
 
 class CentroEstadoIn(BaseModel):
     # activo=false BLOQUEA el centro (impago, etc.); true lo REACTIVA. No borra nada.
     activo: bool
+
+
+class CentroSuscripcionIn(BaseModel):
+    """Super-admin fija el estado de suscripción de un centro a mano (cortesía,
+    suspender, reactivar) o extiende la prueba unos días."""
+    estado: str | None = None  # prueba|activa|cortesia|suspendido|cancelada
+    dias_prueba: int | None = None  # si se da, pone estado='prueba' y fin = hoy+dias
+
+
+class CheckoutOut(BaseModel):
+    url: str
 
 
 class TokenOut(BaseModel):
