@@ -34,6 +34,29 @@ async def _personas_activas(db: AsyncSession, centro_id: str) -> int:
     return int(n)
 
 
+async def sincronizar_cantidad_stripe(db: AsyncSession, centro: Centro | None) -> None:
+    """Ajusta la cantidad facturada en Stripe al nº de personas activas del centro,
+    para que el cobro por tramos (125 €/30 + 3 €/extra) sea SIEMPRE fiel al uso real.
+
+    Solo actúa si el centro tiene una suscripción de pago ACTIVA (en prueba/cortesía
+    no se llama a Stripe: cero coste en el alta/baja normal). Nunca rompe la
+    operación de la persona: si Stripe falla, se ignora en silencio."""
+    if not settings.stripe_activo or centro is None:
+        return
+    if centro.estado_suscripcion != "activa" or not centro.stripe_subscription_id:
+        return
+    try:
+        stripe.api_key = settings.stripe_secret_key
+        n = max(1, await _personas_activas(db, centro.id))
+        sub = stripe.Subscription.retrieve(centro.stripe_subscription_id)
+        item = sub["items"]["data"][0]
+        if int(item.get("quantity", 0)) != n:
+            stripe.SubscriptionItem.modify(
+                item["id"], quantity=n, proration_behavior="none")
+    except Exception:  # noqa: BLE001 — nunca romper el alta/baja por Stripe
+        pass
+
+
 @router.post("/facturacion/checkout", response_model=CheckoutOut)
 async def crear_checkout(
     db: AsyncSession = Depends(get_db),

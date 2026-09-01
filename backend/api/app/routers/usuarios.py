@@ -9,6 +9,7 @@ from app.database import get_db
 from app.deps import auditar, get_current_staff, usuario_del_centro
 from app.models import (
     ROLES_OTORGANTE,
+    Centro,
     Consentimiento,
     DatosIdentificativos,
     DocumentoLegal,
@@ -18,6 +19,7 @@ from app.models import (
     UsuarioFinal,
     UsuarioStaff,
 )
+from app.routers.facturacion import sincronizar_cantidad_stripe
 
 # Plan por defecto al dar de alta a una persona: una sesión ~20 actividades
 # repartidas por 7 áreas (una sesión de mayores dura ~30 min, con la maestra
@@ -93,6 +95,8 @@ async def crear_usuario(
     await auditar(db, staff, "crear_usuario", usuario_final_id=uf.id)
     await db.commit()
     await db.refresh(uf)
+    # Si el centro paga por suscripción, ajusta la cantidad facturada en Stripe.
+    await sincronizar_cantidad_stripe(db, await db.get(Centro, staff.centro_id))
     return uf
 
 
@@ -185,6 +189,7 @@ async def suprimir_usuario(
     await auditar(db, staff, "supresion_rgpd", usuario_final_id=uf.id,
                   detalle="disociada: borrados datos identificativos, consentimientos y documentos legales")
     await db.commit()
+    await sincronizar_cantidad_stripe(db, await db.get(Centro, staff.centro_id))
     return None
 
 
@@ -216,6 +221,7 @@ async def dar_de_baja_usuario(
                   detalle=f"salas_limpiadas={len(part_ids)}")
     await db.commit()
     await db.refresh(uf)
+    await sincronizar_cantidad_stripe(db, await db.get(Centro, staff.centro_id))
     return uf
 
 
