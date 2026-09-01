@@ -335,8 +335,10 @@ class _SeleccionMultipleWidgetState extends State<SeleccionMultipleWidget> {
         decoration: BoxDecoration(
           color: c,
           shape: BoxShape.circle,
+          // Borde marcado para que 'blanco'/'amarillo' se distingan del fondo
+          // crema (baja visión).
           border: Border.all(
-              color: TrazoColors.ink.withValues(alpha: 0.25), width: 2),
+              color: TrazoColors.ink.withValues(alpha: 0.5), width: 2.5),
         ),
       );
 
