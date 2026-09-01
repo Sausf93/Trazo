@@ -19471,7 +19471,7 @@
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: cuadrado estrella corazon luna",
+    "nombre": "Encaja formas: cuadrado estrella corazón círculo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -19518,13 +19518,14 @@
           "label": "Círculo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     }
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado triangulo luna",
+    "nombre": "Encaja formas: círculo cuadrado triángulo estrella",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -19571,14 +19572,15 @@
           "label": "Estrella"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado corazon",
+    "nombre": "Encaja formas: círculo cuadrado corazón",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -19616,14 +19618,15 @@
           "label": "Corazón"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "razonamiento",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo estrella corazon luna",
+    "nombre": "Encaja formas: círculo estrella corazón cuadrado",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -19670,13 +19673,14 @@
           "label": "Cuadrado"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     }
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: estrella corazon luna",
+    "nombre": "Encaja formas: estrella corazón círculo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -19714,14 +19718,15 @@
           "label": "Círculo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo triangulo estrella corazon",
+    "nombre": "Encaja formas: círculo triángulo estrella corazón",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -19768,14 +19773,15 @@
           "label": "Corazón"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "razonamiento",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado estrella corazon",
+    "nombre": "Encaja formas: círculo cuadrado estrella corazón",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -19822,13 +19828,14 @@
           "label": "Corazón"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     }
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: triangulo estrella luna",
+    "nombre": "Encaja formas: triángulo estrella círculo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -19866,14 +19873,15 @@
           "label": "Círculo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "razonamiento",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: cuadrado triangulo corazon luna",
+    "nombre": "Encaja formas: cuadrado triángulo corazón círculo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -19920,14 +19928,15 @@
           "label": "Círculo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "razonamiento",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: cuadrado triangulo estrella",
+    "nombre": "Encaja formas: cuadrado triángulo estrella",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -19965,14 +19974,15 @@
           "label": "Estrella"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: cuadrado triangulo corazon",
+    "nombre": "Encaja formas: cuadrado triángulo corazón",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -20010,14 +20020,15 @@
           "label": "Corazón"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: triangulo corazon luna",
+    "nombre": "Encaja formas: triángulo corazón círculo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -20055,14 +20066,15 @@
           "label": "Círculo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "razonamiento",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo triangulo corazon",
+    "nombre": "Encaja formas: círculo triángulo corazón",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -20100,14 +20112,15 @@
           "label": "Corazón"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado estrella",
+    "nombre": "Encaja formas: círculo cuadrado estrella",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -20145,7 +20158,8 @@
           "label": "Estrella"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
@@ -21622,7 +21636,7 @@
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado triangulo",
+    "nombre": "Encaja formas: círculo cuadrado triángulo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -21660,14 +21674,15 @@
           "zona_correcta": "zona_triangulo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado luna",
+    "nombre": "Encaja formas: círculo cuadrado triángulo (2)",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -21705,14 +21720,15 @@
           "zona_correcta": "zona_triangulo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "razonamiento",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo triangulo estrella",
+    "nombre": "Encaja formas: círculo triángulo estrella",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -21750,14 +21766,15 @@
           "zona_correcta": "zona_estrella"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo triangulo luna",
+    "nombre": "Encaja formas: círculo triángulo cuadrado",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -21795,14 +21812,15 @@
           "zona_correcta": "zona_cuadrado"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo estrella corazon",
+    "nombre": "Encaja formas: círculo estrella corazón",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -21840,14 +21858,15 @@
           "zona_correcta": "zona_corazon"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo estrella luna",
+    "nombre": "Encaja formas: círculo estrella cuadrado",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -21885,14 +21904,15 @@
           "zona_correcta": "zona_cuadrado"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo corazon luna",
+    "nombre": "Encaja formas: círculo corazón cuadrado",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -21930,14 +21950,15 @@
           "zona_correcta": "zona_cuadrado"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "razonamiento",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: cuadrado triangulo luna",
+    "nombre": "Encaja formas: cuadrado triángulo círculo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -21975,14 +21996,15 @@
           "zona_correcta": "zona_circulo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: cuadrado estrella corazon",
+    "nombre": "Encaja formas: cuadrado estrella corazón",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -22020,14 +22042,15 @@
           "zona_correcta": "zona_corazon"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "razonamiento",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: cuadrado estrella luna",
+    "nombre": "Encaja formas: cuadrado estrella círculo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -22065,14 +22088,15 @@
           "zona_correcta": "zona_circulo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "razonamiento",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: cuadrado corazon luna",
+    "nombre": "Encaja formas: cuadrado corazón círculo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -22110,14 +22134,15 @@
           "zona_correcta": "zona_circulo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: triangulo estrella corazon",
+    "nombre": "Encaja formas: triángulo estrella corazón",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "facil",
@@ -22155,14 +22180,15 @@
           "zona_correcta": "zona_corazon"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado triangulo estrella",
+    "nombre": "Encaja formas: círculo cuadrado triángulo estrella (2)",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22209,14 +22235,15 @@
           "zona_correcta": "zona_estrella"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado triangulo corazon",
+    "nombre": "Encaja formas: círculo cuadrado triángulo corazón",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22263,14 +22290,15 @@
           "zona_correcta": "zona_corazon"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado estrella luna",
+    "nombre": "Encaja formas: círculo cuadrado estrella triángulo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22317,14 +22345,15 @@
           "zona_correcta": "zona_triangulo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado corazon luna",
+    "nombre": "Encaja formas: círculo cuadrado corazón triángulo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22371,14 +22400,15 @@
           "zona_correcta": "zona_triangulo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "razonamiento",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo triangulo estrella luna",
+    "nombre": "Encaja formas: círculo triángulo estrella cuadrado",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22425,14 +22455,15 @@
           "zona_correcta": "zona_cuadrado"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo triangulo corazon luna",
+    "nombre": "Encaja formas: círculo triángulo corazón cuadrado",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22479,14 +22510,15 @@
           "zona_correcta": "zona_cuadrado"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: cuadrado triangulo estrella corazon",
+    "nombre": "Encaja formas: cuadrado triángulo estrella corazón",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22533,14 +22565,15 @@
           "zona_correcta": "zona_corazon"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: cuadrado triangulo estrella luna",
+    "nombre": "Encaja formas: cuadrado triángulo estrella círculo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22587,14 +22620,15 @@
           "zona_correcta": "zona_circulo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: triangulo estrella corazon luna",
+    "nombre": "Encaja formas: triángulo estrella corazón círculo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22641,14 +22675,15 @@
           "zona_correcta": "zona_circulo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado triangulo estrella corazon",
+    "nombre": "Encaja formas: círculo cuadrado triángulo estrella corazón",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22704,14 +22739,15 @@
           "zona_correcta": "zona_corazon"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado triangulo estrella luna",
+    "nombre": "Encaja formas: círculo cuadrado triángulo estrella corazón (2)",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22767,14 +22803,15 @@
           "zona_correcta": "zona_corazon"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado triangulo corazon luna",
+    "nombre": "Encaja formas: círculo cuadrado triángulo corazón estrella",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22830,14 +22867,15 @@
           "zona_correcta": "zona_estrella"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo cuadrado estrella corazon luna",
+    "nombre": "Encaja formas: círculo cuadrado estrella corazón triángulo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22893,14 +22931,15 @@
           "zona_correcta": "zona_triangulo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: circulo triangulo estrella corazon luna",
+    "nombre": "Encaja formas: círculo triángulo estrella corazón cuadrado",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -22956,14 +22995,15 @@
           "zona_correcta": "zona_cuadrado"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
   {
     "bloque": "percepcion",
     "plantilla_tipo": "arrastrar_posicion",
-    "nombre": "Encaja formas: cuadrado triangulo estrella corazon luna",
+    "nombre": "Encaja formas: cuadrado triángulo estrella corazón círculo",
     "descripcion": "Asocia cada figura con su nombre: coloca la figura sobre el cartel que dice cómo se llama.",
     "parametros_json": {
       "dificultad": "media",
@@ -23019,7 +23059,8 @@
           "zona_correcta": "zona_circulo"
         }
       ],
-      "instruccion": "Pon cada figura donde dice su nombre"
+      "instruccion": "Pon cada figura donde dice su nombre",
+      "titulo": null
     },
     "estado": "validada"
   },
@@ -168210,6 +168251,368 @@
       "objetos": [
         "naranja",
         "limon"
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Parejas: en la cocina",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "sarten",
+          "label": "sarten"
+        },
+        {
+          "id": "olla",
+          "label": "olla"
+        },
+        {
+          "id": "cuchara",
+          "label": "cuchara"
+        },
+        {
+          "id": "cuchillo",
+          "label": "cuchillo"
+        },
+        {
+          "id": "taza",
+          "label": "taza"
+        },
+        {
+          "id": "plato",
+          "label": "plato"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Parejas: animales domésticos",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "perro",
+          "label": "perro"
+        },
+        {
+          "id": "gato",
+          "label": "gato"
+        },
+        {
+          "id": "conejo",
+          "label": "conejo"
+        },
+        {
+          "id": "raton",
+          "label": "raton"
+        },
+        {
+          "id": "pajaro",
+          "label": "pajaro"
+        },
+        {
+          "id": "pez",
+          "label": "pez"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Parejas: transporte",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "coche",
+          "label": "coche"
+        },
+        {
+          "id": "autobus",
+          "label": "autobus"
+        },
+        {
+          "id": "tren",
+          "label": "tren"
+        },
+        {
+          "id": "avion",
+          "label": "avión"
+        },
+        {
+          "id": "barco",
+          "label": "barco"
+        },
+        {
+          "id": "bicicleta",
+          "label": "bicicleta"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Parejas: verduras de la huerta",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "tomate",
+          "label": "tomate"
+        },
+        {
+          "id": "cebolla",
+          "label": "cebolla"
+        },
+        {
+          "id": "lechuga",
+          "label": "lechuga"
+        },
+        {
+          "id": "pimiento",
+          "label": "pimiento"
+        },
+        {
+          "id": "zanahoria",
+          "label": "zanahoria"
+        },
+        {
+          "id": "patata",
+          "label": "patata"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Parejas: en el baño",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "parejas",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "jabon",
+          "label": "jabón"
+        },
+        {
+          "id": "toalla",
+          "label": "toalla"
+        },
+        {
+          "id": "espejo",
+          "label": "espejo"
+        },
+        {
+          "id": "cepillo_dientes",
+          "label": "cepillo de dientes"
+        },
+        {
+          "id": "cepillo",
+          "label": "cepillo de pelo"
+        },
+        {
+          "id": "vaso",
+          "label": "vaso"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Parejas: herramientas",
+    "bloque": "praxias",
+    "plantilla_tipo": "parejas",
+    "parametros_json": {
+      "dificultad": "media",
+      "banco": [
+        {
+          "id": "martillo",
+          "label": "martillo"
+        },
+        {
+          "id": "destornillador",
+          "label": "destornillador"
+        },
+        {
+          "id": "llave",
+          "label": "llave"
+        },
+        {
+          "id": "cepillo",
+          "label": "cepillo de pelo"
+        },
+        {
+          "id": "cuchara",
+          "label": "cuchara"
+        },
+        {
+          "id": "olla",
+          "label": "olla"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: en el salón",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "sofa",
+          "label": "sofa"
+        },
+        {
+          "id": "silla",
+          "label": "silla"
+        },
+        {
+          "id": "mesa",
+          "label": "mesa"
+        },
+        {
+          "id": "lampara",
+          "label": "lampara"
+        },
+        {
+          "id": "television",
+          "label": "television"
+        },
+        {
+          "id": "telefono",
+          "label": "telefono"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: frutas y verduras",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "manzana",
+          "label": "manzana"
+        },
+        {
+          "id": "tomate",
+          "label": "tomate"
+        },
+        {
+          "id": "pera",
+          "label": "pera"
+        },
+        {
+          "id": "zanahoria",
+          "label": "zanahoria"
+        },
+        {
+          "id": "naranja",
+          "label": "naranja"
+        },
+        {
+          "id": "lechuga",
+          "label": "lechuga"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: objetos con letras",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "libro",
+          "label": "libro"
+        },
+        {
+          "id": "lapiz",
+          "label": "lapiz"
+        },
+        {
+          "id": "gafas",
+          "label": "gafas"
+        },
+        {
+          "id": "reloj",
+          "label": "reloj"
+        },
+        {
+          "id": "telefono",
+          "label": "telefono"
+        },
+        {
+          "id": "llave",
+          "label": "llave"
+        }
+      ]
+    },
+    "estado": "en_pruebas"
+  },
+  {
+    "nombre": "Memoria: en la granja",
+    "bloque": "atencion_memoria",
+    "plantilla_tipo": "memoria_visual",
+    "parametros_json": {
+      "dificultad": "media",
+      "recordar_min": 2,
+      "recordar_max": 4,
+      "segundos": 60,
+      "banco": [
+        {
+          "id": "vaca",
+          "label": "vaca"
+        },
+        {
+          "id": "oveja",
+          "label": "oveja"
+        },
+        {
+          "id": "cerdo",
+          "label": "cerdo"
+        },
+        {
+          "id": "caballo",
+          "label": "caballo"
+        },
+        {
+          "id": "gallina",
+          "label": "gallina"
+        },
+        {
+          "id": "pollo",
+          "label": "pollo"
+        }
       ]
     },
     "estado": "en_pruebas"

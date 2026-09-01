@@ -543,7 +543,9 @@ class IlustracionResolver {
   static String? fotoPara(String raw) {
     final s = normaliza(raw);
     final canon = _alias[s] ?? s;
-    return _fotos[canon] ?? _fotos[s];
+    // La foto del PROPIO id manda sobre la del alias: así 'boligrafo' usa
+    // boligrafo.png y no la de 'lapiz' (su alias), que lo hacía idéntico al lápiz.
+    return _fotos[s] ?? _fotos[canon];
   }
 
   /// `true` si existe una ilustración concreta (FOTO o dibujo) para el id.

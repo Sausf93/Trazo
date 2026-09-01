@@ -55,11 +55,12 @@ String _resumenMetricas(Map<String, dynamic> m) {
   };
   final partes = <String>[];
   m.forEach((k, v) {
-    // Se omite el ruido técnico (tiempos en ms, ids, etc.).
-    if (k.contains('tiempo') || k.contains('ms') || k.endsWith('_id')) return;
-    final etiqueta = etiquetas[k] ?? k.replaceAll('_', ' ');
+    // Solo se muestran métricas con etiqueta HUMANA conocida. Nunca claves
+    // técnicas ni valores anidados (Map/List) que parecerían salida de debug.
+    if (!etiquetas.containsKey(k)) return;
+    if (v is Map || v is List) return;
     final valor = v is bool ? (v ? 'sí' : 'no') : '$v';
-    partes.add('$etiqueta: $valor');
+    partes.add('${etiquetas[k]}: $valor');
   });
   return partes.isEmpty ? 'actividad completada.' : partes.join('  ·  ');
 }
@@ -127,11 +128,11 @@ const _kVitrina = <String>[
   'Sigue la línea', // trazo (con "Empieza" y flechas)
   '¿Qué objeto es?', // elegir imagen
   'Completar refranes', // elegir palabra
-  'Memoria de figuras', // memoria visual
+  'Objetos personales', // memoria visual
   'Parejas de animales', // parejas (encontrar iguales)
   'Cuenta cuántos hay', // contar
   '¿Fruta o verdura?', // arrastrar a su sitio (categoría clara)
-  'Busca los corazones', // búsqueda visual
+  'Busca la llave', // búsqueda visual
   'Ordena las etapas de la vida', // ordenar pasos (orden inequívoco)
   'Reúne el importe (solo monedas)', // dinero
 ];
