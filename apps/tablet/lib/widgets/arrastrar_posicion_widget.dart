@@ -222,7 +222,7 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: TrazoColors.ivory,
-        border: Border.all(color: TrazoColors.sand),
+        border: Border.all(color: TrazoColors.bordeControl),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Wrap(
@@ -328,7 +328,7 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
           decoration: BoxDecoration(
             color: seleccionada ? TrazoColors.coralDark : TrazoColors.card,
             border: Border.all(
-                color: seleccionada ? TrazoColors.coralDark : TrazoColors.sand,
+                color: seleccionada ? TrazoColors.coralDark : TrazoColors.bordeControl,
                 width: seleccionada ? 4 : 2),
             borderRadius: BorderRadius.circular(12),
           ),
@@ -356,7 +356,7 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
         decoration: BoxDecoration(
           color: seleccionada ? TrazoColors.coralDark : TrazoColors.card,
           border: Border.all(
-              color: seleccionada ? TrazoColors.coralDark : TrazoColors.sand,
+              color: seleccionada ? TrazoColors.coralDark : TrazoColors.bordeControl,
               width: seleccionada ? 4 : 2),
           borderRadius: BorderRadius.circular(12),
         ),
@@ -402,7 +402,7 @@ class _ArrastrarPosicionWidgetState extends State<ArrastrarPosicionWidget> {
         decoration: BoxDecoration(
           color: resaltar ? const Color(0xFFEDF3EE) : TrazoColors.white,
           border: Border.all(
-              color: resaltar ? TrazoColors.sage : TrazoColors.sand,
+              color: resaltar ? TrazoColors.sage : TrazoColors.bordeControl,
               width: resaltar ? 3 : 2),
           borderRadius: BorderRadius.circular(14),
         ),

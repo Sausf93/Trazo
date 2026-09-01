@@ -267,7 +267,7 @@ class _BusquedaVisualWidgetState extends State<BusquedaVisualWidget> {
           decoration: BoxDecoration(
             color: sel ? const Color(0xFFFBEFE4) : TrazoColors.card,
             border: Border.all(
-                color: sel ? TrazoColors.coralDark : TrazoColors.sand,
+                color: sel ? TrazoColors.coralDark : TrazoColors.bordeControl,
                 width: sel ? 3 : 1.5),
             borderRadius: BorderRadius.circular(16),
           ),

@@ -300,7 +300,7 @@ class _FlechaOrden extends StatelessWidget {
           width: 56,
           height: 56,
           decoration: BoxDecoration(
-            color: activo ? TrazoColors.sageDark : TrazoColors.sand,
+            color: activo ? TrazoColors.sageDark : TrazoColors.bordeControl,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(icono,
