@@ -82,15 +82,22 @@ class _BusquedaVisualWidgetState extends State<BusquedaVisualWidget> {
         // y tamaños cómodos fijos para que nada se recorte ni se salga.
         final estrecho = c.maxWidth < 520 || c.maxHeight < 640;
         if (estrecho) {
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                _objetivo(instruccion, estrecho: true),
-                _progreso(),
-                _rejilla(estrecho: true),
-                const SizedBox(height: 12),
-              ],
-            ),
+          // El OBJETIVO (qué buscar) y el progreso quedan FIJOS arriba; solo la
+          // rejilla hace scroll. Así un mayor con memoria frágil no olvida qué
+          // busca al bajar a tocar las celdas de abajo.
+          return Column(
+            children: [
+              _objetivo(instruccion, estrecho: true),
+              _progreso(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: _rejilla(estrecho: true),
+                  ),
+                ),
+              ),
+            ],
           );
         }
         return Column(
