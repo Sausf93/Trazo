@@ -26,6 +26,7 @@ from app.routers import (
     facturacion,
     intentos,
     objetivos,
+    onboarding,
     planes,
     plataforma,
     sesiones,
@@ -165,3 +166,4 @@ app.include_router(banco.router)
 app.include_router(staff.router)
 app.include_router(plataforma.router)
 app.include_router(facturacion.router)
+app.include_router(onboarding.router)

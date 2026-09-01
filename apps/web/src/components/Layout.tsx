@@ -25,6 +25,7 @@ const NAV = [
 
 // "Equipo" (alta de maestras) solo lo ve el admin del centro.
 const NAV_ADMIN = [
+  { to: "/puesta-en-marcha", label: "Puesta en marcha", end: false },
   { to: "/equipo", label: "Equipo", end: false },
   { to: "/cumplimiento", label: "Cumplimiento", end: false },
 ];

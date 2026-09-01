@@ -146,6 +146,22 @@ class CheckoutOut(BaseModel):
     url: str
 
 
+class PuestaEnMarchaOut(BaseModel):
+    """Estado de implantación del centro para el asistente de puesta en marcha."""
+    equipo_ok: bool
+    n_maestras: int
+    tablets_ok: bool
+    n_tablets: int
+    dpa_ok: bool
+    personas_ok: bool
+    n_personas: int
+    personas_sin_consentimiento: int
+    suscripcion_ok: bool
+    estado_suscripcion: str
+    primera_sesion_ok: bool
+    completo: bool
+
+
 class TokenOut(BaseModel):
     access_token: str
     token_type: str = "bearer"

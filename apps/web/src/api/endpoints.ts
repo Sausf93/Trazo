@@ -56,6 +56,26 @@ export function crearCheckoutSuscripcion(): Promise<{ url: string }> {
   return http.post<{ url: string }>("/facturacion/checkout", {});
 }
 
+export interface PuestaEnMarcha {
+  equipo_ok: boolean;
+  n_maestras: number;
+  tablets_ok: boolean;
+  n_tablets: number;
+  dpa_ok: boolean;
+  personas_ok: boolean;
+  n_personas: number;
+  personas_sin_consentimiento: number;
+  suscripcion_ok: boolean;
+  estado_suscripcion: string;
+  primera_sesion_ok: boolean;
+  completo: boolean;
+}
+
+/** Estado de implantación del centro (para el asistente de puesta en marcha). */
+export function puestaEnMarcha(signal?: AbortSignal): Promise<PuestaEnMarcha> {
+  return http.get<PuestaEnMarcha>("/puesta-en-marcha", signal);
+}
+
 export function actualizarStaff(
   id: string,
   body: { nombre?: string; activo?: boolean },

@@ -9,6 +9,7 @@ import { EquipoPage } from "./pages/Equipo";
 import { LoginPage } from "./pages/Login";
 import { PacientesPage } from "./pages/Pacientes";
 import { PlanEditorPage } from "./pages/PlanEditor";
+import { PuestaEnMarchaPage } from "./pages/PuestaEnMarcha";
 import { RevisarPage } from "./pages/Revisar";
 import { SesionLivePage } from "./pages/SesionLive";
 import { SesionesPage } from "./pages/Sesiones";
@@ -40,6 +41,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <EquipoPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/puesta-en-marcha"
+        element={
+          <ProtectedRoute>
+            <PuestaEnMarchaPage />
           </ProtectedRoute>
         }
       />
